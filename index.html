@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCORE GAMES - Mods Ghost Recon Breakpoint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    // ✅ CORES DEFINIDAS POR VOCÊ
+                    colors: {
+                        principal: '#9EFF00',    // VERDE: Letras, textos e destaques
+                        secundaria: '#0A1153',   // AZUL: Fundo do Topo e Rodapé
+                        sucesso: '#00B42A',
+                        escuro: '#0A1153',
+                        claro: '#F8F9FA',
+                        // ✅ CORES DAS REDES SOCIAIS
+                        instagram: '#E4405F',
+                        youtube: '#FF0000',
+                        facebook: '#1877F2',
+                        cults: '#F15A24',
+                        whatsapp: '#25D366',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        logo: ['Arial Black', 'Helvetica Bold', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+            .card-mod { @apply bg-white rounded-xl shadow-lg p-5 border border-gray-200 hover:shadow-xl transition-all duration-300; }
+            .menu-ativo { @apply border-b-2 border-principal font-bold text-principal bg-blue-900/30 rounded-t-lg; }
+            .btn-venda { @apply bg-gradient-to-r from-secundaria to-blue-800 hover:from-blue-900 hover:to-blue-700 text-principal font-bold py-3 px-6 rounded-lg text-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105 active:scale-95 w-full text-center; }
+            .btn-link { @apply bg-principal hover:bg-principal/90 text-secundaria font-bold py-2 px-4 rounded text-sm transition-colors; }
+            .categoria-aba { @apply px-4 py-2 cursor-pointer hover:text-secundaria transition-colors whitespace-nowrap; }
+            .categoria-ativa { @apply border-b-2 border-secundaria font-bold text-secundaria; }
+            .logo-font { @apply font-logo font-bold tracking-wider; }
+            
+            /* ✅ ESTILO PADRÃO PARA A ÁREA DE MÍDIA (VÍDEO/FOTO) */
+            .area-midia { 
+                @apply bg-gray-100 rounded-lg h-44 flex flex-col items-center justify-center mb-4 overflow-hidden border border-gray-200 relative;
+            }
+            .link-externo {
+                @apply absolute bottom-2 right-2 bg-secundaria/80 text-principal text-xs py-1 px-2 rounded;
+            }
+            /* ✅ ESTILO PARA OS ÍCONES DE REDES SOCIAIS NO MENU SUPERIOR */
+            .icone-rede-topo {
+                @apply text-xl mx-1 transition-all duration-300 hover:scale-110;
+            }
+            /* ✅ ESTILO PARA OS ÍCONES DE REDES SOCIAIS NO RODAPÉ */
+            .icone-rede-rodape {
+                @apply text-2xl mx-2 transition-all duration-300 hover:scale-110;
+            }
+            /* ✅ BOTÃO RETORNAR AO TOPO */
+            .btn-topo {
+                @apply fixed bottom-6 right-6 bg-secundaria text-principal w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-900 transition-all z-50;
+            }
+            /* ✅ ESTILOS NOVOS PARA MENU ABERTO/FECHADO NO CELULAR */
+            .menu-container {
+                @apply relative;
+            }
+            .menu-botao {
+                @apply w-full bg-blue-900/40 text-principal py-3 px-4 rounded-lg font-bold text-lg flex justify-between items-center hover:bg-blue-900/60 transition-colors;
+            }
+            .menu-lista {
+                @apply hidden absolute left-0 right-0 mt-1 bg-secundaria rounded-lg shadow-xl z-40 overflow-y-auto max-h-[60vh]; /* ✅ AQUI: DEIXEI ROLÁVEL E COM ALTURA MÁXIMA PARA NÃO SAIR DA TELA */
+            }
+            .menu-lista.aberto {
+                @apply block;
+            }
+            .menu-lista a {
+                @apply block py-3 px-4 text-principal hover:bg-blue-900/50 transition-colors border-b border-principal/10;
+            }
+            .menu-lista a:last-child {
+                @apply border-b-0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- ✅ CABEÇALHO: FUNDO AZUL, TEXTO VCORE GAMES VERDE + REDES SOCIAIS NO TOPO -->
+    <header class="bg-secundaria text-principal py-4 px-4 shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto">
+            <!-- ✅ MENU DE REDES SOCIAIS NO TOPO -->
+            <div class="flex justify-center items-center mb-3 pb-2 border-b border-principal/20">
+                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-topo text-instagram" title="Instagram">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-topo text-youtube" title="YouTube">
+                    <i class="fa fa-youtube-play"></i>
+                </a>
+                <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-topo text-facebook" title="Facebook Gaming">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+                <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-topo text-cults" title="Cults - Arquivos 3D">
+                    <i class="fa fa-cube"></i>
+                </a>
+                <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-topo text-whatsapp" title="WhatsApp">
+                    <i class="fa fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <div class="text-center mb-4">
+                <!-- ✅ LOGO APENAS TEXTO: VCORE EM CIMA, GAMES EMBAIXO -->
+                <div class="flex flex-col items-center justify-center">
+                    <h1 class="text-[clamp(2.8rem,8vw,4rem)] logo-font text-principal leading-tight">VCORE</h1>
+                    <p class="text-[clamp(1rem,3vw,1.5rem)] text-principal/90 font-medium tracking-widest -mt-2">GAMES</p>
+                    <p class="text-sm text-principal/70 mt-2">Mods e Arquivos Prontos para Ghost Recon Breakpoint</p>
+                </div>
+            </div>
+
+            <!-- ✅ MENU PRINCIPAL AGORA EM FORMATO DE ABA PARA CELULAR -->
+            <nav class="max-w-xs mx-auto w-full menu-container">
+                <button id="botaoMenu" class="menu-botao">
+                    <span>Menu Principal</span>
+                    <i class="fa fa-chevron-down transition-transform duration-300" id="iconeMenu"></i>
+                </button>
+                <div id="listaMenu" class="menu-lista">
+                    <a href="#inicio" class="menu-ativo" onclick="mudarMenu(event, 'inicio')">Início</a>
+                    <a href="#veiculos" onclick="mudarMenu(event, 'veiculos')">Veículos</a>
+                    <a href="#armas" onclick="mudarMenu(event, 'armas')">Armas</a>
+                    <a href="#equipamentos" onclick="mudarMenu(event, 'equipamentos')">Equipamentos</a>
+                    <a href="#graficos" onclick="mudarMenu(event, 'graficos')">Gráficos</a>
+                    <a href="#pacotes" onclick="mudarMenu(event, 'pacotes')">Pacotes Completos</a>
+                    <a href="#sobre" onclick="mudarMenu(event, 'sobre')">Sobre</a>
+                    <a href="#suporte" onclick="mudarMenu(event, 'suporte')">Suporte</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="py-8 px-4 max-w-7xl mx-auto">
+
+        <!-- ====================== INÍCIO ====================== -->
+        <section id="menu-inicio" class="conteudo-menu">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,5vw,2.2rem)] font-bold mb-4 text-gray-800">Arquivos Prontos para Instalação</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Todos os mods são arquivos originais modificados apenas para melhorar desempenho, visual e jogabilidade.<br>
+                    <strong>Sem trapaças, sem danos infinitos — apenas aprimoramentos legítimos do jogo!</strong>
+                </p>
+            </div>
+
+            <!-- ✅ TEXTO CORRIGIDO E CENTRALIZADO -->
+            <h3 class="text-2xl font-bold mb-6 text-center w-full text-gray-800 border-b-2 border-principal inline-block pb-2">🔥 Mods em Destaque</h3>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 mt-8">
+                
+                <!-- ================================================== -->
+                <!-- ✅ CAIXA 1 - ESTRUTURA DE VÍDEO/FOTO ORGANIZADA -->
+                <!-- ================================================== -->
+                <div class="card-mod">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Pacote Veículos Off-Road</h4>
+                    <p class="text-gray-600 mb-3">Melhora na suspensão, aderência e potência. Mais agilidade no terreno acidentado.</p>
+                    
+                    <!-- 👇 ÁREA DE MÍDIA ESTRUTURADA: VÍDEO OU FOTO 👇 -->
+                    <div class="area-midia">
+                        <!-- 📽️ OPÇÃO 1: VÍDEO - Link que abre direto no YouTube (NÃO DÁ ERRO 153) -->
+                        <a href="https://www.youtube.com/watch?v=y0zmA_XbtIk&t=448s" target="_blank" class="w-full h-full flex flex-col items-center justify-center text-decoration-none">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+
+                        <!-- 🖼️ OPÇÃO 2: FOTO - Para usar, APAGUE o código do vídeo acima e DESCOMENTE as linhas abaixo -->
+                        <!--
+                        <img src="COLOQUE_AQUI_LINK_DA_SUA_FOTO.jpg" alt="Imagem do Pacote Veículos Off-Road" class="w-full h-full object-cover">
+                        -->
+                    </div>
+                    <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
+
+                    <div class="space-y-2 mb-4">
+                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline">📄 Ver guia de instalação</a>
+                        <a href="LINK-DO-ARQUIVO-AQUI" target="_blank" class="block text-sm text-green-600 hover:underline">📦 Baixar arquivos modificados</a>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xl text-gray-800">R$ 19,90</span>
+                        <a href=" https://pay.hotmart.com/" class="btn-venda !w-auto">Comprar Agora</a>
+                    </div>
+                </div>
+
+                <!-- ================================================== -->
+                <!-- ✅ CAIXA 2 - ESTRUTURA DE VÍDEO/FOTO ORGANIZADA -->
+                <!-- ================================================== -->
+                <div class="card-mod">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Armas - Precisão e Alcance</h4>
+                    <p class="text-gray-600 mb-3">Ajuste de mira, recuo controlado e alcance aumentado. Mais eficaz sem ficar desequilibrado.</p>
+                    
+                    <!-- 👇 ÁREA DE MÍDIA ESTRUTURADA: VÍDEO OU FOTO 👇 -->
+                    <div class="area-midia">
+                        <!-- 📽️ OPÇÃO 1: VÍDEO - COLOQUE SEU LINK NO LUGAR DAS ASPAS -->
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center text-decoration-none">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+
+                        <!-- 🖼️ OPÇÃO 2: FOTO - Para usar, APAGUE o código do vídeo acima e DESCOMENTE as linhas abaixo -->
+                        <!--
+                        <img src="COLOQUE_AQUI_LINK_DA_SUA_FOTO.jpg" alt="Imagem das Armas" class="w-full h-full object-cover">
+                        -->
+                    </div>
+                    <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
+
+                    <div class="space-y-2 mb-4">
+                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline">📄 Ver guia de instalação</a>
+                        <a href="LINK-DO-ARQUIVO-AQUI" target="_blank" class="block text-sm text-green-600 hover:underline">📦 Baixar arquivos modificados</a>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xl text-gray-800">R$ 24,90</span>
+                        <a href="LINK-DO-PAGAMENTO-AQUI" class="btn-venda !w-auto">Comprar Agora</a>
+                    </div>
+                </div>
+
+                <!-- ================================================== -->
+                <!-- ✅ CAIXA 3 - ESTRUTURA DE VÍDEO/FOTO ORGANIZADA -->
+                <!-- ================================================== -->
+                <div class="card-mod">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Equipamentos Táticos</h4>
+                    <p class="text-gray-600 mb-3">Mais espaço de carga, organização melhorada e durabilidade aumentada.</p>
+                    
+                    <!-- 👇 ÁREA DE MÍDIA ESTRUTURADA: VÍDEO OU FOTO 👇 -->
+                    <div class="area-midia">
+                        <!-- 📽️ OPÇÃO 1: VÍDEO - COLOQUE SEU LINK NO LUGAR DAS ASPAS -->
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center text-decoration-none">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+
+                        <!-- 🖼️ OPÇÃO 2: FOTO - Para usar, APAGUE o código do vídeo acima e DESCOMENTE as linhas abaixo -->
+                        <!--
+                        <img src="COLOQUE_AQUI_LINK_DA_SUA_FOTO.jpg" alt="Imagem dos Equipamentos" class="w-full h-full object-cover">
+                        -->
+                    </div>
+                    <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
+
+                    <div class="space-y-2 mb-4">
+                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline">📄 Ver guia de instalação</a>
+                        <a href="LINK-DO-ARQUIVO-AQUI" target="_blank" class="block text-sm text-green-600 hover:underline">📦 Baixar arquivos modificados</a>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xl text-gray-800">R$ 14,90</span>
+                        <a href="LINK-DO-PAGAMENTO-AQUI" class="btn-venda !w-auto">Comprar Agora</a>
+                    </div>
+                </div>
+
+                <!-- ================================================== -->
+                <!-- ✅ CAIXA 4 - ESTRUTURA DE VÍDEO/FOTO ORGANIZADA -->
+                <!-- ================================================== -->
+                <div class="card-mod">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Helicóptero - Controle e Estabilidade</h4>
+                    <p class="text-gray-600 mb-3">Resposta dos comandos mais rápida, manobrabilidade melhorada, vento com efeito realista.</p>
+                    
+                    <!-- 👇 ÁREA DE MÍDIA ESTRUTURADA: VÍDEO OU FOTO 👇 -->
+                    <div class="area-midia">
+                        <!-- 📽️ OPÇÃO 1: VÍDEO - COLOQUE SEU LINK NO LUGAR DAS ASPAS -->
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center text-decoration-none">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+
+                        <!-- 🖼️ OPÇÃO 2: FOTO - Para usar, APAGUE o código do vídeo acima e DESCOMENTE as linhas abaixo -->
+                        <!--
+                        <img src="COLOQUE_AQUI_LINK_DA_SUA_FOTO.jpg" alt="Imagem do Helicóptero" class="w-full h-full object-cover">
+                        -->
+                    </div>
+                    <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
+
+                    <div class="space-y-2 mb-4">
+                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline">📄 Ver guia de instalação</a>
+                        <a href="LINK-DO-ARQUIVO-AQUI" target="_blank" class="block text-sm text-green-600 hover:underline">📦 Baixar arquivos modificados</a>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xl text-gray-800">R$ 22,90</span>
+                        <a href="LINK-DO-PAGAMENTO-AQUI" class="btn-venda !w-auto">Comprar Agora</a>
+                    </div>
+                </div>
+
+                <!-- ================================================== -->
+                <!-- ✅ CAIXA 5 - ESTRUTURA DE VÍDEO/FOTO ORGANIZADA -->
+                <!-- ================================================== -->
+                <div class="card-mod">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Armas Pesadas - Potência e Alcance</h4>
+                    <p class="text-gray-600 mb-3">Maior precisão a longa distância, cadência ajustada, sem recuo excessivo ou dano absurdo.</p>
+                    
+                    <!-- 👇 ÁREA DE MÍDIA ESTRUTURADA: VÍDEO OU FOTO 👇 -->
+                    <div class="area-midia">
+                        <!-- 📽️ OPÇÃO 1: VÍDEO - COLOQUE SEU LINK NO LUGAR DAS ASPAS -->
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center text-decoration-none">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+
+                        <!-- 🖼️ OPÇÃO 2: FOTO - Para usar, APAGUE o código do vídeo acima e DESCOMENTE as linhas abaixo -->
+                        <!--
+                        <img src="COLOQUE_AQUI_LINK_DA_SUA_FOTO.jpg" alt="Imagem das Armas Pesadas" class="w-full h-full object-cover">
+                        -->
+                    </div>
+                    <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
+
+                    <div class="space-y-2 mb-4">
+                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline">📄 Ver guia de instalação</a>
+                        <a href="LINK-DO-ARQUIVO-AQUI" target="_blank" class="block text-sm text-green-600 hover:underline">📦 Baixar arquivos modificados</a>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xl text-gray-800">R$ 26,90</span>
+                        <a href="LINK-DO-PAGAMENTO-AQUI" class="btn-venda !w-auto">Comprar Agora</a>
+                    </div>
+                </div>
+
+                <!-- ================================================== -->
+                <!-- ✅ CAIXA 6 - ESTRUTURA DE VÍDEO/FOTO ORGANIZADA -->
+                <!-- ================================================== -->
+                <div class="card-mod">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Mochila - Capacidade e Organização</h4>
+                    <p class="text-gray-600 mb-3">Mais espaços para itens, limite de peso aumentado, mas não infinito. Mais prático sem quebrar o jogo.</p>
+                    
+                    <!-- 👇 ÁREA DE MÍDIA ESTRUTURADA: VÍDEO OU FOTO 👇 -->
+                    <div class="area-midia">
+                        <!-- 📽️ OPÇÃO 1: VÍDEO - COLOQUE SEU LINK NO LUGAR DAS ASPAS -->
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center text-decoration-none">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+
+                        <!-- 🖼️ OPÇÃO 2: FOTO - Para usar, APAGUE o código do vídeo acima e DESCOMENTE as linhas abaixo -->
+                        <!--
+                        <img src="COLOQUE_AQUI_LINK_DA_SUA_FOTO.jpg" alt="Imagem da Mochila" class="w-full h-full object-cover">
+                        -->
+                    </div>
+                    <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
+
+                    <div class="space-y-2 mb-4">
+                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline">📄 Ver guia de instalação</a>
+                        <a href="LINK-DO-ARQUIVO-AQUI" target="_blank" class="block text-sm text-green-600 hover:underline">📦 Baixar arquivos modificados</a>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xl text-gray-800">R$ 16,90</span>
+                        <a href="LINK-DO-PAGAMENTO-AQUI" class="btn-venda !w-auto">Comprar Agora</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ====================== VEÍCULOS ====================== -->
+        <section id="menu-veiculos" class="conteudo-menu hidden">
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">🚗 Mods de Veículos</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+                Ajustes em física, motor, suspensão e aparência. Melhora o comportamento sem tornar o veículo irreal ou invencível.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-mod">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Jipe Ajuste de Suspensão</h4>
+                    <p class="text-gray-600 mb-3">Mais estabilidade em terrenos irregulares, menos capotagem, potência aumentada em subidas.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center text-decoration-none">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium">Assistir Vídeo</span>
+                        </a>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <a href="COLOQUE-AQUI-LINK-INSTALACAO" target="_blank" class="block text-sm text-blue-600 hover:underline">📄 Guia de instalação</a>
+                        <a href="COLOQUE-AQUI-LINK-ARQUIVO" target="_blank" class="block text-sm text-green-600 hover:underline">📦 Baixar arquivos</a>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xl text-gray-800">R$ 19,90</span>
+                        <a href="COLOQUE-AQUI-LINK-PAGAMENTO" class="btn-venda !w-auto">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== ARMAS ====================== -->
+        <section id="menu-armas" class="conteudo-menu hidden">
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">🔫 Mods de Armas</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+                Ajustes de precisão, recuo, alcance e cadência. Mais desempenho, mantendo equilíbrio e sem valores absurdos.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-mod">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Ajuste de Recuo e Mira</h4>
+                    <p class="text-gray-600 mb-3">Recuo mais controlado, mira mais estável, sem eliminar totalmente a dificuldade de acerto.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center text-decoration-none">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium">Assistir Vídeo</span>
+                        </a>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <a href="COLOQUE-AQUI-LINK-INSTALACAO" target="_blank" class="block text-sm text-blue-600 hover:underline">📄 Guia de instalação</a>
+                        <a href="COLOQUE-AQUI-LINK-ARQUIVO" target="_blank" class="block text-sm text-green-600 hover:underline">📦 Baixar arquivos</a>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xl text-gray-800">R$ 24,90</span>
+                        <a href="COLOQUE-AQUI-LINK-PAGAMENTO" class="btn-venda !w-auto">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== EQUIPAMENTOS ====================== -->
+        <section id="menu-equipamentos" class="conteudo-menu hidden">
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">🎒 Mods de Equipamentos</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+                Ajustes de capacidade, organização, durabilidade e peso. Mais praticidade sem tornar o jogo excessivamente fácil.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-mod">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Capacidade de Colete Aumentada</h4>
+                    <p class="text-gray-600 mb-3">Mais espaços para kits e granadas, durabilidade melhorada, sem ficar indestrutível.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center text-decoration-none">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium">Assistir Vídeo</span>
+                        </a>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <a href="COLOQUE-AQUI-LINK-INSTALACAO" target="_blank" class="block text-sm text-blue-600 hover:underline">📄 Guia de instalação</a>
+                        <a href="COLOQUE-AQUI-LINK-ARQUIVO" target="_blank" class="block text-sm text-green-600 hover:underline">📦 Baixar arquivos</a>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xl text-gray-800">R$ 14,90</span>
+                        <a href="COLOQUE-AQUI-LINK-PAGAMENTO" class="btn-venda !w-auto">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== GRÁFICOS ====================== -->
+        <section id="menu-graficos" class="conteudo-menu hidden">
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">✨ Mods Gráficos e Visuais</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+                Melhorias de textura, iluminação, clima e cores. Deixa o jogo mais bonito, com desempenho otimizado.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-mod">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Pacote de Cores e Luz</h4>
+                    <p class="text-gray-600 mb-3">Cores mais vibrantes, sombras realistas, visibilidade melhorada sem ficar excessivamente claro.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center text-decoration-none">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium">Assistir Vídeo</span>
+                        </a>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <a href="COLOQUE-AQUI-LINK-INSTALACAO" target="_blank" class="block text-sm text-blue-600 hover:underline">📄 Guia de instalação</a>
+                        <a href="COLOQUE-AQUI-LINK-ARQUIVO" target="_blank" class="block text-sm text-green-600 hover:underline">📦 Baixar arquivos</a>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xl text-gray-800">R$ 19,90</span>
+                        <a href="COLOQUE-AQUI-LINK-PAGAMENTO" class="btn-venda !w-auto">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== PACOTES COMPLETOS ====================== -->
+        <section id="menu-pacotes" class="conteudo-menu hidden">
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">📦 Pacotes Completos</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+                Vários mods reunidos em um único arquivo. Melhor valor e instalação mais rápida e prática.
+            </p>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="card-mod border-2 border-principal relative">
+                    <span class="absolute -top-3 -right-3 bg-secundaria text-principal text-sm font-bold py-1 px-3 rounded-full">MAIS VENDIDO</span>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-2">Pacote Completo Aprimorado</h4>
+                    <p class="text-gray-600 mb-3">Todos os ajustes de veículos, armas, equipamentos e gráficos. Jogo completo e melhorado.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center text-decoration-none">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium">Assistir Vídeo</span>
+                        </a>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <a href="COLOQUE-AQUI-LINK-INSTALACAO" target="_blank" class="block text-sm text-blue-600 hover:underline">📄 Guia completo de instalação</a>
+                        <a href="COLOQUE-AQUI-LINK-ARQUIVO" target="_blank" class="block text-sm text-green-600 hover:underline">📦 Arquivos prontos para substituir</a>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-2xl text-gray-800">R$ 49,90</span>
+                        <a href="COLOQUE-AQUI-LINK-PAGAMENTO" class="btn-venda !w-auto text-xl py-4">COMPRAR TUDO</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== SOBRE ====================== -->
+        <section id="menu-sobre" class="conteudo-menu hidden">
+            <div class="max-w-2xl mx-auto card-mod p-8 text-center">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Sobre a VCORE GAMES</h2>
+                <p class="mb-4 text-gray-600">
+                    Somos especialistas em modificações seguras e equilibradas para Ghost Recon Breakpoint.
+                </p>
+                <p class="mb-4 text-gray-600">
+                    Todos os nossos arquivos são alterações sutis nos arquivos originais do jogo: melhoramos desempenho, física, visual e organização, <strong>sem adicionar trapaças, danos infinitos ou quebras de jogabilidade</strong>.
+                </p>
+                <p class="text-gray-600">
+                    Nosso objetivo é deixar o jogo melhor, mas mantendo a essência e os desafios que tornam Ghost Recon especial.
+                </p>
+            </div>
+        </section>
+
+        <!-- ====================== SUPORTE ====================== -->
+        <section id="menu-suporte" class="conteudo-menu hidden">
+            <div class="max-w-xl mx-auto card-mod p-8 text-center">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Central de Ajuda</h2>
+                <p class="mb-6 text-gray-600">Dúvidas sobre instalação, links ou funcionamento? Fale conosco:</p>
+                <div class="space-y-4 text-left max-w-sm mx-auto">
+                    <div class="flex items-center gap-3">
+                        <i class="fa fa-whatsapp text-whatsapp text-2xl"></i>
+                        <a href="https://wa.me/5516981097916" target="_blank" class="text-gray-700 hover:text-whatsapp transition-colors">(16) 98109-7916</a>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa fa-instagram text-instagram text-2xl"></i>
+                        <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="text-gray-700 hover:text-instagram transition-colors">@rodrigovecoregaming</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ✅ RODAPÉ COMPLETO COM REDES SOCIAIS E COPYRIGHT -->
+    <footer class="bg-secundaria text-principal py-8 px-4 mt-12">
+        <div class="max-w-7xl mx-auto text-center">
+            <!-- ✅ REDES SOCIAIS NO RODAPÉ IGUAIS AO TOPO -->
+            <div class="flex justify-center items-center mb-4 pb-4 border-b border-principal/20">
+                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-rodape text-instagram" title="Instagram">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-rodape text-youtube" title="YouTube">
+                    <i class="fa fa-youtube-play"></i>
+                </a>
+                <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-rodape text-facebook" title="Facebook Gaming">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+                <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-rodape text-cults" title="Cults - Arquivos 3D">
+                    <i class="fa fa-cube"></i>
+                </a>
+                <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-rodape text-whatsapp" title="WhatsApp">
+                    <i class="fa fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <!-- ✅ COPYRIGHT CONFORME VOCÊ PEDIU -->
+            <p class="text-principal/80 text-sm">© 2026 VCORE GAMES - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- ✅ BOTÃO VOLTAR AO TOPO -->
+    <a href="#" class="btn-topo" title="Voltar ao topo">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+
+    <!-- ✅ SCRIPT PARA FUNCIONAMENTO DOS MENUS -->
+    <script>
+        // ✅ ABRIR E FECHAR O MENU NO CELULAR
+        const botaoMenu = document.getElementById('botaoMenu');
+        const listaMenu = document.getElementById('listaMenu');
+        const iconeMenu = document.getElementById('iconeMenu');
+
+        botaoMenu.addEventListener('click', function() {
+            listaMenu.classList.toggle('aberto');
+            iconeMenu.classList.toggle('rotate-180');
+        });
+
+        // ✅ TROCAR DE PÁGINA E FECHAR O MENU AO CLICAR
+        function mudarMenu(event, idMenu) {
+            // Esconde todos os conteúdos
+            document.querySelectorAll('.conteudo-menu').forEach(sec => sec.classList.add('hidden'));
+            // Mostra o conteúdo selecionado
+            document.getElementById('menu-' + idMenu).classList.remove('hidden');
+            
+            // Remove classe ativa de todos os links
+            document.querySelectorAll('#listaMenu a').forEach(link => link.classList.remove('menu-ativo'));
+            // Adiciona classe ativa no link clicado
+            event.target.classList.add('menu-ativo');
+
+            // FECHA O MENU DEPOIS DE CLICAR (NO CELULAR)
+            listaMenu.classList.remove('aberto');
+            iconeMenu.classList.remove('rotate-180');
+        }
+
+        // ✅ FECHAR MENU SE CLICAR FORA DELE
+        document.addEventListener('click', function(e) {
+            if (!botaoMenu.contains(e.target) && !listaMenu.contains(e.target)) {
+                listaMenu.classList.remove('aberto');
+                iconeMenu.classList.remove('rotate-180');
+            }
+        });
+    </script>
+
+</body>
+</html>
