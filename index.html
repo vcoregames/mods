@@ -81,6 +81,17 @@
             .menu-lista a:last-child {
                 @apply border-b-0;
             }
+
+            /* ✅ ESTILOS PARA O MODAL DO GUIA DE INSTALAÇÃO */
+            .modal-guia {
+                @apply fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden p-4;
+            }
+            .modal-conteudo {
+                @apply bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl;
+            }
+            .fechar-modal {
+                @apply float-right text-gray-500 hover:text-red-600 text-2xl font-bold cursor-pointer;
+            }
         }
     </style>
 </head>
@@ -136,6 +147,59 @@
         </div>
     </header>
 
+    <!-- ✅ MODAL DO GUIA DE INSTALAÇÃO (ABRE AO CLICAR NO LINK) -->
+    <div id="modalGuia" class="modal-guia">
+        <div class="modal-conteudo">
+            <span class="fechar-modal" onclick="fecharGuia()">&times;</span>
+            <h2 class="text-2xl font-bold text-center text-secundaria mb-4">📄 Guia Completo de Instalação</h2>
+            <p class="text-gray-600 mb-4 text-center">Aprenda a instalar qualquer mod da VCORE GAMES usando o Mod Manager</p>
+            
+            <div class="space-y-4 text-gray-700 text-justify">
+                <p><strong>📋 O que você precisa ter:</strong><br>
+                
+                <!-- ✅ FRASE ADICIONADA CONFORME VOCÊ PEDIU -->
+                <span class="text-orange-600 font-medium">⚠️ <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-bold">É obrigatório criar uma conta gratuita no Nexus Mods</a> para poder baixar os programas abaixo:</span><br>
+                
+                • GRB Mod Manager instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1602?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br>
+                • AnvilToolkit instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/16?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br>
+                • Arquivo do mod baixado (.zip/.rar/.7z)<br>
+                • Jogo Ghost Recon Breakpoint instalado</p>
+
+                <hr class="border-gray-200">
+
+                <p><strong>✅ PASSO 1 — Configurando o Programa</strong><br>
+                1. Abra o <strong>GRB Mod Manager</strong><br>
+                2. Clique em <strong>📁 Selecionar Pasta do Jogo</strong> e escolha a pasta onde o jogo está instalado no seu PC<br>
+                3. Clique no ícone de <strong>🔨 Ferramentas</strong> e selecione o arquivo <code>AnvilToolkit.exe</code> que você já instalou</p>
+
+                <p><strong>✅ PASSO 2 — Adicionando e Instalando o Mod</strong><br>
+                1. Clique em <strong>➕ Adicionar Mod</strong><br>
+                2. Selecione o arquivo do mod que você baixou <strong>(não precisa descompactar!)</strong><br>
+                3. O programa vai ler automaticamente. Clique em <strong>✅ Instalar</strong> e aguarde terminar<br>
+                4. No final, anote os nomes dos arquivos <code>.forge</code> que aparecerem na mensagem</p>
+
+                <p><strong>✅ PASSO 3 — Etapa Obrigatória: Empacotar</strong><br>
+                ⚠️ <em>Sem essa etapa o mod não funciona!</em><br>
+                1. Clique em <strong>🛠️ Abrir AnvilToolkit</strong><br>
+                2. Selecione um por um os arquivos <code>.forge</code> que foram indicados<br>
+                3. Clique em <strong>🔄 Repacotar / Repack</strong> e confirme<br>
+                4. Aguarde concluir e feche o programa</p>
+
+                <p><strong>✅ PASSO 4 — Pronto!</strong><br>
+                Volte para a tela principal, veja que o mod está como <strong>ATIVADO</strong>. Agora é só abrir o jogo normalmente pelo Ubisoft Connect ou Steam que tudo já estará aplicado! 🎮</p>
+
+                <hr class="border-gray-200">
+
+                <p><strong>❌ Como desinstalar (voltar ao original)</strong><br>
+                1. Abra o Mod Manager<br>
+                2. Na lista, clique no mod e escolha <strong>🗑️ Remover / Desinstalar</strong><br>
+                3. Repita o <strong>PASSO 3</strong> para restaurar os arquivos originais</p>
+
+                <p class="text-sm text-gray-500 mt-4">💡 Dica: Instale apenas um mod por vez para evitar conflitos ou erros.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="py-8 px-4 max-w-7xl mx-auto">
 
@@ -177,9 +241,9 @@
                     </div>
                     <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
 
-                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO (SEM BAIXAR ARQUIVO) -->
+                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO AGORA ABRE O MODAL -->
                     <div class="mb-4">
-                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
+                        <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
                     </div>
 
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -211,9 +275,9 @@
                     </div>
                     <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
 
-                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO (SEM BAIXAR ARQUIVO) -->
+                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO AGORA ABRE O MODAL -->
                     <div class="mb-4">
-                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
+                        <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
                     </div>
 
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -245,9 +309,9 @@
                     </div>
                     <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
 
-                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO (SEM BAIXAR ARQUIVO) -->
+                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO AGORA ABRE O MODAL -->
                     <div class="mb-4">
-                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
+                        <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
                     </div>
 
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -279,9 +343,9 @@
                     </div>
                     <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
 
-                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO (SEM BAIXAR ARQUIVO) -->
+                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO AGORA ABRE O MODAL -->
                     <div class="mb-4">
-                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
+                        <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
                     </div>
 
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -313,9 +377,9 @@
                     </div>
                     <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
 
-                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO (SEM BAIXAR ARQUIVO) -->
+                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO AGORA ABRE O MODAL -->
                     <div class="mb-4">
-                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
+                        <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
                     </div>
 
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -347,9 +411,9 @@
                     </div>
                     <!-- 👆 FIM DA ÁREA DE MÍDIA 👆 -->
 
-                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO (SEM BAIXAR ARQUIVO) -->
+                    <!-- ✅  SÓ GUIA DE INSTALAÇÃO AGORA ABRE O MODAL -->
                     <div class="mb-4">
-                        <a href="LINK-DE-INSTALACAO-AQUI" target="_blank" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
+                        <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
                     </div>
 
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -378,9 +442,9 @@
                         </a>
                     </div>
                     
-                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO -->
+                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO AGORA ABRE O MODAL -->
                     <div class="mb-4">
-                        <a href="COLOQUE-AQUI-LINK-INSTALACAO" target="_blank" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
+                        <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
                     </div>
                     
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -408,9 +472,9 @@
                         </a>
                     </div>
                     
-                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO -->
+                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO AGORA ABRE O MODAL -->
                     <div class="mb-4">
-                        <a href="COLOQUE-AQUI-LINK-INSTALACAO" target="_blank" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
+                        <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
                     </div>
                     
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -438,9 +502,9 @@
                         </a>
                     </div>
                     
-                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO -->
+                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO AGORA ABRE O MODAL -->
                     <div class="mb-4">
-                        <a href="COLOQUE-AQUI-LINK-INSTALACAO" target="_blank" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
+                        <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
                     </div>
                     
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -468,9 +532,9 @@
                         </a>
                     </div>
                     
-                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO -->
+                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO AGORA ABRE O MODAL -->
                     <div class="mb-4">
-                        <a href="COLOQUE-AQUI-LINK-INSTALACAO" target="_blank" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
+                        <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
                     </div>
                     
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -499,9 +563,9 @@
                         </a>
                     </div>
                     
-                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO -->
+                    <!-- ✅ SÓ GUIA DE INSTALAÇÃO AGORA ABRE O MODAL -->
                     <div class="mb-4">
-                        <a href="COLOQUE-AQUI-LINK-INSTALACAO" target="_blank" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia completo de instalação</a>
+                        <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia completo de instalação</a>
                     </div>
                     
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -580,7 +644,7 @@
         <i class="fa fa-chevron-up"></i>
     </a>
 
-    <!-- ✅ SCRIPT PARA FUNCIONAMENTO DOS MENUS -->
+    <!-- ✅ SCRIPT PARA FUNCIONAMENTO DOS MENUS E DO GUIA -->
     <script>
         // ✅ ABRIR E FECHAR O MENU NO CELULAR
         const botaoMenu = document.getElementById('botaoMenu');
@@ -592,7 +656,7 @@
             iconeMenu.classList.toggle('rotate-180');
         });
 
-        // ✅ TROCAR DE PÁGINA E FECHAR O MENU AO CLICAR
+          // ✅ TROCAR DE PÁGINA E FECHAR O MENU AO CLICAR
         function mudarMenu(event, idMenu) {
             // Esconde todos os conteúdos
             document.querySelectorAll('.conteudo-menu').forEach(sec => sec.classList.add('hidden'));
@@ -616,6 +680,23 @@
                 iconeMenu.classList.remove('rotate-180');
             }
         });
+
+        // ✅ FUNÇÕES PARA ABRIR E FECHAR O GUIA DE INSTALAÇÃO
+        function abrirGuia() {
+            document.getElementById('modalGuia').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Trava rolagem do fundo
+        }
+        function fecharGuia() {
+            document.getElementById('modalGuia').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Libera rolagem
+        }
+        // Fecha ao clicar fora da caixa
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalGuia');
+            if (event.target == modal) {
+                fecharGuia();
+            }
+        }
     </script>
 
 </body>
