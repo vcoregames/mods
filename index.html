@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -62,6 +63,8 @@
         .badge-carrinho { @apply absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full; }
         .barra-total { @apply fixed bottom-0 left-0 right-0 bg-secundaria text-principal py-3 px-5 flex items-center justify-between shadow-2xl z-40 transform translate-y-full transition-transform duration-500; }
         .barra-total.visivel { @apply translate-y-0; }
+        .pronto-badge { @apply inline-flex items-center gap-1 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full; }
+        .bloco-pronto { border-left: 3px solid #22c55e; background: rgba(34,197,94,0.08); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; }
       }
     </style>
   </head>
@@ -114,7 +117,6 @@
         <span class="fechar-modal" onclick="fecharCarrinho()">×</span>
         <h2 class="text-2xl font-bold text-center text-secundaria mb-4">🛒 Seu Carrinho</h2>
 
-        <!-- CAMPOS NOME E EMAIL -->
         <div class="mb-5 p-4 bg-blue-50 border border-blue-200 rounded-lg">
           <p class="text-sm font-bold text-secundaria mb-3">📧 Seus dados para receber o guia de instalação:</p>
           <input type="text" id="clienteNome" placeholder="Seu nome completo" class="w-full border border-gray-300 rounded-lg px-3 py-2 mb-2 text-sm focus:outline-none focus:border-secundaria" />
@@ -337,7 +339,22 @@
         <!-- PACOTES PREMIUM — PRATA / OURO / DIAMANTE -->
         <div id="pacotes-premium"></div>
         <h3 class="text-2xl font-bold mb-2 text-center text-gray-800">🏆 Pacotes Premium</h3>
-        <p class="text-center text-gray-500 mb-8 text-sm">Escolha o plano ideal para você</p>
+        <p class="text-center text-gray-500 mb-4 text-sm">Escolha o plano ideal para você</p>
+
+        <!-- DESTAQUE: PRONTO PARA JOGAR -->
+        <div class="max-w-5xl mx-auto mb-8 rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
+          <div class="flex flex-col sm:flex-row items-center gap-4 p-5">
+            <div class="text-5xl flex-shrink-0">🎮</div>
+            <div class="flex-1 text-center sm:text-left">
+              <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-2">
+                <span class="pronto-badge">✅ PRONTO PARA JOGAR</span>
+                <span class="text-xs font-bold px-2 py-1 rounded-full bg-yellow-400 text-yellow-900">SEM COMPLICAÇÃO</span>
+              </div>
+              <p class="font-bold text-lg" style="color:#9EFF00;">Os Pacotes Premium já vêm com tudo instalado e configurado!</p>
+              <p class="text-sm mt-1" style="color:rgba(158,255,0,0.75);">Você recebe os arquivos prontos. Basta copiar na pasta raiz do jogo (onde está o <strong style="color:#9EFF00;">GRB.exe</strong>) e abrir o game. Sem instalar ferramentas, sem configurar nada — é só jogar! 🚀</p>
+            </div>
+          </div>
+        </div>
 
         <div class="grid md:grid-cols-3 gap-6 mb-16 max-w-5xl mx-auto">
 
@@ -349,7 +366,14 @@
                 <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#C0C0C0; color:#1a1a1a;">🥈 PRATA</span>
               </div>
               <h4 class="text-xl font-bold mb-1" style="color:#C0C0C0;">Pacote Prata</h4>
-              <p class="text-sm mb-4" style="color:rgba(192,192,192,0.75);">Mods essenciais para transformar seu operador. Seleção com os itens mais populares da VCORE GAMES.</p>
+              <p class="text-sm mb-3" style="color:rgba(192,192,192,0.75);">Mods essenciais para transformar seu operador. Seleção com os itens mais populares da VCORE GAMES.</p>
+
+              <!-- BLOCO PRONTO PARA JOGAR -->
+              <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
+                <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar — sem instalar nada!</p>
+                <p style="color:rgba(192,192,192,0.8);">Arquivos já configurados. Copie na pasta raiz do jogo (onde está o <strong style="color:#C0C0C0;">GRB.exe</strong>) e abra o game.</p>
+              </div>
+
               <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(192,192,192,0.85);">
                 <li>✅ Coletes — Mod de Aparência</li>
                 <li>✅ Armas e Miras — Precisão Real</li>
@@ -377,7 +401,6 @@
           <!-- ── OURO R$ 100 ── -->
           <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #3a2800 0%, #6b4a00 50%, #3a2800 100%); border: 2px solid #FFD700;">
             <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #FFD700 0, #FFD700 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
-            <!-- Badge destaque central -->
             <div class="absolute -top-1 left-1/2 -translate-x-1/2">
               <span class="text-xs font-bold px-3 py-1 rounded-full shadow-lg" style="background:#FFD700; color:#3a2800;">MAIS POPULAR</span>
             </div>
@@ -386,7 +409,14 @@
                 <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#FFD700; color:#3a2800;">🥇 OURO</span>
               </div>
               <h4 class="text-xl font-bold mb-1" style="color:#FFD700;">Pacote Ouro</h4>
-              <p class="text-sm mb-4" style="color:rgba(255,215,0,0.75);">Experiência completa de visual e performance. Mais mods, mais personalização para seu operador.</p>
+              <p class="text-sm mb-3" style="color:rgba(255,215,0,0.75);">Experiência completa de visual e performance. Mais mods, mais personalização para seu operador.</p>
+
+              <!-- BLOCO PRONTO PARA JOGAR -->
+              <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
+                <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar — sem instalar nada!</p>
+                <p style="color:rgba(255,215,0,0.8);">Arquivos já configurados. Copie na pasta raiz do jogo (onde está o <strong style="color:#FFD700;">GRB.exe</strong>) e abra o game.</p>
+              </div>
+
               <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.9);">
                 <li>✅ Coletes — Mod de Aparência</li>
                 <li>✅ Armas e Miras — Precisão Real</li>
@@ -422,7 +452,14 @@
                 <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">MELHOR VALOR</span>
               </div>
               <h4 class="text-xl font-bold mb-1" style="color:#9EFF00;">Pacote Diamante</h4>
-              <p class="text-sm mb-4" style="color:rgba(158,255,0,0.75);">O pacote mais completo da VCORE GAMES. <strong style="color:#9EFF00;">Todos os mods</strong> disponíveis em um só lugar.</p>
+              <p class="text-sm mb-3" style="color:rgba(158,255,0,0.75);">O pacote mais completo da VCORE GAMES. <strong style="color:#9EFF00;">Todos os mods</strong> disponíveis em um só lugar.</p>
+
+              <!-- BLOCO PRONTO PARA JOGAR -->
+              <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
+                <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar — sem instalar nada!</p>
+                <p style="color:rgba(158,255,0,0.8);">Arquivos já configurados. Copie na pasta raiz do jogo (onde está o <strong style="color:#9EFF00;">GRB.exe</strong>) e abra o game.</p>
+              </div>
+
               <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(158,255,0,0.9);">
                 <li>✅ Coletes — Mod de Aparência</li>
                 <li>✅ Armas e Miras — Precisão Real</li>
@@ -627,7 +664,6 @@
       <section id="menu-area-cliente" class="conteudo-menu hidden">
         <div class="max-w-2xl mx-auto">
 
-          <!-- PAINEL DE LOGIN DO CLIENTE -->
           <div id="clienteLoginPainel" class="card-mod p-8">
             <div class="text-center mb-6">
               <span class="text-5xl">🔐</span>
@@ -668,6 +704,38 @@
             <p class="text-gray-600 mb-6 text-center">Aprenda a instalar qualquer mod da VCORE GAMES usando o Mod Manager</p>
 
             <div class="space-y-4 text-gray-700 text-justify card-mod">
+
+              <!-- ===== PASSO 0 — PACOTES PREMIUM (NOVO) ===== -->
+              <div class="rounded-xl p-4" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
+                <p class="font-bold text-lg mb-2" style="color:#9EFF00;">🚀 Comprou um Pacote Premium? É mais simples ainda!</p>
+                <p class="text-sm mb-3" style="color:rgba(158,255,0,0.85);">Os Pacotes Prata, Ouro e Diamante já vêm com todos os arquivos pré-configurados e prontos para jogar. Siga apenas o Passo 0 abaixo e ignore os demais passos.</p>
+                <div class="rounded-lg p-3 space-y-2" style="background:rgba(0,0,0,0.3);">
+                  <p class="font-bold" style="color:#9EFF00;">📂 Passo 0 — Como usar o arquivo pronto do Pacote Premium</p>
+                  <p class="text-sm" style="color:rgba(158,255,0,0.9);">1. Após o pagamento, você receberá por e-mail o link para baixar o arquivo do seu pacote</p>
+                  <p class="text-sm" style="color:rgba(158,255,0,0.9);">2. Baixe e <strong style="color:#9EFF00;">descompacte</strong> o arquivo recebido (.zip ou .rar)</p>
+                  <p class="text-sm" style="color:rgba(158,255,0,0.9);">3. Abra o explorador de arquivos e navegue até a <strong style="color:#9EFF00;">pasta raiz do jogo</strong> — é a pasta onde fica o arquivo <code style="background:rgba(158,255,0,0.15); padding:1px 5px; border-radius:3px;">GRB.exe</code></p>
+                  <div class="rounded p-2 text-xs mt-1" style="background:rgba(158,255,0,0.08); border:1px solid rgba(158,255,0,0.3);">
+                    <p style="color:#9EFF00;" class="font-bold mb-1">📁 Onde costuma estar a pasta do jogo:</p>
+                    <p style="color:rgba(158,255,0,0.75);">• <strong style="color:#9EFF00;">Ubisoft Connect:</strong> C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Ghost Recon Breakpoint</p>
+                    <p style="color:rgba(158,255,0,0.75);">• <strong style="color:#9EFF00;">Steam:</strong> C:\Program Files (x86)\Steam\steamapps\common\Ghost Recon Breakpoint</p>
+                    <p style="color:rgba(158,255,0,0.75);">• O caminho pode variar conforme sua instalação. Procure pela pasta que contém o arquivo <strong>GRB.exe</strong></p>
+                  </div>
+                  <p class="text-sm" style="color:rgba(158,255,0,0.9);">4. Copie os arquivos descompactados <strong style="color:#9EFF00;">diretamente para dentro dessa pasta</strong> (confirme a substituição se pedido)</p>
+                  <p class="text-sm" style="color:rgba(158,255,0,0.9);">5. Abra o jogo normalmente pelo Ubisoft Connect ou Steam — os mods já estarão ativos! 🎮</p>
+                  <div class="rounded p-2 text-xs mt-2" style="background:rgba(255,200,0,0.1); border-left:3px solid #f59e0b;">
+                    <p style="color:#fbbf24;">⚠️ <strong>Atenção:</strong> Não altere os nomes dos arquivos copiados. Se o Windows perguntar se deseja substituir arquivos existentes, clique em <strong>Sim para todos</strong>.</p>
+                  </div>
+                  <div class="rounded p-2 text-xs mt-1" style="background:rgba(34,197,94,0.1); border-left:3px solid #22c55e;">
+                    <p style="color:#86efac;">💡 <strong>Dica:</strong> Para voltar ao original, guarde um backup da pasta raiz do jogo antes de copiar os arquivos do pacote.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- ===== FIM PASSO 0 ===== -->
+
+              <hr class="border-gray-200" />
+              <p class="text-sm font-bold text-gray-500 uppercase tracking-wide">👇 Os passos abaixo são para instalação manual (mods individuais)</p>
+              <hr class="border-gray-200" />
+
               <p>
                 <strong>📋 O que você precisa ter:</strong><br />
                 <span class="text-orange-600 font-medium">⚠️ <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-bold">É obrigatório criar uma conta gratuita no Nexus Mods</a> para poder baixar os programas abaixo:</span><br />
@@ -831,28 +899,17 @@
     </div>
 
     <script>
-      // =============================================
-      // CONFIGURAÇÕES
-      // =============================================
       var LINK_HOTMART = "https://pay.hotmart.com/U96910894M";
       var ADMIN_USER = "admin";
       var ADMIN_PASS = "vcore2026";
-
-      // Credenciais da Área do Cliente (para teste)
       var CLIENTE_USER = "admin";
       var CLIENTE_PASS = "vcore2026";
 
-      // =============================================
-      // DADOS
-      // =============================================
       var carrinho = [];
       var adminLogado = false;
       var clienteLogado = false;
       var clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
 
-      // =============================================
-      // MENU DROPDOWN
-      // =============================================
       var botaoMenu = document.getElementById('botaoMenu');
       var listaMenu = document.getElementById('listaMenu');
       var iconeMenu = document.getElementById('iconeMenu');
@@ -870,18 +927,12 @@
       });
 
       function irParaPacotes(event) {
-        // Garante que a seção início está visível
-        document.querySelectorAll('.conteudo-menu').forEach(function(sec) {
-          sec.classList.add('hidden');
-        });
+        document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
         document.getElementById('menu-inicio').classList.remove('hidden');
-        document.querySelectorAll('#listaMenu a').forEach(function(link) {
-          link.classList.remove('menu-ativo');
-        });
+        document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
         event.target.classList.add('menu-ativo');
         listaMenu.classList.remove('aberto');
         iconeMenu.classList.remove('rotate-180');
-        // Scroll suave até os pacotes
         setTimeout(function() {
           var alvo = document.getElementById('pacotes-premium');
           if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -889,28 +940,16 @@
       }
 
       function mudarMenu(event, idMenu) {
-        document.querySelectorAll('.conteudo-menu').forEach(function(sec) {
-          sec.classList.add('hidden');
-        });
+        document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
         document.getElementById('menu-' + idMenu).classList.remove('hidden');
-        document.querySelectorAll('#listaMenu a').forEach(function(link) {
-          link.classList.remove('menu-ativo');
-        });
+        document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
         event.target.classList.add('menu-ativo');
         listaMenu.classList.remove('aberto');
         iconeMenu.classList.remove('rotate-180');
-
-        if (idMenu === 'admin') {
-          renderizarPainelAdmin();
-        }
-        if (idMenu === 'area-cliente') {
-          renderizarAreaCliente();
-        }
+        if (idMenu === 'admin') renderizarPainelAdmin();
+        if (idMenu === 'area-cliente') renderizarAreaCliente();
       }
 
-      // =============================================
-      // ÁREA DO CLIENTE
-      // =============================================
       function renderizarAreaCliente() {
         if (clienteLogado) {
           document.getElementById('clienteLoginPainel').classList.add('hidden');
@@ -943,9 +982,6 @@
         document.getElementById('erroLoginCliente').classList.add('hidden');
       }
 
-      // =============================================
-      // ADMIN
-      // =============================================
       function fazerLogin() {
         var user = document.getElementById('adminUser').value.trim();
         var pass = document.getElementById('adminPass').value.trim();
@@ -969,9 +1005,7 @@
       }
 
       function renderizarPainelAdmin() {
-        if (adminLogado) {
-          renderizarListaClientes();
-        }
+        if (adminLogado) renderizarListaClientes();
       }
 
       function gerarGuiaHTML(nome, email) {
@@ -989,12 +1023,46 @@
             '.aviso{background:#fff8e1;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin-bottom:10px;}' +
             '.alerta{background:#fff0f0;border-left:4px solid #ef4444;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin:8px 0;}' +
             '.dica{background:#f0fff4;border-left:4px solid #22c55e;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin-top:8px;}' +
+            '.bloco-premium{background:linear-gradient(135deg,#0A1153 0%,#1a2a7a 100%);border:2px solid #9EFF00;border-radius:10px;padding:20px 22px;margin-bottom:20px;}' +
+            '.bloco-premium h2{color:#9EFF00;font-size:1.1rem;margin:0 0 10px 0;border-bottom:2px solid rgba(158,255,0,0.4);padding-bottom:6px;}' +
+            '.bloco-premium p,.bloco-premium li{font-size:0.92rem;line-height:1.7;margin:4px 0;color:rgba(158,255,0,0.9);}' +
+            '.bloco-premium ul{padding-left:18px;margin:6px 0;}' +
+            '.bloco-premium .aviso-amarelo{background:rgba(245,158,11,0.15);border-left:3px solid #f59e0b;padding:8px 12px;border-radius:5px;font-size:0.85rem;color:#fbbf24;margin-top:8px;}' +
+            '.bloco-premium .dica-verde{background:rgba(34,197,94,0.1);border-left:3px solid #22c55e;padding:8px 12px;border-radius:5px;font-size:0.85rem;color:#86efac;margin-top:6px;}' +
+            '.bloco-premium code{background:rgba(158,255,0,0.15);color:#9EFF00;padding:1px 5px;border-radius:3px;font-size:0.88rem;}' +
+            '.divisor{text-align:center;color:#999;font-size:0.8rem;font-weight:bold;text-transform:uppercase;letter-spacing:1px;margin:20px 0 12px;padding:8px;background:#f0f0f0;border-radius:5px;}' +
             '.rodape{text-align:center;margin-top:28px;padding:16px;background:#0A1153;color:#9EFF00;border-radius:10px;font-size:0.9rem;}' +
             '.rodape a{color:#9EFF00;}' +
             'code{background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.88rem;}' +
           '</style></head><body>' +
           '<h1>📄 Guia Completo de Instalação — VCORE GAMES</h1>' +
           '<p class="subtitulo">Olá, <strong>' + nome + '</strong>! Obrigado pela sua compra. Siga os passos abaixo para instalar seus mods.</p>' +
+
+          '<div class="bloco-premium">' +
+            '<h2>🚀 Comprou um Pacote Premium? É só copiar e jogar!</h2>' +
+            '<p>Os Pacotes Prata, Ouro e Diamante já vêm com todos os arquivos pré-configurados. Siga apenas o <strong style="color:#9EFF00;">Passo 0</strong> abaixo e ignore os demais.</p>' +
+            '<br>' +
+            '<p><strong style="color:#9EFF00;">📂 Passo 0 — Como usar o arquivo pronto do Pacote Premium</strong></p>' +
+            '<ul>' +
+              '<li>1. Baixe e <strong>descompacte</strong> o arquivo recebido por e-mail (.zip ou .rar)</li>' +
+              '<li>2. Abra o explorador de arquivos e navegue até a <strong>pasta raiz do jogo</strong> — onde fica o <code>GRB.exe</code></li>' +
+            '</ul>' +
+            '<div class="aviso-amarelo" style="margin:10px 0;">' +
+              '<strong>📁 Onde costuma estar a pasta do jogo:</strong><br>' +
+              '• <strong>Ubisoft Connect:</strong> C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Ghost Recon Breakpoint<br>' +
+              '• <strong>Steam:</strong> C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ghost Recon Breakpoint<br>' +
+              '• O caminho pode variar. Procure pelo arquivo <strong>GRB.exe</strong> para localizar a pasta certa.' +
+            '</div>' +
+            '<ul>' +
+              '<li>3. Copie os arquivos descompactados <strong>diretamente para dentro dessa pasta</strong></li>' +
+              '<li>4. Se o Windows perguntar sobre substituir arquivos, clique em <strong>Sim para todos</strong></li>' +
+              '<li>5. Abra o jogo normalmente pelo Ubisoft Connect ou Steam — os mods já estarão ativos! 🎮</li>' +
+            '</ul>' +
+            '<div class="aviso-amarelo">⚠️ <strong>Atenção:</strong> Não renomeie os arquivos copiados. Confirme a substituição se solicitado pelo Windows.</div>' +
+            '<div class="dica-verde">💡 <strong>Dica:</strong> Faça um backup da pasta do jogo antes de copiar, para poder restaurar o original se precisar.</div>' +
+          '</div>' +
+
+          '<div class="divisor">👇 Passos abaixo: somente para mods individuais (não pacote premium)</div>' +
 
           '<div class="bloco">' +
             '<h2>📋 O que você precisa ter</h2>' +
@@ -1058,20 +1126,17 @@
         var html = gerarGuiaHTML(nome, email);
         var blob = new Blob([html], { type: 'text/html' });
         var url = URL.createObjectURL(blob);
-        var aba = window.open(url, '_blank');
-        // Libera memória após abrir
+        window.open(url, '_blank');
         setTimeout(function() { URL.revokeObjectURL(url); }, 10000);
       }
 
       function renderizarListaClientes() {
         clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
         var lista = document.getElementById('listaClientes');
-
         if (clientesRegistrados.length === 0) {
           lista.innerHTML = '<p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p>';
           return;
         }
-
         lista.innerHTML = '';
         clientesRegistrados.forEach(function(c) {
           var div = document.createElement('div');
@@ -1101,19 +1166,12 @@
         }
       }
 
-      // =============================================
-      // CARRINHO
-      // =============================================
       function adicionarAoCarrinho(nome, preco) {
         var existente = null;
         for (var i = 0; i < carrinho.length; i++) {
           if (carrinho[i].nome === nome) { existente = carrinho[i]; break; }
         }
-        if (existente) {
-          existente.qtd += 1;
-        } else {
-          carrinho.push({ nome: nome, preco: preco, qtd: 1 });
-        }
+        if (existente) { existente.qtd += 1; } else { carrinho.push({ nome: nome, preco: preco, qtd: 1 }); }
         atualizarCarrinho();
         mostrarNotificacao(nome + ' adicionado ao carrinho! 🛒');
       }
@@ -1152,7 +1210,6 @@
         if (carrinho.length > 0) {
           badge.classList.remove('hidden');
           badge.innerText = totalUnidades;
-
           carrinho.forEach(function(item) {
             var subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
             var precoUnit = item.preco.toFixed(2).replace('.', ',');
@@ -1172,7 +1229,6 @@
               '</div>';
             lista.appendChild(div);
           });
-
           totalEl.innerText = totalFormatado;
           barraTotalValor.innerText = totalFormatado;
           barraTotalItens.innerText = totalUnidades + (totalUnidades === 1 ? ' item' : ' itens');
@@ -1215,39 +1271,23 @@
         if (e.target === this) fecharCarrinho();
       });
 
-      // =============================================
-      // FINALIZAR COMPRA
-      // =============================================
       function finalizarCompra() {
-        if (carrinho.length === 0) {
-          mostrarNotificacao('Seu carrinho está vazio! 🛒');
-          return;
-        }
-
+        if (carrinho.length === 0) { mostrarNotificacao('Seu carrinho está vazio! 🛒'); return; }
         var nome = document.getElementById('clienteNome').value.trim();
         var email = document.getElementById('clienteEmail').value.trim();
-
         if (!nome || !email) {
           mostrarNotificacao('⚠️ Preencha seu nome e e-mail para continuar!');
           document.getElementById('clienteNome').focus();
           return;
         }
-
         var itens = carrinho.map(function(item) { return item.qtd + 'x ' + item.nome; }).join(', ');
         var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
         var agora = new Date();
         var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
-
         clientesRegistrados.push({ nome: nome, email: email, itens: itens, total: total.toFixed(2).replace('.', ','), data: dataStr });
         localStorage.setItem('vcore_clientes', JSON.stringify(clientesRegistrados));
-
-        var linkFinal = LINK_HOTMART +
-          '?checkoutMode=10&src=site' +
-          '&name=' + encodeURIComponent(nome) +
-          '&email=' + encodeURIComponent(email);
-
+        var linkFinal = LINK_HOTMART + '?checkoutMode=10&src=site&name=' + encodeURIComponent(nome) + '&email=' + encodeURIComponent(email);
         window.open(linkFinal, '_blank');
-
         carrinho = [];
         atualizarCarrinho();
         fecharCarrinho();
@@ -1256,19 +1296,10 @@
         mostrarNotificacao('✅ Redirecionando para o pagamento!');
       }
 
-      // =============================================
-      // BOTÃO VOLTAR AO TOPO
-      // =============================================
       var btnTopo = document.getElementById('btnTopo');
-
       window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-          btnTopo.classList.remove('hidden');
-        } else {
-          btnTopo.classList.add('hidden');
-        }
+        if (window.scrollY > 300) { btnTopo.classList.remove('hidden'); } else { btnTopo.classList.add('hidden'); }
       });
-
       btnTopo.addEventListener('click', function(e) {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
