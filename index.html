@@ -671,8 +671,8 @@
               <p>
                 <strong>📋 O que você precisa ter:</strong><br />
                 <span class="text-orange-600 font-medium">⚠️ <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-bold">É obrigatório criar uma conta gratuita no Nexus Mods</a> para poder baixar os programas abaixo:</span><br />
-                • GRB Mod Manager instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
-                • AnvilToolkit instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/23" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
+                • GRB Mod Manager instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1602?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
+                • AnvilToolkit instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/16?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
                 • Arquivo do mod baixado (.zip/.rar/.7z)<br />
                 • Jogo Ghost Recon Breakpoint instalado
               </p>
@@ -974,58 +974,94 @@
         }
       }
 
-      var CORPO_GUIA =
-        'Olá {NOME}!\n\n' +
-        'Obrigado pela sua compra na VCORE GAMES! 🎮\n' +
-        'Segue abaixo o Guia Completo de Instalação dos seus mods:\n\n' +
-        '══════════════════════════════════════\n' +
-        '📄 GUIA COMPLETO DE INSTALAÇÃO — VCORE GAMES\n' +
-        '══════════════════════════════════════\n\n' +
-        '📋 O QUE VOCÊ PRECISA TER:\n' +
-        '⚠️ É obrigatório criar uma conta gratuita no Nexus Mods (https://www.nexusmods.com/) para baixar os programas abaixo:\n' +
-        '• GRB Mod Manager instalado → https://www.nexusmods.com/ghostreconbreakpoint/mods/1\n' +
-        '• AnvilToolkit instalado → https://www.nexusmods.com/ghostreconbreakpoint/mods/23\n' +
-        '• Arquivo do mod baixado (.zip/.rar/.7z)\n' +
-        '• Jogo Ghost Recon Breakpoint instalado\n\n' +
-        '──────────────────────────────────────\n' +
-        '✅ PASSO 1 — CONFIGURANDO O PROGRAMA\n' +
-        '──────────────────────────────────────\n' +
-        '1. Abra o GRB Mod Manager\n' +
-        '2. Clique em 📁 Selecionar Pasta do Jogo e escolha a pasta onde o jogo está instalado no seu PC\n' +
-        '3. Clique no ícone de 🔨 Ferramentas e selecione o arquivo AnvilToolkit.exe que você já instalou\n\n' +
-        '──────────────────────────────────────\n' +
-        '✅ PASSO 2 — ADICIONANDO E INSTALANDO O MOD\n' +
-        '──────────────────────────────────────\n' +
-        '1. Clique em ➕ Adicionar Mod\n' +
-        '2. Selecione o arquivo do mod que você baixou (não precisa descompactar!)\n' +
-        '3. O programa vai ler automaticamente. Clique em ✅ Instalar e aguarde terminar\n' +
-        '4. No final, anote os nomes dos arquivos .forge que aparecerem na mensagem\n\n' +
-        '──────────────────────────────────────\n' +
-        '✅ PASSO 3 — ETAPA OBRIGATÓRIA: EMPACOTAR\n' +
-        '──────────────────────────────────────\n' +
-        '⚠️ Sem essa etapa o mod NÃO funciona!\n' +
-        '1. Clique em 🛠️ Abrir AnvilToolkit\n' +
-        '2. Selecione um por um os arquivos .forge que foram indicados\n' +
-        '3. Clique em 🔄 Repacotar / Repack e confirme\n' +
-        '4. Aguarde concluir e feche o programa\n\n' +
-        '──────────────────────────────────────\n' +
-        '✅ PASSO 4 — PRONTO!\n' +
-        '──────────────────────────────────────\n' +
-        'Volte para a tela principal, veja que o mod está como ATIVADO.\n' +
-        'Agora é só abrir o jogo normalmente pelo Ubisoft Connect ou Steam que tudo já estará aplicado! 🎮\n\n' +
-        '──────────────────────────────────────\n' +
-        '❌ COMO DESINSTALAR (VOLTAR AO ORIGINAL)\n' +
-        '──────────────────────────────────────\n' +
-        '1. Abra o Mod Manager\n' +
-        '2. Na lista, clique no mod e escolha 🗑️ Remover / Desinstalar\n' +
-        '3. Repita o PASSO 3 para restaurar os arquivos originais\n\n' +
-        '💡 Dica: Instale apenas um mod por vez para evitar conflitos ou erros.\n\n' +
-        '══════════════════════════════════════\n' +
-        'Qualquer dúvida, fale comigo:\n' +
-        '📱 WhatsApp: https://wa.me/5516981097916\n' +
-        '📸 Instagram: @rodrigovecoregaming\n\n' +
-        'Bons jogos! 🎮\n' +
-        'Rodrigo — VCORE GAMES';
+      function gerarGuiaHTML(nome, email) {
+        return '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">' +
+          '<title>Guia de Instalação — VCORE GAMES</title>' +
+          '<style>' +
+            'body{font-family:Arial,sans-serif;max-width:680px;margin:40px auto;padding:24px;color:#222;background:#f9f9f9;}' +
+            'h1{background:#0A1153;color:#9EFF00;padding:18px 24px;border-radius:10px;font-size:1.4rem;margin-bottom:8px;}' +
+            '.subtitulo{color:#555;font-size:0.95rem;margin-bottom:24px;padding-left:4px;}' +
+            '.bloco{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:18px 20px;margin-bottom:16px;}' +
+            '.bloco h2{color:#0A1153;font-size:1rem;margin:0 0 10px 0;border-bottom:2px solid #9EFF00;padding-bottom:6px;}' +
+            '.bloco p,.bloco li{font-size:0.92rem;line-height:1.7;margin:4px 0;}' +
+            '.bloco ul{padding-left:18px;margin:6px 0;}' +
+            'a{color:#1155cc;font-weight:bold;}' +
+            '.aviso{background:#fff8e1;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin-bottom:10px;}' +
+            '.alerta{background:#fff0f0;border-left:4px solid #ef4444;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin:8px 0;}' +
+            '.dica{background:#f0fff4;border-left:4px solid #22c55e;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin-top:8px;}' +
+            '.rodape{text-align:center;margin-top:28px;padding:16px;background:#0A1153;color:#9EFF00;border-radius:10px;font-size:0.9rem;}' +
+            '.rodape a{color:#9EFF00;}' +
+            'code{background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.88rem;}' +
+          '</style></head><body>' +
+          '<h1>📄 Guia Completo de Instalação — VCORE GAMES</h1>' +
+          '<p class="subtitulo">Olá, <strong>' + nome + '</strong>! Obrigado pela sua compra. Siga os passos abaixo para instalar seus mods.</p>' +
+
+          '<div class="bloco">' +
+            '<h2>📋 O que você precisa ter</h2>' +
+            '<div class="aviso">⚠️ É obrigatório criar uma <strong>conta gratuita no Nexus Mods</strong> para baixar os programas:<br>' +
+              '<a href="https://www.nexusmods.com/" target="_blank">https://www.nexusmods.com/</a></div>' +
+            '<ul>' +
+              '<li>GRB Mod Manager — <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1602?tab=files" target="_blank">Baixar aqui</a></li>' +
+              '<li>AnvilToolkit — <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/16?tab=files" target="_blank">Baixar aqui</a></li>' +
+              '<li>Arquivo do mod baixado (.zip / .rar / .7z)</li>' +
+              '<li>Jogo Ghost Recon Breakpoint instalado</li>' +
+            '</ul>' +
+          '</div>' +
+
+          '<div class="bloco">' +
+            '<h2>✅ Passo 1 — Configurando o Programa</h2>' +
+            '<p>1. Abra o <strong>GRB Mod Manager</strong></p>' +
+            '<p>2. Clique em <strong>📁 Selecionar Pasta do Jogo</strong> e escolha a pasta onde o jogo está instalado no seu PC</p>' +
+            '<p>3. Clique no ícone de <strong>🔨 Ferramentas</strong> e selecione o arquivo <code>AnvilToolkit.exe</code> que você já instalou</p>' +
+          '</div>' +
+
+          '<div class="bloco">' +
+            '<h2>✅ Passo 2 — Adicionando e Instalando o Mod</h2>' +
+            '<p>1. Clique em <strong>➕ Adicionar Mod</strong></p>' +
+            '<p>2. Selecione o arquivo do mod que você baixou <strong>(não precisa descompactar!)</strong></p>' +
+            '<p>3. O programa vai ler automaticamente. Clique em <strong>✅ Instalar</strong> e aguarde terminar</p>' +
+            '<p>4. No final, anote os nomes dos arquivos <code>.forge</code> que aparecerem na mensagem</p>' +
+          '</div>' +
+
+          '<div class="bloco">' +
+            '<h2>✅ Passo 3 — Etapa Obrigatória: Empacotar</h2>' +
+            '<div class="alerta">⚠️ <strong>Sem essa etapa o mod não funciona!</strong></div>' +
+            '<p>1. Clique em <strong>🛠️ Abrir AnvilToolkit</strong></p>' +
+            '<p>2. Selecione um por um os arquivos <code>.forge</code> que foram indicados</p>' +
+            '<p>3. Clique em <strong>🔄 Repacotar / Repack</strong> e confirme</p>' +
+            '<p>4. Aguarde concluir e feche o programa</p>' +
+          '</div>' +
+
+          '<div class="bloco">' +
+            '<h2>✅ Passo 4 — Pronto!</h2>' +
+            '<p>Volte para a tela principal, veja que o mod está como <strong>ATIVADO</strong>. Agora é só abrir o jogo normalmente pelo Ubisoft Connect ou Steam! 🎮</p>' +
+            '<div class="dica">💡 Dica: Instale apenas um mod por vez para evitar conflitos ou erros.</div>' +
+          '</div>' +
+
+          '<div class="bloco">' +
+            '<h2>❌ Como Desinstalar (voltar ao original)</h2>' +
+            '<p>1. Abra o Mod Manager</p>' +
+            '<p>2. Na lista, clique no mod e escolha <strong>🗑️ Remover / Desinstalar</strong></p>' +
+            '<p>3. Repita o <strong>Passo 3</strong> para restaurar os arquivos originais</p>' +
+          '</div>' +
+
+          '<div class="rodape">' +
+            '<p><strong>Qualquer dúvida, fale comigo:</strong></p>' +
+            '<p>📱 WhatsApp: <a href="https://wa.me/5516981097916" target="_blank">https://wa.me/5516981097916</a></p>' +
+            '<p>📸 Instagram: <a href="https://instagram.com/rodrigovecoregaming" target="_blank">@rodrigovecoregaming</a></p>' +
+            '<p style="margin-top:10px;">Bons jogos! 🎮 — Rodrigo / VCORE GAMES</p>' +
+          '</div>' +
+          '</body></html>';
+      }
+
+      function abrirGuiaEmail(nome, email) {
+        var html = gerarGuiaHTML(nome, email);
+        var blob = new Blob([html], { type: 'text/html' });
+        var url = URL.createObjectURL(blob);
+        var aba = window.open(url, '_blank');
+        // Libera memória após abrir
+        setTimeout(function() { URL.revokeObjectURL(url); }, 10000);
+      }
 
       function renderizarListaClientes() {
         clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
@@ -1037,12 +1073,7 @@
         }
 
         lista.innerHTML = '';
-        clientesRegistrados.forEach(function(c, idx) {
-          var corpo = CORPO_GUIA.replace('{NOME}', c.nome);
-          var mailtoLink = 'mailto:' + c.email +
-            '?subject=' + encodeURIComponent('Guia de Instalação — VCORE GAMES') +
-            '&body=' + encodeURIComponent(corpo);
-
+        clientesRegistrados.forEach(function(c) {
           var div = document.createElement('div');
           div.className = 'p-3 bg-gray-50 border border-gray-200 rounded-lg';
           div.innerHTML =
@@ -1053,10 +1084,10 @@
                 '<p class="text-gray-400 text-xs mt-1">Itens: ' + c.itens + '</p>' +
                 '<p class="text-gray-400 text-xs">Total: R$ ' + c.total + ' | ' + c.data + '</p>' +
               '</div>' +
-              '<a href="' + mailtoLink + '" ' +
-                'class="bg-secundaria text-principal text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-900 transition-colors whitespace-nowrap">' +
+              '<button onclick="abrirGuiaEmail(\'' + c.nome.replace(/'/g,"\\'") + '\',\'' + c.email.replace(/'/g,"\\'") + '\')" ' +
+                'class="bg-secundaria text-principal text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-900 transition-colors whitespace-nowrap cursor-pointer border-0">' +
                 '📧 Enviar Guia' +
-              '</a>' +
+              '</button>' +
             '</div>';
           lista.appendChild(div);
         });
