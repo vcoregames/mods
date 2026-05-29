@@ -97,79 +97,35 @@
           </button>
           <div id="listaMenu" class="menu-lista">
             <a href="#inicio" class="menu-ativo" onclick="mudarMenu(event, 'inicio')">Início</a>
+            <a href="#sobre-servico" onclick="mudarMenu(event, 'sobre-servico')">ℹ️ Sobre o Serviço</a>
             <a href="#veiculos" onclick="mudarMenu(event, 'veiculos')">Veículos</a>
             <a href="#armas" onclick="mudarMenu(event, 'armas')">Armas</a>
             <a href="#equipamentos" onclick="mudarMenu(event, 'equipamentos')">Equipamentos</a>
             <a href="#graficos" onclick="mudarMenu(event, 'graficos')">Gráficos</a>
             <a href="#pacotes" onclick="mudarMenu(event, 'pacotes')">Pacotes Completos</a>
+            <a href="#guia" onclick="mudarMenu(event, 'guia')">📄 Guia de Instalação</a>
             <a href="#sobre" onclick="mudarMenu(event, 'sobre')">Sobre</a>
             <a href="#suporte" onclick="mudarMenu(event, 'suporte')">Suporte</a>
+            <a href="#admin" onclick="mudarMenu(event, 'admin')">🔒 Admin</a>
           </div>
         </nav>
       </div>
     </header>
-
-    <!-- MODAL DO GUIA DE INSTALAÇÃO -->
-    <div id="modalGuia" class="modal-guia">
-      <div class="modal-conteudo">
-        <span class="fechar-modal" onclick="fecharGuia()">×</span>
-        <h2 class="text-2xl font-bold text-center text-secundaria mb-4">📄 Guia Completo de Instalação</h2>
-        <p class="text-gray-600 mb-4 text-center">Aprenda a instalar qualquer mod da VCORE GAMES usando o Mod Manager</p>
-        <div class="space-y-4 text-gray-700 text-justify">
-          <p>
-            <strong>📋 O que você precisa ter:</strong><br />
-            <span class="text-orange-600 font-medium">⚠️ <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-bold">É obrigatório criar uma conta gratuita no Nexus Mods</a> para poder baixar os programas abaixo:</span><br />
-            • GRB Mod Manager instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
-            • AnvilToolkit instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/23" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
-            • Arquivo do mod baixado (.zip/.rar/.7z)<br />
-            • Jogo Ghost Recon Breakpoint instalado
-          </p>
-          <hr class="border-gray-200" />
-          <p>
-            <strong>✅ PASSO 1 — Configurando o Programa</strong><br />
-            1. Abra o <strong>GRB Mod Manager</strong><br />
-            2. Clique em <strong>📁 Selecionar Pasta do Jogo</strong> e escolha a pasta onde o jogo está instalado no seu PC<br />
-            3. Clique no ícone de <strong>🔨 Ferramentas</strong> e selecione o arquivo <code>AnvilToolkit.exe</code> que você já instalou
-          </p>
-          <hr class="border-gray-200" />
-          <p>
-            <strong>✅ PASSO 2 — Adicionando e Instalando o Mod</strong><br />
-            1. Clique em <strong>➕ Adicionar Mod</strong><br />
-            2. Selecione o arquivo do mod que você baixou <strong>(não precisa descompactar!)</strong><br />
-            3. O programa vai ler automaticamente. Clique em <strong>✅ Instalar</strong> e aguarde terminar<br />
-            4. No final, anote os nomes dos arquivos <code>.forge</code> que aparecerem na mensagem
-          </p>
-          <hr class="border-gray-200" />
-          <p>
-            <strong>✅ PASSO 3 — Etapa Obrigatória: Empacotar</strong><br />
-            ⚠️ <em>Sem essa etapa o mod não funciona!</em><br />
-            1. Clique em <strong>🛠️ Abrir AnvilToolkit</strong><br />
-            2. Selecione um por um os arquivos <code>.forge</code> que foram indicados<br />
-            3. Clique em <strong>🔄 Repacotar / Repack</strong> e confirme<br />
-            4. Aguarde concluir e feche o programa
-          </p>
-          <hr class="border-gray-200" />
-          <p>
-            <strong>✅ PASSO 4 — Pronto!</strong><br />
-            Volte para a tela principal, veja que o mod está como <strong>ATIVADO</strong>. Agora é só abrir o jogo normalmente pelo Ubisoft Connect ou Steam que tudo já estará aplicado! 🎮
-          </p>
-          <hr class="border-gray-200" />
-          <p>
-            <strong>❌ Como desinstalar (voltar ao original)</strong><br />
-            1. Abra o Mod Manager<br />
-            2. Na lista, clique no mod e escolha <strong>🗑️ Remover / Desinstalar</strong><br />
-            3. Repita o <strong>PASSO 3</strong> para restaurar os arquivos originais
-          </p>
-          <p class="text-sm text-gray-500 mt-4">💡 Dica: Instale apenas um mod por vez para evitar conflitos ou erros.</p>
-        </div>
-      </div>
-    </div>
 
     <!-- MODAL DO CARRINHO -->
     <div id="modalCarrinho" class="modal-carrinho">
       <div class="carrinho-conteudo">
         <span class="fechar-modal" onclick="fecharCarrinho()">×</span>
         <h2 class="text-2xl font-bold text-center text-secundaria mb-4">🛒 Seu Carrinho</h2>
+
+        <!-- CAMPOS NOME E EMAIL -->
+        <div class="mb-5 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <p class="text-sm font-bold text-secundaria mb-3">📧 Seus dados para receber o guia de instalação:</p>
+          <input type="text" id="clienteNome" placeholder="Seu nome completo" class="w-full border border-gray-300 rounded-lg px-3 py-2 mb-2 text-sm focus:outline-none focus:border-secundaria" />
+          <input type="email" id="clienteEmail" placeholder="Seu e-mail" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-secundaria" />
+          <p class="text-xs text-gray-500 mt-2">⚠️ Após confirmar o pagamento, você receberá o guia completo de instalação neste e-mail.</p>
+        </div>
+
         <div id="listaCarrinho" class="space-y-2 mb-6">
           <p class="text-gray-500 text-center" id="carrinhoVazio">Seu carrinho está vazio.</p>
         </div>
@@ -210,9 +166,6 @@
                 <span class="text-xs text-gray-500">(Clique para abrir)</span>
               </a>
             </div>
-            <div class="mb-4">
-              <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
-            </div>
             <div class="flex flex-col gap-2">
               <span class="font-bold text-xl text-gray-800 text-center">R$ 19,90</span>
               <button onclick="adicionarAoCarrinho('Pacote Veículos Off-Road', 19.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
@@ -229,9 +182,6 @@
                 <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
                 <span class="text-xs text-gray-500">(Clique para abrir)</span>
               </a>
-            </div>
-            <div class="mb-4">
-              <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
             </div>
             <div class="flex flex-col gap-2">
               <span class="font-bold text-xl text-gray-800 text-center">R$ 24,90</span>
@@ -250,9 +200,6 @@
                 <span class="text-xs text-gray-500">(Clique para abrir)</span>
               </a>
             </div>
-            <div class="mb-4">
-              <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
-            </div>
             <div class="flex flex-col gap-2">
               <span class="font-bold text-xl text-gray-800 text-center">R$ 14,90</span>
               <button onclick="adicionarAoCarrinho('Equipamentos Táticos', 14.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
@@ -269,9 +216,6 @@
                 <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
                 <span class="text-xs text-gray-500">(Clique para abrir)</span>
               </a>
-            </div>
-            <div class="mb-4">
-              <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
             </div>
             <div class="flex flex-col gap-2">
               <span class="font-bold text-xl text-gray-800 text-center">R$ 22,90</span>
@@ -290,9 +234,6 @@
                 <span class="text-xs text-gray-500">(Clique para abrir)</span>
               </a>
             </div>
-            <div class="mb-4">
-              <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
-            </div>
             <div class="flex flex-col gap-2">
               <span class="font-bold text-xl text-gray-800 text-center">R$ 26,90</span>
               <button onclick="adicionarAoCarrinho('Armas Pesadas - Potência e Alcance', 26.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
@@ -310,12 +251,82 @@
                 <span class="text-xs text-gray-500">(Clique para abrir)</span>
               </a>
             </div>
-            <div class="mb-4">
-              <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Ver guia de instalação</a>
-            </div>
             <div class="flex flex-col gap-2">
               <span class="font-bold text-xl text-gray-800 text-center">R$ 16,90</span>
               <button onclick="adicionarAoCarrinho('Mochila - Capacidade e Organização', 16.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE O SERVIÇO (NOVO) -->
+      <section id="menu-sobre-servico" class="conteudo-menu hidden">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">ℹ️ O Que É Este Serviço?</h2>
+
+          <div class="card-mod mb-6 border-l-4 border-principal">
+            <div class="flex items-start gap-4">
+              <span class="text-4xl">🔧</span>
+              <div>
+                <h3 class="text-xl font-bold text-secundaria mb-2">O que eu faço</h3>
+                <p class="text-gray-700">
+                  Ofereço meu <strong>conhecimento e tempo</strong> para organizar, configurar e instalar mods nos seus jogos — como <strong>Ghost Recon Breakpoint</strong> e outros títulos compatíveis. Cuido de todo o processo técnico para que você não precise se preocupar com erros, conflitos de arquivo ou configurações complicadas.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-mod mb-6 border-l-4 border-yellow-400">
+            <div class="flex items-start gap-4">
+              <span class="text-4xl">⚠️</span>
+              <div>
+                <h3 class="text-xl font-bold text-secundaria mb-2">Os mods NÃO são meus</h3>
+                <p class="text-gray-700">
+                  Todos os mods utilizados são de autoria dos <strong>modders da comunidade</strong>, disponíveis gratuitamente no <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-semibold">Nexus Mods</a>. Eu <strong>não crio, não vendo e não reivindico autoria</strong> de nenhum mod.
+                </p>
+                <p class="text-gray-700 mt-2">
+                  O que você está contratando é exclusivamente o meu <strong>serviço de organização, seleção e instalação</strong> desses mods no seu jogo.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-mod mb-6 border-l-4 border-green-500">
+            <div class="flex items-start gap-4">
+              <span class="text-4xl">🏆</span>
+              <div>
+                <h3 class="text-xl font-bold text-secundaria mb-2">Créditos dos Mods</h3>
+                <p class="text-gray-700">
+                  Todo o mérito criativo pertence aos <strong>desenvolvedores e modders</strong> que publicam seu trabalho no Nexus Mods. Eles dedicam horas criando melhorias incríveis para a comunidade gamer, e merecem todo o reconhecimento.
+                </p>
+                <p class="text-gray-700 mt-2">
+                  Sempre que possível, os créditos de cada mod serão listados junto ao produto.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-mod mb-6 border-l-4 border-blue-500">
+            <div class="flex items-start gap-4">
+              <span class="text-4xl">💰</span>
+              <div>
+                <h3 class="text-xl font-bold text-secundaria mb-2">O que você paga</h3>
+                <p class="text-gray-700">
+                  Você paga apenas pelo meu <strong>trabalho de curadoria e instalação</strong>: selecionar os mods certos, testar compatibilidade, resolver conflitos e deixar tudo funcionando perfeitamente no seu jogo. Os mods em si continuam sendo gratuitos no Nexus Mods.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-mod border-l-4 border-purple-500">
+            <div class="flex items-start gap-4">
+              <span class="text-4xl">🎮</span>
+              <div>
+                <h3 class="text-xl font-bold text-secundaria mb-2">Jogos atendidos</h3>
+                <p class="text-gray-700">
+                  Atualmente trabalho principalmente com <strong>Ghost Recon Breakpoint</strong>. Outros jogos compatíveis com mods via Nexus Mods também podem ser atendidos — entre em contato para verificar disponibilidade.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -334,9 +345,6 @@
                 <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
                 <span class="text-gray-700 font-medium">Assistir Vídeo</span>
               </a>
-            </div>
-            <div class="mb-4">
-              <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
             </div>
             <div class="flex flex-col gap-2">
               <span class="font-bold text-xl text-gray-800 text-center">R$ 19,90</span>
@@ -360,9 +368,6 @@
                 <span class="text-gray-700 font-medium">Assistir Vídeo</span>
               </a>
             </div>
-            <div class="mb-4">
-              <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
-            </div>
             <div class="flex flex-col gap-2">
               <span class="font-bold text-xl text-gray-800 text-center">R$ 24,90</span>
               <button onclick="adicionarAoCarrinho('Ajuste de Recuo e Mira', 24.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
@@ -385,9 +390,6 @@
                 <span class="text-gray-700 font-medium">Assistir Vídeo</span>
               </a>
             </div>
-            <div class="mb-4">
-              <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
-            </div>
             <div class="flex flex-col gap-2">
               <span class="font-bold text-xl text-gray-800 text-center">R$ 14,90</span>
               <button onclick="adicionarAoCarrinho('Capacidade de Colete Aumentada', 14.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
@@ -409,9 +411,6 @@
                 <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
                 <span class="text-gray-700 font-medium">Assistir Vídeo</span>
               </a>
-            </div>
-            <div class="mb-4">
-              <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia de instalação</a>
             </div>
             <div class="flex flex-col gap-2">
               <span class="font-bold text-xl text-gray-800 text-center">R$ 19,90</span>
@@ -436,13 +435,66 @@
                 <span class="text-gray-700 font-medium">Assistir Vídeo</span>
               </a>
             </div>
-            <div class="mb-4">
-              <a href="javascript:void(0)" onclick="abrirGuia()" class="block text-sm text-blue-600 hover:underline text-center py-1">📄 Guia completo de instalação</a>
-            </div>
             <div class="flex flex-col gap-2">
               <span class="font-bold text-2xl text-gray-800 text-center">R$ 49,90</span>
               <button onclick="adicionarAoCarrinho('Pacote Completo Aprimorado', 49.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GUIA DE INSTALAÇÃO (PÁGINA PRÓPRIA) -->
+      <section id="menu-guia" class="conteudo-menu hidden">
+        <div class="max-w-2xl mx-auto">
+          <h2 class="text-3xl font-bold text-center text-secundaria mb-2">📄 Guia Completo de Instalação</h2>
+          <p class="text-gray-600 mb-8 text-center">Aprenda a instalar qualquer mod da VCORE GAMES usando o Mod Manager</p>
+
+          <div class="space-y-4 text-gray-700 text-justify card-mod">
+            <p>
+              <strong>📋 O que você precisa ter:</strong><br />
+              <span class="text-orange-600 font-medium">⚠️ <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-bold">É obrigatório criar uma conta gratuita no Nexus Mods</a> para poder baixar os programas abaixo:</span><br />
+              • GRB Mod Manager instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
+              • AnvilToolkit instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/23" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
+              • Arquivo do mod baixado (.zip/.rar/.7z)<br />
+              • Jogo Ghost Recon Breakpoint instalado
+            </p>
+            <hr class="border-gray-200" />
+            <p>
+              <strong>✅ PASSO 1 — Configurando o Programa</strong><br />
+              1. Abra o <strong>GRB Mod Manager</strong><br />
+              2. Clique em <strong>📁 Selecionar Pasta do Jogo</strong> e escolha a pasta onde o jogo está instalado no seu PC<br />
+              3. Clique no ícone de <strong>🔨 Ferramentas</strong> e selecione o arquivo <code>AnvilToolkit.exe</code> que você já instalou
+            </p>
+            <hr class="border-gray-200" />
+            <p>
+              <strong>✅ PASSO 2 — Adicionando e Instalando o Mod</strong><br />
+              1. Clique em <strong>➕ Adicionar Mod</strong><br />
+              2. Selecione o arquivo do mod que você baixou <strong>(não precisa descompactar!)</strong><br />
+              3. O programa vai ler automaticamente. Clique em <strong>✅ Instalar</strong> e aguarde terminar<br />
+              4. No final, anote os nomes dos arquivos <code>.forge</code> que aparecerem na mensagem
+            </p>
+            <hr class="border-gray-200" />
+            <p>
+              <strong>✅ PASSO 3 — Etapa Obrigatória: Empacotar</strong><br />
+              ⚠️ <em>Sem essa etapa o mod não funciona!</em><br />
+              1. Clique em <strong>🛠️ Abrir AnvilToolkit</strong><br />
+              2. Selecione um por um os arquivos <code>.forge</code> que foram indicados<br />
+              3. Clique em <strong>🔄 Repacotar / Repack</strong> e confirme<br />
+              4. Aguarde concluir e feche o programa
+            </p>
+            <hr class="border-gray-200" />
+            <p>
+              <strong>✅ PASSO 4 — Pronto!</strong><br />
+              Volte para a tela principal, veja que o mod está como <strong>ATIVADO</strong>. Agora é só abrir o jogo normalmente pelo Ubisoft Connect ou Steam que tudo já estará aplicado! 🎮
+            </p>
+            <hr class="border-gray-200" />
+            <p>
+              <strong>❌ Como desinstalar (voltar ao original)</strong><br />
+              1. Abra o Mod Manager<br />
+              2. Na lista, clique no mod e escolha <strong>🗑️ Remover / Desinstalar</strong><br />
+              3. Repita o <strong>PASSO 3</strong> para restaurar os arquivos originais
+            </p>
+            <p class="text-sm text-gray-500 mt-4">💡 Dica: Instale apenas um mod por vez para evitar conflitos ou erros.</p>
           </div>
         </div>
       </section>
@@ -474,6 +526,62 @@
           </div>
         </div>
       </section>
+
+      <!-- ADMIN -->
+      <section id="menu-admin" class="conteudo-menu hidden">
+        <div class="max-w-md mx-auto">
+
+          <!-- LOGIN ADMIN -->
+          <div id="painelLogin" class="card-mod p-8">
+            <div class="text-center mb-6">
+              <span class="text-5xl">🔒</span>
+              <h2 class="text-2xl font-bold mt-3 text-secundaria">Área Administrativa</h2>
+              <p class="text-gray-500 text-sm mt-1">Acesso restrito ao proprietário</p>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">Usuário</label>
+                <input type="text" id="adminUser" placeholder="admin" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" />
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">Senha</label>
+                <input type="password" id="adminPass" placeholder="••••••••" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" onkeydown="if(event.key==='Enter') fazerLogin()" />
+              </div>
+              <p id="erroLogin" class="text-red-600 text-sm hidden">❌ Usuário ou senha incorretos.</p>
+              <button onclick="fazerLogin()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 rounded-lg transition-colors">
+                Entrar
+              </button>
+            </div>
+          </div>
+
+          <!-- PAINEL ADMIN LOGADO -->
+          <div id="painelAdmin" class="hidden">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold text-secundaria">🛠️ Painel Admin</h2>
+              <button onclick="fazerLogout()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button>
+            </div>
+
+            <!-- LISTA DE CLIENTES AGUARDANDO ACESSO -->
+            <div class="card-mod mb-6">
+              <h3 class="text-lg font-bold text-gray-800 mb-4">📋 Clientes que compraram — Enviar Guia</h3>
+              <div id="listaClientes" class="space-y-3">
+                <p class="text-gray-400 text-sm text-center" id="semClientes">Nenhum cliente registrado ainda.</p>
+              </div>
+            </div>
+
+            <!-- BOTÃO LIMPAR -->
+            <button onclick="limparClientes()" class="w-full bg-red-100 hover:bg-red-200 text-red-700 font-bold py-2 rounded-lg text-sm transition-colors">
+              🗑️ Limpar lista de clientes
+            </button>
+
+            <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
+              <strong>💡 Como funciona:</strong> Quando um cliente preenche nome e e-mail e finaliza a compra, os dados aparecem aqui. Você confirma o pagamento e envia o guia de instalação manualmente para o e-mail dele.
+            </div>
+          </div>
+
+        </div>
+      </section>
+
     </main>
 
     <!-- RODAPÉ -->
@@ -487,6 +595,7 @@
           <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-rodape text-whatsapp" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
         </div>
         <p class="text-principal/80 text-sm">© 2026 VCORE GAMES - Todos os direitos reservados</p>
+        <p class="text-principal/40 text-xs mt-1">Os mods são de autoria dos modders do Nexus Mods. Este site oferece exclusivamente serviço de organização e instalação.</p>
       </div>
     </footer>
 
@@ -512,13 +621,21 @@
 
     <script>
       // =============================================
-      // DADOS DO CARRINHO
+      // CONFIGURAÇÕES - ALTERE AQUI
       // =============================================
-      var carrinho = [];
-      var LINK_HOTMART = "https://pay.hotmart.com/U96910894M"; // 👉 SEU LINK DA HOTMART
+      var LINK_HOTMART = "https://pay.hotmart.com/U96910894M";
+      var ADMIN_USER = "admin";        // 👉 ALTERE O USUÁRIO
+      var ADMIN_PASS = "vcore2026";    // 👉 ALTERE A SENHA
 
       // =============================================
-      // MENU DROPDOWN MOBILE
+      // DADOS
+      // =============================================
+      var carrinho = [];
+      var adminLogado = false;
+      var clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
+
+      // =============================================
+      // MENU DROPDOWN
       // =============================================
       var botaoMenu = document.getElementById('botaoMenu');
       var listaMenu = document.getElementById('listaMenu');
@@ -541,40 +658,92 @@
           sec.classList.add('hidden');
         });
         document.getElementById('menu-' + idMenu).classList.remove('hidden');
-
         document.querySelectorAll('#listaMenu a').forEach(function(link) {
           link.classList.remove('menu-ativo');
         });
         event.target.classList.add('menu-ativo');
-
         listaMenu.classList.remove('aberto');
         iconeMenu.classList.remove('rotate-180');
+
+        if (idMenu === 'admin') {
+          renderizarPainelAdmin();
+        }
       }
 
       // =============================================
-      // MODAL GUIA DE INSTALAÇÃO
+      // ADMIN
       // =============================================
-      function abrirGuia() {
-        document.getElementById('modalGuia').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+      function fazerLogin() {
+        var user = document.getElementById('adminUser').value.trim();
+        var pass = document.getElementById('adminPass').value.trim();
+        if (user === ADMIN_USER && pass === ADMIN_PASS) {
+          adminLogado = true;
+          document.getElementById('painelLogin').classList.add('hidden');
+          document.getElementById('painelAdmin').classList.remove('hidden');
+          renderizarListaClientes();
+        } else {
+          document.getElementById('erroLogin').classList.remove('hidden');
+        }
       }
 
-      function fecharGuia() {
-        document.getElementById('modalGuia').style.display = 'none';
-        document.body.style.overflow = 'auto';
+      function fazerLogout() {
+        adminLogado = false;
+        document.getElementById('painelLogin').classList.remove('hidden');
+        document.getElementById('painelAdmin').classList.add('hidden');
+        document.getElementById('adminUser').value = '';
+        document.getElementById('adminPass').value = '';
+        document.getElementById('erroLogin').classList.add('hidden');
       }
 
-      // Fechar modal ao clicar fora
-      document.getElementById('modalGuia').addEventListener('click', function(e) {
-        if (e.target === this) fecharGuia();
-      });
+      function renderizarPainelAdmin() {
+        if (adminLogado) {
+          renderizarListaClientes();
+        }
+      }
+
+      function renderizarListaClientes() {
+        clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
+        var lista = document.getElementById('listaClientes');
+        var semClientes = document.getElementById('semClientes');
+
+        if (clientesRegistrados.length === 0) {
+          lista.innerHTML = '<p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p>';
+          return;
+        }
+
+        lista.innerHTML = '';
+        clientesRegistrados.forEach(function(c, idx) {
+          var div = document.createElement('div');
+          div.className = 'p-3 bg-gray-50 border border-gray-200 rounded-lg';
+          div.innerHTML =
+            '<div class="flex justify-between items-start">' +
+              '<div>' +
+                '<p class="font-bold text-gray-800 text-sm">' + c.nome + '</p>' +
+                '<p class="text-blue-600 text-sm">' + c.email + '</p>' +
+                '<p class="text-gray-400 text-xs mt-1">Itens: ' + c.itens + '</p>' +
+                '<p class="text-gray-400 text-xs">Total: R$ ' + c.total + ' | ' + c.data + '</p>' +
+              '</div>' +
+              '<a href="mailto:' + c.email + '?subject=Guia%20de%20Instala%C3%A7%C3%A3o%20VCORE%20GAMES&body=Ol%C3%A1%20' + encodeURIComponent(c.nome) + '%2C%20segue%20o%20guia%20de%20instala%C3%A7%C3%A3o%20dos%20seus%20mods!" ' +
+                'class="bg-secundaria text-principal text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-900 transition-colors whitespace-nowrap">' +
+                '📧 Enviar Guia' +
+              '</a>' +
+            '</div>';
+          lista.appendChild(div);
+        });
+      }
+
+      function limparClientes() {
+        if (confirm('Tem certeza? Isso vai apagar toda a lista de clientes.')) {
+          localStorage.setItem('vcore_clientes', '[]');
+          clientesRegistrados = [];
+          renderizarListaClientes();
+        }
+      }
 
       // =============================================
-      // CARRINHO DE COMPRAS
-      // carrinho armazena objetos { nome, preco, qtd }
+      // CARRINHO
       // =============================================
       function adicionarAoCarrinho(nome, preco) {
-        // Procura se o item já existe no carrinho
         var existente = null;
         for (var i = 0; i < carrinho.length; i++) {
           if (carrinho[i].nome === nome) { existente = carrinho[i]; break; }
@@ -585,8 +754,6 @@
           carrinho.push({ nome: nome, preco: preco, qtd: 1 });
         }
         atualizarCarrinho();
-
-        // Notificação sem alert (não trava a tela)
         mostrarNotificacao(nome + ' adicionado ao carrinho! 🛒');
       }
 
@@ -594,9 +761,7 @@
         for (var i = 0; i < carrinho.length; i++) {
           if (carrinho[i].nome === nome) {
             carrinho[i].qtd += delta;
-            if (carrinho[i].qtd <= 0) {
-              carrinho.splice(i, 1);
-            }
+            if (carrinho[i].qtd <= 0) { carrinho.splice(i, 1); }
             break;
           }
         }
@@ -619,8 +784,6 @@
         var barraTotalItens = document.getElementById('barraTotalItens');
 
         lista.innerHTML = '';
-
-        // Total de unidades e valor
         var totalUnidades = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0);
         var totalValor = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
         var totalFormatado = 'R$ ' + totalValor.toFixed(2).replace('.', ',');
@@ -632,9 +795,7 @@
           carrinho.forEach(function(item) {
             var subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
             var precoUnit = item.preco.toFixed(2).replace('.', ',');
-
             var div = document.createElement('div');
-            div.className = 'item-carrinho';
             div.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e5e7eb;gap:8px;';
             div.innerHTML =
               '<div style="flex:1;min-width:0;">' +
@@ -642,14 +803,11 @@
                 '<p style="font-size:0.78rem;color:#6b7280;">R$ ' + precoUnit + ' cada</p>' +
               '</div>' +
               '<div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">' +
-                '<button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\', -1)" ' +
-                  'style="width:26px;height:26px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;font-size:1rem;border:none;cursor:pointer;line-height:1;">−</button>' +
+                '<button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\', -1)" style="width:26px;height:26px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;font-size:1rem;border:none;cursor:pointer;line-height:1;">−</button>' +
                 '<span style="font-weight:700;min-width:20px;text-align:center;">' + item.qtd + '</span>' +
-                '<button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\', 1)" ' +
-                  'style="width:26px;height:26px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;font-size:1rem;border:none;cursor:pointer;line-height:1;">+</button>' +
+                '<button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\', 1)" style="width:26px;height:26px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;font-size:1rem;border:none;cursor:pointer;line-height:1;">+</button>' +
                 '<span style="font-weight:700;min-width:68px;text-align:right;color:#111827;">R$ ' + subtotal + '</span>' +
-                '<button onclick="removerDoCarrinho(\'' + item.nome.replace(/'/g, "\\'") + '\')" ' +
-                  'style="color:#dc2626;font-size:0.78rem;font-weight:700;background:none;border:none;cursor:pointer;margin-left:4px;">✕</button>' +
+                '<button onclick="removerDoCarrinho(\'' + item.nome.replace(/'/g, "\\'") + '\')" style="color:#dc2626;font-size:0.78rem;font-weight:700;background:none;border:none;cursor:pointer;margin-left:4px;">✕</button>' +
               '</div>';
             lista.appendChild(div);
           });
@@ -658,10 +816,9 @@
           barraTotalValor.innerText = totalFormatado;
           barraTotalItens.innerText = totalUnidades + (totalUnidades === 1 ? ' item' : ' itens');
           barra.classList.add('visivel');
-
         } else {
           badge.classList.add('hidden');
-          lista.innerHTML = '<p class="text-gray-500 text-center" id="carrinhoVazio">Seu carrinho está vazio.</p>';
+          lista.innerHTML = '<p class="text-gray-500 text-center">Seu carrinho está vazio.</p>';
           totalEl.innerText = 'R$ 0,00';
           barra.classList.remove('visivel');
           barraTotalValor.innerText = 'R$ 0,00';
@@ -669,7 +826,6 @@
         }
       }
 
-      // Notificação flutuante no lugar do alert
       function mostrarNotificacao(msg) {
         var notif = document.getElementById('notificacaoCarrinho');
         if (!notif) {
@@ -694,13 +850,12 @@
         document.body.style.overflow = 'auto';
       }
 
-      // Fechar modal ao clicar fora
       document.getElementById('modalCarrinho').addEventListener('click', function(e) {
         if (e.target === this) fecharCarrinho();
       });
 
       // =============================================
-      // FINALIZAR COMPRA
+      // FINALIZAR COMPRA — salva cliente + redireciona
       // =============================================
       function finalizarCompra() {
         if (carrinho.length === 0) {
@@ -708,21 +863,38 @@
           return;
         }
 
-        var descricao = carrinho.map(function(item) {
-          return item.qtd + 'x ' + item.nome;
-        }).join(', ');
-        var total = carrinho.reduce(function(soma, item) { return soma + (item.preco * item.qtd); }, 0);
+        var nome = document.getElementById('clienteNome').value.trim();
+        var email = document.getElementById('clienteEmail').value.trim();
 
+        if (!nome || !email) {
+          mostrarNotificacao('⚠️ Preencha seu nome e e-mail para continuar!');
+          document.getElementById('clienteNome').focus();
+          return;
+        }
+
+        // Salva cliente localmente para o admin ver
+        var itens = carrinho.map(function(item) { return item.qtd + 'x ' + item.nome; }).join(', ');
+        var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
+        var agora = new Date();
+        var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+
+        clientesRegistrados.push({ nome: nome, email: email, itens: itens, total: total.toFixed(2).replace('.', ','), data: dataStr });
+        localStorage.setItem('vcore_clientes', JSON.stringify(clientesRegistrados));
+
+        // Monta link Hotmart
         var linkFinal = LINK_HOTMART +
           '?checkoutMode=10&src=site' +
-          '&name=' + encodeURIComponent(descricao) +
-          '&price=' + total.toFixed(2);
+          '&name=' + encodeURIComponent(nome) +
+          '&email=' + encodeURIComponent(email);
 
         window.open(linkFinal, '_blank');
 
         carrinho = [];
         atualizarCarrinho();
         fecharCarrinho();
+        document.getElementById('clienteNome').value = '';
+        document.getElementById('clienteEmail').value = '';
+        mostrarNotificacao('✅ Redirecionando para o pagamento!');
       }
 
       // =============================================
