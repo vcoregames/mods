@@ -883,6 +883,59 @@
         }
       }
 
+      var CORPO_GUIA =
+        'Olá {NOME}!\n\n' +
+        'Obrigado pela sua compra na VCORE GAMES! 🎮\n' +
+        'Segue abaixo o Guia Completo de Instalação dos seus mods:\n\n' +
+        '══════════════════════════════════════\n' +
+        '📄 GUIA COMPLETO DE INSTALAÇÃO — VCORE GAMES\n' +
+        '══════════════════════════════════════\n\n' +
+        '📋 O QUE VOCÊ PRECISA TER:\n' +
+        '⚠️ É obrigatório criar uma conta gratuita no Nexus Mods (https://www.nexusmods.com/) para baixar os programas abaixo:\n' +
+        '• GRB Mod Manager instalado → https://www.nexusmods.com/ghostreconbreakpoint/mods/1\n' +
+        '• AnvilToolkit instalado → https://www.nexusmods.com/ghostreconbreakpoint/mods/23\n' +
+        '• Arquivo do mod baixado (.zip/.rar/.7z)\n' +
+        '• Jogo Ghost Recon Breakpoint instalado\n\n' +
+        '──────────────────────────────────────\n' +
+        '✅ PASSO 1 — CONFIGURANDO O PROGRAMA\n' +
+        '──────────────────────────────────────\n' +
+        '1. Abra o GRB Mod Manager\n' +
+        '2. Clique em 📁 Selecionar Pasta do Jogo e escolha a pasta onde o jogo está instalado no seu PC\n' +
+        '3. Clique no ícone de 🔨 Ferramentas e selecione o arquivo AnvilToolkit.exe que você já instalou\n\n' +
+        '──────────────────────────────────────\n' +
+        '✅ PASSO 2 — ADICIONANDO E INSTALANDO O MOD\n' +
+        '──────────────────────────────────────\n' +
+        '1. Clique em ➕ Adicionar Mod\n' +
+        '2. Selecione o arquivo do mod que você baixou (não precisa descompactar!)\n' +
+        '3. O programa vai ler automaticamente. Clique em ✅ Instalar e aguarde terminar\n' +
+        '4. No final, anote os nomes dos arquivos .forge que aparecerem na mensagem\n\n' +
+        '──────────────────────────────────────\n' +
+        '✅ PASSO 3 — ETAPA OBRIGATÓRIA: EMPACOTAR\n' +
+        '──────────────────────────────────────\n' +
+        '⚠️ Sem essa etapa o mod NÃO funciona!\n' +
+        '1. Clique em 🛠️ Abrir AnvilToolkit\n' +
+        '2. Selecione um por um os arquivos .forge que foram indicados\n' +
+        '3. Clique em 🔄 Repacotar / Repack e confirme\n' +
+        '4. Aguarde concluir e feche o programa\n\n' +
+        '──────────────────────────────────────\n' +
+        '✅ PASSO 4 — PRONTO!\n' +
+        '──────────────────────────────────────\n' +
+        'Volte para a tela principal, veja que o mod está como ATIVADO.\n' +
+        'Agora é só abrir o jogo normalmente pelo Ubisoft Connect ou Steam que tudo já estará aplicado! 🎮\n\n' +
+        '──────────────────────────────────────\n' +
+        '❌ COMO DESINSTALAR (VOLTAR AO ORIGINAL)\n' +
+        '──────────────────────────────────────\n' +
+        '1. Abra o Mod Manager\n' +
+        '2. Na lista, clique no mod e escolha 🗑️ Remover / Desinstalar\n' +
+        '3. Repita o PASSO 3 para restaurar os arquivos originais\n\n' +
+        '💡 Dica: Instale apenas um mod por vez para evitar conflitos ou erros.\n\n' +
+        '══════════════════════════════════════\n' +
+        'Qualquer dúvida, fale comigo:\n' +
+        '📱 WhatsApp: https://wa.me/5516981097916\n' +
+        '📸 Instagram: @rodrigovecoregaming\n\n' +
+        'Bons jogos! 🎮\n' +
+        'Rodrigo — VCORE GAMES';
+
       function renderizarListaClientes() {
         clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
         var lista = document.getElementById('listaClientes');
@@ -894,6 +947,11 @@
 
         lista.innerHTML = '';
         clientesRegistrados.forEach(function(c, idx) {
+          var corpo = CORPO_GUIA.replace('{NOME}', c.nome);
+          var mailtoLink = 'mailto:' + c.email +
+            '?subject=' + encodeURIComponent('Guia de Instalação — VCORE GAMES') +
+            '&body=' + encodeURIComponent(corpo);
+
           var div = document.createElement('div');
           div.className = 'p-3 bg-gray-50 border border-gray-200 rounded-lg';
           div.innerHTML =
@@ -904,7 +962,7 @@
                 '<p class="text-gray-400 text-xs mt-1">Itens: ' + c.itens + '</p>' +
                 '<p class="text-gray-400 text-xs">Total: R$ ' + c.total + ' | ' + c.data + '</p>' +
               '</div>' +
-              '<a href="mailto:' + c.email + '?subject=Guia%20de%20Instala%C3%A7%C3%A3o%20VCORE%20GAMES&body=Ol%C3%A1%20' + encodeURIComponent(c.nome) + '%2C%20segue%20o%20guia%20de%20instala%C3%A7%C3%A3o%20dos%20seus%20mods!" ' +
+              '<a href="' + mailtoLink + '" ' +
                 'class="bg-secundaria text-principal text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-900 transition-colors whitespace-nowrap">' +
                 '📧 Enviar Guia' +
               '</a>' +
