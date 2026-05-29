@@ -98,11 +98,7 @@
           <div id="listaMenu" class="menu-lista">
             <a href="#inicio" class="menu-ativo" onclick="mudarMenu(event, 'inicio')">Início</a>
             <a href="#sobre-servico" onclick="mudarMenu(event, 'sobre-servico')">ℹ️ Sobre o Serviço</a>
-            <a href="#veiculos" onclick="mudarMenu(event, 'veiculos')">Veículos</a>
-            <a href="#armas" onclick="mudarMenu(event, 'armas')">Armas</a>
-            <a href="#equipamentos" onclick="mudarMenu(event, 'equipamentos')">Equipamentos</a>
-            <a href="#graficos" onclick="mudarMenu(event, 'graficos')">Gráficos</a>
-            <a href="#pacotes" onclick="mudarMenu(event, 'pacotes')">Pacotes Completos</a>
+            <a href="#pacotes-premium" onclick="irParaPacotes(event)">📦 Pacotes Completos</a>
             <a href="#area-cliente" onclick="mudarMenu(event, 'area-cliente')">🔐 Área do Cliente</a>
             <a href="#sobre" onclick="mudarMenu(event, 'sobre')">Sobre</a>
             <a href="#suporte" onclick="mudarMenu(event, 'suporte')">Suporte</a>
@@ -338,18 +334,96 @@
 
         </div>
 
-        <!-- PACOTE PREMIUM — DESTAQUE ESPECIAL -->
-        <div class="max-w-2xl mx-auto mb-16">
-          <div class="card-mod border-2 border-principal relative overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 50%, #0A1153 100%);">
-            <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #9EFF00 0, #9EFF00 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
-            <div class="relative z-10">
+        <!-- PACOTES PREMIUM — PRATA / OURO / DIAMANTE -->
+        <div id="pacotes-premium"></div>
+        <h3 class="text-2xl font-bold mb-2 text-center text-gray-800">🏆 Pacotes Premium</h3>
+        <p class="text-center text-gray-500 mb-8 text-sm">Escolha o plano ideal para você</p>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-16 max-w-5xl mx-auto">
+
+          <!-- ── PRATA R$ 70 ── -->
+          <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #2a2a2a 0%, #4a4a4a 50%, #2a2a2a 100%); border: 2px solid #C0C0C0;">
+            <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #C0C0C0 0, #C0C0C0 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
+            <div class="relative z-10 flex flex-col flex-1">
               <div class="flex justify-between items-start mb-3">
-                <span class="bg-principal text-secundaria text-sm font-bold px-3 py-1 rounded-full">⭐ PACOTE PREMIUM</span>
+                <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#C0C0C0; color:#1a1a1a;">🥈 PRATA</span>
+              </div>
+              <h4 class="text-xl font-bold mb-1" style="color:#C0C0C0;">Pacote Prata</h4>
+              <p class="text-sm mb-4" style="color:rgba(192,192,192,0.75);">Mods essenciais para transformar seu operador. Seleção com os itens mais populares da VCORE GAMES.</p>
+              <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(192,192,192,0.85);">
+                <li>✅ Coletes — Mod de Aparência</li>
+                <li>✅ Armas e Miras — Precisão Real</li>
+                <li>✅ Camisa e Calça — Visual Tático</li>
+                <li>✅ Camuflagem — Skins Completas</li>
+                <li>✅ Capacetes e Proteções — Visual Elite</li>
+                <li>✅ Guia de instalação enviado por e-mail</li>
+              </ul>
+              <div class="rounded-lg h-44 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(192,192,192,0.3);">
+                <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                  <i class="fa fa-youtube-play text-4xl mb-2" style="color:#C0C0C0;"></i>
+                  <span class="font-medium text-sm" style="color:#C0C0C0;">Assistir Vídeo no YouTube</span>
+                  <span class="text-xs" style="color:rgba(192,192,192,0.5);">(Clique para abrir)</span>
+                </a>
+              </div>
+              <div class="text-center mb-3">
+                <p class="text-3xl font-bold" style="color:#C0C0C0;">R$ 70,00</p>
+              </div>
+              <button onclick="adicionarAoCarrinho('Pacote Prata - Mods Essenciais', 70.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#C0C0C0; color:#1a1a1a;">
+                🥈 Adicionar Pacote Prata
+              </button>
+            </div>
+          </div>
+
+          <!-- ── OURO R$ 100 ── -->
+          <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #3a2800 0%, #6b4a00 50%, #3a2800 100%); border: 2px solid #FFD700;">
+            <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #FFD700 0, #FFD700 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
+            <!-- Badge destaque central -->
+            <div class="absolute -top-1 left-1/2 -translate-x-1/2">
+              <span class="text-xs font-bold px-3 py-1 rounded-full shadow-lg" style="background:#FFD700; color:#3a2800;">MAIS POPULAR</span>
+            </div>
+            <div class="relative z-10 flex flex-col flex-1 mt-3">
+              <div class="flex justify-between items-start mb-3">
+                <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#FFD700; color:#3a2800;">🥇 OURO</span>
+              </div>
+              <h4 class="text-xl font-bold mb-1" style="color:#FFD700;">Pacote Ouro</h4>
+              <p class="text-sm mb-4" style="color:rgba(255,215,0,0.75);">Experiência completa de visual e performance. Mais mods, mais personalização para seu operador.</p>
+              <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.9);">
+                <li>✅ Coletes — Mod de Aparência</li>
+                <li>✅ Armas e Miras — Precisão Real</li>
+                <li>✅ Camisa e Calça — Visual Tático</li>
+                <li>✅ Camuflagem — Skins Completas</li>
+                <li>✅ Fest Feminino — Operadora Estilosa</li>
+                <li>✅ Capacetes e Proteções — Visual Elite</li>
+                <li>✅ Veículos Modificados — Performance e Visual</li>
+                <li>✅ Guia de instalação enviado por e-mail</li>
+              </ul>
+              <div class="rounded-lg h-44 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,215,0,0.3);">
+                <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                  <i class="fa fa-youtube-play text-4xl mb-2" style="color:#FFD700;"></i>
+                  <span class="font-medium text-sm" style="color:#FFD700;">Assistir Vídeo no YouTube</span>
+                  <span class="text-xs" style="color:rgba(255,215,0,0.5);">(Clique para abrir)</span>
+                </a>
+              </div>
+              <div class="text-center mb-3">
+                <p class="text-3xl font-bold" style="color:#FFD700;">R$ 100,00</p>
+              </div>
+              <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avançados', 100.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#FFD700; color:#3a2800;">
+                🥇 Adicionar Pacote Ouro
+              </button>
+            </div>
+          </div>
+
+          <!-- ── DIAMANTE R$ 150 ── -->
+          <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #0A1153 0%, #1a2a7a 50%, #0A1153 100%); border: 2px solid #9EFF00;">
+            <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #9EFF00 0, #9EFF00 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
+            <div class="relative z-10 flex flex-col flex-1">
+              <div class="flex justify-between items-start mb-3">
+                <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#9EFF00; color:#0A1153;">💎 DIAMANTE</span>
                 <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">MELHOR VALOR</span>
               </div>
-              <h4 class="text-2xl font-bold text-principal mb-2">Pacote Premium — Todos os Mods Instalados</h4>
-              <p class="text-principal/80 mb-4">O pacote mais completo da VCORE GAMES. Inclui <strong class="text-principal">todos os mods</strong>: skins de coletes, armas e miras, camisa e calça, camuflagens, fest feminino, capacetes, veículos modificados, skin pack e kit tático — tudo organizado e instalado de uma só vez.</p>
-              <ul class="text-principal/90 text-sm mb-5 space-y-1">
+              <h4 class="text-xl font-bold mb-1" style="color:#9EFF00;">Pacote Diamante</h4>
+              <p class="text-sm mb-4" style="color:rgba(158,255,0,0.75);">O pacote mais completo da VCORE GAMES. <strong style="color:#9EFF00;">Todos os mods</strong> disponíveis em um só lugar.</p>
+              <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(158,255,0,0.9);">
                 <li>✅ Coletes — Mod de Aparência</li>
                 <li>✅ Armas e Miras — Precisão Real</li>
                 <li>✅ Camisa e Calça — Visual Tático</li>
@@ -361,25 +435,23 @@
                 <li>✅ Coletes, Camisa e Calças — Kit Tático</li>
                 <li>✅ Guia de instalação enviado por e-mail</li>
               </ul>
-              <div class="area-midia" style="background:rgba(255,255,255,0.08); border-color: rgba(158,255,0,0.3);">
+              <div class="rounded-lg h-44 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(158,255,0,0.3);">
                 <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                  <i class="fa fa-youtube-play text-principal text-4xl mb-2"></i>
-                  <span class="text-principal font-medium">Assistir Vídeo no YouTube</span>
-                  <span class="text-xs text-principal/60">(Clique para abrir)</span>
+                  <i class="fa fa-youtube-play text-4xl mb-2" style="color:#9EFF00;"></i>
+                  <span class="font-medium text-sm" style="color:#9EFF00;">Assistir Vídeo no YouTube</span>
+                  <span class="text-xs" style="color:rgba(158,255,0,0.5);">(Clique para abrir)</span>
                 </a>
               </div>
-              <div class="flex flex-col gap-2 mt-2">
-                <div class="text-center">
-                  <span class="text-principal/60 text-sm line-through">R$ 224,30 separados</span>
-                  <p class="text-3xl font-bold text-principal">R$ 150,00</p>
-                  <span class="text-principal/70 text-xs">Edite o valor acima quando quiser</span>
-                </div>
-                <button onclick="adicionarAoCarrinho('Pacote Premium - Todos os Mods', 150.00)" style="background:#9EFF00; color:#0A1153;" class="font-bold py-3 px-4 rounded text-base transition-all hover:opacity-90 w-full mt-1 active:scale-95 transform">
-                  ⭐ Adicionar Pacote Premium ao Carrinho
-                </button>
+              <div class="text-center mb-3">
+                <span style="color:rgba(158,255,0,0.5);" class="text-sm line-through">R$ 224,30 separados</span>
+                <p class="text-3xl font-bold" style="color:#9EFF00;">R$ 150,00</p>
               </div>
+              <button onclick="adicionarAoCarrinho('Pacote Diamante - Todos os Mods', 150.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#9EFF00; color:#0A1153;">
+                💎 Adicionar Pacote Diamante
+              </button>
             </div>
           </div>
+
         </div>
 
       </section>
@@ -599,8 +671,8 @@
               <p>
                 <strong>📋 O que você precisa ter:</strong><br />
                 <span class="text-orange-600 font-medium">⚠️ <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-bold">É obrigatório criar uma conta gratuita no Nexus Mods</a> para poder baixar os programas abaixo:</span><br />
-                • GRB Mod Manager instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
-                • AnvilToolkit instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/23" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
+                • GRB Mod Manager instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1602?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
+                • AnvilToolkit instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/16?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
                 • Arquivo do mod baixado (.zip/.rar/.7z)<br />
                 • Jogo Ghost Recon Breakpoint instalado
               </p>
@@ -797,6 +869,25 @@
         }
       });
 
+      function irParaPacotes(event) {
+        // Garante que a seção início está visível
+        document.querySelectorAll('.conteudo-menu').forEach(function(sec) {
+          sec.classList.add('hidden');
+        });
+        document.getElementById('menu-inicio').classList.remove('hidden');
+        document.querySelectorAll('#listaMenu a').forEach(function(link) {
+          link.classList.remove('menu-ativo');
+        });
+        event.target.classList.add('menu-ativo');
+        listaMenu.classList.remove('aberto');
+        iconeMenu.classList.remove('rotate-180');
+        // Scroll suave até os pacotes
+        setTimeout(function() {
+          var alvo = document.getElementById('pacotes-premium');
+          if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
+
       function mudarMenu(event, idMenu) {
         document.querySelectorAll('.conteudo-menu').forEach(function(sec) {
           sec.classList.add('hidden');
@@ -883,58 +974,94 @@
         }
       }
 
-      var CORPO_GUIA =
-        'Olá {NOME}!\n\n' +
-        'Obrigado pela sua compra na VCORE GAMES! 🎮\n' +
-        'Segue abaixo o Guia Completo de Instalação dos seus mods:\n\n' +
-        '══════════════════════════════════════\n' +
-        '📄 GUIA COMPLETO DE INSTALAÇÃO — VCORE GAMES\n' +
-        '══════════════════════════════════════\n\n' +
-        '📋 O QUE VOCÊ PRECISA TER:\n' +
-        '⚠️ É obrigatório criar uma conta gratuita no Nexus Mods (https://www.nexusmods.com/) para baixar os programas abaixo:\n' +
-        '• GRB Mod Manager instalado → https://www.nexusmods.com/ghostreconbreakpoint/mods/1\n' +
-        '• AnvilToolkit instalado → https://www.nexusmods.com/ghostreconbreakpoint/mods/23\n' +
-        '• Arquivo do mod baixado (.zip/.rar/.7z)\n' +
-        '• Jogo Ghost Recon Breakpoint instalado\n\n' +
-        '──────────────────────────────────────\n' +
-        '✅ PASSO 1 — CONFIGURANDO O PROGRAMA\n' +
-        '──────────────────────────────────────\n' +
-        '1. Abra o GRB Mod Manager\n' +
-        '2. Clique em 📁 Selecionar Pasta do Jogo e escolha a pasta onde o jogo está instalado no seu PC\n' +
-        '3. Clique no ícone de 🔨 Ferramentas e selecione o arquivo AnvilToolkit.exe que você já instalou\n\n' +
-        '──────────────────────────────────────\n' +
-        '✅ PASSO 2 — ADICIONANDO E INSTALANDO O MOD\n' +
-        '──────────────────────────────────────\n' +
-        '1. Clique em ➕ Adicionar Mod\n' +
-        '2. Selecione o arquivo do mod que você baixou (não precisa descompactar!)\n' +
-        '3. O programa vai ler automaticamente. Clique em ✅ Instalar e aguarde terminar\n' +
-        '4. No final, anote os nomes dos arquivos .forge que aparecerem na mensagem\n\n' +
-        '──────────────────────────────────────\n' +
-        '✅ PASSO 3 — ETAPA OBRIGATÓRIA: EMPACOTAR\n' +
-        '──────────────────────────────────────\n' +
-        '⚠️ Sem essa etapa o mod NÃO funciona!\n' +
-        '1. Clique em 🛠️ Abrir AnvilToolkit\n' +
-        '2. Selecione um por um os arquivos .forge que foram indicados\n' +
-        '3. Clique em 🔄 Repacotar / Repack e confirme\n' +
-        '4. Aguarde concluir e feche o programa\n\n' +
-        '──────────────────────────────────────\n' +
-        '✅ PASSO 4 — PRONTO!\n' +
-        '──────────────────────────────────────\n' +
-        'Volte para a tela principal, veja que o mod está como ATIVADO.\n' +
-        'Agora é só abrir o jogo normalmente pelo Ubisoft Connect ou Steam que tudo já estará aplicado! 🎮\n\n' +
-        '──────────────────────────────────────\n' +
-        '❌ COMO DESINSTALAR (VOLTAR AO ORIGINAL)\n' +
-        '──────────────────────────────────────\n' +
-        '1. Abra o Mod Manager\n' +
-        '2. Na lista, clique no mod e escolha 🗑️ Remover / Desinstalar\n' +
-        '3. Repita o PASSO 3 para restaurar os arquivos originais\n\n' +
-        '💡 Dica: Instale apenas um mod por vez para evitar conflitos ou erros.\n\n' +
-        '══════════════════════════════════════\n' +
-        'Qualquer dúvida, fale comigo:\n' +
-        '📱 WhatsApp: https://wa.me/5516981097916\n' +
-        '📸 Instagram: @rodrigovecoregaming\n\n' +
-        'Bons jogos! 🎮\n' +
-        'Rodrigo — VCORE GAMES';
+      function gerarGuiaHTML(nome, email) {
+        return '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">' +
+          '<title>Guia de Instalação — VCORE GAMES</title>' +
+          '<style>' +
+            'body{font-family:Arial,sans-serif;max-width:680px;margin:40px auto;padding:24px;color:#222;background:#f9f9f9;}' +
+            'h1{background:#0A1153;color:#9EFF00;padding:18px 24px;border-radius:10px;font-size:1.4rem;margin-bottom:8px;}' +
+            '.subtitulo{color:#555;font-size:0.95rem;margin-bottom:24px;padding-left:4px;}' +
+            '.bloco{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:18px 20px;margin-bottom:16px;}' +
+            '.bloco h2{color:#0A1153;font-size:1rem;margin:0 0 10px 0;border-bottom:2px solid #9EFF00;padding-bottom:6px;}' +
+            '.bloco p,.bloco li{font-size:0.92rem;line-height:1.7;margin:4px 0;}' +
+            '.bloco ul{padding-left:18px;margin:6px 0;}' +
+            'a{color:#1155cc;font-weight:bold;}' +
+            '.aviso{background:#fff8e1;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin-bottom:10px;}' +
+            '.alerta{background:#fff0f0;border-left:4px solid #ef4444;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin:8px 0;}' +
+            '.dica{background:#f0fff4;border-left:4px solid #22c55e;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin-top:8px;}' +
+            '.rodape{text-align:center;margin-top:28px;padding:16px;background:#0A1153;color:#9EFF00;border-radius:10px;font-size:0.9rem;}' +
+            '.rodape a{color:#9EFF00;}' +
+            'code{background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.88rem;}' +
+          '</style></head><body>' +
+          '<h1>📄 Guia Completo de Instalação — VCORE GAMES</h1>' +
+          '<p class="subtitulo">Olá, <strong>' + nome + '</strong>! Obrigado pela sua compra. Siga os passos abaixo para instalar seus mods.</p>' +
+
+          '<div class="bloco">' +
+            '<h2>📋 O que você precisa ter</h2>' +
+            '<div class="aviso">⚠️ É obrigatório criar uma <strong>conta gratuita no Nexus Mods</strong> para baixar os programas:<br>' +
+              '<a href="https://www.nexusmods.com/" target="_blank">https://www.nexusmods.com/</a></div>' +
+            '<ul>' +
+              '<li>GRB Mod Manager — <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1602?tab=files" target="_blank">Baixar aqui</a></li>' +
+              '<li>AnvilToolkit — <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/16?tab=files" target="_blank">Baixar aqui</a></li>' +
+              '<li>Arquivo do mod baixado (.zip / .rar / .7z)</li>' +
+              '<li>Jogo Ghost Recon Breakpoint instalado</li>' +
+            '</ul>' +
+          '</div>' +
+
+          '<div class="bloco">' +
+            '<h2>✅ Passo 1 — Configurando o Programa</h2>' +
+            '<p>1. Abra o <strong>GRB Mod Manager</strong></p>' +
+            '<p>2. Clique em <strong>📁 Selecionar Pasta do Jogo</strong> e escolha a pasta onde o jogo está instalado no seu PC</p>' +
+            '<p>3. Clique no ícone de <strong>🔨 Ferramentas</strong> e selecione o arquivo <code>AnvilToolkit.exe</code> que você já instalou</p>' +
+          '</div>' +
+
+          '<div class="bloco">' +
+            '<h2>✅ Passo 2 — Adicionando e Instalando o Mod</h2>' +
+            '<p>1. Clique em <strong>➕ Adicionar Mod</strong></p>' +
+            '<p>2. Selecione o arquivo do mod que você baixou <strong>(não precisa descompactar!)</strong></p>' +
+            '<p>3. O programa vai ler automaticamente. Clique em <strong>✅ Instalar</strong> e aguarde terminar</p>' +
+            '<p>4. No final, anote os nomes dos arquivos <code>.forge</code> que aparecerem na mensagem</p>' +
+          '</div>' +
+
+          '<div class="bloco">' +
+            '<h2>✅ Passo 3 — Etapa Obrigatória: Empacotar</h2>' +
+            '<div class="alerta">⚠️ <strong>Sem essa etapa o mod não funciona!</strong></div>' +
+            '<p>1. Clique em <strong>🛠️ Abrir AnvilToolkit</strong></p>' +
+            '<p>2. Selecione um por um os arquivos <code>.forge</code> que foram indicados</p>' +
+            '<p>3. Clique em <strong>🔄 Repacotar / Repack</strong> e confirme</p>' +
+            '<p>4. Aguarde concluir e feche o programa</p>' +
+          '</div>' +
+
+          '<div class="bloco">' +
+            '<h2>✅ Passo 4 — Pronto!</h2>' +
+            '<p>Volte para a tela principal, veja que o mod está como <strong>ATIVADO</strong>. Agora é só abrir o jogo normalmente pelo Ubisoft Connect ou Steam! 🎮</p>' +
+            '<div class="dica">💡 Dica: Instale apenas um mod por vez para evitar conflitos ou erros.</div>' +
+          '</div>' +
+
+          '<div class="bloco">' +
+            '<h2>❌ Como Desinstalar (voltar ao original)</h2>' +
+            '<p>1. Abra o Mod Manager</p>' +
+            '<p>2. Na lista, clique no mod e escolha <strong>🗑️ Remover / Desinstalar</strong></p>' +
+            '<p>3. Repita o <strong>Passo 3</strong> para restaurar os arquivos originais</p>' +
+          '</div>' +
+
+          '<div class="rodape">' +
+            '<p><strong>Qualquer dúvida, fale comigo:</strong></p>' +
+            '<p>📱 WhatsApp: <a href="https://wa.me/5516981097916" target="_blank">https://wa.me/5516981097916</a></p>' +
+            '<p>📸 Instagram: <a href="https://instagram.com/rodrigovecoregaming" target="_blank">@rodrigovecoregaming</a></p>' +
+            '<p style="margin-top:10px;">Bons jogos! 🎮 — Rodrigo / VCORE GAMES</p>' +
+          '</div>' +
+          '</body></html>';
+      }
+
+      function abrirGuiaEmail(nome, email) {
+        var html = gerarGuiaHTML(nome, email);
+        var blob = new Blob([html], { type: 'text/html' });
+        var url = URL.createObjectURL(blob);
+        var aba = window.open(url, '_blank');
+        // Libera memória após abrir
+        setTimeout(function() { URL.revokeObjectURL(url); }, 10000);
+      }
 
       function renderizarListaClientes() {
         clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
@@ -946,12 +1073,7 @@
         }
 
         lista.innerHTML = '';
-        clientesRegistrados.forEach(function(c, idx) {
-          var corpo = CORPO_GUIA.replace('{NOME}', c.nome);
-          var mailtoLink = 'mailto:' + c.email +
-            '?subject=' + encodeURIComponent('Guia de Instalação — VCORE GAMES') +
-            '&body=' + encodeURIComponent(corpo);
-
+        clientesRegistrados.forEach(function(c) {
           var div = document.createElement('div');
           div.className = 'p-3 bg-gray-50 border border-gray-200 rounded-lg';
           div.innerHTML =
@@ -962,10 +1084,10 @@
                 '<p class="text-gray-400 text-xs mt-1">Itens: ' + c.itens + '</p>' +
                 '<p class="text-gray-400 text-xs">Total: R$ ' + c.total + ' | ' + c.data + '</p>' +
               '</div>' +
-              '<a href="' + mailtoLink + '" ' +
-                'class="bg-secundaria text-principal text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-900 transition-colors whitespace-nowrap">' +
+              '<button onclick="abrirGuiaEmail(\'' + c.nome.replace(/'/g,"\\'") + '\',\'' + c.email.replace(/'/g,"\\'") + '\')" ' +
+                'class="bg-secundaria text-principal text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-900 transition-colors whitespace-nowrap cursor-pointer border-0">' +
                 '📧 Enviar Guia' +
-              '</a>' +
+              '</button>' +
             '</div>';
           lista.appendChild(div);
         });
