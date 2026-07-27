@@ -1,1309 +1,977 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VCORE GAMES - Mods Ghost Recon Breakpoint</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              principal: "#9EFF00",
-              secundaria: "#0A1153",
-              sucesso: "#00B42A",
-              escuro: "#0A1153",
-              claro: "#F8F9FA",
-              instagram: "#E4405F",
-              youtube: "#FF0000",
-              facebook: "#1877F2",
-              cults: "#F15A24",
-              whatsapp: "#25D366",
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        principal: "#9EFF00",
+                        secundaria: "#0A1153",
+                        sucesso: "#00B42A",
+                        escuro: "#0A1153",
+                        claro: "#F8F9FA",
+                        instagram: "#E4405F",
+                        youtube: "#FF0000",
+                        facebook: "#1877F2",
+                        cults: "#F15A24",
+                        whatsapp: "#25D366",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "system-ui", "sans-serif"],
+                        logo: ["Arial Black", "Helvetica Bold", "sans-serif"],
+                    },
+                },
             },
-            fontFamily: {
-              sans: ["Inter", "system-ui", "sans-serif"],
-              logo: ["Arial Black", "Helvetica Bold", "sans-serif"],
-            },
-          },
-        },
-      };
+        };
     </script>
     <style type="text/tailwindcss">
-      @layer utilities {
-        .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .card-mod { @apply bg-white rounded-xl shadow-lg p-5 border border-gray-200 hover:shadow-xl transition-all duration-300; }
-        .menu-ativo { @apply border-b-2 border-principal font-bold text-principal bg-blue-900/30 rounded-t-lg; }
-        .btn-venda { @apply bg-gradient-to-r from-secundaria to-blue-800 hover:from-blue-900 hover:to-blue-700 text-principal font-bold py-3 px-6 rounded-lg text-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105 active:scale-95 w-full text-center; }
-        .btn-adicionar { @apply bg-principal hover:bg-green-400 text-secundaria font-bold py-2 px-4 rounded text-sm transition-colors w-full mt-2; }
-        .btn-link { @apply bg-principal hover:bg-principal/90 text-secundaria font-bold py-2 px-4 rounded text-sm transition-colors; }
-        .categoria-aba { @apply px-4 py-2 cursor-pointer hover:text-secundaria transition-colors whitespace-nowrap; }
-        .categoria-ativa { @apply border-b-2 border-secundaria font-bold text-secundaria; }
-        .logo-font { @apply font-logo font-bold tracking-wider; }
-        .area-midia { @apply bg-gray-100 rounded-lg h-44 flex flex-col items-center justify-center mb-4 overflow-hidden border border-gray-200 relative; }
-        .link-externo { @apply absolute bottom-2 right-2 bg-secundaria/80 text-principal text-xs py-1 px-2 rounded; }
-        .icone-rede-topo { @apply text-xl mx-1 transition-all duration-300 hover:scale-110; }
-        .icone-rede-rodape { @apply text-2xl mx-2 transition-all duration-300 hover:scale-110; }
-        .btn-topo { @apply fixed bottom-6 right-6 bg-secundaria text-principal w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-900 transition-all z-50 hidden; }
-        .menu-container { @apply relative; }
-        .menu-botao { @apply w-full bg-blue-900/40 text-principal py-3 px-4 rounded-lg font-bold text-lg flex justify-between items-center hover:bg-blue-900/60 transition-colors; }
-        .menu-lista { @apply hidden absolute left-0 right-0 mt-1 bg-secundaria rounded-xl shadow-xl z-40 overflow-y-auto max-h-[60vh]; }
-        .menu-lista.aberto { @apply block; }
-        .menu-lista a { @apply block py-3 px-4 text-principal hover:bg-blue-900/50 transition-colors border-b border-principal/10; }
-        .menu-lista a:last-child { @apply border-b-0; }
-        .modal-guia { @apply fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden p-4; }
-        .modal-conteudo { @apply bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl; }
-        .fechar-modal { @apply float-right text-gray-500 hover:text-red-600 text-2xl font-bold cursor-pointer; }
-        .modal-carrinho { @apply fixed inset-0 bg-black/70 flex items-center justify-center z-[60] hidden p-4; }
-        .carrinho-conteudo { @apply bg-white rounded-xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6 shadow-2xl; }
-        .item-carrinho { @apply flex justify-between items-center py-2 border-b border-gray-200; }
-        .btn-remover { @apply text-red-600 hover:text-red-800 font-bold text-sm; }
-        .badge-carrinho { @apply absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full; }
-        .barra-total { @apply fixed bottom-0 left-0 right-0 bg-secundaria text-principal py-3 px-5 flex items-center justify-between shadow-2xl z-40 transform translate-y-full transition-transform duration-500; }
-        .barra-total.visivel { @apply translate-y-0; }
-        .pronto-badge { @apply inline-flex items-center gap-1 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full; }
-        .bloco-pronto { border-left: 3px solid #22c55e; background: rgba(34,197,94,0.08); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; }
-      }
+        @layer utilities {
+            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+            .card-mod { @apply bg-white rounded-xl shadow-lg p-5 border border-gray-200 hover:shadow-xl transition-all duration-300; }
+            .menu-ativo { @apply border-b-2 border-principal font-bold text-principal bg-blue-900/30 rounded-t-lg; }
+            .btn-venda { @apply bg-gradient-to-r from-secundaria to-blue-800 hover:from-blue-900 hover:to-blue-700 text-principal font-bold py-3 px-6 rounded-lg text-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105 active:scale-95 w-full text-center; }
+            .btn-adicionar { @apply bg-principal hover:bg-green-400 text-secundaria font-bold py-2 px-4 rounded text-sm transition-colors w-full mt-2; }
+            .logo-font { @apply font-logo font-bold tracking-wider; }
+            .area-midia { @apply bg-gray-100 rounded-lg h-44 flex flex-col items-center justify-center mb-4 overflow-hidden border border-gray-200 relative; }
+            .icone-rede-topo { @apply text-xl mx-1 transition-all duration-300 hover:scale-110; }
+            .icone-rede-rodape { @apply text-2xl mx-2 transition-all duration-300 hover:scale-110; }
+            .btn-topo { @apply fixed bottom-6 right-6 bg-secundaria text-principal w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-900 transition-all z-50 hidden; }
+            .menu-container { @apply relative; }
+            .menu-botao { @apply w-full bg-blue-900/40 text-principal py-3 px-4 rounded-lg font-bold text-lg flex justify-between items-center hover:bg-blue-900/60 transition-colors; }
+            .menu-lista { @apply hidden absolute left-0 right-0 mt-1 bg-secundaria rounded-xl shadow-xl z-40 overflow-y-auto max-h-[60vh]; }
+            .menu-lista.aberto { @apply block; }
+            .menu-lista a { @apply block py-3 px-4 text-principal hover:bg-blue-900/50 transition-colors border-b border-principal/10; }
+            .menu-lista a:last-child { @apply border-b-0; }
+            .modal-carrinho { @apply fixed inset-0 bg-black/70 flex items-center justify-center z-[60] hidden p-4; }
+            .carrinho-conteudo { @apply bg-white rounded-xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6 shadow-2xl; }
+            .modal-pix { @apply fixed inset-0 bg-black/70 flex items-center justify-center z-[70] hidden p-4; }
+            .pix-conteudo { @apply bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl; }
+            .fechar-modal { @apply float-right text-gray-500 hover:text-red-600 text-2xl font-bold cursor-pointer; }
+            .badge-carrinho { @apply absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full; }
+            .barra-total { @apply fixed bottom-0 left-0 right-0 bg-secundaria text-principal py-3 px-5 flex items-center justify-between shadow-2xl z-40 transform translate-y-full transition-transform duration-500; }
+            .barra-total.visivel { @apply translate-y-0; }
+            .pronto-badge { @apply inline-flex items-center gap-1 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full; }
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, sans-serif; }
     </style>
-  </head>
-  <body class="bg-gray-50 text-gray-800 font-sans">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
 
-    <!-- CABEÇALHO -->
-    <header class="bg-secundaria text-principal py-4 px-4 shadow-md sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex justify-center items-center mb-3 pb-2 border-b border-principal/20 relative">
-          <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-topo text-instagram" title="Instagram"><i class="fa fa-instagram"></i></a>
-          <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-topo text-youtube" title="YouTube"><i class="fa fa-youtube-play"></i></a>
-          <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-topo text-facebook" title="Facebook Gaming"><i class="fa fa-facebook-square"></i></a>
-          <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-topo text-cults" title="Cults - Arquivos 3D"><i class="fa fa-cube"></i></a>
-          <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-topo text-whatsapp" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
-          <button onclick="abrirCarrinho()" class="icone-rede-topo text-principal ml-4 relative" title="Ver Carrinho">
-            <i class="fa fa-shopping-cart text-lg"></i>
-            <span id="badgeCarrinho" class="badge-carrinho hidden">0</span>
-          </button>
+    <!-- ==================== HEADER ==================== -->
+    <header class="sticky top-0 z-50 shadow-md" style="background: linear-gradient(135deg, #0A1153 0%, #0d1b6b 100%);">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex justify-center items-center pb-2 border-b border-principal/20 relative">
+                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-topo text-instagram" title="Instagram"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-topo text-youtube" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+                <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-topo text-facebook" title="Facebook Gaming"><i class="fa fa-facebook-square"></i></a>
+                <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-topo text-cults" title="Cults - Arquivos 3D"><i class="fa fa-cube"></i></a>
+                <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-topo text-whatsapp" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+                <button onclick="abrirCarrinho()" class="icone-rede-topo text-principal ml-4 relative" title="Ver Carrinho">
+                    <i class="fa fa-shopping-cart text-lg"></i>
+                    <span id="badgeCarrinho" class="badge-carrinho hidden">0</span>
+                </button>
+            </div>
+            <div class="text-center my-3">
+                <h1 class="text-[clamp(2.2rem,6vw,3rem)] logo-font text-principal leading-tight">VCORE</h1>
+                <p class="text-[clamp(0.85rem,2.5vw,1.2rem)] text-principal/90 font-medium tracking-widest -mt-1">GAMES</p>
+                <p class="text-xs text-principal/70 mt-1">Mods e Arquivos Prontos para Ghost Recon Breakpoint</p>
+            </div>
+            <nav class="max-w-xs mx-auto w-full menu-container">
+                <button id="botaoMenu" class="menu-botao">
+                    <span>Menu Principal</span>
+                    <i class="fa fa-chevron-down transition-transform duration-300" id="iconeMenu"></i>
+                </button>
+                <div id="listaMenu" class="menu-lista">
+                    <a href="#inicio" class="menu-ativo" onclick="mudarMenu(event, 'inicio')">Início</a>
+                    <a href="#sobre-servico" onclick="mudarMenu(event, 'sobre-servico')">ℹ️ Sobre o Serviço</a>
+                    <a href="#pacotes-premium" onclick="irParaPacotes(event)">📦 Pacotes Completos</a>
+                    <a href="#area-cliente" onclick="mudarMenu(event, 'area-cliente')">🔐 Área do Cliente</a>
+                    <a href="#sobre" onclick="mudarMenu(event, 'sobre')">Sobre</a>
+                    <a href="#suporte" onclick="mudarMenu(event, 'suporte')">Suporte</a>
+                    <a href="#admin" onclick="mudarMenu(event, 'admin')">🔒 Admin</a>
+                </div>
+            </nav>
         </div>
-
-        <div class="text-center mb-4">
-          <div class="flex flex-col items-center justify-center">
-            <h1 class="text-[clamp(2.8rem,8vw,4rem)] logo-font text-principal leading-tight">VCORE</h1>
-            <p class="text-[clamp(1rem,3vw,1.5rem)] text-principal/90 font-medium tracking-widest -mt-2">GAMES</p>
-            <p class="text-sm text-principal/70 mt-2">Mods e Arquivos Prontos para Ghost Recon Breakpoint</p>
-          </div>
-        </div>
-
-        <nav class="max-w-xs mx-auto w-full menu-container">
-          <button id="botaoMenu" class="menu-botao">
-            <span>Menu Principal</span>
-            <i class="fa fa-chevron-down transition-transform duration-300" id="iconeMenu"></i>
-          </button>
-          <div id="listaMenu" class="menu-lista">
-            <a href="#inicio" class="menu-ativo" onclick="mudarMenu(event, 'inicio')">Início</a>
-            <a href="#sobre-servico" onclick="mudarMenu(event, 'sobre-servico')">ℹ️ Sobre o Serviço</a>
-            <a href="#pacotes-premium" onclick="irParaPacotes(event)">📦 Pacotes Completos</a>
-            <a href="#area-cliente" onclick="mudarMenu(event, 'area-cliente')">🔐 Área do Cliente</a>
-            <a href="#sobre" onclick="mudarMenu(event, 'sobre')">Sobre</a>
-            <a href="#suporte" onclick="mudarMenu(event, 'suporte')">Suporte</a>
-            <a href="#admin" onclick="mudarMenu(event, 'admin')">🔒 Admin</a>
-          </div>
-        </nav>
-      </div>
     </header>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="relative py-16 md:py-20 text-center text-white overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #16213e 50%, #0f3460 100%);">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 320%22><path fill=%22%239EFF00%22 d=%22M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z%22></path></svg>'); background-repeat: no-repeat; background-position: bottom; background-size: cover;"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-bold mb-3 text-shadow">
+                Mods <span style="color:#9EFF00;">Ghost Recon</span> Breakpoint
+            </h2>
+            <p class="text-base md:text-lg mb-0 text-gray-300 max-w-2xl mx-auto">
+                Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:#9EFF00;">sem trapaças, sem danos infinitos</strong>.
+            </p>
+        </div>
+    </section>
 
     <!-- MODAL DO CARRINHO -->
     <div id="modalCarrinho" class="modal-carrinho">
-      <div class="carrinho-conteudo">
-        <span class="fechar-modal" onclick="fecharCarrinho()">×</span>
-        <h2 class="text-2xl font-bold text-center text-secundaria mb-4">🛒 Seu Carrinho</h2>
-
-        <div class="mb-5 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <p class="text-sm font-bold text-secundaria mb-3">📧 Seus dados para receber o guia de instalação:</p>
-          <input type="text" id="clienteNome" placeholder="Seu nome completo" class="w-full border border-gray-300 rounded-lg px-3 py-2 mb-2 text-sm focus:outline-none focus:border-secundaria" />
-          <input type="email" id="clienteEmail" placeholder="Seu e-mail" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-secundaria" />
-          <p class="text-xs text-gray-500 mt-2">⚠️ Após confirmar o pagamento, você receberá o guia completo de instalação neste e-mail.</p>
+        <div class="carrinho-conteudo">
+            <span class="fechar-modal" onclick="fecharCarrinho()">×</span>
+            <h2 class="text-2xl font-bold text-center text-secundaria mb-4">🛒 Seu Carrinho</h2>
+            <div class="mb-5 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <p class="text-sm font-bold text-secundaria mb-3">📧 Seus dados para receber o guia de instalação:</p>
+                <input type="text" id="clienteNome" placeholder="Seu nome completo" class="w-full border border-gray-300 rounded-lg px-3 py-2 mb-2 text-sm focus:outline-none focus:border-secundaria" />
+                <input type="email" id="clienteEmail" placeholder="Seu e-mail" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-secundaria" />
+                <p class="text-xs text-gray-500 mt-2">⚠️ Após confirmar o pagamento, você receberá o guia completo de instalação neste e-mail.</p>
+            </div>
+            <div id="listaCarrinho" class="space-y-2 mb-6">
+                <p class="text-gray-500 text-center" id="carrinhoVazio">Seu carrinho está vazio.</p>
+            </div>
+            <div class="border-t-2 border-gray-200 pt-4 mb-4">
+                <div class="flex justify-between items-center font-bold text-xl text-gray-800">
+                    <span>Total:</span>
+                    <span id="valorTotal">R$ 0,00</span>
+                </div>
+            </div>
+            <button class="btn-venda block text-center" onclick="finalizarCompra()">💳 Finalizar Compra</button>
         </div>
-
-        <div id="listaCarrinho" class="space-y-2 mb-6">
-          <p class="text-gray-500 text-center" id="carrinhoVazio">Seu carrinho está vazio.</p>
-        </div>
-        <div class="border-t-2 border-gray-200 pt-4 mb-4">
-          <div class="flex justify-between items-center font-bold text-xl text-gray-800">
-            <span>Total:</span>
-            <span id="valorTotal">R$ 0,00</span>
-          </div>
-        </div>
-        <button class="btn-venda block text-center" onclick="finalizarCompra()">💳 Finalizar Compra</button>
-      </div>
     </div>
 
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main class="py-8 px-4 max-w-7xl mx-auto">
+    <!-- ==================== MODAL PIX ==================== -->
+    <div id="modalPix" class="modal-pix">
+        <div class="pix-conteudo">
+            <span class="fechar-modal" onclick="fecharModalPix()">×</span>
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-secundaria mb-2">💳 Pagamento via PIX</h2>
+                <p class="text-gray-500 text-sm mb-4">Escaneie o QR Code ou copie a chave PIX abaixo</p>
 
-      <!-- INÍCIO -->
-      <section id="menu-inicio" class="conteudo-menu">
-        <div class="text-center mb-12">
-          <h2 class="text-[clamp(1.5rem,5vw,2.2rem)] font-bold mb-4 text-gray-800">Arquivos Prontos para Instalação</h2>
-          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-            Todos os mods são arquivos originais modificados apenas para melhorar desempenho, visual e jogabilidade.<br />
-            <strong>Sem trapaças, sem danos infinitos — apenas aprimoramentos legítimos do jogo!</strong>
-          </p>
-        </div>
-
-        <h3 class="text-2xl font-bold mb-6 text-center w-full text-gray-800 border-b-2 border-principal inline-block pb-2">🔥 Mods em Destaque</h3>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 mt-8">
-
-          <!-- CAIXA 1 — COLETES -->
-          <div class="card-mod">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full">🛡️ SKIN</span>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Coletes — Mod de Aparência</h4>
-            <p class="text-gray-600 mb-3">Novos visuais de colete tático para o personagem. Skins realistas com texturas de alta qualidade, sem alterar atributos do jogo.</p>
-            <div class="area-midia">
-              <a href="https://www.youtube.com/watch?v=y0zmA_XbtIk&t=448s" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
-                <span class="text-xs text-gray-500">(Clique para abrir)</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 19,90</span>
-              <button onclick="adicionarAoCarrinho('Coletes - Mod de Aparência', 19.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-
-          <!-- CAIXA 2 — ARMAS E MIRAS -->
-          <div class="card-mod">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full">🔫 ARMAS</span>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Armas e Miras — Precisão Real</h4>
-            <p class="text-gray-600 mb-3">Ajuste de mira, recuo controlado, alcance aumentado e novas skins de armas. Desempenho aprimorado sem quebrar o equilíbrio do jogo.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
-                <span class="text-xs text-gray-500">(Clique para abrir)</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 24,90</span>
-              <button onclick="adicionarAoCarrinho('Armas e Miras - Precisão Real', 24.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-
-          <!-- CAIXA 3 — CAMISA E CALÇA -->
-          <div class="card-mod">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full">👕 SKIN</span>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Camisa e Calça — Visual Tático</h4>
-            <p class="text-gray-600 mb-3">Novas skins de camisa e calça para o operador. Uniformes realistas e detalhados que deixam seu personagem com visual mais autêntico.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
-                <span class="text-xs text-gray-500">(Clique para abrir)</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 16,90</span>
-              <button onclick="adicionarAoCarrinho('Camisa e Calça - Visual Tático', 16.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-
-          <!-- CAIXA 4 — CAMUFLAGEM -->
-          <div class="card-mod">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full">🌿 CAMO</span>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Camuflagem — Skins Completas</h4>
-            <p class="text-gray-600 mb-3">Pack de camuflagens para roupa e equipamentos. Padrões militares realistas: floresta, deserto, urbano e mais. Blend perfeito com o ambiente do jogo.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
-                <span class="text-xs text-gray-500">(Clique para abrir)</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 19,90</span>
-              <button onclick="adicionarAoCarrinho('Camuflagem - Skins Completas', 19.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-
-          <!-- CAIXA 5 — FEST FEMININO -->
-          <div class="card-mod">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="bg-pink-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">♀️ FEMININO</span>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Fest Feminino — Operadora Estilosa</h4>
-            <p class="text-gray-600 mb-3">Skins exclusivas para personagem feminino. Visual moderno e tático, com opções de roupa, colete e acessórios específicos para operadoras.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
-                <span class="text-xs text-gray-500">(Clique para abrir)</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 22,90</span>
-              <button onclick="adicionarAoCarrinho('Fest Feminino - Operadora Estilosa', 22.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-
-          <!-- CAIXA 6 — CAPACETES E PROTEÇÕES -->
-          <div class="card-mod">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full">⛑️ PROTEÇÃO</span>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Capacetes e Proteções — Visual Elite</h4>
-            <p class="text-gray-600 mb-3">Novos modelos de capacete, óculos e proteções faciais. Skins com nível de detalhe militar, incluindo versões noturnas com suporte a NVG.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
-                <span class="text-xs text-gray-500">(Clique para abrir)</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 18,90</span>
-              <button onclick="adicionarAoCarrinho('Capacetes e Proteções - Visual Elite', 18.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-
-          <!-- CAIXA 7 — VEÍCULOS MODIFICADOS -->
-          <div class="card-mod">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full">🚗 VEÍCULOS</span>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Veículos Modificados — Performance e Visual</h4>
-            <p class="text-gray-600 mb-3">Melhoria de motor, suspensão e skins exclusivas para jipes, motos e helicópteros. Mais agilidade no terreno com visual personalizado.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
-                <span class="text-xs text-gray-500">(Clique para abrir)</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 22,90</span>
-              <button onclick="adicionarAoCarrinho('Veículos Modificados - Performance e Visual', 22.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-
-          <!-- CAIXA 8 — SKIN PACK COMPLETO -->
-          <div class="card-mod">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full">🎨 SKIN PACK</span>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Skin Pack Completo — Visual Total</h4>
-            <p class="text-gray-600 mb-3">Conjunto com todas as skins visuais: roupa, colete, capacete, camuflagem e armas. Um único pacote para transformar completamente o visual do seu operador.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
-                <span class="text-xs text-gray-500">(Clique para abrir)</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 34,90</span>
-              <button onclick="adicionarAoCarrinho('Skin Pack Completo - Visual Total', 34.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-
-          <!-- CAIXA 9 — COLETES, CAMISA E CALÇAS (COMBO) -->
-          <div class="card-mod">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full">🧥 COMBO</span>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Coletes, Camisa e Calças — Kit Tático</h4>
-            <p class="text-gray-600 mb-3">Combo completo de vestuário tático: colete + camisa + calça combinando. Visual coeso e profissional para seu operador em campo.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo no YouTube</span>
-                <span class="text-xs text-gray-500">(Clique para abrir)</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 26,90</span>
-              <button onclick="adicionarAoCarrinho('Coletes, Camisa e Calças - Kit Tático', 26.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- PACOTES PREMIUM — PRATA / OURO / DIAMANTE -->
-        <div id="pacotes-premium"></div>
-        <h3 class="text-2xl font-bold mb-2 text-center text-gray-800">🏆 Pacotes Premium</h3>
-        <p class="text-center text-gray-500 mb-4 text-sm">Escolha o plano ideal para você</p>
-
-        <!-- DESTAQUE: PRONTO PARA JOGAR -->
-        <div class="max-w-5xl mx-auto mb-8 rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
-          <div class="flex flex-col sm:flex-row items-center gap-4 p-5">
-            <div class="text-5xl flex-shrink-0">🎮</div>
-            <div class="flex-1 text-center sm:text-left">
-              <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-2">
-                <span class="pronto-badge">✅ PRONTO PARA JOGAR</span>
-                <span class="text-xs font-bold px-2 py-1 rounded-full bg-yellow-400 text-yellow-900">SEM COMPLICAÇÃO</span>
-              </div>
-              <p class="font-bold text-lg" style="color:#9EFF00;">Os Pacotes Premium já vêm com tudo instalado e configurado!</p>
-              <p class="text-sm mt-1" style="color:rgba(158,255,0,0.75);">Você recebe os arquivos prontos. Basta copiar na pasta raiz do jogo (onde está o <strong style="color:#9EFF00;">GRB.exe</strong>) e abrir o game. Sem instalar ferramentas, sem configurar nada — é só jogar! 🚀</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6 mb-16 max-w-5xl mx-auto">
-
-          <!-- ── PRATA R$ 70 ── -->
-          <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #2a2a2a 0%, #4a4a4a 50%, #2a2a2a 100%); border: 2px solid #C0C0C0;">
-            <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #C0C0C0 0, #C0C0C0 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
-            <div class="relative z-10 flex flex-col flex-1">
-              <div class="flex justify-between items-start mb-3">
-                <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#C0C0C0; color:#1a1a1a;">🥈 PRATA</span>
-              </div>
-              <h4 class="text-xl font-bold mb-1" style="color:#C0C0C0;">Pacote Prata</h4>
-              <p class="text-sm mb-3" style="color:rgba(192,192,192,0.75);">Mods essenciais para transformar seu operador. Seleção com os itens mais populares da VCORE GAMES.</p>
-
-              <!-- BLOCO PRONTO PARA JOGAR -->
-              <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
-                <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar — sem instalar nada!</p>
-                <p style="color:rgba(192,192,192,0.8);">Arquivos já configurados. Copie na pasta raiz do jogo (onde está o <strong style="color:#C0C0C0;">GRB.exe</strong>) e abra o game.</p>
-              </div>
-
-              <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(192,192,192,0.85);">
-                <li>✅ Coletes — Mod de Aparência</li>
-                <li>✅ Armas e Miras — Precisão Real</li>
-                <li>✅ Camisa e Calça — Visual Tático</li>
-                <li>✅ Camuflagem — Skins Completas</li>
-                <li>✅ Capacetes e Proteções — Visual Elite</li>
-                <li>✅ Guia de instalação enviado por e-mail</li>
-              </ul>
-              <div class="rounded-lg h-44 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(192,192,192,0.3);">
-                <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                  <i class="fa fa-youtube-play text-4xl mb-2" style="color:#C0C0C0;"></i>
-                  <span class="font-medium text-sm" style="color:#C0C0C0;">Assistir Vídeo no YouTube</span>
-                  <span class="text-xs" style="color:rgba(192,192,192,0.5);">(Clique para abrir)</span>
-                </a>
-              </div>
-              <div class="text-center mb-3">
-                <p class="text-3xl font-bold" style="color:#C0C0C0;">R$ 70,00</p>
-              </div>
-              <button onclick="adicionarAoCarrinho('Pacote Prata - Mods Essenciais', 70.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#C0C0C0; color:#1a1a1a;">
-                🥈 Adicionar Pacote Prata
-              </button>
-            </div>
-          </div>
-
-          <!-- ── OURO R$ 100 ── -->
-          <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #3a2800 0%, #6b4a00 50%, #3a2800 100%); border: 2px solid #FFD700;">
-            <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #FFD700 0, #FFD700 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
-            <div class="absolute -top-1 left-1/2 -translate-x-1/2">
-              <span class="text-xs font-bold px-3 py-1 rounded-full shadow-lg" style="background:#FFD700; color:#3a2800;">MAIS POPULAR</span>
-            </div>
-            <div class="relative z-10 flex flex-col flex-1 mt-3">
-              <div class="flex justify-between items-start mb-3">
-                <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#FFD700; color:#3a2800;">🥇 OURO</span>
-              </div>
-              <h4 class="text-xl font-bold mb-1" style="color:#FFD700;">Pacote Ouro</h4>
-              <p class="text-sm mb-3" style="color:rgba(255,215,0,0.75);">Experiência completa de visual e performance. Mais mods, mais personalização para seu operador.</p>
-
-              <!-- BLOCO PRONTO PARA JOGAR -->
-              <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
-                <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar — sem instalar nada!</p>
-                <p style="color:rgba(255,215,0,0.8);">Arquivos já configurados. Copie na pasta raiz do jogo (onde está o <strong style="color:#FFD700;">GRB.exe</strong>) e abra o game.</p>
-              </div>
-
-              <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.9);">
-                <li>✅ Coletes — Mod de Aparência</li>
-                <li>✅ Armas e Miras — Precisão Real</li>
-                <li>✅ Camisa e Calça — Visual Tático</li>
-                <li>✅ Camuflagem — Skins Completas</li>
-                <li>✅ Fest Feminino — Operadora Estilosa</li>
-                <li>✅ Capacetes e Proteções — Visual Elite</li>
-                <li>✅ Veículos Modificados — Performance e Visual</li>
-                <li>✅ Guia de instalação enviado por e-mail</li>
-              </ul>
-              <div class="rounded-lg h-44 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,215,0,0.3);">
-                <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                  <i class="fa fa-youtube-play text-4xl mb-2" style="color:#FFD700;"></i>
-                  <span class="font-medium text-sm" style="color:#FFD700;">Assistir Vídeo no YouTube</span>
-                  <span class="text-xs" style="color:rgba(255,215,0,0.5);">(Clique para abrir)</span>
-                </a>
-              </div>
-              <div class="text-center mb-3">
-                <p class="text-3xl font-bold" style="color:#FFD700;">R$ 100,00</p>
-              </div>
-              <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avançados', 100.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#FFD700; color:#3a2800;">
-                🥇 Adicionar Pacote Ouro
-              </button>
-            </div>
-          </div>
-
-          <!-- ── DIAMANTE R$ 150 ── -->
-          <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #0A1153 0%, #1a2a7a 50%, #0A1153 100%); border: 2px solid #9EFF00;">
-            <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #9EFF00 0, #9EFF00 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
-            <div class="relative z-10 flex flex-col flex-1">
-              <div class="flex justify-between items-start mb-3">
-                <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#9EFF00; color:#0A1153;">💎 DIAMANTE</span>
-                <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">MELHOR VALOR</span>
-              </div>
-              <h4 class="text-xl font-bold mb-1" style="color:#9EFF00;">Pacote Diamante</h4>
-              <p class="text-sm mb-3" style="color:rgba(158,255,0,0.75);">O pacote mais completo da VCORE GAMES. <strong style="color:#9EFF00;">Todos os mods</strong> disponíveis em um só lugar.</p>
-
-              <!-- BLOCO PRONTO PARA JOGAR -->
-              <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
-                <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar — sem instalar nada!</p>
-                <p style="color:rgba(158,255,0,0.8);">Arquivos já configurados. Copie na pasta raiz do jogo (onde está o <strong style="color:#9EFF00;">GRB.exe</strong>) e abra o game.</p>
-              </div>
-
-              <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(158,255,0,0.9);">
-                <li>✅ Coletes — Mod de Aparência</li>
-                <li>✅ Armas e Miras — Precisão Real</li>
-                <li>✅ Camisa e Calça — Visual Tático</li>
-                <li>✅ Camuflagem — Skins Completas</li>
-                <li>✅ Fest Feminino — Operadora Estilosa</li>
-                <li>✅ Capacetes e Proteções — Visual Elite</li>
-                <li>✅ Veículos Modificados — Performance e Visual</li>
-                <li>✅ Skin Pack Completo — Visual Total</li>
-                <li>✅ Coletes, Camisa e Calças — Kit Tático</li>
-                <li>✅ Guia de instalação enviado por e-mail</li>
-              </ul>
-              <div class="rounded-lg h-44 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(158,255,0,0.3);">
-                <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                  <i class="fa fa-youtube-play text-4xl mb-2" style="color:#9EFF00;"></i>
-                  <span class="font-medium text-sm" style="color:#9EFF00;">Assistir Vídeo no YouTube</span>
-                  <span class="text-xs" style="color:rgba(158,255,0,0.5);">(Clique para abrir)</span>
-                </a>
-              </div>
-              <div class="text-center mb-3">
-                <span style="color:rgba(158,255,0,0.5);" class="text-sm line-through">R$ 224,30 separados</span>
-                <p class="text-3xl font-bold" style="color:#9EFF00;">R$ 150,00</p>
-              </div>
-              <button onclick="adicionarAoCarrinho('Pacote Diamante - Todos os Mods', 150.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#9EFF00; color:#0A1153;">
-                💎 Adicionar Pacote Diamante
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- SOBRE O SERVIÇO -->
-      <section id="menu-sobre-servico" class="conteudo-menu hidden">
-        <div class="max-w-3xl mx-auto">
-          <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">ℹ️ O Que É Este Serviço?</h2>
-          <div class="card-mod mb-6 border-l-4 border-principal">
-            <div class="flex items-start gap-4">
-              <span class="text-4xl">🔧</span>
-              <div>
-                <h3 class="text-xl font-bold text-secundaria mb-2">O que eu faço</h3>
-                <p class="text-gray-700">Ofereço meu <strong>conhecimento e tempo</strong> para organizar, configurar e instalar mods nos seus jogos — como <strong>Ghost Recon Breakpoint</strong> e outros títulos compatíveis. Cuido de todo o processo técnico para que você não precise se preocupar com erros, conflitos de arquivo ou configurações complicadas.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card-mod mb-6 border-l-4 border-yellow-400">
-            <div class="flex items-start gap-4">
-              <span class="text-4xl">⚠️</span>
-              <div>
-                <h3 class="text-xl font-bold text-secundaria mb-2">Os mods NÃO são meus</h3>
-                <p class="text-gray-700">Todos os mods utilizados são de autoria dos <strong>modders da comunidade</strong>, disponíveis gratuitamente no <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-semibold">Nexus Mods</a>. Eu <strong>não crio, não vendo e não reivindico autoria</strong> de nenhum mod.</p>
-                <p class="text-gray-700 mt-2">O que você está contratando é exclusivamente o meu <strong>serviço de organização, seleção e instalação</strong> desses mods no seu jogo.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card-mod mb-6 border-l-4 border-green-500">
-            <div class="flex items-start gap-4">
-              <span class="text-4xl">🏆</span>
-              <div>
-                <h3 class="text-xl font-bold text-secundaria mb-2">Créditos dos Mods</h3>
-                <p class="text-gray-700">Todo o mérito criativo pertence aos <strong>desenvolvedores e modders</strong> que publicam seu trabalho no Nexus Mods. Eles dedicam horas criando melhorias incríveis para a comunidade gamer, e merecem todo o reconhecimento.</p>
-                <p class="text-gray-700 mt-2">Sempre que possível, os créditos de cada mod serão listados junto ao produto.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card-mod mb-6 border-l-4 border-blue-500">
-            <div class="flex items-start gap-4">
-              <span class="text-4xl">💰</span>
-              <div>
-                <h3 class="text-xl font-bold text-secundaria mb-2">O que você paga</h3>
-                <p class="text-gray-700">Você paga apenas pelo meu <strong>trabalho de curadoria e instalação</strong>: selecionar os mods certos, testar compatibilidade, resolver conflitos e deixar tudo funcionando perfeitamente no seu jogo.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card-mod border-l-4 border-purple-500">
-            <div class="flex items-start gap-4">
-              <span class="text-4xl">🎮</span>
-              <div>
-                <h3 class="text-xl font-bold text-secundaria mb-2">Jogos atendidos</h3>
-                <p class="text-gray-700">Atualmente trabalho principalmente com <strong>Ghost Recon Breakpoint</strong>. Outros jogos compatíveis com mods via Nexus Mods também podem ser atendidos — entre em contato para verificar disponibilidade.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- VEÍCULOS -->
-      <section id="menu-veiculos" class="conteudo-menu hidden">
-        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">🚗 Mods de Veículos</h2>
-        <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Ajustes em física, motor, suspensão e aparência. Melhora o comportamento sem tornar o veículo irreal ou invencível.</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="card-mod">
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Jipe Ajuste de Suspensão</h4>
-            <p class="text-gray-600 mb-3">Mais estabilidade em terrenos irregulares, menos capotagem, potência aumentada em subidas.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 19,90</span>
-              <button onclick="adicionarAoCarrinho('Jipe Ajuste de Suspensão', 19.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ARMAS -->
-      <section id="menu-armas" class="conteudo-menu hidden">
-        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">🔫 Mods de Armas</h2>
-        <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Ajustes de precisão, recuo, alcance e cadência. Mais desempenho, mantendo equilíbrio e sem valores absurdos.</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="card-mod">
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Ajuste de Recuo e Mira</h4>
-            <p class="text-gray-600 mb-3">Recuo mais controlado, mira mais estável, sem eliminar totalmente a dificuldade de acerto.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 24,90</span>
-              <button onclick="adicionarAoCarrinho('Ajuste de Recuo e Mira', 24.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- EQUIPAMENTOS -->
-      <section id="menu-equipamentos" class="conteudo-menu hidden">
-        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">🎒 Mods de Equipamentos</h2>
-        <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Ajustes de capacidade, organização, durabilidade e peso. Mais praticidade sem tornar o jogo excessivamente fácil.</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="card-mod">
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Capacidade de Colete Aumentada</h4>
-            <p class="text-gray-600 mb-3">Mais espaços para kits e granadas, durabilidade melhorada, sem ficar indestrutível.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 14,90</span>
-              <button onclick="adicionarAoCarrinho('Capacidade de Colete Aumentada', 14.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- GRÁFICOS -->
-      <section id="menu-graficos" class="conteudo-menu hidden">
-        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">✨ Mods Gráficos e Visuais</h2>
-        <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Melhorias de textura, iluminação, clima e cores. Deixa o jogo mais bonito, com desempenho otimizado.</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="card-mod">
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Pacote de Cores e Luz</h4>
-            <p class="text-gray-600 mb-3">Cores mais vibrantes, sombras realistas, visibilidade melhorada sem ficar excessivamente claro.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-xl text-gray-800 text-center">R$ 19,90</span>
-              <button onclick="adicionarAoCarrinho('Pacote de Cores e Luz', 19.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PACOTES COMPLETOS -->
-      <section id="menu-pacotes" class="conteudo-menu hidden">
-        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">📦 Pacotes Completos</h2>
-        <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Vários mods reunidos em um único arquivo. Melhor valor e instalação mais rápida e prática.</p>
-        <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div class="card-mod border-2 border-principal relative">
-            <span class="absolute -top-3 -right-3 bg-secundaria text-principal text-sm font-bold py-1 px-3 rounded-full">MAIS VENDIDO</span>
-            <h4 class="text-2xl font-bold text-gray-800 mb-2">Pacote Completo Aprimorado</h4>
-            <p class="text-gray-600 mb-3">Todos os ajustes de veículos, armas, equipamentos e gráficos. Jogo completo e melhorado.</p>
-            <div class="area-midia">
-              <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Assistir Vídeo</span>
-              </a>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-bold text-2xl text-gray-800 text-center">R$ 49,90</span>
-              <button onclick="adicionarAoCarrinho('Pacote Completo Aprimorado', 49.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- =============================================
-           ÁREA DO CLIENTE — LOGIN + GUIA
-           ============================================= -->
-      <section id="menu-area-cliente" class="conteudo-menu hidden">
-        <div class="max-w-2xl mx-auto">
-
-          <div id="clienteLoginPainel" class="card-mod p-8">
-            <div class="text-center mb-6">
-              <span class="text-5xl">🔐</span>
-              <h2 class="text-2xl font-bold mt-3 text-secundaria">Área do Cliente</h2>
-              <p class="text-gray-500 text-sm mt-1">Acesse com os dados enviados após sua compra</p>
-            </div>
-
-            <div class="mb-5 p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800">
-              <strong>ℹ️ Como acessar:</strong> Após confirmar seu pagamento, você recebe por e-mail o login e senha para acessar o guia de instalação aqui.
-            </div>
-
-            <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-bold text-gray-700 mb-1">Usuário</label>
-                <input type="text" id="clienteLoginUser" placeholder="Seu usuário de acesso" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" />
-              </div>
-              <div>
-                <label class="block text-sm font-bold text-gray-700 mb-1">Senha</label>
-                <input type="password" id="clienteLoginPass" placeholder="••••••••" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" onkeydown="if(event.key==='Enter') fazerLoginCliente()" />
-              </div>
-              <p id="erroLoginCliente" class="text-red-600 text-sm hidden">❌ Usuário ou senha incorretos. Verifique o e-mail que recebeu após a compra.</p>
-              <button onclick="fazerLoginCliente()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 rounded-lg transition-colors">
-                🔓 Acessar Guia de Instalação
-              </button>
-            </div>
-
-            <div class="mt-5 text-center">
-              <p class="text-sm text-gray-500">Não recebeu seu acesso? <a href="https://wa.me/5516981097916" target="_blank" class="text-blue-600 hover:underline font-medium">Fale conosco no WhatsApp</a></p>
-            </div>
-          </div>
-
-          <!-- GUIA DE INSTALAÇÃO — visível após login -->
-          <div id="clienteGuiaPainel" class="hidden">
-            <div class="flex justify-between items-center mb-6">
-              <h2 class="text-2xl font-bold text-secundaria">📄 Guia Completo de Instalação</h2>
-              <button onclick="fazerLogoutCliente()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button>
-            </div>
-            <p class="text-gray-600 mb-6 text-center">Aprenda a instalar qualquer mod da VCORE GAMES usando o Mod Manager</p>
-
-            <div class="space-y-4 text-gray-700 text-justify card-mod">
-
-              <!-- ===== PASSO 0 — PACOTES PREMIUM (NOVO) ===== -->
-              <div class="rounded-xl p-4" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
-                <p class="font-bold text-lg mb-2" style="color:#9EFF00;">🚀 Comprou um Pacote Premium? É mais simples ainda!</p>
-                <p class="text-sm mb-3" style="color:rgba(158,255,0,0.85);">Os Pacotes Prata, Ouro e Diamante já vêm com todos os arquivos pré-configurados e prontos para jogar. Siga apenas o Passo 0 abaixo e ignore os demais passos.</p>
-                <div class="rounded-lg p-3 space-y-2" style="background:rgba(0,0,0,0.3);">
-                  <p class="font-bold" style="color:#9EFF00;">📂 Passo 0 — Como usar o arquivo pronto do Pacote Premium</p>
-                  <p class="text-sm" style="color:rgba(158,255,0,0.9);">1. Após o pagamento, você receberá por e-mail o link para baixar o arquivo do seu pacote</p>
-                  <p class="text-sm" style="color:rgba(158,255,0,0.9);">2. Baixe e <strong style="color:#9EFF00;">descompacte</strong> o arquivo recebido (.zip ou .rar)</p>
-                  <p class="text-sm" style="color:rgba(158,255,0,0.9);">3. Abra o explorador de arquivos e navegue até a <strong style="color:#9EFF00;">pasta raiz do jogo</strong> — é a pasta onde fica o arquivo <code style="background:rgba(158,255,0,0.15); padding:1px 5px; border-radius:3px;">GRB.exe</code></p>
-                  <div class="rounded p-2 text-xs mt-1" style="background:rgba(158,255,0,0.08); border:1px solid rgba(158,255,0,0.3);">
-                    <p style="color:#9EFF00;" class="font-bold mb-1">📁 Onde costuma estar a pasta do jogo:</p>
-                    <p style="color:rgba(158,255,0,0.75);">• <strong style="color:#9EFF00;">Ubisoft Connect:</strong> C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Ghost Recon Breakpoint</p>
-                    <p style="color:rgba(158,255,0,0.75);">• <strong style="color:#9EFF00;">Steam:</strong> C:\Program Files (x86)\Steam\steamapps\common\Ghost Recon Breakpoint</p>
-                    <p style="color:rgba(158,255,0,0.75);">• O caminho pode variar conforme sua instalação. Procure pela pasta que contém o arquivo <strong>GRB.exe</strong></p>
-                  </div>
-                  <p class="text-sm" style="color:rgba(158,255,0,0.9);">4. Copie os arquivos descompactados <strong style="color:#9EFF00;">diretamente para dentro dessa pasta</strong> (confirme a substituição se pedido)</p>
-                  <p class="text-sm" style="color:rgba(158,255,0,0.9);">5. Abra o jogo normalmente pelo Ubisoft Connect ou Steam — os mods já estarão ativos! 🎮</p>
-                  <div class="rounded p-2 text-xs mt-2" style="background:rgba(255,200,0,0.1); border-left:3px solid #f59e0b;">
-                    <p style="color:#fbbf24;">⚠️ <strong>Atenção:</strong> Não altere os nomes dos arquivos copiados. Se o Windows perguntar se deseja substituir arquivos existentes, clique em <strong>Sim para todos</strong>.</p>
-                  </div>
-                  <div class="rounded p-2 text-xs mt-1" style="background:rgba(34,197,94,0.1); border-left:3px solid #22c55e;">
-                    <p style="color:#86efac;">💡 <strong>Dica:</strong> Para voltar ao original, guarde um backup da pasta raiz do jogo antes de copiar os arquivos do pacote.</p>
-                  </div>
+                <!-- Valor -->
+                <div class="bg-secundaria text-principal rounded-xl py-3 px-6 mb-4 inline-block">
+                    <p class="text-xs opacity-70">Valor a pagar</p>
+                    <p id="pixValor" class="text-3xl font-bold">R$ 0,00</p>
                 </div>
-              </div>
-              <!-- ===== FIM PASSO 0 ===== -->
 
-              <hr class="border-gray-200" />
-              <p class="text-sm font-bold text-gray-500 uppercase tracking-wide">👇 Os passos abaixo são para instalação manual (mods individuais)</p>
-              <hr class="border-gray-200" />
+                <!-- QR Code -->
+                <div class="bg-gray-100 rounded-xl p-4 mb-4 inline-block">
+                    <img id="pixQrCode" src="" alt="QR Code PIX" class="w-56 h-56 mx-auto" />
+                    <p class="text-xs text-gray-500 mt-2">Aponte a câmera do seu app de banco</p>
+                </div>
 
-              <p>
-                <strong>📋 O que você precisa ter:</strong><br />
-                <span class="text-orange-600 font-medium">⚠️ <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-bold">É obrigatório criar uma conta gratuita no Nexus Mods</a> para poder baixar os programas abaixo:</span><br />
-                • GRB Mod Manager instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1602?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
-                • AnvilToolkit instalado - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/16?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />
-                • Arquivo do mod baixado (.zip/.rar/.7z)<br />
-                • Jogo Ghost Recon Breakpoint instalado
-              </p>
-              <hr class="border-gray-200" />
-              <p>
-                <strong>✅ PASSO 1 — Configurando o Programa</strong><br />
-                1. Abra o <strong>GRB Mod Manager</strong><br />
-                2. Clique em <strong>📁 Selecionar Pasta do Jogo</strong> e escolha a pasta onde o jogo está instalado no seu PC<br />
-                3. Clique no ícone de <strong>🔨 Ferramentas</strong> e selecione o arquivo <code>AnvilToolkit.exe</code> que você já instalou
-              </p>
-              <hr class="border-gray-200" />
-              <p>
-                <strong>✅ PASSO 2 — Adicionando e Instalando o Mod</strong><br />
-                1. Clique em <strong>➕ Adicionar Mod</strong><br />
-                2. Selecione o arquivo do mod que você baixou <strong>(não precisa descompactar!)</strong><br />
-                3. O programa vai ler automaticamente. Clique em <strong>✅ Instalar</strong> e aguarde terminar<br />
-                4. No final, anote os nomes dos arquivos <code>.forge</code> que aparecerem na mensagem
-              </p>
-              <hr class="border-gray-200" />
-              <p>
-                <strong>✅ PASSO 3 — Etapa Obrigatória: Empacotar</strong><br />
-                ⚠️ <em>Sem essa etapa o mod não funciona!</em><br />
-                1. Clique em <strong>🛠️ Abrir AnvilToolkit</strong><br />
-                2. Selecione um por um os arquivos <code>.forge</code> que foram indicados<br />
-                3. Clique em <strong>🔄 Repacotar / Repack</strong> e confirme<br />
-                4. Aguarde concluir e feche o programa
-              </p>
-              <hr class="border-gray-200" />
-              <p>
-                <strong>✅ PASSO 4 — Pronto!</strong><br />
-                Volte para a tela principal, veja que o mod está como <strong>ATIVADO</strong>. Agora é só abrir o jogo normalmente pelo Ubisoft Connect ou Steam que tudo já estará aplicado! 🎮
-              </p>
-              <hr class="border-gray-200" />
-              <p>
-                <strong>❌ Como desinstalar (voltar ao original)</strong><br />
-                1. Abra o Mod Manager<br />
-                2. Na lista, clique no mod e escolha <strong>🗑️ Remover / Desinstalar</strong><br />
-                3. Repita o <strong>PASSO 3</strong> para restaurar os arquivos originais
-              </p>
-              <p class="text-sm text-gray-500 mt-4">💡 Dica: Instale apenas um mod por vez para evitar conflitos ou erros.</p>
+                <!-- Chave PIX -->
+                <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-4 mb-4">
+                    <p class="text-xs text-gray-500 mb-2 font-bold">📋 Chave PIX (telefone)</p>
+                    <p id="pixChave" class="text-lg font-bold text-secundaria tracking-wide select-all">5516992952763</p>
+                    <p class="text-sm text-gray-600 mt-1">Rodrigo Paulino da Silva</p>
+                    <button onclick="copiarChavePix()" class="mt-3 bg-secundaria hover:bg-blue-900 text-principal font-bold py-2 px-5 rounded-lg text-sm transition-colors w-full">
+                        📋 Copiar Chave PIX
+                    </button>
+                    <p id="pixCopiado" class="text-green-600 text-xs font-bold mt-2 hidden">✅ Chave copiada com sucesso!</p>
+                </div>
+
+                <!-- Botão WhatsApp -->
+                <button onclick="abrirWhatsAppComprovante()" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg text-sm transition-colors flex items-center justify-center gap-2">
+                    <i class="fa fa-whatsapp text-lg"></i> Enviar Comprovante via WhatsApp
+                </button>
+                <p class="text-xs text-gray-400 mt-3">Após pagar, clique acima para enviar o comprovante.</p>
             </div>
-          </div>
-
         </div>
-      </section>
+    </div>
 
-      <!-- SOBRE -->
-      <section id="menu-sobre" class="conteudo-menu hidden">
-        <div class="max-w-2xl mx-auto card-mod p-8 text-center">
-          <h2 class="text-2xl font-bold mb-4 text-gray-800">Sobre a VCORE GAMES</h2>
-          <p class="mb-4 text-gray-600">Somos especialistas em modificações seguras e equilibradas para Ghost Recon Breakpoint.</p>
-          <p class="mb-4 text-gray-600">Todos os nossos arquivos são alterações sutis nos arquivos originais do jogo: melhoramos desempenho, física, visual e organização, <strong>sem adicionar trapaças, danos infinitos ou quebras de jogabilidade</strong>.</p>
-          <p class="text-gray-600">Nosso objetivo é deixar o jogo melhor, mas mantendo a essência e os desafios que tornam Ghost Recon especial.</p>
-        </div>
-      </section>
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <main class="py-10 px-4 max-w-7xl mx-auto">
 
-      <!-- SUPORTE -->
-      <section id="menu-suporte" class="conteudo-menu hidden">
-        <div class="max-w-xl mx-auto card-mod p-8 text-center">
-          <h2 class="text-2xl font-bold mb-4 text-gray-800">Central de Ajuda</h2>
-          <p class="mb-6 text-gray-600">Dúvidas sobre instalação, links ou funcionamento? Fale conosco:</p>
-          <div class="space-y-4 text-left max-w-sm mx-auto">
-            <div class="flex items-center gap-3">
-              <i class="fa fa-whatsapp text-whatsapp text-2xl"></i>
-              <a href="https://wa.me/5516981097916" target="_blank" class="text-gray-700 hover:text-whatsapp transition-colors">(16) 98109-7916</a>
+        <!-- INÍCIO -->
+        <section id="menu-inicio" class="conteudo-menu">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3 text-gray-800">Arquivos Prontos para Instalação</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">Todos os mods são arquivos originais modificados apenas para melhorar desempenho, visual e jogabilidade.<br /><strong>Sem trapaças — apenas aprimoramentos legítimos!</strong></p>
             </div>
-            <div class="flex items-center gap-3">
-              <i class="fa fa-instagram text-instagram text-2xl"></i>
-              <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="text-gray-700 hover:text-instagram transition-colors">@rodrigovecoregaming</a>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- ADMIN -->
-      <section id="menu-admin" class="conteudo-menu hidden">
-        <div class="max-w-md mx-auto">
-          <div id="painelLogin" class="card-mod p-8">
-            <div class="text-center mb-6">
-              <span class="text-5xl">🔒</span>
-              <h2 class="text-2xl font-bold mt-3 text-secundaria">Área Administrativa</h2>
-              <p class="text-gray-500 text-sm mt-1">Acesso restrito ao proprietário</p>
-            </div>
-            <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-bold text-gray-700 mb-1">Usuário</label>
-                <input type="text" id="adminUser" placeholder="admin" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" />
-              </div>
-              <div>
-                <label class="block text-sm font-bold text-gray-700 mb-1">Senha</label>
-                <input type="password" id="adminPass" placeholder="••••••••" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" onkeydown="if(event.key==='Enter') fazerLogin()" />
-              </div>
-              <p id="erroLogin" class="text-red-600 text-sm hidden">❌ Usuário ou senha incorretos.</p>
-              <button onclick="fazerLogin()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 rounded-lg transition-colors">
-                Entrar
-              </button>
-            </div>
-          </div>
+            <h3 class="text-xl font-bold mb-6 text-center text-gray-800 border-b-2 border-principal pb-2 inline-block w-full">🔥 Mods em Destaque</h3>
 
-          <div id="painelAdmin" class="hidden">
-            <div class="flex justify-between items-center mb-6">
-              <h2 class="text-2xl font-bold text-secundaria">🛠️ Painel Admin</h2>
-              <button onclick="fazerLogout()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 mt-8">
+
+                <!-- CAIXA 1 — COLETES -->
+                <div class="card-mod flex flex-col">
+                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
+                        <i class="fa fa-shield text-5xl" style="color:#9EFF00;"></i>
+                    </div>
+                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🛡️ SKIN</span>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Coletes — Mod de Aparência</h4>
+                    <p class="text-gray-500 text-sm mb-3 flex-1">Novos visuais de colete tático com texturas de alta qualidade.</p>
+                    <div class="area-midia">
+                        <a href="https://www.youtube.com/watch?v=y0zmA_XbtIk&t=448s" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+                    </div>
+                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 19,90</span>
+                    <button onclick="adicionarAoCarrinho('Coletes - Mod de Aparência', 19.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- CAIXA 2 — ARMAS E MIRAS -->
+                <div class="card-mod flex flex-col">
+                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
+                        <i class="fa fa-crosshairs text-5xl" style="color:#9EFF00;"></i>
+                    </div>
+                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🔫 ARMAS</span>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Armas e Miras — Precisão Real</h4>
+                    <p class="text-gray-500 text-sm mb-3 flex-1">Ajuste de mira, recuo controlado e skins de armas.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+                    </div>
+                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 24,90</span>
+                    <button onclick="adicionarAoCarrinho('Armas e Miras - Precisão Real', 24.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- CAIXA 3 — CAMISA E CALÇA -->
+                <div class="card-mod flex flex-col">
+                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
+                        <i class="fa fa-user text-5xl" style="color:#9EFF00;"></i>
+                    </div>
+                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">👕 SKIN</span>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Camisa e Calça — Visual Tático</h4>
+                    <p class="text-gray-500 text-sm mb-3 flex-1">Uniformes realistas e detalhados para seu operador.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+                    </div>
+                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 16,90</span>
+                    <button onclick="adicionarAoCarrinho('Camisa e Calça - Visual Tático', 16.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- CAIXA 4 — CAMUFLAGEM -->
+                <div class="card-mod flex flex-col">
+                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
+                        <i class="fa fa-paint-brush text-5xl" style="color:#9EFF00;"></i>
+                    </div>
+                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🌿 CAMO</span>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Camuflagem — Skins Completas</h4>
+                    <p class="text-gray-500 text-sm mb-3 flex-1">Padrões militares realistas: floresta, deserto, urbano.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+                    </div>
+                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 19,90</span>
+                    <button onclick="adicionarAoCarrinho('Camuflagem - Skins Completas', 19.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- CAIXA 5 — FEST FEMININO -->
+                <div class="card-mod flex flex-col">
+                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
+                        <i class="fa fa-female text-5xl" style="color:#9EFF00;"></i>
+                    </div>
+                    <span class="bg-pink-500 text-white text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">♀️ FEMININO</span>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Fest Feminino — Operadora Estilosa</h4>
+                    <p class="text-gray-500 text-sm mb-3 flex-1">Visual moderno e tático para personagem feminino.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+                    </div>
+                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 22,90</span>
+                    <button onclick="adicionarAoCarrinho('Fest Feminino - Operadora Estilosa', 22.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- CAIXA 6 — CAPACETES -->
+                <div class="card-mod flex flex-col">
+                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
+                        <i class="fa fa-helmet text-5xl" style="color:#9EFF00;"></i>
+                    </div>
+                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">⛑️ PROTEÇÃO</span>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Capacetes e Proteções — Visual Elite</h4>
+                    <p class="text-gray-500 text-sm mb-3 flex-1">Modelos de capacete com nível de detalhe militar.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+                    </div>
+                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 18,90</span>
+                    <button onclick="adicionarAoCarrinho('Capacetes e Proteções - Visual Elite', 18.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- CAIXA 7 — VEÍCULOS -->
+                <div class="card-mod flex flex-col">
+                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
+                        <i class="fa fa-truck text-5xl" style="color:#9EFF00;"></i>
+                    </div>
+                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🚗 VEÍCULOS</span>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Veículos Modificados</h4>
+                    <p class="text-gray-500 text-sm mb-3 flex-1">Performance e visual melhorados para jipes, motos e helicópteros.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+                    </div>
+                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 22,90</span>
+                    <button onclick="adicionarAoCarrinho('Veículos Modificados - Performance e Visual', 22.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- CAIXA 8 — SKIN PACK -->
+                <div class="card-mod flex flex-col">
+                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
+                        <i class="fa fa-star text-5xl" style="color:#9EFF00;"></i>
+                    </div>
+                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🎨 SKIN PACK</span>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Skin Pack Completo</h4>
+                    <p class="text-gray-500 text-sm mb-3 flex-1">Conjunto completo de skins para personalização total.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+                    </div>
+                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 34,90</span>
+                    <button onclick="adicionarAoCarrinho('Skin Pack Completo - Visual Total', 34.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- CAIXA 9 — KIT TÁTICO -->
+                <div class="card-mod flex flex-col">
+                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
+                        <i class="fa fa-suitcase text-5xl" style="color:#9EFF00;"></i>
+                    </div>
+                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🧥 COMBO</span>
+                    <h4 class="text-lg font-bold text-gray-800 mb-1">Coletes, Camisa e Calças — Kit Tático</h4>
+                    <p class="text-gray-500 text-sm mb-3 flex-1">Combo completo de vestuário tático combinando.</p>
+                    <div class="area-midia">
+                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
+                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
+                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
+                        </a>
+                    </div>
+                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 26,90</span>
+                    <button onclick="adicionarAoCarrinho('Coletes, Camisa e Calças - Kit Tático', 26.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
+                </div>
+
             </div>
-            <div class="card-mod mb-6">
-              <h3 class="text-lg font-bold text-gray-800 mb-4">📋 Clientes que compraram — Enviar Guia</h3>
-              <div id="listaClientes" class="space-y-3">
-                <p class="text-gray-400 text-sm text-center" id="semClientes">Nenhum cliente registrado ainda.</p>
-              </div>
+
+            <!-- ============ PACOTES: PRATA / OURO / DIAMANTE ============ -->
+            <div id="pacotes-premium"></div>
+            <h3 class="text-2xl font-bold mb-2 text-center text-gray-800">🏆 Pacotes Completos</h3>
+            <p class="text-center text-gray-500 mb-4 text-sm">Escolha o plano ideal para você</p>
+
+            <div class="max-w-5xl mx-auto mb-8 rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
+                <div class="flex flex-col sm:flex-row items-center gap-4 p-5">
+                    <div class="text-5xl flex-shrink-0">🎮</div>
+                    <div class="flex-1 text-center sm:text-left">
+                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-2">
+                            <span class="pronto-badge">✅ PRONTO PARA JOGAR</span>
+                            <span class="text-xs font-bold px-2 py-1 rounded-full bg-yellow-400 text-yellow-900">SEM COMPLICAÇÃO</span>
+                        </div>
+                        <p class="font-bold text-lg" style="color:#9EFF00;">Os Pacotes já vêm com tudo instalado e configurado!</p>
+                        <p class="text-sm mt-1" style="color:rgba(158,255,0,0.75);">Basta copiar na pasta raiz do jogo (onde está o <strong style="color:#9EFF00;">GRB.exe</strong>) e abrir o game. Sem instalar ferramentas, sem configurar nada — é só jogar! 🚀</p>
+                    </div>
+                </div>
             </div>
-            <button onclick="limparClientes()" class="w-full bg-red-100 hover:bg-red-200 text-red-700 font-bold py-2 rounded-lg text-sm transition-colors">
-              🗑️ Limpar lista de clientes
-            </button>
-            <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
-              <strong>💡 Como funciona:</strong> Quando um cliente preenche nome e e-mail e finaliza a compra, os dados aparecem aqui. Você confirma o pagamento e envia o guia de instalação manualmente para o e-mail dele.
+
+            <div class="grid md:grid-cols-3 gap-6 mb-16 max-w-5xl mx-auto">
+
+                <!-- PRATA R$ 70 -->
+                <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #2a2a2a 0%, #4a4a4a 50%, #2a2a2a 100%); border: 2px solid #C0C0C0;">
+                    <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #C0C0C0 0, #C0C0C0 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
+                    <div class="relative z-10 flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#C0C0C0; color:#1a1a1a;">🥈 PRATA</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-1" style="color:#C0C0C0;">Pacote Prata</h4>
+                        <p class="text-sm mb-3" style="color:rgba(192,192,192,0.75);">Mods essenciais da VCORE GAMES.</p>
+                        <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
+                            <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
+                            <p style="color:rgba(192,192,192,0.8);">Copie na pasta raiz e abra o game.</p>
+                        </div>
+                        <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(192,192,192,0.85);">
+                            <li>✅ Coletes — Mod de Aparência</li>
+                            <li>✅ Armas e Miras — Precisão Real</li>
+                            <li>✅ Camisa e Calça — Visual Tático</li>
+                            <li>✅ Camuflagem — Skins Completas</li>
+                            <li>✅ Capacetes e Proteções — Visual Elite</li>
+                            <li>✅ Guia de instalação por e-mail</li>
+                        </ul>
+                        <div class="rounded-lg h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(192,192,192,0.3);">
+                            <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                                <i class="fa fa-youtube-play text-4xl mb-2" style="color:#C0C0C0;"></i>
+                                <span class="font-medium text-sm" style="color:#C0C0C0;">Assistir Vídeo</span>
+                            </a>
+                        </div>
+                        <div class="text-center mb-3">
+                            <p class="text-3xl font-bold" style="color:#C0C0C0;">R$ 70,00</p>
+                        </div>
+                        <button onclick="adicionarAoCarrinho('Pacote Prata - Mods Essenciais', 70.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#C0C0C0; color:#1a1a1a;">
+                            🥈 Adicionar Pacote Prata
+                        </button>
+                    </div>
+                </div>
+
+                <!-- OURO R$ 100 -->
+                <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #3a2800 0%, #6b4a00 50%, #3a2800 100%); border: 2px solid #FFD700;">
+                    <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #FFD700 0, #FFD700 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
+                    <div class="absolute -top-1 left-1/2 -translate-x-1/2">
+                        <span class="text-xs font-bold px-3 py-1 rounded-full shadow-lg" style="background:#FFD700; color:#3a2800;">⭐ MAIS POPULAR</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-1 mt-3">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#FFD700; color:#3a2800;">🥇 OURO</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-1" style="color:#FFD700;">Pacote Ouro</h4>
+                        <p class="text-sm mb-3" style="color:rgba(255,215,0,0.75);">Experiência completa de visual e performance.</p>
+                        <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
+                            <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
+                            <p style="color:rgba(255,215,0,0.8);">Copie na pasta raiz e abra o game.</p>
+                        </div>
+                        <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.9);">
+                            <li>✅ Todos os itens do Prata</li>
+                            <li>✅ Fest Feminino</li>
+                            <li>✅ Veículos Modificados</li>
+                            <li>✅ Guia de instalação por e-mail</li>
+                        </ul>
+                        <div class="rounded-lg h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,215,0,0.3);">
+                            <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                                <i class="fa fa-youtube-play text-4xl mb-2" style="color:#FFD700;"></i>
+                                <span class="font-medium text-sm" style="color:#FFD700;">Assistir Vídeo</span>
+                            </a>
+                        </div>
+                        <div class="text-center mb-3">
+                            <p class="text-3xl font-bold" style="color:#FFD700;">R$ 100,00</p>
+                        </div>
+                        <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avançados', 100.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#FFD700; color:#3a2800;">
+                            🥇 Adicionar Pacote Ouro
+                        </button>
+                    </div>
+                </div>
+
+                <!-- DIAMANTE R$ 150 -->
+                <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #0A1153 0%, #1a2a7a 50%, #0A1153 100%); border: 2px solid #9EFF00;">
+                    <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #9EFF00 0, #9EFF00 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
+                    <div class="relative z-10 flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#9EFF00; color:#0A1153;">💎 DIAMANTE</span>
+                            <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">MELHOR VALOR</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-1" style="color:#9EFF00;">Pacote Diamante</h4>
+                        <p class="text-sm mb-3" style="color:rgba(158,255,0,0.75);">O pacote mais completo. <strong style="color:#9EFF00;">Todos os mods</strong> em um só lugar.</p>
+                        <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
+                            <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
+                            <p style="color:rgba(158,255,0,0.8);">Copie na pasta raiz e abra o game.</p>
+                        </div>
+                        <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(158,255,0,0.9);">
+                            <li>✅ Coletes — Mod de Aparência</li>
+                            <li>✅ Armas e Miras — Precisão Real</li>
+                            <li>✅ Camisa e Calça — Visual Tático</li>
+                            <li>✅ Camuflagem — Skins Completas</li>
+                            <li>✅ Fest Feminino</li>
+                            <li>✅ Capacetes e Proteções</li>
+                            <li>✅ Veículos Modificados</li>
+                            <li>✅ Skin Pack Completo</li>
+                            <li>✅ Kit Tático</li>
+                            <li>✅ Guia de instalação por e-mail</li>
+                        </ul>
+                        <div class="rounded-lg h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(158,255,0,0.3);">
+                            <a href="https://www.youtube.com/watch?v=pN6ntMjvhRw&t=564s" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
+                                <i class="fa fa-youtube-play text-4xl mb-2" style="color:#9EFF00;"></i>
+                                <span class="font-medium text-sm" style="color:#9EFF00;">Assistir Vídeo</span>
+                            </a>
+                        </div>
+                        <div class="text-center mb-3">
+                            <span style="color:rgba(158,255,0,0.5);" class="text-sm line-through">R$ 224,30 separados</span>
+                            <p class="text-3xl font-bold" style="color:#9EFF00;">R$ 150,00</p>
+                        </div>
+                        <button onclick="adicionarAoCarrinho('Pacote Diamante - Todos os Mods', 150.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#9EFF00; color:#0A1153;">
+                            💎 Adicionar Pacote Diamante
+                        </button>
+                    </div>
+                </div>
+
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
+
+        <!-- SOBRE O SERVIÇO -->
+        <section id="menu-sobre-servico" class="conteudo-menu hidden">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">ℹ️ O Que É Este Serviço?</h2>
+                <div class="card-mod mb-6 border-l-4 border-principal">
+                    <div class="flex items-start gap-4"><span class="text-4xl">🔧</span><div><h3 class="text-xl font-bold text-secundaria mb-2">O que eu faço</h3><p class="text-gray-700">Ofereço meu <strong>conhecimento e tempo</strong> para organizar, configurar e instalar mods nos seus jogos — como <strong>Ghost Recon Breakpoint</strong>.</p></div></div>
+                </div>
+                <div class="card-mod mb-6 border-l-4 border-yellow-400">
+                    <div class="flex items-start gap-4"><span class="text-4xl">⚠️</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Os mods NÃO são meus</h3><p class="text-gray-700">Todos os mods são de autoria dos <strong>modders da comunidade</strong>, disponíveis gratuitamente no <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-semibold">Nexus Mods</a>.</p></div></div>
+                </div>
+                <div class="card-mod mb-6 border-l-4 border-green-500">
+                    <div class="flex items-start gap-4"><span class="text-4xl">🏆</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Créditos dos Mods</h3><p class="text-gray-700">Todo o mérito criativo pertence aos <strong>desenvolvedores e modders</strong>.</p></div></div>
+                </div>
+                <div class="card-mod mb-6 border-l-4 border-blue-500">
+                    <div class="flex items-start gap-4"><span class="text-4xl">💰</span><div><h3 class="text-xl font-bold text-secundaria mb-2">O que você paga</h3><p class="text-gray-700">Você paga apenas pelo meu <strong>trabalho de curadoria e instalação</strong>.</p></div></div>
+                </div>
+                <div class="card-mod border-l-4 border-purple-500">
+                    <div class="flex items-start gap-4"><span class="text-4xl">🎮</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Jogos atendidos</h3><p class="text-gray-700">Atualmente trabalho principalmente com <strong>Ghost Recon Breakpoint</strong>.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÁREA DO CLIENTE -->
+        <section id="menu-area-cliente" class="conteudo-menu hidden">
+            <div class="max-w-2xl mx-auto">
+                <div id="clienteLoginPainel" class="card-mod p-8">
+                    <div class="text-center mb-6"><span class="text-5xl">🔐</span><h2 class="text-2xl font-bold mt-3 text-secundaria">Área do Cliente</h2><p class="text-gray-500 text-sm mt-1">Acesse com os dados enviados após sua compra</p></div>
+                    <div class="mb-5 p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800"><strong>ℹ️ Como acessar:</strong> Após confirmar seu pagamento, você recebe por e-mail o login e senha.</div>
+                    <div class="space-y-4">
+                        <div><label class="block text-sm font-bold text-gray-700 mb-1">Usuário</label><input type="text" id="clienteLoginUser" placeholder="Seu usuário de acesso" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" /></div>
+                        <div><label class="block text-sm font-bold text-gray-700 mb-1">Senha</label><input type="password" id="clienteLoginPass" placeholder="••••••••" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" onkeydown="if(event.key==='Enter') fazerLoginCliente()" /></div>
+                        <p id="erroLoginCliente" class="text-red-600 text-sm hidden">❌ Usuário ou senha incorretos.</p>
+                        <button onclick="fazerLoginCliente()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 rounded-lg transition-colors">🔓 Acessar Guia de Instalação</button>
+                    </div>
+                    <div class="mt-5 text-center"><p class="text-sm text-gray-500">Não recebeu seu acesso? <a href="https://wa.me/5516981097916" target="_blank" class="text-blue-600 hover:underline font-medium">Fale conosco no WhatsApp</a></p></div>
+                </div>
+                <div id="clienteGuiaPainel" class="hidden">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-bold text-secundaria">📄 Guia Completo de Instalação</h2><button onclick="fazerLogoutCliente()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button></div>
+                    <p class="text-gray-600 mb-6 text-center">Aprenda a instalar qualquer mod da VCORE GAMES</p>
+                    <div class="space-y-4 text-gray-700 text-justify card-mod">
+                        <div class="rounded-xl p-4" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
+                            <p class="font-bold text-lg mb-2" style="color:#9EFF00;">🚀 Comprou um Pacote? É só copiar e jogar!</p>
+                            <p class="text-sm mb-3" style="color:rgba(158,255,0,0.85);">Os Pacotes já vêm pré-configurados. Siga o Passo 0 e ignore os demais.</p>
+                            <div class="rounded-lg p-3 space-y-2" style="background:rgba(0,0,0,0.3);">
+                                <p class="font-bold" style="color:#9EFF00;">📂 Passo 0 — Como usar o arquivo pronto</p>
+                                <p class="text-sm" style="color:rgba(158,255,0,0.9);">1. Baixe e <strong style="color:#9EFF00;">descompacte</strong> o arquivo recebido (.zip ou .rar)</p>
+                                <p class="text-sm" style="color:rgba(158,255,0,0.9);">2. Navegue até a <strong style="color:#9EFF00;">pasta raiz do jogo</strong> — onde fica o <code style="background:rgba(158,255,0,0.15); padding:1px 5px; border-radius:3px;">GRB.exe</code></p>
+                                <div class="rounded p-2 text-xs mt-1" style="background:rgba(158,255,0,0.08); border:1px solid rgba(158,255,0,0.3);">
+                                    <p style="color:#9EFF00;" class="font-bold mb-1">📁 Onde costuma estar:</p>
+                                    <p style="color:rgba(158,255,0,0.75);">• <strong>Ubisoft Connect:</strong> C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Ghost Recon Breakpoint</p>
+                                    <p style="color:rgba(158,255,0,0.75);">• <strong>Steam:</strong> C:\Program Files (x86)\Steam\steamapps\common\Ghost Recon Breakpoint</p>
+                                </div>
+                                <p class="text-sm" style="color:rgba(158,255,0,0.9);">3. Copie os arquivos para dentro dessa pasta</p>
+                                <p class="text-sm" style="color:rgba(158,255,0,0.9);">4. Abra o jogo — os mods já estarão ativos! 🎮</p>
+                            </div>
+                        </div>
+                        <hr class="border-gray-200" />
+                        <p class="text-sm font-bold text-gray-500 uppercase tracking-wide">👇 Passos abaixo: somente para mods individuais</p>
+                        <hr class="border-gray-200" />
+                        <p><strong>📋 O que você precisa ter:</strong><br /><span class="text-orange-600 font-medium">⚠️ <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-bold">Conta gratuita no Nexus Mods obrigatória</a></span><br />• GRB Mod Manager - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1602?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />• AnvilToolkit - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/16?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a></p>
+                        <hr class="border-gray-200" />
+                        <p><strong>✅ PASSO 1 — Configurando</strong><br />Abra o GRB Mod Manager, selecione a pasta do jogo e configure o AnvilToolkit.</p>
+                        <hr class="border-gray-200" />
+                        <p><strong>✅ PASSO 2 — Instalando</strong><br />Adicione o arquivo do mod (sem descompactar) e clique em Instalar.</p>
+                        <hr class="border-gray-200" />
+                        <p><strong>✅ PASSO 3 — Empacotar (obrigatório!)</strong><br />⚠️ Abra o AnvilToolkit, selecione os arquivos .forge e clique em Repack.</p>
+                        <hr class="border-gray-200" />
+                        <p><strong>✅ PASSO 4 — Pronto!</strong><br />Abra o jogo normalmente e tudo estará aplicado! 🎮</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE -->
+        <section id="menu-sobre" class="conteudo-menu hidden">
+            <div class="max-w-2xl mx-auto card-mod p-8 text-center">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Sobre a VCORE GAMES</h2>
+                <p class="mb-4 text-gray-600">Somos especialistas em modificações seguras e equilibradas para Ghost Recon Breakpoint.</p>
+                <p class="mb-4 text-gray-600">Todos os nossos arquivos são alterações sutis nos arquivos originais do jogo, <strong>sem adicionar trapaças ou danos infinitos</strong>.</p>
+            </div>
+        </section>
+
+        <!-- SUPORTE -->
+        <section id="menu-suporte" class="conteudo-menu hidden">
+            <div class="max-w-xl mx-auto card-mod p-8 text-center">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Central de Ajuda</h2>
+                <p class="mb-6 text-gray-600">Dúvidas? Fale conosco:</p>
+                <div class="space-y-4 text-left max-w-sm mx-auto">
+                    <div class="flex items-center gap-3"><i class="fa fa-whatsapp text-whatsapp text-2xl"></i><a href="https://wa.me/5516981097916" target="_blank" class="text-gray-700 hover:text-whatsapp transition-colors">(16) 98109-7916</a></div>
+                    <div class="flex items-center gap-3"><i class="fa fa-instagram text-instagram text-2xl"></i><a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="text-gray-700 hover:text-instagram transition-colors">@rodrigovecoregaming</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN -->
+        <section id="menu-admin" class="conteudo-menu hidden">
+            <div class="max-w-md mx-auto">
+                <div id="painelLogin" class="card-mod p-8">
+                    <div class="text-center mb-6"><span class="text-5xl">🔒</span><h2 class="text-2xl font-bold mt-3 text-secundaria">Área Administrativa</h2></div>
+                    <div class="space-y-4">
+                        <input type="text" id="adminUser" placeholder="Usuário" class="w-full border border-gray-300 rounded-lg px-4 py-2" />
+                        <input type="password" id="adminPass" placeholder="Senha" class="w-full border border-gray-300 rounded-lg px-4 py-2" onkeydown="if(event.key==='Enter') fazerLogin()" />
+                        <p id="erroLogin" class="text-red-600 text-sm hidden">❌ Usuário ou senha incorretos.</p>
+                        <button onclick="fazerLogin()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 rounded-lg">Entrar</button>
+                    </div>
+                </div>
+                <div id="painelAdmin" class="hidden">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-bold text-secundaria">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button></div>
+                    <div class="card-mod mb-6"><h3 class="text-lg font-bold text-gray-800 mb-4">📋 Clientes</h3><div id="listaClientes" class="space-y-3"><p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p></div></div>
+                    <button onclick="limparClientes()" class="w-full bg-red-100 hover:bg-red-200 text-red-700 font-bold py-2 rounded-lg text-sm">🗑️ Limpar lista</button>
+                </div>
+            </div>
+        </section>
 
     </main>
 
     <!-- RODAPÉ -->
     <footer class="bg-secundaria text-principal py-8 px-4 mt-12">
-      <div class="max-w-7xl mx-auto text-center">
-        <div class="flex justify-center items-center mb-4 pb-4 border-b border-principal/20">
-          <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-rodape text-instagram" title="Instagram"><i class="fa fa-instagram"></i></a>
-          <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-rodape text-youtube" title="YouTube"><i class="fa fa-youtube-play"></i></a>
-          <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-rodape text-facebook" title="Facebook Gaming"><i class="fa fa-facebook-square"></i></a>
-          <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-rodape text-cults" title="Cults - Arquivos 3D"><i class="fa fa-cube"></i></a>
-          <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-rodape text-whatsapp" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex justify-center items-center mb-4 pb-4 border-b border-principal/20">
+                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-rodape text-instagram"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-rodape text-youtube"><i class="fa fa-youtube-play"></i></a>
+                <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-rodape text-facebook"><i class="fa fa-facebook-square"></i></a>
+                <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-rodape text-cults"><i class="fa fa-cube"></i></a>
+                <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-rodape text-whatsapp"><i class="fa fa-whatsapp"></i></a>
+            </div>
+            <p class="text-principal/80 text-sm">© 2026 VCORE GAMES - Todos os direitos reservados</p>
+            <p class="text-principal/40 text-xs mt-1">Os mods são de autoria dos modders do Nexus Mods. Este site oferece exclusivamente serviço de organização e instalação.</p>
         </div>
-        <p class="text-principal/80 text-sm">© 2026 VCORE GAMES - Todos os direitos reservados</p>
-        <p class="text-principal/40 text-xs mt-1">Os mods são de autoria dos modders do Nexus Mods. Este site oferece exclusivamente serviço de organização e instalação.</p>
-      </div>
     </footer>
 
-    <!-- BOTÃO VOLTAR AO TOPO -->
-    <a href="#" class="btn-topo" id="btnTopo" title="Voltar ao topo">
-      <i class="fa fa-chevron-up"></i>
-    </a>
+    <a href="#" class="btn-topo" id="btnTopo" title="Voltar ao topo"><i class="fa fa-chevron-up"></i></a>
 
-    <!-- BARRA FLUTUANTE DE TOTAL -->
     <div id="barraTotal" class="barra-total">
-      <div class="flex items-center gap-3">
-        <i class="fa fa-shopping-cart text-xl"></i>
-        <div>
-          <p class="text-xs leading-none" style="color:rgba(158,255,0,0.7)">Total do carrinho</p>
-          <p id="barraTotalValor" class="text-xl font-bold leading-tight">R$ 0,00</p>
+        <div class="flex items-center gap-3">
+            <i class="fa fa-shopping-cart text-xl"></i>
+            <div><p class="text-xs leading-none" style="color:rgba(158,255,0,0.7)">Total do carrinho</p><p id="barraTotalValor" class="text-xl font-bold leading-tight">R$ 0,00</p></div>
+            <span id="barraTotalItens" class="text-xs font-bold px-2 py-1 rounded-full" style="background:rgba(158,255,0,0.2)">0 item</span>
         </div>
-        <span id="barraTotalItens" class="text-xs font-bold px-2 py-1 rounded-full" style="background:rgba(158,255,0,0.2)">0 item</span>
-      </div>
-      <button onclick="abrirCarrinho()" style="background:#9EFF00;color:#0A1153" class="font-bold py-2 px-5 rounded-lg text-sm hover:opacity-90 transition-opacity active:scale-95 transform">
-        Ver Carrinho →
-      </button>
+        <button onclick="abrirCarrinho()" style="background:#9EFF00;color:#0A1153" class="font-bold py-2 px-5 rounded-lg text-sm hover:opacity-90 transition-opacity active:scale-95 transform">Ver Carrinho →</button>
     </div>
 
     <script>
-      var LINK_HOTMART = "https://pay.hotmart.com/U96910894M";
-      var ADMIN_USER = "admin";
-      var ADMIN_PASS = "vcore2026";
-      var CLIENTE_USER = "admin";
-      var CLIENTE_PASS = "vcore2026";
+        // ============ CONFIGURAÇÕES ============
+        var CHAVE_PIX = "5516992952763";
+        var NOME_PIX = "Rodrigo Paulino da Silva";
+        var WHATSAPP_NUMERO = "5516981097916";
+        var ADMIN_USER = "admin";
+        var ADMIN_PASS = "vcore2026";
+        var CLIENTE_USER = "admin";
+        var CLIENTE_PASS = "vcore2026";
 
-      var carrinho = [];
-      var adminLogado = false;
-      var clienteLogado = false;
-      var clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
+        var carrinho = [];
+        var adminLogado = false;
+        var clienteLogado = false;
+        var clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
 
-      var botaoMenu = document.getElementById('botaoMenu');
-      var listaMenu = document.getElementById('listaMenu');
-      var iconeMenu = document.getElementById('iconeMenu');
+        // ============ MENU DROPDOWN ============
+        var botaoMenu = document.getElementById('botaoMenu');
+        var listaMenu = document.getElementById('listaMenu');
+        var iconeMenu = document.getElementById('iconeMenu');
 
-      botaoMenu.addEventListener('click', function() {
-        listaMenu.classList.toggle('aberto');
-        iconeMenu.classList.toggle('rotate-180');
-      });
-
-      document.addEventListener('click', function(e) {
-        if (!botaoMenu.contains(e.target) && !listaMenu.contains(e.target)) {
-          listaMenu.classList.remove('aberto');
-          iconeMenu.classList.remove('rotate-180');
-        }
-      });
-
-      function irParaPacotes(event) {
-        document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
-        document.getElementById('menu-inicio').classList.remove('hidden');
-        document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
-        event.target.classList.add('menu-ativo');
-        listaMenu.classList.remove('aberto');
-        iconeMenu.classList.remove('rotate-180');
-        setTimeout(function() {
-          var alvo = document.getElementById('pacotes-premium');
-          if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 50);
-      }
-
-      function mudarMenu(event, idMenu) {
-        document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
-        document.getElementById('menu-' + idMenu).classList.remove('hidden');
-        document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
-        event.target.classList.add('menu-ativo');
-        listaMenu.classList.remove('aberto');
-        iconeMenu.classList.remove('rotate-180');
-        if (idMenu === 'admin') renderizarPainelAdmin();
-        if (idMenu === 'area-cliente') renderizarAreaCliente();
-      }
-
-      function renderizarAreaCliente() {
-        if (clienteLogado) {
-          document.getElementById('clienteLoginPainel').classList.add('hidden');
-          document.getElementById('clienteGuiaPainel').classList.remove('hidden');
-        } else {
-          document.getElementById('clienteLoginPainel').classList.remove('hidden');
-          document.getElementById('clienteGuiaPainel').classList.add('hidden');
-        }
-      }
-
-      function fazerLoginCliente() {
-        var user = document.getElementById('clienteLoginUser').value.trim();
-        var pass = document.getElementById('clienteLoginPass').value.trim();
-        if (user === CLIENTE_USER && pass === CLIENTE_PASS) {
-          clienteLogado = true;
-          document.getElementById('erroLoginCliente').classList.add('hidden');
-          document.getElementById('clienteLoginPainel').classList.add('hidden');
-          document.getElementById('clienteGuiaPainel').classList.remove('hidden');
-        } else {
-          document.getElementById('erroLoginCliente').classList.remove('hidden');
-        }
-      }
-
-      function fazerLogoutCliente() {
-        clienteLogado = false;
-        document.getElementById('clienteLoginPainel').classList.remove('hidden');
-        document.getElementById('clienteGuiaPainel').classList.add('hidden');
-        document.getElementById('clienteLoginUser').value = '';
-        document.getElementById('clienteLoginPass').value = '';
-        document.getElementById('erroLoginCliente').classList.add('hidden');
-      }
-
-      function fazerLogin() {
-        var user = document.getElementById('adminUser').value.trim();
-        var pass = document.getElementById('adminPass').value.trim();
-        if (user === ADMIN_USER && pass === ADMIN_PASS) {
-          adminLogado = true;
-          document.getElementById('painelLogin').classList.add('hidden');
-          document.getElementById('painelAdmin').classList.remove('hidden');
-          renderizarListaClientes();
-        } else {
-          document.getElementById('erroLogin').classList.remove('hidden');
-        }
-      }
-
-      function fazerLogout() {
-        adminLogado = false;
-        document.getElementById('painelLogin').classList.remove('hidden');
-        document.getElementById('painelAdmin').classList.add('hidden');
-        document.getElementById('adminUser').value = '';
-        document.getElementById('adminPass').value = '';
-        document.getElementById('erroLogin').classList.add('hidden');
-      }
-
-      function renderizarPainelAdmin() {
-        if (adminLogado) renderizarListaClientes();
-      }
-
-      function gerarGuiaHTML(nome, email) {
-        return '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">' +
-          '<title>Guia de Instalação — VCORE GAMES</title>' +
-          '<style>' +
-            'body{font-family:Arial,sans-serif;max-width:680px;margin:40px auto;padding:24px;color:#222;background:#f9f9f9;}' +
-            'h1{background:#0A1153;color:#9EFF00;padding:18px 24px;border-radius:10px;font-size:1.4rem;margin-bottom:8px;}' +
-            '.subtitulo{color:#555;font-size:0.95rem;margin-bottom:24px;padding-left:4px;}' +
-            '.bloco{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:18px 20px;margin-bottom:16px;}' +
-            '.bloco h2{color:#0A1153;font-size:1rem;margin:0 0 10px 0;border-bottom:2px solid #9EFF00;padding-bottom:6px;}' +
-            '.bloco p,.bloco li{font-size:0.92rem;line-height:1.7;margin:4px 0;}' +
-            '.bloco ul{padding-left:18px;margin:6px 0;}' +
-            'a{color:#1155cc;font-weight:bold;}' +
-            '.aviso{background:#fff8e1;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin-bottom:10px;}' +
-            '.alerta{background:#fff0f0;border-left:4px solid #ef4444;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin:8px 0;}' +
-            '.dica{background:#f0fff4;border-left:4px solid #22c55e;padding:10px 14px;border-radius:6px;font-size:0.88rem;margin-top:8px;}' +
-            '.bloco-premium{background:linear-gradient(135deg,#0A1153 0%,#1a2a7a 100%);border:2px solid #9EFF00;border-radius:10px;padding:20px 22px;margin-bottom:20px;}' +
-            '.bloco-premium h2{color:#9EFF00;font-size:1.1rem;margin:0 0 10px 0;border-bottom:2px solid rgba(158,255,0,0.4);padding-bottom:6px;}' +
-            '.bloco-premium p,.bloco-premium li{font-size:0.92rem;line-height:1.7;margin:4px 0;color:rgba(158,255,0,0.9);}' +
-            '.bloco-premium ul{padding-left:18px;margin:6px 0;}' +
-            '.bloco-premium .aviso-amarelo{background:rgba(245,158,11,0.15);border-left:3px solid #f59e0b;padding:8px 12px;border-radius:5px;font-size:0.85rem;color:#fbbf24;margin-top:8px;}' +
-            '.bloco-premium .dica-verde{background:rgba(34,197,94,0.1);border-left:3px solid #22c55e;padding:8px 12px;border-radius:5px;font-size:0.85rem;color:#86efac;margin-top:6px;}' +
-            '.bloco-premium code{background:rgba(158,255,0,0.15);color:#9EFF00;padding:1px 5px;border-radius:3px;font-size:0.88rem;}' +
-            '.divisor{text-align:center;color:#999;font-size:0.8rem;font-weight:bold;text-transform:uppercase;letter-spacing:1px;margin:20px 0 12px;padding:8px;background:#f0f0f0;border-radius:5px;}' +
-            '.rodape{text-align:center;margin-top:28px;padding:16px;background:#0A1153;color:#9EFF00;border-radius:10px;font-size:0.9rem;}' +
-            '.rodape a{color:#9EFF00;}' +
-            'code{background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.88rem;}' +
-          '</style></head><body>' +
-          '<h1>📄 Guia Completo de Instalação — VCORE GAMES</h1>' +
-          '<p class="subtitulo">Olá, <strong>' + nome + '</strong>! Obrigado pela sua compra. Siga os passos abaixo para instalar seus mods.</p>' +
-
-          '<div class="bloco-premium">' +
-            '<h2>🚀 Comprou um Pacote Premium? É só copiar e jogar!</h2>' +
-            '<p>Os Pacotes Prata, Ouro e Diamante já vêm com todos os arquivos pré-configurados. Siga apenas o <strong style="color:#9EFF00;">Passo 0</strong> abaixo e ignore os demais.</p>' +
-            '<br>' +
-            '<p><strong style="color:#9EFF00;">📂 Passo 0 — Como usar o arquivo pronto do Pacote Premium</strong></p>' +
-            '<ul>' +
-              '<li>1. Baixe e <strong>descompacte</strong> o arquivo recebido por e-mail (.zip ou .rar)</li>' +
-              '<li>2. Abra o explorador de arquivos e navegue até a <strong>pasta raiz do jogo</strong> — onde fica o <code>GRB.exe</code></li>' +
-            '</ul>' +
-            '<div class="aviso-amarelo" style="margin:10px 0;">' +
-              '<strong>📁 Onde costuma estar a pasta do jogo:</strong><br>' +
-              '• <strong>Ubisoft Connect:</strong> C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Ghost Recon Breakpoint<br>' +
-              '• <strong>Steam:</strong> C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ghost Recon Breakpoint<br>' +
-              '• O caminho pode variar. Procure pelo arquivo <strong>GRB.exe</strong> para localizar a pasta certa.' +
-            '</div>' +
-            '<ul>' +
-              '<li>3. Copie os arquivos descompactados <strong>diretamente para dentro dessa pasta</strong></li>' +
-              '<li>4. Se o Windows perguntar sobre substituir arquivos, clique em <strong>Sim para todos</strong></li>' +
-              '<li>5. Abra o jogo normalmente pelo Ubisoft Connect ou Steam — os mods já estarão ativos! 🎮</li>' +
-            '</ul>' +
-            '<div class="aviso-amarelo">⚠️ <strong>Atenção:</strong> Não renomeie os arquivos copiados. Confirme a substituição se solicitado pelo Windows.</div>' +
-            '<div class="dica-verde">💡 <strong>Dica:</strong> Faça um backup da pasta do jogo antes de copiar, para poder restaurar o original se precisar.</div>' +
-          '</div>' +
-
-          '<div class="divisor">👇 Passos abaixo: somente para mods individuais (não pacote premium)</div>' +
-
-          '<div class="bloco">' +
-            '<h2>📋 O que você precisa ter</h2>' +
-            '<div class="aviso">⚠️ É obrigatório criar uma <strong>conta gratuita no Nexus Mods</strong> para baixar os programas:<br>' +
-              '<a href="https://www.nexusmods.com/" target="_blank">https://www.nexusmods.com/</a></div>' +
-            '<ul>' +
-              '<li>GRB Mod Manager — <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1602?tab=files" target="_blank">Baixar aqui</a></li>' +
-              '<li>AnvilToolkit — <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/16?tab=files" target="_blank">Baixar aqui</a></li>' +
-              '<li>Arquivo do mod baixado (.zip / .rar / .7z)</li>' +
-              '<li>Jogo Ghost Recon Breakpoint instalado</li>' +
-            '</ul>' +
-          '</div>' +
-
-          '<div class="bloco">' +
-            '<h2>✅ Passo 1 — Configurando o Programa</h2>' +
-            '<p>1. Abra o <strong>GRB Mod Manager</strong></p>' +
-            '<p>2. Clique em <strong>📁 Selecionar Pasta do Jogo</strong> e escolha a pasta onde o jogo está instalado no seu PC</p>' +
-            '<p>3. Clique no ícone de <strong>🔨 Ferramentas</strong> e selecione o arquivo <code>AnvilToolkit.exe</code> que você já instalou</p>' +
-          '</div>' +
-
-          '<div class="bloco">' +
-            '<h2>✅ Passo 2 — Adicionando e Instalando o Mod</h2>' +
-            '<p>1. Clique em <strong>➕ Adicionar Mod</strong></p>' +
-            '<p>2. Selecione o arquivo do mod que você baixou <strong>(não precisa descompactar!)</strong></p>' +
-            '<p>3. O programa vai ler automaticamente. Clique em <strong>✅ Instalar</strong> e aguarde terminar</p>' +
-            '<p>4. No final, anote os nomes dos arquivos <code>.forge</code> que aparecerem na mensagem</p>' +
-          '</div>' +
-
-          '<div class="bloco">' +
-            '<h2>✅ Passo 3 — Etapa Obrigatória: Empacotar</h2>' +
-            '<div class="alerta">⚠️ <strong>Sem essa etapa o mod não funciona!</strong></div>' +
-            '<p>1. Clique em <strong>🛠️ Abrir AnvilToolkit</strong></p>' +
-            '<p>2. Selecione um por um os arquivos <code>.forge</code> que foram indicados</p>' +
-            '<p>3. Clique em <strong>🔄 Repacotar / Repack</strong> e confirme</p>' +
-            '<p>4. Aguarde concluir e feche o programa</p>' +
-          '</div>' +
-
-          '<div class="bloco">' +
-            '<h2>✅ Passo 4 — Pronto!</h2>' +
-            '<p>Volte para a tela principal, veja que o mod está como <strong>ATIVADO</strong>. Agora é só abrir o jogo normalmente pelo Ubisoft Connect ou Steam! 🎮</p>' +
-            '<div class="dica">💡 Dica: Instale apenas um mod por vez para evitar conflitos ou erros.</div>' +
-          '</div>' +
-
-          '<div class="bloco">' +
-            '<h2>❌ Como Desinstalar (voltar ao original)</h2>' +
-            '<p>1. Abra o Mod Manager</p>' +
-            '<p>2. Na lista, clique no mod e escolha <strong>🗑️ Remover / Desinstalar</strong></p>' +
-            '<p>3. Repita o <strong>Passo 3</strong> para restaurar os arquivos originais</p>' +
-          '</div>' +
-
-          '<div class="rodape">' +
-            '<p><strong>Qualquer dúvida, fale comigo:</strong></p>' +
-            '<p>📱 WhatsApp: <a href="https://wa.me/5516981097916" target="_blank">https://wa.me/5516981097916</a></p>' +
-            '<p>📸 Instagram: <a href="https://instagram.com/rodrigovecoregaming" target="_blank">@rodrigovecoregaming</a></p>' +
-            '<p style="margin-top:10px;">Bons jogos! 🎮 — Rodrigo / VCORE GAMES</p>' +
-          '</div>' +
-          '</body></html>';
-      }
-
-      function abrirGuiaEmail(nome, email) {
-        var html = gerarGuiaHTML(nome, email);
-        var blob = new Blob([html], { type: 'text/html' });
-        var url = URL.createObjectURL(blob);
-        window.open(url, '_blank');
-        setTimeout(function() { URL.revokeObjectURL(url); }, 10000);
-      }
-
-      function renderizarListaClientes() {
-        clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
-        var lista = document.getElementById('listaClientes');
-        if (clientesRegistrados.length === 0) {
-          lista.innerHTML = '<p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p>';
-          return;
-        }
-        lista.innerHTML = '';
-        clientesRegistrados.forEach(function(c) {
-          var div = document.createElement('div');
-          div.className = 'p-3 bg-gray-50 border border-gray-200 rounded-lg';
-          div.innerHTML =
-            '<div class="flex justify-between items-start">' +
-              '<div>' +
-                '<p class="font-bold text-gray-800 text-sm">' + c.nome + '</p>' +
-                '<p class="text-blue-600 text-sm">' + c.email + '</p>' +
-                '<p class="text-gray-400 text-xs mt-1">Itens: ' + c.itens + '</p>' +
-                '<p class="text-gray-400 text-xs">Total: R$ ' + c.total + ' | ' + c.data + '</p>' +
-              '</div>' +
-              '<button onclick="abrirGuiaEmail(\'' + c.nome.replace(/'/g,"\\'") + '\',\'' + c.email.replace(/'/g,"\\'") + '\')" ' +
-                'class="bg-secundaria text-principal text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-900 transition-colors whitespace-nowrap cursor-pointer border-0">' +
-                '📧 Enviar Guia' +
-              '</button>' +
-            '</div>';
-          lista.appendChild(div);
+        botaoMenu.addEventListener('click', function() {
+            listaMenu.classList.toggle('aberto');
+            iconeMenu.classList.toggle('rotate-180');
         });
-      }
 
-      function limparClientes() {
-        if (confirm('Tem certeza? Isso vai apagar toda a lista de clientes.')) {
-          localStorage.setItem('vcore_clientes', '[]');
-          clientesRegistrados = [];
-          renderizarListaClientes();
+        document.addEventListener('click', function(e) {
+            if (!botaoMenu.contains(e.target) && !listaMenu.contains(e.target)) {
+                listaMenu.classList.remove('aberto');
+                iconeMenu.classList.remove('rotate-180');
+            }
+        });
+
+        function irParaPacotes(event) {
+            document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
+            document.getElementById('menu-inicio').classList.remove('hidden');
+            document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
+            event.target.classList.add('menu-ativo');
+            listaMenu.classList.remove('aberto');
+            iconeMenu.classList.remove('rotate-180');
+            setTimeout(function() {
+                var alvo = document.getElementById('pacotes-premium');
+                if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
         }
-      }
 
-      function adicionarAoCarrinho(nome, preco) {
-        var existente = null;
-        for (var i = 0; i < carrinho.length; i++) {
-          if (carrinho[i].nome === nome) { existente = carrinho[i]; break; }
+        function mudarMenu(event, idMenu) {
+            document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
+            document.getElementById('menu-' + idMenu).classList.remove('hidden');
+            document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
+            event.target.classList.add('menu-ativo');
+            listaMenu.classList.remove('aberto');
+            iconeMenu.classList.remove('rotate-180');
+            if (idMenu === 'admin') renderizarPainelAdmin();
+            if (idMenu === 'area-cliente') renderizarAreaCliente();
         }
-        if (existente) { existente.qtd += 1; } else { carrinho.push({ nome: nome, preco: preco, qtd: 1 }); }
-        atualizarCarrinho();
-        mostrarNotificacao(nome + ' adicionado ao carrinho! 🛒');
-      }
 
-      function alterarQtd(nome, delta) {
-        for (var i = 0; i < carrinho.length; i++) {
-          if (carrinho[i].nome === nome) {
-            carrinho[i].qtd += delta;
-            if (carrinho[i].qtd <= 0) { carrinho.splice(i, 1); }
-            break;
-          }
+        // ============ ÁREA DO CLIENTE ============
+        function renderizarAreaCliente() {
+            if (clienteLogado) {
+                document.getElementById('clienteLoginPainel').classList.add('hidden');
+                document.getElementById('clienteGuiaPainel').classList.remove('hidden');
+            } else {
+                document.getElementById('clienteLoginPainel').classList.remove('hidden');
+                document.getElementById('clienteGuiaPainel').classList.add('hidden');
+            }
         }
-        atualizarCarrinho();
-      }
 
-      function removerDoCarrinho(nome) {
-        for (var i = 0; i < carrinho.length; i++) {
-          if (carrinho[i].nome === nome) { carrinho.splice(i, 1); break; }
+        function fazerLoginCliente() {
+            var user = document.getElementById('clienteLoginUser').value.trim();
+            var pass = document.getElementById('clienteLoginPass').value.trim();
+            if (user === CLIENTE_USER && pass === CLIENTE_PASS) {
+                clienteLogado = true;
+                document.getElementById('erroLoginCliente').classList.add('hidden');
+                document.getElementById('clienteLoginPainel').classList.add('hidden');
+                document.getElementById('clienteGuiaPainel').classList.remove('hidden');
+            } else {
+                document.getElementById('erroLoginCliente').classList.remove('hidden');
+            }
         }
-        atualizarCarrinho();
-      }
 
-      function atualizarCarrinho() {
-        var lista = document.getElementById('listaCarrinho');
-        var totalEl = document.getElementById('valorTotal');
-        var badge = document.getElementById('badgeCarrinho');
-        var barra = document.getElementById('barraTotal');
-        var barraTotalValor = document.getElementById('barraTotalValor');
-        var barraTotalItens = document.getElementById('barraTotalItens');
-
-        lista.innerHTML = '';
-        var totalUnidades = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0);
-        var totalValor = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
-        var totalFormatado = 'R$ ' + totalValor.toFixed(2).replace('.', ',');
-
-        if (carrinho.length > 0) {
-          badge.classList.remove('hidden');
-          badge.innerText = totalUnidades;
-          carrinho.forEach(function(item) {
-            var subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
-            var precoUnit = item.preco.toFixed(2).replace('.', ',');
-            var div = document.createElement('div');
-            div.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e5e7eb;gap:8px;';
-            div.innerHTML =
-              '<div style="flex:1;min-width:0;">' +
-                '<p style="font-weight:600;font-size:0.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + item.nome + '</p>' +
-                '<p style="font-size:0.78rem;color:#6b7280;">R$ ' + precoUnit + ' cada</p>' +
-              '</div>' +
-              '<div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">' +
-                '<button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\', -1)" style="width:26px;height:26px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;font-size:1rem;border:none;cursor:pointer;line-height:1;">−</button>' +
-                '<span style="font-weight:700;min-width:20px;text-align:center;">' + item.qtd + '</span>' +
-                '<button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\', 1)" style="width:26px;height:26px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;font-size:1rem;border:none;cursor:pointer;line-height:1;">+</button>' +
-                '<span style="font-weight:700;min-width:68px;text-align:right;color:#111827;">R$ ' + subtotal + '</span>' +
-                '<button onclick="removerDoCarrinho(\'' + item.nome.replace(/'/g, "\\'") + '\')" style="color:#dc2626;font-size:0.78rem;font-weight:700;background:none;border:none;cursor:pointer;margin-left:4px;">✕</button>' +
-              '</div>';
-            lista.appendChild(div);
-          });
-          totalEl.innerText = totalFormatado;
-          barraTotalValor.innerText = totalFormatado;
-          barraTotalItens.innerText = totalUnidades + (totalUnidades === 1 ? ' item' : ' itens');
-          barra.classList.add('visivel');
-        } else {
-          badge.classList.add('hidden');
-          lista.innerHTML = '<p class="text-gray-500 text-center">Seu carrinho está vazio.</p>';
-          totalEl.innerText = 'R$ 0,00';
-          barra.classList.remove('visivel');
-          barraTotalValor.innerText = 'R$ 0,00';
-          barraTotalItens.innerText = '0 item';
+        function fazerLogoutCliente() {
+            clienteLogado = false;
+            document.getElementById('clienteLoginPainel').classList.remove('hidden');
+            document.getElementById('clienteGuiaPainel').classList.add('hidden');
+            document.getElementById('clienteLoginUser').value = '';
+            document.getElementById('clienteLoginPass').value = '';
+            document.getElementById('erroLoginCliente').classList.add('hidden');
         }
-      }
 
-      function mostrarNotificacao(msg) {
-        var notif = document.getElementById('notificacaoCarrinho');
-        if (!notif) {
-          notif = document.createElement('div');
-          notif.id = 'notificacaoCarrinho';
-          notif.style.cssText = 'position:fixed;top:80px;right:16px;background:#0A1153;color:#9EFF00;font-weight:700;padding:12px 18px;border-radius:10px;z-index:999;font-size:0.9rem;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:opacity 0.4s;opacity:0;pointer-events:none;max-width:280px;';
-          document.body.appendChild(notif);
+        // ============ ADMIN ============
+        function fazerLogin() {
+            var user = document.getElementById('adminUser').value.trim();
+            var pass = document.getElementById('adminPass').value.trim();
+            if (user === ADMIN_USER && pass === ADMIN_PASS) {
+                adminLogado = true;
+                document.getElementById('painelLogin').classList.add('hidden');
+                document.getElementById('painelAdmin').classList.remove('hidden');
+                renderizarListaClientes();
+            } else {
+                document.getElementById('erroLogin').classList.remove('hidden');
+            }
         }
-        notif.innerText = msg;
-        notif.style.opacity = '1';
-        clearTimeout(notif._timer);
-        notif._timer = setTimeout(function() { notif.style.opacity = '0'; }, 2500);
-      }
 
-      function abrirCarrinho() {
-        document.getElementById('modalCarrinho').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
-
-      function fecharCarrinho() {
-        document.getElementById('modalCarrinho').style.display = 'none';
-        document.body.style.overflow = 'auto';
-      }
-
-      document.getElementById('modalCarrinho').addEventListener('click', function(e) {
-        if (e.target === this) fecharCarrinho();
-      });
-
-      function finalizarCompra() {
-        if (carrinho.length === 0) { mostrarNotificacao('Seu carrinho está vazio! 🛒'); return; }
-        var nome = document.getElementById('clienteNome').value.trim();
-        var email = document.getElementById('clienteEmail').value.trim();
-        if (!nome || !email) {
-          mostrarNotificacao('⚠️ Preencha seu nome e e-mail para continuar!');
-          document.getElementById('clienteNome').focus();
-          return;
+        function fazerLogout() {
+            adminLogado = false;
+            document.getElementById('painelLogin').classList.remove('hidden');
+            document.getElementById('painelAdmin').classList.add('hidden');
+            document.getElementById('adminUser').value = '';
+            document.getElementById('adminPass').value = '';
+            document.getElementById('erroLogin').classList.add('hidden');
         }
-        var itens = carrinho.map(function(item) { return item.qtd + 'x ' + item.nome; }).join(', ');
-        var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
-        var agora = new Date();
-        var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
-        clientesRegistrados.push({ nome: nome, email: email, itens: itens, total: total.toFixed(2).replace('.', ','), data: dataStr });
-        localStorage.setItem('vcore_clientes', JSON.stringify(clientesRegistrados));
-        var linkFinal = LINK_HOTMART + '?checkoutMode=10&src=site&name=' + encodeURIComponent(nome) + '&email=' + encodeURIComponent(email);
-        window.open(linkFinal, '_blank');
-        carrinho = [];
-        atualizarCarrinho();
-        fecharCarrinho();
-        document.getElementById('clienteNome').value = '';
-        document.getElementById('clienteEmail').value = '';
-        mostrarNotificacao('✅ Redirecionando para o pagamento!');
-      }
 
-      var btnTopo = document.getElementById('btnTopo');
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) { btnTopo.classList.remove('hidden'); } else { btnTopo.classList.add('hidden'); }
-      });
-      btnTopo.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+        function renderizarPainelAdmin() { if (adminLogado) renderizarListaClientes(); }
+
+        function gerarGuiaHTML(nome, email) {
+            return '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Guia VCORE GAMES</title><style>body{font-family:Arial,sans-serif;max-width:680px;margin:40px auto;padding:24px;color:#222;background:#f9f9f9;}h1{background:#0A1153;color:#9EFF00;padding:18px 24px;border-radius:10px;font-size:1.4rem;}a{color:#1155cc;font-weight:bold;}.bloco{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:18px 20px;margin-bottom:16px;}.bloco h2{color:#0A1153;font-size:1rem;border-bottom:2px solid #9EFF00;padding-bottom:6px;}.dica{background:#f0fff4;border-left:4px solid #22c55e;padding:10px 14px;border-radius:6px;margin-top:8px;}.rodape{text-align:center;margin-top:28px;padding:16px;background:#0A1153;color:#9EFF00;border-radius:10px;}</style></head><body><h1>📄 Guia de Instalação — VCORE GAMES</h1><p>Olá, <strong>' + nome + '</strong>! Obrigado pela sua compra.</p><div class="bloco"><h2>🚀 Pacote Pronto</h2><p>1. Baixe e descompacte o arquivo recebido</p><p>2. Copie os arquivos para a pasta raiz do jogo (onde está o GRB.exe)</p><p>3. Abra o jogo — os mods já estarão ativos! 🎮</p><div class="dica">💡 Dica: Faça um backup da pasta do jogo antes de copiar.</div></div><div class="rodape"><p>📱 WhatsApp: <a href="https://wa.me/5516981097916">(16) 98109-7916</a></p><p>📸 Instagram: <a href="https://instagram.com/rodrigovecoregaming">@rodrigovecoregaming</a></p><p>Bons jogos! 🎮 — Rodrigo / VCORE GAMES</p></div></body></html>';
+        }
+
+        function abrirGuiaEmail(nome, email) {
+            var html = gerarGuiaHTML(nome, email);
+            var blob = new Blob([html], { type: 'text/html' });
+            var url = URL.createObjectURL(blob);
+            window.open(url, '_blank');
+            setTimeout(function() { URL.revokeObjectURL(url); }, 10000);
+        }
+
+        function renderizarListaClientes() {
+            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
+            var lista = document.getElementById('listaClientes');
+            if (clientesRegistrados.length === 0) { lista.innerHTML = '<p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p>'; return; }
+            lista.innerHTML = '';
+            clientesRegistrados.forEach(function(c) {
+                var div = document.createElement('div');
+                div.className = 'p-3 bg-gray-50 border border-gray-200 rounded-lg';
+                div.innerHTML = '<div class="flex justify-between items-start"><div><p class="font-bold text-gray-800 text-sm">' + c.nome + '</p><p class="text-blue-600 text-sm">' + c.email + '</p><p class="text-gray-400 text-xs">Itens: ' + c.itens + ' | Total: R$ ' + c.total + ' | ' + c.data + '</p></div><button onclick="abrirGuiaEmail(\'' + c.nome.replace(/'/g,"\\'") + '\',\'' + c.email.replace(/'/g,"\\'") + '\')" class="bg-secundaria text-principal text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-900 transition-colors cursor-pointer border-0">📧 Enviar Guia</button></div>';
+                lista.appendChild(div);
+            });
+        }
+
+        function limparClientes() {
+            if (confirm('Tem certeza? Isso vai apagar toda a lista de clientes.')) {
+                localStorage.setItem('vcore_clientes', '[]');
+                clientesRegistrados = [];
+                renderizarListaClientes();
+            }
+        }
+
+        // ============ CARRINHO ============
+        function adicionarAoCarrinho(nome, preco) {
+            var existente = null;
+            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { existente = carrinho[i]; break; } }
+            if (existente) { existente.qtd += 1; } else { carrinho.push({ nome: nome, preco: preco, qtd: 1 }); }
+            atualizarCarrinho();
+            mostrarNotificacao(nome + ' adicionado ao carrinho! 🛒');
+        }
+
+        function alterarQtd(nome, delta) {
+            for (var i = 0; i < carrinho.length; i++) {
+                if (carrinho[i].nome === nome) { carrinho[i].qtd += delta; if (carrinho[i].qtd <= 0) { carrinho.splice(i, 1); } break; }
+            }
+            atualizarCarrinho();
+        }
+
+        function removerDoCarrinho(nome) {
+            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho.splice(i, 1); break; } }
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            var lista = document.getElementById('listaCarrinho');
+            var totalEl = document.getElementById('valorTotal');
+            var badge = document.getElementById('badgeCarrinho');
+            var barra = document.getElementById('barraTotal');
+            var barraTotalValor = document.getElementById('barraTotalValor');
+            var barraTotalItens = document.getElementById('barraTotalItens');
+            lista.innerHTML = '';
+            var totalUnidades = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0);
+            var totalValor = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
+            var totalFormatado = 'R$ ' + totalValor.toFixed(2).replace('.', ',');
+            if (carrinho.length > 0) {
+                badge.classList.remove('hidden');
+                badge.innerText = totalUnidades;
+                carrinho.forEach(function(item) {
+                    var subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
+                    var precoUnit = item.preco.toFixed(2).replace('.', ',');
+                    var div = document.createElement('div');
+                    div.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e5e7eb;gap:8px;';
+                    div.innerHTML = '<div style="flex:1;min-width:0;"><p style="font-weight:600;font-size:0.9rem;">' + item.nome + '</p><p style="font-size:0.78rem;color:#6b7280;">R$ ' + precoUnit + ' cada</p></div><div style="display:flex;align-items:center;gap:6px;flex-shrink:0;"><button onclick="alterarQtd(\'' + item.nome.replace(/'/g,"\\'") + '\', -1)" style="width:26px;height:26px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;border:none;cursor:pointer;">−</button><span style="font-weight:700;min-width:20px;text-align:center;">' + item.qtd + '</span><button onclick="alterarQtd(\'' + item.nome.replace(/'/g,"\\'") + '\', 1)" style="width:26px;height:26px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;border:none;cursor:pointer;">+</button><span style="font-weight:700;min-width:68px;text-align:right;">R$ ' + subtotal + '</span><button onclick="removerDoCarrinho(\'' + item.nome.replace(/'/g,"\\'") + '\')" style="color:#dc2626;font-weight:700;background:none;border:none;cursor:pointer;">✕</button></div>';
+                    lista.appendChild(div);
+                });
+                totalEl.innerText = totalFormatado;
+                barraTotalValor.innerText = totalFormatado;
+                barraTotalItens.innerText = totalUnidades + (totalUnidades === 1 ? ' item' : ' itens');
+                barra.classList.add('visivel');
+            } else {
+                badge.classList.add('hidden');
+                lista.innerHTML = '<p class="text-gray-500 text-center">Seu carrinho está vazio.</p>';
+                totalEl.innerText = 'R$ 0,00';
+                barra.classList.remove('visivel');
+                barraTotalValor.innerText = 'R$ 0,00';
+                barraTotalItens.innerText = '0 item';
+            }
+        }
+
+        function mostrarNotificacao(msg) {
+            var notif = document.getElementById('notificacaoCarrinho');
+            if (!notif) {
+                notif = document.createElement('div');
+                notif.id = 'notificacaoCarrinho';
+                notif.style.cssText = 'position:fixed;top:80px;right:16px;background:#0A1153;color:#9EFF00;font-weight:700;padding:12px 18px;border-radius:10px;z-index:999;font-size:0.9rem;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:opacity 0.4s;opacity:0;pointer-events:none;max-width:280px;';
+                document.body.appendChild(notif);
+            }
+            notif.innerText = msg;
+            notif.style.opacity = '1';
+            clearTimeout(notif._timer);
+            notif._timer = setTimeout(function() { notif.style.opacity = '0'; }, 2500);
+        }
+
+        function abrirCarrinho() { 
+            document.getElementById('modalCarrinho').style.display = 'flex'; 
+            document.body.style.overflow = 'hidden'; 
+        }
+        function fecharCarrinho() { 
+            document.getElementById('modalCarrinho').style.display = 'none'; 
+            document.body.style.overflow = 'auto'; 
+        }
+        document.getElementById('modalCarrinho').addEventListener('click', function(e) { 
+            if (e.target === this) fecharCarrinho(); 
+        });
+
+        // ============ MODAL PIX ============
+        function fecharModalPix() {
+            document.getElementById('modalPix').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        document.getElementById('modalPix').addEventListener('click', function(e) {
+            if (e.target === this) fecharModalPix();
+        });
+
+        function copiarChavePix() {
+            navigator.clipboard.writeText(CHAVE_PIX).then(function() {
+                var msg = document.getElementById('pixCopiado');
+                msg.classList.remove('hidden');
+                setTimeout(function() { msg.classList.add('hidden'); }, 3000);
+            }).catch(function() {
+                // Fallback para navegadores antigos
+                var input = document.createElement('input');
+                input.value = CHAVE_PIX;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                var msg = document.getElementById('pixCopiado');
+                msg.classList.remove('hidden');
+                setTimeout(function() { msg.classList.add('hidden'); }, 3000);
+            });
+        }
+
+        function abrirWhatsAppComprovante() {
+            var totalValor = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
+            var totalFormatado = totalValor.toFixed(2).replace('.', ',');
+            // Se o carrinho já foi limpo, pega do localStorage
+            if (totalValor === 0 && clientesRegistrados.length > 0) {
+                var ultimo = clientesRegistrados[clientesRegistrados.length - 1];
+                totalFormatado = ultimo.total;
+            }
+            var mensagem = 'Olá Rodrigo! Acabei de fazer o pagamento de R$ ' + totalFormatado + ' via PIX. Segue o comprovante em anexo.';
+            var link = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(mensagem);
+            window.open(link, '_blank');
+        }
+
+        // ============ FINALIZAR COMPRA (NOVO FLUXO PIX) ============
+        var ultimoTotalPix = 0;
+
+        function finalizarCompra() {
+            if (carrinho.length === 0) { mostrarNotificacao('Seu carrinho está vazio! 🛒'); return; }
+            var nome = document.getElementById('clienteNome').value.trim();
+            var email = document.getElementById('clienteEmail').value.trim();
+            if (!nome || !email) { 
+                mostrarNotificacao('⚠️ Preencha seu nome e e-mail!'); 
+                document.getElementById('clienteNome').focus(); 
+                return; 
+            }
+
+            // Salvar cliente
+            var itens = carrinho.map(function(item) { return item.qtd + 'x ' + item.nome; }).join(', ');
+            var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
+            ultimoTotalPix = total;
+            var totalFormatado = 'R$ ' + total.toFixed(2).replace('.', ',');
+            var agora = new Date();
+            var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+            clientesRegistrados.push({ nome: nome, email: email, itens: itens, total: total.toFixed(2).replace('.', ','), data: dataStr });
+            localStorage.setItem('vcore_clientes', JSON.stringify(clientesRegistrados));
+
+            // Fechar carrinho
+            fecharCarrinho();
+
+            // Limpar carrinho
+            carrinho = [];
+            atualizarCarrinho();
+            document.getElementById('clienteNome').value = '';
+            document.getElementById('clienteEmail').value = '';
+
+            // Preencher modal PIX
+            document.getElementById('pixValor').innerText = totalFormatado;
+            document.getElementById('pixChave').innerText = CHAVE_PIX;
+            document.getElementById('pixQrCode').src = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(CHAVE_PIX);
+            document.getElementById('pixCopiado').classList.add('hidden');
+
+            // Abrir modal PIX
+            document.getElementById('modalPix').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            mostrarNotificacao('✅ Dados salvos! Faça o PIX e envie o comprovante.');
+        }
+
+        // ============ BOTÃO VOLTAR AO TOPO ============
+        var btnTopo = document.getElementById('btnTopo');
+        window.addEventListener('scroll', function() { 
+            if (window.scrollY > 300) { btnTopo.classList.remove('hidden'); } 
+            else { btnTopo.classList.add('hidden'); } 
+        });
+        btnTopo.addEventListener('click', function(e) { 
+            e.preventDefault(); 
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        });
     </script>
-  </body>
+</body>
 </html>
