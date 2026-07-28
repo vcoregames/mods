@@ -103,7 +103,7 @@
 
     <!-- ==================== HERO ==================== -->
     <section class="relative py-16 md:py-20 text-center text-white overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #16213e 50%, #0f3460 100%);">
-        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 320%22><path fill=%22%239EFF00%22 d=%22M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z%22></path></svg>'); background-repeat: no-repeat; background-position: bottom; background-size: cover;"></div>
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 320%22><path fill=%22%239EFF00%22 d=%22M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320,192,320,96,320,48,320L0,320Z%22></path></svg>'); background-repeat: no-repeat; background-position: bottom; background-size: cover;"></div>
         <div class="relative z-10 max-w-4xl mx-auto px-4">
             <h2 class="text-3xl md:text-5xl font-bold mb-3 text-shadow">
                 Mods <span style="color:#9EFF00;">Ghost Recon</span> Breakpoint
@@ -144,29 +144,31 @@
             <span class="fechar-modal" onclick="fecharModalPix()">×</span>
             <div class="text-center">
                 <h2 class="text-2xl font-bold text-secundaria mb-2">💳 Pagamento via PIX</h2>
-                <p class="text-gray-500 text-sm mb-4">Escaneie o QR Code ou copie a chave PIX abaixo</p>
+                <p class="text-gray-500 text-sm mb-4">Escaneie o QR Code ou copie o Pix Copia e Cola abaixo</p>
 
                 <!-- Valor -->
                 <div class="bg-secundaria text-principal rounded-xl py-3 px-6 mb-4 inline-block">
                     <p class="text-xs opacity-70">Valor a pagar</p>
-                    <p id="pixValor" class="text-3xl font-bold">R$ 0,00</p>
+                    <p id="pixValor" class="text-3xl font-bold">Informe no seu banco</p>
                 </div>
 
-                <!-- QR Code -->
+                <!-- QR Code PIX -->
                 <div class="bg-gray-100 rounded-xl p-4 mb-4 inline-block">
                     <img id="pixQrCode" src="" alt="QR Code PIX" class="w-56 h-56 mx-auto" />
                     <p class="text-xs text-gray-500 mt-2">Aponte a câmera do seu app de banco</p>
                 </div>
 
-                <!-- Chave PIX -->
+                <!-- Pix Copia e Cola -->
                 <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-4 mb-4">
-                    <p class="text-xs text-gray-500 mb-2 font-bold">📋 Chave PIX (telefone)</p>
-                    <p id="pixChave" class="text-lg font-bold text-secundaria tracking-wide select-all">5516992952763</p>
-                    <p class="text-sm text-gray-600 mt-1">Rodrigo Paulino da Silva</p>
-                    <button onclick="copiarChavePix()" class="mt-3 bg-secundaria hover:bg-blue-900 text-principal font-bold py-2 px-5 rounded-lg text-sm transition-colors w-full">
-                        📋 Copiar Chave PIX
+                    <p class="text-xs text-gray-500 mb-2 font-bold">📋 PIX COPIA E COLA</p>
+                    <textarea id="pixCopiaCola" readonly rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-xs text-gray-700 bg-white resize-none focus:outline-none select-all"></textarea>
+                    <button onclick="copiarPixCopiaCola()" class="mt-3 bg-secundaria hover:bg-blue-900 text-principal font-bold py-2 px-5 rounded-lg text-sm transition-colors w-full">
+                        📋 Copiar Pix Copia e Cola
                     </button>
-                    <p id="pixCopiado" class="text-green-600 text-xs font-bold mt-2 hidden">✅ Chave copiada com sucesso!</p>
+                    <p id="pixCopiado" class="text-green-600 text-xs font-bold mt-2 hidden">✅ Pix Copia e Cola copiado com sucesso!</p>
+                    <p class="text-sm text-gray-600 mt-2">Beneficiário: <strong>Rodrigo Paulino da Silva</strong></p>
+                    <p class="text-xs text-gray-500">Rodrigo Paulino da Silva</p>
+                    <p class="text-xs text-gray-400 mt-1">Chave Pix: 16992952763</p>
                 </div>
 
                 <!-- Botão WhatsApp -->
@@ -183,187 +185,6 @@
 
         <!-- INÍCIO -->
         <section id="menu-inicio" class="conteudo-menu">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold mb-3 text-gray-800">Arquivos Prontos para Instalação</h2>
-                <p class="text-gray-500 max-w-2xl mx-auto">Todos os mods são arquivos originais modificados apenas para melhorar desempenho, visual e jogabilidade.<br /><strong>Sem trapaças — apenas aprimoramentos legítimos!</strong></p>
-            </div>
-
-            <h3 class="text-xl font-bold mb-6 text-center text-gray-800 border-b-2 border-principal pb-2 inline-block w-full">🔥 Mods em Destaque</h3>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 mt-8">
-
-                <!-- CAIXA 1 — COLETES -->
-                <div class="card-mod flex flex-col">
-                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
-                        <i class="fa fa-shield text-5xl" style="color:#9EFF00;"></i>
-                    </div>
-                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🛡️ SKIN</span>
-                    <h4 class="text-lg font-bold text-gray-800 mb-1">Coletes — Mod de Aparência</h4>
-                    <p class="text-gray-500 text-sm mb-3 flex-1">Novos visuais de colete tático com texturas de alta qualidade.</p>
-                    <div class="area-midia">
-                        <a href="https://www.youtube.com/watch?v=y0zmA_XbtIk&t=448s" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
-                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
-                        </a>
-                    </div>
-                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 19,90</span>
-                    <button onclick="adicionarAoCarrinho('Coletes - Mod de Aparência', 19.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-                </div>
-
-                <!-- CAIXA 2 — ARMAS E MIRAS -->
-                <div class="card-mod flex flex-col">
-                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
-                        <i class="fa fa-crosshairs text-5xl" style="color:#9EFF00;"></i>
-                    </div>
-                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🔫 ARMAS</span>
-                    <h4 class="text-lg font-bold text-gray-800 mb-1">Armas e Miras — Precisão Real</h4>
-                    <p class="text-gray-500 text-sm mb-3 flex-1">Ajuste de mira, recuo controlado e skins de armas.</p>
-                    <div class="area-midia">
-                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
-                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
-                        </a>
-                    </div>
-                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 24,90</span>
-                    <button onclick="adicionarAoCarrinho('Armas e Miras - Precisão Real', 24.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-                </div>
-
-                <!-- CAIXA 3 — CAMISA E CALÇA -->
-                <div class="card-mod flex flex-col">
-                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
-                        <i class="fa fa-user text-5xl" style="color:#9EFF00;"></i>
-                    </div>
-                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">👕 SKIN</span>
-                    <h4 class="text-lg font-bold text-gray-800 mb-1">Camisa e Calça — Visual Tático</h4>
-                    <p class="text-gray-500 text-sm mb-3 flex-1">Uniformes realistas e detalhados para seu operador.</p>
-                    <div class="area-midia">
-                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
-                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
-                        </a>
-                    </div>
-                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 16,90</span>
-                    <button onclick="adicionarAoCarrinho('Camisa e Calça - Visual Tático', 16.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-                </div>
-
-                <!-- CAIXA 4 — CAMUFLAGEM -->
-                <div class="card-mod flex flex-col">
-                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
-                        <i class="fa fa-paint-brush text-5xl" style="color:#9EFF00;"></i>
-                    </div>
-                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🌿 CAMO</span>
-                    <h4 class="text-lg font-bold text-gray-800 mb-1">Camuflagem — Skins Completas</h4>
-                    <p class="text-gray-500 text-sm mb-3 flex-1">Padrões militares realistas: floresta, deserto, urbano.</p>
-                    <div class="area-midia">
-                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
-                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
-                        </a>
-                    </div>
-                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 19,90</span>
-                    <button onclick="adicionarAoCarrinho('Camuflagem - Skins Completas', 19.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-                </div>
-
-                <!-- CAIXA 5 — FEST FEMININO -->
-                <div class="card-mod flex flex-col">
-                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
-                        <i class="fa fa-female text-5xl" style="color:#9EFF00;"></i>
-                    </div>
-                    <span class="bg-pink-500 text-white text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">♀️ FEMININO</span>
-                    <h4 class="text-lg font-bold text-gray-800 mb-1">Fest Feminino — Operadora Estilosa</h4>
-                    <p class="text-gray-500 text-sm mb-3 flex-1">Visual moderno e tático para personagem feminino.</p>
-                    <div class="area-midia">
-                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
-                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
-                        </a>
-                    </div>
-                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 22,90</span>
-                    <button onclick="adicionarAoCarrinho('Fest Feminino - Operadora Estilosa', 22.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-                </div>
-
-                <!-- CAIXA 6 — CAPACETES -->
-                <div class="card-mod flex flex-col">
-                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
-                        <i class="fa fa-helmet text-5xl" style="color:#9EFF00;"></i>
-                    </div>
-                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">⛑️ PROTEÇÃO</span>
-                    <h4 class="text-lg font-bold text-gray-800 mb-1">Capacetes e Proteções — Visual Elite</h4>
-                    <p class="text-gray-500 text-sm mb-3 flex-1">Modelos de capacete com nível de detalhe militar.</p>
-                    <div class="area-midia">
-                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
-                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
-                        </a>
-                    </div>
-                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 18,90</span>
-                    <button onclick="adicionarAoCarrinho('Capacetes e Proteções - Visual Elite', 18.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-                </div>
-
-                <!-- CAIXA 7 — VEÍCULOS -->
-                <div class="card-mod flex flex-col">
-                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
-                        <i class="fa fa-truck text-5xl" style="color:#9EFF00;"></i>
-                    </div>
-                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🚗 VEÍCULOS</span>
-                    <h4 class="text-lg font-bold text-gray-800 mb-1">Veículos Modificados</h4>
-                    <p class="text-gray-500 text-sm mb-3 flex-1">Performance e visual melhorados para jipes, motos e helicópteros.</p>
-                    <div class="area-midia">
-                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
-                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
-                        </a>
-                    </div>
-                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 22,90</span>
-                    <button onclick="adicionarAoCarrinho('Veículos Modificados - Performance e Visual', 22.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-                </div>
-
-                <!-- CAIXA 8 — SKIN PACK -->
-                <div class="card-mod flex flex-col">
-                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
-                        <i class="fa fa-star text-5xl" style="color:#9EFF00;"></i>
-                    </div>
-                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🎨 SKIN PACK</span>
-                    <h4 class="text-lg font-bold text-gray-800 mb-1">Skin Pack Completo</h4>
-                    <p class="text-gray-500 text-sm mb-3 flex-1">Conjunto completo de skins para personalização total.</p>
-                    <div class="area-midia">
-                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
-                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
-                        </a>
-                    </div>
-                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 34,90</span>
-                    <button onclick="adicionarAoCarrinho('Skin Pack Completo - Visual Total', 34.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-                </div>
-
-                <!-- CAIXA 9 — KIT TÁTICO -->
-                <div class="card-mod flex flex-col">
-                    <div class="h-40 bg-gray-200 rounded-lg mb-3 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f, #2a5298);">
-                        <i class="fa fa-suitcase text-5xl" style="color:#9EFF00;"></i>
-                    </div>
-                    <span class="bg-secundaria text-principal text-xs font-bold px-2 py-0.5 rounded-full self-start mb-2">🧥 COMBO</span>
-                    <h4 class="text-lg font-bold text-gray-800 mb-1">Coletes, Camisa e Calças — Kit Tático</h4>
-                    <p class="text-gray-500 text-sm mb-3 flex-1">Combo completo de vestuário tático combinando.</p>
-                    <div class="area-midia">
-                        <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                            <i class="fa fa-youtube-play text-secundaria text-4xl mb-2"></i>
-                            <span class="text-gray-700 font-medium text-sm">Assistir Vídeo no YouTube</span>
-                            <span class="text-xs text-gray-500">(Clique para abrir)</span>
-                        </a>
-                    </div>
-                    <span class="font-bold text-xl text-gray-800 text-center mb-2">R$ 26,90</span>
-                    <button onclick="adicionarAoCarrinho('Coletes, Camisa e Calças - Kit Tático', 26.90)" class="btn-adicionar">➕ Adicionar ao Carrinho</button>
-                </div>
-
-            </div>
 
             <!-- ============ PACOTES: PRATA / OURO / DIAMANTE ============ -->
             <div id="pacotes-premium"></div>
@@ -648,9 +469,10 @@
 
     <script>
         // ============ CONFIGURAÇÕES ============
-        var CHAVE_PIX = "5516992952763";
+        var CHAVE_PIX = "16992952763";
         var NOME_PIX = "Rodrigo Paulino da Silva";
         var WHATSAPP_NUMERO = "5516981097916";
+        var EMAIL_ENVIO = "rodrigoxgames25@gmail.com";
         var ADMIN_USER = "admin";
         var ADMIN_PASS = "vcore2026";
         var CLIENTE_USER = "admin";
@@ -760,16 +582,63 @@
 
         function renderizarPainelAdmin() { if (adminLogado) renderizarListaClientes(); }
 
-        function gerarGuiaHTML(nome, email) {
-            return '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Guia VCORE GAMES</title><style>body{font-family:Arial,sans-serif;max-width:680px;margin:40px auto;padding:24px;color:#222;background:#f9f9f9;}h1{background:#0A1153;color:#9EFF00;padding:18px 24px;border-radius:10px;font-size:1.4rem;}a{color:#1155cc;font-weight:bold;}.bloco{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:18px 20px;margin-bottom:16px;}.bloco h2{color:#0A1153;font-size:1rem;border-bottom:2px solid #9EFF00;padding-bottom:6px;}.dica{background:#f0fff4;border-left:4px solid #22c55e;padding:10px 14px;border-radius:6px;margin-top:8px;}.rodape{text-align:center;margin-top:28px;padding:16px;background:#0A1153;color:#9EFF00;border-radius:10px;}</style></head><body><h1>📄 Guia de Instalação — VCORE GAMES</h1><p>Olá, <strong>' + nome + '</strong>! Obrigado pela sua compra.</p><div class="bloco"><h2>🚀 Pacote Pronto</h2><p>1. Baixe e descompacte o arquivo recebido</p><p>2. Copie os arquivos para a pasta raiz do jogo (onde está o GRB.exe)</p><p>3. Abra o jogo — os mods já estarão ativos! 🎮</p><div class="dica">💡 Dica: Faça um backup da pasta do jogo antes de copiar.</div></div><div class="rodape"><p>📱 WhatsApp: <a href="https://wa.me/5516981097916">(16) 98109-7916</a></p><p>📸 Instagram: <a href="https://instagram.com/rodrigovecoregaming">@rodrigovecoregaming</a></p><p>Bons jogos! 🎮 — Rodrigo / VCORE GAMES</p></div></body></html>';
-        }
+        // ============ ENVIAR GUIA POR EMAIL PARA O CLIENTE (COM REDES SOCIAIS CLICÁVEIS) ============
+        function enviarGuiaPorEmail(nome, email, itens, total) {
+            var assunto = 'Guia de Instalacao - VCORE GAMES - ' + nome;
 
-        function abrirGuiaEmail(nome, email) {
-            var html = gerarGuiaHTML(nome, email);
-            var blob = new Blob([html], { type: 'text/html' });
-            var url = URL.createObjectURL(blob);
-            window.open(url, '_blank');
-            setTimeout(function() { URL.revokeObjectURL(url); }, 10000);
+            // Corpo do e-mail com links clicáveis
+            var corpo = '';
+            corpo += 'Ola, ' + nome + '!\r\n\r\n';
+            corpo += 'Obrigado pela sua compra na VCORE GAMES!\r\n\r\n';
+
+            corpo += '========================================\r\n';
+            corpo += 'RESUMO DA COMPRA\r\n';
+            corpo += '========================================\r\n';
+            corpo += 'Itens: ' + itens + '\r\n';
+            corpo += 'Total: R$ ' + total + '\r\n\r\n';
+
+            corpo += '========================================\r\n';
+            corpo += 'GUIA DE INSTALACAO\r\n';
+            corpo += '========================================\r\n\r\n';
+
+            corpo += 'COMPROU UM PACOTE? E so copiar e jogar!\r\n\r\n';
+
+            corpo += 'Os Pacotes ja vem pre-configurados:\r\n\r\n';
+            corpo += '1. Baixe e descompacte o arquivo recebido (.zip ou .rar)\r\n';
+            corpo += '2. Navegue ate a pasta raiz do jogo - onde fica o GRB.exe\r\n';
+            corpo += '   Ubisoft Connect: C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Ghost Recon Breakpoint\r\n';
+            corpo += '   Steam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ghost Recon Breakpoint\r\n';
+            corpo += '3. Copie os arquivos para dentro dessa pasta\r\n';
+            corpo += '4. Abra o jogo - os mods ja estarao ativos!\r\n\r\n';
+
+            corpo += 'Dica: Faca um backup da pasta do jogo antes de copiar.\r\n\r\n';
+
+            corpo += '========================================\r\n';
+            corpo += 'REDES SOCIAIS E CONTATO\r\n';
+            corpo += '========================================\r\n\r\n';
+
+            corpo += 'WhatsApp (fale direto comigo):\r\n';
+            corpo += 'https://wa.me/5516981097916\r\n\r\n';
+
+            corpo += 'Instagram:\r\n';
+            corpo += 'https://instagram.com/rodrigovecoregaming\r\n\r\n';
+
+            corpo += 'YouTube:\r\n';
+            corpo += 'https://www.youtube.com/@RodrigoVCOREgames\r\n\r\n';
+
+            corpo += 'Facebook Gaming:\r\n';
+            corpo += 'https://facebook.com/vcoregames\r\n\r\n';
+
+            corpo += '========================================\r\n';
+            corpo += 'Bons jogos! - Rodrigo / VCORE GAMES\r\n';
+
+            var mailtoLink = 'mailto:' + encodeURIComponent(email) +
+                '?subject=' + encodeURIComponent(assunto) +
+                '&body=' + encodeURIComponent(corpo);
+
+            window.location.href = mailtoLink;
+
+            mostrarNotificacao('📧 Abrindo cliente de e-mail para enviar guia para ' + nome + '!');
         }
 
         function renderizarListaClientes() {
@@ -780,7 +649,11 @@
             clientesRegistrados.forEach(function(c) {
                 var div = document.createElement('div');
                 div.className = 'p-3 bg-gray-50 border border-gray-200 rounded-lg';
-                div.innerHTML = '<div class="flex justify-between items-start"><div><p class="font-bold text-gray-800 text-sm">' + c.nome + '</p><p class="text-blue-600 text-sm">' + c.email + '</p><p class="text-gray-400 text-xs">Itens: ' + c.itens + ' | Total: R$ ' + c.total + ' | ' + c.data + '</p></div><button onclick="abrirGuiaEmail(\'' + c.nome.replace(/'/g,"\\'") + '\',\'' + c.email.replace(/'/g,"\\'") + '\')" class="bg-secundaria text-principal text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-900 transition-colors cursor-pointer border-0">📧 Enviar Guia</button></div>';
+                var nomeEscapado = c.nome.replace(/'/g, "\\'");
+                var emailEscapado = c.email.replace(/'/g, "\\'");
+                var itensEscapado = c.itens.replace(/'/g, "\\'");
+                var totalEscapado = c.total.replace(/'/g, "\\'");
+                div.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2"><div class="flex-1 min-w-0"><p class="font-bold text-gray-800 text-sm">' + c.nome + '</p><p class="text-blue-600 text-sm">' + c.email + '</p><p class="text-gray-400 text-xs">Itens: ' + c.itens + ' | Total: R$ ' + c.total + ' | ' + c.data + '</p></div><div class="flex gap-2 flex-shrink-0"><button onclick="enviarGuiaPorEmail(\'' + nomeEscapado + '\',\'' + emailEscapado + '\',\'' + itensEscapado + '\',\'' + totalEscapado + '\')" class="bg-green-600 text-white text-xs font-bold px-3 py-2 rounded-lg hover:bg-green-700 transition-colors cursor-pointer border-0">📧 Enviar por E-mail</button></div></div>';
                 lista.appendChild(div);
             });
         }
@@ -885,15 +758,54 @@
             if (e.target === this) fecharModalPix();
         });
 
-        function copiarChavePix() {
-            navigator.clipboard.writeText(CHAVE_PIX).then(function() {
+        // Gera o payload Pix EMV (BR Code) com valor opcional.
+        function crc16CCITT(texto) {
+            var crc = 0xFFFF;
+            for (var i = 0; i < texto.length; i++) {
+                crc ^= texto.charCodeAt(i) << 8;
+                for (var j = 0; j < 8; j++) {
+                    crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) & 0xFFFF : (crc << 1) & 0xFFFF;
+                }
+            }
+            return crc.toString(16).toUpperCase().padStart(4, '0');
+        }
+
+        function pixCampo(id, valor) {
+            return id + String(valor.length).padStart(2, '0') + valor;
+        }
+
+        function gerarPixCopiaECola(valor) {
+            var chave = CHAVE_PIX;
+            var nome = 'RODRIGO PAULINO DA SILVA';
+            var cidade = 'RIBEIRAO PRETO';
+
+            var merchantAccountInfo =
+                pixCampo('00', 'BR.GOV.BCB.PIX') +
+                pixCampo('01', chave);
+
+            var payload =
+                pixCampo('00', '01') +
+                pixCampo('26', merchantAccountInfo) +
+                pixCampo('52', '0000') +
+                pixCampo('53', '986') +
+                (valor > 0 ? pixCampo('54', Number(valor).toFixed(2)) : '') +
+                pixCampo('58', 'BR') +
+                pixCampo('59', nome) +
+                pixCampo('60', cidade) +
+                pixCampo('62', pixCampo('05', '***'));
+
+            return payload + '6304' + crc16CCITT(payload + '6304');
+        }
+
+        function copiarPixCopiaCola() {
+            var codigo = document.getElementById('pixCopiaCola').value;
+            navigator.clipboard.writeText(codigo).then(function() {
                 var msg = document.getElementById('pixCopiado');
                 msg.classList.remove('hidden');
                 setTimeout(function() { msg.classList.add('hidden'); }, 3000);
             }).catch(function() {
-                // Fallback para navegadores antigos
-                var input = document.createElement('input');
-                input.value = CHAVE_PIX;
+                var input = document.createElement('textarea');
+                input.value = codigo;
                 document.body.appendChild(input);
                 input.select();
                 document.execCommand('copy');
@@ -907,7 +819,6 @@
         function abrirWhatsAppComprovante() {
             var totalValor = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
             var totalFormatado = totalValor.toFixed(2).replace('.', ',');
-            // Se o carrinho já foi limpo, pega do localStorage
             if (totalValor === 0 && clientesRegistrados.length > 0) {
                 var ultimo = clientesRegistrados[clientesRegistrados.length - 1];
                 totalFormatado = ultimo.total;
@@ -917,7 +828,7 @@
             window.open(link, '_blank');
         }
 
-        // ============ FINALIZAR COMPRA (NOVO FLUXO PIX) ============
+        // ============ FINALIZAR COMPRA ============
         var ultimoTotalPix = 0;
 
         function finalizarCompra() {
@@ -930,7 +841,6 @@
                 return; 
             }
 
-            // Salvar cliente
             var itens = carrinho.map(function(item) { return item.qtd + 'x ' + item.nome; }).join(', ');
             var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
             ultimoTotalPix = total;
@@ -940,22 +850,20 @@
             clientesRegistrados.push({ nome: nome, email: email, itens: itens, total: total.toFixed(2).replace('.', ','), data: dataStr });
             localStorage.setItem('vcore_clientes', JSON.stringify(clientesRegistrados));
 
-            // Fechar carrinho
             fecharCarrinho();
 
-            // Limpar carrinho
             carrinho = [];
             atualizarCarrinho();
             document.getElementById('clienteNome').value = '';
             document.getElementById('clienteEmail').value = '';
 
-            // Preencher modal PIX
-            document.getElementById('pixValor').innerText = totalFormatado;
-            document.getElementById('pixChave').innerText = CHAVE_PIX;
-            document.getElementById('pixQrCode').src = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(CHAVE_PIX);
+            // PIX sem valor fixo: o cliente informa o valor no aplicativo do banco.
+            var pixCopiaCola = gerarPixCopiaECola(0);
+            document.getElementById('pixValor').innerText = 'Informe no seu banco';
+            document.getElementById('pixCopiaCola').value = pixCopiaCola;
+            document.getElementById('pixQrCode').src = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(pixCopiaCola);
             document.getElementById('pixCopiado').classList.add('hidden');
 
-            // Abrir modal PIX
             document.getElementById('modalPix').style.display = 'flex';
             document.body.style.overflow = 'hidden';
 
