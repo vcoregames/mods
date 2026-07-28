@@ -57,6 +57,12 @@
             .barra-total { @apply fixed bottom-0 left-0 right-0 bg-secundaria text-principal py-3 px-5 flex items-center justify-between shadow-2xl z-40 transform translate-y-full transition-transform duration-500; }
             .barra-total.visivel { @apply translate-y-0; }
             .pronto-badge { @apply inline-flex items-center gap-1 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full; }
+            .fr-badge { @apply inline-flex items-center gap-1 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full; }
+            @keyframes pulse-save {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.7; }
+            }
+            .pulse-save { animation: pulse-save 1.5s ease-in-out infinite; }
         }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', system-ui, sans-serif; }
@@ -114,7 +120,7 @@
         </div>
     </section>
 
-    <!-- MODAL DO CARRINHO -->
+    <!-- ==================== MODAL DO CARRINHO ==================== -->
     <div id="modalCarrinho" class="modal-carrinho">
         <div class="carrinho-conteudo">
             <span class="fechar-modal" onclick="fecharCarrinho()">×</span>
@@ -138,40 +144,47 @@
         </div>
     </div>
 
-    <!-- ==================== MODAL PIX ==================== -->
+    <!-- ==================== MODAL PIX (SEM QR CODE - APENAS CHAVE) ==================== -->
     <div id="modalPix" class="modal-pix">
         <div class="pix-conteudo">
             <span class="fechar-modal" onclick="fecharModalPix()">×</span>
             <div class="text-center">
-                <h2 class="text-2xl font-bold text-secundaria mb-2">💳 Pagamento via PIX</h2>
-                <p class="text-gray-500 text-sm mb-4">Escaneie o QR Code ou copie o Pix Copia e Cola abaixo</p>
+                <div class="mb-4">
+                    <span class="text-5xl">💳</span>
+                    <h2 class="text-2xl font-bold text-secundaria mt-2">Pagamento via PIX</h2>
+                    <p class="text-gray-500 text-sm">Copie a chave PIX abaixo e faça a transferência</p>
+                </div>
 
-                <!-- Valor -->
-                <div class="bg-secundaria text-principal rounded-xl py-3 px-6 mb-4 inline-block">
+                <!-- VALOR -->
+                <div class="bg-secundaria text-principal rounded-xl py-3 px-6 mb-5 inline-block">
                     <p class="text-xs opacity-70">Valor a pagar</p>
-                    <p id="pixValor" class="text-3xl font-bold">Informe no seu banco</p>
+                    <p id="pixValor" class="text-3xl font-bold">R$ 0,00</p>
                 </div>
 
-                <!-- QR Code PIX -->
-                <div class="bg-gray-100 rounded-xl p-4 mb-4 inline-block">
-                    <img id="pixQrCode" src="" alt="QR Code PIX" class="w-56 h-56 mx-auto" />
-                    <p class="text-xs text-gray-500 mt-2">Aponte a câmera do seu app de banco</p>
-                </div>
-
-                <!-- Pix Copia e Cola -->
-                <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-4 mb-4">
-                    <p class="text-xs text-gray-500 mb-2 font-bold">📋 PIX COPIA E COLA</p>
-                    <textarea id="pixCopiaCola" readonly rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-xs text-gray-700 bg-white resize-none focus:outline-none select-all"></textarea>
-                    <button onclick="copiarPixCopiaCola()" class="mt-3 bg-secundaria hover:bg-blue-900 text-principal font-bold py-2 px-5 rounded-lg text-sm transition-colors w-full">
-                        📋 Copiar Pix Copia e Cola
+                <!-- CHAVE PIX -->
+                <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-5 mb-5">
+                    <p class="text-xs text-gray-500 mb-3 font-bold uppercase tracking-wide">🔑 Chave PIX (telefone)</p>
+                    <p id="pixChave" class="text-3xl font-bold text-secundaria tracking-wider select-all mb-1">16992952763</p>
+                    <p class="text-sm text-gray-600">Rodrigo Paulino da Silva</p>
+                    <button onclick="copiarChavePix()" class="mt-4 bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 px-5 rounded-lg text-sm transition-colors w-full">
+                        📋 Copiar Chave PIX
                     </button>
-                    <p id="pixCopiado" class="text-green-600 text-xs font-bold mt-2 hidden">✅ Pix Copia e Cola copiado com sucesso!</p>
-                    <p class="text-sm text-gray-600 mt-2">Beneficiário: <strong>Rodrigo Paulino da Silva</strong></p>
-                    <p class="text-xs text-gray-500">Rodrigo Paulino da Silva</p>
-                    <p class="text-xs text-gray-400 mt-1">Chave Pix: 16992952763</p>
+                    <p id="pixCopiado" class="text-green-600 text-xs font-bold mt-3 hidden">✅ Chave copiada com sucesso!</p>
                 </div>
 
-                <!-- Botão WhatsApp -->
+                <!-- INSTRUÇÕES -->
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5 text-left text-sm text-gray-700">
+                    <p class="font-bold text-secundaria mb-2">📝 Como pagar:</p>
+                    <ol class="space-y-1 list-decimal list-inside">
+                        <li>Copie a chave PIX acima</li>
+                        <li>Abra o app do seu banco</li>
+                        <li>Vá em <strong>PIX</strong> → <strong>Pagar</strong></li>
+                        <li>Cole a chave e confirme o valor</li>
+                        <li>Faça a transferência</li>
+                    </ol>
+                </div>
+
+                <!-- BOTÃO WHATSAPP -->
                 <button onclick="abrirWhatsAppComprovante()" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg text-sm transition-colors flex items-center justify-center gap-2">
                     <i class="fa fa-whatsapp text-lg"></i> Enviar Comprovante via WhatsApp
                 </button>
@@ -186,21 +199,37 @@
         <!-- INÍCIO -->
         <section id="menu-inicio" class="conteudo-menu">
 
-            <!-- ============ PACOTES: PRATA / OURO / DIAMANTE ============ -->
             <div id="pacotes-premium"></div>
             <h3 class="text-2xl font-bold mb-2 text-center text-gray-800">🏆 Pacotes Completos</h3>
             <p class="text-center text-gray-500 mb-4 text-sm">Escolha o plano ideal para você</p>
 
-            <div class="max-w-5xl mx-auto mb-8 rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
+            <!-- ========== BANNER: PRONTO PARA JOGAR + FR INSTALAÇÃO ========== -->
+            <div class="max-w-5xl mx-auto mb-6 rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
                 <div class="flex flex-col sm:flex-row items-center gap-4 p-5">
                     <div class="text-5xl flex-shrink-0">🎮</div>
                     <div class="flex-1 text-center sm:text-left">
                         <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-2">
                             <span class="pronto-badge">✅ PRONTO PARA JOGAR</span>
+                            <span class="fr-badge">⚡ FR INSTALAÇÃO</span>
                             <span class="text-xs font-bold px-2 py-1 rounded-full bg-yellow-400 text-yellow-900">SEM COMPLICAÇÃO</span>
                         </div>
                         <p class="font-bold text-lg" style="color:#9EFF00;">Os Pacotes já vêm com tudo instalado e configurado!</p>
                         <p class="text-sm mt-1" style="color:rgba(158,255,0,0.75);">Basta copiar na pasta raiz do jogo (onde está o <strong style="color:#9EFF00;">GRB.exe</strong>) e abrir o game. Sem instalar ferramentas, sem configurar nada — é só jogar! 🚀</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== BANNER DE AVISO: SAVE NOVO (VERMELHO E AMARELO) ========== -->
+            <div class="max-w-5xl mx-auto mb-8 rounded-xl overflow-hidden border-2 pulse-save" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;">
+                <div class="flex flex-col sm:flex-row items-center gap-4 p-5">
+                    <div class="text-5xl flex-shrink-0">⚠️</div>
+                    <div class="flex-1 text-center sm:text-left">
+                        <p class="font-extrabold text-xl md:text-2xl mb-1" style="color:#cc0000; text-shadow: 1px 1px 0 rgba(255,255,255,0.5);">
+                            🚨 AO INSTALAR OS ARQUIVOS, INICIE UM SAVE NOVO!
+                        </p>
+                        <p class="text-sm font-bold" style="color:#8B0000;">
+                            É obrigatório começar um <span style="background:#cc0000; color:#ffcc00; padding:2px 6px; border-radius:4px;">SAVE NOVO</span> após a instalação para evitar bugs e conflitos nos arquivos do jogo.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -213,12 +242,17 @@
                     <div class="relative z-10 flex flex-col flex-1">
                         <div class="flex justify-between items-start mb-3">
                             <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#C0C0C0; color:#1a1a1a;">🥈 PRATA</span>
+                            <span class="fr-badge text-[10px]">⚡ FR</span>
                         </div>
                         <h4 class="text-xl font-bold mb-1" style="color:#C0C0C0;">Pacote Prata</h4>
                         <p class="text-sm mb-3" style="color:rgba(192,192,192,0.75);">Mods essenciais da VCORE GAMES.</p>
                         <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
                             <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
                             <p style="color:rgba(192,192,192,0.8);">Copie na pasta raiz e abra o game.</p>
+                        </div>
+                        <!-- AVISO SAVE NOVO NO CARD -->
+                        <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">
+                            ⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!
                         </div>
                         <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(192,192,192,0.85);">
                             <li>✅ Coletes — Mod de Aparência</li>
@@ -252,12 +286,17 @@
                     <div class="relative z-10 flex flex-col flex-1 mt-3">
                         <div class="flex justify-between items-start mb-3">
                             <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#FFD700; color:#3a2800;">🥇 OURO</span>
+                            <span class="fr-badge text-[10px]">⚡ FR</span>
                         </div>
                         <h4 class="text-xl font-bold mb-1" style="color:#FFD700;">Pacote Ouro</h4>
                         <p class="text-sm mb-3" style="color:rgba(255,215,0,0.75);">Experiência completa de visual e performance.</p>
                         <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
                             <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
                             <p style="color:rgba(255,215,0,0.8);">Copie na pasta raiz e abra o game.</p>
+                        </div>
+                        <!-- AVISO SAVE NOVO NO CARD -->
+                        <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">
+                            ⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!
                         </div>
                         <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.9);">
                             <li>✅ Todos os itens do Prata</li>
@@ -287,12 +326,17 @@
                         <div class="flex justify-between items-start mb-3">
                             <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#9EFF00; color:#0A1153;">💎 DIAMANTE</span>
                             <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">MELHOR VALOR</span>
+                            <span class="fr-badge text-[10px]">⚡ FR</span>
                         </div>
                         <h4 class="text-xl font-bold mb-1" style="color:#9EFF00;">Pacote Diamante</h4>
                         <p class="text-sm mb-3" style="color:rgba(158,255,0,0.75);">O pacote mais completo. <strong style="color:#9EFF00;">Todos os mods</strong> em um só lugar.</p>
                         <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
                             <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
                             <p style="color:rgba(158,255,0,0.8);">Copie na pasta raiz e abra o game.</p>
+                        </div>
+                        <!-- AVISO SAVE NOVO NO CARD -->
+                        <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">
+                            ⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!
                         </div>
                         <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(158,255,0,0.9);">
                             <li>✅ Coletes — Mod de Aparência</li>
@@ -381,6 +425,17 @@
                                 <p class="text-sm" style="color:rgba(158,255,0,0.9);">4. Abra o jogo — os mods já estarão ativos! 🎮</p>
                             </div>
                         </div>
+
+                        <!-- AVISO SAVE NOVO NO GUIA -->
+                        <div class="rounded-xl p-4 border-2" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;">
+                            <p class="font-extrabold text-lg mb-2 text-center" style="color:#cc0000;">
+                                🚨 AO INSTALAR OS ARQUIVOS, INICIE UM SAVE NOVO!
+                            </p>
+                            <p class="text-sm text-center font-bold" style="color:#8B0000;">
+                                É <span style="background:#cc0000; color:#ffcc00; padding:2px 6px; border-radius:4px;">OBRIGATÓRIO</span> começar um save novo após a instalação para evitar bugs e conflitos nos arquivos do jogo.
+                            </p>
+                        </div>
+
                         <hr class="border-gray-200" />
                         <p class="text-sm font-bold text-gray-500 uppercase tracking-wide">👇 Passos abaixo: somente para mods individuais</p>
                         <hr class="border-gray-200" />
@@ -580,71 +635,58 @@
             document.getElementById('erroLogin').classList.add('hidden');
         }
 
-        function renderizarPainelAdmin() { if (adminLogado) renderizarListaClientes(); }
+        function renderizarPainelAdmin() {
+            if (adminLogado) {
+                document.getElementById('painelLogin').classList.add('hidden');
+                document.getElementById('painelAdmin').classList.remove('hidden');
+                renderizarListaClientes();
+            }
+        }
 
-        // ============ ENVIAR GUIA POR EMAIL PARA O CLIENTE (COM REDES SOCIAIS CLICÁVEIS) ============
         function enviarGuiaPorEmail(nome, email, itens, total) {
             var assunto = 'Guia de Instalacao - VCORE GAMES - ' + nome;
-
-            // Corpo do e-mail com links clicáveis
             var corpo = '';
             corpo += 'Ola, ' + nome + '!\r\n\r\n';
             corpo += 'Obrigado pela sua compra na VCORE GAMES!\r\n\r\n';
-
             corpo += '========================================\r\n';
             corpo += 'RESUMO DA COMPRA\r\n';
             corpo += '========================================\r\n';
             corpo += 'Itens: ' + itens + '\r\n';
             corpo += 'Total: R$ ' + total + '\r\n\r\n';
-
             corpo += '========================================\r\n';
-            corpo += 'GUIA DE INSTALACAO\r\n';
+            corpo += 'GUIA DE INSTALACAO (FR - FACIL E RAPIDA)\r\n';
             corpo += '========================================\r\n\r\n';
-
             corpo += 'COMPROU UM PACOTE? E so copiar e jogar!\r\n\r\n';
-
-            corpo += 'Os Pacotes ja vem pre-configurados:\r\n\r\n';
             corpo += '1. Baixe e descompacte o arquivo recebido (.zip ou .rar)\r\n';
             corpo += '2. Navegue ate a pasta raiz do jogo - onde fica o GRB.exe\r\n';
             corpo += '   Ubisoft Connect: C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Ghost Recon Breakpoint\r\n';
             corpo += '   Steam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ghost Recon Breakpoint\r\n';
             corpo += '3. Copie os arquivos para dentro dessa pasta\r\n';
             corpo += '4. Abra o jogo - os mods ja estarao ativos!\r\n\r\n';
-
-            corpo += 'Dica: Faca um backup da pasta do jogo antes de copiar.\r\n\r\n';
-
+            corpo += '!!! ATENCAO: AO INSTALAR OS ARQUIVOS, INICIE UM SAVE NOVO !!!\r\n';
+            corpo += 'E obrigatorio comecar um save novo apos a instalacao para evitar bugs.\r\n\r\n';
             corpo += '========================================\r\n';
             corpo += 'REDES SOCIAIS E CONTATO\r\n';
             corpo += '========================================\r\n\r\n';
-
-            corpo += 'WhatsApp (fale direto comigo):\r\n';
-            corpo += 'https://wa.me/5516981097916\r\n\r\n';
-
-            corpo += 'Instagram:\r\n';
-            corpo += 'https://instagram.com/rodrigovecoregaming\r\n\r\n';
-
-            corpo += 'YouTube:\r\n';
-            corpo += 'https://www.youtube.com/@RodrigoVCOREgames\r\n\r\n';
-
-            corpo += 'Facebook Gaming:\r\n';
-            corpo += 'https://facebook.com/vcoregames\r\n\r\n';
-
-            corpo += '========================================\r\n';
+            corpo += 'WhatsApp: https://wa.me/5516981097916\r\n';
+            corpo += 'Instagram: https://instagram.com/rodrigovecoregaming\r\n';
+            corpo += 'YouTube: https://www.youtube.com/@RodrigoVCOREgames\r\n';
+            corpo += 'Facebook: https://facebook.com/vcoregames\r\n\r\n';
             corpo += 'Bons jogos! - Rodrigo / VCORE GAMES\r\n';
-
             var mailtoLink = 'mailto:' + encodeURIComponent(email) +
                 '?subject=' + encodeURIComponent(assunto) +
                 '&body=' + encodeURIComponent(corpo);
-
             window.location.href = mailtoLink;
-
             mostrarNotificacao('📧 Abrindo cliente de e-mail para enviar guia para ' + nome + '!');
         }
 
         function renderizarListaClientes() {
             clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
             var lista = document.getElementById('listaClientes');
-            if (clientesRegistrados.length === 0) { lista.innerHTML = '<p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p>'; return; }
+            if (clientesRegistrados.length === 0) {
+                lista.innerHTML = '<p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p>';
+                return;
+            }
             lista.innerHTML = '';
             clientesRegistrados.forEach(function(c) {
                 var div = document.createElement('div');
@@ -669,21 +711,30 @@
         // ============ CARRINHO ============
         function adicionarAoCarrinho(nome, preco) {
             var existente = null;
-            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { existente = carrinho[i]; break; } }
-            if (existente) { existente.qtd += 1; } else { carrinho.push({ nome: nome, preco: preco, qtd: 1 }); }
+            for (var i = 0; i < carrinho.length; i++) {
+                if (carrinho[i].nome === nome) { existente = carrinho[i]; break; }
+            }
+            if (existente) { existente.qtd += 1; }
+            else { carrinho.push({ nome: nome, preco: preco, qtd: 1 }); }
             atualizarCarrinho();
             mostrarNotificacao(nome + ' adicionado ao carrinho! 🛒');
         }
 
         function alterarQtd(nome, delta) {
             for (var i = 0; i < carrinho.length; i++) {
-                if (carrinho[i].nome === nome) { carrinho[i].qtd += delta; if (carrinho[i].qtd <= 0) { carrinho.splice(i, 1); } break; }
+                if (carrinho[i].nome === nome) {
+                    carrinho[i].qtd += delta;
+                    if (carrinho[i].qtd <= 0) { carrinho.splice(i, 1); }
+                    break;
+                }
             }
             atualizarCarrinho();
         }
 
         function removerDoCarrinho(nome) {
-            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho.splice(i, 1); break; } }
+            for (var i = 0; i < carrinho.length; i++) {
+                if (carrinho[i].nome === nome) { carrinho.splice(i, 1); break; }
+            }
             atualizarCarrinho();
         }
 
@@ -698,6 +749,7 @@
             var totalUnidades = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0);
             var totalValor = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
             var totalFormatado = 'R$ ' + totalValor.toFixed(2).replace('.', ',');
+
             if (carrinho.length > 0) {
                 badge.classList.remove('hidden');
                 badge.innerText = totalUnidades;
@@ -737,16 +789,18 @@
             notif._timer = setTimeout(function() { notif.style.opacity = '0'; }, 2500);
         }
 
-        function abrirCarrinho() { 
-            document.getElementById('modalCarrinho').style.display = 'flex'; 
-            document.body.style.overflow = 'hidden'; 
+        function abrirCarrinho() {
+            document.getElementById('modalCarrinho').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
-        function fecharCarrinho() { 
-            document.getElementById('modalCarrinho').style.display = 'none'; 
-            document.body.style.overflow = 'auto'; 
+
+        function fecharCarrinho() {
+            document.getElementById('modalCarrinho').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
-        document.getElementById('modalCarrinho').addEventListener('click', function(e) { 
-            if (e.target === this) fecharCarrinho(); 
+
+        document.getElementById('modalCarrinho').addEventListener('click', function(e) {
+            if (e.target === this) fecharCarrinho();
         });
 
         // ============ MODAL PIX ============
@@ -754,58 +808,19 @@
             document.getElementById('modalPix').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+
         document.getElementById('modalPix').addEventListener('click', function(e) {
             if (e.target === this) fecharModalPix();
         });
 
-        // Gera o payload Pix EMV (BR Code) com valor opcional.
-        function crc16CCITT(texto) {
-            var crc = 0xFFFF;
-            for (var i = 0; i < texto.length; i++) {
-                crc ^= texto.charCodeAt(i) << 8;
-                for (var j = 0; j < 8; j++) {
-                    crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) & 0xFFFF : (crc << 1) & 0xFFFF;
-                }
-            }
-            return crc.toString(16).toUpperCase().padStart(4, '0');
-        }
-
-        function pixCampo(id, valor) {
-            return id + String(valor.length).padStart(2, '0') + valor;
-        }
-
-        function gerarPixCopiaECola(valor) {
-            var chave = CHAVE_PIX;
-            var nome = 'RODRIGO PAULINO DA SILVA';
-            var cidade = 'RIBEIRAO PRETO';
-
-            var merchantAccountInfo =
-                pixCampo('00', 'BR.GOV.BCB.PIX') +
-                pixCampo('01', chave);
-
-            var payload =
-                pixCampo('00', '01') +
-                pixCampo('26', merchantAccountInfo) +
-                pixCampo('52', '0000') +
-                pixCampo('53', '986') +
-                (valor > 0 ? pixCampo('54', Number(valor).toFixed(2)) : '') +
-                pixCampo('58', 'BR') +
-                pixCampo('59', nome) +
-                pixCampo('60', cidade) +
-                pixCampo('62', pixCampo('05', '***'));
-
-            return payload + '6304' + crc16CCITT(payload + '6304');
-        }
-
-        function copiarPixCopiaCola() {
-            var codigo = document.getElementById('pixCopiaCola').value;
-            navigator.clipboard.writeText(codigo).then(function() {
+        function copiarChavePix() {
+            navigator.clipboard.writeText(CHAVE_PIX).then(function() {
                 var msg = document.getElementById('pixCopiado');
                 msg.classList.remove('hidden');
                 setTimeout(function() { msg.classList.add('hidden'); }, 3000);
             }).catch(function() {
-                var input = document.createElement('textarea');
-                input.value = codigo;
+                var input = document.createElement('input');
+                input.value = CHAVE_PIX;
                 document.body.appendChild(input);
                 input.select();
                 document.execCommand('copy');
@@ -828,57 +843,65 @@
             window.open(link, '_blank');
         }
 
-        // ============ FINALIZAR COMPRA ============
-        var ultimoTotalPix = 0;
-
+        // ============ FINALIZAR COMPRA → ABRE MODAL PIX ============
         function finalizarCompra() {
-            if (carrinho.length === 0) { mostrarNotificacao('Seu carrinho está vazio! 🛒'); return; }
-            var nome = document.getElementById('clienteNome').value.trim();
-            var email = document.getElementById('clienteEmail').value.trim();
-            if (!nome || !email) { 
-                mostrarNotificacao('⚠️ Preencha seu nome e e-mail!'); 
-                document.getElementById('clienteNome').focus(); 
-                return; 
+            if (carrinho.length === 0) {
+                mostrarNotificacao('⚠️ Seu carrinho está vazio!');
+                return;
             }
 
-            var itens = carrinho.map(function(item) { return item.qtd + 'x ' + item.nome; }).join(', ');
+            var nome = document.getElementById('clienteNome').value.trim();
+            var email = document.getElementById('clienteEmail').value.trim();
+
+            if (!nome || !email) {
+                mostrarNotificacao('⚠️ Preencha seu nome e e-mail!');
+                document.getElementById('clienteNome').focus();
+                return;
+            }
+
+            var itens = carrinho.map(function(item) {
+                return item.qtd + 'x ' + item.nome;
+            }).join(', ');
+
             var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
-            ultimoTotalPix = total;
             var totalFormatado = 'R$ ' + total.toFixed(2).replace('.', ',');
+
             var agora = new Date();
             var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
-            clientesRegistrados.push({ nome: nome, email: email, itens: itens, total: total.toFixed(2).replace('.', ','), data: dataStr });
+            clientesRegistrados.push({
+                nome: nome,
+                email: email,
+                itens: itens,
+                total: total.toFixed(2).replace('.', ','),
+                data: dataStr
+            });
             localStorage.setItem('vcore_clientes', JSON.stringify(clientesRegistrados));
 
             fecharCarrinho();
-
             carrinho = [];
             atualizarCarrinho();
             document.getElementById('clienteNome').value = '';
             document.getElementById('clienteEmail').value = '';
 
-            // PIX sem valor fixo: o cliente informa o valor no aplicativo do banco.
-            var pixCopiaCola = gerarPixCopiaECola(0);
-            document.getElementById('pixValor').innerText = 'Informe no seu banco';
-            document.getElementById('pixCopiaCola').value = pixCopiaCola;
-            document.getElementById('pixQrCode').src = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(pixCopiaCola);
+            // Abre modal PIX
+            document.getElementById('pixValor').innerText = totalFormatado;
             document.getElementById('pixCopiado').classList.add('hidden');
 
             document.getElementById('modalPix').style.display = 'flex';
             document.body.style.overflow = 'hidden';
 
-            mostrarNotificacao('✅ Dados salvos! Faça o PIX e envie o comprovante.');
+            mostrarNotificacao('✅ Dados salvos! Copie a chave PIX e faça o pagamento.');
         }
 
         // ============ BOTÃO VOLTAR AO TOPO ============
         var btnTopo = document.getElementById('btnTopo');
-        window.addEventListener('scroll', function() { 
-            if (window.scrollY > 300) { btnTopo.classList.remove('hidden'); } 
-            else { btnTopo.classList.add('hidden'); } 
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) { btnTopo.classList.remove('hidden'); }
+            else { btnTopo.classList.add('hidden'); }
         });
-        btnTopo.addEventListener('click', function(e) { 
-            e.preventDefault(); 
-            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        btnTopo.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
