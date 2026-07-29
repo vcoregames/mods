@@ -255,7 +255,6 @@
                             <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
                             <p style="color:rgba(192,192,192,0.8);">Copie na pasta raiz e abra o game.</p>
                         </div>
-                        <!-- AVISO SAVE NOVO NO CARD -->
                         <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">
                             ⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!
                         </div>
@@ -264,7 +263,6 @@
                             <li>✅ Fest Feminino</li>
                             <li>✅ Veículos Modificados</li>
                             <li>✅ Guia de instalação por e-mail</li>
-                        
                         </ul>
                         <div class="rounded-lg h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(192,192,192,0.3);">
                             <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
@@ -298,7 +296,6 @@
                             <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
                             <p style="color:rgba(255,215,0,0.8);">Copie na pasta raiz e abra o game.</p>
                         </div>
-                        <!-- AVISO SAVE NOVO NO CARD -->
                         <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">
                             ⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!
                         </div>
@@ -309,7 +306,6 @@
                             <li>✅ Camuflagem — Skins Completas</li>
                             <li>✅ Capacetes e Proteções — Visual Elite</li>
                             <li>✅ Guia de instalação por e-mail</li>
-                           
                         </ul>
                         <div class="rounded-lg h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,215,0,0.3);">
                             <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
@@ -341,7 +337,6 @@
                             <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
                             <p style="color:rgba(158,255,0,0.8);">Copie na pasta raiz e abra o game.</p>
                         </div>
-                        <!-- AVISO SAVE NOVO NO CARD -->
                         <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">
                             ⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!
                         </div>
@@ -432,8 +427,6 @@
                                 <p class="text-sm" style="color:rgba(158,255,0,0.9);">4. Abra o jogo — os mods já estarão ativos! 🎮</p>
                             </div>
                         </div>
-
-                        <!-- AVISO SAVE NOVO NO GUIA -->
                         <div class="rounded-xl p-4 border-2" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;">
                             <p class="font-extrabold text-lg mb-2 text-center" style="color:#cc0000;">
                                 🚨 AO INSTALAR OS ARQUIVOS, INICIE UM SAVE NOVO!
@@ -442,7 +435,6 @@
                                 É <span style="background:#cc0000; color:#ffcc00; padding:2px 6px; border-radius:4px;">OBRIGATÓRIO</span> começar um save novo após a instalação para evitar bugs e conflitos nos arquivos do jogo.
                             </p>
                         </div>
-
                         <hr class="border-gray-200" />
                         <p class="text-sm font-bold text-gray-500 uppercase tracking-wide">👇 Passos abaixo: somente para mods individuais</p>
                         <hr class="border-gray-200" />
@@ -507,19 +499,36 @@
     <footer class="bg-secundaria text-principal py-8 px-4 mt-12">
         <div class="max-w-7xl mx-auto text-center">
 
-            <!-- ========== CONTADOR DE VISITAS ========== -->
+            <!-- ========== CONTADORES: VISITAS + COMPRAS ========== -->
             <div class="mb-6 pb-6 border-b border-principal/20">
-                <div class="inline-flex items-center gap-3 rounded-full px-6 py-3" style="background: rgba(158,255,0,0.08); border: 1px solid rgba(158,255,0,0.25);">
-                    <span class="text-2xl">👁️</span>
-                    <div class="text-left">
-                        <p class="text-xs uppercase tracking-wider font-bold" style="color:rgba(158,255,0,0.6);">Total de Visitas</p>
-                        <p id="contadorVisitas" class="text-2xl font-bold count-glow" style="color:#9EFF00;">
-                            <span class="inline-block animate-pulse">⏳</span>
-                        </p>
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                    
+                    <!-- Contador de Visitas -->
+                    <div class="inline-flex items-center gap-3 rounded-full px-6 py-3 flex-shrink-0" style="background: rgba(158,255,0,0.08); border: 1px solid rgba(158,255,0,0.25);">
+                        <span class="text-2xl">👁️</span>
+                        <div class="text-left">
+                            <p class="text-xs uppercase tracking-wider font-bold" style="color:rgba(158,255,0,0.6);">Total de Visitas</p>
+                            <p id="contadorVisitas" class="text-2xl font-bold count-glow" style="color:#9EFF00;">
+                                <span class="inline-block animate-pulse">⏳</span>
+                            </p>
+                        </div>
+                        <span class="text-lg">🌍</span>
                     </div>
-                    <span class="text-lg">🌍</span>
+
+                    <!-- Contador de Compras -->
+                    <div class="inline-flex items-center gap-3 rounded-full px-6 py-3 flex-shrink-0" style="background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3);">
+                        <span class="text-2xl">🛒</span>
+                        <div class="text-left">
+                            <p class="text-xs uppercase tracking-wider font-bold" style="color:rgba(34,197,94,0.7);">Compras Finalizadas</p>
+                            <p id="contadorCompras" class="text-2xl font-bold count-glow" style="color:#22c55e;">
+                                <span class="inline-block animate-pulse">⏳</span>
+                            </p>
+                        </div>
+                        <span class="text-lg">🏆</span>
+                    </div>
+
                 </div>
-                <p class="text-xs mt-2" style="color:rgba(158,255,0,0.4);">pessoas já acessaram esta página</p>
+                <p class="text-xs mt-2" style="color:rgba(158,255,0,0.4);">dados atualizados em tempo real</p>
             </div>
 
             <div class="flex justify-center items-center mb-4 pb-4 border-b border-principal/20">
@@ -576,19 +585,7 @@
                     }
                 })
                 .catch(function(err) {
-                    // Fallback: tenta endpoint alternativo
-                    fetch('https://api.counterapi.dev/vcount/vcoregames_site/visitas')
-                        .then(function(res) { return res.json(); })
-                        .then(function(data) {
-                            if (data && typeof data.count === 'number') {
-                                animarContador(contadorEl, data.count);
-                            } else {
-                                contadorEl.innerHTML = '<span style="font-size:1.2rem;">👥</span>';
-                            }
-                        })
-                        .catch(function() {
-                            contadorEl.innerHTML = '<span style="font-size:1.2rem;">👥</span>';
-                        });
+                    contadorEl.innerHTML = '<span style="font-size:1.2rem;">👥</span>';
                 });
 
             function animarContador(el, alvo) {
@@ -611,6 +608,62 @@
                 requestAnimationFrame(passo);
             }
         })();
+
+        // ============ CONTADOR DE COMPRAS (CounterAPI - só lê, NÃO incrementa no load) ============
+        (function() {
+            var contadorComprasEl = document.getElementById('contadorCompras');
+            // Apenas lê o valor atual, SEM incrementar (sem /up no final)
+            var url = 'https://api.counterapi.dev/v1/vcoregames_site/compras';
+
+            fetch(url)
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    if (data && typeof data.count === 'number') {
+                        animarContador(contadorComprasEl, data.count);
+                    } else {
+                        contadorComprasEl.innerText = '0';
+                    }
+                })
+                .catch(function(err) {
+                    contadorComprasEl.innerText = '0';
+                });
+
+            function animarContador(el, alvo) {
+                var duracao = 1200;
+                var inicio = Math.max(0, alvo - 30);
+                var startTime = null;
+
+                function passo(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progresso = Math.min((timestamp - startTime) / duracao, 1);
+                    var eased = 1 - Math.pow(1 - progresso, 3);
+                    var atual = Math.floor(inicio + (alvo - inicio) * eased);
+                    el.innerText = atual.toLocaleString('pt-BR');
+                    if (progresso < 1) {
+                        requestAnimationFrame(passo);
+                    } else {
+                        el.innerText = alvo.toLocaleString('pt-BR');
+                    }
+                }
+                requestAnimationFrame(passo);
+            }
+        })();
+
+        // ============ INCREMENTAR CONTADOR DE COMPRAS ao finalizar ============
+        function incrementarContadorCompras() {
+            var url = 'https://api.counterapi.dev/v1/vcoregames_site/compras/up';
+            fetch(url)
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    if (data && typeof data.count === 'number') {
+                        var contadorComprasEl = document.getElementById('contadorCompras');
+                        contadorComprasEl.innerText = data.count.toLocaleString('pt-BR');
+                    }
+                })
+                .catch(function(err) {
+                    // fallback silencioso
+                });
+        }
 
         // ============ MENU DROPDOWN ============
         var botaoMenu = document.getElementById('botaoMenu');
@@ -956,6 +1009,9 @@
             atualizarCarrinho();
             document.getElementById('clienteNome').value = '';
             document.getElementById('clienteEmail').value = '';
+
+            // 🔥 INCREMENTA O CONTADOR DE COMPRAS
+            incrementarContadorCompras();
 
             // Abre modal PIX
             document.getElementById('pixValor').innerText = totalFormatado;
