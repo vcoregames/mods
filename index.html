@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VCORE GAMES - Mods Ghost Recon Breakpoint</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <script>
         tailwind.config = {
@@ -33,7 +34,7 @@
     <style type="text/tailwindcss">
         @layer utilities {
             .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-            .card-mod { @apply bg-white rounded-xl shadow-lg p-5 border border-gray-200 hover:shadow-xl transition-all duration-300; }
+            .card-mod { @apply bg-white rounded-xl shadow-lg p-4 sm:p-5 border border-gray-200 hover:shadow-xl transition-all duration-300; }
             .menu-ativo { @apply border-b-2 border-principal font-bold text-principal bg-blue-900/30 rounded-t-lg; }
             .btn-venda { @apply bg-gradient-to-r from-secundaria to-blue-800 hover:from-blue-900 hover:to-blue-700 text-principal font-bold py-3 px-6 rounded-lg text-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105 active:scale-95 w-full text-center; }
             .btn-adicionar { @apply bg-principal hover:bg-green-400 text-secundaria font-bold py-2 px-4 rounded text-sm transition-colors w-full mt-2; }
@@ -46,15 +47,15 @@
             .menu-botao { @apply w-full bg-blue-900/40 text-principal py-3 px-4 rounded-lg font-bold text-lg flex justify-between items-center hover:bg-blue-900/60 transition-colors; }
             .menu-lista { @apply hidden absolute left-0 right-0 mt-1 bg-secundaria rounded-xl shadow-xl z-40 overflow-y-auto max-h-[60vh]; }
             .menu-lista.aberto { @apply block; }
-            .menu-lista a { @apply block py-3 px-4 text-principal hover:bg-blue-900/50 transition-colors border-b border-principal/10; }
+            .menu-lista a { @apply block py-3 px-4 text-principal hover:bg-blue-900/50 transition-colors border-b border-principal/10 text-sm sm:text-base; }
             .menu-lista a:last-child { @apply border-b-0; }
             .modal-carrinho { @apply fixed inset-0 bg-black/70 flex items-center justify-center z-[60] hidden p-4; }
-            .carrinho-conteudo { @apply bg-white rounded-xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6 shadow-2xl; }
+            .carrinho-conteudo { @apply bg-white rounded-xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-4 sm:p-6 shadow-2xl; }
             .modal-pix { @apply fixed inset-0 bg-black/70 flex items-center justify-center z-[70] hidden p-4; }
-            .pix-conteudo { @apply bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl; }
+            .pix-conteudo { @apply bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 shadow-2xl; }
             .fechar-modal { @apply float-right text-gray-500 hover:text-red-600 text-2xl font-bold cursor-pointer; }
             .badge-carrinho { @apply absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full; }
-            .barra-total { @apply fixed bottom-0 left-0 right-0 bg-secundaria text-principal py-3 px-5 flex items-center justify-between shadow-2xl z-40 transform translate-y-full transition-transform duration-500; }
+            .barra-total { @apply fixed bottom-0 left-0 right-0 bg-secundaria text-principal py-3 px-4 sm:px-5 flex items-center justify-between shadow-2xl z-40 transform translate-y-full transition-transform duration-500; }
             .barra-total.visivel { @apply translate-y-0; }
             .pronto-badge { @apply inline-flex items-center gap-1 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full; }
             .fr-badge { @apply inline-flex items-center gap-1 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full; }
@@ -72,22 +73,22 @@
 
     <!-- ==================== HEADER ==================== -->
     <header class="sticky top-0 z-50 shadow-md" style="background: linear-gradient(135deg, #0A1153 0%, #0d1b6b 100%);">
-        <div class="max-w-7xl mx-auto px-4 py-3">
-            <div class="flex justify-center items-center pb-2 border-b border-principal/20 relative">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2 sm:py-3">
+            <div class="flex justify-center items-center pb-2 border-b border-principal/20 relative gap-0.5 sm:gap-0">
                 <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-topo text-instagram" title="Instagram"><i class="fa fa-instagram"></i></a>
                 <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-topo text-youtube" title="YouTube"><i class="fa fa-youtube-play"></i></a>
                 <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-topo text-facebook" title="Facebook Gaming"><i class="fa fa-facebook-square"></i></a>
                 <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-topo text-cults" title="Cults - Arquivos 3D"><i class="fa fa-cube"></i></a>
                 <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-topo text-whatsapp" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
-                <button onclick="abrirCarrinho()" class="icone-rede-topo text-principal ml-4 relative" title="Ver Carrinho">
+                <button onclick="abrirCarrinho()" class="icone-rede-topo text-principal ml-2 sm:ml-4 relative" title="Ver Carrinho">
                     <i class="fa fa-shopping-cart text-lg"></i>
                     <span id="badgeCarrinho" class="badge-carrinho hidden">0</span>
                 </button>
             </div>
-            <div class="text-center my-3">
-                <h1 class="text-[clamp(2.2rem,6vw,3rem)] logo-font text-principal leading-tight">VCORE</h1>
-                <p class="text-[clamp(0.85rem,2.5vw,1.2rem)] text-principal/90 font-medium tracking-widest -mt-1">GAMES</p>
-                <p class="text-xs text-principal/70 mt-1">Mods e Arquivos Prontos para Ghost Recon Breakpoint</p>
+            <div class="text-center my-2 sm:my-3">
+                <h1 class="text-[clamp(1.8rem,5vw,3rem)] logo-font text-principal leading-tight">VCORE</h1>
+                <p class="text-[clamp(0.7rem,2vw,1.2rem)] text-principal/90 font-medium tracking-widest -mt-1">GAMES</p>
+                <p class="text-[10px] sm:text-xs text-principal/70 mt-1">Mods e Arquivos Prontos para Ghost Recon Breakpoint</p>
             </div>
             <nav class="max-w-xs mx-auto w-full menu-container">
                 <button id="botaoMenu" class="menu-botao">
@@ -108,13 +109,13 @@
     </header>
 
     <!-- ==================== HERO ==================== -->
-    <section class="relative py-16 md:py-20 text-center text-white overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #16213e 50%, #0f3460 100%);">
+    <section class="relative py-10 sm:py-16 md:py-20 text-center text-white overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #16213e 50%, #0f3460 100%);">
         <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 320%22><path fill=%22%239EFF00%22 d=%22M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320,192,320,96,320,48,320L0,320Z%22></path></svg>'); background-repeat: no-repeat; background-position: bottom; background-size: cover;"></div>
         <div class="relative z-10 max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl md:text-5xl font-bold mb-3 text-shadow">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 text-shadow">
                 Mods <span style="color:#9EFF00;">Ghost Recon</span> Breakpoint
             </h2>
-            <p class="text-base md:text-lg mb-0 text-gray-300 max-w-2xl mx-auto">
+            <p class="text-sm sm:text-base md:text-lg mb-0 text-gray-300 max-w-2xl mx-auto">
                 Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:#9EFF00;">sem trapaças, sem danos infinitos</strong>.
             </p>
         </div>
@@ -124,18 +125,18 @@
     <div id="modalCarrinho" class="modal-carrinho">
         <div class="carrinho-conteudo">
             <span class="fechar-modal" onclick="fecharCarrinho()">×</span>
-            <h2 class="text-2xl font-bold text-center text-secundaria mb-4">🛒 Seu Carrinho</h2>
-            <div class="mb-5 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <h2 class="text-xl sm:text-2xl font-bold text-center text-secundaria mb-4">🛒 Seu Carrinho</h2>
+            <div class="mb-5 p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-lg">
                 <p class="text-sm font-bold text-secundaria mb-3">📧 Seus dados para receber o guia de instalação:</p>
                 <input type="text" id="clienteNome" placeholder="Seu nome completo" class="w-full border border-gray-300 rounded-lg px-3 py-2 mb-2 text-sm focus:outline-none focus:border-secundaria" />
                 <input type="email" id="clienteEmail" placeholder="Seu e-mail" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-secundaria" />
                 <p class="text-xs text-gray-500 mt-2">⚠️ Após confirmar o pagamento, você receberá o guia completo de instalação neste e-mail.</p>
             </div>
             <div id="listaCarrinho" class="space-y-2 mb-6">
-                <p class="text-gray-500 text-center" id="carrinhoVazio">Seu carrinho está vazio.</p>
+                <p class="text-gray-500 text-center text-sm" id="carrinhoVazio">Seu carrinho está vazio.</p>
             </div>
             <div class="border-t-2 border-gray-200 pt-4 mb-4">
-                <div class="flex justify-between items-center font-bold text-xl text-gray-800">
+                <div class="flex justify-between items-center font-bold text-lg sm:text-xl text-gray-800">
                     <span>Total:</span>
                     <span id="valorTotal">R$ 0,00</span>
                 </div>
@@ -150,21 +151,21 @@
             <span class="fechar-modal" onclick="fecharModalPix()">×</span>
             <div class="text-center">
                 <div class="mb-4">
-                    <span class="text-5xl">💳</span>
-                    <h2 class="text-2xl font-bold text-secundaria mt-2">Pagamento via PIX</h2>
-                    <p class="text-gray-500 text-sm">Copie a chave PIX abaixo e faça a transferência</p>
+                    <span class="text-4xl sm:text-5xl">💳</span>
+                    <h2 class="text-xl sm:text-2xl font-bold text-secundaria mt-2">Pagamento via PIX</h2>
+                    <p class="text-gray-500 text-xs sm:text-sm">Copie a chave PIX abaixo e faça a transferência</p>
                 </div>
 
                 <!-- VALOR -->
                 <div class="bg-secundaria text-principal rounded-xl py-3 px-6 mb-5 inline-block">
                     <p class="text-xs opacity-70">Valor a pagar</p>
-                    <p id="pixValor" class="text-3xl font-bold">R$ 0,00</p>
+                    <p id="pixValor" class="text-2xl sm:text-3xl font-bold">R$ 0,00</p>
                 </div>
 
                 <!-- CHAVE PIX -->
-                <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-5 mb-5">
+                <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-4 sm:p-5 mb-5">
                     <p class="text-xs text-gray-500 mb-3 font-bold uppercase tracking-wide">🔑 Chave PIX (telefone)</p>
-                    <p id="pixChave" class="text-3xl font-bold text-secundaria tracking-wider select-all mb-1">16997238990</p>
+                    <p id="pixChave" class="text-xl sm:text-3xl font-bold text-secundaria tracking-wider select-all mb-1">16997238990</p>
                     <p class="text-sm text-gray-600">Rodrigo Paulino da Silva</p>
                     <button onclick="copiarChavePix()" class="mt-4 bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 px-5 rounded-lg text-sm transition-colors w-full">
                         📋 Copiar Chave PIX
@@ -173,7 +174,7 @@
                 </div>
 
                 <!-- INSTRUÇÕES -->
-                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5 text-left text-sm text-gray-700">
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 sm:p-4 mb-5 text-left text-xs sm:text-sm text-gray-700">
                     <p class="font-bold text-secundaria mb-2">📝 Como pagar:</p>
                     <ol class="space-y-1 list-decimal list-inside">
                         <li>Copie a chave PIX acima</li>
@@ -194,153 +195,113 @@
     </div>
 
     <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
-    <main class="py-10 px-4 max-w-7xl mx-auto">
+    <main class="py-8 sm:py-10 px-3 sm:px-4 max-w-7xl mx-auto">
 
         <!-- INÍCIO -->
         <section id="menu-inicio" class="conteudo-menu">
 
             <div id="pacotes-premium"></div>
-            <h3 class="text-2xl font-bold mb-2 text-center text-gray-800">🏆 Pacotes Completos</h3>
-            <p class="text-center text-gray-500 mb-4 text-sm">Escolha o plano ideal para você</p>
+            <h3 class="text-xl sm:text-2xl font-bold mb-2 text-center text-gray-800">🏆 Pacotes Completos</h3>
+            <p class="text-center text-gray-500 mb-4 text-xs sm:text-sm">Escolha o plano ideal para você</p>
 
             <!-- ========== BANNER: PRONTO PARA JOGAR + FR INSTALAÇÃO ========== -->
-            <div class="max-w-5xl mx-auto mb-6 rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
-                <div class="flex flex-col sm:flex-row items-center gap-4 p-5">
-                    <div class="text-5xl flex-shrink-0">🎮</div>
+            <div class="max-w-4xl mx-auto mb-6 rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
+                <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 p-3 sm:p-5">
+                    <div class="text-3xl sm:text-5xl flex-shrink-0">🎮</div>
                     <div class="flex-1 text-center sm:text-left">
                         <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-2">
                             <span class="pronto-badge">✅ PRONTO PARA JOGAR</span>
                             <span class="fr-badge">⚡ FR INSTALAÇÃO</span>
                             <span class="text-xs font-bold px-2 py-1 rounded-full bg-yellow-400 text-yellow-900">SEM COMPLICAÇÃO</span>
                         </div>
-                        <p class="font-bold text-lg" style="color:#9EFF00;">Os Pacotes já vêm com tudo instalado e configurado!</p>
-                        <p class="text-sm mt-1" style="color:rgba(158,255,0,0.75);">Basta copiar na pasta raiz do jogo (onde está o <strong style="color:#9EFF00;">GRB.exe</strong>) e abrir o game. Sem instalar ferramentas, sem configurar nada — é só jogar! 🚀</p>
+                        <p class="font-bold text-base sm:text-lg" style="color:#9EFF00;">Os Pacotes já vêm com tudo instalado e configurado!</p>
+                        <p class="text-xs sm:text-sm mt-1" style="color:rgba(158,255,0,0.75);">Basta copiar na pasta raiz do jogo (onde está o <strong style="color:#9EFF00;">GRB.exe</strong>) e abrir o game. Sem instalar ferramentas, sem configurar nada — é só jogar! 🚀</p>
                     </div>
                 </div>
             </div>
 
-            <!-- ========== BANNER DE AVISO: SAVE NOVO (VERMELHO E AMARELO) ========== -->
-            <div class="max-w-5xl mx-auto mb-8 rounded-xl overflow-hidden border-2 pulse-save" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;">
-                <div class="flex flex-col sm:flex-row items-center gap-4 p-5">
-                    <div class="text-5xl flex-shrink-0">⚠️</div>
+            <!-- ========== BANNER DE AVISO: SAVE NOVO ========== -->
+            <div class="max-w-4xl mx-auto mb-8 rounded-xl overflow-hidden border-2 pulse-save" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;">
+                <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 p-3 sm:p-5">
+                    <div class="text-3xl sm:text-5xl flex-shrink-0">⚠️</div>
                     <div class="flex-1 text-center sm:text-left">
-                        <p class="font-extrabold text-xl md:text-2xl mb-1" style="color:#cc0000; text-shadow: 1px 1px 0 rgba(255,255,255,0.5);">
+                        <p class="font-extrabold text-lg sm:text-xl md:text-2xl mb-1" style="color:#cc0000; text-shadow: 1px 1px 0 rgba(255,255,255,0.5);">
                             🚨 AO INSTALAR OS ARQUIVOS, INICIE UM SAVE NOVO!
                         </p>
-                        <p class="text-sm font-bold" style="color:#8B0000;">
+                        <p class="text-xs sm:text-sm font-bold" style="color:#8B0000;">
                             É obrigatório começar um <span style="background:#cc0000; color:#ffcc00; padding:2px 6px; border-radius:4px;">SAVE NOVO</span> após a instalação para evitar bugs e conflitos nos arquivos do jogo.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6 mb-16 max-w-5xl mx-auto">
+            <!-- ========== GRID DE PACOTES (2 COLUNAS) ========== -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-16 max-w-3xl mx-auto">
 
-                <!-- PRATA R$ 70 -->
-                <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #2a2a2a 0%, #4a4a4a 50%, #2a2a2a 100%); border: 2px solid #C0C0C0;">
-                    <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #C0C0C0 0, #C0C0C0 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
-                    <div class="relative z-10 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#C0C0C0; color:#1a1a1a;">🥈 PRATA</span>
-                            <span class="fr-badge text-[10px]">⚡ FR</span>
-                        </div>
-                        <h4 class="text-xl font-bold mb-1" style="color:#C0C0C0;">Pacote Prata</h4>
-                        <p class="text-sm mb-3" style="color:rgba(192,192,192,0.75);">Mods essenciais da VCORE GAMES.</p>
-                        <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
-                            <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
-                            <p style="color:rgba(192,192,192,0.8);">Copie na pasta raiz e abra o game.</p>
-                        </div>
-                        <!-- AVISO SAVE NOVO NO CARD -->
-                        <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">
-                            ⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!
-                        </div>
-                        <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(192,192,192,0.85);">
-                            <li>✅ Todos os itens do Prata</li>
-                            <li>✅ Fest Feminino</li>
-                            <li>✅ Veículos Modificados</li>
-                            <li>✅ Guia de instalação por e-mail</li>
-                        
-                        </ul>
-                        <div class="rounded-lg h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(192,192,192,0.3);">
-                            <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                                <i class="fa fa-youtube-play text-4xl mb-2" style="color:#C0C0C0;"></i>
-                                <span class="font-medium text-sm" style="color:#C0C0C0;">Assistir Vídeo</span>
-                            </a>
-                        </div>
-                        <div class="text-center mb-3">
-                            <p class="text-3xl font-bold" style="color:#C0C0C0;">R$ 100,00</p>
-                        </div>
-                        <button onclick="adicionarAoCarrinho('Pacote Prata - Mods Essenciais', 70.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#C0C0C0; color:#1a1a1a;">
-                            🥈 Adicionar Pacote Prata
-                        </button>
-                    </div>
-                </div>
-
-                <!-- OURO R$ 100 -->
+                <!-- ==================== OURO - R$ 120 ==================== -->
                 <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #3a2800 0%, #6b4a00 50%, #3a2800 100%); border: 2px solid #FFD700;">
                     <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #FFD700 0, #FFD700 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
                     <div class="absolute -top-1 left-1/2 -translate-x-1/2">
-                        <span class="text-xs font-bold px-3 py-1 rounded-full shadow-lg" style="background:#FFD700; color:#3a2800;">⭐ MAIS POPULAR</span>
+                        <span class="text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full shadow-lg" style="background:#FFD700; color:#3a2800;">⭐ MAIS POPULAR</span>
                     </div>
                     <div class="relative z-10 flex flex-col flex-1 mt-3">
                         <div class="flex justify-between items-start mb-3">
-                            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#FFD700; color:#3a2800;">🥇 OURO</span>
+                            <span class="text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full" style="background:#FFD700; color:#3a2800;">🥇 OURO</span>
                             <span class="fr-badge text-[10px]">⚡ FR</span>
                         </div>
-                        <h4 class="text-xl font-bold mb-1" style="color:#FFD700;">Pacote Ouro</h4>
-                        <p class="text-sm mb-3" style="color:rgba(255,215,0,0.75);">Experiência completa de visual e performance.</p>
-                        <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
+                        <h4 class="text-lg sm:text-xl font-bold mb-1" style="color:#FFD700;">Pacote Ouro</h4>
+                        <p class="text-xs sm:text-sm mb-3" style="color:rgba(255,215,0,0.75);">Experiência completa de visual e performance.</p>
+                        <div class="rounded-lg p-2 sm:p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
                             <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
                             <p style="color:rgba(255,215,0,0.8);">Copie na pasta raiz e abra o game.</p>
                         </div>
                         <!-- AVISO SAVE NOVO NO CARD -->
-                        <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">
+                        <div class="rounded-lg p-2 sm:p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">
                             ⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!
                         </div>
-                        <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.9);">
+                        <ul class="text-xs sm:text-sm mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.9);">
                             <li>✅ Coletes — Mod de Aparência</li>
                             <li>✅ Armas e Miras — Precisão Real</li>
                             <li>✅ Camisa e Calça — Visual Tático</li>
                             <li>✅ Camuflagem — Skins Completas</li>
                             <li>✅ Capacetes e Proteções — Visual Elite</li>
                             <li>✅ Guia de instalação por e-mail</li>
-                           
                         </ul>
-                        <div class="rounded-lg h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,215,0,0.3);">
+                        <div class="rounded-lg h-36 sm:h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,215,0,0.3);">
                             <a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                                <i class="fa fa-youtube-play text-4xl mb-2" style="color:#FFD700;"></i>
-                                <span class="font-medium text-sm" style="color:#FFD700;">Assistir Vídeo</span>
+                                <i class="fa fa-youtube-play text-3xl sm:text-4xl mb-2" style="color:#FFD700;"></i>
+                                <span class="font-medium text-xs sm:text-sm" style="color:#FFD700;">Assistir Vídeo</span>
                             </a>
                         </div>
                         <div class="text-center mb-3">
-                            <p class="text-3xl font-bold" style="color:#FFD700;">R$ 120,00</p>
+                            <p class="text-2xl sm:text-3xl font-bold" style="color:#FFD700;">R$ 120,00</p>
                         </div>
-                        <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avançados', 100.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#FFD700; color:#3a2800;">
+                        <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avançados', 120.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#FFD700; color:#3a2800;">
                             🥇 Adicionar Pacote Ouro
                         </button>
                     </div>
                 </div>
 
-                <!-- DIAMANTE R$ 150 -->
+                <!-- ==================== DIAMANTE - R$ 150 ==================== -->
                 <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #0A1153 0%, #1a2a7a 50%, #0A1153 100%); border: 2px solid #9EFF00;">
                     <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #9EFF00 0, #9EFF00 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
                     <div class="relative z-10 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:#9EFF00; color:#0A1153;">💎 DIAMANTE</span>
-                            <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">MELHOR VALOR</span>
+                        <div class="flex justify-between items-start mb-3 flex-wrap gap-1">
+                            <span class="text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full" style="background:#9EFF00; color:#0A1153;">💎 DIAMANTE</span>
+                            <span class="bg-red-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full">MELHOR VALOR</span>
                             <span class="fr-badge text-[10px]">⚡ FR</span>
                         </div>
-                        <h4 class="text-xl font-bold mb-1" style="color:#9EFF00;">Pacote Diamante</h4>
-                        <p class="text-sm mb-3" style="color:rgba(158,255,0,0.75);">O pacote mais completo. <strong style="color:#9EFF00;">Todos os mods</strong> em um só lugar.</p>
-                        <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
+                        <h4 class="text-lg sm:text-xl font-bold mb-1" style="color:#9EFF00;">Pacote Diamante</h4>
+                        <p class="text-xs sm:text-sm mb-3" style="color:rgba(158,255,0,0.75);">O pacote mais completo. <strong style="color:#9EFF00;">Todos os mods</strong> em um só lugar.</p>
+                        <div class="rounded-lg p-2 sm:p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;">
                             <p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p>
                             <p style="color:rgba(158,255,0,0.8);">Copie na pasta raiz e abra o game.</p>
                         </div>
                         <!-- AVISO SAVE NOVO NO CARD -->
-                        <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">
+                        <div class="rounded-lg p-2 sm:p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">
                             ⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!
                         </div>
-                        <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(158,255,0,0.9);">
+                        <ul class="text-xs sm:text-sm mb-5 space-y-1 flex-1" style="color:rgba(158,255,0,0.9);">
                             <li>✅ Coletes — Mod de Aparência</li>
                             <li>✅ Armas e Miras — Precisão Real</li>
                             <li>✅ Camisa e Calça — Visual Tático</li>
@@ -352,15 +313,15 @@
                             <li>✅ Kit Tático</li>
                             <li>✅ Guia de instalação por e-mail</li>
                         </ul>
-                        <div class="rounded-lg h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(158,255,0,0.3);">
+                        <div class="rounded-lg h-36 sm:h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(158,255,0,0.3);">
                             <a href="https://www.youtube.com/watch?v=pN6ntMjvhRw&t=564s" target="_blank" class="w-full h-full flex flex-col items-center justify-center">
-                                <i class="fa fa-youtube-play text-4xl mb-2" style="color:#9EFF00;"></i>
-                                <span class="font-medium text-sm" style="color:#9EFF00;">Assistir Vídeo</span>
+                                <i class="fa fa-youtube-play text-3xl sm:text-4xl mb-2" style="color:#9EFF00;"></i>
+                                <span class="font-medium text-xs sm:text-sm" style="color:#9EFF00;">Assistir Vídeo</span>
                             </a>
                         </div>
                         <div class="text-center mb-3">
-                            <span style="color:rgba(158,255,0,0.5);" class="text-sm line-through">R$ 224,30 separados</span>
-                            <p class="text-3xl font-bold" style="color:#9EFF00;">R$ 150,00</p>
+                            <span style="color:rgba(158,255,0,0.5);" class="text-xs sm:text-sm line-through">R$ 224,30 separados</span>
+                            <p class="text-2xl sm:text-3xl font-bold" style="color:#9EFF00;">R$ 150,00</p>
                         </div>
                         <button onclick="adicionarAoCarrinho('Pacote Diamante - Todos os Mods', 150.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#9EFF00; color:#0A1153;">
                             💎 Adicionar Pacote Diamante
@@ -374,21 +335,21 @@
         <!-- SOBRE O SERVIÇO -->
         <section id="menu-sobre-servico" class="conteudo-menu hidden">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">ℹ️ O Que É Este Serviço?</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-800">ℹ️ O Que É Este Serviço?</h2>
                 <div class="card-mod mb-6 border-l-4 border-principal">
-                    <div class="flex items-start gap-4"><span class="text-4xl">🔧</span><div><h3 class="text-xl font-bold text-secundaria mb-2">O que eu faço</h3><p class="text-gray-700">Ofereço meu <strong>conhecimento e tempo</strong> para organizar, configurar e instalar mods nos seus jogos — como <strong>Ghost Recon Breakpoint</strong>.</p></div></div>
+                    <div class="flex items-start gap-3 sm:gap-4"><span class="text-3xl sm:text-4xl">🔧</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-2">O que eu faço</h3><p class="text-sm sm:text-base text-gray-700">Ofereço meu <strong>conhecimento e tempo</strong> para organizar, configurar e instalar mods nos seus jogos — como <strong>Ghost Recon Breakpoint</strong>.</p></div></div>
                 </div>
                 <div class="card-mod mb-6 border-l-4 border-yellow-400">
-                    <div class="flex items-start gap-4"><span class="text-4xl">⚠️</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Os mods NÃO são meus</h3><p class="text-gray-700">Todos os mods são de autoria dos <strong>modders da comunidade</strong>, disponíveis gratuitamente no <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-semibold">Nexus Mods</a>.</p></div></div>
+                    <div class="flex items-start gap-3 sm:gap-4"><span class="text-3xl sm:text-4xl">⚠️</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-2">Os mods NÃO são meus</h3><p class="text-sm sm:text-base text-gray-700">Todos os mods são de autoria dos <strong>modders da comunidade</strong>, disponíveis gratuitamente no <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-semibold">Nexus Mods</a>.</p></div></div>
                 </div>
                 <div class="card-mod mb-6 border-l-4 border-green-500">
-                    <div class="flex items-start gap-4"><span class="text-4xl">🏆</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Créditos dos Mods</h3><p class="text-gray-700">Todo o mérito criativo pertence aos <strong>desenvolvedores e modders</strong>.</p></div></div>
+                    <div class="flex items-start gap-3 sm:gap-4"><span class="text-3xl sm:text-4xl">🏆</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-2">Créditos dos Mods</h3><p class="text-sm sm:text-base text-gray-700">Todo o mérito criativo pertence aos <strong>desenvolvedores e modders</strong>.</p></div></div>
                 </div>
                 <div class="card-mod mb-6 border-l-4 border-blue-500">
-                    <div class="flex items-start gap-4"><span class="text-4xl">💰</span><div><h3 class="text-xl font-bold text-secundaria mb-2">O que você paga</h3><p class="text-gray-700">Você paga apenas pelo meu <strong>trabalho de curadoria e instalação</strong>.</p></div></div>
+                    <div class="flex items-start gap-3 sm:gap-4"><span class="text-3xl sm:text-4xl">💰</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-2">O que você paga</h3><p class="text-sm sm:text-base text-gray-700">Você paga apenas pelo meu <strong>trabalho de curadoria e instalação</strong>.</p></div></div>
                 </div>
                 <div class="card-mod border-l-4 border-purple-500">
-                    <div class="flex items-start gap-4"><span class="text-4xl">🎮</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Jogos atendidos</h3><p class="text-gray-700">Atualmente trabalho principalmente com <strong>Ghost Recon Breakpoint</strong>.</p></div></div>
+                    <div class="flex items-start gap-3 sm:gap-4"><span class="text-3xl sm:text-4xl">🎮</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-2">Jogos atendidos</h3><p class="text-sm sm:text-base text-gray-700">Atualmente trabalho principalmente com <strong>Ghost Recon Breakpoint</strong>.</p></div></div>
                 </div>
             </div>
         </section>
@@ -396,9 +357,9 @@
         <!-- ÁREA DO CLIENTE -->
         <section id="menu-area-cliente" class="conteudo-menu hidden">
             <div class="max-w-2xl mx-auto">
-                <div id="clienteLoginPainel" class="card-mod p-8">
-                    <div class="text-center mb-6"><span class="text-5xl">🔐</span><h2 class="text-2xl font-bold mt-3 text-secundaria">Área do Cliente</h2><p class="text-gray-500 text-sm mt-1">Acesse com os dados enviados após sua compra</p></div>
-                    <div class="mb-5 p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800"><strong>ℹ️ Como acessar:</strong> Após confirmar seu pagamento, você recebe por e-mail o login e senha.</div>
+                <div id="clienteLoginPainel" class="card-mod p-6 sm:p-8">
+                    <div class="text-center mb-6"><span class="text-4xl sm:text-5xl">🔐</span><h2 class="text-xl sm:text-2xl font-bold mt-3 text-secundaria">Área do Cliente</h2><p class="text-gray-500 text-xs sm:text-sm mt-1">Acesse com os dados enviados após sua compra</p></div>
+                    <div class="mb-5 p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-lg text-xs sm:text-sm text-blue-800"><strong>ℹ️ Como acessar:</strong> Após confirmar seu pagamento, você recebe por e-mail o login e senha.</div>
                     <div class="space-y-4">
                         <div><label class="block text-sm font-bold text-gray-700 mb-1">Usuário</label><input type="text" id="clienteLoginUser" placeholder="Seu usuário de acesso" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" /></div>
                         <div><label class="block text-sm font-bold text-gray-700 mb-1">Senha</label><input type="password" id="clienteLoginPass" placeholder="••••••••" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" onkeydown="if(event.key==='Enter') fazerLoginCliente()" /></div>
@@ -408,48 +369,48 @@
                     <div class="mt-5 text-center"><p class="text-sm text-gray-500">Não recebeu seu acesso? <a href="https://wa.me/5516981097916" target="_blank" class="text-blue-600 hover:underline font-medium">Fale conosco no WhatsApp</a></p></div>
                 </div>
                 <div id="clienteGuiaPainel" class="hidden">
-                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-bold text-secundaria">📄 Guia Completo de Instalação</h2><button onclick="fazerLogoutCliente()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button></div>
-                    <p class="text-gray-600 mb-6 text-center">Aprenda a instalar qualquer mod da VCORE GAMES</p>
-                    <div class="space-y-4 text-gray-700 text-justify card-mod">
-                        <div class="rounded-xl p-4" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
-                            <p class="font-bold text-lg mb-2" style="color:#9EFF00;">🚀 Comprou um Pacote? É só copiar e jogar!</p>
-                            <p class="text-sm mb-3" style="color:rgba(158,255,0,0.85);">Os Pacotes já vêm pré-configurados. Siga o Passo 0 e ignore os demais.</p>
-                            <div class="rounded-lg p-3 space-y-2" style="background:rgba(0,0,0,0.3);">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-xl sm:text-2xl font-bold text-secundaria">📄 Guia Completo de Instalação</h2><button onclick="fazerLogoutCliente()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button></div>
+                    <p class="text-gray-600 mb-6 text-center text-sm">Aprenda a instalar qualquer mod da VCORE GAMES</p>
+                    <div class="space-y-4 text-gray-700 text-justify card-mod text-sm sm:text-base">
+                        <div class="rounded-xl p-3 sm:p-4" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
+                            <p class="font-bold text-base sm:text-lg mb-2" style="color:#9EFF00;">🚀 Comprou um Pacote? É só copiar e jogar!</p>
+                            <p class="text-xs sm:text-sm mb-3" style="color:rgba(158,255,0,0.85);">Os Pacotes já vêm pré-configurados. Siga o Passo 0 e ignore os demais.</p>
+                            <div class="rounded-lg p-2 sm:p-3 space-y-2" style="background:rgba(0,0,0,0.3);">
                                 <p class="font-bold" style="color:#9EFF00;">📂 Passo 0 — Como usar o arquivo pronto</p>
-                                <p class="text-sm" style="color:rgba(158,255,0,0.9);">1. Baixe e <strong style="color:#9EFF00;">descompacte</strong> o arquivo recebido (.zip ou .rar)</p>
-                                <p class="text-sm" style="color:rgba(158,255,0,0.9);">2. Navegue até a <strong style="color:#9EFF00;">pasta raiz do jogo</strong> — onde fica o <code style="background:rgba(158,255,0,0.15); padding:1px 5px; border-radius:3px;">GRB.exe</code></p>
+                                <p class="text-xs sm:text-sm" style="color:rgba(158,255,0,0.9);">1. Baixe e <strong style="color:#9EFF00;">descompacte</strong> o arquivo recebido (.zip ou .rar)</p>
+                                <p class="text-xs sm:text-sm" style="color:rgba(158,255,0,0.9);">2. Navegue até a <strong style="color:#9EFF00;">pasta raiz do jogo</strong> — onde fica o <code style="background:rgba(158,255,0,0.15); padding:1px 5px; border-radius:3px;">GRB.exe</code></p>
                                 <div class="rounded p-2 text-xs mt-1" style="background:rgba(158,255,0,0.08); border:1px solid rgba(158,255,0,0.3);">
                                     <p style="color:#9EFF00;" class="font-bold mb-1">📁 Onde costuma estar:</p>
                                     <p style="color:rgba(158,255,0,0.75);">• <strong>Ubisoft Connect:</strong> C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Ghost Recon Breakpoint</p>
                                     <p style="color:rgba(158,255,0,0.75);">• <strong>Steam:</strong> C:\Program Files (x86)\Steam\steamapps\common\Ghost Recon Breakpoint</p>
                                 </div>
-                                <p class="text-sm" style="color:rgba(158,255,0,0.9);">3. Copie os arquivos para dentro dessa pasta</p>
-                                <p class="text-sm" style="color:rgba(158,255,0,0.9);">4. Abra o jogo — os mods já estarão ativos! 🎮</p>
+                                <p class="text-xs sm:text-sm" style="color:rgba(158,255,0,0.9);">3. Copie os arquivos para dentro dessa pasta</p>
+                                <p class="text-xs sm:text-sm" style="color:rgba(158,255,0,0.9);">4. Abra o jogo — os mods já estarão ativos! 🎮</p>
                             </div>
                         </div>
 
                         <!-- AVISO SAVE NOVO NO GUIA -->
-                        <div class="rounded-xl p-4 border-2" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;">
-                            <p class="font-extrabold text-lg mb-2 text-center" style="color:#cc0000;">
+                        <div class="rounded-xl p-3 sm:p-4 border-2" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;">
+                            <p class="font-extrabold text-base sm:text-lg mb-2 text-center" style="color:#cc0000;">
                                 🚨 AO INSTALAR OS ARQUIVOS, INICIE UM SAVE NOVO!
                             </p>
-                            <p class="text-sm text-center font-bold" style="color:#8B0000;">
+                            <p class="text-xs sm:text-sm text-center font-bold" style="color:#8B0000;">
                                 É <span style="background:#cc0000; color:#ffcc00; padding:2px 6px; border-radius:4px;">OBRIGATÓRIO</span> começar um save novo após a instalação para evitar bugs e conflitos nos arquivos do jogo.
                             </p>
                         </div>
 
                         <hr class="border-gray-200" />
-                        <p class="text-sm font-bold text-gray-500 uppercase tracking-wide">👇 Passos abaixo: somente para mods individuais</p>
+                        <p class="text-xs sm:text-sm font-bold text-gray-500 uppercase tracking-wide">👇 Passos abaixo: somente para mods individuais</p>
                         <hr class="border-gray-200" />
-                        <p><strong>📋 O que você precisa ter:</strong><br /><span class="text-orange-600 font-medium">⚠️ <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-bold">Conta gratuita no Nexus Mods obrigatória</a></span><br />• GRB Mod Manager - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1602?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />• AnvilToolkit - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/16?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a></p>
+                        <p class="text-xs sm:text-sm"><strong>📋 O que você precisa ter:</strong><br /><span class="text-orange-600 font-medium">⚠️ <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-bold">Conta gratuita no Nexus Mods obrigatória</a></span><br />• GRB Mod Manager - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1602?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />• AnvilToolkit - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/16?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a></p>
                         <hr class="border-gray-200" />
-                        <p><strong>✅ PASSO 1 — Configurando</strong><br />Abra o GRB Mod Manager, selecione a pasta do jogo e configure o AnvilToolkit.</p>
+                        <p class="text-xs sm:text-sm"><strong>✅ PASSO 1 — Configurando</strong><br />Abra o GRB Mod Manager, selecione a pasta do jogo e configure o AnvilToolkit.</p>
                         <hr class="border-gray-200" />
-                        <p><strong>✅ PASSO 2 — Instalando</strong><br />Adicione o arquivo do mod (sem descompactar) e clique em Instalar.</p>
+                        <p class="text-xs sm:text-sm"><strong>✅ PASSO 2 — Instalando</strong><br />Adicione o arquivo do mod (sem descompactar) e clique em Instalar.</p>
                         <hr class="border-gray-200" />
-                        <p><strong>✅ PASSO 3 — Empacotar (obrigatório!)</strong><br />⚠️ Abra o AnvilToolkit, selecione os arquivos .forge e clique em Repack.</p>
+                        <p class="text-xs sm:text-sm"><strong>✅ PASSO 3 — Empacotar (obrigatório!)</strong><br />⚠️ Abra o AnvilToolkit, selecione os arquivos .forge e clique em Repack.</p>
                         <hr class="border-gray-200" />
-                        <p><strong>✅ PASSO 4 — Pronto!</strong><br />Abra o jogo normalmente e tudo estará aplicado! 🎮</p>
+                        <p class="text-xs sm:text-sm"><strong>✅ PASSO 4 — Pronto!</strong><br />Abra o jogo normalmente e tudo estará aplicado! 🎮</p>
                     </div>
                 </div>
             </div>
@@ -457,21 +418,21 @@
 
         <!-- SOBRE -->
         <section id="menu-sobre" class="conteudo-menu hidden">
-            <div class="max-w-2xl mx-auto card-mod p-8 text-center">
-                <h2 class="text-2xl font-bold mb-4 text-gray-800">Sobre a VCORE GAMES</h2>
-                <p class="mb-4 text-gray-600">Somos especialistas em modificações seguras e equilibradas para Ghost Recon Breakpoint.</p>
-                <p class="mb-4 text-gray-600">Todos os nossos arquivos são alterações sutis nos arquivos originais do jogo, <strong>sem adicionar trapaças ou danos infinitos</strong>.</p>
+            <div class="max-w-2xl mx-auto card-mod p-6 sm:p-8 text-center">
+                <h2 class="text-xl sm:text-2xl font-bold mb-4 text-gray-800">Sobre a VCORE GAMES</h2>
+                <p class="mb-4 text-gray-600 text-sm sm:text-base">Somos especialistas em modificações seguras e equilibradas para Ghost Recon Breakpoint.</p>
+                <p class="mb-4 text-gray-600 text-sm sm:text-base">Todos os nossos arquivos são alterações sutis nos arquivos originais do jogo, <strong>sem adicionar trapaças ou danos infinitos</strong>.</p>
             </div>
         </section>
 
         <!-- SUPORTE -->
         <section id="menu-suporte" class="conteudo-menu hidden">
-            <div class="max-w-xl mx-auto card-mod p-8 text-center">
-                <h2 class="text-2xl font-bold mb-4 text-gray-800">Central de Ajuda</h2>
-                <p class="mb-6 text-gray-600">Dúvidas? Fale conosco:</p>
+            <div class="max-w-xl mx-auto card-mod p-6 sm:p-8 text-center">
+                <h2 class="text-xl sm:text-2xl font-bold mb-4 text-gray-800">Central de Ajuda</h2>
+                <p class="mb-6 text-gray-600 text-sm sm:text-base">Dúvidas? Fale conosco:</p>
                 <div class="space-y-4 text-left max-w-sm mx-auto">
-                    <div class="flex items-center gap-3"><i class="fa fa-whatsapp text-whatsapp text-2xl"></i><a href="https://wa.me/5516981097916" target="_blank" class="text-gray-700 hover:text-whatsapp transition-colors">(16) 98109-7916</a></div>
-                    <div class="flex items-center gap-3"><i class="fa fa-instagram text-instagram text-2xl"></i><a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="text-gray-700 hover:text-instagram transition-colors">@rodrigovecoregaming</a></div>
+                    <div class="flex items-center gap-3"><i class="fa fa-whatsapp text-whatsapp text-xl sm:text-2xl"></i><a href="https://wa.me/5516981097916" target="_blank" class="text-gray-700 hover:text-whatsapp transition-colors text-sm sm:text-base">(16) 98109-7916</a></div>
+                    <div class="flex items-center gap-3"><i class="fa fa-instagram text-instagram text-xl sm:text-2xl"></i><a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="text-gray-700 hover:text-instagram transition-colors text-sm sm:text-base">@rodrigovecoregaming</a></div>
                 </div>
             </div>
         </section>
@@ -479,8 +440,8 @@
         <!-- ADMIN -->
         <section id="menu-admin" class="conteudo-menu hidden">
             <div class="max-w-md mx-auto">
-                <div id="painelLogin" class="card-mod p-8">
-                    <div class="text-center mb-6"><span class="text-5xl">🔒</span><h2 class="text-2xl font-bold mt-3 text-secundaria">Área Administrativa</h2></div>
+                <div id="painelLogin" class="card-mod p-6 sm:p-8">
+                    <div class="text-center mb-6"><span class="text-4xl sm:text-5xl">🔒</span><h2 class="text-xl sm:text-2xl font-bold mt-3 text-secundaria">Área Administrativa</h2></div>
                     <div class="space-y-4">
                         <input type="text" id="adminUser" placeholder="Usuário" class="w-full border border-gray-300 rounded-lg px-4 py-2" />
                         <input type="password" id="adminPass" placeholder="Senha" class="w-full border border-gray-300 rounded-lg px-4 py-2" onkeydown="if(event.key==='Enter') fazerLogin()" />
@@ -489,7 +450,7 @@
                     </div>
                 </div>
                 <div id="painelAdmin" class="hidden">
-                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-bold text-secundaria">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button></div>
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-xl sm:text-2xl font-bold text-secundaria">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button></div>
                     <div class="card-mod mb-6"><h3 class="text-lg font-bold text-gray-800 mb-4">📋 Clientes</h3><div id="listaClientes" class="space-y-3"><p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p></div></div>
                     <button onclick="limparClientes()" class="w-full bg-red-100 hover:bg-red-200 text-red-700 font-bold py-2 rounded-lg text-sm">🗑️ Limpar lista</button>
                 </div>
@@ -499,7 +460,7 @@
     </main>
 
     <!-- RODAPÉ -->
-    <footer class="bg-secundaria text-principal py-8 px-4 mt-12">
+    <footer class="bg-secundaria text-principal py-6 sm:py-8 px-4 mt-8 sm:mt-12">
         <div class="max-w-7xl mx-auto text-center">
             <div class="flex justify-center items-center mb-4 pb-4 border-b border-principal/20">
                 <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-rodape text-instagram"><i class="fa fa-instagram"></i></a>
@@ -508,20 +469,20 @@
                 <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-rodape text-cults"><i class="fa fa-cube"></i></a>
                 <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-rodape text-whatsapp"><i class="fa fa-whatsapp"></i></a>
             </div>
-            <p class="text-principal/80 text-sm">© 2026 VCORE GAMES - Todos os direitos reservados</p>
-            <p class="text-principal/40 text-xs mt-1">Os mods são de autoria dos modders do Nexus Mods. Este site oferece exclusivamente serviço de organização e instalação.</p>
+            <p class="text-principal/80 text-xs sm:text-sm">© 2026 VCORE GAMES - Todos os direitos reservados</p>
+            <p class="text-principal/40 text-[10px] sm:text-xs mt-1">Os mods são de autoria dos modders do Nexus Mods. Este site oferece exclusivamente serviço de organização e instalação.</p>
         </div>
     </footer>
 
     <a href="#" class="btn-topo" id="btnTopo" title="Voltar ao topo"><i class="fa fa-chevron-up"></i></a>
 
     <div id="barraTotal" class="barra-total">
-        <div class="flex items-center gap-3">
-            <i class="fa fa-shopping-cart text-xl"></i>
-            <div><p class="text-xs leading-none" style="color:rgba(158,255,0,0.7)">Total do carrinho</p><p id="barraTotalValor" class="text-xl font-bold leading-tight">R$ 0,00</p></div>
-            <span id="barraTotalItens" class="text-xs font-bold px-2 py-1 rounded-full" style="background:rgba(158,255,0,0.2)">0 item</span>
+        <div class="flex items-center gap-2 sm:gap-3">
+            <i class="fa fa-shopping-cart text-lg sm:text-xl"></i>
+            <div><p class="text-[10px] sm:text-xs leading-none" style="color:rgba(158,255,0,0.7)">Total do carrinho</p><p id="barraTotalValor" class="text-base sm:text-xl font-bold leading-tight">R$ 0,00</p></div>
+            <span id="barraTotalItens" class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:rgba(158,255,0,0.2)">0 item</span>
         </div>
-        <button onclick="abrirCarrinho()" style="background:#9EFF00;color:#0A1153" class="font-bold py-2 px-5 rounded-lg text-sm hover:opacity-90 transition-opacity active:scale-95 transform">Ver Carrinho →</button>
+        <button onclick="abrirCarrinho()" style="background:#9EFF00;color:#0A1153" class="font-bold py-2 px-3 sm:px-5 rounded-lg text-xs sm:text-sm hover:opacity-90 transition-opacity active:scale-95 transform">Ver Carrinho →</button>
     </div>
 
     <script>
@@ -697,7 +658,7 @@
                 var emailEscapado = c.email.replace(/'/g, "\\'");
                 var itensEscapado = c.itens.replace(/'/g, "\\'");
                 var totalEscapado = c.total.replace(/'/g, "\\'");
-                div.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2"><div class="flex-1 min-w-0"><p class="font-bold text-gray-800 text-sm">' + c.nome + '</p><p class="text-blue-600 text-sm">' + c.email + '</p><p class="text-gray-400 text-xs">Itens: ' + c.itens + ' | Total: R$ ' + c.total + ' | ' + c.data + '</p></div><div class="flex gap-2 flex-shrink-0"><button onclick="enviarGuiaPorEmail(\'' + nomeEscapado + '\',\'' + emailEscapado + '\',\'' + itensEscapado + '\',\'' + totalEscapado + '\')" class="bg-green-600 text-white text-xs font-bold px-3 py-2 rounded-lg hover:bg-green-700 transition-colors cursor-pointer border-0">📧 Enviar por E-mail</button></div></div>';
+                div.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2"><div class="flex-1 min-w-0"><p class="font-bold text-gray-800 text-xs sm:text-sm">' + c.nome + '</p><p class="text-blue-600 text-xs sm:text-sm">' + c.email + '</p><p class="text-gray-400 text-[10px] sm:text-xs">Itens: ' + c.itens + ' | Total: R$ ' + c.total + ' | ' + c.data + '</p></div><div class="flex gap-2 flex-shrink-0"><button onclick="enviarGuiaPorEmail(\'' + nomeEscapado + '\',\'' + emailEscapado + '\',\'' + itensEscapado + '\',\'' + totalEscapado + '\')" class="bg-green-600 text-white text-xs font-bold px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg hover:bg-green-700 transition-colors cursor-pointer border-0">📧 Enviar por E-mail</button></div></div>';
                 lista.appendChild(div);
             });
         }
@@ -759,8 +720,8 @@
                     var subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
                     var precoUnit = item.preco.toFixed(2).replace('.', ',');
                     var div = document.createElement('div');
-                    div.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e5e7eb;gap:8px;';
-                    div.innerHTML = '<div style="flex:1;min-width:0;"><p style="font-weight:600;font-size:0.9rem;">' + item.nome + '</p><p style="font-size:0.78rem;color:#6b7280;">R$ ' + precoUnit + ' cada</p></div><div style="display:flex;align-items:center;gap:6px;flex-shrink:0;"><button onclick="alterarQtd(\'' + item.nome.replace(/'/g,"\\'") + '\', -1)" style="width:26px;height:26px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;border:none;cursor:pointer;">−</button><span style="font-weight:700;min-width:20px;text-align:center;">' + item.qtd + '</span><button onclick="alterarQtd(\'' + item.nome.replace(/'/g,"\\'") + '\', 1)" style="width:26px;height:26px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;border:none;cursor:pointer;">+</button><span style="font-weight:700;min-width:68px;text-align:right;">R$ ' + subtotal + '</span><button onclick="removerDoCarrinho(\'' + item.nome.replace(/'/g,"\\'") + '\')" style="color:#dc2626;font-weight:700;background:none;border:none;cursor:pointer;">✕</button></div>';
+                    div.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e5e7eb;gap:6px;flex-wrap:wrap;';
+                    div.innerHTML = '<div style="flex:1;min-width:0;"><p style="font-weight:600;font-size:0.85rem;">' + item.nome + '</p><p style="font-size:0.72rem;color:#6b7280;">R$ ' + precoUnit + ' cada</p></div><div style="display:flex;align-items:center;gap:4px;flex-shrink:0;"><button onclick="alterarQtd(\'' + item.nome.replace(/'/g,"\\'") + '\', -1)" style="width:24px;height:24px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;border:none;cursor:pointer;font-size:0.8rem;">−</button><span style="font-weight:700;min-width:18px;text-align:center;font-size:0.85rem;">' + item.qtd + '</span><button onclick="alterarQtd(\'' + item.nome.replace(/'/g,"\\'") + '\', 1)" style="width:24px;height:24px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;border:none;cursor:pointer;font-size:0.8rem;">+</button><span style="font-weight:700;min-width:60px;text-align:right;font-size:0.85rem;">R$ ' + subtotal + '</span><button onclick="removerDoCarrinho(\'' + item.nome.replace(/'/g,"\\'") + '\')" style="color:#dc2626;font-weight:700;background:none;border:none;cursor:pointer;font-size:0.85rem;">✕</button></div>';
                     lista.appendChild(div);
                 });
                 totalEl.innerText = totalFormatado;
@@ -769,7 +730,7 @@
                 barra.classList.add('visivel');
             } else {
                 badge.classList.add('hidden');
-                lista.innerHTML = '<p class="text-gray-500 text-center">Seu carrinho está vazio.</p>';
+                lista.innerHTML = '<p class="text-gray-500 text-center text-sm">Seu carrinho está vazio.</p>';
                 totalEl.innerText = 'R$ 0,00';
                 barra.classList.remove('visivel');
                 barraTotalValor.innerText = 'R$ 0,00';
@@ -782,7 +743,7 @@
             if (!notif) {
                 notif = document.createElement('div');
                 notif.id = 'notificacaoCarrinho';
-                notif.style.cssText = 'position:fixed;top:80px;right:16px;background:#0A1153;color:#9EFF00;font-weight:700;padding:12px 18px;border-radius:10px;z-index:999;font-size:0.9rem;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:opacity 0.4s;opacity:0;pointer-events:none;max-width:280px;';
+                notif.style.cssText = 'position:fixed;top:80px;right:16px;background:#0A1153;color:#9EFF00;font-weight:700;padding:12px 18px;border-radius:10px;z-index:999;font-size:0.85rem;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:opacity 0.4s;opacity:0;pointer-events:none;max-width:280px;';
                 document.body.appendChild(notif);
             }
             notif.innerText = msg;
