@@ -116,6 +116,7 @@
                 <div id="listaMenu" class="menu-lista">
                     <a href="#inicio" class="menu-ativo" onclick="mudarMenu(event, 'inicio')">Início</a>
                     <a href="#sobre-servico" onclick="mudarMenu(event, 'sobre-servico')">ℹ️ Sobre o Serviço</a>
+                    <a href="#como-comprar" onclick="mudarMenu(event, 'como-comprar')">🛒 Como Comprar</a>
                     <a href="#pacotes-premium" onclick="irParaPacotes(event)">📦 Pacotes Completos</a>
                     <a href="#area-cliente" onclick="mudarMenu(event, 'area-cliente')">🔐 Área do Cliente</a>
                     <a href="#sobre" onclick="mudarMenu(event, 'sobre')">Sobre</a>
@@ -134,7 +135,7 @@
                 Mods <span style="color:#9EFF00;">Ghost Recon</span> Breakpoint
             </h2>
             <p class="text-base md:text-lg mb-0 text-gray-300 max-w-2xl mx-auto">
-                Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:#9EFF00;">sem trapaças, sem danos infinitos</strong>.
+                Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:#9EFF00;">tudo pronto, é só copiar e jogar!</strong>
             </p>
         </div>
     </section>
@@ -205,6 +206,7 @@
     <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
     <main class="py-10 px-4 max-w-7xl mx-auto">
 
+        <!-- ===== INÍCIO / PACOTES ===== -->
         <section id="menu-inicio" class="conteudo-menu">
             <div id="pacotes-premium"></div>
             <h3 class="text-2xl font-bold mb-2 text-center text-gray-800">🏆 Pacotes Completos</h3>
@@ -235,6 +237,17 @@
                 </div>
             </div>
 
+            <!-- 🔥 PROMOÇÃO RELÂMPAGO -->
+            <div class="max-w-5xl mx-auto mb-8 rounded-xl overflow-hidden border-2" style="background: linear-gradient(135deg, #ff1a1a 0%, #cc0000 50%, #ff1a1a 100%); border-color: #ffcc00;">
+                <div class="flex flex-col sm:flex-row items-center gap-4 p-5">
+                    <div class="text-5xl flex-shrink-0">🔥</div>
+                    <div class="flex-1 text-center sm:text-left">
+                        <p class="font-extrabold text-xl md:text-2xl mb-1 text-white" style="text-shadow: 1px 1px 0 rgba(0,0,0,0.5);">PROMOÇÃO RELÂMPAGO! PREÇOS COM ATÉ 40% DE DESCONTO!</p>
+                        <p class="text-sm font-bold text-yellow-200">Oferta por tempo limitado — garanta já o seu pacote com preço promocional! ⏰</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="grid md:grid-cols-3 gap-6 mb-16 max-w-5xl mx-auto">
                 <!-- PRATA -->
                 <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #2a2a2a 0%, #4a4a4a 50%, #2a2a2a 100%); border: 2px solid #C0C0C0;">
@@ -245,10 +258,14 @@
                         <p class="text-sm mb-3" style="color:rgba(192,192,192,0.75);">Mods essenciais da VCORE GAMES.</p>
                         <div class="rounded-lg p-3 mb-3 text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;"><p class="font-bold mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p style="color:rgba(192,192,192,0.8);">Copie na pasta raiz e abra o game.</p></div>
                         <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
-                        <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(192,192,192,0.85);"><li>✅ Todos os itens do Prata</li><li>✅ Fest Feminino</li><li>✅ Veículos Modificados</li><li>✅ Guia de instalação por e-mail</li></ul>
+                        <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(192,192,192,0.85);"><li>✅ Mods Essenciais VCORE</li><li>✅ Fest Feminino</li><li>✅ Veículos Modificados</li><li>✅ Guia de instalação por e-mail</li></ul>
                         <div class="rounded-lg h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(192,192,192,0.3);"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-4xl mb-2" style="color:#C0C0C0;"></i><span class="font-medium text-sm" style="color:#C0C0C0;">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-3"><p class="text-3xl font-bold" style="color:#C0C0C0;">R$ 100,00</p></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Prata - Mods Essenciais', 70.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#C0C0C0; color:#1a1a1a;">🥈 Adicionar Pacote Prata</button>
+                        <div class="text-center mb-3">
+                            <span style="color:rgba(192,192,192,0.45);" class="text-sm line-through">R$ 100,00</span>
+                            <p class="text-3xl font-bold" style="color:#C0C0C0;">R$ 60,00</p>
+                            <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span>
+                        </div>
+                        <button onclick="adicionarAoCarrinho('Pacote Prata - Mods Essenciais', 60.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#C0C0C0; color:#1a1a1a;">🥈 Adicionar Pacote Prata</button>
                     </div>
                 </div>
                 <!-- OURO -->
@@ -263,8 +280,12 @@
                         <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
                         <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.9);"><li>✅ Coletes — Mod de Aparência</li><li>✅ Armas e Miras — Precisão Real</li><li>✅ Camisa e Calça — Visual Tático</li><li>✅ Camuflagem — Skins Completas</li><li>✅ Capacetes e Proteções — Visual Elite</li><li>✅ Guia de instalação por e-mail</li></ul>
                         <div class="rounded-lg h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,215,0,0.3);"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-4xl mb-2" style="color:#FFD700;"></i><span class="font-medium text-sm" style="color:#FFD700;">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-3"><p class="text-3xl font-bold" style="color:#FFD700;">R$ 120,00</p></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avançados', 100.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#FFD700; color:#3a2800;">🥇 Adicionar Pacote Ouro</button>
+                        <div class="text-center mb-3">
+                            <span style="color:rgba(255,215,0,0.45);" class="text-sm line-through">R$ 150,00</span>
+                            <p class="text-3xl font-bold" style="color:#FFD700;">R$ 90,00</p>
+                            <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span>
+                        </div>
+                        <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avançados', 90.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#FFD700; color:#3a2800;">🥇 Adicionar Pacote Ouro</button>
                     </div>
                 </div>
                 <!-- DIAMANTE -->
@@ -278,24 +299,301 @@
                         <div class="rounded-lg p-3 mb-3 text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
                         <ul class="text-sm mb-5 space-y-1 flex-1" style="color:rgba(158,255,0,0.9);"><li>✅ Coletes — Mod de Aparência</li><li>✅ Armas e Miras — Precisão Real</li><li>✅ Camisa e Calça — Visual Tático</li><li>✅ Camuflagem — Skins Completas</li><li>✅ Fest Feminino</li><li>✅ Capacetes e Proteções</li><li>✅ Veículos Modificados</li><li>✅ Skin Pack Completo</li><li>✅ Kit Tático</li><li>✅ Guia de instalação por e-mail</li></ul>
                         <div class="rounded-lg h-40 flex flex-col items-center justify-center mb-4 overflow-hidden" style="background:rgba(255,255,255,0.06); border:1px solid rgba(158,255,0,0.3);"><a href="https://www.youtube.com/watch?v=pN6ntMjvhRw&t=564s" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-4xl mb-2" style="color:#9EFF00;"></i><span class="font-medium text-sm" style="color:#9EFF00;">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-3"><span style="color:rgba(158,255,0,0.5);" class="text-sm line-through">R$ 224,30 separados</span><p class="text-3xl font-bold" style="color:#9EFF00;">R$ 150,00</p></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Diamante - Todos os Mods', 150.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#9EFF00; color:#0A1153;">💎 Adicionar Pacote Diamante</button>
+                        <div class="text-center mb-3">
+                            <span style="color:rgba(158,255,0,0.45);" class="text-sm line-through">R$ 200,00</span>
+                            <p class="text-3xl font-bold" style="color:#9EFF00;">R$ 120,00</p>
+                            <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span>
+                        </div>
+                        <button onclick="adicionarAoCarrinho('Pacote Diamante - Todos os Mods', 120.00)" class="font-bold py-3 px-4 rounded text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#9EFF00; color:#0A1153;">💎 Adicionar Pacote Diamante</button>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ===== SOBRE O SERVIÇO (EXPANDIDO) ===== -->
         <section id="menu-sobre-servico" class="conteudo-menu hidden">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">ℹ️ O Que É Este Serviço?</h2>
-                <div class="card-mod mb-6 border-l-4 border-principal"><div class="flex items-start gap-4"><span class="text-4xl">🔧</span><div><h3 class="text-xl font-bold text-secundaria mb-2">O que eu faço</h3><p class="text-gray-700">Ofereço meu <strong>conhecimento e tempo</strong> para organizar, configurar e instalar mods nos seus jogos — como <strong>Ghost Recon Breakpoint</strong>.</p></div></div></div>
-                <div class="card-mod mb-6 border-l-4 border-yellow-400"><div class="flex items-start gap-4"><span class="text-4xl">⚠️</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Os mods NÃO são meus</h3><p class="text-gray-700">Todos os mods são de autoria dos <strong>modders da comunidade</strong>, disponíveis gratuitamente no <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-semibold">Nexus Mods</a>.</p></div></div></div>
-                <div class="card-mod mb-6 border-l-4 border-green-500"><div class="flex items-start gap-4"><span class="text-4xl">🏆</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Créditos dos Mods</h3><p class="text-gray-700">Todo o mérito criativo pertence aos <strong>desenvolvedores e modders</strong>.</p></div></div></div>
-                <div class="card-mod mb-6 border-l-4 border-blue-500"><div class="flex items-start gap-4"><span class="text-4xl">💰</span><div><h3 class="text-xl font-bold text-secundaria mb-2">O que você paga</h3><p class="text-gray-700">Você paga apenas pelo meu <strong>trabalho de curadoria e instalação</strong>.</p></div></div></div>
-                <div class="card-mod border-l-4 border-purple-500"><div class="flex items-start gap-4"><span class="text-4xl">🎮</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Jogos atendidos</h3><p class="text-gray-700">Atualmente trabalho principalmente com <strong>Ghost Recon Breakpoint</strong>.</p></div></div></div>
+                <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">ℹ️ Sobre o Serviço VCORE GAMES</h2>
+
+                <!-- O que é o serviço -->
+                <div class="card-mod mb-6 border-l-4 border-principal">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl">🔧</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">O que é este serviço?</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                A <strong>VCORE GAMES</strong> oferece um serviço especializado de <strong>curadoria, organização e preparação de mods</strong> para o jogo <strong>Ghost Recon Breakpoint</strong>. Nós vasculhamos os melhores mods disponíveis na comunidade, testamos cada um deles, organizamos em pacotes temáticos e deixamos tudo <strong>pronto para uso imediato</strong> — sem que você precise configurar nada.
+                            </p>
+                            <p class="text-gray-700 mt-3 leading-relaxed">
+                                Basicamente, você economiza <strong>horas de pesquisa, downloads, testes e configurações</strong>. Nós fazemos todo o trabalho pesado para que você apenas copie os arquivos e comece a jogar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- O que você paga -->
+                <div class="card-mod mb-6 border-l-4 border-blue-500">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl">💰</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">O que você está pagando?</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Você <strong>NÃO está comprando os mods em si</strong>. Você está pagando pelo nosso:
+                            </p>
+                            <ul class="mt-3 space-y-2 text-gray-700">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-green-500 font-bold">⏱️</span>
+                                    <span><strong>Tempo e trabalho de curadoria:</strong> pesquisamos, baixamos e testamos dezenas de mods para selecionar apenas os melhores e mais estáveis.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-green-500 font-bold">🔧</span>
+                                    <span><strong>Organização e configuração:</strong> organizamos os arquivos, resolvemos conflitos entre mods e deixamos tudo funcionando perfeitamente em conjunto.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-green-500 font-bold">📦</span>
+                                    <span><strong>Pré-instalação e empacotamento:</strong> entregamos os arquivos prontos no formato "copiar e colar" — você não precisa de qualquer ferramenta extra.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-green-500 font-bold">📧</span>
+                                    <span><strong>Suporte e guia de instalação:</strong> você recebe um guia completo por e-mail e tem suporte via WhatsApp para qualquer dúvida.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-green-500 font-bold">🔄</span>
+                                    <span><strong>Atualizações:</strong> mantenho os pacotes sempre atualizados com os mods mais recentes e compatíveis.</span>
+                                </li>
+                            </ul>
+                            <div class="mt-4 p-4 rounded-lg" style="background: rgba(158,255,0,0.08); border: 1px solid rgba(158,255,0,0.25);">
+                                <p class="text-sm font-bold" style="color:#0A1153;">
+                                    💡 <strong>Resumindo:</strong> você paga pela <strong>conveniência</strong> de receber tudo pronto, testado e funcionando, sem precisar aprender a usar ferramentas de modding ou resolver problemas de compatibilidade sozinho.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Créditos dos Modders -->
+                <div class="card-mod mb-6 border-l-4 border-yellow-400">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl">🏆</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">Créditos aos Modders — Os verdadeiros criadores</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                <strong>Todos os mods incluídos nos pacotes são de autoria de talentosos modders da comunidade</strong>, disponibilizados gratuitamente no <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-semibold">Nexus Mods</a> e outras plataformas. <strong>Nenhum mod foi criado por mim.</strong>
+                            </p>
+                            <p class="text-gray-700 mt-3 leading-relaxed">
+                                Todo o mérito criativo, artístico e técnico pertence aos <strong>desenvolvedores originais dos mods</strong>. O trabalho deles é incrível e merece todo o reconhecimento. Se você quiser apoiar diretamente os criadores, visite o perfil deles no Nexus Mods e deixe um endorsement ou uma doação.
+                            </p>
+                            <div class="mt-4 p-4 rounded-lg" style="background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3);">
+                                <p class="text-sm font-bold text-secundaria mb-2">🔗 Alguns modders da comunidade:</p>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Os mods de <strong>armas, coletes, camuflagens, capacetes, veículos, skins e kits táticos</strong> foram criados por diversos autores talentosos da comunidade do Nexus Mods.</li>
+                                    <li>• Você pode encontrar todos os mods originais em: <a href="https://www.nexusmods.com/ghostreconbreakpoint" target="_blank" class="text-blue-600 hover:underline font-semibold">nexusmods.com/ghostreconbreakpoint</a></li>
+                                    <li>• <strong>Nosso serviço não substitui o trabalho dos modders</strong> — apenas facilita o acesso para quem não tem tempo ou conhecimento técnico para instalar.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogos atendidos -->
+                <div class="card-mod mb-6 border-l-4 border-purple-500">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl">🎮</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">Jogos atendidos</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Atualmente, trabalho principalmente com <strong>Ghost Recon Breakpoint</strong> (versão PC/Steam e Ubisoft Connect). Este é o foco do meu serviço e onde tenho mais experiência em curadoria de mods.
+                            </p>
+                            <p class="text-gray-700 mt-2 leading-relaxed">
+                                Futuramente, pretendo expandir para outros jogos da franquia Ghost Recon e outros títulos táticos. Fique de olho nas nossas redes sociais para novidades!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diferencial -->
+                <div class="card-mod border-l-4 border-green-500">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl">✅</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">Nosso diferencial</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Diferente de outros serviços, entregamos os mods <strong>pré-instalados e prontos para uso</strong>. Você não precisa baixar qualquer outra ferramenta. É literalmente <strong>copiar a pasta e abrir o jogo</strong>. Além disso, fornecemos suporte completo por WhatsApp e guia de instalação por e-mail.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- ===== COMO COMPRAR (NOVA ABA) ===== -->
+        <section id="menu-como-comprar" class="conteudo-menu hidden">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">🛒 Como Funciona o Processo de Compra</h2>
+                <p class="text-center text-gray-500 mb-8 text-sm">Um guia completo do início ao fim — sem complicação!</p>
+
+                <!-- Passo 1 -->
+                <div class="card-mod mb-6 border-l-4 border-principal">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl flex-shrink-0">1️⃣</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">Escolha seu pacote</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Navegue até a seção <strong>"📦 Pacotes Completos"</strong> no menu principal. Lá você encontra três opções:
+                            </p>
+                            <ul class="mt-2 space-y-1 text-sm text-gray-700">
+                                <li>• 🥈 <strong>Pacote Prata (R$ 60,00)</strong> — Mods essenciais, Fest Feminino e Veículos Modificados</li>
+                                <li>• 🥇 <strong>Pacote Ouro (R$ 90,00)</strong> — Coletes, Armas, Camuflagens, Capacetes e muito mais</li>
+                                <li>• 💎 <strong>Pacote Diamante (R$ 120,00)</strong> — Todos os mods em um pacote completo (melhor custo-benefício)</li>
+                            </ul>
+                            <p class="text-gray-700 mt-2 text-sm">
+                                Cada pacote tem um vídeo de demonstração para você ver exatamente o que está incluso.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 2 -->
+                <div class="card-mod mb-6 border-l-4 border-blue-500">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl flex-shrink-0">2️⃣</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">Adicione ao carrinho</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Clique no botão <strong>"Adicionar Pacote"</strong> do plano escolhido. O item vai direto para o seu carrinho. Você pode adicionar mais de um pacote se quiser — mas o <strong>Pacote Diamante</strong> já inclui tudo, então é a melhor escolha se você quer o conjunto completo.
+                            </p>
+                            <p class="text-gray-700 mt-2 text-sm">
+                                O carrinho fica acessível pelo ícone 🛒 no topo da página. Lá você pode ajustar quantidades ou remover itens.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 3 -->
+                <div class="card-mod mb-6 border-l-4 border-yellow-400">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl flex-shrink-0">3️⃣</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">Preencha seus dados</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Abra o carrinho (clicando em 🛒 ou no botão <strong>"Ver Carrinho"</strong>) e preencha:
+                            </p>
+                            <ul class="mt-2 space-y-1 text-sm text-gray-700">
+                                <li>• 📝 <strong>Seu nome completo</strong></li>
+                                <li>• 📧 <strong>Seu e-mail</strong> (é para lá que enviaremos o guia de instalação)</li>
+                            </ul>
+                            <p class="text-gray-700 mt-2 text-sm">
+                                ⚠️ Esses dados são importantes! O guia de instalação será enviado para o e-mail cadastrado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 4 -->
+                <div class="card-mod mb-6 border-l-4 border-green-500">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl flex-shrink-0">4️⃣</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">Finalize e gere o pagamento</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Clique em <strong>"💳 Finalizar Compra"</strong>. Seus dados serão salvos e a tela de pagamento PIX será exibida automaticamente com:
+                            </p>
+                            <ul class="mt-2 space-y-1 text-sm text-gray-700">
+                                <li>• 💰 O valor total a pagar</li>
+                                <li>• 🔑 A chave PIX (telefone) para transferência</li>
+                                <li>• 📋 Um botão para copiar a chave</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 5 -->
+                <div class="card-mod mb-6 border-l-4 border-purple-500">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl flex-shrink-0">5️⃣</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">Faça o pagamento via PIX</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Com a chave PIX copiada, abra o app do seu banco e siga:
+                            </p>
+                            <ol class="mt-2 space-y-1 text-sm text-gray-700 list-decimal list-inside">
+                                <li>Vá em <strong>PIX</strong> → <strong>Pagar</strong></li>
+                                <li>Cole a chave PIX copiada</li>
+                                <li>Confira se o valor está correto</li>
+                                <li>Confirme a transferência</li>
+                            </ol>
+                            <p class="text-gray-700 mt-2 text-sm">
+                                ⚡ O PIX é instantâneo — o pagamento cai na hora!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 6 -->
+                <div class="card-mod mb-6 border-l-4 border-red-400">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl flex-shrink-0">6️⃣</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">Envie o comprovante</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Após pagar, clique no botão <strong>"📱 Enviar Comprovante via WhatsApp"</strong>. Você será direcionado para uma conversa no WhatsApp com a mensagem pré-preenchida. Basta anexar o comprovante (print da tela do banco) e enviar.
+                            </p>
+                            <p class="text-gray-700 mt-2 text-sm">
+                                Isso agiliza a confirmação do seu pagamento e o envio do guia!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 7 -->
+                <div class="card-mod mb-6 border-l-4 border-green-600">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl flex-shrink-0">7️⃣</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">Receba o guia de instalação</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Assim que o pagamento for confirmado, você receberá no e-mail cadastrado o <strong>Guia Completo de Instalação</strong> com:
+                            </p>
+                            <ul class="mt-2 space-y-1 text-sm text-gray-700">
+                                <li>• 📂 O passo a passo para instalar os arquivos</li>
+                                <li>• 📁 O caminho correto da pasta do jogo</li>
+                                <li>• ⚠️ Avisos importantes (como iniciar um save novo)</li>
+                                <li>• 🔗 Links para ferramentas (se precisar de mods individuais)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 8 -->
+                <div class="card-mod border-l-4 border-principal">
+                    <div class="flex items-start gap-4">
+                        <span class="text-4xl flex-shrink-0">8️⃣</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-secundaria mb-2">Instale e jogue! 🎮</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Com os arquivos em mãos, o processo é super simples:
+                            </p>
+                            <ol class="mt-2 space-y-1 text-sm text-gray-700 list-decimal list-inside">
+                                <li>Descompacte o arquivo recebido (.zip ou .rar)</li>
+                                <li>Copie os arquivos para a pasta raiz do jogo (onde fica o <strong>GRB.exe</strong>)</li>
+                                <li><strong>Inicie um SAVE NOVO</strong> no jogo</li>
+                                <li>Pronto! Os mods já estarão ativos! 🚀</li>
+                            </ol>
+                            <div class="mt-4 p-4 rounded-lg" style="background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.25);">
+                                <p class="text-sm font-bold text-red-700">
+                                    🚨 <strong>Não esqueça:</strong> é obrigatório começar um <span style="background:#cc0000; color:#fff; padding:2px 6px; border-radius:4px;">SAVE NOVO</span> após instalar os arquivos para evitar bugs!
+                                </p>
+                            </div>
+                            <p class="text-gray-700 mt-3 text-sm leading-relaxed">
+                                Qualquer dúvida durante o processo, entre em contato pelo WhatsApp: <a href="https://wa.me/5516981097916" target="_blank" class="text-whatsapp hover:underline font-bold">(16) 98109-7916</a>. Estou à disposição para ajudar!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ÁREA DO CLIENTE ===== -->
         <section id="menu-area-cliente" class="conteudo-menu hidden">
             <div class="max-w-2xl mx-auto">
                 <div id="clienteLoginPainel" class="card-mod p-8">
@@ -321,7 +619,8 @@
             </div>
         </section>
 
-        <section id="menu-sobre" class="conteudo-menu hidden"><div class="max-w-2xl mx-auto card-mod p-8 text-center"><h2 class="text-2xl font-bold mb-4 text-gray-800">Sobre a VCORE GAMES</h2><p class="mb-4 text-gray-600">Somos especialistas em modificações seguras e equilibradas para Ghost Recon Breakpoint.</p><p class="mb-4 text-gray-600">Todos os nossos arquivos são alterações sutis nos arquivos originais do jogo, <strong>sem adicionar trapaças ou danos infinitos</strong>.</p></div></section>
+        <!-- ===== SOBRE ===== -->
+        <section id="menu-sobre" class="conteudo-menu hidden"><div class="max-w-2xl mx-auto card-mod p-8 text-center"><h2 class="text-2xl font-bold mb-4 text-gray-800">Sobre a VCORE GAMES</h2><p class="mb-4 text-gray-600">Somos especialistas em curadoria de mods para Ghost Recon Breakpoint, entregando pacotes prontos para uso imediato.</p><p class="mb-4 text-gray-600">Todos os arquivos são pré-testados e organizados para garantir a melhor experiência de jogo possível, com total respeito ao trabalho dos modders originais da comunidade.</p></div></section>
 
         <section id="menu-suporte" class="conteudo-menu hidden"><div class="max-w-xl mx-auto card-mod p-8 text-center"><h2 class="text-2xl font-bold mb-4 text-gray-800">Central de Ajuda</h2><p class="mb-6 text-gray-600">Dúvidas? Fale conosco:</p><div class="space-y-4 text-left max-w-sm mx-auto"><div class="flex items-center gap-3"><i class="fa fa-whatsapp text-whatsapp text-2xl"></i><a href="https://wa.me/5516981097916" target="_blank" class="text-gray-700 hover:text-whatsapp transition-colors">(16) 98109-7916</a></div><div class="flex items-center gap-3"><i class="fa fa-instagram text-instagram text-2xl"></i><a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="text-gray-700 hover:text-instagram transition-colors">@rodrigovecoregaming</a></div></div></div></section>
 
@@ -349,7 +648,7 @@
                 <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-rodape text-whatsapp"><i class="fa fa-whatsapp"></i></a>
             </div>
             <p class="text-principal/80 text-sm">© 2026 VCORE GAMES - Todos os direitos reservados</p>
-            <p class="text-principal/40 text-xs mt-1">Os mods são de autoria dos modders do Nexus Mods. Este site oferece exclusivamente serviço de organização e instalação.</p>
+            <p class="text-principal/40 text-xs mt-1">Os mods são de autoria dos modders do Nexus Mods. Este site oferece exclusivamente serviço de curadoria, organização e instalação.</p>
         </div>
     </footer>
 
@@ -444,11 +743,6 @@
             'Henrique L.', 'Daniel C.', 'Renato A.', 'Fábio J.', 'Alexandre K.'
         ];
 
-        var sobrenomesCompradores = [
-            'Silva', 'Santos', 'Oliveira', 'Souza', 'Lima',
-            'Costa', 'Pereira', 'Ferreira', 'Rodrigues', 'Almeida'
-        ];
-
         var pacotesNotificacao = [
             'Pacote Diamante 💎',
             'Pacote Ouro 🥇',
@@ -465,38 +759,29 @@
         ];
 
         function nomeAleatorio() {
-            var nome = nomesCompradores[Math.floor(Math.random() * nomesCompradores.length)];
-            return nome;
+            return nomesCompradores[Math.floor(Math.random() * nomesCompradores.length)];
         }
 
         function criarToastCompra() {
-            // Remove toast anterior se existir
             var existente = document.querySelector('.toast-compra');
             if (existente) {
                 existente.classList.add('saindo');
                 setTimeout(function() { if (existente.parentNode) existente.parentNode.removeChild(existente); }, 400);
             }
-
             var nome = nomeAleatorio();
             var pacote = pacotesNotificacao[Math.floor(Math.random() * pacotesNotificacao.length)];
             var tempo = temposNotificacao[Math.floor(Math.random() * temposNotificacao.length)];
-
             var toast = document.createElement('div');
             toast.className = 'toast-compra';
             toast.style.cssText = 'position:fixed;bottom:100px;right:20px;background:#0A1153;color:#fff;padding:14px 18px;border-radius:14px;z-index:9999;box-shadow:0 8px 30px rgba(0,0,0,0.4);border:1px solid rgba(158,255,0,0.4);max-width:300px;cursor:default;font-family:Inter,system-ui,sans-serif;';
-
             toast.innerHTML = '<div style="display:flex;align-items:center;gap:10px;">'
                 + '<div style="background:rgba(158,255,0,0.15);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🔥</div>'
                 + '<div>'
                 + '<p style="font-weight:700;font-size:0.85rem;color:#9EFF00;margin:0;">' + nome + ' comprou</p>'
                 + '<p style="font-size:0.8rem;margin:2px 0;color:#e5e7eb;">' + pacote + '</p>'
                 + '<p style="font-size:0.7rem;margin:0;color:rgba(255,255,255,0.5);">' + tempo + '</p>'
-                + '</div>'
-                + '</div>';
-
+                + '</div></div>';
             document.body.appendChild(toast);
-
-            // Remove após 5 segundos
             setTimeout(function() {
                 if (toast.parentNode) {
                     toast.classList.add('saindo');
@@ -506,17 +791,14 @@
         }
 
         function agendarProximaNotificacao() {
-            var delay = Math.floor(Math.random() * 12000) + 8000; // 8 a 20 segundos
+            var delay = Math.floor(Math.random() * 12000) + 8000;
             setTimeout(function() {
                 criarToastCompra();
                 agendarProximaNotificacao();
             }, delay);
         }
 
-        // Inicia as notificações após 5 segundos da página carregar
-        setTimeout(function() {
-            agendarProximaNotificacao();
-        }, 5000);
+        setTimeout(function() { agendarProximaNotificacao(); }, 5000);
 
         // ============ MENU DROPDOWN ============
         var botaoMenu = document.getElementById('botaoMenu');
