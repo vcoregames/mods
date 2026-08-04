@@ -52,6 +52,8 @@
             .carrinho-conteudo { @apply bg-white rounded-xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6 shadow-2xl; }
             .modal-pix { @apply fixed inset-0 bg-black/70 flex items-center justify-center z-[70] hidden p-4; }
             .pix-conteudo { @apply bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl; }
+            .modal-email { @apply fixed inset-0 bg-black/80 flex items-center justify-center z-[75] hidden p-4; }
+            .email-conteudo { @apply bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl; }
             .fechar-modal { @apply float-right text-gray-500 hover:text-red-600 text-2xl font-bold cursor-pointer; }
             .badge-carrinho { @apply absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full; }
             .barra-total { @apply fixed bottom-0 left-0 right-0 bg-secundaria text-principal py-3 px-5 flex items-center justify-between shadow-2xl z-40 transform translate-y-full transition-transform duration-500; }
@@ -81,6 +83,13 @@
             }
             .toast-compra.saindo {
                 animation: slideOutRight 0.4s ease-in forwards;
+            }
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in-up {
+                animation: fadeInUp 0.4s ease-out forwards;
             }
         }
         html { scroll-behavior: smooth; }
@@ -140,16 +149,51 @@
         </div>
     </section>
 
+    <!-- ==================== MODAL DE AVISO SOBRE E-MAIL ==================== -->
+    <div id="modalAvisoEmail" class="modal-email">
+        <div class="email-conteudo animate-fade-in-up">
+            <div class="text-center mb-5">
+                <span class="text-6xl">📧</span>
+                <h2 class="text-2xl font-bold text-secundaria mt-3">⚠️ Atenção com seu E-mail!</h2>
+            </div>
+            <div class="bg-yellow-50 border-2 border-yellow-400 rounded-xl p-5 mb-5">
+                <p class="text-gray-800 font-bold text-lg mb-3 text-center">Use um e-mail que você acessa no dia a dia!</p>
+                <ul class="text-sm text-gray-700 space-y-2">
+                    <li class="flex items-start gap-2"><span class="text-yellow-500 text-lg">🔑</span><span>Este e-mail será seu <strong>login de acesso</strong> à Área do Cliente</span></li>
+                    <li class="flex items-start gap-2"><span class="text-yellow-500 text-lg">📥</span><span>Por ele você receberá o <strong>link de download</strong> do pacote comprado</span></li>
+                    <li class="flex items-start gap-2"><span class="text-yellow-500 text-lg">📖</span><span>Também enviaremos o <strong>guia de instalação</strong> completo</span></li>
+                    <li class="flex items-start gap-2"><span class="text-yellow-500 text-lg">🔄</span><span>Use o mesmo e-mail para <strong>futuras compras</strong> e atualizações</span></li>
+                </ul>
+            </div>
+            <div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-5">
+                <p class="text-sm text-red-700 font-bold text-center">🚫 Não use e-mails temporários ou que você não acessa! Você pode perder o acesso ao seu pacote.</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="voltarAvisoEmail()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 rounded-lg transition-colors text-sm">← Voltar e corrigir</button>
+                <button onclick="confirmarAvisoEmail()" class="flex-1 bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 rounded-lg transition-colors text-sm">✅ Confirmar e continuar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- ==================== MODAL DO CARRINHO ==================== -->
     <div id="modalCarrinho" class="modal-carrinho">
         <div class="carrinho-conteudo">
             <span class="fechar-modal" onclick="fecharCarrinho()">×</span>
             <h2 class="text-2xl font-bold text-center text-secundaria mb-4">🛒 Seu Carrinho</h2>
-            <div class="mb-5 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <p class="text-sm font-bold text-secundaria mb-3">📧 Seus dados para receber o guia de instalação:</p>
-                <input type="text" id="clienteNome" placeholder="Seu nome completo" class="w-full border border-gray-300 rounded-lg px-3 py-2 mb-2 text-sm focus:outline-none focus:border-secundaria" />
-                <input type="email" id="clienteEmail" placeholder="Seu e-mail" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-secundaria" />
-                <p class="text-xs text-gray-500 mt-2">⚠️ Após confirmar o pagamento, você receberá o guia completo de instalação neste e-mail.</p>
+            <div class="mb-5 p-5 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl">
+                <p class="text-sm font-bold text-secundaria mb-3 flex items-center gap-2"><span>🔐</span> Seus dados de acesso:</p>
+                <p class="text-xs text-gray-500 mb-3">Preencha para criar sua conta na Área do Cliente</p>
+                <input type="text" id="clienteNome" placeholder="Seu nome completo" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2.5 mb-3 text-sm focus:outline-none focus:border-secundaria transition-colors" />
+                <input type="email" id="clienteEmail" placeholder="Seu melhor e-mail (será seu login)" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2.5 mb-3 text-sm focus:outline-none focus:border-secundaria transition-colors" />
+                <div class="relative">
+                    <input type="password" id="clienteSenha" placeholder="Crie uma senha de acesso" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2.5 mb-1 text-sm focus:outline-none focus:border-secundaria transition-colors" />
+                    <button type="button" onclick="toggleSenhaCarrinho()" class="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600 text-sm"><i class="fa fa-eye" id="iconeSenhaCarrinho"></i></button>
+                </div>
+                <p class="text-xs text-gray-400 mb-3">Mínimo 4 caracteres</p>
+                <div class="bg-green-50 border border-green-200 rounded-lg p-3 text-xs text-green-800">
+                    <p class="font-bold mb-1">💡 Dica importante:</p>
+                    <p>Use um <strong>e-mail que você acessa sempre</strong>. Ele será seu login na Área do Cliente e por ele você receberá o link de download do pacote após a confirmação do pagamento.</p>
+                </div>
             </div>
             <div id="listaCarrinho" class="space-y-2 mb-6">
                 <p class="text-gray-500 text-center" id="carrinhoVazio">Seu carrinho está vazio.</p>
@@ -160,7 +204,7 @@
                     <span id="valorTotal">R$ 0,00</span>
                 </div>
             </div>
-            <button class="btn-venda block text-center" onclick="finalizarCompra()">💳 Finalizar Compra</button>
+            <button class="btn-venda block text-center" onclick="iniciarFinalizacao()">💳 Finalizar Compra</button>
         </div>
     </div>
 
@@ -310,7 +354,7 @@
             </div>
         </section>
 
-        <!-- ===== SOBRE O SERVIÇO (EXPANDIDO) ===== -->
+        <!-- ===== SOBRE O SERVIÇO (MANTIDO EXATAMENTE COMO ESTAVA) ===== -->
         <section id="menu-sobre-servico" class="conteudo-menu hidden">
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">ℹ️ Sobre o Serviço VCORE GAMES</h2>
@@ -431,189 +475,71 @@
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">🛒 Como Funciona o Processo de Compra</h2>
                 <p class="text-center text-gray-500 mb-8 text-sm">Um guia completo do início ao fim — sem complicação!</p>
-
-                <!-- Passo 1 -->
-                <div class="card-mod mb-6 border-l-4 border-principal">
-                    <div class="flex items-start gap-4">
-                        <span class="text-4xl flex-shrink-0">1️⃣</span>
-                        <div>
-                            <h3 class="text-xl font-bold text-secundaria mb-2">Escolha seu pacote</h3>
-                            <p class="text-gray-700 leading-relaxed">
-                                Navegue até a seção <strong>"📦 Pacotes Completos"</strong> no menu principal. Lá você encontra três opções:
-                            </p>
-                            <ul class="mt-2 space-y-1 text-sm text-gray-700">
-                                <li>• 🥈 <strong>Pacote Prata (R$ 60,00)</strong> — Mods essenciais, Fest Feminino e Veículos Modificados</li>
-                                <li>• 🥇 <strong>Pacote Ouro (R$ 90,00)</strong> — Coletes, Armas, Camuflagens, Capacetes e muito mais</li>
-                                <li>• 💎 <strong>Pacote Diamante (R$ 120,00)</strong> — Todos os mods em um pacote completo (melhor custo-benefício)</li>
-                            </ul>
-                            <p class="text-gray-700 mt-2 text-sm">
-                                Cada pacote tem um vídeo de demonstração para você ver exatamente o que está incluso.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Passo 2 -->
-                <div class="card-mod mb-6 border-l-4 border-blue-500">
-                    <div class="flex items-start gap-4">
-                        <span class="text-4xl flex-shrink-0">2️⃣</span>
-                        <div>
-                            <h3 class="text-xl font-bold text-secundaria mb-2">Adicione ao carrinho</h3>
-                            <p class="text-gray-700 leading-relaxed">
-                                Clique no botão <strong>"Adicionar Pacote"</strong> do plano escolhido. O item vai direto para o seu carrinho. Você pode adicionar mais de um pacote se quiser — mas o <strong>Pacote Diamante</strong> já inclui tudo, então é a melhor escolha se você quer o conjunto completo.
-                            </p>
-                            <p class="text-gray-700 mt-2 text-sm">
-                                O carrinho fica acessível pelo ícone 🛒 no topo da página. Lá você pode ajustar quantidades ou remover itens.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Passo 3 -->
-                <div class="card-mod mb-6 border-l-4 border-yellow-400">
-                    <div class="flex items-start gap-4">
-                        <span class="text-4xl flex-shrink-0">3️⃣</span>
-                        <div>
-                            <h3 class="text-xl font-bold text-secundaria mb-2">Preencha seus dados</h3>
-                            <p class="text-gray-700 leading-relaxed">
-                                Abra o carrinho (clicando em 🛒 ou no botão <strong>"Ver Carrinho"</strong>) e preencha:
-                            </p>
-                            <ul class="mt-2 space-y-1 text-sm text-gray-700">
-                                <li>• 📝 <strong>Seu nome completo</strong></li>
-                                <li>• 📧 <strong>Seu e-mail</strong> (é para lá que enviaremos o guia de instalação)</li>
-                            </ul>
-                            <p class="text-gray-700 mt-2 text-sm">
-                                ⚠️ Esses dados são importantes! O guia de instalação será enviado para o e-mail cadastrado.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Passo 4 -->
-                <div class="card-mod mb-6 border-l-4 border-green-500">
-                    <div class="flex items-start gap-4">
-                        <span class="text-4xl flex-shrink-0">4️⃣</span>
-                        <div>
-                            <h3 class="text-xl font-bold text-secundaria mb-2">Finalize e gere o pagamento</h3>
-                            <p class="text-gray-700 leading-relaxed">
-                                Clique em <strong>"💳 Finalizar Compra"</strong>. Seus dados serão salvos e a tela de pagamento PIX será exibida automaticamente com:
-                            </p>
-                            <ul class="mt-2 space-y-1 text-sm text-gray-700">
-                                <li>• 💰 O valor total a pagar</li>
-                                <li>• 🔑 A chave PIX (telefone) para transferência</li>
-                                <li>• 📋 Um botão para copiar a chave</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Passo 5 -->
-                <div class="card-mod mb-6 border-l-4 border-purple-500">
-                    <div class="flex items-start gap-4">
-                        <span class="text-4xl flex-shrink-0">5️⃣</span>
-                        <div>
-                            <h3 class="text-xl font-bold text-secundaria mb-2">Faça o pagamento via PIX</h3>
-                            <p class="text-gray-700 leading-relaxed">
-                                Com a chave PIX copiada, abra o app do seu banco e siga:
-                            </p>
-                            <ol class="mt-2 space-y-1 text-sm text-gray-700 list-decimal list-inside">
-                                <li>Vá em <strong>PIX</strong> → <strong>Pagar</strong></li>
-                                <li>Cole a chave PIX copiada</li>
-                                <li>Confira se o valor está correto</li>
-                                <li>Confirme a transferência</li>
-                            </ol>
-                            <p class="text-gray-700 mt-2 text-sm">
-                                ⚡ O PIX é instantâneo — o pagamento cai na hora!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Passo 6 -->
-                <div class="card-mod mb-6 border-l-4 border-red-400">
-                    <div class="flex items-start gap-4">
-                        <span class="text-4xl flex-shrink-0">6️⃣</span>
-                        <div>
-                            <h3 class="text-xl font-bold text-secundaria mb-2">Envie o comprovante</h3>
-                            <p class="text-gray-700 leading-relaxed">
-                                Após pagar, clique no botão <strong>"📱 Enviar Comprovante via WhatsApp"</strong>. Você será direcionado para uma conversa no WhatsApp com a mensagem pré-preenchida. Basta anexar o comprovante (print da tela do banco) e enviar.
-                            </p>
-                            <p class="text-gray-700 mt-2 text-sm">
-                                Isso agiliza a confirmação do seu pagamento e o envio do guia!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Passo 7 -->
-                <div class="card-mod mb-6 border-l-4 border-green-600">
-                    <div class="flex items-start gap-4">
-                        <span class="text-4xl flex-shrink-0">7️⃣</span>
-                        <div>
-                            <h3 class="text-xl font-bold text-secundaria mb-2">Receba o guia de instalação</h3>
-                            <p class="text-gray-700 leading-relaxed">
-                                Assim que o pagamento for confirmado, você receberá no e-mail cadastrado o <strong>Guia Completo de Instalação</strong> com:
-                            </p>
-                            <ul class="mt-2 space-y-1 text-sm text-gray-700">
-                                <li>• 📂 O passo a passo para instalar os arquivos</li>
-                                <li>• 📁 O caminho correto da pasta do jogo</li>
-                                <li>• ⚠️ Avisos importantes (como iniciar um save novo)</li>
-                                <li>• 🔗 Links para ferramentas (se precisar de mods individuais)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Passo 8 -->
-                <div class="card-mod border-l-4 border-principal">
-                    <div class="flex items-start gap-4">
-                        <span class="text-4xl flex-shrink-0">8️⃣</span>
-                        <div>
-                            <h3 class="text-xl font-bold text-secundaria mb-2">Instale e jogue! 🎮</h3>
-                            <p class="text-gray-700 leading-relaxed">
-                                Com os arquivos em mãos, o processo é super simples:
-                            </p>
-                            <ol class="mt-2 space-y-1 text-sm text-gray-700 list-decimal list-inside">
-                                <li>Descompacte o arquivo recebido (.zip ou .rar)</li>
-                                <li>Copie os arquivos para a pasta raiz do jogo (onde fica o <strong>GRB.exe</strong>)</li>
-                                <li><strong>Inicie um SAVE NOVO</strong> no jogo</li>
-                                <li>Pronto! Os mods já estarão ativos! 🚀</li>
-                            </ol>
-                            <div class="mt-4 p-4 rounded-lg" style="background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.25);">
-                                <p class="text-sm font-bold text-red-700">
-                                    🚨 <strong>Não esqueça:</strong> é obrigatório começar um <span style="background:#cc0000; color:#fff; padding:2px 6px; border-radius:4px;">SAVE NOVO</span> após instalar os arquivos para evitar bugs!
-                                </p>
-                            </div>
-                            <p class="text-gray-700 mt-3 text-sm leading-relaxed">
-                                Qualquer dúvida durante o processo, entre em contato pelo WhatsApp: <a href="https://wa.me/5516981097916" target="_blank" class="text-whatsapp hover:underline font-bold">(16) 98109-7916</a>. Estou à disposição para ajudar!
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <div class="card-mod mb-6 border-l-4 border-principal"><div class="flex items-start gap-4"><span class="text-4xl flex-shrink-0">1️⃣</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Escolha seu pacote</h3><p class="text-gray-700 leading-relaxed">Navegue até a seção <strong>"📦 Pacotes Completos"</strong>. Recomendamos o Diamante, que inclui todos os mods disponíveis.</p></div></div></div>
+                <div class="card-mod mb-6 border-l-4 border-blue-500"><div class="flex items-start gap-4"><span class="text-4xl flex-shrink-0">2️⃣</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Adicione ao carrinho e crie sua conta</h3><p class="text-gray-700 leading-relaxed">Preencha seu <strong>nome, e-mail e crie uma senha</strong>. Este e-mail será seu login na Área do Cliente para acessar seus pacotes.</p></div></div></div>
+                <div class="card-mod mb-6 border-l-4 border-yellow-400"><div class="flex items-start gap-4"><span class="text-4xl flex-shrink-0">3️⃣</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Confirme o e-mail</h3><p class="text-gray-700 leading-relaxed">Uma janela de confirmação aparecerá. <strong>Certifique-se de usar um e-mail que você acessa sempre</strong> — ele será essencial para baixar seu pacote.</p></div></div></div>
+                <div class="card-mod mb-6 border-l-4 border-green-500"><div class="flex items-start gap-4"><span class="text-4xl flex-shrink-0">4️⃣</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Pague via PIX</h3><p class="text-gray-700 leading-relaxed">Copie a chave PIX, faça a transferência no app do seu banco e envie o comprovante pelo WhatsApp.</p></div></div></div>
+                <div class="card-mod mb-6 border-l-4 border-purple-500"><div class="flex items-start gap-4"><span class="text-4xl flex-shrink-0">5️⃣</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Aguarde a liberação</h3><p class="text-gray-700 leading-relaxed">Após a confirmação do pagamento, <strong>seu acesso será liberado</strong> e você poderá baixar o pacote pela Área do Cliente com seu e-mail e senha.</p></div></div></div>
+                <div class="card-mod border-l-4 border-principal"><div class="flex items-start gap-4"><span class="text-4xl flex-shrink-0">6️⃣</span><div><h3 class="text-xl font-bold text-secundaria mb-2">Acesse e baixe! 🎮</h3><p class="text-gray-700 leading-relaxed">Faça login na <strong>Área do Cliente</strong> com seu e-mail e senha cadastrados. Baixe o pacote, copie para a pasta do jogo e divirta-se!</p></div></div></div>
             </div>
         </section>
 
-        <!-- ===== ÁREA DO CLIENTE ===== -->
+        <!-- ===== ÁREA DO CLIENTE (MELHORADA) ===== -->
         <section id="menu-area-cliente" class="conteudo-menu hidden">
             <div class="max-w-2xl mx-auto">
+                <!-- TELA DE LOGIN -->
                 <div id="clienteLoginPainel" class="card-mod p-8">
-                    <div class="text-center mb-6"><span class="text-5xl">🔐</span><h2 class="text-2xl font-bold mt-3 text-secundaria">Área do Cliente</h2><p class="text-gray-500 text-sm mt-1">Acesse com os dados enviados após sua compra</p></div>
-                    <div class="mb-5 p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800"><strong>ℹ️ Como acessar:</strong> Após confirmar seu pagamento, você recebe por e-mail o login e senha.</div>
-                    <div class="space-y-4"><div><label class="block text-sm font-bold text-gray-700 mb-1">Usuário</label><input type="text" id="clienteLoginUser" placeholder="Seu usuário de acesso" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" /></div><div><label class="block text-sm font-bold text-gray-700 mb-1">Senha</label><input type="password" id="clienteLoginPass" placeholder="••••••••" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-secundaria" onkeydown="if(event.key==='Enter') fazerLoginCliente()" /></div><p id="erroLoginCliente" class="text-red-600 text-sm hidden">❌ Usuário ou senha incorretos.</p><button onclick="fazerLoginCliente()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 rounded-lg transition-colors">🔓 Acessar Guia de Instalação</button></div>
-                    <div class="mt-5 text-center"><p class="text-sm text-gray-500">Não recebeu seu acesso? <a href="https://wa.me/5516981097916" target="_blank" class="text-blue-600 hover:underline font-medium">Fale conosco no WhatsApp</a></p></div>
+                    <div class="text-center mb-6">
+                        <span class="text-5xl">🔐</span>
+                        <h2 class="text-2xl font-bold mt-3 text-secundaria">Área do Cliente</h2>
+                        <p class="text-gray-500 text-sm mt-1">Acesse com seu e-mail e senha cadastrados na compra</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">📧 E-mail</label>
+                            <input type="email" id="clienteLoginEmail" placeholder="Seu e-mail cadastrado" class="w-full border-2 border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:border-secundaria transition-colors" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">🔑 Senha</label>
+                            <input type="password" id="clienteLoginPass" placeholder="••••••••" class="w-full border-2 border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:border-secundaria transition-colors" onkeydown="if(event.key==='Enter') fazerLoginCliente()" />
+                        </div>
+                        <p id="erroLoginCliente" class="text-red-600 text-sm hidden text-center">❌ E-mail ou senha incorretos. Verifique seus dados.</p>
+                        <button onclick="fazerLoginCliente()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 rounded-lg transition-colors text-lg">🔓 Acessar Minha Conta</button>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <p class="text-sm text-gray-500">Ainda não tem conta? <a href="#inicio" onclick="mudarMenuParaInicio()" class="text-blue-600 hover:underline font-medium">Compre um pacote</a></p>
+                        <p class="text-sm text-gray-500 mt-1">Esqueceu a senha? <a href="https://wa.me/5516981097916" target="_blank" class="text-blue-600 hover:underline font-medium">Fale conosco no WhatsApp</a></p>
+                    </div>
                 </div>
-                <div id="clienteGuiaPainel" class="hidden">
-                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-bold text-secundaria">📄 Guia Completo de Instalação</h2><button onclick="fazerLogoutCliente()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button></div>
-                    <p class="text-gray-600 mb-6 text-center">Aprenda a instalar qualquer mod da VCORE GAMES</p>
-                    <div class="space-y-4 text-gray-700 text-justify card-mod">
-                        <div class="rounded-xl p-4" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;"><p class="font-bold text-lg mb-2" style="color:#9EFF00;">🚀 Comprou um Pacote? É só copiar e jogar!</p><p class="text-sm mb-3" style="color:rgba(158,255,0,0.85);">Os Pacotes já vêm pré-configurados. Siga o Passo 0 e ignore os demais.</p><div class="rounded-lg p-3 space-y-2" style="background:rgba(0,0,0,0.3);"><p class="font-bold" style="color:#9EFF00;">📂 Passo 0 — Como usar o arquivo pronto</p><p class="text-sm" style="color:rgba(158,255,0,0.9);">1. Baixe e <strong style="color:#9EFF00;">descompacte</strong> o arquivo recebido (.zip ou .rar)</p><p class="text-sm" style="color:rgba(158,255,0,0.9);">2. Navegue até a <strong style="color:#9EFF00;">pasta raiz do jogo</strong> — onde fica o <code style="background:rgba(158,255,0,0.15); padding:1px 5px; border-radius:3px;">GRB.exe</code></p><div class="rounded p-2 text-xs mt-1" style="background:rgba(158,255,0,0.08); border:1px solid rgba(158,255,0,0.3);"><p style="color:#9EFF00;" class="font-bold mb-1">📁 Onde costuma estar:</p><p style="color:rgba(158,255,0,0.75);">• <strong>Ubisoft Connect:</strong> C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Ghost Recon Breakpoint</p><p style="color:rgba(158,255,0,0.75);">• <strong>Steam:</strong> C:\Program Files (x86)\Steam\steamapps\common\Ghost Recon Breakpoint</p></div><p class="text-sm" style="color:rgba(158,255,0,0.9);">3. Copie os arquivos para dentro dessa pasta</p><p class="text-sm" style="color:rgba(158,255,0,0.9);">4. Abra o jogo — os mods já estarão ativos! 🎮</p></div></div>
-                        <div class="rounded-xl p-4 border-2" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;"><p class="font-extrabold text-lg mb-2 text-center" style="color:#cc0000;">🚨 AO INSTALAR OS ARQUIVOS, INICIE UM SAVE NOVO!</p><p class="text-sm text-center font-bold" style="color:#8B0000;">É <span style="background:#cc0000; color:#ffcc00; padding:2px 6px; border-radius:4px;">OBRIGATÓRIO</span> começar um save novo após a instalação para evitar bugs e conflitos nos arquivos do jogo.</p></div>
-                        <hr class="border-gray-200" /><p class="text-sm font-bold text-gray-500 uppercase tracking-wide">👇 Passos abaixo: somente para mods individuais</p><hr class="border-gray-200" />
-                        <p><strong>📋 O que você precisa ter:</strong><br /><span class="text-orange-600 font-medium">⚠️ <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-bold">Conta gratuita no Nexus Mods obrigatória</a></span><br />• GRB Mod Manager - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/1602?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a><br />• AnvilToolkit - <a href="https://www.nexusmods.com/ghostreconbreakpoint/mods/16?tab=files" target="_blank" class="text-blue-600 hover:underline font-medium">Baixar aqui</a></p><hr class="border-gray-200" />
-                        <p><strong>✅ PASSO 1 — Configurando</strong><br />Abra o GRB Mod Manager, selecione a pasta do jogo e configure o AnvilToolkit.</p><hr class="border-gray-200" />
-                        <p><strong>✅ PASSO 2 — Instalando</strong><br />Adicione o arquivo do mod (sem descompactar) e clique em Instalar.</p><hr class="border-gray-200" />
-                        <p><strong>✅ PASSO 3 — Empacotar (obrigatório!)</strong><br />⚠️ Abra o AnvilToolkit, selecione os arquivos .forge e clique em Repack.</p><hr class="border-gray-200" />
-                        <p><strong>✅ PASSO 4 — Pronto!</strong><br />Abra o jogo normalmente e tudo estará aplicado! 🎮</p>
+
+                <!-- PAINEL DO CLIENTE LOGADO -->
+                <div id="clientePainel" class="hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-secundaria">🎮 Minha Conta</h2>
+                            <p class="text-sm text-gray-500" id="clienteNomeLogado"></p>
+                        </div>
+                        <button onclick="fazerLogoutCliente()" class="text-sm text-red-600 hover:text-red-800 font-bold flex items-center gap-1"><i class="fa fa-sign-out"></i> Sair</button>
+                    </div>
+                    <div id="clienteComprasContainer"><p class="text-gray-400 text-center">Carregando...</p></div>
+                    <div class="mt-8 card-mod" id="guiaInstalacaoCliente">
+                        <h3 class="text-xl font-bold text-secundaria mb-4 text-center">📖 Guia de Instalação</h3>
+                        <div class="space-y-3 text-gray-700 text-sm">
+                            <div class="rounded-xl p-4" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
+                                <p class="font-bold text-lg mb-2" style="color:#9EFF00;">🚀 É só copiar e jogar!</p>
+                                <p class="text-sm mb-2" style="color:rgba(158,255,0,0.85);">1. Baixe e <strong style="color:#9EFF00;">descompacte</strong> o arquivo recebido</p>
+                                <p class="text-sm mb-2" style="color:rgba(158,255,0,0.85);">2. Copie os arquivos para a <strong style="color:#9EFF00;">pasta raiz do jogo</strong> (onde fica o GRB.exe)</p>
+                                <p class="text-sm" style="color:rgba(158,255,0,0.85);">3. Abra o jogo — os mods já estarão ativos! 🎮</p>
+                                <div class="rounded p-2 text-xs mt-3" style="background:rgba(158,255,0,0.08); border:1px solid rgba(158,255,0,0.3);">
+                                    <p style="color:#9EFF00;" class="font-bold mb-1">📁 Caminhos comuns:</p>
+                                    <p style="color:rgba(158,255,0,0.75);">• <strong>Ubisoft Connect:</strong> C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Ghost Recon Breakpoint</p>
+                                    <p style="color:rgba(158,255,0,0.75);">• <strong>Steam:</strong> C:\Program Files (x86)\Steam\steamapps\common\Ghost Recon Breakpoint</p>
+                                </div>
+                            </div>
+                            <div class="rounded-xl p-4 border-2" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;">
+                                <p class="font-extrabold text-base mb-2 text-center" style="color:#cc0000;">🚨 INICIE UM SAVE NOVO APÓS INSTALAR!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -624,10 +550,23 @@
 
         <section id="menu-suporte" class="conteudo-menu hidden"><div class="max-w-xl mx-auto card-mod p-8 text-center"><h2 class="text-2xl font-bold mb-4 text-gray-800">Central de Ajuda</h2><p class="mb-6 text-gray-600">Dúvidas? Fale conosco:</p><div class="space-y-4 text-left max-w-sm mx-auto"><div class="flex items-center gap-3"><i class="fa fa-whatsapp text-whatsapp text-2xl"></i><a href="https://wa.me/5516981097916" target="_blank" class="text-gray-700 hover:text-whatsapp transition-colors">(16) 98109-7916</a></div><div class="flex items-center gap-3"><i class="fa fa-instagram text-instagram text-2xl"></i><a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="text-gray-700 hover:text-instagram transition-colors">@rodrigovecoregaming</a></div></div></div></section>
 
+        <!-- ===== PAINEL ADMIN (MELHORADO) ===== -->
         <section id="menu-admin" class="conteudo-menu hidden">
-            <div class="max-w-md mx-auto">
-                <div id="painelLogin" class="card-mod p-8"><div class="text-center mb-6"><span class="text-5xl">🔒</span><h2 class="text-2xl font-bold mt-3 text-secundaria">Área Administrativa</h2></div><div class="space-y-4"><input type="text" id="adminUser" placeholder="Usuário" class="w-full border border-gray-300 rounded-lg px-4 py-2" /><input type="password" id="adminPass" placeholder="Senha" class="w-full border border-gray-300 rounded-lg px-4 py-2" onkeydown="if(event.key==='Enter') fazerLogin()" /><p id="erroLogin" class="text-red-600 text-sm hidden">❌ Usuário ou senha incorretos.</p><button onclick="fazerLogin()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 rounded-lg">Entrar</button></div></div>
-                <div id="painelAdmin" class="hidden"><div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-bold text-secundaria">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button></div><div class="card-mod mb-6"><h3 class="text-lg font-bold text-gray-800 mb-4">📋 Clientes</h3><div id="listaClientes" class="space-y-3"><p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p></div></div><button onclick="limparClientes()" class="w-full bg-red-100 hover:bg-red-200 text-red-700 font-bold py-2 rounded-lg text-sm">🗑️ Limpar lista</button></div>
+            <div class="max-w-2xl mx-auto">
+                <div id="painelLogin" class="card-mod p-8">
+                    <div class="text-center mb-6"><span class="text-5xl">🔒</span><h2 class="text-2xl font-bold mt-3 text-secundaria">Área Administrativa</h2></div>
+                    <div class="space-y-4">
+                        <input type="text" id="adminUser" placeholder="Usuário" class="w-full border border-gray-300 rounded-lg px-4 py-2" />
+                        <input type="password" id="adminPass" placeholder="Senha" class="w-full border border-gray-300 rounded-lg px-4 py-2" onkeydown="if(event.key==='Enter') fazerLogin()" />
+                        <p id="erroLogin" class="text-red-600 text-sm hidden">❌ Usuário ou senha incorretos.</p>
+                        <button onclick="fazerLogin()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 rounded-lg">Entrar</button>
+                    </div>
+                </div>
+                <div id="painelAdmin" class="hidden">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-bold text-secundaria">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button></div>
+                    <div class="card-mod mb-6"><h3 class="text-lg font-bold text-gray-800 mb-4">📋 Clientes Cadastrados</h3><div id="listaClientes" class="space-y-3"><p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p></div></div>
+                    <button onclick="limparClientes()" class="w-full bg-red-100 hover:bg-red-200 text-red-700 font-bold py-2 rounded-lg text-sm">🗑️ Limpar todos os clientes</button>
+                </div>
             </div>
         </section>
     </main>
@@ -664,16 +603,14 @@
         var CHAVE_PIX = "16997238990";
         var NOME_PIX = "Rodrigo Paulino da Silva";
         var WHATSAPP_NUMERO = "5516981097916";
-        var EMAIL_ENVIO = "rodrigoxgames25@gmail.com";
         var ADMIN_USER = "admin";
         var ADMIN_PASS = "vcore2026";
-        var CLIENTE_USER = "admin";
-        var CLIENTE_PASS = "vcore2026";
 
         var carrinho = [];
         var adminLogado = false;
-        var clienteLogado = false;
-        var clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
+        var clienteLogado = null;
+        var clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+        var dadosPendentes = null;
 
         // 🔥 COMPRAS FICTÍCIAS BASE (prova social)
         var COMPRAS_FICTICIAS = 15;
@@ -834,91 +771,26 @@
             document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
             document.getElementById('menu-' + idMenu).classList.remove('hidden');
             document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
-            event.target.classList.add('menu-ativo');
+            if (event && event.target) event.target.classList.add('menu-ativo');
             listaMenu.classList.remove('aberto');
             iconeMenu.classList.remove('rotate-180');
             if (idMenu === 'admin') renderizarPainelAdmin();
             if (idMenu === 'area-cliente') renderizarAreaCliente();
         }
 
-        function renderizarAreaCliente() {
-            if (clienteLogado) { document.getElementById('clienteLoginPainel').classList.add('hidden'); document.getElementById('clienteGuiaPainel').classList.remove('hidden'); }
-            else { document.getElementById('clienteLoginPainel').classList.remove('hidden'); document.getElementById('clienteGuiaPainel').classList.add('hidden'); }
+        function mudarMenuParaInicio() {
+            document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
+            document.getElementById('menu-inicio').classList.remove('hidden');
+            document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
+            var linkInicio = document.querySelector('#listaMenu a[href="#inicio"]');
+            if (linkInicio) linkInicio.classList.add('menu-ativo');
+            setTimeout(function() {
+                var alvo = document.getElementById('pacotes-premium');
+                if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
         }
 
-        function fazerLoginCliente() {
-            var user = document.getElementById('clienteLoginUser').value.trim();
-            var pass = document.getElementById('clienteLoginPass').value.trim();
-            if (user === CLIENTE_USER && pass === CLIENTE_PASS) {
-                clienteLogado = true;
-                document.getElementById('erroLoginCliente').classList.add('hidden');
-                document.getElementById('clienteLoginPainel').classList.add('hidden');
-                document.getElementById('clienteGuiaPainel').classList.remove('hidden');
-            } else { document.getElementById('erroLoginCliente').classList.remove('hidden'); }
-        }
-
-        function fazerLogoutCliente() {
-            clienteLogado = false;
-            document.getElementById('clienteLoginPainel').classList.remove('hidden');
-            document.getElementById('clienteGuiaPainel').classList.add('hidden');
-            document.getElementById('clienteLoginUser').value = '';
-            document.getElementById('clienteLoginPass').value = '';
-            document.getElementById('erroLoginCliente').classList.add('hidden');
-        }
-
-        function fazerLogin() {
-            var user = document.getElementById('adminUser').value.trim();
-            var pass = document.getElementById('adminPass').value.trim();
-            if (user === ADMIN_USER && pass === ADMIN_PASS) {
-                adminLogado = true;
-                document.getElementById('painelLogin').classList.add('hidden');
-                document.getElementById('painelAdmin').classList.remove('hidden');
-                renderizarListaClientes();
-            } else { document.getElementById('erroLogin').classList.remove('hidden'); }
-        }
-
-        function fazerLogout() {
-            adminLogado = false;
-            document.getElementById('painelLogin').classList.remove('hidden');
-            document.getElementById('painelAdmin').classList.add('hidden');
-            document.getElementById('adminUser').value = '';
-            document.getElementById('adminPass').value = '';
-            document.getElementById('erroLogin').classList.add('hidden');
-        }
-
-        function renderizarPainelAdmin() {
-            if (adminLogado) { document.getElementById('painelLogin').classList.add('hidden'); document.getElementById('painelAdmin').classList.remove('hidden'); renderizarListaClientes(); }
-        }
-
-        function enviarGuiaPorEmail(nome, email, itens, total) {
-            var assunto = 'Guia de Instalacao - VCORE GAMES - ' + nome;
-            var corpo = 'Ola, ' + nome + '!\r\n\r\nObrigado pela sua compra na VCORE GAMES!\r\n\r\n========================================\r\nRESUMO DA COMPRA\r\n========================================\r\nItens: ' + itens + '\r\nTotal: R$ ' + total + '\r\n\r\n========================================\r\nGUIA DE INSTALACAO (FR - FACIL E RAPIDA)\r\n========================================\r\n\r\nCOMPROU UM PACOTE? E so copiar e jogar!\r\n\r\n1. Baixe e descompacte o arquivo recebido (.zip ou .rar)\r\n2. Navegue ate a pasta raiz do jogo - onde fica o GRB.exe\r\n   Ubisoft Connect: C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Ghost Recon Breakpoint\r\n   Steam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ghost Recon Breakpoint\r\n3. Copie os arquivos para dentro dessa pasta\r\n4. Abra o jogo - os mods ja estarao ativos!\r\n\r\n!!! ATENCAO: AO INSTALAR OS ARQUIVOS, INICIE UM SAVE NOVO !!!\r\nE obrigatorio comecar um save novo apos a instalacao para evitar bugs.\r\n\r\n========================================\r\nREDES SOCIAIS E CONTATO\r\n========================================\r\n\r\nWhatsApp: https://wa.me/5516981097916\r\nInstagram: https://instagram.com/rodrigovecoregaming\r\nYouTube: https://www.youtube.com/@RodrigoVCOREgames\r\nFacebook: https://facebook.com/vcoregames\r\n\r\nBons jogos! - Rodrigo / VCORE GAMES\r\n';
-            var mailtoLink = 'mailto:' + encodeURIComponent(email) + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo);
-            window.location.href = mailtoLink;
-            mostrarNotificacao('📧 Abrindo cliente de e-mail para enviar guia para ' + nome + '!');
-        }
-
-        function renderizarListaClientes() {
-            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes') || '[]');
-            var lista = document.getElementById('listaClientes');
-            if (clientesRegistrados.length === 0) { lista.innerHTML = '<p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p>'; return; }
-            lista.innerHTML = '';
-            clientesRegistrados.forEach(function(c) {
-                var div = document.createElement('div');
-                div.className = 'p-3 bg-gray-50 border border-gray-200 rounded-lg';
-                var nomeEscapado = c.nome.replace(/'/g, "\\'");
-                var emailEscapado = c.email.replace(/'/g, "\\'");
-                var itensEscapado = c.itens.replace(/'/g, "\\'");
-                var totalEscapado = c.total.replace(/'/g, "\\'");
-                div.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2"><div class="flex-1 min-w-0"><p class="font-bold text-gray-800 text-sm">' + c.nome + '</p><p class="text-blue-600 text-sm">' + c.email + '</p><p class="text-gray-400 text-xs">Itens: ' + c.itens + ' | Total: R$ ' + c.total + ' | ' + c.data + '</p></div><div class="flex gap-2 flex-shrink-0"><button onclick="enviarGuiaPorEmail(\'' + nomeEscapado + '\',\'' + emailEscapado + '\',\'' + itensEscapado + '\',\'' + totalEscapado + '\')" class="bg-green-600 text-white text-xs font-bold px-3 py-2 rounded-lg hover:bg-green-700 transition-colors cursor-pointer border-0">📧 Enviar por E-mail</button></div></div>';
-                lista.appendChild(div);
-            });
-        }
-
-        function limparClientes() {
-            if (confirm('Tem certeza? Isso vai apagar toda a lista de clientes.')) { localStorage.setItem('vcore_clientes', '[]'); clientesRegistrados = []; renderizarListaClientes(); }
-        }
-
+        // ============ CARRINHO ============
         function adicionarAoCarrinho(nome, preco) {
             var existente = null;
             for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { existente = carrinho[i]; break; } }
@@ -982,6 +854,80 @@
 
         function fecharModalPix() { document.getElementById('modalPix').style.display = 'none'; document.body.style.overflow = 'auto'; }
         document.getElementById('modalPix').addEventListener('click', function(e) { if (e.target === this) fecharModalPix(); });
+        document.getElementById('modalAvisoEmail').addEventListener('click', function(e) { if (e.target === this) voltarAvisoEmail(); });
+
+        function toggleSenhaCarrinho() {
+            var input = document.getElementById('clienteSenha');
+            var icone = document.getElementById('iconeSenhaCarrinho');
+            if (input.type === 'password') { input.type = 'text'; icone.classList.remove('fa-eye'); icone.classList.add('fa-eye-slash'); }
+            else { input.type = 'password'; icone.classList.remove('fa-eye-slash'); icone.classList.add('fa-eye'); }
+        }
+
+        function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+
+        // ============ FLUXO DE FINALIZAÇÃO COM POP-UP DE AVISO ============
+        function iniciarFinalizacao() {
+            if (carrinho.length === 0) { mostrarNotificacao('⚠️ Seu carrinho está vazio!'); return; }
+            var nome = document.getElementById('clienteNome').value.trim();
+            var email = document.getElementById('clienteEmail').value.trim();
+            var senha = document.getElementById('clienteSenha').value.trim();
+            if (!nome) { mostrarNotificacao('⚠️ Preencha seu nome!'); document.getElementById('clienteNome').focus(); return; }
+            if (!email) { mostrarNotificacao('⚠️ Preencha seu e-mail!'); document.getElementById('clienteEmail').focus(); return; }
+            if (!isValidEmail(email)) { mostrarNotificacao('⚠️ E-mail inválido!'); document.getElementById('clienteEmail').focus(); return; }
+            if (!senha || senha.length < 4) { mostrarNotificacao('⚠️ Crie uma senha com pelo menos 4 caracteres!'); document.getElementById('clienteSenha').focus(); return; }
+            dadosPendentes = { nome: nome, email: email, senha: senha };
+            document.getElementById('modalAvisoEmail').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function voltarAvisoEmail() {
+            document.getElementById('modalAvisoEmail').style.display = 'none';
+            document.body.style.overflow = 'hidden';
+            dadosPendentes = null;
+        }
+
+        function confirmarAvisoEmail() {
+            document.getElementById('modalAvisoEmail').style.display = 'none';
+            document.body.style.overflow = 'hidden';
+            finalizarCompra(dadosPendentes);
+            dadosPendentes = null;
+        }
+
+        function finalizarCompra(dados) {
+            var itens = carrinho.map(function(item) { return item.qtd + 'x ' + item.nome; }).join(', ');
+            var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
+            var totalFormatado = 'R$ ' + total.toFixed(2).replace('.', ',');
+            var agora = new Date();
+            var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+
+            clientesRegistrados.push({
+                nome: dados.nome,
+                email: dados.email,
+                senha: dados.senha,
+                itens: itens,
+                total: total.toFixed(2).replace('.', ','),
+                data: dataStr,
+                status: 'pendente',
+                linkDownload: ''
+            });
+            localStorage.setItem('vcore_clientes_v2', JSON.stringify(clientesRegistrados));
+
+            fecharCarrinho();
+            carrinho = [];
+            atualizarCarrinho();
+            document.getElementById('clienteNome').value = '';
+            document.getElementById('clienteEmail').value = '';
+            document.getElementById('clienteSenha').value = '';
+
+            incrementarContadorCompras();
+
+            document.getElementById('pixValor').innerText = totalFormatado;
+            document.getElementById('pixCopiado').classList.add('hidden');
+            document.getElementById('modalPix').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            mostrarNotificacao('✅ Conta criada! Faça o pagamento PIX para liberar seu acesso.');
+            criarToastCompra();
+        }
 
         function copiarChavePix() {
             navigator.clipboard.writeText(CHAVE_PIX).then(function() {
@@ -1003,35 +949,221 @@
             window.open(link, '_blank');
         }
 
-        function finalizarCompra() {
-            if (carrinho.length === 0) { mostrarNotificacao('⚠️ Seu carrinho está vazio!'); return; }
-            var nome = document.getElementById('clienteNome').value.trim();
-            var email = document.getElementById('clienteEmail').value.trim();
-            if (!nome || !email) { mostrarNotificacao('⚠️ Preencha seu nome e e-mail!'); document.getElementById('clienteNome').focus(); return; }
-
-            var itens = carrinho.map(function(item) { return item.qtd + 'x ' + item.nome; }).join(', ');
-            var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
-            var totalFormatado = 'R$ ' + total.toFixed(2).replace('.', ',');
-            var agora = new Date();
-            var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
-            clientesRegistrados.push({ nome: nome, email: email, itens: itens, total: total.toFixed(2).replace('.', ','), data: dataStr });
-            localStorage.setItem('vcore_clientes', JSON.stringify(clientesRegistrados));
-
-            fecharCarrinho();
-            carrinho = [];
-            atualizarCarrinho();
-            document.getElementById('clienteNome').value = '';
-            document.getElementById('clienteEmail').value = '';
-
-            incrementarContadorCompras();
-
-            document.getElementById('pixValor').innerText = totalFormatado;
-            document.getElementById('pixCopiado').classList.add('hidden');
-            document.getElementById('modalPix').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            mostrarNotificacao('✅ Dados salvos! Copie a chave PIX e faça o pagamento.');
+        // ============ ÁREA DO CLIENTE (MELHORADA) ============
+        function renderizarAreaCliente() {
+            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            if (clienteLogado) {
+                document.getElementById('clienteLoginPainel').classList.add('hidden');
+                document.getElementById('clientePainel').classList.remove('hidden');
+                renderizarPainelCliente();
+            } else {
+                document.getElementById('clienteLoginPainel').classList.remove('hidden');
+                document.getElementById('clientePainel').classList.add('hidden');
+                document.getElementById('clienteLoginEmail').value = '';
+                document.getElementById('clienteLoginPass').value = '';
+                document.getElementById('erroLoginCliente').classList.add('hidden');
+            }
         }
 
+        function fazerLoginCliente() {
+            var email = document.getElementById('clienteLoginEmail').value.trim();
+            var senha = document.getElementById('clienteLoginPass').value.trim();
+            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            var encontrado = null;
+            for (var i = 0; i < clientesRegistrados.length; i++) {
+                if (clientesRegistrados[i].email.toLowerCase() === email.toLowerCase() && clientesRegistrados[i].senha === senha) {
+                    encontrado = clientesRegistrados[i];
+                    break;
+                }
+            }
+            if (encontrado) {
+                clienteLogado = encontrado;
+                document.getElementById('erroLoginCliente').classList.add('hidden');
+                document.getElementById('clienteLoginPainel').classList.add('hidden');
+                document.getElementById('clientePainel').classList.remove('hidden');
+                renderizarPainelCliente();
+            } else {
+                document.getElementById('erroLoginCliente').classList.remove('hidden');
+            }
+        }
+
+        function fazerLogoutCliente() {
+            clienteLogado = null;
+            document.getElementById('clienteLoginPainel').classList.remove('hidden');
+            document.getElementById('clientePainel').classList.add('hidden');
+            document.getElementById('clienteLoginEmail').value = '';
+            document.getElementById('clienteLoginPass').value = '';
+            document.getElementById('erroLoginCliente').classList.add('hidden');
+        }
+
+        function renderizarPainelCliente() {
+            if (!clienteLogado) return;
+            document.getElementById('clienteNomeLogado').innerText = '👤 ' + clienteLogado.nome + ' | 📧 ' + clienteLogado.email;
+
+            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            // Atualiza os dados do cliente logado
+            for (var i = 0; i < clientesRegistrados.length; i++) {
+                if (clientesRegistrados[i].email.toLowerCase() === clienteLogado.email.toLowerCase()) {
+                    clienteLogado = clientesRegistrados[i];
+                    break;
+                }
+            }
+
+            var container = document.getElementById('clienteComprasContainer');
+            var comprasDoCliente = [];
+            for (var j = 0; j < clientesRegistrados.length; j++) {
+                if (clientesRegistrados[j].email.toLowerCase() === clienteLogado.email.toLowerCase()) {
+                    comprasDoCliente.push(clientesRegistrados[j]);
+                }
+            }
+
+            if (comprasDoCliente.length === 0) {
+                container.innerHTML = '<div class="card-mod text-center"><p class="text-gray-500">Nenhuma compra encontrada.</p></div>';
+                return;
+            }
+
+            container.innerHTML = '';
+            for (var k = 0; k < comprasDoCliente.length; k++) {
+                var compra = comprasDoCliente[k];
+                var card = document.createElement('div');
+                card.className = 'card-mod mb-4';
+
+                var statusHTML = '';
+                if (compra.status === 'aprovado') {
+                    statusHTML = '<span class="inline-flex items-center gap-1 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">✅ Aprovado — Pronto para download!</span>';
+                } else {
+                    statusHTML = '<span class="inline-flex items-center gap-1 bg-yellow-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">⏳ Aguardando confirmação do pagamento</span>';
+                }
+
+                var downloadHTML = '';
+                if (compra.status === 'aprovado' && compra.linkDownload) {
+                    downloadHTML = '<div class="mt-4 p-4 rounded-xl" style="background:rgba(158,255,0,0.08);border:1px solid rgba(158,255,0,0.3);"><p class="font-bold text-secundaria mb-2">📥 Link de Download:</p><a href="' + compra.linkDownload + '" target="_blank" class="inline-block bg-secundaria hover:bg-blue-900 text-principal font-bold py-3 px-6 rounded-lg text-sm transition-colors"><i class="fa fa-download"></i> Baixar Pacote</a></div>';
+                } else if (compra.status === 'aprovado' && !compra.linkDownload) {
+                    downloadHTML = '<div class="mt-4 p-4 rounded-xl" style="background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);"><p class="font-bold text-yellow-700 mb-1">📦 Seu pacote foi aprovado!</p><p class="text-sm text-gray-600">O link de download será disponibilizado em breve. Fique de olho no seu e-mail: <strong>' + compra.email + '</strong></p></div>';
+                } else {
+                    downloadHTML = '<div class="mt-4 p-4 rounded-xl bg-gray-50 border border-gray-200"><p class="text-sm text-gray-600">💡 Assim que o pagamento for confirmado, o botão de download aparecerá aqui automaticamente.</p></div>';
+                }
+
+                card.innerHTML = '<div class="flex justify-between items-start mb-3 flex-wrap gap-2"><div><h4 class="text-lg font-bold text-secundaria">🛍️ ' + compra.itens + '</h4><p class="text-sm text-gray-500">📅 ' + compra.data + ' | 💰 R$ ' + compra.total + '</p></div>' + statusHTML + '</div>' + downloadHTML;
+                container.appendChild(card);
+            }
+        }
+
+        // ============ PAINEL ADMIN (MELHORADO) ============
+        function fazerLogin() {
+            var user = document.getElementById('adminUser').value.trim();
+            var pass = document.getElementById('adminPass').value.trim();
+            if (user === ADMIN_USER && pass === ADMIN_PASS) {
+                adminLogado = true;
+                document.getElementById('painelLogin').classList.add('hidden');
+                document.getElementById('painelAdmin').classList.remove('hidden');
+                renderizarListaClientes();
+            } else { document.getElementById('erroLogin').classList.remove('hidden'); }
+        }
+
+        function fazerLogout() {
+            adminLogado = false;
+            document.getElementById('painelLogin').classList.remove('hidden');
+            document.getElementById('painelAdmin').classList.add('hidden');
+            document.getElementById('adminUser').value = '';
+            document.getElementById('adminPass').value = '';
+            document.getElementById('erroLogin').classList.add('hidden');
+        }
+
+        function renderizarPainelAdmin() {
+            if (adminLogado) { document.getElementById('painelLogin').classList.add('hidden'); document.getElementById('painelAdmin').classList.remove('hidden'); renderizarListaClientes(); }
+        }
+
+        function renderizarListaClientes() {
+            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            var lista = document.getElementById('listaClientes');
+            if (clientesRegistrados.length === 0) { lista.innerHTML = '<p class="text-gray-400 text-sm text-center">Nenhum cliente registrado ainda.</p>'; return; }
+            lista.innerHTML = '';
+            for (var i = clientesRegistrados.length - 1; i >= 0; i--) {
+                (function(idx) {
+                    var c = clientesRegistrados[idx];
+                    var div = document.createElement('div');
+                    div.className = 'p-4 rounded-xl border-2 ' + (c.status === 'aprovado' ? 'bg-green-50 border-green-300' : 'bg-yellow-50 border-yellow-300');
+                    var statusBadge = c.status === 'aprovado'
+                        ? '<span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">✅ Aprovado</span>'
+                        : '<span class="bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded-full">⏳ Pendente</span>';
+                    var linkInputValue = c.linkDownload || '';
+                    div.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2 mb-3"><div class="flex-1 min-w-0"><p class="font-bold text-gray-800">👤 ' + c.nome + ' ' + statusBadge + '</p><p class="text-blue-600 text-sm">📧 ' + c.email + '</p><p class="text-gray-400 text-xs">🛍️ ' + c.itens + ' | 💰 R$ ' + c.total + ' | 📅 ' + c.data + '</p></div></div><div class="flex flex-wrap gap-2 items-end"><div class="flex-1 min-w-[200px]"><label class="text-xs font-bold text-gray-600 block mb-1">🔗 Link de Download:</label><input type="text" id="linkDownload_' + idx + '" value="' + linkInputValue.replace(/"/g, '&quot;') + '" placeholder="Cole o link do pacote aqui..." class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-secundaria" /></div><button onclick="salvarLinkDownload(' + idx + ')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">💾 Salvar Link</button><button onclick="alternarStatusCliente(' + idx + ')" class="' + (c.status === 'aprovado' ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-green-600 hover:bg-green-700') + ' text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">' + (c.status === 'aprovado' ? '⏳ Marcar Pendente' : '✅ Aprovar Cliente') + '</button></div>';
+                    lista.appendChild(div);
+                })(i);
+            }
+        }
+
+        function salvarLinkDownload(idx) {
+            var input = document.getElementById('linkDownload_' + idx);
+            if (!input) return;
+            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            clientesRegistrados[idx].linkDownload = input.value.trim();
+            localStorage.setItem('vcore_clientes_v2', JSON.stringify(clientesRegistrados));
+            mostrarNotificacao('✅ Link salvo com sucesso!');
+
+            // Se o cliente já estiver aprovado, envia e-mail automático de confirmação
+            if (clientesRegistrados[idx].status === 'aprovado' && clientesRegistrados[idx].linkDownload) {
+                var c = clientesRegistrados[idx];
+                var assunto = 'VCORE GAMES - Seu pacote foi liberado! 🎮';
+                var corpo = 'Olá, ' + c.nome + '!\r\n\r\n'
+                    + 'Seu pagamento foi confirmado e seu pacote já está liberado para download! 🚀\r\n\r\n'
+                    + '========================================\r\n'
+                    + 'RESUMO DA SUA COMPRA\r\n'
+                    + '========================================\r\n'
+                    + 'Pacote: ' + c.itens + '\r\n'
+                    + 'Valor: R$ ' + c.total + '\r\n'
+                    + 'Data: ' + c.data + '\r\n\r\n'
+                    + '========================================\r\n'
+                    + 'LINK DE DOWNLOAD\r\n'
+                    + '========================================\r\n'
+                    + c.linkDownload + '\r\n\r\n'
+                    + '========================================\r\n'
+                    + 'GUIA RÁPIDO DE INSTALAÇÃO\r\n'
+                    + '========================================\r\n'
+                    + '1. Baixe e descompacte o arquivo\r\n'
+                    + '2. Copie os arquivos para a pasta raiz do jogo (onde fica o GRB.exe)\r\n'
+                    + '3. INICIE UM SAVE NOVO no jogo\r\n'
+                    + '4. Pronto! Os mods já estarão ativos! 🎮\r\n\r\n'
+                    + '----------------------------------------\r\n'
+                    + '📁 Caminhos comuns da pasta do jogo:\r\n'
+                    + '• Ubisoft Connect: C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Ghost Recon Breakpoint\r\n'
+                    + '• Steam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ghost Recon Breakpoint\r\n\r\n'
+                    + '🚨 IMPORTANTE: É OBRIGATÓRIO iniciar um SAVE NOVO após instalar os arquivos!\r\n\r\n'
+                    + '----------------------------------------\r\n'
+                    + 'Dúvidas? Fale comigo no WhatsApp: (16) 98109-7916\r\n'
+                    + 'Instagram: @rodrigovecoregaming\r\n'
+                    + 'YouTube: VCORE GAMES\r\n\r\n'
+                    + 'Bons jogos! 🔥\r\n'
+                    + 'Rodrigo - VCORE GAMES';
+
+                var mailtoLink = 'mailto:' + encodeURIComponent(c.email) + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo);
+                window.open(mailtoLink, '_blank');
+                mostrarNotificacao('📧 Abrindo e-mail para notificar ' + c.nome + ' sobre a liberação do pacote!');
+            }
+
+            renderizarListaClientes();
+        }
+
+        function alternarStatusCliente(idx) {
+            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            var novoStatus = clientesRegistrados[idx].status === 'aprovado' ? 'pendente' : 'aprovado';
+            clientesRegistrados[idx].status = novoStatus;
+            localStorage.setItem('vcore_clientes_v2', JSON.stringify(clientesRegistrados));
+            mostrarNotificacao(novoStatus === 'aprovado' ? '✅ Cliente aprovado! Ele já pode baixar o pacote.' : '⏳ Cliente marcado como pendente.');
+            renderizarListaClientes();
+        }
+
+        function limparClientes() {
+            if (confirm('Tem certeza que deseja remover TODOS os clientes?')) {
+                localStorage.setItem('vcore_clientes_v2', '[]');
+                clientesRegistrados = [];
+                renderizarListaClientes();
+                mostrarNotificacao('🗑️ Lista de clientes limpa.');
+            }
+        }
+
+        // ============ BOTÃO TOPO ============
         var btnTopo = document.getElementById('btnTopo');
         window.addEventListener('scroll', function() { if (window.scrollY > 300) { btnTopo.classList.remove('hidden'); } else { btnTopo.classList.add('hidden'); } });
         btnTopo.addEventListener('click', function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
