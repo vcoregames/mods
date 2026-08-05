@@ -1000,11 +1000,18 @@
         }
 
         function finalizarCompra(dados) {
+            // ===== CORREÇÃO: Recarregar do localStorage antes de adicionar =====
+            // Isso evita perda de dados se outras funções tiverem alterado a referência do array
+            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+
             var itens = carrinho.map(function(item) { return item.qtd + 'x ' + item.nome; }).join(', ');
             var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
             var totalFormatado = 'R$ ' + total.toFixed(2).replace('.', ',');
             var agora = new Date();
             var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+
+            // Armazena o total para usar depois que o carrinho for limpo
+            var totalNumerico = total;
 
             clientesRegistrados.push({ nome: dados.nome, email: dados.email, senha: dados.senha, itens: itens, total: total.toFixed(2).replace('.', ','), data: dataStr, status: 'pendente', linkDownload: '' });
             localStorage.setItem('vcore_clientes_v2', JSON.stringify(clientesRegistrados));
@@ -1038,9 +1045,13 @@
         }
 
         function abrirWhatsAppComprovante() {
-            var totalValor = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
-            var totalFormatado = totalValor.toFixed(2).replace('.', ',');
-            if (totalValor === 0 && clientesRegistrados.length > 0) { var ultimo = clientesRegistrados[clientesRegistrados.length - 1]; totalFormatado = ultimo.total; }
+            // Recarrega clientes para pegar o último cadastro
+            var clientesAtuais = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            var totalFormatado = '0,00';
+            if (clientesAtuais.length > 0) {
+                var ultimo = clientesAtuais[clientesAtuais.length - 1];
+                totalFormatado = ultimo.total;
+            }
             var mensagem = 'Olá Rodrigo! Acabei de fazer o pagamento de R$ ' + totalFormatado + ' via PIX. Segue o comprovante em anexo.';
             window.open('https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(mensagem), '_blank');
         }
@@ -1064,7 +1075,10 @@
         function fazerLoginCliente() {
             var email = document.getElementById('clienteLoginEmail').value.trim();
             var senha = document.getElementById('clienteLoginPass').value.trim();
+
+            // Recarrega do localStorage para garantir dados atualizados
             clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+
             var encontrado = null;
             for (var i = 0; i < clientesRegistrados.length; i++) {
                 if (clientesRegistrados[i].email.toLowerCase() === email.toLowerCase() && clientesRegistrados[i].senha === senha) {
@@ -1156,6 +1170,27 @@
             if (adminLogado) { document.getElementById('painelLogin').classList.add('hidden'); document.getElementById('painelAdmin').classList.remove('hidden'); renderizarListaClientes(); }
         }
 
+        // ===== NOVA FUNÇÃO: Admin pode "impersonar" um cliente =====
+        function verComoCliente(idx) {
+            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            if (idx >= 0 && idx < clientesRegistrados.length) {
+                clienteLogado = clientesRegistrados[idx];
+                // Navega para a área do cliente
+                document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
+                document.getElementById('menu-area-cliente').classList.remove('hidden');
+                document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
+                var linkCliente = document.querySelector('#listaMenu a[href="#area-cliente"]');
+                if (linkCliente) linkCliente.classList.add('menu-ativo');
+                listaMenu.classList.remove('aberto');
+                iconeMenu.classList.remove('rotate-180');
+                document.getElementById('clienteLoginPainel').classList.add('hidden');
+                document.getElementById('clientePainel').classList.remove('hidden');
+                renderizarPainelCliente();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                mostrarNotificacao('🔍 Visualizando como: ' + clienteLogado.nome + ' (' + clienteLogado.email + ')');
+            }
+        }
+
         function renderizarListaClientes() {
             clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
             var lista = document.getElementById('listaClientes');
@@ -1170,7 +1205,7 @@
                         ? '<span class="bg-green-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full">✅ Aprovado</span>'
                         : '<span class="bg-yellow-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full">⏳ Pendente</span>';
                     var linkInputValue = c.linkDownload || '';
-                    div.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2 mb-2 sm:mb-3"><div class="flex-1 min-w-0"><p class="font-bold text-gray-800 text-sm sm:text-base">👤 ' + c.nome + ' ' + statusBadge + '</p><p class="text-blue-600 text-xs sm:text-sm">📧 ' + c.email + '</p><p class="text-gray-400 text-[10px] sm:text-xs">🛍️ ' + c.itens + ' | 💰 R$ ' + c.total + ' | 📅 ' + c.data + '</p></div></div><div class="flex flex-col sm:flex-row flex-wrap gap-2 items-stretch sm:items-end"><div class="flex-1 min-w-[150px]"><label class="text-[10px] sm:text-xs font-bold text-gray-600 block mb-1">🔗 Link de Download:</label><input type="text" id="linkDownload_' + idx + '" value="' + linkInputValue.replace(/"/g, '&quot;') + '" placeholder="Cole o link do pacote aqui..." class="w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm focus:outline-none focus:border-secundaria" /></div><div class="flex gap-2"><button onclick="salvarLinkDownload(' + idx + ')" class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors flex-shrink-0">💾 Salvar</button><button onclick="alternarStatusCliente(' + idx + ')" class="' + (c.status === 'aprovado' ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-green-600 hover:bg-green-700') + ' text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors flex-shrink-0">' + (c.status === 'aprovado' ? '⏳ Pendente' : '✅ Aprovar') + '</button></div></div>';
+                    div.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2 mb-2 sm:mb-3"><div class="flex-1 min-w-0"><p class="font-bold text-gray-800 text-sm sm:text-base">👤 ' + c.nome + ' ' + statusBadge + '</p><p class="text-blue-600 text-xs sm:text-sm">📧 ' + c.email + ' | 🔑 Senha: <span style="background:#fef3c7;padding:2px 6px;border-radius:4px;font-family:monospace;">' + c.senha + '</span></p><p class="text-gray-400 text-[10px] sm:text-xs">🛍️ ' + c.itens + ' | 💰 R$ ' + c.total + ' | 📅 ' + c.data + '</p></div></div><div class="flex flex-col sm:flex-row flex-wrap gap-2 items-stretch sm:items-end"><div class="flex-1 min-w-[150px]"><label class="text-[10px] sm:text-xs font-bold text-gray-600 block mb-1">🔗 Link de Download:</label><input type="text" id="linkDownload_' + idx + '" value="' + linkInputValue.replace(/"/g, '&quot;') + '" placeholder="Cole o link do pacote aqui..." class="w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm focus:outline-none focus:border-secundaria" /></div><div class="flex gap-2 flex-wrap"><button onclick="verComoCliente(' + idx + ')" class="bg-purple-600 hover:bg-purple-700 text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors flex-shrink-0">👁️ Ver como Cliente</button><button onclick="salvarLinkDownload(' + idx + ')" class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors flex-shrink-0">💾 Salvar</button><button onclick="alternarStatusCliente(' + idx + ')" class="' + (c.status === 'aprovado' ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-green-600 hover:bg-green-700') + ' text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors flex-shrink-0">' + (c.status === 'aprovado' ? '⏳ Pendente' : '✅ Aprovar') + '</button></div></div>';
                     lista.appendChild(div);
                 })(i);
             }
