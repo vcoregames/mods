@@ -70,57 +70,23 @@
             .barra-total.visivel { @apply translate-y-0; }
             .pronto-badge { @apply inline-flex items-center gap-1 bg-green-500 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full; }
             .fr-badge { @apply inline-flex items-center gap-1 bg-blue-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full; }
-            @keyframes pulse-save {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0.7; }
-            }
+            @keyframes pulse-save { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
             .pulse-save { animation: pulse-save 1.5s ease-in-out infinite; }
-            @keyframes count-glow {
-                0%, 100% { text-shadow: 0 0 8px rgba(158,255,0,0.4); }
-                50% { text-shadow: 0 0 20px rgba(158,255,0,0.8), 0 0 40px rgba(158,255,0,0.3); }
-            }
+            @keyframes count-glow { 0%, 100% { text-shadow: 0 0 8px rgba(158,255,0,0.4); } 50% { text-shadow: 0 0 20px rgba(158,255,0,0.8), 0 0 40px rgba(158,255,0,0.3); } }
             .count-glow { animation: count-glow 2s ease-in-out infinite; }
-            @keyframes slideInRight {
-                from { transform: translateX(120%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOutRight {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(120%); opacity: 0; }
-            }
-            .toast-compra {
-                animation: slideInRight 0.5s ease-out forwards;
-            }
-            .toast-compra.saindo {
-                animation: slideOutRight 0.4s ease-in forwards;
-            }
-            @keyframes fadeInUp {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            .animate-fade-in-up {
-                animation: fadeInUp 0.4s ease-out forwards;
-            }
-            @keyframes pulse-border {
-                0%, 100% { box-shadow: 0 0 8px rgba(158,255,0,0.4); }
-                50% { box-shadow: 0 0 22px rgba(158,255,0,0.8), 0 0 40px rgba(158,255,0,0.3); }
-            }
-            .pulse-border {
-                animation: pulse-border 1.8s ease-in-out infinite;
-            }
-            @keyframes pulse-glow {
-                0%, 100% { box-shadow: 0 0 8px rgba(158,255,0,0.4); }
-                50% { box-shadow: 0 0 22px rgba(158,255,0,0.8), 0 0 40px rgba(158,255,0,0.3); }
-            }
+            @keyframes slideInRight { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+            @keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }
+            .toast-compra { animation: slideInRight 0.5s ease-out forwards; }
+            .toast-compra.saindo { animation: slideOutRight 0.4s ease-in forwards; }
+            @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+            .animate-fade-in-up { animation: fadeInUp 0.4s ease-out forwards; }
+            @keyframes pulse-border { 0%, 100% { box-shadow: 0 0 8px rgba(158,255,0,0.4); } 50% { box-shadow: 0 0 22px rgba(158,255,0,0.8), 0 0 40px rgba(158,255,0,0.3); } }
+            .pulse-border { animation: pulse-border 1.8s ease-in-out infinite; }
         }
         html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
         body { font-family: 'Inter', system-ui, sans-serif; }
-        /* Impede zoom em inputs no iOS */
         input, textarea, select { font-size: 16px !important; }
-        @media (max-width: 640px) {
-            input, textarea, select { font-size: 16px !important; }
-        }
-        /* Scrollbar personalizada */
+        @media (max-width: 640px) { input, textarea, select { font-size: 16px !important; } }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 3px; }
         ::-webkit-scrollbar-thumb { background: #0A1153; border-radius: 3px; }
@@ -131,7 +97,6 @@
     <!-- ==================== HEADER ==================== -->
     <header class="sticky top-0 z-50 shadow-md" style="background: linear-gradient(135deg, #0A1153 0%, #0d1b6b 100%);">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2 sm:py-3">
-            <!-- Redes sociais - linha 1 -->
             <div class="flex justify-center items-center pb-1.5 sm:pb-2 border-b border-principal/20 relative flex-wrap gap-x-1 sm:gap-x-0">
                 <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-topo text-instagram" title="Instagram" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
                 <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-topo text-youtube" title="YouTube" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
@@ -143,13 +108,11 @@
                     <span id="badgeCarrinho" class="badge-carrinho hidden">0</span>
                 </button>
             </div>
-            <!-- Logo -->
             <div class="text-center my-2 sm:my-3">
                 <h1 class="text-[clamp(1.6rem,5vw,3rem)] logo-font text-principal leading-tight">VCORE</h1>
                 <p class="text-[clamp(0.7rem,2vw,1.2rem)] text-principal/90 font-medium tracking-widest -mt-1">GAMES</p>
                 <p class="text-[10px] sm:text-xs text-principal/70 mt-0.5 sm:mt-1 px-2">Mods e Arquivos Prontos para Ghost Recon Breakpoint</p>
             </div>
-            <!-- Menu -->
             <nav class="max-w-xs mx-auto w-full menu-container">
                 <button id="botaoMenu" class="menu-botao" aria-label="Abrir menu">
                     <span class="text-sm sm:text-base">Menu Principal</span>
@@ -173,12 +136,8 @@
     <section class="relative py-10 sm:py-14 md:py-20 text-center text-white overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #16213e 50%, #0f3460 100%);">
         <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 320%22><path fill=%22%239EFF00%22 d=%22M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320,192,320,96,320,48,320L0,320Z%22></path></svg>'); background-repeat: no-repeat; background-position: bottom; background-size: cover;"></div>
         <div class="relative z-10 max-w-4xl mx-auto px-3 sm:px-4">
-            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-3 text-shadow">
-                Mods <span style="color:#9EFF00;">Ghost Recon</span> Breakpoint
-            </h2>
-            <p class="text-sm sm:text-base md:text-lg mb-0 text-gray-300 max-w-2xl mx-auto px-2">
-                Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:#9EFF00;">tudo pronto, é só copiar e jogar!</strong>
-            </p>
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-3 text-shadow">Mods <span style="color:#9EFF00;">Ghost Recon</span> Breakpoint</h2>
+            <p class="text-sm sm:text-base md:text-lg mb-0 text-gray-300 max-w-2xl mx-auto px-2">Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:#9EFF00;">tudo pronto, é só copiar e jogar!</strong></p>
         </div>
     </section>
 
@@ -216,10 +175,10 @@
             <div class="mb-4 sm:mb-5 p-3 sm:p-5 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl">
                 <p class="text-xs sm:text-sm font-bold text-secundaria mb-2 sm:mb-3 flex items-center gap-2"><span>🔐</span> Seus dados de acesso:</p>
                 <p class="text-[11px] sm:text-xs text-gray-500 mb-2 sm:mb-3">Preencha para criar sua conta na Área do Cliente</p>
-                <input type="text" id="clienteNome" placeholder="Seu nome completo" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 sm:py-2.5 mb-2 sm:mb-3 text-sm focus:outline-none focus:border-secundaria transition-colors" />
-                <input type="email" id="clienteEmail" placeholder="Seu melhor e-mail (será seu login)" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 sm:py-2.5 mb-2 sm:mb-3 text-sm focus:outline-none focus:border-secundaria transition-colors" />
+                <input type="text" id="clienteNome" placeholder="Seu nome completo" autocomplete="name" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 sm:py-2.5 mb-2 sm:mb-3 text-sm focus:outline-none focus:border-secundaria transition-colors" />
+                <input type="email" id="clienteEmail" placeholder="Seu melhor e-mail (será seu login)" autocomplete="email" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 sm:py-2.5 mb-2 sm:mb-3 text-sm focus:outline-none focus:border-secundaria transition-colors" />
                 <div class="relative">
-                    <input type="password" id="clienteSenha" placeholder="Crie uma senha de acesso" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 sm:py-2.5 mb-1 text-sm focus:outline-none focus:border-secundaria transition-colors" />
+                    <input type="password" id="clienteSenha" placeholder="Crie uma senha de acesso" autocomplete="new-password" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 sm:py-2.5 mb-1 text-sm focus:outline-none focus:border-secundaria transition-colors" />
                     <button type="button" onclick="toggleSenhaCarrinho()" class="absolute right-2 sm:right-3 top-2 sm:top-2.5 text-gray-400 hover:text-gray-600 text-sm"><i class="fa fa-eye" id="iconeSenhaCarrinho"></i></button>
                 </div>
                 <p class="text-[10px] sm:text-xs text-gray-400 mb-2 sm:mb-3">Mínimo 4 caracteres</p>
@@ -272,41 +231,22 @@
                         <li>Faça a transferência</li>
                     </ol>
                 </div>
-
-                <!-- AVISO PÓS-PAGAMENTO -->
                 <div class="rounded-xl p-3 sm:p-5 mb-4 sm:mb-5 pulse-border" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 3px solid #9EFF00;">
                     <div class="text-center mb-2 sm:mb-3">
                         <span class="text-3xl sm:text-4xl">📧</span>
                         <h3 class="text-lg sm:text-xl font-bold mt-1 sm:mt-2" style="color:#9EFF00;">FIQUE ATENTO AO SEU E-MAIL!</h3>
                     </div>
-                    <p class="text-xs sm:text-sm font-bold mb-2 sm:mb-3" style="color:rgba(255,255,255,0.95);">
-                        Após a confirmação do pagamento, você receberá no e-mail cadastrado:
-                    </p>
+                    <p class="text-xs sm:text-sm font-bold mb-2 sm:mb-3" style="color:rgba(255,255,255,0.95);">Após a confirmação do pagamento, você receberá no e-mail cadastrado:</p>
                     <ul class="text-xs sm:text-sm space-y-1.5 sm:space-y-2 mb-2 sm:mb-3" style="color:rgba(255,255,255,0.85);">
-                        <li class="flex items-start gap-2">
-                            <span style="color:#9EFF00;" class="flex-shrink-0">🔗</span>
-                            <span><strong style="color:#9EFF00;">O link de download</strong> do pacote adquirido</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span style="color:#9EFF00;" class="flex-shrink-0">📖</span>
-                            <span><strong style="color:#9EFF00;">O guia completo de instalação</strong> passo a passo</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span style="color:#9EFF00;" class="flex-shrink-0">🔐</span>
-                            <span><strong style="color:#9EFF00;">Seus dados de acesso</strong> à Área do Cliente</span>
-                        </li>
+                        <li class="flex items-start gap-2"><span style="color:#9EFF00;" class="flex-shrink-0">🔗</span><span><strong style="color:#9EFF00;">O link de download</strong> do pacote adquirido</span></li>
+                        <li class="flex items-start gap-2"><span style="color:#9EFF00;" class="flex-shrink-0">📖</span><span><strong style="color:#9EFF00;">O guia completo de instalação</strong> passo a passo</span></li>
+                        <li class="flex items-start gap-2"><span style="color:#9EFF00;" class="flex-shrink-0">🔐</span><span><strong style="color:#9EFF00;">Seus dados de acesso</strong> à Área do Cliente</span></li>
                     </ul>
-                    <p class="text-xs sm:text-sm" style="color:rgba(255,255,255,0.85);">
-                        📬 <strong style="color:#9EFF00;">Verifique sua caixa de entrada</strong> (e também a pasta de spam/lixo eletrônico) nos próximos minutos após o pagamento.
-                    </p>
+                    <p class="text-xs sm:text-sm" style="color:rgba(255,255,255,0.85);">📬 <strong style="color:#9EFF00;">Verifique sua caixa de entrada</strong> (e também a pasta de spam/lixo eletrônico) nos próximos minutos após o pagamento.</p>
                     <div class="mt-3 sm:mt-4 p-2 sm:p-3 rounded-lg" style="background:rgba(255,255,255,0.1); border:1px solid rgba(158,255,0,0.4);">
-                        <p class="text-[10px] sm:text-xs font-bold text-center" style="color:#9EFF00;">
-                            ⚡ A liberação é automática após a confirmação do pagamento!<br>
-                            Você também pode acessar seu pacote pela <strong>🔐 Área do Cliente</strong> com seu e-mail e senha.
-                        </p>
+                        <p class="text-[10px] sm:text-xs font-bold text-center" style="color:#9EFF00;">⚡ A liberação é automática após a confirmação do pagamento!<br>Você também pode acessar seu pacote pela <strong>🔐 Área do Cliente</strong> com seu e-mail e senha.</p>
                     </div>
                 </div>
-
                 <button onclick="abrirWhatsAppComprovante()" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2">
                     <i class="fa fa-whatsapp text-base sm:text-lg"></i> Enviar Comprovante via WhatsApp
                 </button>
@@ -319,45 +259,17 @@
     <div id="modalSaida" class="modal-saida" style="background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);">
         <div class="saida-conteudo animate-fade-in-up text-center relative" style="background: linear-gradient(145deg, #0A1153 0%, #1a2a7a 50%, #0A1153 100%); border: 2px solid #9EFF00;">
             <button onclick="fecharModalSaida()" class="absolute top-2 right-3 sm:top-3 sm:right-4 text-white/60 hover:text-white text-xl sm:text-2xl font-bold cursor-pointer z-10" style="background:none;border:none;" aria-label="Fechar">×</button>
-            <div class="mb-3 sm:mb-4 pt-2">
-                <span class="text-4xl sm:text-6xl">🎮</span>
-            </div>
+            <div class="mb-3 sm:mb-4 pt-2"><span class="text-4xl sm:text-6xl">🎮</span></div>
             <h2 class="text-xl sm:text-2xl font-bold mb-1 sm:mb-2" style="color:#9EFF00;">Espere! Não saia ainda!</h2>
-            <p class="text-white/80 text-xs sm:text-sm mb-4 sm:mb-5 px-2">
-                Temos <strong style="color:#9EFF00;">condições especiais</strong> para você transformar seu Ghost Recon Breakpoint!
-            </p>
-
+            <p class="text-white/80 text-xs sm:text-sm mb-4 sm:mb-5 px-2">Temos <strong style="color:#9EFF00;">condições especiais</strong> para você transformar seu Ghost Recon Breakpoint!</p>
             <div class="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
-                <div class="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl text-left" style="background:rgba(158,255,0,0.08); border:1px solid rgba(158,255,0,0.2);">
-                    <span class="text-xl sm:text-2xl flex-shrink-0">💎</span>
-                    <div>
-                        <p class="font-bold text-xs sm:text-sm" style="color:#9EFF00;">Pacote Diamante Completo</p>
-                        <p class="text-[10px] sm:text-xs text-white/70">Todos os mods por apenas <strong style="color:#9EFF00;">R$ 120,00</strong> — 40% OFF!</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl text-left" style="background:rgba(255,215,0,0.08); border:1px solid rgba(255,215,0,0.2);">
-                    <span class="text-xl sm:text-2xl flex-shrink-0">📦</span>
-                    <div>
-                        <p class="font-bold text-xs sm:text-sm" style="color:#FFD700;">Pronto para Jogar</p>
-                        <p class="text-[10px] sm:text-xs text-white/70">É só copiar na pasta do jogo — sem complicação!</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl text-left" style="background:rgba(37,211,102,0.08); border:1px solid rgba(37,211,102,0.2);">
-                    <span class="text-xl sm:text-2xl flex-shrink-0">💬</span>
-                    <div>
-                        <p class="font-bold text-xs sm:text-sm" style="color:#25D366;">Suporte via WhatsApp</p>
-                        <p class="text-[10px] sm:text-xs text-white/70">Tire todas as suas dúvidas antes de comprar!</p>
-                    </div>
-                </div>
+                <div class="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl text-left" style="background:rgba(158,255,0,0.08); border:1px solid rgba(158,255,0,0.2);"><span class="text-xl sm:text-2xl flex-shrink-0">💎</span><div><p class="font-bold text-xs sm:text-sm" style="color:#9EFF00;">Pacote Diamante Completo</p><p class="text-[10px] sm:text-xs text-white/70">Todos os mods por apenas <strong style="color:#9EFF00;">R$ 120,00</strong> — 40% OFF!</p></div></div>
+                <div class="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl text-left" style="background:rgba(255,215,0,0.08); border:1px solid rgba(255,215,0,0.2);"><span class="text-xl sm:text-2xl flex-shrink-0">📦</span><div><p class="font-bold text-xs sm:text-sm" style="color:#FFD700;">Pronto para Jogar</p><p class="text-[10px] sm:text-xs text-white/70">É só copiar na pasta do jogo — sem complicação!</p></div></div>
+                <div class="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl text-left" style="background:rgba(37,211,102,0.08); border:1px solid rgba(37,211,102,0.2);"><span class="text-xl sm:text-2xl flex-shrink-0">💬</span><div><p class="font-bold text-xs sm:text-sm" style="color:#25D366;">Suporte via WhatsApp</p><p class="text-[10px] sm:text-xs text-white/70">Tire todas as suas dúvidas antes de comprar!</p></div></div>
             </div>
-
             <div class="flex flex-col gap-2 sm:gap-3">
-                <a href="https://wa.me/5516981097916?text=Ol%C3%A1%20Rodrigo!%20Quero%20saber%20mais%20sobre%20os%20pacotes%20de%20mods%20para%20Ghost%20Recon%20Breakpoint.%20Pode%20me%20ajudar%3F" target="_blank" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2">
-                    <i class="fa fa-whatsapp text-base sm:text-lg"></i> Falar no WhatsApp e tirar dúvidas
-                </a>
-                <button onclick="fecharModalSaida()" class="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors border border-white/20">
-                    Continuar navegando no site
-                </button>
+                <a href="https://wa.me/5516981097916?text=Ol%C3%A1%20Rodrigo!%20Quero%20saber%20mais%20sobre%20os%20pacotes%20de%20mods%20para%20Ghost%20Recon%20Breakpoint.%20Pode%20me%20ajudar%3F" target="_blank" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"><i class="fa fa-whatsapp text-base sm:text-lg"></i> Falar no WhatsApp e tirar dúvidas</a>
+                <button onclick="fecharModalSaida()" class="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors border border-white/20">Continuar navegando no site</button>
             </div>
         </div>
     </div>
@@ -370,24 +282,16 @@
             <div id="pacotes-premium"></div>
             <h3 class="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-center text-gray-800">🏆 Pacotes Completos</h3>
             <p class="text-center text-gray-500 mb-3 sm:mb-4 text-xs sm:text-sm">Escolha o plano ideal para você</p>
-
-            <!-- Banner Pronto -->
             <div class="max-w-5xl mx-auto mb-4 sm:mb-6 rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
                 <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 p-3 sm:p-5">
                     <div class="text-3xl sm:text-5xl flex-shrink-0">🎮</div>
                     <div class="flex-1 text-center sm:text-left">
-                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
-                            <span class="pronto-badge">✅ PRONTO PARA JOGAR</span>
-                            <span class="fr-badge">⚡ FR INSTALAÇÃO</span>
-                            <span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full bg-yellow-400 text-yellow-900">SEM COMPLICAÇÃO</span>
-                        </div>
+                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 mb-1.5 sm:mb-2"><span class="pronto-badge">✅ PRONTO PARA JOGAR</span><span class="fr-badge">⚡ FR INSTALAÇÃO</span><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full bg-yellow-400 text-yellow-900">SEM COMPLICAÇÃO</span></div>
                         <p class="font-bold text-sm sm:text-lg" style="color:#9EFF00;">Os Pacotes já vêm com tudo instalado e configurado!</p>
                         <p class="text-xs sm:text-sm mt-0.5 sm:mt-1" style="color:rgba(158,255,0,0.75);">Basta copiar na pasta raiz do jogo (onde está o <strong style="color:#9EFF00;">GRB.exe</strong>) e abrir o game. Sem instalar ferramentas, sem configurar nada — é só jogar! 🚀</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Aviso Save Novo -->
             <div class="max-w-5xl mx-auto mb-5 sm:mb-8 rounded-xl overflow-hidden border-2 pulse-save" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;">
                 <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 p-3 sm:p-5">
                     <div class="text-3xl sm:text-5xl flex-shrink-0">⚠️</div>
@@ -397,8 +301,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Promoção -->
             <div class="max-w-5xl mx-auto mb-5 sm:mb-8 rounded-xl overflow-hidden border-2" style="background: linear-gradient(135deg, #ff1a1a 0%, #cc0000 50%, #ff1a1a 100%); border-color: #ffcc00;">
                 <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 p-3 sm:p-5">
                     <div class="text-3xl sm:text-5xl flex-shrink-0">🔥</div>
@@ -408,28 +310,19 @@
                     </div>
                 </div>
             </div>
-
-            <!-- CARDS DOS PACOTES - Grid responsivo -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-10 sm:mb-16 max-w-5xl mx-auto">
                 <!-- PRATA -->
                 <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #2a2a2a 0%, #4a4a4a 50%, #2a2a2a 100%); border: 2px solid #C0C0C0;">
                     <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #C0C0C0 0, #C0C0C0 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
                     <div class="relative z-10 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-2 sm:mb-3">
-                            <span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#C0C0C0; color:#1a1a1a;">🥈 PRATA</span>
-                            <span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span>
-                        </div>
+                        <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#C0C0C0; color:#1a1a1a;">🥈 PRATA</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
                         <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#C0C0C0;">Pacote Prata</h4>
                         <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:rgba(192,192,192,0.75);">Mods essenciais da VCORE GAMES.</p>
                         <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p style="color:rgba(192,192,192,0.8);">Copie na pasta raiz e abra o game.</p></div>
                         <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
                         <ul class="text-xs sm:text-sm mb-4 sm:mb-5 space-y-1 flex-1" style="color:rgba(192,192,192,0.85);"><li>✅ Mods Essenciais VCORE</li><li>✅ Fest Feminino</li><li>✅ Veículos Modificados</li><li>✅ Guia de instalação por e-mail</li></ul>
                         <div class="area-midia"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#C0C0C0;"></i><span class="font-medium text-xs sm:text-sm" style="color:#C0C0C0;">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-2 sm:mb-3">
-                            <span style="color:rgba(192,192,192,0.45);" class="text-xs sm:text-sm line-through">R$ 100,00</span>
-                            <p class="text-2xl sm:text-3xl font-bold" style="color:#C0C0C0;">R$ 60,00</p>
-                            <span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span>
-                        </div>
+                        <div class="text-center mb-2 sm:mb-3"><span style="color:rgba(192,192,192,0.45);" class="text-xs sm:text-sm line-through">R$ 100,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#C0C0C0;">R$ 60,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
                         <button onclick="adicionarAoCarrinho('Pacote Prata - Mods Essenciais', 60.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#C0C0C0; color:#1a1a1a;">🥈 Adicionar Pacote Prata</button>
                     </div>
                 </div>
@@ -438,21 +331,14 @@
                     <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #FFD700 0, #FFD700 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
                     <div class="absolute -top-1 left-1/2 -translate-x-1/2 z-20"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-lg" style="background:#FFD700; color:#3a2800;">⭐ MAIS POPULAR</span></div>
                     <div class="relative z-10 flex flex-col flex-1 mt-3">
-                        <div class="flex justify-between items-start mb-2 sm:mb-3">
-                            <span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#FFD700; color:#3a2800;">🥇 OURO</span>
-                            <span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span>
-                        </div>
+                        <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#FFD700; color:#3a2800;">🥇 OURO</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
                         <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#FFD700;">Pacote Ouro</h4>
                         <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:rgba(255,215,0,0.75);">Experiência completa de visual e performance.</p>
                         <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p style="color:rgba(255,215,0,0.8);">Copie na pasta raiz e abra o game.</p></div>
                         <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
                         <ul class="text-xs sm:text-sm mb-4 sm:mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.9);"><li>✅ Coletes — Mod de Aparência</li><li>✅ Armas e Miras — Precisão Real</li><li>✅ Camisa e Calça — Visual Tático</li><li>✅ Camuflagem — Skins Completas</li><li>✅ Capacetes e Proteções — Visual Elite</li><li>✅ Guia de instalação por e-mail</li></ul>
                         <div class="area-midia"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#FFD700;"></i><span class="font-medium text-xs sm:text-sm" style="color:#FFD700;">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-2 sm:mb-3">
-                            <span style="color:rgba(255,215,0,0.45);" class="text-xs sm:text-sm line-through">R$ 150,00</span>
-                            <p class="text-2xl sm:text-3xl font-bold" style="color:#FFD700;">R$ 90,00</p>
-                            <span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span>
-                        </div>
+                        <div class="text-center mb-2 sm:mb-3"><span style="color:rgba(255,215,0,0.45);" class="text-xs sm:text-sm line-through">R$ 150,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#FFD700;">R$ 90,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
                         <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avançados', 90.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#FFD700; color:#3a2800;">🥇 Adicionar Pacote Ouro</button>
                     </div>
                 </div>
@@ -460,22 +346,14 @@
                 <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #0A1153 0%, #1a2a7a 50%, #0A1153 100%); border: 2px solid #9EFF00;">
                     <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #9EFF00 0, #9EFF00 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
                     <div class="relative z-10 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-2 sm:mb-3 flex-wrap gap-1">
-                            <span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#9EFF00; color:#0A1153;">💎 DIAMANTE</span>
-                            <span class="bg-red-500 text-white text-[9px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">MELHOR VALOR</span>
-                            <span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span>
-                        </div>
+                        <div class="flex justify-between items-start mb-2 sm:mb-3 flex-wrap gap-1"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#9EFF00; color:#0A1153;">💎 DIAMANTE</span><span class="bg-red-500 text-white text-[9px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">MELHOR VALOR</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
                         <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#9EFF00;">Pacote Diamante</h4>
                         <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:rgba(158,255,0,0.75);">O pacote mais completo. <strong style="color:#9EFF00;">Todos os mods</strong> em um só lugar.</p>
                         <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p style="color:rgba(158,255,0,0.8);">Copie na pasta raiz e abra o game.</p></div>
                         <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
                         <ul class="text-xs sm:text-sm mb-4 sm:mb-5 space-y-1 flex-1" style="color:rgba(158,255,0,0.9);"><li>✅ Coletes — Mod de Aparência</li><li>✅ Armas e Miras — Precisão Real</li><li>✅ Camisa e Calça — Visual Tático</li><li>✅ Camuflagem — Skins Completas</li><li>✅ Fest Feminino</li><li>✅ Capacetes e Proteções</li><li>✅ Veículos Modificados</li><li>✅ Skin Pack Completo</li><li>✅ Kit Tático</li><li>✅ Guia de instalação por e-mail</li></ul>
                         <div class="area-midia"><a href="https://www.youtube.com/watch?v=pN6ntMjvhRw&t=564s" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#9EFF00;"></i><span class="font-medium text-xs sm:text-sm" style="color:#9EFF00;">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-2 sm:mb-3">
-                            <span style="color:rgba(158,255,0,0.45);" class="text-xs sm:text-sm line-through">R$ 200,00</span>
-                            <p class="text-2xl sm:text-3xl font-bold" style="color:#9EFF00;">R$ 120,00</p>
-                            <span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span>
-                        </div>
+                        <div class="text-center mb-2 sm:mb-3"><span style="color:rgba(158,255,0,0.45);" class="text-xs sm:text-sm line-through">R$ 200,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#9EFF00;">R$ 120,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
                         <button onclick="adicionarAoCarrinho('Pacote Diamante - Todos os Mods', 120.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#9EFF00; color:#0A1153;">💎 Adicionar Pacote Diamante</button>
                     </div>
                 </div>
@@ -486,71 +364,10 @@
         <section id="menu-sobre-servico" class="conteudo-menu hidden">
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-gray-800">ℹ️ Sobre o Serviço VCORE GAMES</h2>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-principal">
-                    <div class="flex items-start gap-3 sm:gap-4">
-                        <span class="text-2xl sm:text-4xl flex-shrink-0">🔧</span>
-                        <div>
-                            <h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">O que é este serviço?</h3>
-                            <p class="text-gray-700 leading-relaxed text-sm sm:text-base">A <strong>VCORE GAMES</strong> oferece um serviço especializado de <strong>curadoria, organização e preparação de mods</strong> para o jogo <strong>Ghost Recon Breakpoint</strong>. Nós vasculhamos os melhores mods disponíveis na comunidade, testamos cada um deles, organizamos em pacotes temáticos e deixamos tudo <strong>pronto para uso imediato</strong> — sem que você precise configurar nada.</p>
-                            <p class="text-gray-700 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">Basicamente, você economiza <strong>horas de pesquisa, downloads, testes e configurações</strong>. Nós fazemos todo o trabalho pesado para que você apenas copie os arquivos e comece a jogar.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-blue-500">
-                    <div class="flex items-start gap-3 sm:gap-4">
-                        <span class="text-2xl sm:text-4xl flex-shrink-0">💰</span>
-                        <div>
-                            <h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">O que você está pagando?</h3>
-                            <p class="text-gray-700 leading-relaxed text-sm sm:text-base">Você <strong>NÃO está comprando os mods em si</strong>. Você está pagando pelo nosso:</p>
-                            <ul class="mt-2 sm:mt-3 space-y-1.5 sm:space-y-2 text-gray-700 text-sm sm:text-base">
-                                <li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">⏱️</span><span><strong>Tempo e trabalho de curadoria:</strong> pesquisamos, baixamos e testamos dezenas de mods para selecionar apenas os melhores e mais estáveis.</span></li>
-                                <li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">🔧</span><span><strong>Organização e configuração:</strong> organizamos os arquivos, resolvemos conflitos entre mods e deixamos tudo funcionando perfeitamente em conjunto.</span></li>
-                                <li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">📦</span><span><strong>Pré-instalação e empacotamento:</strong> entregamos os arquivos prontos no formato "copiar e colar" — você não precisa de qualquer ferramenta extra.</span></li>
-                                <li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">📧</span><span><strong>Suporte e guia de instalação:</strong> você recebe um guia completo por e-mail e tem suporte via WhatsApp para qualquer dúvida.</span></li>
-                                <li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">🔄</span><span><strong>Atualizações:</strong> mantenho os pacotes sempre atualizados com os mods mais recentes e compatíveis.</span></li>
-                            </ul>
-                            <div class="mt-3 sm:mt-4 p-3 sm:p-4 rounded-lg" style="background: rgba(158,255,0,0.08); border: 1px solid rgba(158,255,0,0.25);">
-                                <p class="text-xs sm:text-sm font-bold" style="color:#0A1153;">💡 <strong>Resumindo:</strong> você paga pela <strong>conveniência</strong> de receber tudo pronto, testado e funcionando, sem precisar aprender a usar ferramentas de modding ou resolver problemas de compatibilidade sozinho.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-yellow-400">
-                    <div class="flex items-start gap-3 sm:gap-4">
-                        <span class="text-2xl sm:text-4xl flex-shrink-0">🏆</span>
-                        <div>
-                            <h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Créditos aos Modders — Os verdadeiros criadores</h3>
-                            <p class="text-gray-700 leading-relaxed text-sm sm:text-base"><strong>Todos os mods incluídos nos pacotes são de autoria de talentosos modders da comunidade</strong>, disponibilizados gratuitamente no <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-semibold">Nexus Mods</a> e outras plataformas. <strong>Nenhum mod foi criado por mim.</strong></p>
-                            <p class="text-gray-700 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">Todo o mérito criativo, artístico e técnico pertence aos <strong>desenvolvedores originais dos mods</strong>.</p>
-                            <div class="mt-3 sm:mt-4 p-3 sm:p-4 rounded-lg" style="background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3);">
-                                <p class="text-xs sm:text-sm font-bold text-secundaria mb-1 sm:mb-2">🔗 Alguns modders da comunidade:</p>
-                                <ul class="text-xs sm:text-sm text-gray-700 space-y-1">
-                                    <li>• Os mods de <strong>armas, coletes, camuflagens, capacetes, veículos, skins e kits táticos</strong> foram criados por diversos autores talentosos da comunidade do Nexus Mods.</li>
-                                    <li>• Você pode encontrar todos os mods originais em: <a href="https://www.nexusmods.com/ghostreconbreakpoint" target="_blank" class="text-blue-600 hover:underline font-semibold break-all">nexusmods.com/ghostreconbreakpoint</a></li>
-                                    <li>• <strong>Nosso serviço não substitui o trabalho dos modders</strong> — apenas facilita o acesso para quem não tem tempo ou conhecimento técnico para instalar.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-purple-500">
-                    <div class="flex items-start gap-3 sm:gap-4">
-                        <span class="text-2xl sm:text-4xl flex-shrink-0">🎮</span>
-                        <div>
-                            <h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Jogos atendidos</h3>
-                            <p class="text-gray-700 leading-relaxed text-sm sm:text-base">Atualmente, trabalho principalmente com <strong>Ghost Recon Breakpoint</strong> (versão PC/Steam e Ubisoft Connect).</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-mod border-l-4 border-green-500">
-                    <div class="flex items-start gap-3 sm:gap-4">
-                        <span class="text-2xl sm:text-4xl flex-shrink-0">✅</span>
-                        <div>
-                            <h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Nosso diferencial</h3>
-                            <p class="text-gray-700 leading-relaxed text-sm sm:text-base">Diferente de outros serviços, entregamos os mods <strong>pré-instalados e prontos para uso</strong>. Você não precisa baixar qualquer outra ferramenta. É literalmente <strong>copiar a pasta e abrir o jogo</strong>.</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-principal"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🔧</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">O que é este serviço?</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">A <strong>VCORE GAMES</strong> oferece um serviço especializado de <strong>curadoria, organização e preparação de mods</strong> para o jogo <strong>Ghost Recon Breakpoint</strong>. Nós vasculhamos os melhores mods disponíveis na comunidade, testamos cada um deles, organizamos em pacotes temáticos e deixamos tudo <strong>pronto para uso imediato</strong> — sem que você precise configurar nada.</p><p class="text-gray-700 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">Basicamente, você economiza <strong>horas de pesquisa, downloads, testes e configurações</strong>. Nós fazemos todo o trabalho pesado para que você apenas copie os arquivos e comece a jogar.</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-blue-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">💰</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">O que você está pagando?</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Você <strong>NÃO está comprando os mods em si</strong>. Você está pagando pelo nosso:</p><ul class="mt-2 sm:mt-3 space-y-1.5 sm:space-y-2 text-gray-700 text-sm sm:text-base"><li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">⏱️</span><span><strong>Tempo e trabalho de curadoria:</strong> pesquisamos, baixamos e testamos dezenas de mods para selecionar apenas os melhores e mais estáveis.</span></li><li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">🔧</span><span><strong>Organização e configuração:</strong> organizamos os arquivos, resolvemos conflitos entre mods e deixamos tudo funcionando perfeitamente em conjunto.</span></li><li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">📦</span><span><strong>Pré-instalação e empacotamento:</strong> entregamos os arquivos prontos no formato "copiar e colar" — você não precisa de qualquer ferramenta extra.</span></li><li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">📧</span><span><strong>Suporte e guia de instalação:</strong> você recebe um guia completo por e-mail e tem suporte via WhatsApp para qualquer dúvida.</span></li><li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">🔄</span><span><strong>Atualizações:</strong> mantenho os pacotes sempre atualizados com os mods mais recentes e compatíveis.</span></li></ul><div class="mt-3 sm:mt-4 p-3 sm:p-4 rounded-lg" style="background: rgba(158,255,0,0.08); border: 1px solid rgba(158,255,0,0.25);"><p class="text-xs sm:text-sm font-bold" style="color:#0A1153;">💡 <strong>Resumindo:</strong> você paga pela <strong>conveniência</strong> de receber tudo pronto, testado e funcionando, sem precisar aprender a usar ferramentas de modding ou resolver problemas de compatibilidade sozinho.</p></div></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-yellow-400"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🏆</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Créditos aos Modders</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base"><strong>Todos os mods incluídos nos pacotes são de autoria de talentosos modders da comunidade</strong>, disponibilizados gratuitamente no <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-semibold">Nexus Mods</a>. <strong>Nenhum mod foi criado por mim.</strong></p></div></div></div>
+                <div class="card-mod border-l-4 border-green-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">✅</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Nosso diferencial</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Entregamos os mods <strong>pré-instalados e prontos para uso</strong>. É literalmente <strong>copiar a pasta e abrir o jogo</strong>.</p></div></div></div>
             </div>
         </section>
 
@@ -558,13 +375,10 @@
         <section id="menu-como-comprar" class="conteudo-menu hidden">
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-gray-800">🛒 Como Funciona o Processo de Compra</h2>
-                <p class="text-center text-gray-500 mb-5 sm:mb-8 text-xs sm:text-sm">Um guia completo do início ao fim — sem complicação!</p>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-principal"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">1️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Escolha seu pacote</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Navegue até a seção <strong>"📦 Pacotes Completos"</strong>. Recomendamos o Diamante, que inclui todos os mods disponíveis.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-blue-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">2️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Adicione ao carrinho e crie sua conta</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Preencha seu <strong>nome, e-mail e crie uma senha</strong>. Este e-mail será seu login na Área do Cliente para acessar seus pacotes.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-yellow-400"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">3️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Confirme o e-mail</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Uma janela de confirmação aparecerá. <strong>Certifique-se de usar um e-mail que você acessa sempre</strong> — ele será essencial para baixar seu pacote.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-green-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">4️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Pague via PIX</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Copie a chave PIX, faça a transferência no app do seu banco e envie o comprovante pelo WhatsApp.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-purple-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">5️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Aguarde a liberação</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Após a confirmação do pagamento, <strong>seu acesso será liberado</strong> e você poderá baixar o pacote pela Área do Cliente com seu e-mail e senha.</p></div></div></div>
-                <div class="card-mod border-l-4 border-principal"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">6️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Acesse e baixe! 🎮</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Faça login na <strong>Área do Cliente</strong> com seu e-mail e senha cadastrados. Baixe o pacote, copie para a pasta do jogo e divirta-se!</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-principal"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">1️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Escolha seu pacote</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Navegue até a seção <strong>"📦 Pacotes Completos"</strong>.</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-blue-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">2️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Adicione ao carrinho e crie sua conta</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Preencha seu <strong>nome, e-mail e crie uma senha</strong>. Este e-mail será seu login na Área do Cliente.</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-green-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">3️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Pague via PIX</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Copie a chave PIX, faça a transferência e envie o comprovante.</p></div></div></div>
+                <div class="card-mod border-l-4 border-principal"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">4️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Acesse e baixe! 🎮</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Faça login na <strong>Área do Cliente</strong> com seu e-mail e senha. Baixe o pacote e divirta-se!</p></div></div></div>
             </div>
         </section>
 
@@ -580,13 +394,13 @@
                     <div class="space-y-3 sm:space-y-4">
                         <div>
                             <label class="block text-xs sm:text-sm font-bold text-gray-700 mb-1">📧 E-mail</label>
-                            <input type="email" id="clienteLoginEmail" placeholder="Seu e-mail cadastrado" class="w-full border-2 border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:outline-none focus:border-secundaria transition-colors text-sm" />
+                            <input type="email" id="clienteLoginEmail" placeholder="Seu e-mail cadastrado" autocomplete="email" class="w-full border-2 border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:outline-none focus:border-secundaria transition-colors text-sm" />
                         </div>
                         <div>
                             <label class="block text-xs sm:text-sm font-bold text-gray-700 mb-1">🔑 Senha</label>
-                            <input type="password" id="clienteLoginPass" placeholder="••••••••" class="w-full border-2 border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:outline-none focus:border-secundaria transition-colors text-sm" onkeydown="if(event.key==='Enter') fazerLoginCliente()" />
+                            <input type="password" id="clienteLoginPass" placeholder="••••••••" autocomplete="current-password" class="w-full border-2 border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:outline-none focus:border-secundaria transition-colors text-sm" onkeydown="if(event.key==='Enter') fazerLoginCliente()" />
                         </div>
-                        <p id="erroLoginCliente" class="text-red-600 text-xs sm:text-sm hidden text-center">❌ E-mail ou senha incorretos. Verifique seus dados.</p>
+                        <p id="erroLoginCliente" class="text-red-600 text-xs sm:text-sm hidden text-center"></p>
                         <button onclick="fazerLoginCliente()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-base sm:text-lg">🔓 Acessar Minha Conta</button>
                     </div>
                     <div class="mt-4 sm:mt-5 text-center">
@@ -596,10 +410,7 @@
                 </div>
                 <div id="clientePainel" class="hidden">
                     <div class="flex justify-between items-center mb-4 sm:mb-6 flex-wrap gap-2">
-                        <div>
-                            <h2 class="text-xl sm:text-2xl font-bold text-secundaria">🎮 Minha Conta</h2>
-                            <p class="text-xs sm:text-sm text-gray-500" id="clienteNomeLogado"></p>
-                        </div>
+                        <div><h2 class="text-xl sm:text-2xl font-bold text-secundaria">🎮 Minha Conta</h2><p class="text-xs sm:text-sm text-gray-500" id="clienteNomeLogado"></p></div>
                         <button onclick="fazerLogoutCliente()" class="text-xs sm:text-sm text-red-600 hover:text-red-800 font-bold flex items-center gap-1"><i class="fa fa-sign-out"></i> Sair</button>
                     </div>
                     <div id="clienteComprasContainer"><p class="text-gray-400 text-center text-sm">Carregando...</p></div>
@@ -609,17 +420,10 @@
                             <div class="rounded-xl p-3 sm:p-4" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
                                 <p class="font-bold text-base sm:text-lg mb-1.5 sm:mb-2" style="color:#9EFF00;">🚀 É só copiar e jogar!</p>
                                 <p class="text-xs sm:text-sm mb-1.5 sm:mb-2" style="color:rgba(158,255,0,0.85);">1. Baixe e <strong style="color:#9EFF00;">descompacte</strong> o arquivo recebido</p>
-                                <p class="text-xs sm:text-sm mb-1.5 sm:mb-2" style="color:rgba(158,255,0,0.85);">2. Copie os arquivos para a <strong style="color:#9EFF00;">pasta raiz do jogo</strong> (onde fica o GRB.exe)</p>
+                                <p class="text-xs sm:text-sm mb-1.5 sm:mb-2" style="color:rgba(158,255,0,0.85);">2. Copie os arquivos para a <strong style="color:#9EFF00;">pasta raiz do jogo</strong></p>
                                 <p class="text-xs sm:text-sm" style="color:rgba(158,255,0,0.85);">3. Abra o jogo — os mods já estarão ativos! 🎮</p>
-                                <div class="rounded p-2 text-[10px] sm:text-xs mt-2 sm:mt-3" style="background:rgba(158,255,0,0.08); border:1px solid rgba(158,255,0,0.3);">
-                                    <p style="color:#9EFF00;" class="font-bold mb-1">📁 Caminhos comuns:</p>
-                                    <p style="color:rgba(158,255,0,0.75);" class="break-all">• <strong>Ubisoft Connect:</strong> C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Ghost Recon Breakpoint</p>
-                                    <p style="color:rgba(158,255,0,0.75);" class="break-all">• <strong>Steam:</strong> C:\Program Files (x86)\Steam\steamapps\common\Ghost Recon Breakpoint</p>
-                                </div>
                             </div>
-                            <div class="rounded-xl p-3 sm:p-4 border-2" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;">
-                                <p class="font-extrabold text-sm sm:text-base mb-1 sm:mb-2 text-center" style="color:#cc0000;">🚨 INICIE UM SAVE NOVO APÓS INSTALAR!</p>
-                            </div>
+                            <div class="rounded-xl p-3 sm:p-4 border-2" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%); border-color: #ff0000;"><p class="font-extrabold text-sm sm:text-base mb-1 sm:mb-2 text-center" style="color:#cc0000;">🚨 INICIE UM SAVE NOVO APÓS INSTALAR!</p></div>
                         </div>
                     </div>
                 </div>
@@ -627,7 +431,7 @@
         </section>
 
         <!-- ===== SOBRE ===== -->
-        <section id="menu-sobre" class="conteudo-menu hidden"><div class="max-w-2xl mx-auto card-mod p-6 sm:p-8 text-center"><h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Sobre a VCORE GAMES</h2><p class="mb-3 sm:mb-4 text-gray-600 text-sm sm:text-base">Somos especialistas em curadoria de mods para Ghost Recon Breakpoint, entregando pacotes prontos para uso imediato.</p><p class="text-sm sm:text-base text-gray-600">Todos os arquivos são pré-testados e organizados para garantir a melhor experiência de jogo possível, com total respeito ao trabalho dos modders originais da comunidade.</p></div></section>
+        <section id="menu-sobre" class="conteudo-menu hidden"><div class="max-w-2xl mx-auto card-mod p-6 sm:p-8 text-center"><h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Sobre a VCORE GAMES</h2><p class="mb-3 sm:mb-4 text-gray-600 text-sm sm:text-base">Somos especialistas em curadoria de mods para Ghost Recon Breakpoint, entregando pacotes prontos para uso imediato.</p><p class="text-sm sm:text-base text-gray-600">Todos os arquivos são pré-testados e organizados para garantir a melhor experiência de jogo possível.</p></div></section>
 
         <!-- ===== SUPORTE ===== -->
         <section id="menu-suporte" class="conteudo-menu hidden"><div class="max-w-xl mx-auto card-mod p-6 sm:p-8 text-center"><h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Central de Ajuda</h2><p class="mb-4 sm:mb-6 text-gray-600 text-sm sm:text-base">Dúvidas? Fale conosco:</p><div class="space-y-3 sm:space-y-4 text-left max-w-sm mx-auto"><div class="flex items-center gap-3"><i class="fa fa-whatsapp text-whatsapp text-xl sm:text-2xl"></i><a href="https://wa.me/5516981097916" target="_blank" class="text-gray-700 hover:text-whatsapp transition-colors text-sm sm:text-base">(16) 98109-7916</a></div><div class="flex items-center gap-3"><i class="fa fa-instagram text-instagram text-xl sm:text-2xl"></i><a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="text-gray-700 hover:text-instagram transition-colors text-sm sm:text-base">@rodrigovecoregaming</a></div></div></div></section>
@@ -646,6 +450,16 @@
                 </div>
                 <div id="painelAdmin" class="hidden">
                     <div class="flex justify-between items-center mb-4 sm:mb-6 flex-wrap gap-2"><h2 class="text-xl sm:text-2xl font-bold text-secundaria">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-xs sm:text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button></div>
+
+                    <!-- DIAGNÓSTICO DO LOCALSTORAGE -->
+                    <div class="card-mod mb-4 sm:mb-6 border-2 border-purple-400" style="background:#faf5ff;">
+                        <h3 class="text-base sm:text-lg font-bold text-purple-800 mb-3 sm:mb-4">🔍 Diagnóstico do Armazenamento</h3>
+                        <div id="diagnosticoStorage" class="text-xs sm:text-sm space-y-1">
+                            <p class="text-gray-500">Clique no botão abaixo para verificar.</p>
+                        </div>
+                        <button onclick="executarDiagnostico()" class="mt-3 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-xs sm:text-sm transition-colors w-full">🔬 Executar Diagnóstico</button>
+                    </div>
+
                     <div class="card-mod mb-4 sm:mb-6"><h3 class="text-base sm:text-lg font-bold text-gray-800 mb-3 sm:mb-4">📋 Clientes Cadastrados</h3><div id="listaClientes" class="space-y-2 sm:space-y-3"><p class="text-gray-400 text-xs sm:text-sm text-center">Nenhum cliente registrado ainda.</p></div></div>
                     <button onclick="limparClientes()" class="w-full bg-red-100 hover:bg-red-200 text-red-700 font-bold py-2 rounded-lg text-xs sm:text-sm">🗑️ Limpar todos os clientes</button>
                 </div>
@@ -678,10 +492,7 @@
     <div id="barraTotal" class="barra-total">
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
             <i class="fa fa-shopping-cart text-base sm:text-xl flex-shrink-0"></i>
-            <div class="min-w-0">
-                <p class="text-[10px] sm:text-xs leading-none" style="color:rgba(158,255,0,0.7);">Total do carrinho</p>
-                <p id="barraTotalValor" class="text-base sm:text-xl font-bold leading-tight truncate">R$ 0,00</p>
-            </div>
+            <div class="min-w-0"><p class="text-[10px] sm:text-xs leading-none" style="color:rgba(158,255,0,0.7);">Total do carrinho</p><p id="barraTotalValor" class="text-base sm:text-xl font-bold leading-tight truncate">R$ 0,00</p></div>
             <span id="barraTotalItens" class="text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full flex-shrink-0" style="background:rgba(158,255,0,0.2)">0 item</span>
         </div>
         <button onclick="abrirCarrinho()" style="background:#9EFF00;color:#0A1153" class="font-bold py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm hover:opacity-90 transition-opacity active:scale-95 transform flex-shrink-0">Ver Carrinho →</button>
@@ -694,14 +505,56 @@
         var ADMIN_USER = "admin";
         var ADMIN_PASS = "vcore2026";
         var COMPRAS_FICTICIAS = 15;
+        var STORAGE_KEY = 'vcore_clientes_v2';
 
         var carrinho = [];
         var adminLogado = false;
         var clienteLogado = null;
-        var clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
         var dadosPendentes = null;
 
-        // ============ POP-UP DE SAÍDA (EXIT INTENT) ============
+        // ============ FUNÇÃO SEGURA DE LEITURA DO LOCALSTORAGE ============
+        function lerStorage() {
+            try {
+                var raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return [];
+                var dados = JSON.parse(raw);
+                if (!Array.isArray(dados)) return [];
+                return dados;
+            } catch(e) {
+                console.error('❌ ERRO ao LER localStorage:', e.message);
+                return [];
+            }
+        }
+
+        // ============ FUNÇÃO SEGURA DE ESCRITA NO LOCALSTORAGE ============
+        function salvarStorage(dados) {
+            try {
+                var json = JSON.stringify(dados);
+                localStorage.setItem(STORAGE_KEY, json);
+                // Verificação: ler de volta para confirmar
+                var verificado = localStorage.getItem(STORAGE_KEY);
+                if (verificado === json) {
+                    console.log('✅ localStorage SALVO com sucesso! Total de clientes:', dados.length);
+                    return true;
+                } else {
+                    console.error('❌ ERRO: localStorage salvou mas a verificação falhou!');
+                    return false;
+                }
+            } catch(e) {
+                console.error('❌ ERRO ao SALVAR no localStorage:', e.message);
+                // Tentar limpar storage antigo se estiver cheio
+                if (e.name === 'QuotaExceededError') {
+                    alert('⚠️ O armazenamento do navegador está cheio! Entre em contato com o suporte.');
+                }
+                return false;
+            }
+        }
+
+        // Inicialização segura
+        var clientesRegistrados = lerStorage();
+        console.log('📦 VCORE GAMES - Inicializado com', clientesRegistrados.length, 'clientes no storage.');
+
+        // ============ POP-UP DE SAÍDA ============
         var popupSaidaMostrado = sessionStorage.getItem('vcore_popup_saida') === 'true';
 
         function mostrarPopupSaida() {
@@ -719,62 +572,45 @@
         }
 
         document.addEventListener('mouseout', function(e) {
-            if (!popupSaidaMostrado && e.clientY <= 0 && carrinho.length === 0) {
-                mostrarPopupSaida();
-            }
+            if (!popupSaidaMostrado && e.clientY <= 0 && carrinho.length === 0) mostrarPopupSaida();
         });
-
-        document.getElementById('modalSaida').addEventListener('click', function(e) {
-            if (e.target === this) fecharModalSaida();
-        });
+        document.getElementById('modalSaida').addEventListener('click', function(e) { if (e.target === this) fecharModalSaida(); });
 
         // ============ CONTADORES ============
         function animarContador(el, alvo) {
-            var duracao = 1200;
-            var inicio = Math.max(0, alvo - 50);
-            var startTime = null;
+            var duracao = 1200, inicio = Math.max(0, alvo - 50), startTime = null;
             function passo(timestamp) {
                 if (!startTime) startTime = timestamp;
                 var progresso = Math.min((timestamp - startTime) / duracao, 1);
-                var eased = 1 - Math.pow(1 - progresso, 3);
-                var atual = Math.floor(inicio + (alvo - inicio) * eased);
+                var atual = Math.floor(inicio + (alvo - inicio) * (1 - Math.pow(1 - progresso, 3)));
                 el.innerText = atual.toLocaleString('pt-BR');
-                if (progresso < 1) { requestAnimationFrame(passo); }
-                else { el.innerText = alvo.toLocaleString('pt-BR'); }
+                if (progresso < 1) requestAnimationFrame(passo);
+                else el.innerText = alvo.toLocaleString('pt-BR');
             }
             requestAnimationFrame(passo);
         }
 
         (function() {
-            var contadorEl = document.getElementById('contadorVisitas');
+            var el = document.getElementById('contadorVisitas');
             fetch('https://api.counterapi.dev/v1/vcoregames_site/visitas/up')
-                .then(function(res) { return res.json(); })
-                .then(function(data) {
-                    if (data && typeof data.count === 'number') { animarContador(contadorEl, data.count); }
-                    else { contadorEl.innerText = '🔥'; }
-                })
-                .catch(function() { contadorEl.innerHTML = '<span style="font-size:1.2rem;">👥</span>'; });
+                .then(function(r) { return r.json(); })
+                .then(function(d) { if (d && typeof d.count === 'number') animarContador(el, d.count); else el.innerText = '🔥'; })
+                .catch(function() { el.innerHTML = '<span style="font-size:1.2rem;">👥</span>'; });
         })();
 
         (function() {
-            var contadorEl = document.getElementById('contadorCompras');
+            var el = document.getElementById('contadorCompras');
             fetch('https://api.counterapi.dev/v1/vcoregames_site/compras_finalizadas')
-                .then(function(res) { return res.json(); })
-                .then(function(data) {
-                    var reais = (data && typeof data.count === 'number') ? data.count : 0;
-                    animarContador(contadorEl, reais + COMPRAS_FICTICIAS);
-                })
-                .catch(function() { animarContador(contadorEl, COMPRAS_FICTICIAS); });
+                .then(function(r) { return r.json(); })
+                .then(function(d) { var reais = (d && typeof d.count === 'number') ? d.count : 0; animarContador(el, reais + COMPRAS_FICTICIAS); })
+                .catch(function() { animarContador(el, COMPRAS_FICTICIAS); });
         })();
 
         function incrementarContadorCompras() {
-            var contadorEl = document.getElementById('contadorCompras');
+            var el = document.getElementById('contadorCompras');
             fetch('https://api.counterapi.dev/v1/vcoregames_site/compras_finalizadas/up')
-                .then(function(res) { return res.json(); })
-                .then(function(data) {
-                    var reais = (data && typeof data.count === 'number') ? data.count : 0;
-                    animarContador(contadorEl, reais + COMPRAS_FICTICIAS);
-                })
+                .then(function(r) { return r.json(); })
+                .then(function(d) { var reais = (d && typeof d.count === 'number') ? d.count : 0; animarContador(el, reais + COMPRAS_FICTICIAS); })
                 .catch(function() {});
         }
 
@@ -787,109 +623,61 @@
 
         function criarToastCompra() {
             var existente = document.querySelector('.toast-compra');
-            if (existente) {
-                existente.classList.add('saindo');
-                setTimeout(function() { if (existente.parentNode) existente.parentNode.removeChild(existente); }, 400);
-            }
-            var nome = nomeAleatorio();
-            var pacote = pacotesNotificacao[Math.floor(Math.random() * pacotesNotificacao.length)];
-            var tempo = temposNotificacao[Math.floor(Math.random() * temposNotificacao.length)];
-            var isMobile = window.innerWidth < 640;
-            var toast = document.createElement('div');
-            toast.className = 'toast-compra';
+            if (existente) { existente.classList.add('saindo'); setTimeout(function() { if (existente.parentNode) existente.parentNode.removeChild(existente); }, 400); }
+            var nome = nomeAleatorio(), pacote = pacotesNotificacao[Math.floor(Math.random() * pacotesNotificacao.length)], tempo = temposNotificacao[Math.floor(Math.random() * temposNotificacao.length)], isMobile = window.innerWidth < 640;
+            var toast = document.createElement('div'); toast.className = 'toast-compra';
             toast.style.cssText = 'position:fixed;bottom:' + (isMobile ? '80px' : '100px') + ';right:' + (isMobile ? '8px' : '20px') + ';background:#0A1153;color:#fff;padding:' + (isMobile ? '10px 14px' : '14px 18px') + ';border-radius:14px;z-index:9999;box-shadow:0 8px 30px rgba(0,0,0,0.4);border:1px solid rgba(158,255,0,0.4);max-width:' + (isMobile ? '260px' : '300px') + ';cursor:default;font-family:Inter,system-ui,sans-serif;font-size:' + (isMobile ? '0.7rem' : '0.85rem') + ';';
-            toast.innerHTML = '<div style="display:flex;align-items:center;gap:8px;">'
-                + '<div style="background:rgba(158,255,0,0.15);border-radius:50%;width:' + (isMobile ? '32px' : '40px') + ';height:' + (isMobile ? '32px' : '40px') + ';display:flex;align-items:center;justify-content:center;font-size:' + (isMobile ? '1rem' : '1.2rem') + ';flex-shrink:0;">🔥</div>'
-                + '<div style="min-width:0;">'
-                + '<p style="font-weight:700;font-size:' + (isMobile ? '0.75rem' : '0.85rem') + ';color:#9EFF00;margin:0;">' + nome + ' comprou</p>'
-                + '<p style="font-size:' + (isMobile ? '0.7rem' : '0.8rem') + ';margin:2px 0;color:#e5e7eb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + pacote + '</p>'
-                + '<p style="font-size:' + (isMobile ? '0.65rem' : '0.7rem') + ';margin:0;color:rgba(255,255,255,0.5);">' + tempo + '</p>'
-                + '</div></div>';
+            toast.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="background:rgba(158,255,0,0.15);border-radius:50%;width:' + (isMobile ? '32px' : '40px') + ';height:' + (isMobile ? '32px' : '40px') + ';display:flex;align-items:center;justify-content:center;font-size:' + (isMobile ? '1rem' : '1.2rem') + ';flex-shrink:0;">🔥</div><div style="min-width:0;"><p style="font-weight:700;font-size:' + (isMobile ? '0.75rem' : '0.85rem') + ';color:#9EFF00;margin:0;">' + nome + ' comprou</p><p style="font-size:' + (isMobile ? '0.7rem' : '0.8rem') + ';margin:2px 0;color:#e5e7eb;">' + pacote + '</p><p style="font-size:' + (isMobile ? '0.65rem' : '0.7rem') + ';margin:0;color:rgba(255,255,255,0.5);">' + tempo + '</p></div></div>';
             document.body.appendChild(toast);
-            setTimeout(function() {
-                if (toast.parentNode) {
-                    toast.classList.add('saindo');
-                    setTimeout(function() { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 400);
-                }
-            }, 5000);
+            setTimeout(function() { if (toast.parentNode) { toast.classList.add('saindo'); setTimeout(function() { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 400); } }, 5000);
         }
 
-        function agendarProximaNotificacao() {
-            var delay = Math.floor(Math.random() * 12000) + 8000;
-            setTimeout(function() {
-                criarToastCompra();
-                agendarProximaNotificacao();
-            }, delay);
-        }
-
+        function agendarProximaNotificacao() { setTimeout(function() { criarToastCompra(); agendarProximaNotificacao(); }, Math.floor(Math.random() * 12000) + 8000); }
         setTimeout(function() { agendarProximaNotificacao(); }, 5000);
 
         // ============ MENU DROPDOWN ============
-        var botaoMenu = document.getElementById('botaoMenu');
-        var listaMenu = document.getElementById('listaMenu');
-        var iconeMenu = document.getElementById('iconeMenu');
-
-        botaoMenu.addEventListener('click', function(e) {
-            e.stopPropagation();
-            listaMenu.classList.toggle('aberto');
-            iconeMenu.classList.toggle('rotate-180');
-        });
-
-        document.addEventListener('click', function(e) {
-            if (!botaoMenu.contains(e.target) && !listaMenu.contains(e.target)) {
-                listaMenu.classList.remove('aberto');
-                iconeMenu.classList.remove('rotate-180');
-            }
-        });
+        var botaoMenu = document.getElementById('botaoMenu'), listaMenu = document.getElementById('listaMenu'), iconeMenu = document.getElementById('iconeMenu');
+        botaoMenu.addEventListener('click', function(e) { e.stopPropagation(); listaMenu.classList.toggle('aberto'); iconeMenu.classList.toggle('rotate-180'); });
+        document.addEventListener('click', function(e) { if (!botaoMenu.contains(e.target) && !listaMenu.contains(e.target)) { listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('rotate-180'); } });
 
         function irParaPacotes(event) {
-            document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
+            document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
             document.getElementById('menu-inicio').classList.remove('hidden');
-            document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
+            document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
             if (event && event.target) event.target.classList.add('menu-ativo');
-            listaMenu.classList.remove('aberto');
-            iconeMenu.classList.remove('rotate-180');
-            setTimeout(function() {
-                var alvo = document.getElementById('pacotes-premium');
-                if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+            listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('rotate-180');
+            setTimeout(function() { var a = document.getElementById('pacotes-premium'); if (a) a.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
         }
 
         function mudarMenu(event, idMenu) {
-            document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
+            document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
             document.getElementById('menu-' + idMenu).classList.remove('hidden');
-            document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
+            document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
             if (event && event.target) event.target.classList.add('menu-ativo');
-            listaMenu.classList.remove('aberto');
-            iconeMenu.classList.remove('rotate-180');
+            listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('rotate-180');
             if (idMenu === 'admin') renderizarPainelAdmin();
             if (idMenu === 'area-cliente') renderizarAreaCliente();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function mudarMenuParaInicio() {
-            document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
+            document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
             document.getElementById('menu-inicio').classList.remove('hidden');
-            document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
-            var linkInicio = document.querySelector('#listaMenu a[href="#inicio"]');
-            if (linkInicio) linkInicio.classList.add('menu-ativo');
-            setTimeout(function() {
-                var alvo = document.getElementById('pacotes-premium');
-                if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+            document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
+            var linkInicio = document.querySelector('#listaMenu a[href="#inicio"]'); if (linkInicio) linkInicio.classList.add('menu-ativo');
+            setTimeout(function() { var a = document.getElementById('pacotes-premium'); if (a) a.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
         }
 
         // ============ CARRINHO ============
         function adicionarAoCarrinho(nome, preco) {
             var existente = null;
             for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { existente = carrinho[i]; break; } }
-            if (existente) { existente.qtd += 1; } else { carrinho.push({ nome: nome, preco: preco, qtd: 1 }); }
-            atualizarCarrinho();
-            mostrarNotificacao(nome + ' adicionado! 🛒');
+            if (existente) existente.qtd += 1; else carrinho.push({ nome: nome, preco: preco, qtd: 1 });
+            atualizarCarrinho(); mostrarNotificacao(nome + ' adicionado! 🛒');
         }
 
         function alterarQtd(nome, delta) {
-            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho[i].qtd += delta; if (carrinho[i].qtd <= 0) { carrinho.splice(i, 1); } break; } }
+            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho[i].qtd += delta; if (carrinho[i].qtd <= 0) carrinho.splice(i, 1); break; } }
             atualizarCarrinho();
         }
 
@@ -899,12 +687,8 @@
         }
 
         function atualizarCarrinho() {
-            var lista = document.getElementById('listaCarrinho');
-            var totalEl = document.getElementById('valorTotal');
-            var badge = document.getElementById('badgeCarrinho');
-            var barra = document.getElementById('barraTotal');
-            var barraTotalValor = document.getElementById('barraTotalValor');
-            var barraTotalItens = document.getElementById('barraTotalItens');
+            var lista = document.getElementById('listaCarrinho'), totalEl = document.getElementById('valorTotal'), badge = document.getElementById('badgeCarrinho');
+            var barra = document.getElementById('barraTotal'), barraTotalValor = document.getElementById('barraTotalValor'), barraTotalItens = document.getElementById('barraTotalItens');
             lista.innerHTML = '';
             var totalUnidades = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0);
             var totalValor = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
@@ -913,16 +697,14 @@
             if (carrinho.length > 0) {
                 badge.classList.remove('hidden'); badge.innerText = totalUnidades;
                 carrinho.forEach(function(item) {
-                    var subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
-                    var precoUnit = item.preco.toFixed(2).replace('.', ',');
+                    var subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ','), precoUnit = item.preco.toFixed(2).replace('.', ',');
                     var div = document.createElement('div');
                     div.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #e5e7eb;gap:6px;flex-wrap:wrap;';
                     div.innerHTML = '<div style="flex:1;min-width:120px;"><p style="font-weight:600;font-size:0.85rem;">' + item.nome + '</p><p style="font-size:0.72rem;color:#6b7280;">R$ ' + precoUnit + ' cada</p></div><div style="display:flex;align-items:center;gap:4px;flex-shrink:0;"><button onclick="alterarQtd(\'' + item.nome.replace(/'/g,"\\'") + '\', -1)" style="width:24px;height:24px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;border:none;cursor:pointer;font-size:0.8rem;">−</button><span style="font-weight:700;min-width:18px;text-align:center;font-size:0.85rem;">' + item.qtd + '</span><button onclick="alterarQtd(\'' + item.nome.replace(/'/g,"\\'") + '\', 1)" style="width:24px;height:24px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;border:none;cursor:pointer;font-size:0.8rem;">+</button><span style="font-weight:700;min-width:60px;text-align:right;font-size:0.85rem;">R$ ' + subtotal + '</span><button onclick="removerDoCarrinho(\'' + item.nome.replace(/'/g,"\\'") + '\')" style="color:#dc2626;font-weight:700;background:none;border:none;cursor:pointer;font-size:0.9rem;">✕</button></div>';
                     lista.appendChild(div);
                 });
                 totalEl.innerText = totalFormatado; barraTotalValor.innerText = totalFormatado;
-                barraTotalItens.innerText = totalUnidades + (totalUnidades === 1 ? ' item' : ' itens');
-                barra.classList.add('visivel');
+                barraTotalItens.innerText = totalUnidades + (totalUnidades === 1 ? ' item' : ' itens'); barra.classList.add('visivel');
             } else {
                 badge.classList.add('hidden'); lista.innerHTML = '<p class="text-gray-500 text-center text-sm">Seu carrinho está vazio.</p>';
                 totalEl.innerText = 'R$ 0,00'; barra.classList.remove('visivel');
@@ -932,46 +714,29 @@
 
         function mostrarNotificacao(msg) {
             var notif = document.getElementById('notificacaoCarrinho');
-            if (!notif) {
-                notif = document.createElement('div');
-                notif.id = 'notificacaoCarrinho';
-                notif.style.cssText = 'position:fixed;top:80px;right:16px;background:#0A1153;color:#9EFF00;font-weight:700;padding:12px 18px;border-radius:10px;z-index:999;font-size:0.85rem;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:opacity 0.4s;opacity:0;pointer-events:none;max-width:280px;';
-                document.body.appendChild(notif);
-            }
-            notif.innerText = msg;
-            notif.style.opacity = '1';
-            if (window.innerWidth < 640) {
-                notif.style.right = '8px';
-                notif.style.maxWidth = '240px';
-                notif.style.fontSize = '0.75rem';
-                notif.style.padding = '10px 14px';
-            }
-            clearTimeout(notif._timer);
-            notif._timer = setTimeout(function() { notif.style.opacity = '0'; }, 2500);
+            if (!notif) { notif = document.createElement('div'); notif.id = 'notificacaoCarrinho'; notif.style.cssText = 'position:fixed;top:80px;right:16px;background:#0A1153;color:#9EFF00;font-weight:700;padding:12px 18px;border-radius:10px;z-index:999;font-size:0.85rem;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:opacity 0.4s;opacity:0;pointer-events:none;max-width:280px;'; document.body.appendChild(notif); }
+            notif.innerText = msg; notif.style.opacity = '1';
+            if (window.innerWidth < 640) { notif.style.right = '8px'; notif.style.maxWidth = '240px'; notif.style.fontSize = '0.75rem'; notif.style.padding = '10px 14px'; }
+            clearTimeout(notif._timer); notif._timer = setTimeout(function() { notif.style.opacity = '0'; }, 2500);
         }
 
         function abrirCarrinho() { document.getElementById('modalCarrinho').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
         function fecharCarrinho() { document.getElementById('modalCarrinho').style.display = 'none'; document.body.style.overflow = 'auto'; }
         document.getElementById('modalCarrinho').addEventListener('click', function(e) { if (e.target === this) fecharCarrinho(); });
 
-        function fecharModalPix() {
-            document.getElementById('modalPix').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            mostrarNotificacao('📧 Não esqueça: o link do pacote e o guia completo serão enviados para o seu e-mail cadastrado!');
-        }
+        function fecharModalPix() { document.getElementById('modalPix').style.display = 'none'; document.body.style.overflow = 'auto'; mostrarNotificacao('📧 Não esqueça: o link do pacote será enviado para o seu e-mail!'); }
         document.getElementById('modalPix').addEventListener('click', function(e) { if (e.target === this) fecharModalPix(); });
         document.getElementById('modalAvisoEmail').addEventListener('click', function(e) { if (e.target === this) voltarAvisoEmail(); });
 
         function toggleSenhaCarrinho() {
-            var input = document.getElementById('clienteSenha');
-            var icone = document.getElementById('iconeSenhaCarrinho');
+            var input = document.getElementById('clienteSenha'), icone = document.getElementById('iconeSenhaCarrinho');
             if (input.type === 'password') { input.type = 'text'; icone.classList.remove('fa-eye'); icone.classList.add('fa-eye-slash'); }
             else { input.type = 'password'; icone.classList.remove('fa-eye-slash'); icone.classList.add('fa-eye'); }
         }
 
         function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
 
-        // ============ FLUXO DE FINALIZAÇÃO ============
+        // ============ FLUXO DE FINALIZAÇÃO (CORRIGIDO) ============
         function iniciarFinalizacao() {
             if (carrinho.length === 0) { mostrarNotificacao('⚠️ Seu carrinho está vazio!'); return; }
             var nome = document.getElementById('clienteNome').value.trim();
@@ -982,6 +747,7 @@
             if (!isValidEmail(email)) { mostrarNotificacao('⚠️ E-mail inválido!'); document.getElementById('clienteEmail').focus(); return; }
             if (!senha || senha.length < 4) { mostrarNotificacao('⚠️ Crie uma senha com pelo menos 4 caracteres!'); document.getElementById('clienteSenha').focus(); return; }
             dadosPendentes = { nome: nome, email: email, senha: senha };
+            console.log('📝 Dados capturados para cadastro:', { nome: nome, email: email, senha: '(oculta)' });
             document.getElementById('modalAvisoEmail').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
@@ -995,14 +761,16 @@
         function confirmarAvisoEmail() {
             document.getElementById('modalAvisoEmail').style.display = 'none';
             document.body.style.overflow = 'hidden';
+            if (!dadosPendentes) { mostrarNotificacao('⚠️ Erro: dados não encontrados. Tente novamente.'); return; }
             finalizarCompra(dadosPendentes);
             dadosPendentes = null;
         }
 
         function finalizarCompra(dados) {
-            // ===== CORREÇÃO: Recarregar do localStorage antes de adicionar =====
-            // Isso evita perda de dados se outras funções tiverem alterado a referência do array
-            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            console.log('💾 Iniciando salvamento no localStorage...');
+
+            // RECARREGAR DO LOCALSTORAGE ANTES DE MODIFICAR (evita corrupção)
+            clientesRegistrados = lerStorage();
 
             var itens = carrinho.map(function(item) { return item.qtd + 'x ' + item.nome; }).join(', ');
             var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
@@ -1010,12 +778,32 @@
             var agora = new Date();
             var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
 
-            // Armazena o total para usar depois que o carrinho for limpo
-            var totalNumerico = total;
+            var novoCliente = {
+                nome: dados.nome,
+                email: dados.email,
+                senha: dados.senha,
+                itens: itens,
+                total: total.toFixed(2).replace('.', ','),
+                data: dataStr,
+                status: 'pendente',
+                linkDownload: ''
+            };
 
-            clientesRegistrados.push({ nome: dados.nome, email: dados.email, senha: dados.senha, itens: itens, total: total.toFixed(2).replace('.', ','), data: dataStr, status: 'pendente', linkDownload: '' });
-            localStorage.setItem('vcore_clientes_v2', JSON.stringify(clientesRegistrados));
+            clientesRegistrados.push(novoCliente);
 
+            // Salvar com verificação
+            var salvou = salvarStorage(clientesRegistrados);
+
+            if (salvou) {
+                console.log('✅ Cliente cadastrado com sucesso!', { nome: dados.nome, email: dados.email });
+                mostrarNotificacao('✅ Conta criada com sucesso!');
+            } else {
+                console.error('❌ FALHA ao salvar cliente no localStorage!');
+                mostrarNotificacao('⚠️ Erro ao salvar. Tente novamente ou use outro navegador.');
+                return;
+            }
+
+            // Limpar carrinho e inputs
             fecharCarrinho();
             carrinho = [];
             atualizarCarrinho();
@@ -1029,36 +817,26 @@
             document.getElementById('pixCopiado').classList.add('hidden');
             document.getElementById('modalPix').style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            mostrarNotificacao('✅ Conta criada! Faça o pagamento PIX para liberar seu acesso.');
             criarToastCompra();
         }
 
         function copiarChavePix() {
             navigator.clipboard.writeText(CHAVE_PIX).then(function() {
-                var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden');
-                setTimeout(function() { msg.classList.add('hidden'); }, 3000);
+                var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden'); setTimeout(function() { msg.classList.add('hidden'); }, 3000);
             }).catch(function() {
                 var input = document.createElement('input'); input.value = CHAVE_PIX; document.body.appendChild(input); input.select(); document.execCommand('copy'); document.body.removeChild(input);
-                var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden');
-                setTimeout(function() { msg.classList.add('hidden'); }, 3000);
+                var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden'); setTimeout(function() { msg.classList.add('hidden'); }, 3000);
             });
         }
 
         function abrirWhatsAppComprovante() {
-            // Recarrega clientes para pegar o último cadastro
-            var clientesAtuais = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
-            var totalFormatado = '0,00';
-            if (clientesAtuais.length > 0) {
-                var ultimo = clientesAtuais[clientesAtuais.length - 1];
-                totalFormatado = ultimo.total;
-            }
-            var mensagem = 'Olá Rodrigo! Acabei de fazer o pagamento de R$ ' + totalFormatado + ' via PIX. Segue o comprovante em anexo.';
-            window.open('https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(mensagem), '_blank');
+            var clientesAtuais = lerStorage();
+            var totalFormatado = clientesAtuais.length > 0 ? clientesAtuais[clientesAtuais.length - 1].total : '0,00';
+            window.open('https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent('Olá Rodrigo! Acabei de fazer o pagamento de R$ ' + totalFormatado + ' via PIX. Segue o comprovante em anexo.'), '_blank');
         }
 
-        // ============ ÁREA DO CLIENTE ============
+        // ============ ÁREA DO CLIENTE (CORRIGIDO) ============
         function renderizarAreaCliente() {
-            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
             if (clienteLogado) {
                 document.getElementById('clienteLoginPainel').classList.add('hidden');
                 document.getElementById('clientePainel').classList.remove('hidden');
@@ -1076,15 +854,25 @@
             var email = document.getElementById('clienteLoginEmail').value.trim();
             var senha = document.getElementById('clienteLoginPass').value.trim();
 
-            // Recarrega do localStorage para garantir dados atualizados
-            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            if (!email) { document.getElementById('erroLoginCliente').innerText = '❌ Digite seu e-mail.'; document.getElementById('erroLoginCliente').classList.remove('hidden'); return; }
+            if (!senha) { document.getElementById('erroLoginCliente').innerText = '❌ Digite sua senha.'; document.getElementById('erroLoginCliente').classList.remove('hidden'); return; }
+
+            // RECARREGAR DO LOCALSTORAGE
+            clientesRegistrados = lerStorage();
+            console.log('🔍 Tentando login - email:', email, '| total de clientes no storage:', clientesRegistrados.length);
 
             var encontrado = null;
+            var emailLower = email.toLowerCase();
+
             for (var i = 0; i < clientesRegistrados.length; i++) {
-                if (clientesRegistrados[i].email.toLowerCase() === email.toLowerCase() && clientesRegistrados[i].senha === senha) {
-                    encontrado = clientesRegistrados[i]; break;
+                var c = clientesRegistrados[i];
+                if (c.email.toLowerCase() === emailLower && c.senha === senha) {
+                    encontrado = c;
+                    console.log('✅ Login bem-sucedido para:', c.nome, '| email:', c.email);
+                    break;
                 }
             }
+
             if (encontrado) {
                 clienteLogado = encontrado;
                 document.getElementById('erroLoginCliente').classList.add('hidden');
@@ -1092,7 +880,18 @@
                 document.getElementById('clientePainel').classList.remove('hidden');
                 renderizarPainelCliente();
             } else {
+                // Verificar se o email existe (para dar mensagem mais precisa)
+                var emailExiste = false;
+                for (var j = 0; j < clientesRegistrados.length; j++) {
+                    if (clientesRegistrados[j].email.toLowerCase() === emailLower) { emailExiste = true; break; }
+                }
+                if (emailExiste) {
+                    document.getElementById('erroLoginCliente').innerText = '❌ Senha incorreta! Verifique se digitou corretamente.';
+                } else {
+                    document.getElementById('erroLoginCliente').innerText = '❌ E-mail não encontrado! Verifique se usou o mesmo e-mail do cadastro.';
+                }
                 document.getElementById('erroLoginCliente').classList.remove('hidden');
+                console.log('❌ Login falhou para:', email);
             }
         }
 
@@ -1108,27 +907,25 @@
         function renderizarPainelCliente() {
             if (!clienteLogado) return;
             document.getElementById('clienteNomeLogado').innerText = '👤 ' + clienteLogado.nome + ' | 📧 ' + clienteLogado.email;
-            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            clientesRegistrados = lerStorage();
+
+            // Atualizar clienteLogado com dados mais recentes
             for (var i = 0; i < clientesRegistrados.length; i++) {
                 if (clientesRegistrados[i].email.toLowerCase() === clienteLogado.email.toLowerCase()) {
                     clienteLogado = clientesRegistrados[i]; break;
                 }
             }
+
             var container = document.getElementById('clienteComprasContainer');
             var comprasDoCliente = [];
             for (var j = 0; j < clientesRegistrados.length; j++) {
-                if (clientesRegistrados[j].email.toLowerCase() === clienteLogado.email.toLowerCase()) {
-                    comprasDoCliente.push(clientesRegistrados[j]);
-                }
+                if (clientesRegistrados[j].email.toLowerCase() === clienteLogado.email.toLowerCase()) comprasDoCliente.push(clientesRegistrados[j]);
             }
-            if (comprasDoCliente.length === 0) {
-                container.innerHTML = '<div class="card-mod text-center"><p class="text-gray-500 text-sm">Nenhuma compra encontrada.</p></div>'; return;
-            }
+            if (comprasDoCliente.length === 0) { container.innerHTML = '<div class="card-mod text-center"><p class="text-gray-500 text-sm">Nenhuma compra encontrada.</p></div>'; return; }
             container.innerHTML = '';
             for (var k = 0; k < comprasDoCliente.length; k++) {
                 var compra = comprasDoCliente[k];
-                var card = document.createElement('div');
-                card.className = 'card-mod mb-3 sm:mb-4';
+                var card = document.createElement('div'); card.className = 'card-mod mb-3 sm:mb-4';
                 var statusHTML = compra.status === 'aprovado'
                     ? '<span class="inline-flex items-center gap-1 bg-green-500 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">✅ Aprovado — Pronto para download!</span>'
                     : '<span class="inline-flex items-center gap-1 bg-yellow-500 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">⏳ Aguardando confirmação</span>';
@@ -1147,8 +944,7 @@
 
         // ============ PAINEL ADMIN ============
         function fazerLogin() {
-            var user = document.getElementById('adminUser').value.trim();
-            var pass = document.getElementById('adminPass').value.trim();
+            var user = document.getElementById('adminUser').value.trim(), pass = document.getElementById('adminPass').value.trim();
             if (user === ADMIN_USER && pass === ADMIN_PASS) {
                 adminLogado = true;
                 document.getElementById('painelLogin').classList.add('hidden');
@@ -1161,8 +957,7 @@
             adminLogado = false;
             document.getElementById('painelLogin').classList.remove('hidden');
             document.getElementById('painelAdmin').classList.add('hidden');
-            document.getElementById('adminUser').value = '';
-            document.getElementById('adminPass').value = '';
+            document.getElementById('adminUser').value = ''; document.getElementById('adminPass').value = '';
             document.getElementById('erroLogin').classList.add('hidden');
         }
 
@@ -1170,29 +965,60 @@
             if (adminLogado) { document.getElementById('painelLogin').classList.add('hidden'); document.getElementById('painelAdmin').classList.remove('hidden'); renderizarListaClientes(); }
         }
 
-        // ===== NOVA FUNÇÃO: Admin pode "impersonar" um cliente =====
+        // ===== FUNÇÃO DE DIAGNÓSTICO =====
+        function executarDiagnostico() {
+            var container = document.getElementById('diagnosticoStorage');
+            var html = '';
+
+            // Verificar se localStorage está disponível
+            try {
+                var testKey = '_vcore_test_' + Date.now();
+                localStorage.setItem(testKey, 'test');
+                localStorage.removeItem(testKey);
+                html += '<p style="color:#16a34a;">✅ localStorage está funcionando corretamente</p>';
+            } catch(e) {
+                html += '<p style="color:#dc2626;">❌ localStorage NÃO está disponível: ' + e.message + '</p>';
+            }
+
+            // Verificar dados
+            var dados = lerStorage();
+            html += '<p style="color:#1e40af;">📦 Total de clientes cadastrados: <strong>' + dados.length + '</strong></p>';
+
+            if (dados.length > 0) {
+                html += '<div class="mt-2 p-2 bg-white rounded border text-[11px] max-h-32 overflow-y-auto">';
+                for (var i = 0; i < dados.length; i++) {
+                    html += '<p style="border-bottom:1px solid #e5e7eb;padding:2px 0;"><strong>#' + (i+1) + '</strong> ' + dados[i].nome + ' | 📧 ' + dados[i].email + ' | 🔑 <code>' + dados[i].senha + '</code> | Status: ' + dados[i].status + '</p>';
+                }
+                html += '</div>';
+            }
+
+            // Tamanho do storage
+            var usado = JSON.stringify(localStorage).length;
+            var limite = 5 * 1024 * 1024; // ~5MB
+            html += '<p style="color:#6b7280;margin-top:4px;">💾 Espaço usado: <strong>' + (usado / 1024).toFixed(1) + ' KB</strong> de ~5 MB (' + ((usado / limite) * 100).toFixed(2) + '%)</p>';
+
+            container.innerHTML = html;
+        }
+
         function verComoCliente(idx) {
-            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            clientesRegistrados = lerStorage();
             if (idx >= 0 && idx < clientesRegistrados.length) {
                 clienteLogado = clientesRegistrados[idx];
-                // Navega para a área do cliente
-                document.querySelectorAll('.conteudo-menu').forEach(function(sec) { sec.classList.add('hidden'); });
+                document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
                 document.getElementById('menu-area-cliente').classList.remove('hidden');
-                document.querySelectorAll('#listaMenu a').forEach(function(link) { link.classList.remove('menu-ativo'); });
-                var linkCliente = document.querySelector('#listaMenu a[href="#area-cliente"]');
-                if (linkCliente) linkCliente.classList.add('menu-ativo');
-                listaMenu.classList.remove('aberto');
-                iconeMenu.classList.remove('rotate-180');
+                document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
+                var linkCliente = document.querySelector('#listaMenu a[href="#area-cliente"]'); if (linkCliente) linkCliente.classList.add('menu-ativo');
+                listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('rotate-180');
                 document.getElementById('clienteLoginPainel').classList.add('hidden');
                 document.getElementById('clientePainel').classList.remove('hidden');
                 renderizarPainelCliente();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                mostrarNotificacao('🔍 Visualizando como: ' + clienteLogado.nome + ' (' + clienteLogado.email + ')');
+                mostrarNotificacao('🔍 Visualizando como: ' + clienteLogado.nome);
             }
         }
 
         function renderizarListaClientes() {
-            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            clientesRegistrados = lerStorage();
             var lista = document.getElementById('listaClientes');
             if (clientesRegistrados.length === 0) { lista.innerHTML = '<p class="text-gray-400 text-xs sm:text-sm text-center">Nenhum cliente registrado ainda.</p>'; return; }
             lista.innerHTML = '';
@@ -1212,45 +1038,35 @@
         }
 
         function salvarLinkDownload(idx) {
-            var input = document.getElementById('linkDownload_' + idx);
-            if (!input) return;
-            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
+            var input = document.getElementById('linkDownload_' + idx); if (!input) return;
+            clientesRegistrados = lerStorage();
             clientesRegistrados[idx].linkDownload = input.value.trim();
-            localStorage.setItem('vcore_clientes_v2', JSON.stringify(clientesRegistrados));
+            salvarStorage(clientesRegistrados);
             mostrarNotificacao('✅ Link salvo com sucesso!');
             if (clientesRegistrados[idx].status === 'aprovado' && clientesRegistrados[idx].linkDownload) {
                 var c = clientesRegistrados[idx];
-                var corpo = 'Olá, ' + c.nome + '!\r\n\r\nSeu pagamento foi confirmado e seu pacote já está liberado! 🚀\r\n\r\n========================================\r\nRESUMO DA SUA COMPRA\r\n========================================\r\nPacote: ' + c.itens + '\r\nValor: R$ ' + c.total + '\r\nData: ' + c.data + '\r\n\r\n========================================\r\nLINK DE DOWNLOAD\r\n========================================\r\n' + c.linkDownload + '\r\n\r\n========================================\r\nGUIA RÁPIDO DE INSTALAÇÃO\r\n========================================\r\n1. Baixe e descompacte o arquivo\r\n2. Copie os arquivos para a pasta raiz do jogo\r\n3. INICIE UM SAVE NOVO\r\n4. Pronto! 🎮\r\n\r\n🚨 IMPORTANTE: É OBRIGATÓRIO iniciar um SAVE NOVO!\r\n\r\nDúvidas? WhatsApp: (16) 98109-7916\r\nInstagram: @rodrigovecoregaming\r\n\r\nBons jogos! 🔥\r\nRodrigo - VCORE GAMES';
+                var corpo = 'Olá, ' + c.nome + '!\r\n\r\nSeu pagamento foi confirmado e seu pacote já está liberado! 🚀\r\n\r\n========================================\r\nRESUMO DA SUA COMPRA\r\n========================================\r\nPacote: ' + c.itens + '\r\nValor: R$ ' + c.total + '\r\nData: ' + c.data + '\r\n\r\n========================================\r\nLINK DE DOWNLOAD\r\n========================================\r\n' + c.linkDownload + '\r\n\r\n========================================\r\nGUIA RÁPIDO DE INSTALAÇÃO\r\n========================================\r\n1. Baixe e descompacte o arquivo\r\n2. Copie para a pasta raiz do jogo (onde está o GRB.exe)\r\n3. INICIE UM SAVE NOVO\r\n4. Pronto! 🎮\r\n\r\n🚨 IMPORTANTE: É OBRIGATÓRIO iniciar um SAVE NOVO!\r\n\r\nDúvidas? WhatsApp: (16) 98109-7916\r\n\r\nBons jogos! 🔥\r\nRodrigo - VCORE GAMES';
                 window.open('mailto:' + encodeURIComponent(c.email) + '?subject=' + encodeURIComponent('VCORE GAMES - Seu pacote foi liberado! 🎮') + '&body=' + encodeURIComponent(corpo), '_blank');
-                mostrarNotificacao('📧 E-mail de liberação enviado para ' + c.nome + '!');
+                mostrarNotificacao('📧 E-mail de liberação enviado!');
             }
             renderizarListaClientes();
         }
 
         function alternarStatusCliente(idx) {
-            clientesRegistrados = JSON.parse(localStorage.getItem('vcore_clientes_v2') || '[]');
-            var novoStatus = clientesRegistrados[idx].status === 'aprovado' ? 'pendente' : 'aprovado';
-            clientesRegistrados[idx].status = novoStatus;
-            localStorage.setItem('vcore_clientes_v2', JSON.stringify(clientesRegistrados));
-            mostrarNotificacao(novoStatus === 'aprovado' ? '✅ Cliente aprovado!' : '⏳ Cliente marcado como pendente.');
+            clientesRegistrados = lerStorage();
+            clientesRegistrados[idx].status = clientesRegistrados[idx].status === 'aprovado' ? 'pendente' : 'aprovado';
+            salvarStorage(clientesRegistrados);
+            mostrarNotificacao(clientesRegistrados[idx].status === 'aprovado' ? '✅ Cliente aprovado!' : '⏳ Cliente marcado como pendente.');
             renderizarListaClientes();
         }
 
         function limparClientes() {
-            if (confirm('Tem certeza que deseja remover TODOS os clientes?')) {
-                localStorage.setItem('vcore_clientes_v2', '[]');
-                clientesRegistrados = [];
-                renderizarListaClientes();
-                mostrarNotificacao('🗑️ Lista limpa.');
-            }
+            if (confirm('Tem certeza que deseja remover TODOS os clientes?')) { salvarStorage([]); clientesRegistrados = []; renderizarListaClientes(); mostrarNotificacao('🗑️ Lista limpa.'); }
         }
 
         // ============ BOTÃO TOPO ============
         var btnTopo = document.getElementById('btnTopo');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) { btnTopo.classList.remove('hidden'); }
-            else { btnTopo.classList.add('hidden'); }
-        });
+        window.addEventListener('scroll', function() { if (window.scrollY > 300) btnTopo.classList.remove('hidden'); else btnTopo.classList.add('hidden'); });
         btnTopo.addEventListener('click', function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
     </script>
 </body>
