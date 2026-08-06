@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>VCORE GAMES - Mods Ghost</title>
+    <title>VCORE GAMES - Mods Ghost Recon Breakpoint</title>
     <script src="https://cdn.tailwindcss.com">
     </script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -36,7 +36,7 @@
         @layer utilities {
             .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
             .text-shadow-green { text-shadow: 0 0 15px rgba(158,255,0,0.6), 0 0 30px rgba(158,255,0,0.3); }
-            .card-mod { @apply rounded-xl shadow-lg p-3 sm:p-4 md:p-5 border hover:shadow-xl transition-all duration-300; background: linear-gradient(145deg, #0f0f1a 0%, #1a1a2e 50%, #0f0f1a 100%); border-color: rgba(255,255,255,0.06); }
+            .card-mod { @apply rounded-xl shadow-lg p-3 sm:p-4 md:p-5 border border-gray-700/50 hover:shadow-xl transition-all duration-300; background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%); }
             .menu-ativo { @apply border-b-2 border-principal font-bold text-principal rounded-t-lg; background: rgba(158,255,0,0.08); }
             .btn-venda { @apply font-bold py-3 px-4 sm:px-6 rounded-lg text-base sm:text-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105 active:scale-95 w-full text-center; background: linear-gradient(135deg, #9EFF00 0%, #7fcc00 100%); color: #0a0a0f; }
             .btn-adicionar { @apply bg-principal hover:bg-green-400 text-gray-900 font-bold py-2 px-4 rounded text-xs sm:text-sm transition-colors w-full mt-2; }
@@ -73,13 +73,6 @@
             .animate-fade-in-up { animation: fadeInUp 0.4s ease-out forwards; }
             @keyframes pulse-border { 0%, 100% { box-shadow: 0 0 8px rgba(158,255,0,0.4); } 50% { box-shadow: 0 0 22px rgba(158,255,0,0.8), 0 0 40px rgba(158,255,0,0.3); } }
             .pulse-border { animation: pulse-border 1.8s ease-in-out infinite; }
-            /* Efeitos gamer para os cards de pacote */
-            @keyframes glow-silver { 0%, 100% { box-shadow: 0 0 8px rgba(192,192,192,0.25), inset 0 0 8px rgba(192,192,192,0.04); } 50% { box-shadow: 0 0 22px rgba(192,192,192,0.5), inset 0 0 15px rgba(192,192,192,0.08); } }
-            @keyframes glow-gold { 0%, 100% { box-shadow: 0 0 10px rgba(255,215,0,0.25), inset 0 0 10px rgba(255,215,0,0.04); } 50% { box-shadow: 0 0 28px rgba(255,215,0,0.55), inset 0 0 18px rgba(255,215,0,0.08); } }
-            @keyframes glow-diamond { 0%, 100% { box-shadow: 0 0 12px rgba(158,255,0,0.3), inset 0 0 12px rgba(158,255,0,0.04); } 50% { box-shadow: 0 0 32px rgba(158,255,0,0.65), inset 0 0 22px rgba(158,255,0,0.1); } }
-            .card-prata { animation: glow-silver 3s ease-in-out infinite; }
-            .card-ouro { animation: glow-gold 2.5s ease-in-out infinite; }
-            .card-diamante { animation: glow-diamond 2s ease-in-out infinite; }
         }
         html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
         body { font-family: 'Inter', system-ui, sans-serif; background: #0a0a0f; color: #e0e0e0; }
@@ -144,7 +137,7 @@
         <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 320%22><path fill=%22%239EFF00%22 d=%22M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320,192,320,96,320,48,320L0,320Z%22></path></svg>'); background-repeat: no-repeat; background-position: bottom; background-size: cover;"></div>
         <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, rgba(158,255,0,0.04) 0%, transparent 70%);"></div>
         <div class="relative z-10 max-w-4xl mx-auto px-3 sm:px-4">
-            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 text-shadow">Mods <span style="color:#9EFF00;" class="text-shadow-green">Ghost</span></h2>
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 text-shadow">Mods <span style="color:#9EFF00;" class="text-shadow-green">Ghost Recon</span> Breakpoint</h2>
             <p class="text-sm sm:text-base md:text-lg mb-0 text-gray-400 max-w-2xl mx-auto px-2">Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:#9EFF00;">tudo pronto, é só copiar e jogar!</strong></p>
         </div>
     </section>
@@ -163,7 +156,7 @@
                     <input type="password" id="clienteSenha" placeholder="Crie uma senha de acesso (mín. 6 caracteres)" autocomplete="new-password" maxlength="50" class="w-full rounded-lg px-3 py-2 sm:py-2.5 mb-1 text-sm focus:outline-none transition-colors" />
                     <button type="button" onclick="toggleSenhaCarrinho()" class="absolute right-2 sm:right-3 top-2 sm:top-2.5 text-gray-500 hover:text-gray-300 text-sm"><i class="fa fa-eye" id="iconeSenhaCarrinho"></i></button>
                 </div>
-                <p class="text-[10px] sm:text-xs mb-2 sm:mb-3 font-bold" style="color:#ef4444;">⚠️ A senha deve ter letras, números e símbolos!</p>
+                <p class="text-[10px] sm:text-xs text-gray-500 mb-2 sm:mb-3">Mínimo 6 caracteres — use letras, números e símbolos para maior segurança</p>
                 <div class="rounded-lg p-2 sm:p-3 text-[11px] sm:text-xs" style="background: rgba(158,255,0,0.06); border: 1px solid rgba(158,255,0,0.2);">
                     <p class="font-bold mb-1" style="color:#9EFF00;">💡 Dica importante:</p>
                     <p class="text-gray-300">Use um <strong style="color:#9EFF00;">e-mail que você acessa sempre</strong>. Ele será seu login na Área do Cliente e por ele você receberá o link de download do pacote após a confirmação do pagamento.</p>
@@ -224,19 +217,25 @@
                     <p class="text-xs sm:text-sm font-bold mb-3 sm:mb-4 text-center" style="color:rgba(255,255,255,0.95);">
                         Envie o comprovante para agilizar a liberação do seu pacote!
                     </p>
+
+                    <!-- BOTÃO PRINCIPAL: ENVIAR POR E-MAIL (só abre quando o cliente clicar) -->
                     <button onclick="abrirEmailComprovante()" class="w-full font-bold py-3 sm:py-3.5 px-4 sm:px-6 rounded-lg text-sm sm:text-base transition-all mb-3 flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transform" style="background: linear-gradient(135deg, #9EFF00 0%, #7fcc00 100%); color: #0a0a0f; box-shadow: 0 0 25px rgba(158,255,0,0.4);">
                         <i class="fa fa-envelope text-lg sm:text-xl"></i> 📧 Enviar Comprovante por E-mail
                     </button>
                     <p class="text-[10px] text-center mb-3" style="color:rgba(158,255,0,0.6);">O comprovante será enviado para <strong style="color:#9EFF00;">rodrigoxgames25@gmail.com</strong></p>
+
                     <div class="flex items-center gap-2 mb-3">
                         <div class="flex-1 h-px" style="background: rgba(158,255,0,0.2);"></div>
                         <span class="text-[10px] sm:text-xs text-gray-400">ou também</span>
                         <div class="flex-1 h-px" style="background: rgba(158,255,0,0.2);"></div>
                     </div>
+
+                    <!-- BOTÃO SECUNDÁRIO: WHATSAPP -->
                     <button onclick="abrirWhatsAppComprovante()" class="w-full font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2 bg-whatsapp hover:bg-green-600 text-white">
                         <i class="fa fa-whatsapp text-base sm:text-lg"></i> Enviar Comprovante via WhatsApp
                     </button>
                 </div>
+
                 <div class="mt-3 p-3 rounded-lg" style="background: rgba(158,255,0,0.04); border: 1px solid rgba(158,255,0,0.1);">
                     <p class="text-[10px] sm:text-xs text-center" style="color:rgba(158,255,0,0.7);">
                         📬 Após a confirmação, você receberá o <strong style="color:#9EFF00;">link de download</strong> no e-mail cadastrado. Fique de olho na caixa de entrada (e no spam)!
@@ -302,29 +301,27 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-10 sm:mb-16 max-w-5xl mx-auto">
-
-                <!-- ============ PACOTE PRATA (ESTILO GAMER) ============ -->
-                <div class="card-prata relative overflow-hidden flex flex-col rounded-xl shadow-lg p-3 sm:p-4 md:p-5 border-2 transition-all duration-300 hover:scale-[1.02]" style="background: linear-gradient(160deg, #0f0f1a 0%, #1c1c2e 40%, #16162a 100%); border-color: #9ca3af;">
-                    <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(45deg, #d1d5db 0, #d1d5db 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
+                <!-- PRATA -->
+                <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #1a1a2a 0%, #2a2a3a 50%, #1a1a2a 100%); border: 2px solid #C0C0C0;">
+                    <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(45deg, #C0C0C0 0, #C0C0C0 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
                     <div class="relative z-10 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background: linear-gradient(135deg, #d1d5db, #9ca3af); color: #0f0f1a;">🥈 PRATA</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
-                        <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#d1d5db;">Pacote Prata</h4>
+                        <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#C0C0C0; color:#1a1a1a;">🥈 PRATA</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
+                        <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#C0C0C0;">Pacote Prata</h4>
                         <p class="text-xs sm:text-sm mb-2 sm:mb-3 text-gray-400">Mods essenciais da VCORE GAMES.</p>
                         <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.08); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p class="text-gray-400">Copie na pasta raiz e abra o game.</p></div>
                         <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.08); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
                         <ul class="text-xs sm:text-sm mb-4 sm:mb-5 space-y-1 flex-1 text-gray-300"><li>✅ Mods Essenciais VCORE</li><li>✅ Fest Feminino</li><li>✅ Veículos Modificados</li><li>✅ Guia de instalação por e-mail</li></ul>
-                        <div class="area-midia"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" rel="noopener" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#d1d5db;"></i><span class="font-medium text-xs sm:text-sm" style="color:#d1d5db;">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-2 sm:mb-3"><span class="text-xs sm:text-sm line-through text-gray-500">R$ 100,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#d1d5db;">R$ 60,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Prata - Mods Essenciais', 60)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background: linear-gradient(135deg, #d1d5db, #9ca3af); color: #0f0f1a;">🥈 Adicionar Pacote Prata</button>
+                        <div class="area-midia"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" rel="noopener" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#C0C0C0;"></i><span class="font-medium text-xs sm:text-sm" style="color:#C0C0C0;">Assistir Vídeo</span></a></div>
+                        <div class="text-center mb-2 sm:mb-3"><span class="text-xs sm:text-sm line-through text-gray-500">R$ 100,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#C0C0C0;">R$ 60,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
+                        <button onclick="adicionarAoCarrinho('Pacote Prata - Mods Essenciais', 60)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#C0C0C0; color:#1a1a1a;">🥈 Adicionar Pacote Prata</button>
                     </div>
                 </div>
-
-                <!-- ============ PACOTE OURO (ESTILO GAMER) ============ -->
-                <div class="card-ouro relative overflow-hidden flex flex-col rounded-xl shadow-lg p-3 sm:p-4 md:p-5 border-2 transition-all duration-300 hover:scale-[1.02]" style="background: linear-gradient(160deg, #161400 0%, #261e00 40%, #1c1800 100%); border-color: #FFD700;">
+                <!-- OURO -->
+                <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #2a2200 0%, #3a2e00 50%, #2a2200 100%); border: 2px solid #FFD700;">
                     <div class="absolute inset-0 opacity-[0.04]" style="background-image: repeating-linear-gradient(45deg, #FFD700 0, #FFD700 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
-                    <div class="absolute -top-1 left-1/2 -translate-x-1/2 z-20"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-lg" style="background: linear-gradient(135deg, #FFD700, #f59e0b); color: #1a1000;">⭐ MAIS POPULAR</span></div>
+                    <div class="absolute -top-1 left-1/2 -translate-x-1/2 z-20"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-lg" style="background:#FFD700; color:#3a2800;">⭐ MAIS POPULAR</span></div>
                     <div class="relative z-10 flex flex-col flex-1 mt-3">
-                        <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background: linear-gradient(135deg, #FFD700, #f59e0b); color: #1a1000;">🥇 OURO</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
+                        <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#FFD700; color:#3a2800;">🥇 OURO</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
                         <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#FFD700;">Pacote Ouro</h4>
                         <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:rgba(255,215,0,0.7);">Experiência completa de visual e performance.</p>
                         <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.08); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p style="color:rgba(255,215,0,0.7);">Copie na pasta raiz e abra o game.</p></div>
@@ -332,15 +329,14 @@
                         <ul class="text-xs sm:text-sm mb-4 sm:mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.85);"><li>✅ Coletes — Mod de Aparência</li><li>✅ Armas e Miras — Precisão Real</li><li>✅ Camisa e Calça — Visual Tático</li><li>✅ Camuflagem — Skins Completas</li><li>✅ Capacetes e Proteções — Visual Elite</li><li>✅ Guia de instalação por e-mail</li></ul>
                         <div class="area-midia"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" rel="noopener" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#FFD700;"></i><span class="font-medium text-xs sm:text-sm" style="color:#FFD700;">Assistir Vídeo</span></a></div>
                         <div class="text-center mb-2 sm:mb-3"><span class="text-xs sm:text-sm line-through" style="color:rgba(255,215,0,0.4);">R$ 150,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#FFD700;">R$ 90,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avancados', 90)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background: linear-gradient(135deg, #FFD700, #f59e0b); color: #1a1000;">🥇 Adicionar Pacote Ouro</button>
+                        <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avancados', 90)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#FFD700; color:#3a2800;">🥇 Adicionar Pacote Ouro</button>
                     </div>
                 </div>
-
-                <!-- ============ PACOTE DIAMANTE (ESTILO GAMER) ============ -->
-                <div class="card-diamante relative overflow-hidden flex flex-col rounded-xl shadow-lg p-3 sm:p-4 md:p-5 border-2 transition-all duration-300 hover:scale-[1.02]" style="background: linear-gradient(160deg, #050a1f 0%, #0c1830 40%, #080e24 100%); border-color: #9EFF00;">
-                    <div class="absolute inset-0 opacity-[0.06]" style="background-image: repeating-linear-gradient(45deg, #9EFF00 0, #9EFF00 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
+                <!-- DIAMANTE -->
+                <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #0A1153 0%, #1a2a7a 50%, #0A1153 100%); border: 2px solid #9EFF00;">
+                    <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #9EFF00 0, #9EFF00 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
                     <div class="relative z-10 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-2 sm:mb-3 flex-wrap gap-1"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background: linear-gradient(135deg, #9EFF00, #7fcc00); color: #050a1f;">💎 DIAMANTE</span><span class="bg-red-500 text-white text-[9px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">MELHOR VALOR</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
+                        <div class="flex justify-between items-start mb-2 sm:mb-3 flex-wrap gap-1"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#9EFF00; color:#0A1153;">💎 DIAMANTE</span><span class="bg-red-500 text-white text-[9px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">MELHOR VALOR</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
                         <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#9EFF00;">Pacote Diamante</h4>
                         <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:rgba(158,255,0,0.75);">O pacote mais completo. <strong style="color:#9EFF00;">Todos os mods</strong> em um só lugar.</p>
                         <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.08); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p style="color:rgba(158,255,0,0.8);">Copie na pasta raiz e abra o game.</p></div>
@@ -348,7 +344,7 @@
                         <ul class="text-xs sm:text-sm mb-4 sm:mb-5 space-y-1 flex-1" style="color:rgba(158,255,0,0.9);"><li>✅ Coletes — Mod de Aparência</li><li>✅ Armas e Miras — Precisão Real</li><li>✅ Camisa e Calça — Visual Tático</li><li>✅ Camuflagem — Skins Completas</li><li>✅ Fest Feminino</li><li>✅ Capacetes e Proteções</li><li>✅ Veículos Modificados</li><li>✅ Skin Pack Completo</li><li>✅ Kit Tático</li><li>✅ Guia de instalação por e-mail</li></ul>
                         <div class="area-midia"><a href="https://www.youtube.com/watch?v=pN6ntMjvhRw&t=564s" target="_blank" rel="noopener" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#9EFF00;"></i><span class="font-medium text-xs sm:text-sm" style="color:#9EFF00;">Assistir Vídeo</span></a></div>
                         <div class="text-center mb-2 sm:mb-3"><span style="color:rgba(158,255,0,0.45);" class="text-xs sm:text-sm line-through">R$ 200,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#9EFF00;">R$ 120,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Diamante - Todos os Mods', 120)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background: linear-gradient(135deg, #9EFF00, #7fcc00); color: #050a1f;">💎 Adicionar Pacote Diamante</button>
+                        <button onclick="adicionarAoCarrinho('Pacote Diamante - Todos os Mods', 120)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#9EFF00; color:#0A1153;">💎 Adicionar Pacote Diamante</button>
                     </div>
                 </div>
             </div>
@@ -379,8 +375,6 @@
         <!-- ===== ÁREA DO CLIENTE ===== -->
         <section id="menu-area-cliente" class="conteudo-menu hidden">
             <div class="max-w-2xl mx-auto">
-
-                <!-- PAINEL DE LOGIN -->
                 <div id="clienteLoginPainel" class="card-mod p-4 sm:p-6 md:p-8">
                     <div class="text-center mb-4 sm:mb-6">
                         <span class="text-3xl sm:text-5xl">🔐</span>
@@ -401,78 +395,13 @@
                     </div>
                     <div class="mt-4 sm:mt-5 text-center">
                         <p class="text-xs sm:text-sm text-gray-400">Ainda não tem conta? <a href="#inicio" onclick="mudarMenuParaInicio()" class="text-blue-400 hover:underline font-medium">Compre um pacote</a></p>
-                        <p class="text-xs sm:text-sm text-gray-400 mt-0.5 sm:mt-1">Esqueceu a senha? <button onclick="mostrarRecuperacaoSenha()" class="text-red-400 hover:text-red-300 hover:underline font-bold bg-transparent border-none cursor-pointer">Recuperar senha via WhatsApp →</button></p>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-0.5 sm:mt-1">Esqueceu a senha? <a href="https://wa.me/5516981097916" target="_blank" rel="noopener" class="text-blue-400 hover:underline font-medium">Fale conosco no WhatsApp</a></p>
                     </div>
                 </div>
-
-                <!-- ========== PAINEL DE RECUPERAÇÃO DE SENHA ========== -->
-                <div id="clienteRecuperacaoPainel" class="card-mod p-4 sm:p-6 md:p-8 hidden">
-                    <div class="text-center mb-4 sm:mb-6">
-                        <span class="text-3xl sm:text-5xl">🔑</span>
-                        <h2 class="text-xl sm:text-2xl font-bold mt-2 sm:mt-3" style="color:#9EFF00;">Recuperar Senha</h2>
-                        <p class="text-gray-400 text-xs sm:text-sm mt-0.5 sm:mt-1">Esqueceu sua senha? Vamos recuperá-la pelo WhatsApp!</p>
-                    </div>
-
-                    <!-- Etapa 1: Informar e-mail -->
-                    <div id="recuperacaoEtapa1">
-                        <div class="space-y-3 sm:space-y-4">
-                            <div>
-                                <label class="block text-xs sm:text-sm font-bold text-gray-300 mb-1">📧 Seu e-mail cadastrado</label>
-                                <input type="email" id="recuperacaoEmail" placeholder="Digite o e-mail da sua conta" autocomplete="email" maxlength="150" class="w-full rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:outline-none transition-colors text-sm" />
-                            </div>
-                            <p id="erroRecuperacao" class="text-red-500 text-xs sm:text-sm hidden text-center font-bold rounded-lg p-2 sm:p-3" style="background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.2);"></p>
-                            <button onclick="solicitarCodigoRecuperacao()" class="w-full font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-base sm:text-lg hover:opacity-90 active:scale-95 transform" style="background: linear-gradient(135deg, #9EFF00 0%, #7fcc00 100%); color: #0a0a0f;">📱 Solicitar Código via WhatsApp</button>
-                        </div>
-                        <div class="mt-4 sm:mt-5 text-center">
-                            <button onclick="voltarParaLogin()" class="text-xs sm:text-sm text-blue-400 hover:underline font-medium bg-transparent border-none cursor-pointer">← Voltar para o login</button>
-                        </div>
-                    </div>
-
-                    <!-- Etapa 2: Digitar código recebido -->
-                    <div id="recuperacaoEtapa2" class="hidden">
-                        <div class="rounded-xl p-3 sm:p-4 mb-4" style="background: rgba(158,255,0,0.06); border: 1px solid rgba(158,255,0,0.2);">
-                            <p class="text-xs sm:text-sm text-gray-300">📱 Um <strong style="color:#9EFF00;">código de 6 dígitos</strong> foi gerado e enviado via WhatsApp. Confira a mensagem e digite abaixo:</p>
-                        </div>
-                        <div class="space-y-3 sm:space-y-4">
-                            <div>
-                                <label class="block text-xs sm:text-sm font-bold text-gray-300 mb-1">🔢 Código de verificação</label>
-                                <input type="text" id="recuperacaoCodigoInput" placeholder="Digite o código de 6 dígitos" maxlength="6" class="w-full rounded-lg px-3 sm:px-4 py-3 sm:py-3.5 focus:outline-none transition-colors text-center text-xl font-bold tracking-widest" style="letter-spacing: 0.5em; background: #0d1b2a !important; border-color: rgba(158,255,0,0.3) !important;" />
-                            </div>
-                            <p id="erroRecuperacao2" class="text-red-500 text-xs sm:text-sm hidden text-center font-bold rounded-lg p-2 sm:p-3" style="background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.2);"></p>
-                            <div class="flex gap-2 sm:gap-3">
-                                <button onclick="voltarParaLogin()" class="flex-1 font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-sm border border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent cursor-pointer">← Voltar</button>
-                                <button onclick="verificarCodigoRecuperacao()" class="flex-1 font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-sm hover:opacity-90 active:scale-95 transform" style="background: linear-gradient(135deg, #9EFF00 0%, #7fcc00 100%); color: #0a0a0f;">✅ Verificar Código</button>
-                            </div>
-                            <p class="text-[10px] sm:text-xs text-gray-500 text-center">O código expira em 5 minutos. Não recebeu? <button onclick="solicitarCodigoRecuperacao()" class="text-blue-400 hover:underline bg-transparent border-none cursor-pointer text-[10px] sm:text-xs">Reenviar</button></p>
-                        </div>
-                    </div>
-
-                    <!-- Etapa 3: Criar nova senha -->
-                    <div id="recuperacaoEtapa3" class="hidden">
-                        <div class="rounded-xl p-3 sm:p-4 mb-4" style="background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2);">
-                            <p class="text-xs sm:text-sm text-green-400 font-bold">✅ Código verificado com sucesso! Agora crie sua nova senha:</p>
-                        </div>
-                        <div class="space-y-3 sm:space-y-4">
-                            <div>
-                                <label class="block text-xs sm:text-sm font-bold text-gray-300 mb-1">🔑 Nova senha</label>
-                                <input type="password" id="recuperacaoNovaSenha" placeholder="Crie uma nova senha" autocomplete="new-password" maxlength="50" class="w-full rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:outline-none transition-colors text-sm" />
-                                <p class="text-[10px] sm:text-xs mt-1 font-bold" style="color:#ef4444;">⚠️ A senha deve ter letras, números e símbolos!</p>
-                            </div>
-                            <div>
-                                <label class="block text-xs sm:text-sm font-bold text-gray-300 mb-1">🔑 Confirmar nova senha</label>
-                                <input type="password" id="recuperacaoConfirmarSenha" placeholder="Repita a nova senha" autocomplete="new-password" maxlength="50" class="w-full rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:outline-none transition-colors text-sm" />
-                            </div>
-                            <p id="erroRecuperacao3" class="text-red-500 text-xs sm:text-sm hidden text-center font-bold rounded-lg p-2 sm:p-3" style="background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.2);"></p>
-                            <button onclick="redefinirSenha()" class="w-full font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-base sm:text-lg hover:opacity-90 active:scale-95 transform" style="background: linear-gradient(135deg, #9EFF00 0%, #7fcc00 100%); color: #0a0a0f;">🔒 Redefinir Senha</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PAINEL DO CLIENTE LOGADO -->
                 <div id="clientePainel" class="hidden">
                     <div class="flex justify-between items-center mb-4 sm:mb-6 flex-wrap gap-2">
                         <div><h2 class="text-xl sm:text-2xl font-bold" style="color:#9EFF00;">🎮 Minha Conta</h2><p class="text-xs sm:text-sm text-gray-400" id="clienteNomeLogado"></p></div>
-                        <button onclick="fazerLogoutCliente()" class="text-xs sm:text-sm text-red-400 hover:text-red-300 font-bold flex items-center gap-1 bg-transparent border-none cursor-pointer"><i class="fa fa-sign-out"></i> Sair</button>
+                        <button onclick="fazerLogoutCliente()" class="text-xs sm:text-sm text-red-400 hover:text-red-300 font-bold flex items-center gap-1"><i class="fa fa-sign-out"></i> Sair</button>
                     </div>
                     <div id="clienteComprasContainer"><p class="text-gray-500 text-center text-sm">Carregando...</p></div>
                     <div class="mt-6 sm:mt-8 card-mod" id="guiaInstalacaoCliente">
@@ -510,7 +439,7 @@
                     </div>
                 </div>
                 <div id="painelAdmin" class="hidden">
-                    <div class="flex justify-between items-center mb-4 sm:mb-6 flex-wrap gap-2"><h2 class="text-xl sm:text-2xl font-bold" style="color:#9EFF00;">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-xs sm:text-sm text-red-400 hover:text-red-300 font-bold bg-transparent border-none cursor-pointer">Sair →</button></div>
+                    <div class="flex justify-between items-center mb-4 sm:mb-6 flex-wrap gap-2"><h2 class="text-xl sm:text-2xl font-bold" style="color:#9EFF00;">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-xs sm:text-sm text-red-400 hover:text-red-300 font-bold">Sair →</button></div>
                     <div class="card-mod mb-4 sm:mb-6 border-2 border-purple-500/30" style="background:#1a1025;">
                         <h3 class="text-base sm:text-lg font-bold text-purple-300 mb-3 sm:mb-4">🔍 Diagnóstico do Armazenamento</h3>
                         <div id="diagnosticoStorage" class="text-xs sm:text-sm space-y-1"><p class="text-gray-400">Clique no botão abaixo para verificar.</p></div>
@@ -567,161 +496,6 @@
         var clienteLogado = null;
         var clientesRegistrados = [];
 
-        // ==================== RECUPERAÇÃO DE SENHA ====================
-        var recuperacaoEmail = null;
-        var recuperacaoCodigo = null;
-        var recuperacaoExpiracao = 0;
-
-        function mostrarRecuperacaoSenha() {
-            document.getElementById("clienteLoginPainel").classList.add("hidden");
-            document.getElementById("clienteRecuperacaoPainel").classList.remove("hidden");
-            document.getElementById("recuperacaoEtapa1").classList.remove("hidden");
-            document.getElementById("recuperacaoEtapa2").classList.add("hidden");
-            document.getElementById("recuperacaoEtapa3").classList.add("hidden");
-            document.getElementById("recuperacaoEmail").value = "";
-            document.getElementById("erroRecuperacao").classList.add("hidden");
-            document.getElementById("erroRecuperacao2").classList.add("hidden");
-            document.getElementById("erroRecuperacao3").classList.add("hidden");
-            recuperacaoEmail = null;
-            recuperacaoCodigo = null;
-            recuperacaoExpiracao = 0;
-        }
-
-        function voltarParaLogin() {
-            document.getElementById("clienteRecuperacaoPainel").classList.add("hidden");
-            document.getElementById("clienteLoginPainel").classList.remove("hidden");
-            document.getElementById("erroLoginCliente").classList.add("hidden");
-            recuperacaoEmail = null;
-            recuperacaoCodigo = null;
-            recuperacaoExpiracao = 0;
-        }
-
-        function solicitarCodigoRecuperacao() {
-            var email = document.getElementById("recuperacaoEmail").value.trim().toLowerCase();
-            if (!email || !isValidEmail(email)) {
-                mostrarErroRecuperacao("Digite um e-mail válido.");
-                return;
-            }
-            clientesRegistrados = lerStorage();
-            var encontrado = false;
-            for (var i = 0; i < clientesRegistrados.length; i++) {
-                if ((clientesRegistrados[i].email || "").toLowerCase().trim() === email) {
-                    encontrado = true;
-                    break;
-                }
-            }
-            if (!encontrado) {
-                mostrarErroRecuperacao("E-mail não encontrado. Verifique ou crie uma conta primeiro.");
-                return;
-            }
-
-            // Gerar código de 6 dígitos
-            recuperacaoEmail = email;
-            recuperacaoCodigo = Math.floor(100000 + Math.random() * 900000).toString();
-            recuperacaoExpiracao = Date.now() + (5 * 60 * 1000); // 5 minutos
-
-            // Abrir WhatsApp com o código
-            var msg = "🔐 *VCORE GAMES - Recuperação de Senha*\n\n";
-            msg += "Seu código de verificação é: *" + recuperacaoCodigo + "*\n\n";
-            msg += "E-mail: " + email + "\n";
-            msg += "⚠️ Este código expira em 5 minutos.\n\n";
-            msg += "Digite este código no site para criar uma nova senha.";
-            window.open("https://wa.me/" + WHATSAPP_NUMERO + "?text=" + encodeURIComponent(msg), "_blank");
-
-            // Mostrar etapa 2
-            document.getElementById("recuperacaoEtapa1").classList.add("hidden");
-            document.getElementById("recuperacaoEtapa2").classList.remove("hidden");
-            document.getElementById("recuperacaoCodigoInput").value = "";
-            document.getElementById("erroRecuperacao2").classList.add("hidden");
-            document.getElementById("erroRecuperacao").classList.add("hidden");
-
-            mostrarNotificacao("Código gerado! Confira o WhatsApp 📱");
-        }
-
-        function verificarCodigoRecuperacao() {
-            var codigo = document.getElementById("recuperacaoCodigoInput").value.trim();
-            if (!codigo || codigo.length !== 6) {
-                mostrarErroRecuperacao2("Digite o código de 6 dígitos.");
-                return;
-            }
-            if (Date.now() > recuperacaoExpiracao) {
-                mostrarErroRecuperacao2("Código expirado! Solicite um novo.");
-                return;
-            }
-            if (codigo === recuperacaoCodigo) {
-                // Sucesso!
-                document.getElementById("recuperacaoEtapa2").classList.add("hidden");
-                document.getElementById("recuperacaoEtapa3").classList.remove("hidden");
-                document.getElementById("recuperacaoNovaSenha").value = "";
-                document.getElementById("recuperacaoConfirmarSenha").value = "";
-                document.getElementById("erroRecuperacao2").classList.add("hidden");
-                document.getElementById("erroRecuperacao3").classList.add("hidden");
-            } else {
-                mostrarErroRecuperacao2("Código incorreto! Verifique e tente novamente.");
-            }
-        }
-
-        function redefinirSenha() {
-            var novaSenha = document.getElementById("recuperacaoNovaSenha").value.trim();
-            var confirmarSenha = document.getElementById("recuperacaoConfirmarSenha").value.trim();
-
-            if (!novaSenha || novaSenha.length < 6) {
-                mostrarErroRecuperacao3("A senha deve ter no mínimo 6 caracteres.");
-                return;
-            }
-            if (!/[a-zA-Z]/.test(novaSenha) || !/[0-9]/.test(novaSenha) || !/[^a-zA-Z0-9]/.test(novaSenha)) {
-                mostrarErroRecuperacao3("A senha deve conter letras, números E símbolos!");
-                return;
-            }
-            if (novaSenha !== confirmarSenha) {
-                mostrarErroRecuperacao3("As senhas não conferem. Verifique!");
-                return;
-            }
-
-            // Atualizar senha no localStorage
-            clientesRegistrados = lerStorage();
-            for (var i = 0; i < clientesRegistrados.length; i++) {
-                if ((clientesRegistrados[i].email || "").toLowerCase().trim() === recuperacaoEmail) {
-                    clientesRegistrados[i].senhaHash = hashSenha(novaSenha);
-                    salvarStorage(clientesRegistrados);
-                    break;
-                }
-            }
-
-            // Limpar estado de recuperação
-            var emailLogado = recuperacaoEmail;
-            recuperacaoEmail = null;
-            recuperacaoCodigo = null;
-            recuperacaoExpiracao = 0;
-
-            // Voltar para o login
-            document.getElementById("clienteRecuperacaoPainel").classList.add("hidden");
-            document.getElementById("clienteLoginPainel").classList.remove("hidden");
-            document.getElementById("clienteLoginEmail").value = emailLogado;
-            document.getElementById("clienteLoginPass").value = "";
-            document.getElementById("erroLoginCliente").classList.add("hidden");
-
-            mostrarNotificacao("Senha atualizada com sucesso! ✅ Faça login.");
-        }
-
-        function mostrarErroRecuperacao(msg) {
-            var el = document.getElementById("erroRecuperacao");
-            el.innerText = "❌ " + msg;
-            el.classList.remove("hidden");
-        }
-
-        function mostrarErroRecuperacao2(msg) {
-            var el = document.getElementById("erroRecuperacao2");
-            el.innerText = "❌ " + msg;
-            el.classList.remove("hidden");
-        }
-
-        function mostrarErroRecuperacao3(msg) {
-            var el = document.getElementById("erroRecuperacao3");
-            el.innerText = "❌ " + msg;
-            el.classList.remove("hidden");
-        }
-
         // ==================== HASH SHA-256 ====================
         function sha256(str) {
             function rotr(n, x) { return (x >>> n) | (x << (32 - n)); }
@@ -733,11 +507,45 @@
             function ssig1(x) { return rotr(17, x) ^ rotr(19, x) ^ (x >>> 10); }
             var K = [0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da, 0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070, 0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2];
             var bytes = [];
-            for (var i = 0; i < str.length; i++) { var c = str.charCodeAt(i); if (c < 0x80) bytes.push(c); else if (c < 0x800) { bytes.push(0xc0 | (c >> 6)); bytes.push(0x80 | (c & 0x3f)); } else if (c < 0x10000) { bytes.push(0xe0 | (c >> 12)); bytes.push(0x80 | ((c >> 6) & 0x3f)); bytes.push(0x80 | (c & 0x3f)); } else { bytes.push(0xf0 | (c >> 18)); bytes.push(0x80 | ((c >> 12) & 0x3f)); bytes.push(0x80 | ((c >> 6) & 0x3f)); bytes.push(0x80 | (c & 0x3f)); } }
-            var bitLen = bytes.length * 8; bytes.push(0x80); while ((bytes.length % 64) !== 56) bytes.push(0); for (var i = 0; i < 8; i++) { bytes.push((bitLen >>> (56 - i * 8)) & 0xff); }
+            for (var i = 0; i < str.length; i++) { var c = str.charCodeAt(i); if (c < 0x80) bytes.push(c); else if (c < 0x800) { bytes.push(0xc0 | (c >> 6));
+                    bytes.push(0x80 | (c & 0x3f)); } else if (c < 0x10000) { bytes.push(0xe0 | (c >> 12));
+                    bytes.push(0x80 | ((c >> 6) & 0x3f));
+                    bytes.push(0x80 | (c & 0x3f)); } else { bytes.push(0xf0 | (c >> 18));
+                    bytes.push(0x80 | ((c >> 12) & 0x3f));
+                    bytes.push(0x80 | ((c >> 6) & 0x3f));
+                    bytes.push(0x80 | (c & 0x3f)); } }
+            var bitLen = bytes.length * 8;
+            bytes.push(0x80); while ((bytes.length % 64) !== 56) bytes.push(0); for (var i = 0; i < 8; i++) { bytes.push((bitLen >>> (56 - i * 8)) & 0xff); }
             var H = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
-            for (var chunk = 0; chunk < bytes.length; chunk += 64) { var W = new Array(64); for (var t = 0; t < 16; t++) { W[t] = (bytes[chunk + t * 4] << 24) | (bytes[chunk + t * 4 + 1] << 16) | (bytes[chunk + t * 4 + 2] << 8) | bytes[chunk + t * 4 + 3]; } for (var t = 16; t < 64; t++) { W[t] = (ssig1(W[t - 2]) + W[t - 7] + ssig0(W[t - 16]) + W[t - 16]) >>> 0; } var a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7]; for (var t = 0; t < 64; t++) { var T1 = (h + bsig1(e) + ch(e, f, g) + K[t] + W[t]) >>> 0; var T2 = (bsig0(a) + maj(a, b, c)) >>> 0; h = g; g = f; f = e; e = (d + T1) >>> 0; d = c; c = b; b = a; a = (T1 + T2) >>> 0; } H[0] = (H[0] + a) >>> 0; H[1] = (H[1] + b) >>> 0; H[2] = (H[2] + c) >>> 0; H[3] = (H[3] + d) >>> 0; H[4] = (H[4] + e) >>> 0; H[5] = (H[5] + f) >>> 0; H[6] = (H[6] + g) >>> 0; H[7] = (H[7] + h) >>> 0; }
-            var hex = ""; for (var i = 0; i < 8; i++) { var hv = H[i]; hex += ((hv >>> 24) & 0xff).toString(16).padStart(2, "0"); hex += ((hv >>> 16) & 0xff).toString(16).padStart(2, "0"); hex += ((hv >>> 8) & 0xff).toString(16).padStart(2, "0"); hex += (hv & 0xff).toString(16).padStart(2, "0"); } return hex;
+            for (var chunk = 0; chunk < bytes.length; chunk += 64) { var W = new Array(64); for (var t = 0; t < 16; t++) { W[t] = (bytes[chunk + t * 4] << 24) | (bytes[chunk + t * 4 + 1] << 16) | (bytes[chunk + t * 4 + 2] << 8) | bytes[chunk + t * 4 + 3]; } for (var t = 16; t < 64; t++) { W[t] = (ssig1(W[t - 2]) + W[t - 7] + ssig0(W[t - 16]) + W[t - 16]) >>> 0; } var a = H[0],
+                    b = H[1],
+                    c = H[2],
+                    d = H[3],
+                    e = H[4],
+                    f = H[5],
+                    g = H[6],
+                    h = H[7]; for (var t = 0; t < 64; t++) { var T1 = (h + bsig1(e) + ch(e, f, g) + K[t] + W[t]) >>> 0; var T2 = (bsig0(a) + maj(a, b, c)) >>> 0;
+                    h = g;
+                    g = f;
+                    f = e;
+                    e = (d + T1) >>> 0;
+                    d = c;
+                    c = b;
+                    b = a;
+                    a = (T1 + T2) >>> 0; }
+                H[0] = (H[0] + a) >>> 0;
+                H[1] = (H[1] + b) >>> 0;
+                H[2] = (H[2] + c) >>> 0;
+                H[3] = (H[3] + d) >>> 0;
+                H[4] = (H[4] + e) >>> 0;
+                H[5] = (H[5] + f) >>> 0;
+                H[6] = (H[6] + g) >>> 0;
+                H[7] = (H[7] + h) >>> 0; }
+            var hex = ""; for (var i = 0; i < 8; i++) { var hv = H[i];
+                hex += ((hv >>> 24) & 0xff).toString(16).padStart(2, "0");
+                hex += ((hv >>> 16) & 0xff).toString(16).padStart(2, "0");
+                hex += ((hv >>> 8) & 0xff).toString(16).padStart(2, "0");
+                hex += (hv & 0xff).toString(16).padStart(2, "0"); } return hex;
         }
 
         function hashSenha(senha) { return sha256(senha + "VCORE_SALT_X9K2_2026_SECURE"); }
@@ -752,108 +560,448 @@
         // ==================== POP-UP DE SAÍDA ====================
         var popupSaidaMostrado = sessionStorage.getItem("vcore_popup_saida") === "true";
 
-        function mostrarPopupSaida() { if (popupSaidaMostrado || carrinho.length > 0) return; popupSaidaMostrado = true; sessionStorage.setItem("vcore_popup_saida", "true"); document.getElementById("modalSaida").style.display = "flex"; document.body.style.overflow = "hidden"; }
+        function mostrarPopupSaida() { if (popupSaidaMostrado || carrinho.length > 0) return;
+            popupSaidaMostrado = true;
+            sessionStorage.setItem("vcore_popup_saida", "true");
+            document.getElementById("modalSaida").style.display = "flex";
+            document.body.style.overflow = "hidden"; }
 
-        function fecharModalSaida() { document.getElementById("modalSaida").style.display = "none"; document.body.style.overflow = "auto"; }
+        function fecharModalSaida() { document.getElementById("modalSaida").style.display = "none";
+            document.body.style.overflow = "auto"; }
         document.addEventListener("mouseout", function(e) { if (!popupSaidaMostrado && e.clientY <= 0 && carrinho.length === 0) mostrarPopupSaida(); });
         document.getElementById("modalSaida").addEventListener("click", function(e) { if (e.target === this) fecharModalSaida(); });
 
         // ==================== CONTADOR DE VISITAS ====================
-        function animarContador(el, alvo) { var d = 1200, i = Math.max(0, alvo - 50), s = null; function p(t) { if (!s) s = t; var pr = Math.min((t - s) / d, 1); var a = Math.floor(i + (alvo - i) * (1 - Math.pow(1 - pr, 3))); el.innerText = a.toLocaleString("pt-BR"); if (pr < 1) requestAnimationFrame(p); else el.innerText = alvo.toLocaleString("pt-BR"); } requestAnimationFrame(p); }
-        (function() { var e = document.getElementById("contadorVisitas"); fetch("https://api.counterapi.dev/v1/vcoregames_site/visitas/up").then(function(r) { return r.json(); }).then(function(d) { if (d && typeof d.count === "number") animarContador(e, d.count); else e.innerText = "0"; }).catch(function() { e.innerText = "0"; }); })();
+        function animarContador(el, alvo) { var d = 1200,
+                i = Math.max(0, alvo - 50),
+                s = null;
+
+            function p(t) { if (!s) s = t; var pr = Math.min((t - s) / d, 1); var a = Math.floor(i + (alvo - i) * (1 - Math.pow(1 - pr, 3))); el.innerText = a.toLocaleString("pt-BR"); if (pr < 1) requestAnimationFrame(p);
+                else el.innerText = alvo.toLocaleString("pt-BR"); }
+            requestAnimationFrame(p); }(function() { var e = document.getElementById("contadorVisitas"); fetch("https://api.counterapi.dev/v1/vcoregames_site/visitas/up").then(function(r) { return r.json(); }).then(function(d) { if (d && typeof d.count === "number") animarContador(e, d.count);
+                else e.innerText = "0"; }).catch(function() { e.innerText = "0"; }); })();
 
         // ==================== MENU ====================
-        var botaoMenu = document.getElementById("botaoMenu"), listaMenu = document.getElementById("listaMenu"), iconeMenu = document.getElementById("iconeMenu");
-        botaoMenu.addEventListener("click", function(e) { e.stopPropagation(); listaMenu.classList.toggle("aberto"); iconeMenu.classList.toggle("rotate-180"); });
-        document.addEventListener("click", function(e) { if (!botaoMenu.contains(e.target) && !listaMenu.contains(e.target)) { listaMenu.classList.remove("aberto"); iconeMenu.classList.remove("rotate-180"); } });
+        var botaoMenu = document.getElementById("botaoMenu"),
+            listaMenu = document.getElementById("listaMenu"),
+            iconeMenu = document.getElementById("iconeMenu");
+        botaoMenu.addEventListener("click", function(e) { e.stopPropagation();
+            listaMenu.classList.toggle("aberto");
+            iconeMenu.classList.toggle("rotate-180"); });
+        document.addEventListener("click", function(e) { if (!botaoMenu.contains(e.target) && !listaMenu.contains(e.target)) { listaMenu.classList.remove("aberto");
+                iconeMenu.classList.remove("rotate-180"); } });
 
-        function irParaPacotes(event) { document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); }); document.getElementById("menu-inicio").classList.remove("hidden"); document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); if (event && event.target) event.target.classList.add("menu-ativo"); listaMenu.classList.remove("aberto"); iconeMenu.classList.remove("rotate-180"); setTimeout(function() { var a = document.getElementById("pacotes-premium"); if (a) a.scrollIntoView({ behavior: "smooth", block: "start" }); }, 100); }
+        function irParaPacotes(event) { document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); });
+            document.getElementById("menu-inicio").classList.remove("hidden");
+            document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); if (event && event.target) event.target.classList.add("menu-ativo");
+            listaMenu.classList.remove("aberto");
+            iconeMenu.classList.remove("rotate-180");
+            setTimeout(function() { var a = document.getElementById("pacotes-premium"); if (a) a.scrollIntoView({ behavior: "smooth", block: "start" }); }, 100); }
 
-        function mudarMenu(event, idMenu) { document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); }); document.getElementById("menu-" + idMenu).classList.remove("hidden"); document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); if (event && event.target) event.target.classList.add("menu-ativo"); listaMenu.classList.remove("aberto"); iconeMenu.classList.remove("rotate-180"); if (idMenu === "admin") renderizarPainelAdmin(); if (idMenu === "area-cliente") renderizarAreaCliente(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+        function mudarMenu(event, idMenu) { document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); });
+            document.getElementById("menu-" + idMenu).classList.remove("hidden");
+            document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); if (event && event.target) event.target.classList.add("menu-ativo");
+            listaMenu.classList.remove("aberto");
+            iconeMenu.classList.remove("rotate-180"); if (idMenu === "admin") renderizarPainelAdmin(); if (idMenu === "area-cliente") renderizarAreaCliente();
+            window.scrollTo({ top: 0, behavior: "smooth" }); }
 
-        function mudarMenuParaInicio() { document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); }); document.getElementById("menu-inicio").classList.remove("hidden"); document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); var li = document.querySelector('#listaMenu a[href="#inicio"]'); if (li) li.classList.add("menu-ativo"); setTimeout(function() { var a = document.getElementById("pacotes-premium"); if (a) a.scrollIntoView({ behavior: "smooth", block: "start" }); }, 100); }
+        function mudarMenuParaInicio() { document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); });
+            document.getElementById("menu-inicio").classList.remove("hidden");
+            document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); var li = document.querySelector('#listaMenu a[href="#inicio"]'); if (li) li.classList.add("menu-ativo");
+            setTimeout(function() { var a = document.getElementById("pacotes-premium"); if (a) a.scrollIntoView({ behavior: "smooth", block: "start" }); }, 100); }
 
         // ==================== CARRINHO ====================
-        function adicionarAoCarrinho(nome, preco) { var e = null; for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { e = carrinho[i]; break; } } if (e) e.qtd += 1; else carrinho.push({ nome: nome, preco: preco, qtd: 1 }); atualizarCarrinho(); mostrarNotificacao(nome + " adicionado!"); }
+        function adicionarAoCarrinho(nome, preco) { var e = null; for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { e = carrinho[i]; break; } } if (e) e.qtd += 1; else carrinho.push({ nome: nome, preco: preco, qtd: 1 });
+            atualizarCarrinho();
+            mostrarNotificacao(nome + " adicionado!"); }
 
-        function alterarQtd(nome, delta) { for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho[i].qtd += delta; if (carrinho[i].qtd <= 0) carrinho.splice(i, 1); break; } } atualizarCarrinho(); }
+        function alterarQtd(nome, delta) { for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho[i].qtd += delta; if (carrinho[i].qtd <= 0) carrinho.splice(i, 1); break; } }
+            atualizarCarrinho(); }
 
-        function removerDoCarrinho(nome) { for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho.splice(i, 1); break; } } atualizarCarrinho(); }
+        function removerDoCarrinho(nome) { for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho.splice(i, 1); break; } }
+            atualizarCarrinho(); }
 
         function escapeJS(str) { return str.replace(/\\/g, "\\\\").replace(/'/g, "\\'"); }
 
-        function atualizarCarrinho() { var l = document.getElementById("listaCarrinho"), t = document.getElementById("valorTotal"), b = document.getElementById("badgeCarrinho"); var br = document.getElementById("barraTotal"), btv = document.getElementById("barraTotalValor"), bti = document.getElementById("barraTotalItens"); l.innerHTML = ""; var tu = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0); var tv = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0); var tf = "R$ " + tv.toFixed(2).replace(".", ","); if (carrinho.length > 0) { b.classList.remove("hidden"); b.innerText = tu; carrinho.forEach(function(i) { var st = (i.preco * i.qtd).toFixed(2).replace(".", ","), pu = i.preco.toFixed(2).replace(".", ","), ne = escapeJS(i.nome); var d = document.createElement("div"); d.style.cssText = "display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #2a2a3e;gap:6px;flex-wrap:wrap;"; d.innerHTML = '<div style="flex:1;min-width:120px;"><p style="font-weight:600;font-size:0.85rem;color:#e0e0e0;">' + i.nome + '</p><p style="font-size:0.72rem;color:#888;">R$ ' + pu + ' cada</p></div>' + '<div style="display:flex;align-items:center;gap:4px;flex-shrink:0;">' + '<button onclick="alterarQtd(\'' + ne + '\', -1)" style="width:24px;height:24px;border-radius:50%;background:#1a2a3e;color:#9EFF00;font-weight:bold;border:1px solid #9EFF00;cursor:pointer;font-size:0.8rem;">-</button>' + '<span style="font-weight:700;min-width:18px;text-align:center;font-size:0.85rem;color:#9EFF00;">' + i.qtd + "</span>" + '<button onclick="alterarQtd(\'' + ne + '\', 1)" style="width:24px;height:24px;border-radius:50%;background:#1a2a3e;color:#9EFF00;font-weight:bold;border:1px solid #9EFF00;cursor:pointer;font-size:0.8rem;">+</button>' + '<span style="font-weight:700;min-width:60px;text-align:right;font-size:0.85rem;color:#e0e0e0;">R$ ' + st + "</span>" + '<button onclick="removerDoCarrinho(\'' + ne + '\')" style="color:#ff4444;font-weight:700;background:none;border:none;cursor:pointer;font-size:0.9rem;">&times;</button>' + "</div>"; l.appendChild(d); }); t.innerText = tf; btv.innerText = tf; bti.innerText = tu + (tu === 1 ? " item" : " itens"); br.classList.add("visivel"); } else { b.classList.add("hidden"); l.innerHTML = '<p class="text-gray-500 text-center text-sm">Seu carrinho está vazio.</p>'; t.innerText = "R$ 0,00"; br.classList.remove("visivel"); btv.innerText = "R$ 0,00"; bti.innerText = "0 item"; } }
+        function atualizarCarrinho() { var l = document.getElementById("listaCarrinho"),
+                t = document.getElementById("valorTotal"),
+                b = document.getElementById("badgeCarrinho"); var br = document.getElementById("barraTotal"),
+                btv = document.getElementById("barraTotalValor"),
+                bti = document.getElementById("barraTotalItens");
+            l.innerHTML = ""; var tu = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0); var tv = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0); var tf = "R$ " + tv.toFixed(2).replace(".", ","); if (carrinho.length > 0) { b.classList.remove("hidden");
+                b.innerText = tu;
+                carrinho.forEach(function(i) { var st = (i.preco * i.qtd).toFixed(2).replace(".", ","),
+                        pu = i.preco.toFixed(2).replace(".", ","),
+                        ne = escapeJS(i.nome); var d = document.createElement("div");
+                    d.style.cssText = "display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #2a2a3e;gap:6px;flex-wrap:wrap;";
+                    d.innerHTML = '<div style="flex:1;min-width:120px;"><p style="font-weight:600;font-size:0.85rem;color:#e0e0e0;">' + i.nome + '</p><p style="font-size:0.72rem;color:#888;">R$ ' + pu + ' cada</p></div>' + '<div style="display:flex;align-items:center;gap:4px;flex-shrink:0;">' + '<button onclick="alterarQtd(\'' + ne + '\', -1)" style="width:24px;height:24px;border-radius:50%;background:#1a2a3e;color:#9EFF00;font-weight:bold;border:1px solid #9EFF00;cursor:pointer;font-size:0.8rem;">-</button>' + '<span style="font-weight:700;min-width:18px;text-align:center;font-size:0.85rem;color:#9EFF00;">' + i.qtd + "</span>" + '<button onclick="alterarQtd(\'' + ne + '\', 1)" style="width:24px;height:24px;border-radius:50%;background:#1a2a3e;color:#9EFF00;font-weight:bold;border:1px solid #9EFF00;cursor:pointer;font-size:0.8rem;">+</button>' + '<span style="font-weight:700;min-width:60px;text-align:right;font-size:0.85rem;color:#e0e0e0;">R$ ' + st + "</span>" + '<button onclick="removerDoCarrinho(\'' + ne + '\')" style="color:#ff4444;font-weight:700;background:none;border:none;cursor:pointer;font-size:0.9rem;">&times;</button>' + "</div>";
+                    l.appendChild(d); });
+                t.innerText = tf;
+                btv.innerText = tf;
+                bti.innerText = tu + (tu === 1 ? " item" : " itens");
+                br.classList.add("visivel"); } else { b.classList.add("hidden");
+                l.innerHTML = '<p class="text-gray-500 text-center text-sm">Seu carrinho está vazio.</p>';
+                t.innerText = "R$ 0,00";
+                br.classList.remove("visivel");
+                btv.innerText = "R$ 0,00";
+                bti.innerText = "0 item"; } }
 
-        function mostrarNotificacao(msg) { var n = document.getElementById("notificacaoCarrinho"); if (!n) { n = document.createElement("div"); n.id = "notificacaoCarrinho"; n.style.cssText = "position:fixed;top:80px;right:16px;background:#0d1b2a;color:#9EFF00;font-weight:700;padding:12px 18px;border-radius:10px;z-index:999;font-size:0.85rem;box-shadow:0 4px 20px rgba(0,0,0,0.5);border:1px solid rgba(158,255,0,0.3);transition:opacity 0.4s;opacity:0;pointer-events:none;max-width:280px;"; document.body.appendChild(n); } n.innerText = msg; n.style.opacity = "1"; if (window.innerWidth < 640) { n.style.right = "8px"; n.style.maxWidth = "240px"; n.style.fontSize = "0.75rem"; n.style.padding = "10px 14px"; } clearTimeout(n._timer); n._timer = setTimeout(function() { n.style.opacity = "0"; }, 2500); }
+        function mostrarNotificacao(msg) { var n = document.getElementById("notificacaoCarrinho"); if (!n) { n = document.createElement("div");
+                n.id = "notificacaoCarrinho";
+                n.style.cssText = "position:fixed;top:80px;right:16px;background:#0d1b2a;color:#9EFF00;font-weight:700;padding:12px 18px;border-radius:10px;z-index:999;font-size:0.85rem;box-shadow:0 4px 20px rgba(0,0,0,0.5);border:1px solid rgba(158,255,0,0.3);transition:opacity 0.4s;opacity:0;pointer-events:none;max-width:280px;";
+                document.body.appendChild(n); }
+            n.innerText = msg;
+            n.style.opacity = "1"; if (window.innerWidth < 640) { n.style.right = "8px";
+                n.style.maxWidth = "240px";
+                n.style.fontSize = "0.75rem";
+                n.style.padding = "10px 14px"; }
+            clearTimeout(n._timer);
+            n._timer = setTimeout(function() { n.style.opacity = "0"; }, 2500); }
 
-        function abrirCarrinho() { document.getElementById("modalCarrinho").style.display = "flex"; document.body.style.overflow = "hidden"; atualizarCarrinho(); }
+        function abrirCarrinho() { document.getElementById("modalCarrinho").style.display = "flex";
+            document.body.style.overflow = "hidden";
+            atualizarCarrinho(); }
 
-        function fecharCarrinho() { document.getElementById("modalCarrinho").style.display = "none"; document.body.style.overflow = "auto"; }
+        function fecharCarrinho() { document.getElementById("modalCarrinho").style.display = "none";
+            document.body.style.overflow = "auto"; }
         document.getElementById("modalCarrinho").addEventListener("click", function(e) { if (e.target === this) fecharCarrinho(); });
 
-        function fecharModalPix() { document.getElementById("modalPix").style.display = "none"; document.body.style.overflow = "auto"; }
+        function fecharModalPix() { document.getElementById("modalPix").style.display = "none";
+            document.body.style.overflow = "auto"; }
         document.getElementById("modalPix").addEventListener("click", function(e) { if (e.target === this) fecharModalPix(); });
 
-        function toggleSenhaCarrinho() { var i = document.getElementById("clienteSenha"), ic = document.getElementById("iconeSenhaCarrinho"); if (i.type === "password") { i.type = "text"; ic.classList.remove("fa-eye"); ic.classList.add("fa-eye-slash"); } else { i.type = "password"; ic.classList.remove("fa-eye-slash"); ic.classList.add("fa-eye"); } }
+        function toggleSenhaCarrinho() { var i = document.getElementById("clienteSenha"),
+                ic = document.getElementById("iconeSenhaCarrinho"); if (i.type === "password") { i.type = "text";
+                ic.classList.remove("fa-eye");
+                ic.classList.add("fa-eye-slash"); } else { i.type = "password";
+                ic.classList.remove("fa-eye-slash");
+                ic.classList.add("fa-eye"); } }
 
         function isValidEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) && e.length <= 150; }
 
         // ==================== FLUXO DE FINALIZAÇÃO ====================
-        function iniciarFinalizacao() { if (carrinho.length === 0) { mostrarNotificacao("Carrinho vazio!"); return; } var nome = document.getElementById("clienteNome").value.trim(); var email = document.getElementById("clienteEmail").value.trim(); var senha = document.getElementById("clienteSenha").value.trim(); if (!nome || nome.length < 2) { mostrarNotificacao("Preencha seu nome!"); document.getElementById("clienteNome").focus(); return; } if (!email || !isValidEmail(email)) { mostrarNotificacao("E-mail inválido!"); document.getElementById("clienteEmail").focus(); return; } if (!senha || senha.length < 6) { mostrarNotificacao("Senha: mínimo 6 caracteres!"); document.getElementById("clienteSenha").focus(); return; } if (!/[a-zA-Z]/.test(senha) || !/[0-9]/.test(senha) || !/[^a-zA-Z0-9]/.test(senha)) { mostrarNotificacao("Senha deve ter letras, números E símbolos!"); document.getElementById("clienteSenha").focus(); return; } finalizarCompra({ nome: sanitizarInput(nome), email: email.toLowerCase().trim(), senha: senha }); }
+        function iniciarFinalizacao() {
+            if (carrinho.length === 0) { mostrarNotificacao("Carrinho vazio!"); return; }
+            var nome = document.getElementById("clienteNome").value.trim();
+            var email = document.getElementById("clienteEmail").value.trim();
+            var senha = document.getElementById("clienteSenha").value.trim();
+            if (!nome || nome.length < 2) { mostrarNotificacao("Preencha seu nome!");
+                document.getElementById("clienteNome").focus(); return; }
+            if (!email || !isValidEmail(email)) { mostrarNotificacao("E-mail inválido!");
+                document.getElementById("clienteEmail").focus(); return; }
+            if (!senha || senha.length < 6) { mostrarNotificacao("Senha: mínimo 6 caracteres!");
+                document.getElementById("clienteSenha").focus(); return; }
+            if (!/[a-zA-Z]/.test(senha) || !/[0-9]/.test(senha)) { mostrarNotificacao("Senha deve ter letras E números!");
+                document.getElementById("clienteSenha").focus(); return; }
+            finalizarCompra({ nome: sanitizarInput(nome), email: email.toLowerCase().trim(), senha: senha });
+        }
 
-        function finalizarCompra(dados) { clientesRegistrados = lerStorage(); var itens = carrinho.map(function(i) { return i.qtd + "x " + i.nome; }).join(", "); var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0); var totalStr = total.toFixed(2).replace(".", ","); var totalFormatado = "R$ " + totalStr; var agora = new Date(); var dataStr = agora.toLocaleDateString("pt-BR") + " " + agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }); clientesRegistrados.push({ nome: dados.nome, email: dados.email, senhaHash: hashSenha(dados.senha), itens: itens, total: totalStr, data: dataStr, status: "pendente", linkDownload: "" }); if (!salvarStorage(clientesRegistrados)) { mostrarNotificacao("Erro ao salvar!"); return; } fecharCarrinho(); carrinho = []; atualizarCarrinho(); document.getElementById("clienteNome").value = ""; document.getElementById("clienteEmail").value = ""; document.getElementById("clienteSenha").value = ""; document.getElementById("pixValor").innerText = totalFormatado; document.getElementById("pixCopiado").classList.add("hidden"); document.getElementById("modalPix").style.display = "flex"; document.body.style.overflow = "hidden"; }
+        function finalizarCompra(dados) {
+            clientesRegistrados = lerStorage();
+            var itens = carrinho.map(function(i) { return i.qtd + "x " + i.nome; }).join(", ");
+            var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
+            var totalStr = total.toFixed(2).replace(".", ",");
+            var totalFormatado = "R$ " + totalStr;
+            var agora = new Date();
+            var dataStr = agora.toLocaleDateString("pt-BR") + " " + agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 
-        function copiarChavePix() { navigator.clipboard.writeText(CHAVE_PIX).then(function() { var m = document.getElementById("pixCopiado"); m.classList.remove("hidden"); setTimeout(function() { m.classList.add("hidden"); }, 3000); }).catch(function() { var inp = document.createElement("input"); inp.value = CHAVE_PIX; document.body.appendChild(inp); inp.select(); document.execCommand("copy"); document.body.removeChild(inp); var m = document.getElementById("pixCopiado"); m.classList.remove("hidden"); setTimeout(function() { m.classList.add("hidden"); }, 3000); }); }
+            clientesRegistrados.push({
+                nome: dados.nome,
+                email: dados.email,
+                senhaHash: hashSenha(dados.senha),
+                itens: itens,
+                total: totalStr,
+                data: dataStr,
+                status: "pendente",
+                linkDownload: ""
+            });
 
-        // ==================== ENVIO DE COMPROVANTE POR E-MAIL ====================
-        function abrirEmailComprovante() { clientesRegistrados = lerStorage(); var ultimoCliente = clientesRegistrados.length > 0 ? clientesRegistrados[clientesRegistrados.length - 1] : null; var totalStr = ultimoCliente ? ultimoCliente.total : "0,00"; var corpo = ""; corpo += "========================================\n"; corpo += "COMPROVANTE DE PAGAMENTO - VCORE GAMES\n"; corpo += "========================================\n\n"; if (ultimoCliente) { corpo += "Cliente: " + ultimoCliente.nome + "\n"; corpo += "E-mail: " + ultimoCliente.email + "\n"; corpo += "Itens: " + ultimoCliente.itens + "\n"; corpo += "Valor Pago: R$ " + ultimoCliente.total + "\n\n"; } else { corpo += "Valor Pago: R$ " + totalStr + "\n\n"; } corpo += "Banco: Banco Digital Sumup\n"; corpo += "Chave PIX: " + CHAVE_PIX + "\n"; corpo += "Titular: Rodrigo Paulino da Silva\n\n"; corpo += "========================================\n"; corpo += "O comprovante está em anexo.\n"; corpo += "Aguardo a confirmação e liberação!\n"; corpo += "========================================\n"; window.open("mailto:" + encodeURIComponent(EMAIL_ADMIN) + "?subject=" + encodeURIComponent("COMPROVANTE DE PAGAMENTO - VCORE GAMES") + "&body=" + encodeURIComponent(corpo), "_blank"); mostrarNotificacao("Redirecionando para seu e-mail..."); }
+            if (!salvarStorage(clientesRegistrados)) { mostrarNotificacao("Erro ao salvar!"); return; }
 
-        function abrirWhatsAppComprovante() { clientesRegistrados = lerStorage(); var totalStr = clientesRegistrados.length > 0 ? clientesRegistrados[clientesRegistrados.length - 1].total : "0,00"; window.open("https://wa.me/" + WHATSAPP_NUMERO + "?text=" + encodeURIComponent("Olá Rodrigo! Acabei de fazer o pagamento de R$ " + totalStr + " via PIX para o Banco Digital Sumup. Segue o comprovante em anexo."), "_blank"); }
+            // ❌ NÃO abre e-mail automaticamente - só salva e mostra o modal PIX
+
+            fecharCarrinho();
+            carrinho = [];
+            atualizarCarrinho();
+            document.getElementById("clienteNome").value = "";
+            document.getElementById("clienteEmail").value = "";
+            document.getElementById("clienteSenha").value = "";
+
+            document.getElementById("pixValor").innerText = totalFormatado;
+            document.getElementById("pixCopiado").classList.add("hidden");
+            document.getElementById("modalPix").style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function copiarChavePix() {
+            navigator.clipboard.writeText(CHAVE_PIX).then(function() {
+                var m = document.getElementById("pixCopiado");
+                m.classList.remove("hidden");
+                setTimeout(function() { m.classList.add("hidden"); }, 3000);
+            }).catch(function() {
+                var inp = document.createElement("input");
+                inp.value = CHAVE_PIX;
+                document.body.appendChild(inp);
+                inp.select();
+                document.execCommand("copy");
+                document.body.removeChild(inp);
+                var m = document.getElementById("pixCopiado");
+                m.classList.remove("hidden");
+                setTimeout(function() { m.classList.add("hidden"); }, 3000);
+            });
+        }
+
+        // ==================== ENVIO DE COMPROVANTE POR E-MAIL (APÓS PAGAMENTO) ====================
+        function abrirEmailComprovante() {
+            clientesRegistrados = lerStorage();
+            var ultimoCliente = clientesRegistrados.length > 0 ? clientesRegistrados[clientesRegistrados.length - 1] : null;
+            var totalStr = ultimoCliente ? ultimoCliente.total : "0,00";
+
+            var corpo = "";
+            corpo += "========================================\n";
+            corpo += "COMPROVANTE DE PAGAMENTO - VCORE GAMES\n";
+            corpo += "========================================\n\n";
+            if (ultimoCliente) {
+                corpo += "Cliente: " + ultimoCliente.nome + "\n";
+                corpo += "E-mail: " + ultimoCliente.email + "\n";
+                corpo += "Itens: " + ultimoCliente.itens + "\n";
+                corpo += "Valor Pago: R$ " + ultimoCliente.total + "\n\n";
+            } else {
+                corpo += "Valor Pago: R$ " + totalStr + "\n\n";
+            }
+            corpo += "Banco: Banco Digital Sumup\n";
+            corpo += "Chave PIX: " + CHAVE_PIX + "\n";
+            corpo += "Titular: Rodrigo Paulino da Silva\n\n";
+            corpo += "========================================\n";
+            corpo += "O comprovante está em anexo.\n";
+            corpo += "Aguardo a confirmação e liberação!\n";
+            corpo += "========================================\n";
+
+            window.open("mailto:" + encodeURIComponent(EMAIL_ADMIN) + "?subject=" + encodeURIComponent("COMPROVANTE DE PAGAMENTO - VCORE GAMES") + "&body=" + encodeURIComponent(corpo), "_blank");
+            mostrarNotificacao("Redirecionando para seu e-mail...");
+        }
+
+        function abrirWhatsAppComprovante() {
+            clientesRegistrados = lerStorage();
+            var totalStr = clientesRegistrados.length > 0 ? clientesRegistrados[clientesRegistrados.length - 1].total : "0,00";
+            window.open("https://wa.me/" + WHATSAPP_NUMERO + "?text=" + encodeURIComponent("Olá Rodrigo! Acabei de fazer o pagamento de R$ " + totalStr + " via PIX para o Banco Digital Sumup. Segue o comprovante em anexo."), "_blank");
+        }
 
         // ==================== ÁREA DO CLIENTE ====================
-        function renderizarAreaCliente() { if (clienteLogado) { document.getElementById("clienteLoginPainel").classList.add("hidden"); document.getElementById("clienteRecuperacaoPainel").classList.add("hidden"); document.getElementById("clientePainel").classList.remove("hidden"); renderizarPainelCliente(); } else { document.getElementById("clienteLoginPainel").classList.remove("hidden"); document.getElementById("clienteRecuperacaoPainel").classList.add("hidden"); document.getElementById("clientePainel").classList.add("hidden"); document.getElementById("clienteLoginEmail").value = ""; document.getElementById("clienteLoginPass").value = ""; document.getElementById("erroLoginCliente").classList.add("hidden"); } }
+        function renderizarAreaCliente() {
+            if (clienteLogado) { document.getElementById("clienteLoginPainel").classList.add("hidden");
+                document.getElementById("clientePainel").classList.remove("hidden");
+                renderizarPainelCliente(); } else { document.getElementById("clienteLoginPainel").classList.remove("hidden");
+                document.getElementById("clientePainel").classList.add("hidden");
+                document.getElementById("clienteLoginEmail").value = "";
+                document.getElementById("clienteLoginPass").value = "";
+                document.getElementById("erroLoginCliente").classList.add("hidden"); }
+        }
 
-        var tentativasLoginCliente = 0, bloqueioLoginClienteAte = 0;
+        var tentativasLoginCliente = 0,
+            bloqueioLoginClienteAte = 0;
 
-        function fazerLoginCliente() { if (Date.now() < bloqueioLoginClienteAte) { mostrarErroLoginCliente("Aguarde " + Math.ceil((bloqueioLoginClienteAte - Date.now()) / 1000) + " segundos."); return; } var ed = document.getElementById("clienteLoginEmail").value.trim().toLowerCase(); var sd = document.getElementById("clienteLoginPass").value.trim(); if (!ed) { mostrarErroLoginCliente("Digite seu e-mail."); return; } if (!sd) { mostrarErroLoginCliente("Digite sua senha."); return; } clientesRegistrados = lerStorage(); var shd = hashSenha(sd), enc = null; for (var i = 0; i < clientesRegistrados.length; i++) { if ((clientesRegistrados[i].email || "").toLowerCase().trim() === ed && clientesRegistrados[i].senhaHash === shd) { enc = clientesRegistrados[i]; break; } } if (enc) { tentativasLoginCliente = 0; clienteLogado = enc; document.getElementById("erroLoginCliente").classList.add("hidden"); document.getElementById("clienteLoginPainel").classList.add("hidden"); document.getElementById("clienteRecuperacaoPainel").classList.add("hidden"); document.getElementById("clientePainel").classList.remove("hidden"); renderizarPainelCliente(); mostrarNotificacao("Bem-vindo, " + enc.nome + "!"); } else { tentativasLoginCliente++; if (tentativasLoginCliente >= 5) { bloqueioLoginClienteAte = Date.now() + (30 * 1000); mostrarErroLoginCliente("Bloqueado por 30s. Muitas tentativas!"); tentativasLoginCliente = 0; } else { mostrarErroLoginCliente(tentativasLoginCliente >= 3 ? "Senha incorreta! (" + tentativasLoginCliente + "/5)" : "E-mail ou senha incorretos."); } } }
+        function fazerLoginCliente() {
+            if (Date.now() < bloqueioLoginClienteAte) { mostrarErroLoginCliente("Aguarde " + Math.ceil((bloqueioLoginClienteAte - Date.now()) / 1000) + " segundos."); return; }
+            var ed = document.getElementById("clienteLoginEmail").value.trim().toLowerCase();
+            var sd = document.getElementById("clienteLoginPass").value.trim();
+            if (!ed) { mostrarErroLoginCliente("Digite seu e-mail."); return; }
+            if (!sd) { mostrarErroLoginCliente("Digite sua senha."); return; }
+            clientesRegistrados = lerStorage();
+            var shd = hashSenha(sd),
+                enc = null;
+            for (var i = 0; i < clientesRegistrados.length; i++) { if ((clientesRegistrados[i].email || "").toLowerCase().trim() === ed && clientesRegistrados[i].senhaHash === shd) { enc = clientesRegistrados[i]; break; } }
+            if (enc) { tentativasLoginCliente = 0;
+                clienteLogado = enc;
+                document.getElementById("erroLoginCliente").classList.add("hidden");
+                document.getElementById("clienteLoginPainel").classList.add("hidden");
+                document.getElementById("clientePainel").classList.remove("hidden");
+                renderizarPainelCliente();
+                mostrarNotificacao("Bem-vindo, " + enc.nome + "!"); } else { tentativasLoginCliente++; if (tentativasLoginCliente >= 5) { bloqueioLoginClienteAte = Date.now() + (30 * 1000);
+                    mostrarErroLoginCliente("Bloqueado por 30s. Muitas tentativas!");
+                    tentativasLoginCliente = 0; } else { mostrarErroLoginCliente(tentativasLoginCliente >= 3 ? "Senha incorreta! (" + tentativasLoginCliente + "/5)" : "E-mail ou senha incorretos."); } }
+        }
 
-        function mostrarErroLoginCliente(m) { var e = document.getElementById("erroLoginCliente"); e.innerText = m; e.classList.remove("hidden"); }
+        function mostrarErroLoginCliente(m) { var e = document.getElementById("erroLoginCliente");
+            e.innerText = m;
+            e.classList.remove("hidden"); }
 
-        function fazerLogoutCliente() { clienteLogado = null; document.getElementById("clienteLoginPainel").classList.remove("hidden"); document.getElementById("clienteRecuperacaoPainel").classList.add("hidden"); document.getElementById("clientePainel").classList.add("hidden"); document.getElementById("clienteLoginEmail").value = ""; document.getElementById("clienteLoginPass").value = ""; document.getElementById("erroLoginCliente").classList.add("hidden"); }
+        function fazerLogoutCliente() { clienteLogado = null;
+            document.getElementById("clienteLoginPainel").classList.remove("hidden");
+            document.getElementById("clientePainel").classList.add("hidden");
+            document.getElementById("clienteLoginEmail").value = "";
+            document.getElementById("clienteLoginPass").value = "";
+            document.getElementById("erroLoginCliente").classList.add("hidden"); }
 
-        function renderizarPainelCliente() { if (!clienteLogado) return; document.getElementById("clienteNomeLogado").innerText = " " + clienteLogado.nome + " | " + clienteLogado.email; clientesRegistrados = lerStorage(); var el = (clienteLogado.email || "").toLowerCase().trim(); for (var i = 0; i < clientesRegistrados.length; i++) { if ((clientesRegistrados[i].email || "").toLowerCase().trim() === el) { clienteLogado = clientesRegistrados[i]; break; } } var ctr = document.getElementById("clienteComprasContainer"), cds = []; for (var j = 0; j < clientesRegistrados.length; j++) { if ((clientesRegistrados[j].email || "").toLowerCase().trim() === el) cds.push(clientesRegistrados[j]); } if (cds.length === 0) { ctr.innerHTML = '<div class="card-mod text-center"><p class="text-gray-400 text-sm">Nenhuma compra encontrada.</p></div>'; return; } ctr.innerHTML = ""; for (var k = 0; k < cds.length; k++) { var c = cds[k], crd = document.createElement("div"); crd.className = "card-mod mb-3 sm:mb-4"; var stHTML = c.status === "aprovado" ? '<span class="inline-flex items-center gap-1 bg-green-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">✅ Aprovado</span>' : '<span class="inline-flex items-center gap-1 bg-yellow-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">⏳ Pendente</span>'; var dlHTML = ""; if (c.status === "aprovado" && c.linkDownload) dlHTML = '<div class="mt-3 p-3 rounded-xl" style="background:rgba(158,255,0,0.06);border:1px solid rgba(158,255,0,0.25);"><p class="font-bold mb-1 text-sm" style="color:#9EFF00;">🔗 Link de Download:</p><a href="' + c.linkDownload + '" target="_blank" rel="noopener" class="inline-block font-bold py-2.5 px-5 rounded-lg text-xs transition-colors break-all" style="background:#0d1b2a;color:#9EFF00;border:1px solid rgba(158,255,0,0.3);"><i class="fa fa-download"></i> Baixar Pacote</a></div>'; else if (c.status === "aprovado") dlHTML = '<div class="mt-3 p-3 rounded-xl" style="background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.2);"><p class="font-bold text-yellow-400 mb-1 text-sm">✅ Aprovado!</p><p class="text-xs text-gray-300">Link em breve no e-mail <strong style="color:#9EFF00;">' + c.email + "</strong></p></div>"; else dlHTML = '<div class="mt-3 p-3 rounded-xl" style="background:rgba(0,0,0,0.15);border:1px solid rgba(255,255,255,0.08);"><p class="text-xs text-gray-400">⏳ Aguardando confirmação do pagamento.</p></div>'; crd.innerHTML = '<div class="flex justify-between items-start mb-2 flex-wrap gap-2"><div class="min-w-0"><h4 class="text-base font-bold truncate" style="color:#9EFF00;">🎮 ' + c.itens + '</h4><p class="text-xs text-gray-400">📅 ' + c.data + " | 💰 R$ " + c.total + "</p></div>" + stHTML + "</div>" + dlHTML; ctr.appendChild(crd); } }
+        function renderizarPainelCliente() {
+            if (!clienteLogado) return;
+            document.getElementById("clienteNomeLogado").innerText = " " + clienteLogado.nome + " | " + clienteLogado.email;
+            clientesRegistrados = lerStorage();
+            var el = (clienteLogado.email || "").toLowerCase().trim();
+            for (var i = 0; i < clientesRegistrados.length; i++) { if ((clientesRegistrados[i].email || "").toLowerCase().trim() === el) { clienteLogado = clientesRegistrados[i]; break; } }
+            var ctr = document.getElementById("clienteComprasContainer"),
+                cds = [];
+            for (var j = 0; j < clientesRegistrados.length; j++) { if ((clientesRegistrados[j].email || "").toLowerCase().trim() === el) cds.push(clientesRegistrados[j]); } if (cds.length === 0) { ctr.innerHTML = '<div class="card-mod text-center"><p class="text-gray-400 text-sm">Nenhuma compra encontrada.</p></div>'; return; }
+            ctr.innerHTML = ""; for (var k = 0; k < cds.length; k++) { var c = cds[k],
+                    crd = document.createElement("div");
+                crd.className = "card-mod mb-3 sm:mb-4"; var stHTML = c.status === "aprovado" ? '<span class="inline-flex items-center gap-1 bg-green-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">✅ Aprovado</span>' : '<span class="inline-flex items-center gap-1 bg-yellow-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">⏳ Pendente</span>'; var dlHTML = ""; if (c.status === "aprovado" && c.linkDownload) dlHTML = '<div class="mt-3 p-3 rounded-xl" style="background:rgba(158,255,0,0.06);border:1px solid rgba(158,255,0,0.25);"><p class="font-bold mb-1 text-sm" style="color:#9EFF00;">🔗 Link de Download:</p><a href="' + c.linkDownload + '" target="_blank" rel="noopener" class="inline-block font-bold py-2.5 px-5 rounded-lg text-xs transition-colors break-all" style="background:#0d1b2a;color:#9EFF00;border:1px solid rgba(158,255,0,0.3);"><i class="fa fa-download"></i> Baixar Pacote</a></div>'; else if (c.status === "aprovado") dlHTML = '<div class="mt-3 p-3 rounded-xl" style="background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.2);"><p class="font-bold text-yellow-400 mb-1 text-sm">✅ Aprovado!</p><p class="text-xs text-gray-300">Link em breve no e-mail <strong style="color:#9EFF00;">' + c.email + "</strong></p></div>"; else dlHTML = '<div class="mt-3 p-3 rounded-xl" style="background:rgba(0,0,0,0.15);border:1px solid rgba(255,255,255,0.08);"><p class="text-xs text-gray-400">⏳ Aguardando confirmação do pagamento.</p></div>';
+                crd.innerHTML = '<div class="flex justify-between items-start mb-2 flex-wrap gap-2"><div class="min-w-0"><h4 class="text-base font-bold truncate" style="color:#9EFF00;">🎮 ' + c.itens + '</h4><p class="text-xs text-gray-400">📅 ' + c.data + " | 💰 R$ " + c.total + "</p></div>" + stHTML + "</div>" + dlHTML;
+                ctr.appendChild(crd); }
+        }
 
         // ==================== PAINEL ADMIN ====================
-        var tentativasAdmin = 0, bloqueioAdminAte = 0;
+        var tentativasAdmin = 0,
+            bloqueioAdminAte = 0;
 
-        function fazerLogin() { if (Date.now() < bloqueioAdminAte) { document.getElementById("erroLogin").innerText = "Aguarde " + Math.ceil((bloqueioAdminAte - Date.now()) / 1000) + "s."; document.getElementById("erroLogin").classList.remove("hidden"); return; } if (document.getElementById("adminUser").value.trim() === ADMIN_USUARIO && document.getElementById("adminPass").value.trim() === ADMIN_SENHA) { tentativasAdmin = 0; adminLogado = true; document.getElementById("painelLogin").classList.add("hidden"); document.getElementById("painelAdmin").classList.remove("hidden"); document.getElementById("erroLogin").classList.add("hidden"); renderizarListaClientes(); } else { tentativasAdmin++; document.getElementById("erroLogin").classList.remove("hidden"); if (tentativasAdmin >= 5) { bloqueioAdminAte = Date.now() + (60 * 1000); document.getElementById("erroLogin").innerText = "🚫 Bloqueado por 60 segundos!"; tentativasAdmin = 0; } else document.getElementById("erroLogin").innerText = "❌ Incorreto (" + tentativasAdmin + "/5)"; } }
+        function fazerLogin() { if (Date.now() < bloqueioAdminAte) { document.getElementById("erroLogin").innerText = "Aguarde " + Math.ceil((bloqueioAdminAte - Date.now()) / 1000) + "s.";
+                document.getElementById("erroLogin").classList.remove("hidden"); return; } if (document.getElementById("adminUser").value.trim() === ADMIN_USUARIO && document.getElementById("adminPass").value.trim() === ADMIN_SENHA) { tentativasAdmin = 0;
+                adminLogado = true;
+                document.getElementById("painelLogin").classList.add("hidden");
+                document.getElementById("painelAdmin").classList.remove("hidden");
+                document.getElementById("erroLogin").classList.add("hidden");
+                renderizarListaClientes(); } else { tentativasAdmin++;
+                document.getElementById("erroLogin").classList.remove("hidden"); if (tentativasAdmin >= 5) { bloqueioAdminAte = Date.now() + (60 * 1000);
+                    document.getElementById("erroLogin").innerText = "🚫 Bloqueado por 60 segundos!";
+                    tentativasAdmin = 0; } else document.getElementById("erroLogin").innerText = "❌ Incorreto (" + tentativasAdmin + "/5)"; } }
 
-        function fazerLogout() { adminLogado = false; document.getElementById("painelLogin").classList.remove("hidden"); document.getElementById("painelAdmin").classList.add("hidden"); document.getElementById("adminUser").value = ""; document.getElementById("adminPass").value = ""; document.getElementById("erroLogin").classList.add("hidden"); }
+        function fazerLogout() { adminLogado = false;
+            document.getElementById("painelLogin").classList.remove("hidden");
+            document.getElementById("painelAdmin").classList.add("hidden");
+            document.getElementById("adminUser").value = "";
+            document.getElementById("adminPass").value = "";
+            document.getElementById("erroLogin").classList.add("hidden"); }
 
-        function renderizarPainelAdmin() { if (adminLogado) { document.getElementById("painelLogin").classList.add("hidden"); document.getElementById("painelAdmin").classList.remove("hidden"); renderizarListaClientes(); } }
+        function renderizarPainelAdmin() { if (adminLogado) { document.getElementById("painelLogin").classList.add("hidden");
+                document.getElementById("painelAdmin").classList.remove("hidden");
+                renderizarListaClientes(); } }
 
-        function executarDiagnostico() { var c = document.getElementById("diagnosticoStorage"), h = ""; try { var tk = "_vc_" + Date.now(); localStorage.setItem(tk, "t"); var tv = localStorage.getItem(tk); localStorage.removeItem(tk); h += tv === "t" ? '<p style="color:#4ade80;">✅ localStorage OK</p>' : '<p style="color:#f87171;">❌ inconsistente</p>'; } catch (e) { h += '<p style="color:#f87171;">❌ ' + e.message + "</p>"; } var d = lerStorage(); h += '<p style="color:#93c5fd;">📦 Total: ' + d.length + "</p>"; h += '<p style="color:#a78bfa;">🔐 Senhas com SHA-256</p>'; h += '<p style="color:#9ca3af;">💾 ' + (JSON.stringify(localStorage).length / 1024).toFixed(1) + " KB</p>"; c.innerHTML = h; }
+        function executarDiagnostico() { var c = document.getElementById("diagnosticoStorage"),
+                h = ""; try { var tk = "_vc_" + Date.now();
+                localStorage.setItem(tk, "t"); var tv = localStorage.getItem(tk);
+                localStorage.removeItem(tk);
+                h += tv === "t" ? '<p style="color:#4ade80;">✅ localStorage OK</p>' : '<p style="color:#f87171;">❌ inconsistente</p>'; } catch (e) { h += '<p style="color:#f87171;">❌ ' + e.message + "</p>"; } var d = lerStorage();
+            h += '<p style="color:#93c5fd;">📦 Total: ' + d.length + "</p>";
+            h += '<p style="color:#a78bfa;">🔐 Senhas com SHA-256</p>';
+            h += '<p style="color:#9ca3af;">💾 ' + (JSON.stringify(localStorage).length / 1024).toFixed(1) + " KB</p>";
+            c.innerHTML = h; }
 
-        function verComoCliente(idx) { clientesRegistrados = lerStorage(); if (idx >= 0 && idx < clientesRegistrados.length) { clienteLogado = clientesRegistrados[idx]; document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); }); document.getElementById("menu-area-cliente").classList.remove("hidden"); document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); var lc = document.querySelector('#listaMenu a[href="#area-cliente"]'); if (lc) lc.classList.add("menu-ativo"); listaMenu.classList.remove("aberto"); iconeMenu.classList.remove("rotate-180"); document.getElementById("clienteLoginPainel").classList.add("hidden"); document.getElementById("clienteRecuperacaoPainel").classList.add("hidden"); document.getElementById("clientePainel").classList.remove("hidden"); renderizarPainelCliente(); window.scrollTo({ top: 0, behavior: "smooth" }); mostrarNotificacao("Visualizando: " + clienteLogado.nome); } }
+        function verComoCliente(idx) { clientesRegistrados = lerStorage(); if (idx >= 0 && idx < clientesRegistrados.length) { clienteLogado = clientesRegistrados[idx];
+                document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); });
+                document.getElementById("menu-area-cliente").classList.remove("hidden");
+                document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); var lc = document.querySelector('#listaMenu a[href="#area-cliente"]'); if (lc) lc.classList.add("menu-ativo");
+                listaMenu.classList.remove("aberto");
+                iconeMenu.classList.remove("rotate-180");
+                document.getElementById("clienteLoginPainel").classList.add("hidden");
+                document.getElementById("clientePainel").classList.remove("hidden");
+                renderizarPainelCliente();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                mostrarNotificacao("Visualizando: " + clienteLogado.nome); } }
 
-        function excluirCliente(idx) { clientesRegistrados = lerStorage(); if (idx < 0 || idx >= clientesRegistrados.length) return; var nomeCliente = clientesRegistrados[idx].nome; if (confirm("Tem certeza que deseja excluir o cliente \"" + nomeCliente + "\"?\n\nEsta ação não pode ser desfeita.")) { clientesRegistrados.splice(idx, 1); salvarStorage(clientesRegistrados); mostrarNotificacao("Cliente \"" + nomeCliente + "\" excluído!"); renderizarListaClientes(); } }
+        // ==================== EXCLUIR CLIENTE INDIVIDUAL ====================
+        function excluirCliente(idx) {
+            clientesRegistrados = lerStorage();
+            if (idx < 0 || idx >= clientesRegistrados.length) return;
+            var nomeCliente = clientesRegistrados[idx].nome;
+            if (confirm("Tem certeza que deseja excluir o cliente \"" + nomeCliente + "\"?\n\nEsta ação não pode ser desfeita.")) {
+                clientesRegistrados.splice(idx, 1);
+                salvarStorage(clientesRegistrados);
+                mostrarNotificacao("Cliente \"" + nomeCliente + "\" excluído!");
+                renderizarListaClientes();
+            }
+        }
 
-        function salvarLinkDownload(idx) { var input = document.getElementById("linkDownload_" + idx); if (!input) return; clientesRegistrados = lerStorage(); if (idx < 0 || idx >= clientesRegistrados.length) return; clientesRegistrados[idx].linkDownload = input.value.trim(); salvarStorage(clientesRegistrados); mostrarNotificacao("Link salvo!"); if (clientesRegistrados[idx].status === "aprovado" && clientesRegistrados[idx].linkDownload) { var c = clientesRegistrados[idx]; var corpo = ""; corpo += "╔══════════════════════════════════════════╗\n"; corpo += "║     🎮 VCORE GAMES - PACOTE LIBERADO!    ║\n"; corpo += "╚══════════════════════════════════════════╝\n\n"; corpo += "Olá, " + c.nome + "!\n\n"; corpo += "É com grande satisfação que informamos que seu\n"; corpo += "pagamento foi CONFIRMADO e seu pacote já está\n"; corpo += "LIBERADO para download! 🎉\n\n"; corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"; corpo += "📋 RESUMO DA SUA COMPRA\n"; corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"; corpo += "📦 Pacote: " + c.itens + "\n"; corpo += "💰 Valor: R$ " + c.total + "\n"; corpo += "📅 Data: " + c.data + "\n\n"; corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"; corpo += "🔗 LINK DE DOWNLOAD\n"; corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"; corpo += c.linkDownload + "\n\n"; corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"; corpo += "📖 GUIA RÁPIDO DE INSTALAÇÃO\n"; corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"; corpo += "1️⃣ Baixe o arquivo e DESCOMPACTE\n"; corpo += "2️⃣ Copie TODOS os arquivos para a pasta raiz\n"; corpo += "   do jogo (onde está o GRB.exe)\n"; corpo += "3️⃣ ⚠️ INICIE UM SAVE NOVO!\n"; corpo += "4️⃣ Abra o jogo e aproveite! 🎮\n\n"; corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"; corpo += "🙏 AGRADECIMENTOS\n"; corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"; corpo += "Muito obrigado por confiar na VCORE GAMES!\n"; corpo += "Esperamos que você tenha uma experiência\n"; corpo += "incrível com os mods. Seu apoio é fundamental\n"; corpo += "para continuarmos trazendo os melhores pacotes!\n\n"; corpo += "💬 Dúvidas? Fale conosco:\n"; corpo += "📱 WhatsApp: (16) 98109-7916\n"; corpo += "📧 E-mail: rodrigoxgames25@gmail.com\n"; corpo += "📷 Instagram: @rodrigovecoregaming\n\n"; corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"; corpo += "Lembre-se: você pode acessar seus pacotes a\n"; corpo += "qualquer momento pela Área do Cliente usando\n"; corpo += "seu e-mail e senha: " + c.email + "\n"; corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"; corpo += "Bons jogos e até a próxima! 🎮🔥\n"; corpo += "Rodrigo - VCORE GAMES\n"; window.open("mailto:" + encodeURIComponent(c.email) + "?subject=" + encodeURIComponent("🎮 VCORE GAMES - Seu Pacote Foi Liberado!") + "&body=" + encodeURIComponent(corpo), "_blank"); mostrarNotificacao("E-mail de liberação enviado!"); } renderizarListaClientes(); }
+        // ==================== EMAIL DE LIBERAÇÃO ====================
+        function salvarLinkDownload(idx) {
+            var input = document.getElementById("linkDownload_" + idx);
+            if (!input) return;
+            clientesRegistrados = lerStorage();
+            if (idx < 0 || idx >= clientesRegistrados.length) return;
+            clientesRegistrados[idx].linkDownload = input.value.trim();
+            salvarStorage(clientesRegistrados);
+            mostrarNotificacao("Link salvo!");
 
-        function alternarStatusCliente(idx) { clientesRegistrados = lerStorage(); if (idx >= 0 && idx < clientesRegistrados.length) { clientesRegistrados[idx].status = clientesRegistrados[idx].status === "aprovado" ? "pendente" : "aprovado"; salvarStorage(clientesRegistrados); mostrarNotificacao(clientesRegistrados[idx].status === "aprovado" ? "✅ Cliente aprovado!" : "⏳ Pendente."); renderizarListaClientes(); } }
+            if (clientesRegistrados[idx].status === "aprovado" && clientesRegistrados[idx].linkDownload) {
+                var c = clientesRegistrados[idx];
+                var corpo = "";
+                corpo += "╔══════════════════════════════════════════╗\n";
+                corpo += "║     🎮 VCORE GAMES - PACOTE LIBERADO!    ║\n";
+                corpo += "╚══════════════════════════════════════════╝\n\n";
+                corpo += "Olá, " + c.nome + "!\n\n";
+                corpo += "É com grande satisfação que informamos que seu\n";
+                corpo += "pagamento foi CONFIRMADO e seu pacote já está\n";
+                corpo += "LIBERADO para download! 🎉\n\n";
+                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+                corpo += "📋 RESUMO DA SUA COMPRA\n";
+                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+                corpo += "📦 Pacote: " + c.itens + "\n";
+                corpo += "💰 Valor: R$ " + c.total + "\n";
+                corpo += "📅 Data: " + c.data + "\n\n";
+                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+                corpo += "🔗 LINK DE DOWNLOAD\n";
+                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+                corpo += c.linkDownload + "\n\n";
+                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+                corpo += "📖 GUIA RÁPIDO DE INSTALAÇÃO\n";
+                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+                corpo += "1️⃣ Baixe o arquivo e DESCOMPACTE\n";
+                corpo += "2️⃣ Copie TODOS os arquivos para a pasta raiz\n";
+                corpo += "   do jogo (onde está o GRB.exe)\n";
+                corpo += "3️⃣ ⚠️ INICIE UM SAVE NOVO!\n";
+                corpo += "4️⃣ Abra o jogo e aproveite! 🎮\n\n";
+                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+                corpo += "🙏 AGRADECIMENTOS\n";
+                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+                corpo += "Muito obrigado por confiar na VCORE GAMES!\n";
+                corpo += "Esperamos que você tenha uma experiência\n";
+                corpo += "incrível com os mods. Seu apoio é fundamental\n";
+                corpo += "para continuarmos trazendo os melhores pacotes!\n\n";
+                corpo += "💬 Dúvidas? Fale conosco:\n";
+                corpo += "📱 WhatsApp: (16) 98109-7916\n";
+                corpo += "📧 E-mail: rodrigoxgames25@gmail.com\n";
+                corpo += "📷 Instagram: @rodrigovecoregaming\n\n";
+                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+                corpo += "Lembre-se: você pode acessar seus pacotes a\n";
+                corpo += "qualquer momento pela Área do Cliente usando\n";
+                corpo += "seu e-mail e senha: " + c.email + "\n";
+                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+                corpo += "Bons jogos e até a próxima! 🎮🔥\n";
+                corpo += "Rodrigo - VCORE GAMES\n";
 
-        function limparClientes() { if (confirm("Remover TODOS os clientes?")) { salvarStorage([]); clientesRegistrados = []; renderizarListaClientes(); mostrarNotificacao("Lista limpa."); } }
+                window.open("mailto:" + encodeURIComponent(c.email) + "?subject=" + encodeURIComponent("🎮 VCORE GAMES - Seu Pacote Foi Liberado!") + "&body=" + encodeURIComponent(corpo), "_blank");
+                mostrarNotificacao("E-mail de liberação enviado!");
+            }
+            renderizarListaClientes();
+        }
 
-        function renderizarListaClientes() { clientesRegistrados = lerStorage(); var l = document.getElementById("listaClientes"); if (clientesRegistrados.length === 0) { l.innerHTML = '<p class="text-gray-500 text-xs text-center">Nenhum cliente.</p>'; return; } l.innerHTML = ""; for (var i = clientesRegistrados.length - 1; i >= 0; i--) { (function(idx) { var c = clientesRegistrados[idx], dv = document.createElement("div"); dv.className = "p-3 rounded-xl border-2 " + (c.status === "aprovado" ? "border-green-500/30" : "border-yellow-500/30"); dv.style.background = c.status === "aprovado" ? "rgba(34,197,94,0.06)" : "rgba(234,179,8,0.06)"; var sb = c.status === "aprovado" ? '<span class="bg-green-600 text-white text-[10px] font-bold px-2 py-1 rounded-full">✅</span>' : '<span class="bg-yellow-600 text-white text-[10px] font-bold px-2 py-1 rounded-full">⏳</span>'; var lv = c.linkDownload || ""; var hx = (c.senhaHash || "N/A").substring(0, 12) + "..."; dv.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2 mb-2"><div class="flex-1"><p class="font-bold text-gray-200 text-sm">👤 ' + c.nome + " " + sb + '</p><p class="text-blue-400 text-xs">📧 ' + c.email + ' | 🔐 <code style="font-size:0.6rem;color:#9ca3af;">' + hx + '</code></p><p class="text-gray-500 text-[10px]">📦 ' + c.itens + " | 💰 R$ " + c.total + " | 📅 " + c.data + '</p></div></div><div class="flex flex-wrap gap-2 items-end"><div class="flex-1 min-w-[150px]"><label class="text-[10px] font-bold text-gray-400 block mb-1">🔗 Link:</label><input type="text" id="linkDownload_' + idx + '" value="' + lv.replace(/"/g, "&quot;") + '" placeholder="Cole o link..." maxlength="500" class="w-full rounded-lg px-2 py-1.5 text-xs" style="background:#1a1a2e;border:1px solid #2a2a3e;color:#e0e0e0;" /></div><div class="flex gap-2"><button onclick="verComoCliente(' + idx + ')" class="bg-purple-600 hover:bg-purple-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Ver como cliente">👁️</button><button onclick="salvarLinkDownload(' + idx + ')" class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Salvar link">💾</button><button onclick="alternarStatusCliente(' + idx + ')" class="' + (c.status === "aprovado" ? "bg-yellow-500" : "bg-green-600") + ' text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Alternar status">' + (c.status === "aprovado" ? "⏳" : "✅") + '</button><button onclick="excluirCliente(' + idx + ')" class="bg-red-600 hover:bg-red-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Excluir cliente">🗑️</button></div></div>'; l.appendChild(dv); })(i); } }
+        function alternarStatusCliente(idx) { clientesRegistrados = lerStorage(); if (idx >= 0 && idx < clientesRegistrados.length) { clientesRegistrados[idx].status = clientesRegistrados[idx].status === "aprovado" ? "pendente" : "aprovado";
+                salvarStorage(clientesRegistrados);
+                mostrarNotificacao(clientesRegistrados[idx].status === "aprovado" ? "✅ Cliente aprovado!" : "⏳ Pendente.");
+                renderizarListaClientes(); } }
+
+        function limparClientes() { if (confirm("Remover TODOS os clientes?")) { salvarStorage([]);
+                clientesRegistrados = [];
+                renderizarListaClientes();
+                mostrarNotificacao("Lista limpa."); } }
+
+        function renderizarListaClientes() { clientesRegistrados = lerStorage(); var l = document.getElementById("listaClientes"); if (clientesRegistrados.length === 0) { l.innerHTML = '<p class="text-gray-500 text-xs text-center">Nenhum cliente.</p>'; return; }
+            l.innerHTML = ""; for (var i = clientesRegistrados.length - 1; i >= 0; i--) { (function(idx) { var c = clientesRegistrados[idx],
+                        dv = document.createElement("div");
+                    dv.className = "p-3 rounded-xl border-2 " + (c.status === "aprovado" ? "border-green-500/30" : "border-yellow-500/30");
+                    dv.style.background = c.status === "aprovado" ? "rgba(34,197,94,0.06)" : "rgba(234,179,8,0.06)"; var sb = c.status === "aprovado" ? '<span class="bg-green-600 text-white text-[10px] font-bold px-2 py-1 rounded-full">✅</span>' : '<span class="bg-yellow-600 text-white text-[10px] font-bold px-2 py-1 rounded-full">⏳</span>'; var lv = c.linkDownload || ""; var hx = (c.senhaHash || "N/A").substring(0, 12) + "...";
+                    dv.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2 mb-2"><div class="flex-1"><p class="font-bold text-gray-200 text-sm">👤 ' + c.nome + " " + sb + '</p><p class="text-blue-400 text-xs">📧 ' + c.email + ' | 🔐 <code style="font-size:0.6rem;color:#9ca3af;">' + hx + '</code></p><p class="text-gray-500 text-[10px]">📦 ' + c.itens + " | 💰 R$ " + c.total + " | 📅 " + c.data + '</p></div></div><div class="flex flex-wrap gap-2 items-end"><div class="flex-1 min-w-[150px]"><label class="text-[10px] font-bold text-gray-400 block mb-1">🔗 Link:</label><input type="text" id="linkDownload_' + idx + '" value="' + lv.replace(/"/g, "&quot;") + '" placeholder="Cole o link..." maxlength="500" class="w-full rounded-lg px-2 py-1.5 text-xs" style="background:#1a1a2e;border:1px solid #2a2a3e;color:#e0e0e0;" /></div><div class="flex gap-2"><button onclick="verComoCliente(' + idx + ')" class="bg-purple-600 hover:bg-purple-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Ver como cliente">👁️</button><button onclick="salvarLinkDownload(' + idx + ')" class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Salvar link">💾</button><button onclick="alternarStatusCliente(' + idx + ')" class="' + (c.status === "aprovado" ? "bg-yellow-500" : "bg-green-600") + ' text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Alternar status">' + (c.status === "aprovado" ? "⏳" : "✅") + '</button><button onclick="excluirCliente(' + idx + ')" class="bg-red-600 hover:bg-red-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Excluir cliente">🗑️</button></div></div>';
+                    l.appendChild(dv); })(i); } }
 
         // ==================== BOTÃO TOPO ====================
-        var btnTopo = document.getElementById("btnTopo"); window.addEventListener("scroll", function() { if (window.scrollY > 300) btnTopo.classList.remove("hidden"); else btnTopo.classList.add("hidden"); }); btnTopo.addEventListener("click", function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+        var btnTopo = document.getElementById("btnTopo");
+        window.addEventListener("scroll", function() { if (window.scrollY > 300) btnTopo.classList.remove("hidden");
+            else btnTopo.classList.add("hidden"); });
+        btnTopo.addEventListener("click", function(e) { e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" }); });
 
         console.log("=== VCORE GAMES v6 ===");
         console.log("✅ Fluxo: Carrinho → PIX (sem abrir e-mail)");
         console.log("✅ E-mail de comprovante só abre ao clicar no botão");
-        console.log("✅ Recuperação de senha via WhatsApp");
-        console.log("✅ Cards gamer com efeitos neon de glow");
+        console.log("✅ Botão excluir cliente individual no Admin");
     </script>
 </body>
 </html>
