@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>VCORE GAMES - Mods Ghost Recon Breakpoint</title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <script>
         tailwind.config = {
             theme: {
@@ -26,7 +25,14 @@
                     },
                     fontFamily: {
                         sans: ["Inter", "system-ui", "sans-serif"],
-                        logo: ["Rajdhani", "Arial Black", "Helvetica Bold", "sans-serif"],
+                        logo: ["Arial Black", "Helvetica Bold", "sans-serif"],
+                    },
+                    screens: {
+                        'xs': '375px',
+                        'sm': '640px',
+                        'md': '768px',
+                        'lg': '1024px',
+                        'xl': '1280px',
                     },
                 },
             },
@@ -34,98 +40,92 @@
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-            .text-shadow-green { text-shadow: 0 0 15px rgba(158,255,0,0.6), 0 0 30px rgba(158,255,0,0.3); }
-            .card-mod { @apply rounded-xl shadow-lg p-3 sm:p-4 md:p-5 border border-gray-700/50 hover:shadow-xl transition-all duration-300; background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%); }
-            .menu-ativo { @apply border-b-2 border-principal font-bold text-principal rounded-t-lg; background: rgba(158,255,0,0.08); }
-            .btn-venda { @apply font-bold py-3 px-4 sm:px-6 rounded-lg text-base sm:text-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105 active:scale-95 w-full text-center; background: linear-gradient(135deg, #9EFF00 0%, #7fcc00 100%); color: #0a0a0f; }
-            .btn-adicionar { @apply bg-principal hover:bg-green-400 text-gray-900 font-bold py-2 px-4 rounded text-xs sm:text-sm transition-colors w-full mt-2; }
-            .logo-font { @apply font-logo font-bold tracking-widest; }
-            .area-midia { @apply rounded-lg h-32 sm:h-36 md:h-44 flex flex-col items-center justify-center mb-4 overflow-hidden relative; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); }
+            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+            .card-mod { @apply bg-white rounded-xl shadow-lg p-3 sm:p-4 md:p-5 border border-gray-200 hover:shadow-xl transition-all duration-300; }
+            .menu-ativo { @apply border-b-2 border-principal font-bold text-principal bg-blue-900/30 rounded-t-lg; }
+            .btn-venda { @apply bg-gradient-to-r from-secundaria to-blue-800 hover:from-blue-900 hover:to-blue-700 text-principal font-bold py-3 px-4 sm:px-6 rounded-lg text-base sm:text-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105 active:scale-95 w-full text-center; }
+            .btn-adicionar { @apply bg-principal hover:bg-green-400 text-secundaria font-bold py-2 px-4 rounded text-xs sm:text-sm transition-colors w-full mt-2; }
+            .logo-font { @apply font-logo font-bold tracking-wider; }
+            .area-midia { @apply bg-gray-100 rounded-lg h-32 sm:h-36 md:h-44 flex flex-col items-center justify-center mb-4 overflow-hidden border border-gray-200 relative; }
             .icone-rede-topo { @apply text-base sm:text-lg md:text-xl mx-0.5 sm:mx-1 transition-all duration-300 hover:scale-110; }
             .icone-rede-rodape { @apply text-xl sm:text-2xl mx-1.5 sm:mx-2 transition-all duration-300 hover:scale-110; }
-            .btn-topo { @apply fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shadow-lg hover:opacity-80 transition-all z-50 hidden; background: linear-gradient(135deg, #9EFF00 0%, #7fcc00 100%); color: #0a0a0f; }
+            .btn-topo { @apply fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-secundaria text-principal w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-900 transition-all z-50 hidden; }
             .menu-container { @apply relative; }
-            .menu-botao { @apply w-full text-principal py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-bold text-base sm:text-lg flex justify-between items-center transition-colors; background: rgba(158,255,0,0.06); border: 1px solid rgba(158,255,0,0.2); }
-            .menu-botao:hover { background: rgba(158,255,0,0.12); }
-            .menu-lista { @apply hidden absolute left-0 right-0 mt-1 rounded-xl shadow-xl z-40 overflow-y-auto max-h-[50vh] sm:max-h-[60vh]; background: #0d1b2a; border: 1px solid rgba(158,255,0,0.2); }
+            .menu-botao { @apply w-full bg-blue-900/40 text-principal py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-bold text-base sm:text-lg flex justify-between items-center hover:bg-blue-900/60 transition-colors; }
+            .menu-lista { @apply hidden absolute left-0 right-0 mt-1 bg-secundaria rounded-xl shadow-xl z-40 overflow-y-auto max-h-[50vh] sm:max-h-[60vh]; }
             .menu-lista.aberto { @apply block; }
-            .menu-lista a { @apply block py-2.5 sm:py-3 px-3 sm:px-4 text-gray-200 hover:text-principal transition-colors border-b border-gray-700/30 text-sm sm:text-base; background: transparent; }
-            .menu-lista a:hover { background: rgba(158,255,0,0.06); }
+            .menu-lista a { @apply block py-2.5 sm:py-3 px-3 sm:px-4 text-principal hover:bg-blue-900/50 transition-colors border-b border-principal/10 text-sm sm:text-base; }
             .menu-lista a:last-child { @apply border-b-0; }
-            .modal-carrinho { @apply fixed inset-0 flex items-center justify-center z-[60] hidden p-2 sm:p-4; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
-            .carrinho-conteudo { @apply rounded-xl w-full max-w-[95vw] sm:max-w-lg max-h-[90vh] sm:max-h-[85vh] overflow-y-auto p-4 sm:p-6 shadow-2xl; background: #12121f; border: 1px solid rgba(158,255,0,0.2); color: #e0e0e0; }
-            .modal-pix { @apply fixed inset-0 flex items-center justify-center z-[70] hidden p-2 sm:p-4; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
-            .pix-conteudo { @apply rounded-xl w-full max-w-[95vw] sm:max-w-md max-h-[90vh] sm:max-h-[90vh] overflow-y-auto p-4 sm:p-6 shadow-2xl; background: #12121f; border: 1px solid rgba(158,255,0,0.2); color: #e0e0e0; }
+            .modal-carrinho { @apply fixed inset-0 bg-black/70 flex items-center justify-center z-[60] hidden p-2 sm:p-4; }
+            .carrinho-conteudo { @apply bg-white rounded-xl w-full max-w-[95vw] sm:max-w-lg max-h-[90vh] sm:max-h-[85vh] overflow-y-auto p-4 sm:p-6 shadow-2xl; }
+            .modal-pix { @apply fixed inset-0 bg-black/70 flex items-center justify-center z-[70] hidden p-2 sm:p-4; }
+            .pix-conteudo { @apply bg-white rounded-xl w-full max-w-[95vw] sm:max-w-md max-h-[90vh] sm:max-h-[90vh] overflow-y-auto p-4 sm:p-6 shadow-2xl; }
+            .modal-email { @apply fixed inset-0 flex items-center justify-center z-[75] hidden p-2 sm:p-4; }
+            .email-conteudo { @apply bg-white rounded-2xl w-full max-w-[95vw] sm:max-w-md max-h-[90vh] overflow-y-auto p-4 sm:p-6 shadow-2xl; }
             .modal-saida { @apply fixed inset-0 flex items-center justify-center z-[80] hidden p-2 sm:p-4; }
             .saida-conteudo { @apply rounded-2xl w-full max-w-[95vw] sm:max-w-md max-h-[90vh] overflow-y-auto p-4 sm:p-6 shadow-2xl; }
-            .fechar-modal { @apply float-right text-gray-400 hover:text-red-500 text-xl sm:text-2xl font-bold cursor-pointer transition-colors; }
+            .fechar-modal { @apply float-right text-gray-500 hover:text-red-600 text-xl sm:text-2xl font-bold cursor-pointer; }
             .badge-carrinho { @apply absolute -top-2 -right-2 bg-red-600 text-white text-[10px] sm:text-xs font-bold w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center rounded-full; }
-            .barra-total { @apply fixed bottom-0 left-0 right-0 py-2.5 sm:py-3 px-3 sm:px-5 flex items-center justify-between shadow-2xl z-40 transform translate-y-full transition-transform duration-500 gap-2; background: #0d1b2a; color: #9EFF00; border-top: 2px solid rgba(158,255,0,0.3); }
+            .barra-total { @apply fixed bottom-0 left-0 right-0 bg-secundaria text-principal py-2.5 sm:py-3 px-3 sm:px-5 flex items-center justify-between shadow-2xl z-40 transform translate-y-full transition-transform duration-500 gap-2; }
             .barra-total.visivel { @apply translate-y-0; }
-            .pronto-badge { @apply inline-flex items-center gap-1 bg-green-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full; }
+            .pronto-badge { @apply inline-flex items-center gap-1 bg-green-500 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full; }
             .fr-badge { @apply inline-flex items-center gap-1 bg-blue-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full; }
             @keyframes pulse-save { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
             .pulse-save { animation: pulse-save 1.5s ease-in-out infinite; }
             @keyframes count-glow { 0%, 100% { text-shadow: 0 0 8px rgba(158,255,0,0.4); } 50% { text-shadow: 0 0 20px rgba(158,255,0,0.8), 0 0 40px rgba(158,255,0,0.3); } }
             .count-glow { animation: count-glow 2s ease-in-out infinite; }
+            @keyframes slideInRight { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+            @keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }
+            .toast-compra { animation: slideInRight 0.5s ease-out forwards; }
+            .toast-compra.saindo { animation: slideOutRight 0.4s ease-in forwards; }
             @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
             .animate-fade-in-up { animation: fadeInUp 0.4s ease-out forwards; }
             @keyframes pulse-border { 0%, 100% { box-shadow: 0 0 8px rgba(158,255,0,0.4); } 50% { box-shadow: 0 0 22px rgba(158,255,0,0.8), 0 0 40px rgba(158,255,0,0.3); } }
             .pulse-border { animation: pulse-border 1.8s ease-in-out infinite; }
         }
         html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Inter', system-ui, sans-serif; background: #0a0a0f; color: #e0e0e0; }
+        body { font-family: 'Inter', system-ui, sans-serif; }
         input, textarea, select { font-size: 16px !important; }
         @media (max-width: 640px) { input, textarea, select { font-size: 16px !important; } }
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0d0d1a; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb { background: #1a2a4a; border-radius: 3px; }
-        input[type="text"], input[type="email"], input[type="password"] {
-            background: #1a1a2e !important;
-            border-color: #2a2a3e !important;
-            color: #e0e0e0 !important;
-        }
-        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
-            border-color: #9EFF00 !important;
-            box-shadow: 0 0 0 2px rgba(158,255,0,0.15);
-        }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: #0A1153; border-radius: 3px; }
     </style>
 </head>
-<body class="font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans">
 
     <!-- ==================== HEADER ==================== -->
-    <header class="sticky top-0 z-50 shadow-md" style="background: linear-gradient(135deg, #07071a 0%, #0d1b2a 50%, #0a0a1a 100%); border-bottom: 1px solid rgba(158,255,0,0.15);">
+    <header class="sticky top-0 z-50 shadow-md" style="background: linear-gradient(135deg, #0A1153 0%, #0d1b6b 100%);">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2 sm:py-3">
-            <div class="flex justify-center items-center pb-1.5 sm:pb-2 border-b border-principal/15 relative flex-wrap gap-x-1 sm:gap-x-0">
-                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" rel="noopener" class="icone-rede-topo text-instagram" title="Instagram" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" rel="noopener" class="icone-rede-topo text-youtube" title="YouTube" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
-                <a href="https://facebook.com/vcoregames" target="_blank" rel="noopener" class="icone-rede-topo text-facebook" title="Facebook" aria-label="Facebook"><i class="fa fa-facebook-square"></i></a>
-                <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" rel="noopener" class="icone-rede-topo text-cults" title="Cults 3D" aria-label="Cults 3D"><i class="fa fa-cube"></i></a>
-                <a href="https://wa.me/5516981097916" target="_blank" rel="noopener" class="icone-rede-topo text-whatsapp" title="WhatsApp" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+            <div class="flex justify-center items-center pb-1.5 sm:pb-2 border-b border-principal/20 relative flex-wrap gap-x-1 sm:gap-x-0">
+                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-topo text-instagram" title="Instagram" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-topo text-youtube" title="YouTube" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
+                <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-topo text-facebook" title="Facebook" aria-label="Facebook"><i class="fa fa-facebook-square"></i></a>
+                <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-topo text-cults" title="Cults 3D" aria-label="Cults 3D"><i class="fa fa-cube"></i></a>
+                <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-topo text-whatsapp" title="WhatsApp" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
                 <button onclick="abrirCarrinho()" class="icone-rede-topo text-principal ml-2 sm:ml-4 relative" title="Ver Carrinho" aria-label="Carrinho">
                     <i class="fa fa-shopping-cart text-base sm:text-lg"></i>
                     <span id="badgeCarrinho" class="badge-carrinho hidden">0</span>
                 </button>
             </div>
             <div class="text-center my-2 sm:my-3">
-                <h1 class="text-[clamp(1.8rem,5vw,3.2rem)] logo-font text-principal leading-tight text-shadow-green tracking-widest">VCORE</h1>
-                <p class="text-[clamp(0.7rem,2vw,1.2rem)] text-principal/90 font-semibold tracking-[0.3em] -mt-1">GAMES</p>
-                <p class="text-[10px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 px-2">Mods e Arquivos Prontos para Ghost Recon Breakpoint</p>
+                <h1 class="text-[clamp(1.6rem,5vw,3rem)] logo-font text-principal leading-tight">VCORE</h1>
+                <p class="text-[clamp(0.7rem,2vw,1.2rem)] text-principal/90 font-medium tracking-widest -mt-1">GAMES</p>
+                <p class="text-[10px] sm:text-xs text-principal/70 mt-0.5 sm:mt-1 px-2">Mods e Arquivos Prontos para Ghost Recon Breakpoint</p>
             </div>
             <nav class="max-w-xs mx-auto w-full menu-container">
                 <button id="botaoMenu" class="menu-botao" aria-label="Abrir menu">
-                    <span class="text-sm sm:text-base">🎮 Menu Principal</span>
+                    <span class="text-sm sm:text-base">Menu Principal</span>
                     <i class="fa fa-chevron-down transition-transform duration-300 text-sm" id="iconeMenu"></i>
                 </button>
                 <div id="listaMenu" class="menu-lista">
-                    <a href="#inicio" class="menu-ativo" onclick="mudarMenu(event, 'inicio')">🏠 Início</a>
+                    <a href="#inicio" class="menu-ativo" onclick="mudarMenu(event, 'inicio')">Início</a>
                     <a href="#sobre-servico" onclick="mudarMenu(event, 'sobre-servico')">ℹ️ Sobre o Serviço</a>
                     <a href="#como-comprar" onclick="mudarMenu(event, 'como-comprar')">🛒 Como Comprar</a>
                     <a href="#pacotes-premium" onclick="irParaPacotes(event)">📦 Pacotes Completos</a>
                     <a href="#area-cliente" onclick="mudarMenu(event, 'area-cliente')">🔐 Área do Cliente</a>
-                    <a href="#sobre" onclick="mudarMenu(event, 'sobre')">👤 Sobre</a>
-                    <a href="#suporte" onclick="mudarMenu(event, 'suporte')">💬 Suporte</a>
+                    <a href="#sobre" onclick="mudarMenu(event, 'sobre')">Sobre</a>
+                    <a href="#suporte" onclick="mudarMenu(event, 'suporte')">Suporte</a>
                     <a href="#admin" onclick="mudarMenu(event, 'admin')">🔒 Admin</a>
                 </div>
             </nav>
@@ -133,122 +133,132 @@
     </header>
 
     <!-- ==================== HERO ==================== -->
-    <section class="relative py-12 sm:py-16 md:py-24 text-center text-white overflow-hidden" style="background: linear-gradient(160deg, #07071a 0%, #0d1b2a 40%, #0f1b2d 70%, #0a0a1a 100%);">
-        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 320%22><path fill=%22%239EFF00%22 d=%22M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320,192,320,96,320,48,320L0,320Z%22></path></svg>'); background-repeat: no-repeat; background-position: bottom; background-size: cover;"></div>
-        <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, rgba(158,255,0,0.04) 0%, transparent 70%);"></div>
+    <section class="relative py-10 sm:py-14 md:py-20 text-center text-white overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #16213e 50%, #0f3460 100%);">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 320%22><path fill=%22%239EFF00%22 d=%22M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320,192,320,96,320,48,320L0,320Z%22></path></svg>'); background-repeat: no-repeat; background-position: bottom; background-size: cover;"></div>
         <div class="relative z-10 max-w-4xl mx-auto px-3 sm:px-4">
-            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 text-shadow">Mods <span style="color:#9EFF00;" class="text-shadow-green">Ghost Recon</span> Breakpoint</h2>
-            <p class="text-sm sm:text-base md:text-lg mb-0 text-gray-400 max-w-2xl mx-auto px-2">Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:#9EFF00;">tudo pronto, é só copiar e jogar!</strong></p>
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-3 text-shadow">Mods <span style="color:#9EFF00;">Ghost Recon</span> Breakpoint</h2>
+            <p class="text-sm sm:text-base md:text-lg mb-0 text-gray-300 max-w-2xl mx-auto px-2">Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:#9EFF00;">tudo pronto, é só copiar e jogar!</strong></p>
         </div>
     </section>
+
+    <!-- ==================== MODAL DE AVISO SOBRE E-MAIL ==================== -->
+    <div id="modalAvisoEmail" class="modal-email" style="background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);">
+        <div class="email-conteudo animate-fade-in-up">
+            <div class="text-center mb-4 sm:mb-5">
+                <span class="text-4xl sm:text-6xl">📧</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-secundaria mt-2 sm:mt-3">⚠️ Atenção com seu E-mail!</h2>
+            </div>
+            <div class="bg-yellow-50 border-2 border-yellow-400 rounded-xl p-3 sm:p-5 mb-4 sm:mb-5">
+                <p class="text-gray-800 font-bold text-base sm:text-lg mb-2 sm:mb-3 text-center">Use um e-mail que você acessa no dia a dia!</p>
+                <ul class="text-xs sm:text-sm text-gray-700 space-y-1.5 sm:space-y-2">
+                    <li class="flex items-start gap-2"><span class="text-yellow-500 text-base sm:text-lg flex-shrink-0">🔑</span><span>Este e-mail será seu <strong>login de acesso</strong> à Área do Cliente</span></li>
+                    <li class="flex items-start gap-2"><span class="text-yellow-500 text-base sm:text-lg flex-shrink-0">📥</span><span>Por ele você receberá o <strong>link de download</strong> do pacote comprado</span></li>
+                    <li class="flex items-start gap-2"><span class="text-yellow-500 text-base sm:text-lg flex-shrink-0">📖</span><span>Também enviaremos o <strong>guia de instalação</strong> completo</span></li>
+                    <li class="flex items-start gap-2"><span class="text-yellow-500 text-base sm:text-lg flex-shrink-0">🔄</span><span>Use o mesmo e-mail para <strong>futuras compras</strong> e atualizações</span></li>
+                </ul>
+            </div>
+            <div class="bg-red-50 border border-red-200 rounded-xl p-3 sm:p-4 mb-4 sm:mb-5">
+                <p class="text-xs sm:text-sm text-red-700 font-bold text-center">🚫 Não use e-mails temporários ou que você não acessa! Você pode perder o acesso ao seu pacote.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                <button onclick="voltarAvisoEmail()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-sm order-2 sm:order-1">← Voltar e corrigir</button>
+                <button onclick="confirmarAvisoEmail()" class="flex-1 bg-secundaria hover:bg-blue-900 text-principal font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-sm order-1 sm:order-2">✅ Confirmar e continuar</button>
+            </div>
+        </div>
+    </div>
 
     <!-- ==================== MODAL DO CARRINHO ==================== -->
     <div id="modalCarrinho" class="modal-carrinho">
         <div class="carrinho-conteudo">
-            <span class="fechar-modal" onclick="fecharCarrinho()">&times;</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-center mb-3 sm:mb-4" style="color:#9EFF00;">🛒 Seu Carrinho</h2>
-            <div class="mb-4 sm:mb-5 p-3 sm:p-5 rounded-xl" style="background: rgba(158,255,0,0.04); border: 1px solid rgba(158,255,0,0.15);">
-                <p class="text-xs sm:text-sm font-bold mb-2 sm:mb-3 flex items-center gap-2" style="color:#9EFF00;"><span>🔐</span> Seus dados de acesso:</p>
-                <p class="text-[11px] sm:text-xs text-gray-400 mb-2 sm:mb-3">Preencha para criar sua conta na Área do Cliente</p>
-                <input type="text" id="clienteNome" placeholder="Seu nome completo" autocomplete="name" maxlength="100" class="w-full rounded-lg px-3 py-2 sm:py-2.5 mb-2 sm:mb-3 text-sm focus:outline-none transition-colors" />
-                <input type="email" id="clienteEmail" placeholder="Seu melhor e-mail (será seu login)" autocomplete="email" maxlength="150" class="w-full rounded-lg px-3 py-2 sm:py-2.5 mb-2 sm:mb-3 text-sm focus:outline-none transition-colors" />
+            <span class="fechar-modal" onclick="fecharCarrinho()">×</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-center text-secundaria mb-3 sm:mb-4">🛒 Seu Carrinho</h2>
+            <div class="mb-4 sm:mb-5 p-3 sm:p-5 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl">
+                <p class="text-xs sm:text-sm font-bold text-secundaria mb-2 sm:mb-3 flex items-center gap-2"><span>🔐</span> Seus dados de acesso:</p>
+                <p class="text-[11px] sm:text-xs text-gray-500 mb-2 sm:mb-3">Preencha para criar sua conta na Área do Cliente</p>
+                <input type="text" id="clienteNome" placeholder="Seu nome completo" autocomplete="name" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 sm:py-2.5 mb-2 sm:mb-3 text-sm focus:outline-none focus:border-secundaria transition-colors" />
+                <input type="email" id="clienteEmail" placeholder="Seu melhor e-mail (será seu login)" autocomplete="email" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 sm:py-2.5 mb-2 sm:mb-3 text-sm focus:outline-none focus:border-secundaria transition-colors" />
                 <div class="relative">
-                    <input type="password" id="clienteSenha" placeholder="Crie uma senha de acesso (mín. 6 caracteres)" autocomplete="new-password" maxlength="50" class="w-full rounded-lg px-3 py-2 sm:py-2.5 mb-1 text-sm focus:outline-none transition-colors" />
-                    <button type="button" onclick="toggleSenhaCarrinho()" class="absolute right-2 sm:right-3 top-2 sm:top-2.5 text-gray-500 hover:text-gray-300 text-sm"><i class="fa fa-eye" id="iconeSenhaCarrinho"></i></button>
+                    <input type="password" id="clienteSenha" placeholder="Crie uma senha de acesso" autocomplete="new-password" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 sm:py-2.5 mb-1 text-sm focus:outline-none focus:border-secundaria transition-colors" />
+                    <button type="button" onclick="toggleSenhaCarrinho()" class="absolute right-2 sm:right-3 top-2 sm:top-2.5 text-gray-400 hover:text-gray-600 text-sm"><i class="fa fa-eye" id="iconeSenhaCarrinho"></i></button>
                 </div>
-                <p class="text-[10px] sm:text-xs text-gray-500 mb-2 sm:mb-3">Mínimo 6 caracteres — use letras, números e símbolos para maior segurança</p>
-                <div class="rounded-lg p-2 sm:p-3 text-[11px] sm:text-xs" style="background: rgba(158,255,0,0.06); border: 1px solid rgba(158,255,0,0.2);">
-                    <p class="font-bold mb-1" style="color:#9EFF00;">💡 Dica importante:</p>
-                    <p class="text-gray-300">Use um <strong style="color:#9EFF00;">e-mail que você acessa sempre</strong>. Ele será seu login na Área do Cliente e por ele você receberá o link de download do pacote após a confirmação do pagamento.</p>
+                <p class="text-[10px] sm:text-xs text-gray-400 mb-2 sm:mb-3">Mínimo 4 caracteres</p>
+                <div class="bg-green-50 border border-green-200 rounded-lg p-2 sm:p-3 text-[11px] sm:text-xs text-green-800">
+                    <p class="font-bold mb-1">💡 Dica importante:</p>
+                    <p>Use um <strong>e-mail que você acessa sempre</strong>. Ele será seu login na Área do Cliente e por ele você receberá o link de download do pacote após a confirmação do pagamento.</p>
                 </div>
             </div>
             <div id="listaCarrinho" class="space-y-2 mb-4 sm:mb-6">
                 <p class="text-gray-500 text-center text-sm" id="carrinhoVazio">Seu carrinho está vazio.</p>
             </div>
-            <div class="border-t border-gray-700/50 pt-3 sm:pt-4 mb-3 sm:mb-4">
-                <div class="flex justify-between items-center font-bold text-lg sm:text-xl">
-                    <span class="text-gray-300">Total:</span>
-                    <span id="valorTotal" style="color:#9EFF00;">R$ 0,00</span>
+            <div class="border-t-2 border-gray-200 pt-3 sm:pt-4 mb-3 sm:mb-4">
+                <div class="flex justify-between items-center font-bold text-lg sm:text-xl text-gray-800">
+                    <span>Total:</span>
+                    <span id="valorTotal">R$ 0,00</span>
                 </div>
             </div>
-            <button class="btn-venda block text-center" onclick="iniciarFinalizacao()">💳 Ir para Pagamento</button>
+            <button class="btn-venda block text-center" onclick="iniciarFinalizacao()">💳 Finalizar Compra</button>
         </div>
     </div>
 
     <!-- ==================== MODAL PIX ==================== -->
     <div id="modalPix" class="modal-pix">
         <div class="pix-conteudo">
-            <span class="fechar-modal" onclick="fecharModalPix()">&times;</span>
+            <span class="fechar-modal" onclick="fecharModalPix()">×</span>
             <div class="text-center">
                 <div class="mb-3 sm:mb-4">
                     <span class="text-3xl sm:text-5xl">💳</span>
-                    <h2 class="text-xl sm:text-2xl font-bold mt-1 sm:mt-2" style="color:#9EFF00;">Pagamento via PIX</h2>
-                    <p class="text-gray-400 text-xs sm:text-sm">Copie a chave PIX abaixo e faça a transferência</p>
+                    <h2 class="text-xl sm:text-2xl font-bold text-secundaria mt-1 sm:mt-2">Pagamento via PIX</h2>
+                    <p class="text-gray-500 text-xs sm:text-sm">Copie a chave PIX abaixo e faça a transferência</p>
                 </div>
-                <div class="rounded-xl py-2 sm:py-3 px-4 sm:px-6 mb-4 sm:mb-5 inline-block" style="background: #0d1b2a; border: 1px solid rgba(158,255,0,0.3);">
-                    <p class="text-[10px] sm:text-xs text-gray-400">Valor a pagar</p>
-                    <p id="pixValor" class="text-2xl sm:text-3xl font-bold" style="color:#9EFF00;">R$ 0,00</p>
+                <div class="bg-secundaria text-principal rounded-xl py-2 sm:py-3 px-4 sm:px-6 mb-4 sm:mb-5 inline-block">
+                    <p class="text-[10px] sm:text-xs opacity-70">Valor a pagar</p>
+                    <p id="pixValor" class="text-2xl sm:text-3xl font-bold">R$ 0,00</p>
                 </div>
-                <div class="rounded-xl p-3 sm:p-5 mb-4 sm:mb-5" style="background: rgba(0,0,0,0.2); border: 2px dashed rgba(158,255,0,0.3);">
-                    <p class="text-[10px] sm:text-xs text-gray-400 mb-2 sm:mb-3 font-bold uppercase tracking-wide">🔑 Chave PIX (Telefone)</p>
-                    <p id="pixChave" class="text-xl sm:text-3xl font-bold tracking-wider select-all mb-1 break-all" style="color:#9EFF00;">16981097916</p>
-                    <p class="text-xs sm:text-sm text-gray-300">Rodrigo Paulino da Silva</p>
-                    <p class="text-[11px] sm:text-xs font-semibold mt-1" style="color:#9EFF00;">🏦 Banco Digital Sumup</p>
-                    <button onclick="copiarChavePix()" class="mt-3 sm:mt-4 font-bold py-2.5 sm:py-3 px-4 sm:px-5 rounded-lg text-xs sm:text-sm transition-colors w-full" style="background: #0d1b2a; color:#9EFF00; border: 1px solid rgba(158,255,0,0.3);">📋 Copiar Chave PIX</button>
-                    <p id="pixCopiado" class="text-green-400 text-xs font-bold mt-2 sm:mt-3 hidden">✅ Chave copiada com sucesso!</p>
+                <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-3 sm:p-5 mb-4 sm:mb-5">
+                    <p class="text-[10px] sm:text-xs text-gray-500 mb-2 sm:mb-3 font-bold uppercase tracking-wide">🔑 Chave PIX (telefone)</p>
+                    <p id="pixChave" class="text-xl sm:text-3xl font-bold text-secundaria tracking-wider select-all mb-1 break-all">16997238990</p>
+                    <p class="text-xs sm:text-sm text-gray-600">Rodrigo Paulino da Silva</p>
+                    <button onclick="copiarChavePix()" class="mt-3 sm:mt-4 bg-secundaria hover:bg-blue-900 text-principal font-bold py-2.5 sm:py-3 px-4 sm:px-5 rounded-lg text-xs sm:text-sm transition-colors w-full">📋 Copiar Chave PIX</button>
+                    <p id="pixCopiado" class="text-green-600 text-xs font-bold mt-2 sm:mt-3 hidden">✅ Chave copiada com sucesso!</p>
                 </div>
-                <div class="rounded-xl p-3 sm:p-4 mb-4 sm:mb-5 text-left text-xs sm:text-sm" style="background: rgba(158,255,0,0.04); border: 1px solid rgba(158,255,0,0.15);">
-                    <p class="font-bold mb-1.5 sm:mb-2" style="color:#9EFF00;">📝 Como pagar:</p>
-                    <ol class="space-y-1 list-decimal list-inside text-gray-300">
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 sm:p-4 mb-4 sm:mb-5 text-left text-xs sm:text-sm text-gray-700">
+                    <p class="font-bold text-secundaria mb-1.5 sm:mb-2">📝 Como pagar:</p>
+                    <ol class="space-y-1 list-decimal list-inside">
                         <li>Copie a chave PIX acima</li>
-                        <li>Abra o app do <strong style="color:#9EFF00;">Banco Digital Sumup</strong> ou seu banco</li>
-                        <li>Vá em <strong style="color:#9EFF00;">PIX</strong> → <strong style="color:#9EFF00;">Pagar</strong></li>
+                        <li>Abra o app do seu banco</li>
+                        <li>Vá em <strong>PIX</strong> → <strong>Pagar</strong></li>
                         <li>Cole a chave e confirme o valor</li>
                         <li>Faça a transferência</li>
                     </ol>
                 </div>
-
-                <!-- ⚠️ AVISO: APÓS PAGAR, ENVIE O COMPROVANTE -->
                 <div class="rounded-xl p-3 sm:p-5 mb-4 sm:mb-5 pulse-border" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 3px solid #9EFF00;">
-                    <div class="text-center mb-3 sm:mb-4">
-                        <span class="text-3xl sm:text-4xl">✅</span>
-                        <h3 class="text-lg sm:text-xl font-bold mt-1 sm:mt-2" style="color:#9EFF00;">APÓS EFETUAR O PAGAMENTO:</h3>
+                    <div class="text-center mb-2 sm:mb-3">
+                        <span class="text-3xl sm:text-4xl">📧</span>
+                        <h3 class="text-lg sm:text-xl font-bold mt-1 sm:mt-2" style="color:#9EFF00;">FIQUE ATENTO AO SEU E-MAIL!</h3>
                     </div>
-                    <p class="text-xs sm:text-sm font-bold mb-3 sm:mb-4 text-center" style="color:rgba(255,255,255,0.95);">
-                        Envie o comprovante para agilizar a liberação do seu pacote!
-                    </p>
-
-                    <!-- BOTÃO PRINCIPAL: ENVIAR POR E-MAIL (só abre quando o cliente clicar) -->
-                    <button onclick="abrirEmailComprovante()" class="w-full font-bold py-3 sm:py-3.5 px-4 sm:px-6 rounded-lg text-sm sm:text-base transition-all mb-3 flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transform" style="background: linear-gradient(135deg, #9EFF00 0%, #7fcc00 100%); color: #0a0a0f; box-shadow: 0 0 25px rgba(158,255,0,0.4);">
-                        <i class="fa fa-envelope text-lg sm:text-xl"></i> 📧 Enviar Comprovante por E-mail
-                    </button>
-                    <p class="text-[10px] text-center mb-3" style="color:rgba(158,255,0,0.6);">O comprovante será enviado para <strong style="color:#9EFF00;">rodrigoxgames25@gmail.com</strong></p>
-
-                    <div class="flex items-center gap-2 mb-3">
-                        <div class="flex-1 h-px" style="background: rgba(158,255,0,0.2);"></div>
-                        <span class="text-[10px] sm:text-xs text-gray-400">ou também</span>
-                        <div class="flex-1 h-px" style="background: rgba(158,255,0,0.2);"></div>
+                    <p class="text-xs sm:text-sm font-bold mb-2 sm:mb-3" style="color:rgba(255,255,255,0.95);">Após a confirmação do pagamento, você receberá no e-mail cadastrado:</p>
+                    <ul class="text-xs sm:text-sm space-y-1.5 sm:space-y-2 mb-2 sm:mb-3" style="color:rgba(255,255,255,0.85);">
+                        <li class="flex items-start gap-2"><span style="color:#9EFF00;" class="flex-shrink-0">🔗</span><span><strong style="color:#9EFF00;">O link de download</strong> do pacote adquirido</span></li>
+                        <li class="flex items-start gap-2"><span style="color:#9EFF00;" class="flex-shrink-0">📖</span><span><strong style="color:#9EFF00;">O guia completo de instalação</strong> passo a passo</span></li>
+                        <li class="flex items-start gap-2"><span style="color:#9EFF00;" class="flex-shrink-0">🔐</span><span><strong style="color:#9EFF00;">Seus dados de acesso</strong> à Área do Cliente</span></li>
+                    </ul>
+                    <p class="text-xs sm:text-sm" style="color:rgba(255,255,255,0.85);">📬 <strong style="color:#9EFF00;">Verifique sua caixa de entrada</strong> (e também a pasta de spam/lixo eletrônico) nos próximos minutos após o pagamento.</p>
+                    <div class="mt-3 sm:mt-4 p-2 sm:p-3 rounded-lg" style="background:rgba(255,255,255,0.1); border:1px solid rgba(158,255,0,0.4);">
+                        <p class="text-[10px] sm:text-xs font-bold text-center" style="color:#9EFF00;">⚡ A liberação é automática após a confirmação do pagamento!<br>Você também pode acessar seu pacote pela <strong>🔐 Área do Cliente</strong> com seu e-mail e senha.</p>
                     </div>
-
-                    <!-- BOTÃO SECUNDÁRIO: WHATSAPP -->
-                    <button onclick="abrirWhatsAppComprovante()" class="w-full font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2 bg-whatsapp hover:bg-green-600 text-white">
-                        <i class="fa fa-whatsapp text-base sm:text-lg"></i> Enviar Comprovante via WhatsApp
-                    </button>
                 </div>
-
-                <div class="mt-3 p-3 rounded-lg" style="background: rgba(158,255,0,0.04); border: 1px solid rgba(158,255,0,0.1);">
-                    <p class="text-[10px] sm:text-xs text-center" style="color:rgba(158,255,0,0.7);">
-                        📬 Após a confirmação, você receberá o <strong style="color:#9EFF00;">link de download</strong> no e-mail cadastrado. Fique de olho na caixa de entrada (e no spam)!
-                    </p>
-                </div>
+                <button onclick="abrirWhatsAppComprovante()" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2">
+                    <i class="fa fa-whatsapp text-base sm:text-lg"></i> Enviar Comprovante via WhatsApp
+                </button>
+                <p class="text-[10px] sm:text-xs text-gray-400 mt-2 sm:mt-3">Após pagar, clique acima para enviar o comprovante.</p>
             </div>
         </div>
     </div>
 
-    <!-- ==================== MODAL DE SAÍDA ==================== -->
+    <!-- ==================== MODAL DE SAÍDA (EXIT INTENT) ==================== -->
     <div id="modalSaida" class="modal-saida" style="background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);">
         <div class="saida-conteudo animate-fade-in-up text-center relative" style="background: linear-gradient(145deg, #0A1153 0%, #1a2a7a 50%, #0A1153 100%); border: 2px solid #9EFF00;">
-            <button onclick="fecharModalSaida()" class="absolute top-2 right-3 sm:top-3 sm:right-4 text-white/60 hover:text-white text-xl sm:text-2xl font-bold cursor-pointer z-10" style="background:none;border:none;" aria-label="Fechar">&times;</button>
+            <button onclick="fecharModalSaida()" class="absolute top-2 right-3 sm:top-3 sm:right-4 text-white/60 hover:text-white text-xl sm:text-2xl font-bold cursor-pointer z-10" style="background:none;border:none;" aria-label="Fechar">×</button>
             <div class="mb-3 sm:mb-4 pt-2"><span class="text-4xl sm:text-6xl">🎮</span></div>
             <h2 class="text-xl sm:text-2xl font-bold mb-1 sm:mb-2" style="color:#9EFF00;">Espere! Não saia ainda!</h2>
             <p class="text-white/80 text-xs sm:text-sm mb-4 sm:mb-5 px-2">Temos <strong style="color:#9EFF00;">condições especiais</strong> para você transformar seu Ghost Recon Breakpoint!</p>
@@ -258,7 +268,7 @@
                 <div class="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl text-left" style="background:rgba(37,211,102,0.08); border:1px solid rgba(37,211,102,0.2);"><span class="text-xl sm:text-2xl flex-shrink-0">💬</span><div><p class="font-bold text-xs sm:text-sm" style="color:#25D366;">Suporte via WhatsApp</p><p class="text-[10px] sm:text-xs text-white/70">Tire todas as suas dúvidas antes de comprar!</p></div></div>
             </div>
             <div class="flex flex-col gap-2 sm:gap-3">
-                <a href="https://wa.me/5516981097916?text=Ol%C3%A1%20Rodrigo!%20Quero%20saber%20mais%20sobre%20os%20pacotes%20de%20mods%20para%20Ghost%20Recon%20Breakpoint.%20Pode%20me%20ajudar%3F" target="_blank" rel="noopener" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"><i class="fa fa-whatsapp text-base sm:text-lg"></i> Falar no WhatsApp e tirar dúvidas</a>
+                <a href="https://wa.me/5516981097916?text=Ol%C3%A1%20Rodrigo!%20Quero%20saber%20mais%20sobre%20os%20pacotes%20de%20mods%20para%20Ghost%20Recon%20Breakpoint.%20Pode%20me%20ajudar%3F" target="_blank" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"><i class="fa fa-whatsapp text-base sm:text-lg"></i> Falar no WhatsApp e tirar dúvidas</a>
                 <button onclick="fecharModalSaida()" class="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors border border-white/20">Continuar navegando no site</button>
             </div>
         </div>
@@ -270,8 +280,8 @@
         <!-- ===== INÍCIO / PACOTES ===== -->
         <section id="menu-inicio" class="conteudo-menu">
             <div id="pacotes-premium"></div>
-            <h3 class="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-center" style="color:#9EFF00;">🏆 Pacotes Completos</h3>
-            <p class="text-center text-gray-400 mb-3 sm:mb-4 text-xs sm:text-sm">Escolha o plano ideal para você</p>
+            <h3 class="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-center text-gray-800">🏆 Pacotes Completos</h3>
+            <p class="text-center text-gray-500 mb-3 sm:mb-4 text-xs sm:text-sm">Escolha o plano ideal para você</p>
             <div class="max-w-5xl mx-auto mb-4 sm:mb-6 rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
                 <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 p-3 sm:p-5">
                     <div class="text-3xl sm:text-5xl flex-shrink-0">🎮</div>
@@ -302,34 +312,34 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-10 sm:mb-16 max-w-5xl mx-auto">
                 <!-- PRATA -->
-                <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #1a1a2a 0%, #2a2a3a 50%, #1a1a2a 100%); border: 2px solid #C0C0C0;">
-                    <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(45deg, #C0C0C0 0, #C0C0C0 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
+                <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #2a2a2a 0%, #4a4a4a 50%, #2a2a2a 100%); border: 2px solid #C0C0C0;">
+                    <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #C0C0C0 0, #C0C0C0 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
                     <div class="relative z-10 flex flex-col flex-1">
                         <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#C0C0C0; color:#1a1a1a;">🥈 PRATA</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
                         <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#C0C0C0;">Pacote Prata</h4>
-                        <p class="text-xs sm:text-sm mb-2 sm:mb-3 text-gray-400">Mods essenciais da VCORE GAMES.</p>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.08); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p class="text-gray-400">Copie na pasta raiz e abra o game.</p></div>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.08); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
-                        <ul class="text-xs sm:text-sm mb-4 sm:mb-5 space-y-1 flex-1 text-gray-300"><li>✅ Mods Essenciais VCORE</li><li>✅ Fest Feminino</li><li>✅ Veículos Modificados</li><li>✅ Guia de instalação por e-mail</li></ul>
-                        <div class="area-midia"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" rel="noopener" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#C0C0C0;"></i><span class="font-medium text-xs sm:text-sm" style="color:#C0C0C0;">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-2 sm:mb-3"><span class="text-xs sm:text-sm line-through text-gray-500">R$ 100,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#C0C0C0;">R$ 60,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Prata - Mods Essenciais', 60)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#C0C0C0; color:#1a1a1a;">🥈 Adicionar Pacote Prata</button>
+                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:rgba(192,192,192,0.75);">Mods essenciais da VCORE GAMES.</p>
+                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p style="color:rgba(192,192,192,0.8);">Copie na pasta raiz e abra o game.</p></div>
+                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
+                        <ul class="text-xs sm:text-sm mb-4 sm:mb-5 space-y-1 flex-1" style="color:rgba(192,192,192,0.85);"><li>✅ Mods Essenciais VCORE</li><li>✅ Fest Feminino</li><li>✅ Veículos Modificados</li><li>✅ Guia de instalação por e-mail</li></ul>
+                        <div class="area-midia"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#C0C0C0;"></i><span class="font-medium text-xs sm:text-sm" style="color:#C0C0C0;">Assistir Vídeo</span></a></div>
+                        <div class="text-center mb-2 sm:mb-3"><span style="color:rgba(192,192,192,0.45);" class="text-xs sm:text-sm line-through">R$ 100,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#C0C0C0;">R$ 60,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
+                        <button onclick="adicionarAoCarrinho('Pacote Prata - Mods Essenciais', 60.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#C0C0C0; color:#1a1a1a;">🥈 Adicionar Pacote Prata</button>
                     </div>
                 </div>
                 <!-- OURO -->
-                <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #2a2200 0%, #3a2e00 50%, #2a2200 100%); border: 2px solid #FFD700;">
-                    <div class="absolute inset-0 opacity-[0.04]" style="background-image: repeating-linear-gradient(45deg, #FFD700 0, #FFD700 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
+                <div class="card-mod relative overflow-hidden flex flex-col" style="background: linear-gradient(145deg, #3a2800 0%, #6b4a00 50%, #3a2800 100%); border: 2px solid #FFD700;">
+                    <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #FFD700 0, #FFD700 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
                     <div class="absolute -top-1 left-1/2 -translate-x-1/2 z-20"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-lg" style="background:#FFD700; color:#3a2800;">⭐ MAIS POPULAR</span></div>
                     <div class="relative z-10 flex flex-col flex-1 mt-3">
                         <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#FFD700; color:#3a2800;">🥇 OURO</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
                         <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#FFD700;">Pacote Ouro</h4>
-                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:rgba(255,215,0,0.7);">Experiência completa de visual e performance.</p>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.08); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p style="color:rgba(255,215,0,0.7);">Copie na pasta raiz e abra o game.</p></div>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.08); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
-                        <ul class="text-xs sm:text-sm mb-4 sm:mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.85);"><li>✅ Coletes — Mod de Aparência</li><li>✅ Armas e Miras — Precisão Real</li><li>✅ Camisa e Calça — Visual Tático</li><li>✅ Camuflagem — Skins Completas</li><li>✅ Capacetes e Proteções — Visual Elite</li><li>✅ Guia de instalação por e-mail</li></ul>
-                        <div class="area-midia"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" rel="noopener" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#FFD700;"></i><span class="font-medium text-xs sm:text-sm" style="color:#FFD700;">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-2 sm:mb-3"><span class="text-xs sm:text-sm line-through" style="color:rgba(255,215,0,0.4);">R$ 150,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#FFD700;">R$ 90,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avancados', 90)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#FFD700; color:#3a2800;">🥇 Adicionar Pacote Ouro</button>
+                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:rgba(255,215,0,0.75);">Experiência completa de visual e performance.</p>
+                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p style="color:rgba(255,215,0,0.8);">Copie na pasta raiz e abra o game.</p></div>
+                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
+                        <ul class="text-xs sm:text-sm mb-4 sm:mb-5 space-y-1 flex-1" style="color:rgba(255,215,0,0.9);"><li>✅ Coletes — Mod de Aparência</li><li>✅ Armas e Miras — Precisão Real</li><li>✅ Camisa e Calça — Visual Tático</li><li>✅ Camuflagem — Skins Completas</li><li>✅ Capacetes e Proteções — Visual Elite</li><li>✅ Guia de instalação por e-mail</li></ul>
+                        <div class="area-midia"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#FFD700;"></i><span class="font-medium text-xs sm:text-sm" style="color:#FFD700;">Assistir Vídeo</span></a></div>
+                        <div class="text-center mb-2 sm:mb-3"><span style="color:rgba(255,215,0,0.45);" class="text-xs sm:text-sm line-through">R$ 150,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#FFD700;">R$ 90,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
+                        <button onclick="adicionarAoCarrinho('Pacote Ouro - Mods Avançados', 90.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#FFD700; color:#3a2800;">🥇 Adicionar Pacote Ouro</button>
                     </div>
                 </div>
                 <!-- DIAMANTE -->
@@ -339,12 +349,12 @@
                         <div class="flex justify-between items-start mb-2 sm:mb-3 flex-wrap gap-1"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#9EFF00; color:#0A1153;">💎 DIAMANTE</span><span class="bg-red-500 text-white text-[9px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">MELHOR VALOR</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
                         <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#9EFF00;">Pacote Diamante</h4>
                         <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:rgba(158,255,0,0.75);">O pacote mais completo. <strong style="color:#9EFF00;">Todos os mods</strong> em um só lugar.</p>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.08); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p style="color:rgba(158,255,0,0.8);">Copie na pasta raiz e abra o game.</p></div>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.08); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
+                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.12); border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1" style="color:#86efac;">✅ Pronto para jogar!</p><p style="color:rgba(158,255,0,0.8);">Copie na pasta raiz e abra o game.</p></div>
+                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.1); border-left:3px solid #ff0000; color:#ff4444;">⚠️ Ao instalar, inicie um <span style="background:#cc0000; color:#ffcc00; padding:1px 4px; border-radius:3px;">SAVE NOVO</span>!</div>
                         <ul class="text-xs sm:text-sm mb-4 sm:mb-5 space-y-1 flex-1" style="color:rgba(158,255,0,0.9);"><li>✅ Coletes — Mod de Aparência</li><li>✅ Armas e Miras — Precisão Real</li><li>✅ Camisa e Calça — Visual Tático</li><li>✅ Camuflagem — Skins Completas</li><li>✅ Fest Feminino</li><li>✅ Capacetes e Proteções</li><li>✅ Veículos Modificados</li><li>✅ Skin Pack Completo</li><li>✅ Kit Tático</li><li>✅ Guia de instalação por e-mail</li></ul>
-                        <div class="area-midia"><a href="https://www.youtube.com/watch?v=pN6ntMjvhRw&t=564s" target="_blank" rel="noopener" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#9EFF00;"></i><span class="font-medium text-xs sm:text-sm" style="color:#9EFF00;">Assistir Vídeo</span></a></div>
+                        <div class="area-midia"><a href="https://www.youtube.com/watch?v=pN6ntMjvhRw&t=564s" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#9EFF00;"></i><span class="font-medium text-xs sm:text-sm" style="color:#9EFF00;">Assistir Vídeo</span></a></div>
                         <div class="text-center mb-2 sm:mb-3"><span style="color:rgba(158,255,0,0.45);" class="text-xs sm:text-sm line-through">R$ 200,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#9EFF00;">R$ 120,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full" style="background:#ff4444; color:#fff;">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Diamante - Todos os Mods', 120)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#9EFF00; color:#0A1153;">💎 Adicionar Pacote Diamante</button>
+                        <button onclick="adicionarAoCarrinho('Pacote Diamante - Todos os Mods', 120.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:#9EFF00; color:#0A1153;">💎 Adicionar Pacote Diamante</button>
                     </div>
                 </div>
             </div>
@@ -353,22 +363,22 @@
         <!-- ===== SOBRE O SERVIÇO ===== -->
         <section id="menu-sobre-servico" class="conteudo-menu hidden">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center" style="color:#9EFF00;">ℹ️ Sobre o Serviço VCORE GAMES</h2>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-principal"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🔧</span><div><h3 class="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style="color:#9EFF00;">O que é este serviço?</h3><p class="text-gray-300 leading-relaxed text-sm sm:text-base">A <strong style="color:#9EFF00;">VCORE GAMES</strong> é um serviço especializado em <strong>curadoria, organização e preparação de mods</strong> para <strong>Ghost Recon Breakpoint</strong>. Nós vasculhamos os melhores mods disponíveis na comunidade, testamos exaustivamente cada um deles, organizamos em pacotes temáticos e deixamos tudo <strong>pronto para uso imediato</strong> — sem que você precise instalar ferramentas ou fazer qualquer configuração complicada.</p><p class="text-gray-300 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">Em vez de passar <strong>horas pesquisando, baixando e configurando</strong> mods individualmente, você recebe um pacote completo, testado e organizado. É literalmente copiar a pasta e abrir o jogo.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-blue-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">💰</span><div><h3 class="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style="color:#9EFF00;">O que você está pagando?</h3><p class="text-gray-300 leading-relaxed text-sm sm:text-base">Você <strong style="color:#ff6b6b;">NÃO está comprando os mods em si</strong> — eles são gratuitos e pertencem aos seus criadores no Nexus Mods. O valor que você paga é pelo nosso <strong style="color:#9EFF00;">trabalho especializado</strong>:</p><ul class="mt-2 sm:mt-3 space-y-1.5 sm:space-y-2 text-gray-300 text-sm sm:text-base"><li class="flex items-start gap-2"><span class="text-green-400 font-bold flex-shrink-0">⏱️</span><span><strong style="color:#9EFF00;">Curadoria e testes:</strong> pesquisamos e testamos dezenas de mods para selecionar apenas os melhores.</span></li><li class="flex items-start gap-2"><span class="text-green-400 font-bold flex-shrink-0">🔧</span><span><strong style="color:#9EFF00;">Organização e compatibilidade:</strong> organizamos os arquivos e resolvemos conflitos entre mods.</span></li><li class="flex items-start gap-2"><span class="text-green-400 font-bold flex-shrink-0">📦</span><span><strong style="color:#9EFF00;">Pronto para uso:</strong> entregamos no formato "copiar e colar" — sem ferramentas extras.</span></li><li class="flex items-start gap-2"><span class="text-green-400 font-bold flex-shrink-0">📧</span><span><strong style="color:#9EFF00;">Suporte e guia:</strong> você recebe guia de instalação e suporte via WhatsApp.</span></li><li class="flex items-start gap-2"><span class="text-green-400 font-bold flex-shrink-0">🔄</span><span><strong style="color:#9EFF00;">Atualizações:</strong> pacotes mantidos atualizados com os mods mais recentes.</span></li></ul><div class="mt-3 sm:mt-4 p-3 sm:p-4 rounded-lg" style="background: rgba(158,255,0,0.06); border: 1px solid rgba(158,255,0,0.2);"><p class="text-xs sm:text-sm font-bold text-gray-200">💡 <strong style="color:#9EFF00;">Resumindo:</strong> você paga pela <strong style="color:#9EFF00;">conveniência e economia de tempo</strong>. Receba tudo pronto, testado e funcionando.</p></div></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-yellow-400"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🏆</span><div><h3 class="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style="color:#9EFF00;">Créditos aos Criadores dos Mods</h3><p class="text-gray-300 leading-relaxed text-sm sm:text-base"><strong>Todos os mods incluídos nos pacotes são criados por talentosos modders da comunidade</strong> e estão disponíveis gratuitamente no <a href="https://www.nexusmods.com/" target="_blank" rel="noopener" class="text-blue-400 hover:underline font-semibold">Nexus Mods</a>. <strong style="color:#ff6b6b;">Nenhum mod foi criado por mim.</strong></p></div></div></div>
-                <div class="card-mod border-l-4 border-green-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">✅</span><div><h3 class="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style="color:#9EFF00;">Nosso Diferencial</h3><p class="text-gray-300 leading-relaxed text-sm sm:text-base">Entregamos <strong style="color:#9EFF00;">tudo pré-instalado e pronto</strong>. É literalmente <strong style="color:#9EFF00;">copiar a pasta e abrir o jogo</strong> — sem AnvilToolkit, sem editar arquivos, sem resolver conflitos.</p></div></div></div>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-gray-800">ℹ️ Sobre o Serviço VCORE GAMES</h2>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-principal"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🔧</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">O que é este serviço?</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">A <strong>VCORE GAMES</strong> oferece um serviço especializado de <strong>curadoria, organização e preparação de mods</strong> para o jogo <strong>Ghost Recon Breakpoint</strong>. Nós vasculhamos os melhores mods disponíveis na comunidade, testamos cada um deles, organizamos em pacotes temáticos e deixamos tudo <strong>pronto para uso imediato</strong> — sem que você precise configurar nada.</p><p class="text-gray-700 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">Basicamente, você economiza <strong>horas de pesquisa, downloads, testes e configurações</strong>. Nós fazemos todo o trabalho pesado para que você apenas copie os arquivos e comece a jogar.</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-blue-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">💰</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">O que você está pagando?</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Você <strong>NÃO está comprando os mods em si</strong>. Você está pagando pelo nosso:</p><ul class="mt-2 sm:mt-3 space-y-1.5 sm:space-y-2 text-gray-700 text-sm sm:text-base"><li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">⏱️</span><span><strong>Tempo e trabalho de curadoria:</strong> pesquisamos, baixamos e testamos dezenas de mods para selecionar apenas os melhores e mais estáveis.</span></li><li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">🔧</span><span><strong>Organização e configuração:</strong> organizamos os arquivos, resolvemos conflitos entre mods e deixamos tudo funcionando perfeitamente em conjunto.</span></li><li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">📦</span><span><strong>Pré-instalação e empacotamento:</strong> entregamos os arquivos prontos no formato "copiar e colar" — você não precisa de qualquer ferramenta extra.</span></li><li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">📧</span><span><strong>Suporte e guia de instalação:</strong> você recebe um guia completo por e-mail e tem suporte via WhatsApp para qualquer dúvida.</span></li><li class="flex items-start gap-2"><span class="text-green-500 font-bold flex-shrink-0">🔄</span><span><strong>Atualizações:</strong> mantenho os pacotes sempre atualizados com os mods mais recentes e compatíveis.</span></li></ul><div class="mt-3 sm:mt-4 p-3 sm:p-4 rounded-lg" style="background: rgba(158,255,0,0.08); border: 1px solid rgba(158,255,0,0.25);"><p class="text-xs sm:text-sm font-bold" style="color:#0A1153;">💡 <strong>Resumindo:</strong> você paga pela <strong>conveniência</strong> de receber tudo pronto, testado e funcionando, sem precisar aprender a usar ferramentas de modding ou resolver problemas de compatibilidade sozinho.</p></div></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-yellow-400"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🏆</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Créditos aos Modders</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base"><strong>Todos os mods incluídos nos pacotes são de autoria de talentosos modders da comunidade</strong>, disponibilizados gratuitamente no <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-600 hover:underline font-semibold">Nexus Mods</a>. <strong>Nenhum mod foi criado por mim.</strong></p></div></div></div>
+                <div class="card-mod border-l-4 border-green-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">✅</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Nosso diferencial</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Entregamos os mods <strong>pré-instalados e prontos para uso</strong>. É literalmente <strong>copiar a pasta e abrir o jogo</strong>.</p></div></div></div>
             </div>
         </section>
 
         <!-- ===== COMO COMPRAR ===== -->
         <section id="menu-como-comprar" class="conteudo-menu hidden">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center" style="color:#9EFF00;">🛒 Como Funciona o Processo de Compra</h2>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-principal"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">1️⃣</span><div><h3 class="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style="color:#9EFF00;">Escolha seu pacote</h3><p class="text-gray-300 leading-relaxed text-sm sm:text-base">Navegue pelos <strong style="color:#9EFF00;">Pacotes Completos</strong> e escolha o melhor para seu estilo: Prata, Ouro ou Diamante.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-blue-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">2️⃣</span><div><h3 class="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style="color:#9EFF00;">Cadastre-se no carrinho</h3><p class="text-gray-300 leading-relaxed text-sm sm:text-base">Preencha seu <strong style="color:#9EFF00;">nome, e-mail e crie uma senha</strong>. Isso será seu login na Área do Cliente.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-green-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">3️⃣</span><div><h3 class="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style="color:#9EFF00;">Pague via PIX e envie o comprovante</h3><p class="text-gray-300 leading-relaxed text-sm sm:text-base">Copie a chave PIX, faça a transferência e <strong style="color:#9EFF00;">envie o comprovante por e-mail</strong> para agilizar a liberação.</p></div></div></div>
-                <div class="card-mod border-l-4 border-principal"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">4️⃣</span><div><h3 class="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style="color:#9EFF00;">Acesse e baixe! 🎮</h3><p class="text-gray-300 leading-relaxed text-sm sm:text-base">Após a confirmação, faça login na <strong style="color:#9EFF00;">Área do Cliente</strong> com seu e-mail e senha. Baixe o pacote e comece a jogar!</p></div></div></div>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-gray-800">🛒 Como Funciona o Processo de Compra</h2>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-principal"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">1️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Escolha seu pacote</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Navegue até a seção <strong>"📦 Pacotes Completos"</strong>.</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-blue-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">2️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Adicione ao carrinho e crie sua conta</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Preencha seu <strong>nome, e-mail e crie uma senha</strong>. Este e-mail será seu login na Área do Cliente.</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6 border-l-4 border-green-500"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">3️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Pague via PIX</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Copie a chave PIX, faça a transferência e envie o comprovante.</p></div></div></div>
+                <div class="card-mod border-l-4 border-principal"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">4️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-secundaria mb-1 sm:mb-2">Acesse e baixe! 🎮</h3><p class="text-gray-700 leading-relaxed text-sm sm:text-base">Faça login na <strong>Área do Cliente</strong> com seu e-mail e senha. Baixe o pacote e divirta-se!</p></div></div></div>
             </div>
         </section>
 
@@ -378,35 +388,35 @@
                 <div id="clienteLoginPainel" class="card-mod p-4 sm:p-6 md:p-8">
                     <div class="text-center mb-4 sm:mb-6">
                         <span class="text-3xl sm:text-5xl">🔐</span>
-                        <h2 class="text-xl sm:text-2xl font-bold mt-2 sm:mt-3" style="color:#9EFF00;">Área do Cliente</h2>
-                        <p class="text-gray-400 text-xs sm:text-sm mt-0.5 sm:mt-1">Acesse com seu e-mail e senha cadastrados na compra</p>
+                        <h2 class="text-xl sm:text-2xl font-bold mt-2 sm:mt-3 text-secundaria">Área do Cliente</h2>
+                        <p class="text-gray-500 text-xs sm:text-sm mt-0.5 sm:mt-1">Acesse com seu e-mail e senha cadastrados na compra</p>
                     </div>
                     <div class="space-y-3 sm:space-y-4">
                         <div>
-                            <label class="block text-xs sm:text-sm font-bold text-gray-300 mb-1">📧 E-mail</label>
-                            <input type="email" id="clienteLoginEmail" placeholder="Seu e-mail cadastrado" autocomplete="email" maxlength="150" class="w-full rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:outline-none transition-colors text-sm" />
+                            <label class="block text-xs sm:text-sm font-bold text-gray-700 mb-1">📧 E-mail</label>
+                            <input type="email" id="clienteLoginEmail" placeholder="Seu e-mail cadastrado" autocomplete="email" class="w-full border-2 border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:outline-none focus:border-secundaria transition-colors text-sm" />
                         </div>
                         <div>
-                            <label class="block text-xs sm:text-sm font-bold text-gray-300 mb-1">🔑 Senha</label>
-                            <input type="password" id="clienteLoginPass" placeholder="••••••••" autocomplete="current-password" maxlength="50" class="w-full rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:outline-none transition-colors text-sm" onkeydown="if(event.key==='Enter') fazerLoginCliente()" />
+                            <label class="block text-xs sm:text-sm font-bold text-gray-700 mb-1">🔑 Senha</label>
+                            <input type="password" id="clienteLoginPass" placeholder="••••••••" autocomplete="current-password" class="w-full border-2 border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:outline-none focus:border-secundaria transition-colors text-sm" onkeydown="if(event.key==='Enter') fazerLoginCliente()" />
                         </div>
-                        <p id="erroLoginCliente" class="text-red-500 text-xs sm:text-sm hidden text-center font-bold rounded-lg p-2 sm:p-3" style="background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.2);"></p>
-                        <button onclick="fazerLoginCliente()" class="w-full font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-base sm:text-lg" style="background: linear-gradient(135deg, #9EFF00 0%, #7fcc00 100%); color: #0a0a0f;">🔓 Acessar Minha Conta</button>
+                        <p id="erroLoginCliente" class="text-red-600 text-xs sm:text-sm hidden text-center"></p>
+                        <button onclick="fazerLoginCliente()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-base sm:text-lg">🔓 Acessar Minha Conta</button>
                     </div>
                     <div class="mt-4 sm:mt-5 text-center">
-                        <p class="text-xs sm:text-sm text-gray-400">Ainda não tem conta? <a href="#inicio" onclick="mudarMenuParaInicio()" class="text-blue-400 hover:underline font-medium">Compre um pacote</a></p>
-                        <p class="text-xs sm:text-sm text-gray-400 mt-0.5 sm:mt-1">Esqueceu a senha? <a href="https://wa.me/5516981097916" target="_blank" rel="noopener" class="text-blue-400 hover:underline font-medium">Fale conosco no WhatsApp</a></p>
+                        <p class="text-xs sm:text-sm text-gray-500">Ainda não tem conta? <a href="#inicio" onclick="mudarMenuParaInicio()" class="text-blue-600 hover:underline font-medium">Compre um pacote</a></p>
+                        <p class="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1">Esqueceu a senha? <a href="https://wa.me/5516981097916" target="_blank" class="text-blue-600 hover:underline font-medium">Fale conosco no WhatsApp</a></p>
                     </div>
                 </div>
                 <div id="clientePainel" class="hidden">
                     <div class="flex justify-between items-center mb-4 sm:mb-6 flex-wrap gap-2">
-                        <div><h2 class="text-xl sm:text-2xl font-bold" style="color:#9EFF00;">🎮 Minha Conta</h2><p class="text-xs sm:text-sm text-gray-400" id="clienteNomeLogado"></p></div>
-                        <button onclick="fazerLogoutCliente()" class="text-xs sm:text-sm text-red-400 hover:text-red-300 font-bold flex items-center gap-1"><i class="fa fa-sign-out"></i> Sair</button>
+                        <div><h2 class="text-xl sm:text-2xl font-bold text-secundaria">🎮 Minha Conta</h2><p class="text-xs sm:text-sm text-gray-500" id="clienteNomeLogado"></p></div>
+                        <button onclick="fazerLogoutCliente()" class="text-xs sm:text-sm text-red-600 hover:text-red-800 font-bold flex items-center gap-1"><i class="fa fa-sign-out"></i> Sair</button>
                     </div>
-                    <div id="clienteComprasContainer"><p class="text-gray-500 text-center text-sm">Carregando...</p></div>
+                    <div id="clienteComprasContainer"><p class="text-gray-400 text-center text-sm">Carregando...</p></div>
                     <div class="mt-6 sm:mt-8 card-mod" id="guiaInstalacaoCliente">
-                        <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-center" style="color:#9EFF00;">📖 Guia de Instalação</h3>
-                        <div class="space-y-2 sm:space-y-3 text-gray-200 text-xs sm:text-sm">
+                        <h3 class="text-lg sm:text-xl font-bold text-secundaria mb-3 sm:mb-4 text-center">📖 Guia de Instalação</h3>
+                        <div class="space-y-2 sm:space-y-3 text-gray-700 text-xs sm:text-sm">
                             <div class="rounded-xl p-3 sm:p-4" style="background: linear-gradient(135deg, #0A1153 0%, #1a2a7a 100%); border: 2px solid #9EFF00;">
                                 <p class="font-bold text-base sm:text-lg mb-1.5 sm:mb-2" style="color:#9EFF00;">🚀 É só copiar e jogar!</p>
                                 <p class="text-xs sm:text-sm mb-1.5 sm:mb-2" style="color:rgba(158,255,0,0.85);">1. Baixe e <strong style="color:#9EFF00;">descompacte</strong> o arquivo recebido</p>
@@ -421,53 +431,59 @@
         </section>
 
         <!-- ===== SOBRE ===== -->
-        <section id="menu-sobre" class="conteudo-menu hidden"><div class="max-w-2xl mx-auto card-mod p-6 sm:p-8 text-center"><h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4" style="color:#9EFF00;">Sobre a VCORE GAMES</h2><p class="mb-3 sm:mb-4 text-gray-300 text-sm sm:text-base">Somos especialistas em curadoria de mods para Ghost Recon Breakpoint.</p><p class="text-sm sm:text-base text-gray-300">Todos os arquivos são pré-testados e organizados para garantir a melhor experiência de jogo.</p></div></section>
+        <section id="menu-sobre" class="conteudo-menu hidden"><div class="max-w-2xl mx-auto card-mod p-6 sm:p-8 text-center"><h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Sobre a VCORE GAMES</h2><p class="mb-3 sm:mb-4 text-gray-600 text-sm sm:text-base">Somos especialistas em curadoria de mods para Ghost Recon Breakpoint, entregando pacotes prontos para uso imediato.</p><p class="text-sm sm:text-base text-gray-600">Todos os arquivos são pré-testados e organizados para garantir a melhor experiência de jogo possível.</p></div></section>
 
         <!-- ===== SUPORTE ===== -->
-        <section id="menu-suporte" class="conteudo-menu hidden"><div class="max-w-xl mx-auto card-mod p-6 sm:p-8 text-center"><h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4" style="color:#9EFF00;">💬 Central de Ajuda</h2><p class="mb-4 sm:mb-6 text-gray-300 text-sm sm:text-base">Dúvidas? Fale conosco:</p><div class="space-y-3 sm:space-y-4 text-left max-w-sm mx-auto"><div class="flex items-center gap-3"><i class="fa fa-whatsapp text-whatsapp text-xl sm:text-2xl"></i><a href="https://wa.me/5516981097916" target="_blank" rel="noopener" class="text-gray-300 hover:text-whatsapp transition-colors text-sm sm:text-base">(16) 98109-7916</a></div><div class="flex items-center gap-3"><i class="fa fa-instagram text-instagram text-xl sm:text-2xl"></i><a href="https://instagram.com/rodrigovecoregaming" target="_blank" rel="noopener" class="text-gray-300 hover:text-instagram transition-colors text-sm sm:text-base">@rodrigovecoregaming</a></div></div></div></section>
+        <section id="menu-suporte" class="conteudo-menu hidden"><div class="max-w-xl mx-auto card-mod p-6 sm:p-8 text-center"><h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">Central de Ajuda</h2><p class="mb-4 sm:mb-6 text-gray-600 text-sm sm:text-base">Dúvidas? Fale conosco:</p><div class="space-y-3 sm:space-y-4 text-left max-w-sm mx-auto"><div class="flex items-center gap-3"><i class="fa fa-whatsapp text-whatsapp text-xl sm:text-2xl"></i><a href="https://wa.me/5516981097916" target="_blank" class="text-gray-700 hover:text-whatsapp transition-colors text-sm sm:text-base">(16) 98109-7916</a></div><div class="flex items-center gap-3"><i class="fa fa-instagram text-instagram text-xl sm:text-2xl"></i><a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="text-gray-700 hover:text-instagram transition-colors text-sm sm:text-base">@rodrigovecoregaming</a></div></div></div></section>
 
         <!-- ===== PAINEL ADMIN ===== -->
         <section id="menu-admin" class="conteudo-menu hidden">
             <div class="max-w-2xl mx-auto">
                 <div id="painelLogin" class="card-mod p-4 sm:p-6 md:p-8">
-                    <div class="text-center mb-4 sm:mb-6"><span class="text-3xl sm:text-5xl">🔒</span><h2 class="text-xl sm:text-2xl font-bold mt-2 sm:mt-3" style="color:#9EFF00;">Área Administrativa</h2></div>
+                    <div class="text-center mb-4 sm:mb-6"><span class="text-3xl sm:text-5xl">🔒</span><h2 class="text-xl sm:text-2xl font-bold mt-2 sm:mt-3 text-secundaria">Área Administrativa</h2></div>
                     <div class="space-y-3 sm:space-y-4">
-                        <input type="text" id="adminUser" placeholder="Usuário" maxlength="50" class="w-full rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" />
-                        <input type="password" id="adminPass" placeholder="Senha" maxlength="50" class="w-full rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" onkeydown="if(event.key==='Enter') fazerLogin()" />
-                        <p id="erroLogin" class="text-red-500 text-xs sm:text-sm hidden text-center font-bold rounded-lg p-2" style="background: rgba(255,0,0,0.08);">❌ Usuário ou senha incorretos.</p>
-                        <button onclick="fazerLogin()" class="w-full font-bold py-2.5 sm:py-3 rounded-lg text-sm sm:text-base" style="background: linear-gradient(135deg, #9EFF00 0%, #7fcc00 100%); color: #0a0a0f;">Entrar</button>
+                        <input type="text" id="adminUser" placeholder="Usuário" class="w-full border border-gray-300 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" />
+                        <input type="password" id="adminPass" placeholder="Senha" class="w-full border border-gray-300 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" onkeydown="if(event.key==='Enter') fazerLogin()" />
+                        <p id="erroLogin" class="text-red-600 text-xs sm:text-sm hidden">❌ Usuário ou senha incorretos.</p>
+                        <button onclick="fazerLogin()" class="w-full bg-secundaria hover:bg-blue-900 text-principal font-bold py-2.5 sm:py-3 rounded-lg text-sm sm:text-base">Entrar</button>
                     </div>
                 </div>
                 <div id="painelAdmin" class="hidden">
-                    <div class="flex justify-between items-center mb-4 sm:mb-6 flex-wrap gap-2"><h2 class="text-xl sm:text-2xl font-bold" style="color:#9EFF00;">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-xs sm:text-sm text-red-400 hover:text-red-300 font-bold">Sair →</button></div>
-                    <div class="card-mod mb-4 sm:mb-6 border-2 border-purple-500/30" style="background:#1a1025;">
-                        <h3 class="text-base sm:text-lg font-bold text-purple-300 mb-3 sm:mb-4">🔍 Diagnóstico do Armazenamento</h3>
-                        <div id="diagnosticoStorage" class="text-xs sm:text-sm space-y-1"><p class="text-gray-400">Clique no botão abaixo para verificar.</p></div>
+                    <div class="flex justify-between items-center mb-4 sm:mb-6 flex-wrap gap-2"><h2 class="text-xl sm:text-2xl font-bold text-secundaria">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-xs sm:text-sm text-red-600 hover:text-red-800 font-bold">Sair →</button></div>
+
+                    <!-- DIAGNÓSTICO DO LOCALSTORAGE -->
+                    <div class="card-mod mb-4 sm:mb-6 border-2 border-purple-400" style="background:#faf5ff;">
+                        <h3 class="text-base sm:text-lg font-bold text-purple-800 mb-3 sm:mb-4">🔍 Diagnóstico do Armazenamento</h3>
+                        <div id="diagnosticoStorage" class="text-xs sm:text-sm space-y-1">
+                            <p class="text-gray-500">Clique no botão abaixo para verificar.</p>
+                        </div>
                         <button onclick="executarDiagnostico()" class="mt-3 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-xs sm:text-sm transition-colors w-full">🔬 Executar Diagnóstico</button>
                     </div>
-                    <div class="card-mod mb-4 sm:mb-6"><h3 class="text-base sm:text-lg font-bold mb-3 sm:mb-4" style="color:#9EFF00;">📋 Clientes Cadastrados</h3><div id="listaClientes" class="space-y-2 sm:space-y-3"><p class="text-gray-500 text-xs sm:text-sm text-center">Nenhum cliente registrado ainda.</p></div></div>
-                    <button onclick="limparClientes()" class="w-full bg-red-900/30 hover:bg-red-900/50 text-red-400 font-bold py-2 rounded-lg text-xs sm:text-sm border border-red-500/30">🗑️ Limpar todos os clientes</button>
+
+                    <div class="card-mod mb-4 sm:mb-6"><h3 class="text-base sm:text-lg font-bold text-gray-800 mb-3 sm:mb-4">📋 Clientes Cadastrados</h3><div id="listaClientes" class="space-y-2 sm:space-y-3"><p class="text-gray-400 text-xs sm:text-sm text-center">Nenhum cliente registrado ainda.</p></div></div>
+                    <button onclick="limparClientes()" class="w-full bg-red-100 hover:bg-red-200 text-red-700 font-bold py-2 rounded-lg text-xs sm:text-sm">🗑️ Limpar todos os clientes</button>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- RODAPÉ -->
-    <footer class="py-6 sm:py-8 px-3 sm:px-4 mt-8 sm:mt-12" style="background: #07071a; border-top: 1px solid rgba(158,255,0,0.1);">
+    <footer class="bg-secundaria text-principal py-6 sm:py-8 px-3 sm:px-4 mt-8 sm:mt-12">
         <div class="max-w-7xl mx-auto text-center">
-            <div class="mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-gray-700/30 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
-                <div class="inline-flex items-center gap-2 sm:gap-3 rounded-full px-4 sm:px-6 py-2 sm:py-3" style="background: rgba(158,255,0,0.06); border: 1px solid rgba(158,255,0,0.2);"><span class="text-lg sm:text-2xl">👁️</span><div class="text-left"><p class="text-[10px] sm:text-xs uppercase tracking-wider font-bold text-gray-500">Total de Visitas</p><p id="contadorVisitas" class="text-xl sm:text-2xl font-bold count-glow" style="color:#9EFF00;">⏳</p></div><span class="text-base sm:text-lg">🌍</span></div>
+            <div class="mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-principal/20 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
+                <div class="inline-flex items-center gap-2 sm:gap-3 rounded-full px-4 sm:px-6 py-2 sm:py-3" style="background: rgba(158,255,0,0.08); border: 1px solid rgba(158,255,0,0.25);"><span class="text-lg sm:text-2xl">👁️</span><div class="text-left"><p class="text-[10px] sm:text-xs uppercase tracking-wider font-bold" style="color:rgba(158,255,0,0.6);">Total de Visitas</p><p id="contadorVisitas" class="text-xl sm:text-2xl font-bold count-glow" style="color:#9EFF00;">⏳</p></div><span class="text-base sm:text-lg">🌍</span></div>
+                <div class="inline-flex items-center gap-2 sm:gap-3 rounded-full px-4 sm:px-6 py-2 sm:py-3" style="background: rgba(0,180,42,0.12); border: 1px solid rgba(0,180,42,0.4);"><span class="text-lg sm:text-2xl">🛍️</span><div class="text-left"><p class="text-[10px] sm:text-xs uppercase tracking-wider font-bold" style="color:rgba(0,228,90,0.75);">Pacotes Vendidos</p><p id="contadorCompras" class="text-xl sm:text-2xl font-bold" style="color:#00E45A; text-shadow: 0 0 8px rgba(0,228,90,0.4);">⏳</p></div><span class="text-base sm:text-lg">✅</span></div>
             </div>
-            <p class="text-[10px] sm:text-xs mb-1.5 sm:mb-2 text-gray-500">Obrigado por visitar a VCORE GAMES!</p>
-            <div class="flex justify-center items-center mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-700/30">
-                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" rel="noopener" class="icone-rede-rodape text-instagram" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" rel="noopener" class="icone-rede-rodape text-youtube" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
-                <a href="https://facebook.com/vcoregames" target="_blank" rel="noopener" class="icone-rede-rodape text-facebook" aria-label="Facebook"><i class="fa fa-facebook-square"></i></a>
-                <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" rel="noopener" class="icone-rede-rodape text-cults" aria-label="Cults 3D"><i class="fa fa-cube"></i></a>
-                <a href="https://wa.me/5516981097916" target="_blank" rel="noopener" class="icone-rede-rodape text-whatsapp" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+            <p class="text-[10px] sm:text-xs mb-1.5 sm:mb-2" style="color:rgba(158,255,0,0.4);">pessoas acessaram • pacotes foram finalizados</p>
+            <div class="flex justify-center items-center mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-principal/20">
+                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-rodape text-instagram" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-rodape text-youtube" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
+                <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-rodape text-facebook" aria-label="Facebook"><i class="fa fa-facebook-square"></i></a>
+                <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-rodape text-cults" aria-label="Cults 3D"><i class="fa fa-cube"></i></a>
+                <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-rodape text-whatsapp" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
             </div>
-            <p class="text-gray-400 text-xs sm:text-sm">© 2026 VCORE GAMES - Todos os direitos reservados</p>
-            <p class="text-gray-600 text-[10px] sm:text-xs mt-0.5 sm:mt-1">Os mods são de autoria dos modders do Nexus Mods. Este site oferece exclusivamente serviço de curadoria, organização e instalação.</p>
+            <p class="text-principal/80 text-xs sm:text-sm">© 2026 VCORE GAMES - Todos os direitos reservados</p>
+            <p class="text-principal/40 text-[10px] sm:text-xs mt-0.5 sm:mt-1">Os mods são de autoria dos modders do Nexus Mods. Este site oferece exclusivamente serviço de curadoria, organização e instalação.</p>
         </div>
     </footer>
 
@@ -476,532 +492,582 @@
     <div id="barraTotal" class="barra-total">
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
             <i class="fa fa-shopping-cart text-base sm:text-xl flex-shrink-0"></i>
-            <div class="min-w-0"><p class="text-[10px] sm:text-xs leading-none" style="color:rgba(158,255,0,0.6);">Total do carrinho</p><p id="barraTotalValor" class="text-base sm:text-xl font-bold leading-tight truncate">R$ 0,00</p></div>
-            <span id="barraTotalItens" class="text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full flex-shrink-0" style="background:rgba(158,255,0,0.15); color:#9EFF00;">0 item</span>
+            <div class="min-w-0"><p class="text-[10px] sm:text-xs leading-none" style="color:rgba(158,255,0,0.7);">Total do carrinho</p><p id="barraTotalValor" class="text-base sm:text-xl font-bold leading-tight truncate">R$ 0,00</p></div>
+            <span id="barraTotalItens" class="text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full flex-shrink-0" style="background:rgba(158,255,0,0.2)">0 item</span>
         </div>
-        <button onclick="abrirCarrinho()" style="background:#9EFF00;color:#0a0a0f;" class="font-bold py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm hover:opacity-90 transition-opacity active:scale-95 transform flex-shrink-0">Ver Carrinho →</button>
+        <button onclick="abrirCarrinho()" style="background:#9EFF00;color:#0A1153" class="font-bold py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm hover:opacity-90 transition-opacity active:scale-95 transform flex-shrink-0">Ver Carrinho →</button>
     </div>
 
     <script>
-        // ==================== CONFIGURACOES ====================
-        var CHAVE_PIX = "16981097916";
+        // ============ CONFIGURAÇÕES ============
+        var CHAVE_PIX = "16997238990";
         var WHATSAPP_NUMERO = "5516981097916";
-        var ADMIN_USUARIO = "admin";
-        var ADMIN_SENHA = "vcore2026";
-        var STORAGE_KEY = "vcore_clientes_v6";
-        var EMAIL_ADMIN = "rodrigoxgames25@gmail.com";
+        var ADMIN_USER = "admin";
+        var ADMIN_PASS = "vcore2026";
+        var COMPRAS_FICTICIAS = 15;
+        var STORAGE_KEY = 'vcore_clientes_v2';
 
         var carrinho = [];
         var adminLogado = false;
         var clienteLogado = null;
-        var clientesRegistrados = [];
+        var dadosPendentes = null;
 
-        // ==================== HASH SHA-256 ====================
-        function sha256(str) {
-            function rotr(n, x) { return (x >>> n) | (x << (32 - n)); }
-            function ch(x, y, z) { return (x & y) ^ (~x & z); }
-            function maj(x, y, z) { return (x & y) ^ (x & z) ^ (y & z); }
-            function bsig0(x) { return rotr(2, x) ^ rotr(13, x) ^ rotr(22, x); }
-            function bsig1(x) { return rotr(6, x) ^ rotr(11, x) ^ rotr(25, x); }
-            function ssig0(x) { return rotr(7, x) ^ rotr(18, x) ^ (x >>> 3); }
-            function ssig1(x) { return rotr(17, x) ^ rotr(19, x) ^ (x >>> 10); }
-            var K = [0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da, 0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070, 0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2];
-            var bytes = [];
-            for (var i = 0; i < str.length; i++) { var c = str.charCodeAt(i); if (c < 0x80) bytes.push(c); else if (c < 0x800) { bytes.push(0xc0 | (c >> 6));
-                    bytes.push(0x80 | (c & 0x3f)); } else if (c < 0x10000) { bytes.push(0xe0 | (c >> 12));
-                    bytes.push(0x80 | ((c >> 6) & 0x3f));
-                    bytes.push(0x80 | (c & 0x3f)); } else { bytes.push(0xf0 | (c >> 18));
-                    bytes.push(0x80 | ((c >> 12) & 0x3f));
-                    bytes.push(0x80 | ((c >> 6) & 0x3f));
-                    bytes.push(0x80 | (c & 0x3f)); } }
-            var bitLen = bytes.length * 8;
-            bytes.push(0x80); while ((bytes.length % 64) !== 56) bytes.push(0); for (var i = 0; i < 8; i++) { bytes.push((bitLen >>> (56 - i * 8)) & 0xff); }
-            var H = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
-            for (var chunk = 0; chunk < bytes.length; chunk += 64) { var W = new Array(64); for (var t = 0; t < 16; t++) { W[t] = (bytes[chunk + t * 4] << 24) | (bytes[chunk + t * 4 + 1] << 16) | (bytes[chunk + t * 4 + 2] << 8) | bytes[chunk + t * 4 + 3]; } for (var t = 16; t < 64; t++) { W[t] = (ssig1(W[t - 2]) + W[t - 7] + ssig0(W[t - 16]) + W[t - 16]) >>> 0; } var a = H[0],
-                    b = H[1],
-                    c = H[2],
-                    d = H[3],
-                    e = H[4],
-                    f = H[5],
-                    g = H[6],
-                    h = H[7]; for (var t = 0; t < 64; t++) { var T1 = (h + bsig1(e) + ch(e, f, g) + K[t] + W[t]) >>> 0; var T2 = (bsig0(a) + maj(a, b, c)) >>> 0;
-                    h = g;
-                    g = f;
-                    f = e;
-                    e = (d + T1) >>> 0;
-                    d = c;
-                    c = b;
-                    b = a;
-                    a = (T1 + T2) >>> 0; }
-                H[0] = (H[0] + a) >>> 0;
-                H[1] = (H[1] + b) >>> 0;
-                H[2] = (H[2] + c) >>> 0;
-                H[3] = (H[3] + d) >>> 0;
-                H[4] = (H[4] + e) >>> 0;
-                H[5] = (H[5] + f) >>> 0;
-                H[6] = (H[6] + g) >>> 0;
-                H[7] = (H[7] + h) >>> 0; }
-            var hex = ""; for (var i = 0; i < 8; i++) { var hv = H[i];
-                hex += ((hv >>> 24) & 0xff).toString(16).padStart(2, "0");
-                hex += ((hv >>> 16) & 0xff).toString(16).padStart(2, "0");
-                hex += ((hv >>> 8) & 0xff).toString(16).padStart(2, "0");
-                hex += (hv & 0xff).toString(16).padStart(2, "0"); } return hex;
+        // ============ FUNÇÃO SEGURA DE LEITURA DO LOCALSTORAGE ============
+        function lerStorage() {
+            try {
+                var raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return [];
+                var dados = JSON.parse(raw);
+                if (!Array.isArray(dados)) return [];
+                return dados;
+            } catch(e) {
+                console.error('❌ ERRO ao LER localStorage:', e.message);
+                return [];
+            }
         }
 
-        function hashSenha(senha) { return sha256(senha + "VCORE_SALT_X9K2_2026_SECURE"); }
+        // ============ FUNÇÃO SEGURA DE ESCRITA NO LOCALSTORAGE ============
+        function salvarStorage(dados) {
+            try {
+                var json = JSON.stringify(dados);
+                localStorage.setItem(STORAGE_KEY, json);
+                // Verificação: ler de volta para confirmar
+                var verificado = localStorage.getItem(STORAGE_KEY);
+                if (verificado === json) {
+                    console.log('✅ localStorage SALVO com sucesso! Total de clientes:', dados.length);
+                    return true;
+                } else {
+                    console.error('❌ ERRO: localStorage salvou mas a verificação falhou!');
+                    return false;
+                }
+            } catch(e) {
+                console.error('❌ ERRO ao SALVAR no localStorage:', e.message);
+                // Tentar limpar storage antigo se estiver cheio
+                if (e.name === 'QuotaExceededError') {
+                    alert('⚠️ O armazenamento do navegador está cheio! Entre em contato com o suporte.');
+                }
+                return false;
+            }
+        }
 
-        function lerStorage() { try { var r = localStorage.getItem(STORAGE_KEY); if (!r || r === "null") return []; var d = JSON.parse(r); return Array.isArray(d) ? d : []; } catch (e) { return []; } }
+        // Inicialização segura
+        var clientesRegistrados = lerStorage();
+        console.log('📦 VCORE GAMES - Inicializado com', clientesRegistrados.length, 'clientes no storage.');
 
-        function salvarStorage(dados) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(dados)); return true; } catch (e) { alert("Erro ao salvar. Limpe o cache do navegador."); return false; } }
-        clientesRegistrados = lerStorage();
+        // ============ POP-UP DE SAÍDA ============
+        var popupSaidaMostrado = sessionStorage.getItem('vcore_popup_saida') === 'true';
 
-        function sanitizarInput(str) { if (!str) return ""; return str.replace(/[<>"'&]/g, function(c) { var m = { "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;", "&": "&amp;" }; return m[c] || c; }).substring(0, 200); }
-
-        // ==================== POP-UP DE SAÍDA ====================
-        var popupSaidaMostrado = sessionStorage.getItem("vcore_popup_saida") === "true";
-
-        function mostrarPopupSaida() { if (popupSaidaMostrado || carrinho.length > 0) return;
+        function mostrarPopupSaida() {
+            if (popupSaidaMostrado) return;
+            if (carrinho.length > 0) return;
             popupSaidaMostrado = true;
-            sessionStorage.setItem("vcore_popup_saida", "true");
-            document.getElementById("modalSaida").style.display = "flex";
-            document.body.style.overflow = "hidden"; }
+            sessionStorage.setItem('vcore_popup_saida', 'true');
+            document.getElementById('modalSaida').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
 
-        function fecharModalSaida() { document.getElementById("modalSaida").style.display = "none";
-            document.body.style.overflow = "auto"; }
-        document.addEventListener("mouseout", function(e) { if (!popupSaidaMostrado && e.clientY <= 0 && carrinho.length === 0) mostrarPopupSaida(); });
-        document.getElementById("modalSaida").addEventListener("click", function(e) { if (e.target === this) fecharModalSaida(); });
+        function fecharModalSaida() {
+            document.getElementById('modalSaida').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
 
-        // ==================== CONTADOR DE VISITAS ====================
-        function animarContador(el, alvo) { var d = 1200,
-                i = Math.max(0, alvo - 50),
-                s = null;
+        document.addEventListener('mouseout', function(e) {
+            if (!popupSaidaMostrado && e.clientY <= 0 && carrinho.length === 0) mostrarPopupSaida();
+        });
+        document.getElementById('modalSaida').addEventListener('click', function(e) { if (e.target === this) fecharModalSaida(); });
 
-            function p(t) { if (!s) s = t; var pr = Math.min((t - s) / d, 1); var a = Math.floor(i + (alvo - i) * (1 - Math.pow(1 - pr, 3))); el.innerText = a.toLocaleString("pt-BR"); if (pr < 1) requestAnimationFrame(p);
-                else el.innerText = alvo.toLocaleString("pt-BR"); }
-            requestAnimationFrame(p); }(function() { var e = document.getElementById("contadorVisitas"); fetch("https://api.counterapi.dev/v1/vcoregames_site/visitas/up").then(function(r) { return r.json(); }).then(function(d) { if (d && typeof d.count === "number") animarContador(e, d.count);
-                else e.innerText = "0"; }).catch(function() { e.innerText = "0"; }); })();
+        // ============ CONTADORES ============
+        function animarContador(el, alvo) {
+            var duracao = 1200, inicio = Math.max(0, alvo - 50), startTime = null;
+            function passo(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var progresso = Math.min((timestamp - startTime) / duracao, 1);
+                var atual = Math.floor(inicio + (alvo - inicio) * (1 - Math.pow(1 - progresso, 3)));
+                el.innerText = atual.toLocaleString('pt-BR');
+                if (progresso < 1) requestAnimationFrame(passo);
+                else el.innerText = alvo.toLocaleString('pt-BR');
+            }
+            requestAnimationFrame(passo);
+        }
 
-        // ==================== MENU ====================
-        var botaoMenu = document.getElementById("botaoMenu"),
-            listaMenu = document.getElementById("listaMenu"),
-            iconeMenu = document.getElementById("iconeMenu");
-        botaoMenu.addEventListener("click", function(e) { e.stopPropagation();
-            listaMenu.classList.toggle("aberto");
-            iconeMenu.classList.toggle("rotate-180"); });
-        document.addEventListener("click", function(e) { if (!botaoMenu.contains(e.target) && !listaMenu.contains(e.target)) { listaMenu.classList.remove("aberto");
-                iconeMenu.classList.remove("rotate-180"); } });
+        (function() {
+            var el = document.getElementById('contadorVisitas');
+            fetch('https://api.counterapi.dev/v1/vcoregames_site/visitas/up')
+                .then(function(r) { return r.json(); })
+                .then(function(d) { if (d && typeof d.count === 'number') animarContador(el, d.count); else el.innerText = '🔥'; })
+                .catch(function() { el.innerHTML = '<span style="font-size:1.2rem;">👥</span>'; });
+        })();
 
-        function irParaPacotes(event) { document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); });
-            document.getElementById("menu-inicio").classList.remove("hidden");
-            document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); if (event && event.target) event.target.classList.add("menu-ativo");
-            listaMenu.classList.remove("aberto");
-            iconeMenu.classList.remove("rotate-180");
-            setTimeout(function() { var a = document.getElementById("pacotes-premium"); if (a) a.scrollIntoView({ behavior: "smooth", block: "start" }); }, 100); }
+        (function() {
+            var el = document.getElementById('contadorCompras');
+            fetch('https://api.counterapi.dev/v1/vcoregames_site/compras_finalizadas')
+                .then(function(r) { return r.json(); })
+                .then(function(d) { var reais = (d && typeof d.count === 'number') ? d.count : 0; animarContador(el, reais + COMPRAS_FICTICIAS); })
+                .catch(function() { animarContador(el, COMPRAS_FICTICIAS); });
+        })();
 
-        function mudarMenu(event, idMenu) { document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); });
-            document.getElementById("menu-" + idMenu).classList.remove("hidden");
-            document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); if (event && event.target) event.target.classList.add("menu-ativo");
-            listaMenu.classList.remove("aberto");
-            iconeMenu.classList.remove("rotate-180"); if (idMenu === "admin") renderizarPainelAdmin(); if (idMenu === "area-cliente") renderizarAreaCliente();
-            window.scrollTo({ top: 0, behavior: "smooth" }); }
+        function incrementarContadorCompras() {
+            var el = document.getElementById('contadorCompras');
+            fetch('https://api.counterapi.dev/v1/vcoregames_site/compras_finalizadas/up')
+                .then(function(r) { return r.json(); })
+                .then(function(d) { var reais = (d && typeof d.count === 'number') ? d.count : 0; animarContador(el, reais + COMPRAS_FICTICIAS); })
+                .catch(function() {});
+        }
 
-        function mudarMenuParaInicio() { document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); });
-            document.getElementById("menu-inicio").classList.remove("hidden");
-            document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); var li = document.querySelector('#listaMenu a[href="#inicio"]'); if (li) li.classList.add("menu-ativo");
-            setTimeout(function() { var a = document.getElementById("pacotes-premium"); if (a) a.scrollIntoView({ behavior: "smooth", block: "start" }); }, 100); }
+        // ============ NOTIFICAÇÕES DE COMPRAS ALEATÓRIAS ============
+        var nomesCompradores = ['Lucas S.','Gabriel M.','Matheus R.','Felipe A.','Rafael C.','Bruno P.','Thiago L.','Marcos V.','André F.','Pedro H.','João G.','Carlos E.','Vinicius D.','Leonardo B.','Guilherme T.','Diego N.','Ricardo S.','Eduardo M.','Caio R.','Igor P.','Henrique L.','Daniel C.','Renato A.','Fábio J.','Alexandre K.'];
+        var pacotesNotificacao = ['Pacote Diamante 💎','Pacote Ouro 🥇','Pacote Prata 🥈','Pacote Ouro 🥇','Pacote Diamante 💎','Pacote Diamante 💎','Pacote Ouro 🥇'];
+        var temposNotificacao = ['agora mesmo','há 2 min','há 5 min','há 8 min','há 12 min','há 3 min','há 7 min','há 1 min','há 10 min','há 4 min'];
 
-        // ==================== CARRINHO ====================
-        function adicionarAoCarrinho(nome, preco) { var e = null; for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { e = carrinho[i]; break; } } if (e) e.qtd += 1; else carrinho.push({ nome: nome, preco: preco, qtd: 1 });
+        function nomeAleatorio() { return nomesCompradores[Math.floor(Math.random() * nomesCompradores.length)]; }
+
+        function criarToastCompra() {
+            var existente = document.querySelector('.toast-compra');
+            if (existente) { existente.classList.add('saindo'); setTimeout(function() { if (existente.parentNode) existente.parentNode.removeChild(existente); }, 400); }
+            var nome = nomeAleatorio(), pacote = pacotesNotificacao[Math.floor(Math.random() * pacotesNotificacao.length)], tempo = temposNotificacao[Math.floor(Math.random() * temposNotificacao.length)], isMobile = window.innerWidth < 640;
+            var toast = document.createElement('div'); toast.className = 'toast-compra';
+            toast.style.cssText = 'position:fixed;bottom:' + (isMobile ? '80px' : '100px') + ';right:' + (isMobile ? '8px' : '20px') + ';background:#0A1153;color:#fff;padding:' + (isMobile ? '10px 14px' : '14px 18px') + ';border-radius:14px;z-index:9999;box-shadow:0 8px 30px rgba(0,0,0,0.4);border:1px solid rgba(158,255,0,0.4);max-width:' + (isMobile ? '260px' : '300px') + ';cursor:default;font-family:Inter,system-ui,sans-serif;font-size:' + (isMobile ? '0.7rem' : '0.85rem') + ';';
+            toast.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="background:rgba(158,255,0,0.15);border-radius:50%;width:' + (isMobile ? '32px' : '40px') + ';height:' + (isMobile ? '32px' : '40px') + ';display:flex;align-items:center;justify-content:center;font-size:' + (isMobile ? '1rem' : '1.2rem') + ';flex-shrink:0;">🔥</div><div style="min-width:0;"><p style="font-weight:700;font-size:' + (isMobile ? '0.75rem' : '0.85rem') + ';color:#9EFF00;margin:0;">' + nome + ' comprou</p><p style="font-size:' + (isMobile ? '0.7rem' : '0.8rem') + ';margin:2px 0;color:#e5e7eb;">' + pacote + '</p><p style="font-size:' + (isMobile ? '0.65rem' : '0.7rem') + ';margin:0;color:rgba(255,255,255,0.5);">' + tempo + '</p></div></div>';
+            document.body.appendChild(toast);
+            setTimeout(function() { if (toast.parentNode) { toast.classList.add('saindo'); setTimeout(function() { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 400); } }, 5000);
+        }
+
+        function agendarProximaNotificacao() { setTimeout(function() { criarToastCompra(); agendarProximaNotificacao(); }, Math.floor(Math.random() * 12000) + 8000); }
+        setTimeout(function() { agendarProximaNotificacao(); }, 5000);
+
+        // ============ MENU DROPDOWN ============
+        var botaoMenu = document.getElementById('botaoMenu'), listaMenu = document.getElementById('listaMenu'), iconeMenu = document.getElementById('iconeMenu');
+        botaoMenu.addEventListener('click', function(e) { e.stopPropagation(); listaMenu.classList.toggle('aberto'); iconeMenu.classList.toggle('rotate-180'); });
+        document.addEventListener('click', function(e) { if (!botaoMenu.contains(e.target) && !listaMenu.contains(e.target)) { listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('rotate-180'); } });
+
+        function irParaPacotes(event) {
+            document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
+            document.getElementById('menu-inicio').classList.remove('hidden');
+            document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
+            if (event && event.target) event.target.classList.add('menu-ativo');
+            listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('rotate-180');
+            setTimeout(function() { var a = document.getElementById('pacotes-premium'); if (a) a.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+        }
+
+        function mudarMenu(event, idMenu) {
+            document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
+            document.getElementById('menu-' + idMenu).classList.remove('hidden');
+            document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
+            if (event && event.target) event.target.classList.add('menu-ativo');
+            listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('rotate-180');
+            if (idMenu === 'admin') renderizarPainelAdmin();
+            if (idMenu === 'area-cliente') renderizarAreaCliente();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function mudarMenuParaInicio() {
+            document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
+            document.getElementById('menu-inicio').classList.remove('hidden');
+            document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
+            var linkInicio = document.querySelector('#listaMenu a[href="#inicio"]'); if (linkInicio) linkInicio.classList.add('menu-ativo');
+            setTimeout(function() { var a = document.getElementById('pacotes-premium'); if (a) a.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+        }
+
+        // ============ CARRINHO ============
+        function adicionarAoCarrinho(nome, preco) {
+            var existente = null;
+            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { existente = carrinho[i]; break; } }
+            if (existente) existente.qtd += 1; else carrinho.push({ nome: nome, preco: preco, qtd: 1 });
+            atualizarCarrinho(); mostrarNotificacao(nome + ' adicionado! 🛒');
+        }
+
+        function alterarQtd(nome, delta) {
+            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho[i].qtd += delta; if (carrinho[i].qtd <= 0) carrinho.splice(i, 1); break; } }
             atualizarCarrinho();
-            mostrarNotificacao(nome + " adicionado!"); }
+        }
 
-        function alterarQtd(nome, delta) { for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho[i].qtd += delta; if (carrinho[i].qtd <= 0) carrinho.splice(i, 1); break; } }
-            atualizarCarrinho(); }
+        function removerDoCarrinho(nome) {
+            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho.splice(i, 1); break; } }
+            atualizarCarrinho();
+        }
 
-        function removerDoCarrinho(nome) { for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho.splice(i, 1); break; } }
-            atualizarCarrinho(); }
+        function atualizarCarrinho() {
+            var lista = document.getElementById('listaCarrinho'), totalEl = document.getElementById('valorTotal'), badge = document.getElementById('badgeCarrinho');
+            var barra = document.getElementById('barraTotal'), barraTotalValor = document.getElementById('barraTotalValor'), barraTotalItens = document.getElementById('barraTotalItens');
+            lista.innerHTML = '';
+            var totalUnidades = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0);
+            var totalValor = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
+            var totalFormatado = 'R$ ' + totalValor.toFixed(2).replace('.', ',');
 
-        function escapeJS(str) { return str.replace(/\\/g, "\\\\").replace(/'/g, "\\'"); }
+            if (carrinho.length > 0) {
+                badge.classList.remove('hidden'); badge.innerText = totalUnidades;
+                carrinho.forEach(function(item) {
+                    var subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ','), precoUnit = item.preco.toFixed(2).replace('.', ',');
+                    var div = document.createElement('div');
+                    div.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #e5e7eb;gap:6px;flex-wrap:wrap;';
+                    div.innerHTML = '<div style="flex:1;min-width:120px;"><p style="font-weight:600;font-size:0.85rem;">' + item.nome + '</p><p style="font-size:0.72rem;color:#6b7280;">R$ ' + precoUnit + ' cada</p></div><div style="display:flex;align-items:center;gap:4px;flex-shrink:0;"><button onclick="alterarQtd(\'' + item.nome.replace(/'/g,"\\'") + '\', -1)" style="width:24px;height:24px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;border:none;cursor:pointer;font-size:0.8rem;">−</button><span style="font-weight:700;min-width:18px;text-align:center;font-size:0.85rem;">' + item.qtd + '</span><button onclick="alterarQtd(\'' + item.nome.replace(/'/g,"\\'") + '\', 1)" style="width:24px;height:24px;border-radius:50%;background:#0A1153;color:#9EFF00;font-weight:bold;border:none;cursor:pointer;font-size:0.8rem;">+</button><span style="font-weight:700;min-width:60px;text-align:right;font-size:0.85rem;">R$ ' + subtotal + '</span><button onclick="removerDoCarrinho(\'' + item.nome.replace(/'/g,"\\'") + '\')" style="color:#dc2626;font-weight:700;background:none;border:none;cursor:pointer;font-size:0.9rem;">✕</button></div>';
+                    lista.appendChild(div);
+                });
+                totalEl.innerText = totalFormatado; barraTotalValor.innerText = totalFormatado;
+                barraTotalItens.innerText = totalUnidades + (totalUnidades === 1 ? ' item' : ' itens'); barra.classList.add('visivel');
+            } else {
+                badge.classList.add('hidden'); lista.innerHTML = '<p class="text-gray-500 text-center text-sm">Seu carrinho está vazio.</p>';
+                totalEl.innerText = 'R$ 0,00'; barra.classList.remove('visivel');
+                barraTotalValor.innerText = 'R$ 0,00'; barraTotalItens.innerText = '0 item';
+            }
+        }
 
-        function atualizarCarrinho() { var l = document.getElementById("listaCarrinho"),
-                t = document.getElementById("valorTotal"),
-                b = document.getElementById("badgeCarrinho"); var br = document.getElementById("barraTotal"),
-                btv = document.getElementById("barraTotalValor"),
-                bti = document.getElementById("barraTotalItens");
-            l.innerHTML = ""; var tu = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0); var tv = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0); var tf = "R$ " + tv.toFixed(2).replace(".", ","); if (carrinho.length > 0) { b.classList.remove("hidden");
-                b.innerText = tu;
-                carrinho.forEach(function(i) { var st = (i.preco * i.qtd).toFixed(2).replace(".", ","),
-                        pu = i.preco.toFixed(2).replace(".", ","),
-                        ne = escapeJS(i.nome); var d = document.createElement("div");
-                    d.style.cssText = "display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #2a2a3e;gap:6px;flex-wrap:wrap;";
-                    d.innerHTML = '<div style="flex:1;min-width:120px;"><p style="font-weight:600;font-size:0.85rem;color:#e0e0e0;">' + i.nome + '</p><p style="font-size:0.72rem;color:#888;">R$ ' + pu + ' cada</p></div>' + '<div style="display:flex;align-items:center;gap:4px;flex-shrink:0;">' + '<button onclick="alterarQtd(\'' + ne + '\', -1)" style="width:24px;height:24px;border-radius:50%;background:#1a2a3e;color:#9EFF00;font-weight:bold;border:1px solid #9EFF00;cursor:pointer;font-size:0.8rem;">-</button>' + '<span style="font-weight:700;min-width:18px;text-align:center;font-size:0.85rem;color:#9EFF00;">' + i.qtd + "</span>" + '<button onclick="alterarQtd(\'' + ne + '\', 1)" style="width:24px;height:24px;border-radius:50%;background:#1a2a3e;color:#9EFF00;font-weight:bold;border:1px solid #9EFF00;cursor:pointer;font-size:0.8rem;">+</button>' + '<span style="font-weight:700;min-width:60px;text-align:right;font-size:0.85rem;color:#e0e0e0;">R$ ' + st + "</span>" + '<button onclick="removerDoCarrinho(\'' + ne + '\')" style="color:#ff4444;font-weight:700;background:none;border:none;cursor:pointer;font-size:0.9rem;">&times;</button>' + "</div>";
-                    l.appendChild(d); });
-                t.innerText = tf;
-                btv.innerText = tf;
-                bti.innerText = tu + (tu === 1 ? " item" : " itens");
-                br.classList.add("visivel"); } else { b.classList.add("hidden");
-                l.innerHTML = '<p class="text-gray-500 text-center text-sm">Seu carrinho está vazio.</p>';
-                t.innerText = "R$ 0,00";
-                br.classList.remove("visivel");
-                btv.innerText = "R$ 0,00";
-                bti.innerText = "0 item"; } }
+        function mostrarNotificacao(msg) {
+            var notif = document.getElementById('notificacaoCarrinho');
+            if (!notif) { notif = document.createElement('div'); notif.id = 'notificacaoCarrinho'; notif.style.cssText = 'position:fixed;top:80px;right:16px;background:#0A1153;color:#9EFF00;font-weight:700;padding:12px 18px;border-radius:10px;z-index:999;font-size:0.85rem;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:opacity 0.4s;opacity:0;pointer-events:none;max-width:280px;'; document.body.appendChild(notif); }
+            notif.innerText = msg; notif.style.opacity = '1';
+            if (window.innerWidth < 640) { notif.style.right = '8px'; notif.style.maxWidth = '240px'; notif.style.fontSize = '0.75rem'; notif.style.padding = '10px 14px'; }
+            clearTimeout(notif._timer); notif._timer = setTimeout(function() { notif.style.opacity = '0'; }, 2500);
+        }
 
-        function mostrarNotificacao(msg) { var n = document.getElementById("notificacaoCarrinho"); if (!n) { n = document.createElement("div");
-                n.id = "notificacaoCarrinho";
-                n.style.cssText = "position:fixed;top:80px;right:16px;background:#0d1b2a;color:#9EFF00;font-weight:700;padding:12px 18px;border-radius:10px;z-index:999;font-size:0.85rem;box-shadow:0 4px 20px rgba(0,0,0,0.5);border:1px solid rgba(158,255,0,0.3);transition:opacity 0.4s;opacity:0;pointer-events:none;max-width:280px;";
-                document.body.appendChild(n); }
-            n.innerText = msg;
-            n.style.opacity = "1"; if (window.innerWidth < 640) { n.style.right = "8px";
-                n.style.maxWidth = "240px";
-                n.style.fontSize = "0.75rem";
-                n.style.padding = "10px 14px"; }
-            clearTimeout(n._timer);
-            n._timer = setTimeout(function() { n.style.opacity = "0"; }, 2500); }
+        function abrirCarrinho() { document.getElementById('modalCarrinho').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function fecharCarrinho() { document.getElementById('modalCarrinho').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        document.getElementById('modalCarrinho').addEventListener('click', function(e) { if (e.target === this) fecharCarrinho(); });
 
-        function abrirCarrinho() { document.getElementById("modalCarrinho").style.display = "flex";
-            document.body.style.overflow = "hidden";
-            atualizarCarrinho(); }
+        function fecharModalPix() { document.getElementById('modalPix').style.display = 'none'; document.body.style.overflow = 'auto'; mostrarNotificacao('📧 Não esqueça: o link do pacote será enviado para o seu e-mail!'); }
+        document.getElementById('modalPix').addEventListener('click', function(e) { if (e.target === this) fecharModalPix(); });
+        document.getElementById('modalAvisoEmail').addEventListener('click', function(e) { if (e.target === this) voltarAvisoEmail(); });
 
-        function fecharCarrinho() { document.getElementById("modalCarrinho").style.display = "none";
-            document.body.style.overflow = "auto"; }
-        document.getElementById("modalCarrinho").addEventListener("click", function(e) { if (e.target === this) fecharCarrinho(); });
+        function toggleSenhaCarrinho() {
+            var input = document.getElementById('clienteSenha'), icone = document.getElementById('iconeSenhaCarrinho');
+            if (input.type === 'password') { input.type = 'text'; icone.classList.remove('fa-eye'); icone.classList.add('fa-eye-slash'); }
+            else { input.type = 'password'; icone.classList.remove('fa-eye-slash'); icone.classList.add('fa-eye'); }
+        }
 
-        function fecharModalPix() { document.getElementById("modalPix").style.display = "none";
-            document.body.style.overflow = "auto"; }
-        document.getElementById("modalPix").addEventListener("click", function(e) { if (e.target === this) fecharModalPix(); });
+        function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
 
-        function toggleSenhaCarrinho() { var i = document.getElementById("clienteSenha"),
-                ic = document.getElementById("iconeSenhaCarrinho"); if (i.type === "password") { i.type = "text";
-                ic.classList.remove("fa-eye");
-                ic.classList.add("fa-eye-slash"); } else { i.type = "password";
-                ic.classList.remove("fa-eye-slash");
-                ic.classList.add("fa-eye"); } }
-
-        function isValidEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) && e.length <= 150; }
-
-        // ==================== FLUXO DE FINALIZAÇÃO ====================
+        // ============ FLUXO DE FINALIZAÇÃO (CORRIGIDO) ============
         function iniciarFinalizacao() {
-            if (carrinho.length === 0) { mostrarNotificacao("Carrinho vazio!"); return; }
-            var nome = document.getElementById("clienteNome").value.trim();
-            var email = document.getElementById("clienteEmail").value.trim();
-            var senha = document.getElementById("clienteSenha").value.trim();
-            if (!nome || nome.length < 2) { mostrarNotificacao("Preencha seu nome!");
-                document.getElementById("clienteNome").focus(); return; }
-            if (!email || !isValidEmail(email)) { mostrarNotificacao("E-mail inválido!");
-                document.getElementById("clienteEmail").focus(); return; }
-            if (!senha || senha.length < 6) { mostrarNotificacao("Senha: mínimo 6 caracteres!");
-                document.getElementById("clienteSenha").focus(); return; }
-            if (!/[a-zA-Z]/.test(senha) || !/[0-9]/.test(senha)) { mostrarNotificacao("Senha deve ter letras E números!");
-                document.getElementById("clienteSenha").focus(); return; }
-            finalizarCompra({ nome: sanitizarInput(nome), email: email.toLowerCase().trim(), senha: senha });
+            if (carrinho.length === 0) { mostrarNotificacao('⚠️ Seu carrinho está vazio!'); return; }
+            var nome = document.getElementById('clienteNome').value.trim();
+            var email = document.getElementById('clienteEmail').value.trim();
+            var senha = document.getElementById('clienteSenha').value.trim();
+            if (!nome) { mostrarNotificacao('⚠️ Preencha seu nome!'); document.getElementById('clienteNome').focus(); return; }
+            if (!email) { mostrarNotificacao('⚠️ Preencha seu e-mail!'); document.getElementById('clienteEmail').focus(); return; }
+            if (!isValidEmail(email)) { mostrarNotificacao('⚠️ E-mail inválido!'); document.getElementById('clienteEmail').focus(); return; }
+            if (!senha || senha.length < 4) { mostrarNotificacao('⚠️ Crie uma senha com pelo menos 4 caracteres!'); document.getElementById('clienteSenha').focus(); return; }
+            dadosPendentes = { nome: nome, email: email, senha: senha };
+            console.log('📝 Dados capturados para cadastro:', { nome: nome, email: email, senha: '(oculta)' });
+            document.getElementById('modalAvisoEmail').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function voltarAvisoEmail() {
+            document.getElementById('modalAvisoEmail').style.display = 'none';
+            document.body.style.overflow = 'hidden';
+            dadosPendentes = null;
+        }
+
+        function confirmarAvisoEmail() {
+            document.getElementById('modalAvisoEmail').style.display = 'none';
+            document.body.style.overflow = 'hidden';
+            if (!dadosPendentes) { mostrarNotificacao('⚠️ Erro: dados não encontrados. Tente novamente.'); return; }
+            finalizarCompra(dadosPendentes);
+            dadosPendentes = null;
         }
 
         function finalizarCompra(dados) {
-            clientesRegistrados = lerStorage();
-            var itens = carrinho.map(function(i) { return i.qtd + "x " + i.nome; }).join(", ");
-            var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
-            var totalStr = total.toFixed(2).replace(".", ",");
-            var totalFormatado = "R$ " + totalStr;
-            var agora = new Date();
-            var dataStr = agora.toLocaleDateString("pt-BR") + " " + agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+            console.log('💾 Iniciando salvamento no localStorage...');
 
-            clientesRegistrados.push({
+            // RECARREGAR DO LOCALSTORAGE ANTES DE MODIFICAR (evita corrupção)
+            clientesRegistrados = lerStorage();
+
+            var itens = carrinho.map(function(item) { return item.qtd + 'x ' + item.nome; }).join(', ');
+            var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
+            var totalFormatado = 'R$ ' + total.toFixed(2).replace('.', ',');
+            var agora = new Date();
+            var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+
+            var novoCliente = {
                 nome: dados.nome,
                 email: dados.email,
-                senhaHash: hashSenha(dados.senha),
+                senha: dados.senha,
                 itens: itens,
-                total: totalStr,
+                total: total.toFixed(2).replace('.', ','),
                 data: dataStr,
-                status: "pendente",
-                linkDownload: ""
-            });
+                status: 'pendente',
+                linkDownload: ''
+            };
 
-            if (!salvarStorage(clientesRegistrados)) { mostrarNotificacao("Erro ao salvar!"); return; }
+            clientesRegistrados.push(novoCliente);
 
-            // ❌ NÃO abre e-mail automaticamente - só salva e mostra o modal PIX
+            // Salvar com verificação
+            var salvou = salvarStorage(clientesRegistrados);
 
+            if (salvou) {
+                console.log('✅ Cliente cadastrado com sucesso!', { nome: dados.nome, email: dados.email });
+                mostrarNotificacao('✅ Conta criada com sucesso!');
+            } else {
+                console.error('❌ FALHA ao salvar cliente no localStorage!');
+                mostrarNotificacao('⚠️ Erro ao salvar. Tente novamente ou use outro navegador.');
+                return;
+            }
+
+            // Limpar carrinho e inputs
             fecharCarrinho();
             carrinho = [];
             atualizarCarrinho();
-            document.getElementById("clienteNome").value = "";
-            document.getElementById("clienteEmail").value = "";
-            document.getElementById("clienteSenha").value = "";
+            document.getElementById('clienteNome').value = '';
+            document.getElementById('clienteEmail').value = '';
+            document.getElementById('clienteSenha').value = '';
 
-            document.getElementById("pixValor").innerText = totalFormatado;
-            document.getElementById("pixCopiado").classList.add("hidden");
-            document.getElementById("modalPix").style.display = "flex";
-            document.body.style.overflow = "hidden";
+            incrementarContadorCompras();
+
+            document.getElementById('pixValor').innerText = totalFormatado;
+            document.getElementById('pixCopiado').classList.add('hidden');
+            document.getElementById('modalPix').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            criarToastCompra();
         }
 
         function copiarChavePix() {
             navigator.clipboard.writeText(CHAVE_PIX).then(function() {
-                var m = document.getElementById("pixCopiado");
-                m.classList.remove("hidden");
-                setTimeout(function() { m.classList.add("hidden"); }, 3000);
+                var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden'); setTimeout(function() { msg.classList.add('hidden'); }, 3000);
             }).catch(function() {
-                var inp = document.createElement("input");
-                inp.value = CHAVE_PIX;
-                document.body.appendChild(inp);
-                inp.select();
-                document.execCommand("copy");
-                document.body.removeChild(inp);
-                var m = document.getElementById("pixCopiado");
-                m.classList.remove("hidden");
-                setTimeout(function() { m.classList.add("hidden"); }, 3000);
+                var input = document.createElement('input'); input.value = CHAVE_PIX; document.body.appendChild(input); input.select(); document.execCommand('copy'); document.body.removeChild(input);
+                var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden'); setTimeout(function() { msg.classList.add('hidden'); }, 3000);
             });
         }
 
-        // ==================== ENVIO DE COMPROVANTE POR E-MAIL (APÓS PAGAMENTO) ====================
-        function abrirEmailComprovante() {
-            clientesRegistrados = lerStorage();
-            var ultimoCliente = clientesRegistrados.length > 0 ? clientesRegistrados[clientesRegistrados.length - 1] : null;
-            var totalStr = ultimoCliente ? ultimoCliente.total : "0,00";
-
-            var corpo = "";
-            corpo += "========================================\n";
-            corpo += "COMPROVANTE DE PAGAMENTO - VCORE GAMES\n";
-            corpo += "========================================\n\n";
-            if (ultimoCliente) {
-                corpo += "Cliente: " + ultimoCliente.nome + "\n";
-                corpo += "E-mail: " + ultimoCliente.email + "\n";
-                corpo += "Itens: " + ultimoCliente.itens + "\n";
-                corpo += "Valor Pago: R$ " + ultimoCliente.total + "\n\n";
-            } else {
-                corpo += "Valor Pago: R$ " + totalStr + "\n\n";
-            }
-            corpo += "Banco: Banco Digital Sumup\n";
-            corpo += "Chave PIX: " + CHAVE_PIX + "\n";
-            corpo += "Titular: Rodrigo Paulino da Silva\n\n";
-            corpo += "========================================\n";
-            corpo += "O comprovante está em anexo.\n";
-            corpo += "Aguardo a confirmação e liberação!\n";
-            corpo += "========================================\n";
-
-            window.open("mailto:" + encodeURIComponent(EMAIL_ADMIN) + "?subject=" + encodeURIComponent("COMPROVANTE DE PAGAMENTO - VCORE GAMES") + "&body=" + encodeURIComponent(corpo), "_blank");
-            mostrarNotificacao("Redirecionando para seu e-mail...");
-        }
-
         function abrirWhatsAppComprovante() {
-            clientesRegistrados = lerStorage();
-            var totalStr = clientesRegistrados.length > 0 ? clientesRegistrados[clientesRegistrados.length - 1].total : "0,00";
-            window.open("https://wa.me/" + WHATSAPP_NUMERO + "?text=" + encodeURIComponent("Olá Rodrigo! Acabei de fazer o pagamento de R$ " + totalStr + " via PIX para o Banco Digital Sumup. Segue o comprovante em anexo."), "_blank");
+            var clientesAtuais = lerStorage();
+            var totalFormatado = clientesAtuais.length > 0 ? clientesAtuais[clientesAtuais.length - 1].total : '0,00';
+            window.open('https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent('Olá Rodrigo! Acabei de fazer o pagamento de R$ ' + totalFormatado + ' via PIX. Segue o comprovante em anexo.'), '_blank');
         }
 
-        // ==================== ÁREA DO CLIENTE ====================
+        // ============ ÁREA DO CLIENTE (CORRIGIDO) ============
         function renderizarAreaCliente() {
-            if (clienteLogado) { document.getElementById("clienteLoginPainel").classList.add("hidden");
-                document.getElementById("clientePainel").classList.remove("hidden");
-                renderizarPainelCliente(); } else { document.getElementById("clienteLoginPainel").classList.remove("hidden");
-                document.getElementById("clientePainel").classList.add("hidden");
-                document.getElementById("clienteLoginEmail").value = "";
-                document.getElementById("clienteLoginPass").value = "";
-                document.getElementById("erroLoginCliente").classList.add("hidden"); }
+            if (clienteLogado) {
+                document.getElementById('clienteLoginPainel').classList.add('hidden');
+                document.getElementById('clientePainel').classList.remove('hidden');
+                renderizarPainelCliente();
+            } else {
+                document.getElementById('clienteLoginPainel').classList.remove('hidden');
+                document.getElementById('clientePainel').classList.add('hidden');
+                document.getElementById('clienteLoginEmail').value = '';
+                document.getElementById('clienteLoginPass').value = '';
+                document.getElementById('erroLoginCliente').classList.add('hidden');
+            }
         }
-
-        var tentativasLoginCliente = 0,
-            bloqueioLoginClienteAte = 0;
 
         function fazerLoginCliente() {
-            if (Date.now() < bloqueioLoginClienteAte) { mostrarErroLoginCliente("Aguarde " + Math.ceil((bloqueioLoginClienteAte - Date.now()) / 1000) + " segundos."); return; }
-            var ed = document.getElementById("clienteLoginEmail").value.trim().toLowerCase();
-            var sd = document.getElementById("clienteLoginPass").value.trim();
-            if (!ed) { mostrarErroLoginCliente("Digite seu e-mail."); return; }
-            if (!sd) { mostrarErroLoginCliente("Digite sua senha."); return; }
+            var email = document.getElementById('clienteLoginEmail').value.trim();
+            var senha = document.getElementById('clienteLoginPass').value.trim();
+
+            if (!email) { document.getElementById('erroLoginCliente').innerText = '❌ Digite seu e-mail.'; document.getElementById('erroLoginCliente').classList.remove('hidden'); return; }
+            if (!senha) { document.getElementById('erroLoginCliente').innerText = '❌ Digite sua senha.'; document.getElementById('erroLoginCliente').classList.remove('hidden'); return; }
+
+            // RECARREGAR DO LOCALSTORAGE
             clientesRegistrados = lerStorage();
-            var shd = hashSenha(sd),
-                enc = null;
-            for (var i = 0; i < clientesRegistrados.length; i++) { if ((clientesRegistrados[i].email || "").toLowerCase().trim() === ed && clientesRegistrados[i].senhaHash === shd) { enc = clientesRegistrados[i]; break; } }
-            if (enc) { tentativasLoginCliente = 0;
-                clienteLogado = enc;
-                document.getElementById("erroLoginCliente").classList.add("hidden");
-                document.getElementById("clienteLoginPainel").classList.add("hidden");
-                document.getElementById("clientePainel").classList.remove("hidden");
+            console.log('🔍 Tentando login - email:', email, '| total de clientes no storage:', clientesRegistrados.length);
+
+            var encontrado = null;
+            var emailLower = email.toLowerCase();
+
+            for (var i = 0; i < clientesRegistrados.length; i++) {
+                var c = clientesRegistrados[i];
+                if (c.email.toLowerCase() === emailLower && c.senha === senha) {
+                    encontrado = c;
+                    console.log('✅ Login bem-sucedido para:', c.nome, '| email:', c.email);
+                    break;
+                }
+            }
+
+            if (encontrado) {
+                clienteLogado = encontrado;
+                document.getElementById('erroLoginCliente').classList.add('hidden');
+                document.getElementById('clienteLoginPainel').classList.add('hidden');
+                document.getElementById('clientePainel').classList.remove('hidden');
                 renderizarPainelCliente();
-                mostrarNotificacao("Bem-vindo, " + enc.nome + "!"); } else { tentativasLoginCliente++; if (tentativasLoginCliente >= 5) { bloqueioLoginClienteAte = Date.now() + (30 * 1000);
-                    mostrarErroLoginCliente("Bloqueado por 30s. Muitas tentativas!");
-                    tentativasLoginCliente = 0; } else { mostrarErroLoginCliente(tentativasLoginCliente >= 3 ? "Senha incorreta! (" + tentativasLoginCliente + "/5)" : "E-mail ou senha incorretos."); } }
+            } else {
+                // Verificar se o email existe (para dar mensagem mais precisa)
+                var emailExiste = false;
+                for (var j = 0; j < clientesRegistrados.length; j++) {
+                    if (clientesRegistrados[j].email.toLowerCase() === emailLower) { emailExiste = true; break; }
+                }
+                if (emailExiste) {
+                    document.getElementById('erroLoginCliente').innerText = '❌ Senha incorreta! Verifique se digitou corretamente.';
+                } else {
+                    document.getElementById('erroLoginCliente').innerText = '❌ E-mail não encontrado! Verifique se usou o mesmo e-mail do cadastro.';
+                }
+                document.getElementById('erroLoginCliente').classList.remove('hidden');
+                console.log('❌ Login falhou para:', email);
+            }
         }
 
-        function mostrarErroLoginCliente(m) { var e = document.getElementById("erroLoginCliente");
-            e.innerText = m;
-            e.classList.remove("hidden"); }
-
-        function fazerLogoutCliente() { clienteLogado = null;
-            document.getElementById("clienteLoginPainel").classList.remove("hidden");
-            document.getElementById("clientePainel").classList.add("hidden");
-            document.getElementById("clienteLoginEmail").value = "";
-            document.getElementById("clienteLoginPass").value = "";
-            document.getElementById("erroLoginCliente").classList.add("hidden"); }
+        function fazerLogoutCliente() {
+            clienteLogado = null;
+            document.getElementById('clienteLoginPainel').classList.remove('hidden');
+            document.getElementById('clientePainel').classList.add('hidden');
+            document.getElementById('clienteLoginEmail').value = '';
+            document.getElementById('clienteLoginPass').value = '';
+            document.getElementById('erroLoginCliente').classList.add('hidden');
+        }
 
         function renderizarPainelCliente() {
             if (!clienteLogado) return;
-            document.getElementById("clienteNomeLogado").innerText = " " + clienteLogado.nome + " | " + clienteLogado.email;
+            document.getElementById('clienteNomeLogado').innerText = '👤 ' + clienteLogado.nome + ' | 📧 ' + clienteLogado.email;
             clientesRegistrados = lerStorage();
-            var el = (clienteLogado.email || "").toLowerCase().trim();
-            for (var i = 0; i < clientesRegistrados.length; i++) { if ((clientesRegistrados[i].email || "").toLowerCase().trim() === el) { clienteLogado = clientesRegistrados[i]; break; } }
-            var ctr = document.getElementById("clienteComprasContainer"),
-                cds = [];
-            for (var j = 0; j < clientesRegistrados.length; j++) { if ((clientesRegistrados[j].email || "").toLowerCase().trim() === el) cds.push(clientesRegistrados[j]); } if (cds.length === 0) { ctr.innerHTML = '<div class="card-mod text-center"><p class="text-gray-400 text-sm">Nenhuma compra encontrada.</p></div>'; return; }
-            ctr.innerHTML = ""; for (var k = 0; k < cds.length; k++) { var c = cds[k],
-                    crd = document.createElement("div");
-                crd.className = "card-mod mb-3 sm:mb-4"; var stHTML = c.status === "aprovado" ? '<span class="inline-flex items-center gap-1 bg-green-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">✅ Aprovado</span>' : '<span class="inline-flex items-center gap-1 bg-yellow-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">⏳ Pendente</span>'; var dlHTML = ""; if (c.status === "aprovado" && c.linkDownload) dlHTML = '<div class="mt-3 p-3 rounded-xl" style="background:rgba(158,255,0,0.06);border:1px solid rgba(158,255,0,0.25);"><p class="font-bold mb-1 text-sm" style="color:#9EFF00;">🔗 Link de Download:</p><a href="' + c.linkDownload + '" target="_blank" rel="noopener" class="inline-block font-bold py-2.5 px-5 rounded-lg text-xs transition-colors break-all" style="background:#0d1b2a;color:#9EFF00;border:1px solid rgba(158,255,0,0.3);"><i class="fa fa-download"></i> Baixar Pacote</a></div>'; else if (c.status === "aprovado") dlHTML = '<div class="mt-3 p-3 rounded-xl" style="background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.2);"><p class="font-bold text-yellow-400 mb-1 text-sm">✅ Aprovado!</p><p class="text-xs text-gray-300">Link em breve no e-mail <strong style="color:#9EFF00;">' + c.email + "</strong></p></div>"; else dlHTML = '<div class="mt-3 p-3 rounded-xl" style="background:rgba(0,0,0,0.15);border:1px solid rgba(255,255,255,0.08);"><p class="text-xs text-gray-400">⏳ Aguardando confirmação do pagamento.</p></div>';
-                crd.innerHTML = '<div class="flex justify-between items-start mb-2 flex-wrap gap-2"><div class="min-w-0"><h4 class="text-base font-bold truncate" style="color:#9EFF00;">🎮 ' + c.itens + '</h4><p class="text-xs text-gray-400">📅 ' + c.data + " | 💰 R$ " + c.total + "</p></div>" + stHTML + "</div>" + dlHTML;
-                ctr.appendChild(crd); }
-        }
 
-        // ==================== PAINEL ADMIN ====================
-        var tentativasAdmin = 0,
-            bloqueioAdminAte = 0;
+            // Atualizar clienteLogado com dados mais recentes
+            for (var i = 0; i < clientesRegistrados.length; i++) {
+                if (clientesRegistrados[i].email.toLowerCase() === clienteLogado.email.toLowerCase()) {
+                    clienteLogado = clientesRegistrados[i]; break;
+                }
+            }
 
-        function fazerLogin() { if (Date.now() < bloqueioAdminAte) { document.getElementById("erroLogin").innerText = "Aguarde " + Math.ceil((bloqueioAdminAte - Date.now()) / 1000) + "s.";
-                document.getElementById("erroLogin").classList.remove("hidden"); return; } if (document.getElementById("adminUser").value.trim() === ADMIN_USUARIO && document.getElementById("adminPass").value.trim() === ADMIN_SENHA) { tentativasAdmin = 0;
-                adminLogado = true;
-                document.getElementById("painelLogin").classList.add("hidden");
-                document.getElementById("painelAdmin").classList.remove("hidden");
-                document.getElementById("erroLogin").classList.add("hidden");
-                renderizarListaClientes(); } else { tentativasAdmin++;
-                document.getElementById("erroLogin").classList.remove("hidden"); if (tentativasAdmin >= 5) { bloqueioAdminAte = Date.now() + (60 * 1000);
-                    document.getElementById("erroLogin").innerText = "🚫 Bloqueado por 60 segundos!";
-                    tentativasAdmin = 0; } else document.getElementById("erroLogin").innerText = "❌ Incorreto (" + tentativasAdmin + "/5)"; } }
-
-        function fazerLogout() { adminLogado = false;
-            document.getElementById("painelLogin").classList.remove("hidden");
-            document.getElementById("painelAdmin").classList.add("hidden");
-            document.getElementById("adminUser").value = "";
-            document.getElementById("adminPass").value = "";
-            document.getElementById("erroLogin").classList.add("hidden"); }
-
-        function renderizarPainelAdmin() { if (adminLogado) { document.getElementById("painelLogin").classList.add("hidden");
-                document.getElementById("painelAdmin").classList.remove("hidden");
-                renderizarListaClientes(); } }
-
-        function executarDiagnostico() { var c = document.getElementById("diagnosticoStorage"),
-                h = ""; try { var tk = "_vc_" + Date.now();
-                localStorage.setItem(tk, "t"); var tv = localStorage.getItem(tk);
-                localStorage.removeItem(tk);
-                h += tv === "t" ? '<p style="color:#4ade80;">✅ localStorage OK</p>' : '<p style="color:#f87171;">❌ inconsistente</p>'; } catch (e) { h += '<p style="color:#f87171;">❌ ' + e.message + "</p>"; } var d = lerStorage();
-            h += '<p style="color:#93c5fd;">📦 Total: ' + d.length + "</p>";
-            h += '<p style="color:#a78bfa;">🔐 Senhas com SHA-256</p>';
-            h += '<p style="color:#9ca3af;">💾 ' + (JSON.stringify(localStorage).length / 1024).toFixed(1) + " KB</p>";
-            c.innerHTML = h; }
-
-        function verComoCliente(idx) { clientesRegistrados = lerStorage(); if (idx >= 0 && idx < clientesRegistrados.length) { clienteLogado = clientesRegistrados[idx];
-                document.querySelectorAll(".conteudo-menu").forEach(function(s) { s.classList.add("hidden"); });
-                document.getElementById("menu-area-cliente").classList.remove("hidden");
-                document.querySelectorAll("#listaMenu a").forEach(function(l) { l.classList.remove("menu-ativo"); }); var lc = document.querySelector('#listaMenu a[href="#area-cliente"]'); if (lc) lc.classList.add("menu-ativo");
-                listaMenu.classList.remove("aberto");
-                iconeMenu.classList.remove("rotate-180");
-                document.getElementById("clienteLoginPainel").classList.add("hidden");
-                document.getElementById("clientePainel").classList.remove("hidden");
-                renderizarPainelCliente();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-                mostrarNotificacao("Visualizando: " + clienteLogado.nome); } }
-
-        // ==================== EXCLUIR CLIENTE INDIVIDUAL ====================
-        function excluirCliente(idx) {
-            clientesRegistrados = lerStorage();
-            if (idx < 0 || idx >= clientesRegistrados.length) return;
-            var nomeCliente = clientesRegistrados[idx].nome;
-            if (confirm("Tem certeza que deseja excluir o cliente \"" + nomeCliente + "\"?\n\nEsta ação não pode ser desfeita.")) {
-                clientesRegistrados.splice(idx, 1);
-                salvarStorage(clientesRegistrados);
-                mostrarNotificacao("Cliente \"" + nomeCliente + "\" excluído!");
-                renderizarListaClientes();
+            var container = document.getElementById('clienteComprasContainer');
+            var comprasDoCliente = [];
+            for (var j = 0; j < clientesRegistrados.length; j++) {
+                if (clientesRegistrados[j].email.toLowerCase() === clienteLogado.email.toLowerCase()) comprasDoCliente.push(clientesRegistrados[j]);
+            }
+            if (comprasDoCliente.length === 0) { container.innerHTML = '<div class="card-mod text-center"><p class="text-gray-500 text-sm">Nenhuma compra encontrada.</p></div>'; return; }
+            container.innerHTML = '';
+            for (var k = 0; k < comprasDoCliente.length; k++) {
+                var compra = comprasDoCliente[k];
+                var card = document.createElement('div'); card.className = 'card-mod mb-3 sm:mb-4';
+                var statusHTML = compra.status === 'aprovado'
+                    ? '<span class="inline-flex items-center gap-1 bg-green-500 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">✅ Aprovado — Pronto para download!</span>'
+                    : '<span class="inline-flex items-center gap-1 bg-yellow-500 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">⏳ Aguardando confirmação</span>';
+                var downloadHTML = '';
+                if (compra.status === 'aprovado' && compra.linkDownload) {
+                    downloadHTML = '<div class="mt-3 sm:mt-4 p-3 sm:p-4 rounded-xl" style="background:rgba(158,255,0,0.08);border:1px solid rgba(158,255,0,0.3);"><p class="font-bold text-secundaria mb-1 sm:mb-2 text-sm">📥 Link de Download:</p><a href="' + compra.linkDownload + '" target="_blank" class="inline-block bg-secundaria hover:bg-blue-900 text-principal font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg text-xs sm:text-sm transition-colors break-all"><i class="fa fa-download"></i> Baixar Pacote</a></div>';
+                } else if (compra.status === 'aprovado' && !compra.linkDownload) {
+                    downloadHTML = '<div class="mt-3 sm:mt-4 p-3 sm:p-4 rounded-xl" style="background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);"><p class="font-bold text-yellow-700 mb-1 text-sm">📦 Seu pacote foi aprovado!</p><p class="text-xs sm:text-sm text-gray-600">O link será disponibilizado em breve. Fique de olho no e-mail: <strong>' + compra.email + '</strong></p></div>';
+                } else {
+                    downloadHTML = '<div class="mt-3 sm:mt-4 p-3 sm:p-4 rounded-xl bg-gray-50 border border-gray-200"><p class="text-xs sm:text-sm text-gray-600">💡 Assim que o pagamento for confirmado, o botão de download aparecerá aqui automaticamente.</p></div>';
+                }
+                card.innerHTML = '<div class="flex justify-between items-start mb-2 sm:mb-3 flex-wrap gap-2"><div class="min-w-0"><h4 class="text-base sm:text-lg font-bold text-secundaria truncate">🛍️ ' + compra.itens + '</h4><p class="text-xs sm:text-sm text-gray-500">📅 ' + compra.data + ' | 💰 R$ ' + compra.total + '</p></div>' + statusHTML + '</div>' + downloadHTML;
+                container.appendChild(card);
             }
         }
 
-        // ==================== EMAIL DE LIBERAÇÃO ====================
-        function salvarLinkDownload(idx) {
-            var input = document.getElementById("linkDownload_" + idx);
-            if (!input) return;
+        // ============ PAINEL ADMIN ============
+        function fazerLogin() {
+            var user = document.getElementById('adminUser').value.trim(), pass = document.getElementById('adminPass').value.trim();
+            if (user === ADMIN_USER && pass === ADMIN_PASS) {
+                adminLogado = true;
+                document.getElementById('painelLogin').classList.add('hidden');
+                document.getElementById('painelAdmin').classList.remove('hidden');
+                renderizarListaClientes();
+            } else { document.getElementById('erroLogin').classList.remove('hidden'); }
+        }
+
+        function fazerLogout() {
+            adminLogado = false;
+            document.getElementById('painelLogin').classList.remove('hidden');
+            document.getElementById('painelAdmin').classList.add('hidden');
+            document.getElementById('adminUser').value = ''; document.getElementById('adminPass').value = '';
+            document.getElementById('erroLogin').classList.add('hidden');
+        }
+
+        function renderizarPainelAdmin() {
+            if (adminLogado) { document.getElementById('painelLogin').classList.add('hidden'); document.getElementById('painelAdmin').classList.remove('hidden'); renderizarListaClientes(); }
+        }
+
+        // ===== FUNÇÃO DE DIAGNÓSTICO =====
+        function executarDiagnostico() {
+            var container = document.getElementById('diagnosticoStorage');
+            var html = '';
+
+            // Verificar se localStorage está disponível
+            try {
+                var testKey = '_vcore_test_' + Date.now();
+                localStorage.setItem(testKey, 'test');
+                localStorage.removeItem(testKey);
+                html += '<p style="color:#16a34a;">✅ localStorage está funcionando corretamente</p>';
+            } catch(e) {
+                html += '<p style="color:#dc2626;">❌ localStorage NÃO está disponível: ' + e.message + '</p>';
+            }
+
+            // Verificar dados
+            var dados = lerStorage();
+            html += '<p style="color:#1e40af;">📦 Total de clientes cadastrados: <strong>' + dados.length + '</strong></p>';
+
+            if (dados.length > 0) {
+                html += '<div class="mt-2 p-2 bg-white rounded border text-[11px] max-h-32 overflow-y-auto">';
+                for (var i = 0; i < dados.length; i++) {
+                    html += '<p style="border-bottom:1px solid #e5e7eb;padding:2px 0;"><strong>#' + (i+1) + '</strong> ' + dados[i].nome + ' | 📧 ' + dados[i].email + ' | 🔑 <code>' + dados[i].senha + '</code> | Status: ' + dados[i].status + '</p>';
+                }
+                html += '</div>';
+            }
+
+            // Tamanho do storage
+            var usado = JSON.stringify(localStorage).length;
+            var limite = 5 * 1024 * 1024; // ~5MB
+            html += '<p style="color:#6b7280;margin-top:4px;">💾 Espaço usado: <strong>' + (usado / 1024).toFixed(1) + ' KB</strong> de ~5 MB (' + ((usado / limite) * 100).toFixed(2) + '%)</p>';
+
+            container.innerHTML = html;
+        }
+
+        function verComoCliente(idx) {
             clientesRegistrados = lerStorage();
-            if (idx < 0 || idx >= clientesRegistrados.length) return;
+            if (idx >= 0 && idx < clientesRegistrados.length) {
+                clienteLogado = clientesRegistrados[idx];
+                document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
+                document.getElementById('menu-area-cliente').classList.remove('hidden');
+                document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
+                var linkCliente = document.querySelector('#listaMenu a[href="#area-cliente"]'); if (linkCliente) linkCliente.classList.add('menu-ativo');
+                listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('rotate-180');
+                document.getElementById('clienteLoginPainel').classList.add('hidden');
+                document.getElementById('clientePainel').classList.remove('hidden');
+                renderizarPainelCliente();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                mostrarNotificacao('🔍 Visualizando como: ' + clienteLogado.nome);
+            }
+        }
+
+        function renderizarListaClientes() {
+            clientesRegistrados = lerStorage();
+            var lista = document.getElementById('listaClientes');
+            if (clientesRegistrados.length === 0) { lista.innerHTML = '<p class="text-gray-400 text-xs sm:text-sm text-center">Nenhum cliente registrado ainda.</p>'; return; }
+            lista.innerHTML = '';
+            for (var i = clientesRegistrados.length - 1; i >= 0; i--) {
+                (function(idx) {
+                    var c = clientesRegistrados[idx];
+                    var div = document.createElement('div');
+                    div.className = 'p-3 sm:p-4 rounded-xl border-2 ' + (c.status === 'aprovado' ? 'bg-green-50 border-green-300' : 'bg-yellow-50 border-yellow-300');
+                    var statusBadge = c.status === 'aprovado'
+                        ? '<span class="bg-green-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full">✅ Aprovado</span>'
+                        : '<span class="bg-yellow-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full">⏳ Pendente</span>';
+                    var linkInputValue = c.linkDownload || '';
+                    div.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2 mb-2 sm:mb-3"><div class="flex-1 min-w-0"><p class="font-bold text-gray-800 text-sm sm:text-base">👤 ' + c.nome + ' ' + statusBadge + '</p><p class="text-blue-600 text-xs sm:text-sm">📧 ' + c.email + ' | 🔑 Senha: <span style="background:#fef3c7;padding:2px 6px;border-radius:4px;font-family:monospace;">' + c.senha + '</span></p><p class="text-gray-400 text-[10px] sm:text-xs">🛍️ ' + c.itens + ' | 💰 R$ ' + c.total + ' | 📅 ' + c.data + '</p></div></div><div class="flex flex-col sm:flex-row flex-wrap gap-2 items-stretch sm:items-end"><div class="flex-1 min-w-[150px]"><label class="text-[10px] sm:text-xs font-bold text-gray-600 block mb-1">🔗 Link de Download:</label><input type="text" id="linkDownload_' + idx + '" value="' + linkInputValue.replace(/"/g, '&quot;') + '" placeholder="Cole o link do pacote aqui..." class="w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm focus:outline-none focus:border-secundaria" /></div><div class="flex gap-2 flex-wrap"><button onclick="verComoCliente(' + idx + ')" class="bg-purple-600 hover:bg-purple-700 text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors flex-shrink-0">👁️ Ver como Cliente</button><button onclick="salvarLinkDownload(' + idx + ')" class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors flex-shrink-0">💾 Salvar</button><button onclick="alternarStatusCliente(' + idx + ')" class="' + (c.status === 'aprovado' ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-green-600 hover:bg-green-700') + ' text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors flex-shrink-0">' + (c.status === 'aprovado' ? '⏳ Pendente' : '✅ Aprovar') + '</button></div></div>';
+                    lista.appendChild(div);
+                })(i);
+            }
+        }
+
+        function salvarLinkDownload(idx) {
+            var input = document.getElementById('linkDownload_' + idx); if (!input) return;
+            clientesRegistrados = lerStorage();
             clientesRegistrados[idx].linkDownload = input.value.trim();
             salvarStorage(clientesRegistrados);
-            mostrarNotificacao("Link salvo!");
-
-            if (clientesRegistrados[idx].status === "aprovado" && clientesRegistrados[idx].linkDownload) {
+            mostrarNotificacao('✅ Link salvo com sucesso!');
+            if (clientesRegistrados[idx].status === 'aprovado' && clientesRegistrados[idx].linkDownload) {
                 var c = clientesRegistrados[idx];
-                var corpo = "";
-                corpo += "╔══════════════════════════════════════════╗\n";
-                corpo += "║     🎮 VCORE GAMES - PACOTE LIBERADO!    ║\n";
-                corpo += "╚══════════════════════════════════════════╝\n\n";
-                corpo += "Olá, " + c.nome + "!\n\n";
-                corpo += "É com grande satisfação que informamos que seu\n";
-                corpo += "pagamento foi CONFIRMADO e seu pacote já está\n";
-                corpo += "LIBERADO para download! 🎉\n\n";
-                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-                corpo += "📋 RESUMO DA SUA COMPRA\n";
-                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
-                corpo += "📦 Pacote: " + c.itens + "\n";
-                corpo += "💰 Valor: R$ " + c.total + "\n";
-                corpo += "📅 Data: " + c.data + "\n\n";
-                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-                corpo += "🔗 LINK DE DOWNLOAD\n";
-                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
-                corpo += c.linkDownload + "\n\n";
-                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-                corpo += "📖 GUIA RÁPIDO DE INSTALAÇÃO\n";
-                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
-                corpo += "1️⃣ Baixe o arquivo e DESCOMPACTE\n";
-                corpo += "2️⃣ Copie TODOS os arquivos para a pasta raiz\n";
-                corpo += "   do jogo (onde está o GRB.exe)\n";
-                corpo += "3️⃣ ⚠️ INICIE UM SAVE NOVO!\n";
-                corpo += "4️⃣ Abra o jogo e aproveite! 🎮\n\n";
-                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-                corpo += "🙏 AGRADECIMENTOS\n";
-                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
-                corpo += "Muito obrigado por confiar na VCORE GAMES!\n";
-                corpo += "Esperamos que você tenha uma experiência\n";
-                corpo += "incrível com os mods. Seu apoio é fundamental\n";
-                corpo += "para continuarmos trazendo os melhores pacotes!\n\n";
-                corpo += "💬 Dúvidas? Fale conosco:\n";
-                corpo += "📱 WhatsApp: (16) 98109-7916\n";
-                corpo += "📧 E-mail: rodrigoxgames25@gmail.com\n";
-                corpo += "📷 Instagram: @rodrigovecoregaming\n\n";
-                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-                corpo += "Lembre-se: você pode acessar seus pacotes a\n";
-                corpo += "qualquer momento pela Área do Cliente usando\n";
-                corpo += "seu e-mail e senha: " + c.email + "\n";
-                corpo += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
-                corpo += "Bons jogos e até a próxima! 🎮🔥\n";
-                corpo += "Rodrigo - VCORE GAMES\n";
-
-                window.open("mailto:" + encodeURIComponent(c.email) + "?subject=" + encodeURIComponent("🎮 VCORE GAMES - Seu Pacote Foi Liberado!") + "&body=" + encodeURIComponent(corpo), "_blank");
-                mostrarNotificacao("E-mail de liberação enviado!");
+                var corpo = 'Olá, ' + c.nome + '!\r\n\r\nSeu pagamento foi confirmado e seu pacote já está liberado! 🚀\r\n\r\n========================================\r\nRESUMO DA SUA COMPRA\r\n========================================\r\nPacote: ' + c.itens + '\r\nValor: R$ ' + c.total + '\r\nData: ' + c.data + '\r\n\r\n========================================\r\nLINK DE DOWNLOAD\r\n========================================\r\n' + c.linkDownload + '\r\n\r\n========================================\r\nGUIA RÁPIDO DE INSTALAÇÃO\r\n========================================\r\n1. Baixe e descompacte o arquivo\r\n2. Copie para a pasta raiz do jogo (onde está o GRB.exe)\r\n3. INICIE UM SAVE NOVO\r\n4. Pronto! 🎮\r\n\r\n🚨 IMPORTANTE: É OBRIGATÓRIO iniciar um SAVE NOVO!\r\n\r\nDúvidas? WhatsApp: (16) 98109-7916\r\n\r\nBons jogos! 🔥\r\nRodrigo - VCORE GAMES';
+                window.open('mailto:' + encodeURIComponent(c.email) + '?subject=' + encodeURIComponent('VCORE GAMES - Seu pacote foi liberado! 🎮') + '&body=' + encodeURIComponent(corpo), '_blank');
+                mostrarNotificacao('📧 E-mail de liberação enviado!');
             }
             renderizarListaClientes();
         }
 
-        function alternarStatusCliente(idx) { clientesRegistrados = lerStorage(); if (idx >= 0 && idx < clientesRegistrados.length) { clientesRegistrados[idx].status = clientesRegistrados[idx].status === "aprovado" ? "pendente" : "aprovado";
-                salvarStorage(clientesRegistrados);
-                mostrarNotificacao(clientesRegistrados[idx].status === "aprovado" ? "✅ Cliente aprovado!" : "⏳ Pendente.");
-                renderizarListaClientes(); } }
+        function alternarStatusCliente(idx) {
+            clientesRegistrados = lerStorage();
+            clientesRegistrados[idx].status = clientesRegistrados[idx].status === 'aprovado' ? 'pendente' : 'aprovado';
+            salvarStorage(clientesRegistrados);
+            mostrarNotificacao(clientesRegistrados[idx].status === 'aprovado' ? '✅ Cliente aprovado!' : '⏳ Cliente marcado como pendente.');
+            renderizarListaClientes();
+        }
 
-        function limparClientes() { if (confirm("Remover TODOS os clientes?")) { salvarStorage([]);
-                clientesRegistrados = [];
-                renderizarListaClientes();
-                mostrarNotificacao("Lista limpa."); } }
+        function limparClientes() {
+            if (confirm('Tem certeza que deseja remover TODOS os clientes?')) { salvarStorage([]); clientesRegistrados = []; renderizarListaClientes(); mostrarNotificacao('🗑️ Lista limpa.'); }
+        }
 
-        function renderizarListaClientes() { clientesRegistrados = lerStorage(); var l = document.getElementById("listaClientes"); if (clientesRegistrados.length === 0) { l.innerHTML = '<p class="text-gray-500 text-xs text-center">Nenhum cliente.</p>'; return; }
-            l.innerHTML = ""; for (var i = clientesRegistrados.length - 1; i >= 0; i--) { (function(idx) { var c = clientesRegistrados[idx],
-                        dv = document.createElement("div");
-                    dv.className = "p-3 rounded-xl border-2 " + (c.status === "aprovado" ? "border-green-500/30" : "border-yellow-500/30");
-                    dv.style.background = c.status === "aprovado" ? "rgba(34,197,94,0.06)" : "rgba(234,179,8,0.06)"; var sb = c.status === "aprovado" ? '<span class="bg-green-600 text-white text-[10px] font-bold px-2 py-1 rounded-full">✅</span>' : '<span class="bg-yellow-600 text-white text-[10px] font-bold px-2 py-1 rounded-full">⏳</span>'; var lv = c.linkDownload || ""; var hx = (c.senhaHash || "N/A").substring(0, 12) + "...";
-                    dv.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2 mb-2"><div class="flex-1"><p class="font-bold text-gray-200 text-sm">👤 ' + c.nome + " " + sb + '</p><p class="text-blue-400 text-xs">📧 ' + c.email + ' | 🔐 <code style="font-size:0.6rem;color:#9ca3af;">' + hx + '</code></p><p class="text-gray-500 text-[10px]">📦 ' + c.itens + " | 💰 R$ " + c.total + " | 📅 " + c.data + '</p></div></div><div class="flex flex-wrap gap-2 items-end"><div class="flex-1 min-w-[150px]"><label class="text-[10px] font-bold text-gray-400 block mb-1">🔗 Link:</label><input type="text" id="linkDownload_' + idx + '" value="' + lv.replace(/"/g, "&quot;") + '" placeholder="Cole o link..." maxlength="500" class="w-full rounded-lg px-2 py-1.5 text-xs" style="background:#1a1a2e;border:1px solid #2a2a3e;color:#e0e0e0;" /></div><div class="flex gap-2"><button onclick="verComoCliente(' + idx + ')" class="bg-purple-600 hover:bg-purple-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Ver como cliente">👁️</button><button onclick="salvarLinkDownload(' + idx + ')" class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Salvar link">💾</button><button onclick="alternarStatusCliente(' + idx + ')" class="' + (c.status === "aprovado" ? "bg-yellow-500" : "bg-green-600") + ' text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Alternar status">' + (c.status === "aprovado" ? "⏳" : "✅") + '</button><button onclick="excluirCliente(' + idx + ')" class="bg-red-600 hover:bg-red-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg" title="Excluir cliente">🗑️</button></div></div>';
-                    l.appendChild(dv); })(i); } }
-
-        // ==================== BOTÃO TOPO ====================
-        var btnTopo = document.getElementById("btnTopo");
-        window.addEventListener("scroll", function() { if (window.scrollY > 300) btnTopo.classList.remove("hidden");
-            else btnTopo.classList.add("hidden"); });
-        btnTopo.addEventListener("click", function(e) { e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" }); });
-
-        console.log("=== VCORE GAMES v6 ===");
-        console.log("✅ Fluxo: Carrinho → PIX (sem abrir e-mail)");
-        console.log("✅ E-mail de comprovante só abre ao clicar no botão");
-        console.log("✅ Botão excluir cliente individual no Admin");
+        // ============ BOTÃO TOPO ============
+        var btnTopo = document.getElementById('btnTopo');
+        window.addEventListener('scroll', function() { if (window.scrollY > 300) btnTopo.classList.remove('hidden'); else btnTopo.classList.add('hidden'); });
+        btnTopo.addEventListener('click', function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
     </script>
 </body>
 </html>
