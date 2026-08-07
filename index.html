@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>VCORE GAMES - Mod Ghost</title>
+    <title>VCORE GAMES - Mods Mod Ghost</title>
 
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://fonts.googleapis.com https://fonts.gstatic.com https://api.counterapi.dev; img-src 'self' data: https:; connect-src 'self' https://api.counterapi.dev;" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
@@ -491,9 +491,343 @@
             .btn-topo{width:3rem;height:3rem;bottom:1.5rem;right:1.5rem}
             input,textarea,select{font-size:16px !important}
         }
+
+        /* ============ CENA DE GUERRA DE FUNDO (SVG ANIMADO) ============ */
+        .war-bg{
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .war-bg svg{display:block}
+
+        /* Grade tática deslizante */
+        .war-grid{
+            position:absolute;inset:0;
+            background:
+                repeating-linear-gradient(0deg, rgba(158,255,0,0.035) 0 1px, transparent 1px 46px),
+                repeating-linear-gradient(90deg, rgba(158,255,0,0.035) 0 1px, transparent 1px 46px);
+            animation:war-grid-move 10s linear infinite;
+        }
+        @keyframes war-grid-move{
+            from{background-position:0 0,0 0}
+            to{background-position:0 46px,46px 0}
+        }
+
+        /* Varredura tática vertical */
+        .war-scan{
+            position:absolute;top:0;bottom:0;left:-2%;width:3px;
+            background:linear-gradient(180deg, transparent, rgba(158,255,0,0.18), transparent);
+            box-shadow:0 0 12px rgba(158,255,0,0.15);
+            animation:war-scan-move 11s linear infinite;
+        }
+        @keyframes war-scan-move{from{left:-2%}to{left:102%}}
+
+        /* ===== SOLDADOS ===== */
+        .war-soldier{
+            position:absolute;bottom:2px;
+            color:#9EFF00;
+            animation:war-soldier-pulse 5s ease-in-out infinite;
+        }
+        .war-soldier svg{width:100%;height:auto}
+        .war-soldier .arm-l,.war-soldier .arm-r,
+        .war-soldier .leg-l,.war-soldier .leg-r{
+            transform-box:fill-box;
+            transform-origin:top center;
+            animation:war-step 0.7s ease-in-out infinite;
+        }
+        .war-soldier .arm-r,.war-soldier .leg-r{animation-name:war-step-r}
+        @keyframes war-step{0%,100%{transform:rotate(7deg)}50%{transform:rotate(-7deg)}}
+        @keyframes war-step-r{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+        @keyframes war-soldier-pulse{
+            0%,100%{opacity:0.10;filter:drop-shadow(0 0 2px rgba(158,255,0,0.2))}
+            50%{opacity:0.28;filter:drop-shadow(0 0 8px rgba(158,255,0,0.6))}
+        }
+
+        /* ===== TANQUE ===== */
+        .war-tank{
+            position:absolute;bottom:70px;color:#5C4033;
+            animation:war-tank-patrol 70s ease-in-out infinite;
+        }
+        .war-tank svg{width:180px;height:auto}
+        .war-tank .tank-bounce{animation:war-tank-bounce 1.6s ease-in-out infinite}
+        .war-tank .smoke{
+            transform-box:fill-box;transform-origin:center;
+            animation:war-smoke 2.5s ease-out infinite;
+        }
+        .war-tank .smoke.s2{animation-delay:0.8s}
+        .war-tank .smoke.s3{animation-delay:1.6s}
+        @keyframes war-tank-patrol{
+            0%{transform:translateX(-240px)}
+            50%{transform:translateX(calc(100vw + 40px))}
+            100%{transform:translateX(-240px)}
+        }
+        @keyframes war-tank-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+        @keyframes war-smoke{
+            0%{transform:translate(0,0) scale(1);opacity:0.5}
+            100%{transform:translate(-18px,-28px) scale(1.8);opacity:0}
+        }
+
+        /* ===== HELICÓPTEROS ===== */
+        .war-heli{
+            position:absolute;top:10%;color:#8B7D6B;
+            opacity:0.35;
+            animation:war-heli-fly 40s linear infinite;
+        }
+        .war-heli svg{width:170px;height:auto}
+        .war-heli.heli-2{animation-delay:-20s;top:26%;opacity:0.22}
+        .war-heli .heli-rotor{
+            transform-box:fill-box;transform-origin:center;
+            animation:war-rotor 0.3s linear infinite;
+        }
+        .war-heli .spot{
+            transform-box:fill-box;transform-origin:top center;
+            animation:war-spot 3.2s ease-in-out infinite;
+        }
+        @keyframes war-rotor{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+        @keyframes war-heli-fly{
+            0%{transform:translateX(-200px) translateY(0)}
+            20%{transform:translateX(30vw) translateY(-14px)}
+            40%{transform:translateX(65vw) translateY(8px)}
+            60%{transform:translateX(calc(100vw + 60px)) translateY(-6px)}
+            100%{transform:translateX(calc(100vw + 60px)) translateY(-6px)}
+        }
+        @keyframes war-spot{0%,100%{opacity:0.1}50%{opacity:0.45}}
+
+        /* ===== POEIRA / PARTÍCULAS ===== */
+        .war-dust{
+            position:absolute;border-radius:50%;
+            background:rgba(158,255,0,0.35);
+            animation:war-dust-rise linear infinite;
+        }
+        @keyframes war-dust-rise{
+            0%{transform:translateY(0) scale(0.5);opacity:0}
+            15%{opacity:0.5}
+            100%{transform:translateY(-26vh) translateX(20px) scale(1.5);opacity:0}
+        }
+
+        /* ===== EXPLOSÕES DISTANTES (flash pulsante) ===== */
+        .war-flash{
+            position:absolute;
+            width:8px;height:8px;border-radius:50%;
+            background:radial-gradient(circle, rgba(255,204,0,0.9), rgba(255,60,0,0.4) 60%, transparent);
+            animation:war-flash-pulse 6s ease-in-out infinite;
+        }
+        .war-flash.f2{animation-delay:2s}
+        .war-flash.f3{animation-delay:4s}
+        @keyframes war-flash-pulse{
+            0%,88%,100%{transform:scale(0.6);opacity:0}
+            92%{transform:scale(2.2);opacity:1}
+            96%{transform:scale(1.2);opacity:0.6}
+        }
+
+        /* Vinheta leve para legibilidade */
+        .war-vignette{
+            position:absolute;inset:0;
+            background:radial-gradient(ellipse at 50% 40%, transparent 60%, rgba(13,15,10,0.5) 100%);
+        }
+
+        /* Mobile: reduz para não pesar */
+        @media (max-width:640px){
+            .war-tank{display:none}
+            .war-heli{opacity:0.18}
+            .war-heli svg{width:110px}
+            .war-scan{display:none}
+            .war-soldier{animation-name:war-soldier-pulse;animation-duration:6s}
+        }
     </style>
 </head>
 <body class="font-sans">
+
+    <!-- ==================== CENA DE GUERRA DE FUNDO ==================== -->
+    <div class="war-bg" aria-hidden="true">
+        <div class="war-grid"></div>
+        <div class="war-scan"></div>
+
+        <!-- Soldados patrulhando -->
+        <div class="war-soldier" style="left:2%;width:52px;animation-delay:0s;">
+            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
+                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
+                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
+                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
+                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
+                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
+                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
+                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
+                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
+                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
+                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
+                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
+                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="war-soldier" style="left:12%;width:44px;animation-delay:0.7s;">
+            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
+                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
+                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
+                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
+                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
+                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
+                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
+                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
+                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
+                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
+                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
+                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
+                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="war-soldier" style="left:28%;width:58px;animation-delay:1.4s;">
+            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
+                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
+                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
+                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
+                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
+                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
+                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
+                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
+                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
+                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
+                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
+                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
+                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="war-soldier" style="left:45%;width:40px;animation-delay:2.1s;">
+            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
+                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
+                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
+                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
+                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
+                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
+                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
+                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
+                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
+                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
+                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
+                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
+                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="war-soldier" style="left:62%;width:55px;animation-delay:0.4s;">
+            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
+                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
+                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
+                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
+                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
+                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
+                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
+                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
+                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
+                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
+                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
+                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
+                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="war-soldier" style="left:82%;width:47px;animation-delay:1.8s;">
+            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
+                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
+                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
+                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
+                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
+                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
+                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
+                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
+                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
+                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
+                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
+                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
+                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
+            </svg>
+        </div>
+
+        <!-- Tanque patrulhando -->
+        <div class="war-tank">
+            <div class="tank-bounce">
+                <svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 60 Q10 80 30 80 L130 80 Q150 80 150 60 L150 52 L10 52 Z" fill="currentColor"/>
+                    <circle cx="45" cy="66" r="7" fill="#0d0f0a"/>
+                    <circle cx="80" cy="66" r="7" fill="#0d0f0a"/>
+                    <circle cx="115" cy="66" r="7" fill="#0d0f0a"/>
+                    <path d="M25 52 L135 52 L135 40 Q135 32 125 32 L35 32 Q25 32 25 40 Z" fill="currentColor"/>
+                    <path d="M50 32 L110 32 Q118 32 118 24 Q118 16 108 16 L52 16 Q42 16 42 24 Q42 32 50 32 Z" fill="currentColor"/>
+                    <path d="M108 20 L148 14 L148 20 L108 26 Z" fill="currentColor"/>
+                    <rect x="140" y="12" width="10" height="10" rx="2" fill="currentColor"/>
+                    <circle class="smoke s1" cx="30" cy="44" r="3" fill="currentColor" opacity="0.6"/>
+                    <circle class="smoke s2" cx="26" cy="40" r="2.5" fill="currentColor" opacity="0.5"/>
+                    <circle class="smoke s3" cx="34" cy="40" r="2" fill="currentColor" opacity="0.4"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Helicóptero 1 -->
+        <div class="war-heli">
+            <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 48 L8 50 L8 54 L40 56 Z" fill="currentColor"/>
+                <ellipse cx="8" cy="52" rx="6" ry="2" fill="currentColor"/>
+                <path d="M30 60 Q28 40 55 38 L95 38 Q125 38 135 55 Q138 62 130 64 L40 64 Q30 64 30 60 Z" fill="currentColor"/>
+                <path d="M60 40 Q50 40 46 52 L46 60 L70 60 L70 40 Z" fill="#0d0f0a" opacity="0.5"/>
+                <path d="M52 64 L48 76 L56 76 L58 64 Z" fill="currentColor"/>
+                <path d="M96 64 L100 76 L108 76 L104 64 Z" fill="currentColor"/>
+                <path d="M44 76 L60 76 L100 76 L110 76 L110 78 L44 78 Z" fill="currentColor" opacity="0.5"/>
+                <rect x="75" y="26" width="8" height="14" fill="currentColor"/>
+                <g class="heli-rotor">
+                    <rect x="15" y="30" width="130" height="4" rx="2" fill="currentColor"/>
+                    <rect x="15" y="34" width="130" height="4" rx="2" fill="currentColor" opacity="0.5"/>
+                </g>
+                <path class="spot" d="M75 64 L25 100 L125 100 Z" fill="#9EFF00" opacity="0.15"/>
+            </svg>
+        </div>
+
+        <!-- Helicóptero 2 (delay negativo = já voando) -->
+        <div class="war-heli heli-2">
+            <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 48 L8 50 L8 54 L40 56 Z" fill="currentColor"/>
+                <ellipse cx="8" cy="52" rx="6" ry="2" fill="currentColor"/>
+                <path d="M30 60 Q28 40 55 38 L95 38 Q125 38 135 55 Q138 62 130 64 L40 64 Q30 64 30 60 Z" fill="currentColor"/>
+                <path d="M60 40 Q50 40 46 52 L46 60 L70 60 L70 40 Z" fill="#0d0f0a" opacity="0.5"/>
+                <path d="M52 64 L48 76 L56 76 L58 64 Z" fill="currentColor"/>
+                <path d="M96 64 L100 76 L108 76 L104 64 Z" fill="currentColor"/>
+                <path d="M44 76 L60 76 L100 76 L110 76 L110 78 L44 78 Z" fill="currentColor" opacity="0.5"/>
+                <rect x="75" y="26" width="8" height="14" fill="currentColor"/>
+                <g class="heli-rotor">
+                    <rect x="15" y="30" width="130" height="4" rx="2" fill="currentColor"/>
+                    <rect x="15" y="34" width="130" height="4" rx="2" fill="currentColor" opacity="0.5"/>
+                </g>
+                <path class="spot" d="M75 64 L25 100 L125 100 Z" fill="#9EFF00" opacity="0.15"/>
+            </svg>
+        </div>
+
+        <!-- Poeira / partículas -->
+        <div class="war-dust" style="left:8%;bottom:10px;width:5px;height:5px;animation-duration:6s;animation-delay:0s;"></div>
+        <div class="war-dust" style="left:22%;bottom:14px;width:4px;height:4px;animation-duration:7s;animation-delay:1.2s;"></div>
+        <div class="war-dust" style="left:38%;bottom:8px;width:6px;height:6px;animation-duration:5.5s;animation-delay:2.4s;"></div>
+        <div class="war-dust" style="left:55%;bottom:12px;width:4px;height:4px;animation-duration:6.5s;animation-delay:0.8s;"></div>
+        <div class="war-dust" style="left:70%;bottom:6px;width:5px;height:5px;animation-duration:7.5s;animation-delay:3s;"></div>
+        <div class="war-dust" style="left:90%;bottom:16px;width:4px;height:4px;animation-duration:6s;animation-delay:1.8s;"></div>
+
+        <!-- Explosões distantes -->
+        <div class="war-flash" style="right:10%;bottom:32%;"></div>
+        <div class="war-flash f2" style="right:22%;bottom:48%;"></div>
+        <div class="war-flash f3" style="right:4%;bottom:55%;"></div>
+
+        <!-- Vinheta final -->
+        <div class="war-vignette"></div>
+    </div>
 
     <!-- ==================== HEADER ==================== -->
     <header class="sticky top-0 z-50 shadow-xl" style="background:#0d0f0a;border-bottom:2px solid rgba(158,255,0,0.2);">
