@@ -4,982 +4,1303 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>VCORE GAMES - Mods Mod Ghost</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://fonts.googleapis.com https://fonts.gstatic.com https://api.counterapi.dev; img-src 'self' data: https:; connect-src 'self' https://api.counterapi.dev;" />
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.tailwindcss.com">
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        principal: "#9EFF00",
-                        secundaria: "#1a1f14",
-                        escuro: "#0d0f0a",
-                        claro: "#e8e6dc",
-                        sucesso: "#4ade80",
-                        instagram: "#E4405F",
-                        youtube: "#FF0000",
-                        facebook: "#1877F2",
-                        cults: "#F15A24",
+                        verde: "#a5ff00",
+                        verdeEscuro: "#8ae000",
+                        azul: "#0c1535",
+                        azulMedio: "#162244",
+                        azulClaro: "#1e3060",
                         whatsapp: "#25D366",
                     },
                     fontFamily: {
-                        sans: ["Inter", "system-ui", "sans-serif"],
+                        sans: ["Montserrat", "system-ui", "sans-serif"],
                         logo: ["Rajdhani", "Arial Black", "Helvetica Bold", "sans-serif"],
                     },
                 },
             },
         };
     </script>
+
     <style>
+        :root {
+            --verde: #a5ff00;
+            --verde-escuro: #8ae000;
+            --azul: #0c1535;
+            --azul-medio: #162244;
+            --azul-claro: #1e3060;
+            --branco: #E8ECF0;
+            --cinza: #8899AA;
+        }
+
         *,*::before,*::after{box-sizing:border-box}
         html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
-        body{font-family:'Inter',system-ui,sans-serif;margin:0;padding:0;background-color:#121610;color:#e8e6dc;min-height:100vh}
-        body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%, rgba(75,83,32,0.08) 0%, transparent 70%),radial-gradient(ellipse at 80% 100%, rgba(92,64,51,0.05) 0%, transparent 60%);pointer-events:none;z-index:0}
-        header,main,footer,.modal-carrinho,.modal-pix,.modal-saida,.barra-total,.btn-topo,.toast-compra{position:relative;z-index:1}
-        .text-shadow{text-shadow:0 2px 4px rgba(0,0,0,0.5)}
-        .card-mod{background:#1a1d16;border-radius:0.75rem;box-shadow:0 4px 20px rgba(0,0,0,0.4),0 1px 3px rgba(158,255,0,0.05);padding:0.75rem;border:1px solid rgba(158,255,0,0.2);transition:all 0.3s;color:#e8e6dc;position:relative;overflow:hidden}
-        .card-mod:hover{box-shadow:0 10px 35px rgba(0,0,0,0.5),0 0 0 1px rgba(158,255,0,0.3)}
-        .card-mod.soldier-bg::after{content:'';position:absolute;right:5px;bottom:0;width:140px;height:280px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 380'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%239EFF00' stop-opacity='0.10'/%3E%3Cstop offset='100%25' stop-color='%239EFF00' stop-opacity='0.01'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cellipse cx='100' cy='22' rx='22' ry='16' fill='url(%23g)'/%3E%3Cpath d='M78 22 Q78 6 100 6 Q122 6 122 22' fill='url(%23g)'/%3E%3Cellipse cx='100' cy='38' rx='14' ry='16' fill='url(%23g)'/%3E%3Cpath d='M72 54 L128 54 L136 90 L136 130 L128 135 L126 160 L134 168 L140 210 L60 210 L66 168 L74 160 L72 135 L64 130 L64 90 Z' fill='url(%23g)'/%3E%3Cpath d='M64 58 L50 60 L40 100 L48 140 L58 138 L54 95 L64 80Z' fill='url(%23g)'/%3E%3Cpath d='M136 58 L150 60 L158 100 L152 130 L142 128 L146 95 L136 82Z' fill='url(%23g)'/%3E%3Crect x='148' y='58' width='8' height='140' rx='4' fill='url(%23g)'/%3E%3Crect x='144' y='60' width='16' height='10' rx='2' fill='url(%23g)'/%3E%3Crect x='146' y='190' width='12' height='15' rx='2' fill='url(%23g)'/%3E%3Cpath d='M70 210 L62 340 L88 340 L90 300 L92 340 L108 340 L110 300 L112 340 L138 340 L130 210Z' fill='url(%23g)'/%3E%3Cpath d='M58 340 L50 355 L92 355 L88 340Z' fill='url(%23g)'/%3E%3Cpath d='M108 340 L112 355 L150 355 L142 340Z' fill='url(%23g)'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;background-position:bottom right;pointer-events:none;z-index:0;opacity:0.25}
-        @media(max-width:640px){.card-mod.soldier-bg::after{width:100px;height:200px;right:0;opacity:0.18}}
-        .menu-ativo{border-bottom:2px solid #9EFF00;font-weight:700;color:#9EFF00;background:rgba(158,255,0,0.08);border-top-left-radius:0.5rem;border-top-right-radius:0.5rem}
-        .btn-venda{background:linear-gradient(135deg,#2E3B1F 0%,#4B5320 100%);color:#9EFF00;font-weight:700;padding:0.75rem 1rem;border-radius:0.5rem;font-size:0.875rem;box-shadow:0 4px 15px rgba(0,0,0,0.4);transition:all 0.2s;display:block;width:100%;text-align:center;border:1px solid rgba(158,255,0,0.3);cursor:pointer}
-        .btn-venda:hover{background:linear-gradient(135deg,#4B5320 0%,#5C4033 100%);box-shadow:0 6px 25px rgba(0,0,0,0.5);transform:scale(1.03)}
-        .btn-venda:active{transform:scale(0.96)}
-        .logo-font{font-family:"Rajdhani","Arial Black","Helvetica Bold",sans-serif;font-weight:700;letter-spacing:0.05em}
-        .area-midia{background:rgba(0,0,0,0.5);border-radius:0.5rem;height:8rem;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:1rem;overflow:hidden;border:1px solid rgba(158,255,0,0.15);position:relative}
-        .icone-rede-topo{font-size:1rem;margin:0 0.125rem;transition:transform 0.3s;color:#9EFF00;opacity:0.8}
-        .icone-rede-topo:hover{transform:scale(1.15);opacity:1}
-        .icone-rede-rodape{font-size:1.25rem;margin:0 0.375rem;transition:transform 0.3s;color:#9EFF00;opacity:0.8}
-        .icone-rede-rodape:hover{transform:scale(1.15);opacity:1}
-        .btn-topo{position:fixed;bottom:1rem;right:1rem;background:#2E3B1F;color:#9EFF00;width:2.5rem;height:2.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(0,0,0,0.5);cursor:pointer;z-index:50;border:1px solid rgba(158,255,0,0.3);text-decoration:none}
-        .btn-topo:hover{background:#4B5320}
-        .btn-topo.hidden{display:none}
-        .menu-container{position:relative}
-        .menu-botao{width:100%;background:rgba(46,59,31,0.9);color:#9EFF00;padding:0.625rem 0.75rem;border-radius:0.5rem;font-weight:700;font-size:1rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background 0.2s;border:1px solid rgba(158,255,0,0.3);backdrop-filter:blur(6px)}
-        .menu-botao:hover{background:rgba(75,83,32,0.9)}
-        .menu-lista{display:none;position:absolute;left:0;right:0;top:calc(100% + 0.25rem);max-height:50vh;overflow-y:auto;background:rgba(13,15,10,0.98);border-radius:0.75rem;box-shadow:0 10px 40px rgba(0,0,0,0.6);z-index:40;border:1px solid rgba(158,255,0,0.25);backdrop-filter:blur(10px)}
-        .menu-lista.aberto{display:block}
-        .menu-lista a{display:block;padding:0.625rem 0.75rem;color:#9EFF00;border-bottom:1px solid rgba(158,255,0,0.1);font-size:0.875rem;transition:background 0.2s;text-decoration:none}
-        .menu-lista a:hover{background:rgba(75,83,32,0.5)}
-        .menu-lista a:last-child{border-bottom:0}
-        .modal-carrinho,.modal-pix{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:60;padding:0.5rem;backdrop-filter:blur(4px)}
-        .carrinho-conteudo,.pix-conteudo{background:#1a1d16;border-radius:0.75rem;max-width:95vw;max-height:90vh;overflow-y:auto;padding:1rem;box-shadow:0 20px 60px rgba(0,0,0,0.6);border:1px solid rgba(158,255,0,0.25);color:#e8e6dc}
-        .modal-saida{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:75;padding:0.5rem;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px)}
-        .saida-conteudo{background:#1a1d16;border-radius:1rem;max-width:95vw;max-height:90vh;overflow-y:auto;padding:1rem;box-shadow:0 20px 60px rgba(0,0,0,0.6);border:1px solid rgba(158,255,0,0.25);color:#e8e6dc}
-        .fechar-modal{float:right;color:#8B7D6B;font-size:1.25rem;font-weight:700;cursor:pointer;transition:color 0.2s}
-        .fechar-modal:hover{color:#dc2626}
-        .badge-carrinho{position:absolute;top:-0.5rem;right:-0.5rem;background:#dc2626;color:#fff;font-size:0.625rem;font-weight:700;width:1rem;height:1rem;display:flex;align-items:center;justify-content:center;border-radius:50%}
-        .barra-total{position:fixed;bottom:0;left:0;right:0;background:rgba(13,15,10,0.98);color:#9EFF00;padding:0.625rem 0.75rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 -4px 25px rgba(0,0,0,0.5);z-index:40;transform:translateY(100%);transition:transform 0.5s;gap:0.5rem;border-top:1px solid rgba(158,255,0,0.25);backdrop-filter:blur(10px)}
-        .barra-total.visivel{transform:translateY(0)}
-        .pronto-badge{display:inline-flex;align-items:center;gap:0.25rem;background:#22c55e;color:#fff;font-size:0.625rem;font-weight:700;padding:0.25rem 0.75rem;border-radius:9999px}
-        .fr-badge{display:inline-flex;align-items:center;gap:0.25rem;background:#3b82f6;color:#fff;font-size:0.625rem;font-weight:700;padding:0.25rem 0.75rem;border-radius:9999px}
-        .countdown-container{display:inline-flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap}
-        .countdown-box{background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.35);border-radius:8px;padding:6px 10px;text-align:center;min-width:48px}
-        .countdown-num{display:block;font-size:1.4rem;font-weight:900;color:#ffcc00;line-height:1;text-shadow:0 0 10px rgba(255,204,0,0.5)}
-        .countdown-label{display:block;font-size:0.55rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-top:2px;opacity:0.9}
-        .countdown-separator{font-size:1.4rem;font-weight:900;color:#ffcc00;text-shadow:0 0 10px rgba(255,204,0,0.5);animation:blink-sep 1s ease-in-out infinite}
-        @keyframes blink-sep{0%,100%{opacity:1}50%{opacity:0.3}}
-        @media(max-width:640px){.countdown-box{min-width:38px;padding:4px 7px}.countdown-num{font-size:1.1rem}.countdown-label{font-size:0.5rem}.countdown-separator{font-size:1.1rem}}
-        @keyframes pulse-save{0%,100%{opacity:1}50%{opacity:0.7}}
-        .pulse-save{animation:pulse-save 1.5s ease-in-out infinite}
-        @keyframes count-glow{0%,100%{text-shadow:0 0 8px rgba(158,255,0,0.4)}50%{text-shadow:0 0 20px rgba(158,255,0,0.8),0 0 40px rgba(158,255,0,0.3)}}
-        .count-glow{animation:count-glow 2s ease-in-out infinite}
-        @keyframes slideInRight{from{transform:translateX(120%);opacity:0}to{transform:translateX(0);opacity:1}}
-        @keyframes slideOutRight{from{transform:translateX(0);opacity:1}to{transform:translateX(120%);opacity:0}}
-        .toast-compra{animation:slideInRight 0.5s ease-out forwards}
-        .toast-compra.saindo{animation:slideOutRight 0.4s ease-in forwards}
-        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-        .animate-fade-in-up{animation:fadeInUp 0.4s ease-out forwards}
-        @keyframes pulse-border{0%,100%{box-shadow:0 0 8px rgba(158,255,0,0.3)}50%{box-shadow:0 0 22px rgba(158,255,0,0.6),0 0 40px rgba(158,255,0,0.2)}}
-        .pulse-border{animation:pulse-border 1.8s ease-in-out infinite}
-        @keyframes promo-glow{0%,100%{box-shadow:0 0 15px rgba(255,26,26,0.3),0 0 30px rgba(255,26,26,0.1)}50%{box-shadow:0 0 30px rgba(255,204,0,0.5),0 0 60px rgba(255,26,26,0.3)}}
-        .promo-glow{animation:promo-glow 2s ease-in-out infinite}
-        .menu-icone{transition:transform 0.3s}
-        .menu-icone-rotacionado{transform:rotate(180deg);transition:transform 0.3s}
-        input,textarea,select{background:rgba(0,0,0,0.5)!important;color:#e8e6dc!important;border-color:rgba(158,255,0,0.25)!important}
-        input:focus,textarea:focus,select:focus{border-color:#9EFF00!important;box-shadow:0 0 15px rgba(158,255,0,0.15)!important;outline:none!important}
-        input::placeholder{color:rgba(232,230,220,0.4)!important}
+        body{
+            font-family:'Montserrat',system-ui,sans-serif;
+            margin:0;padding:0;
+            background:var(--azul);
+            color:var(--branco);
+            min-height:100vh;
+            overflow-x:hidden;
+        }
+
         ::-webkit-scrollbar{width:6px}
-        ::-webkit-scrollbar-track{background:#0d0f0a;border-radius:3px}
-        ::-webkit-scrollbar-thumb{background:#4B5320;border-radius:3px}
-        ::-webkit-scrollbar-thumb:hover{background:#5C4033}
-        .btn-email-liberar{background:linear-gradient(135deg,#7C3AED 0%,#9EFF00 100%)!important;color:#fff!important;font-weight:800!important;border:2px solid #9EFF00!important;animation:pulse-border 1.8s ease-in-out infinite}
-        .btn-email-liberar:hover{background:linear-gradient(135deg,#9EFF00 0%,#7C3AED 100%)!important;transform:scale(1.05)}
-        .grid-pacotes{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;max-width:1100px;margin:0 auto 2.5rem auto}
-        .grid-pacotes .card-mod{flex:1 1 280px;max-width:360px;min-width:260px;display:flex;flex-direction:column}
-        @media(max-width:640px){.grid-pacotes .card-mod{flex:1 1 100%;max-width:100%}}
-        .lista-itens-pacote{list-style:none;padding:0;margin:0 0 1.25rem 0;display:flex;flex-direction:column;gap:0.375rem;flex:1}
-        .lista-itens-pacote li{font-size:0.8rem;padding:0.35rem 0.6rem;border-radius:0.4rem;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);line-height:1.4;color:#d4d4d4}
-        @media(max-width:640px){.lista-itens-pacote li{font-size:0.75rem;padding:0.3rem 0.5rem}.card-mod{padding:0.625rem}.area-midia{height:8rem}.icone-rede-topo{font-size:0.875rem}.menu-botao{font-size:0.875rem;padding:0.625rem 0.75rem}.menu-lista a{font-size:0.8125rem}.btn-venda{font-size:1rem;padding:0.75rem 1rem}.badge-carrinho{font-size:0.625rem;width:1rem;height:1rem}.barra-total{padding:0.5rem 0.75rem}}
-        @media(min-width:640px){.card-mod{padding:1rem}.area-midia{height:9rem}.icone-rede-topo{font-size:1.125rem}.menu-botao{font-size:1.125rem;padding:0.75rem 1rem}.menu-lista{max-height:60vh}.menu-lista a{padding:0.75rem 1rem;font-size:0.875rem}.carrinho-conteudo,.pix-conteudo,.saida-conteudo{max-width:30rem;padding:1.5rem}.fechar-modal{font-size:1.5rem}.badge-carrinho{font-size:0.75rem;width:1.25rem;height:1.25rem}.barra-total{padding:0.75rem 1.25rem}.btn-venda{font-size:1.125rem;padding:0.75rem 1.5rem}.btn-topo{width:3rem;height:3rem;bottom:1.5rem;right:1.5rem}input,textarea,select{font-size:16px!important}}
+        ::-webkit-scrollbar-track{background:var(--azul)}
+        ::-webkit-scrollbar-thumb{background:var(--azul-medio);border-radius:3px}
+        ::-webkit-scrollbar-thumb:hover{background:var(--verde)}
 
-        .war-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-        .war-grid{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(158,255,0,0.035) 0 1px,transparent 1px 46px),repeating-linear-gradient(90deg,rgba(158,255,0,0.035) 0 1px,transparent 1px 46px);animation:war-grid-move 10s linear infinite}
-        @keyframes war-grid-move{from{background-position:0 0,0 0}to{background-position:0 46px,46px 0}}
-        .war-scan{position:absolute;top:0;bottom:0;left:-2%;width:3px;background:linear-gradient(180deg,transparent,rgba(158,255,0,0.18),transparent);box-shadow:0 0 12px rgba(158,255,0,0.15);animation:war-scan-move 11s linear infinite}
-        @keyframes war-scan-move{from{left:-2%}to{left:102%}}
-        .war-soldier{position:absolute;bottom:2px;color:#9EFF00;animation:war-soldier-pulse 5s ease-in-out infinite}
-        .war-soldier svg{width:100%;height:auto}
-        .war-soldier .arm-l,.war-soldier .arm-r,.war-soldier .leg-l,.war-soldier .leg-r{transform-box:fill-box;transform-origin:top center;animation:war-step 0.7s ease-in-out infinite}
-        .war-soldier .arm-r,.war-soldier .leg-r{animation-name:war-step-r}
-        @keyframes war-step{0%,100%{transform:rotate(7deg)}50%{transform:rotate(-7deg)}}
-        @keyframes war-step-r{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
-        @keyframes war-soldier-pulse{0%,100%{opacity:0.10;filter:drop-shadow(0 0 2px rgba(158,255,0,0.2))}50%{opacity:0.28;filter:drop-shadow(0 0 8px rgba(158,255,0,0.6))}}
-        .war-tank{position:absolute;bottom:70px;color:#5C4033;animation:war-tank-patrol 70s ease-in-out infinite}
-        .war-tank svg{width:180px;height:auto}
-        .war-tank .tank-bounce{animation:war-tank-bounce 1.6s ease-in-out infinite}
-        .war-tank .smoke{transform-box:fill-box;transform-origin:center;animation:war-smoke 2.5s ease-out infinite}
-        .war-tank .smoke.s2{animation-delay:0.8s}.war-tank .smoke.s3{animation-delay:1.6s}
-        @keyframes war-tank-patrol{0%{transform:translateX(-240px)}50%{transform:translateX(calc(100vw + 40px))}100%{transform:translateX(-240px)}}
-        @keyframes war-tank-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-        @keyframes war-smoke{0%{transform:translate(0,0) scale(1);opacity:0.5}100%{transform:translate(-18px,-28px) scale(1.8);opacity:0}}
-        .war-heli{position:absolute;top:10%;color:#8B7D6B;opacity:0.35;animation:war-heli-fly 40s linear infinite}
-        .war-heli svg{width:170px;height:auto}
-        .war-heli.heli-2{animation-delay:-20s;top:26%;opacity:0.22}
-        .war-heli .heli-rotor{transform-box:fill-box;transform-origin:center;animation:war-rotor 0.3s linear infinite}
-        @keyframes war-rotor{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-        @keyframes war-heli-fly{0%{transform:translateX(-200px) translateY(0)}20%{transform:translateX(30vw) translateY(-14px)}40%{transform:translateX(65vw) translateY(8px)}60%{transform:translateX(calc(100vw + 60px)) translateY(-6px)}100%{transform:translateX(calc(100vw + 60px)) translateY(-6px)}}
-        .war-dust{position:absolute;border-radius:50%;background:rgba(158,255,0,0.35);animation:war-dust-rise linear infinite}
-        @keyframes war-dust-rise{0%{transform:translateY(0) scale(0.5);opacity:0}15%{opacity:0.5}100%{transform:translateY(-26vh) translateX(20px) scale(1.5);opacity:0}}
-        .war-flash{position:absolute;width:8px;height:8px;border-radius:50%;background:radial-gradient(circle,rgba(255,204,0,0.9),rgba(255,60,0,0.4) 60%,transparent);animation:war-flash-pulse 6s ease-in-out infinite}
-        .war-flash.f2{animation-delay:2s}.war-flash.f3{animation-delay:4s}
-        @keyframes war-flash-pulse{0%,88%,100%{transform:scale(0.6);opacity:0}92%{transform:scale(2.2);opacity:1}96%{transform:scale(1.2);opacity:0.6}}
-        .war-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,transparent 60%,rgba(13,15,10,0.5) 100%)}
-        @media(max-width:640px){.war-tank{display:none}.war-heli{opacity:0.18}.war-heli svg{width:110px}.war-scan{display:none}.war-soldier{animation-name:war-soldier-pulse;animation-duration:6s}}
+        .gradient-text{
+            background:linear-gradient(240deg,var(--verde),#5ec8ff);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+        }
+        .subtitle-tag{
+            color:var(--verde);font-weight:400;font-size:0.875rem;
+            text-transform:uppercase;letter-spacing:7.5px;
+            border-left:5px solid var(--verde);padding-left:12px;
+        }
+        .subtitle-tag-center{
+            color:var(--verde);font-weight:400;font-size:0.875rem;
+            text-transform:uppercase;letter-spacing:7.5px;text-align:center;
+        }
 
-        /* Campos obrigatórios no carrinho */
-        .campo-destaque{border:2px solid #9EFF00!important;box-shadow:0 0 12px rgba(158,255,0,0.2)!important}
+        /* Botões */
+        .btn-primario{
+            display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
+            background:var(--verde);color:var(--azul);
+            font-weight:700;padding:0.9rem 2rem;border-radius:10px;
+            font-size:0.95rem;text-decoration:none;text-align:center;
+            cursor:pointer;border:2px solid var(--verde);
+            transition:all 0.3s;text-transform:uppercase;letter-spacing:0.03em;
+            box-shadow:0 0 20px rgba(165,255,0,0.25);white-space:nowrap;
+        }
+        .btn-primario:hover{
+            background:transparent;color:#fff;border-color:#fff;
+            box-shadow:0 0 35px rgba(165,255,0,0.45);transform:translateY(-2px);
+        }
+        .btn-outline{
+            display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
+            background:transparent;color:#fff;
+            font-weight:700;padding:0.9rem 2rem;border-radius:10px;
+            font-size:0.95rem;text-decoration:none;text-align:center;
+            cursor:pointer;border:2px solid var(--verde);
+            transition:all 0.3s;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;
+        }
+        .btn-outline:hover{
+            background:var(--verde);color:var(--azul);
+            box-shadow:0 0 30px rgba(165,255,0,0.4);transform:translateY(-2px);
+        }
+        @media(max-width:480px){
+            .btn-primario,.btn-outline{padding:0.75rem 1.25rem;font-size:0.8rem;white-space:normal;}
+        }
 
-        /* 🆕 ADICIONADO: Modal de tranquilização (pop-up pós-compra) */
-        .modal-tranquiliza{position:fixed;inset:0;background:rgba(0,0,0,0.88);display:none;align-items:center;justify-content:center;z-index:80;padding:0.5rem;backdrop-filter:blur(6px)}
-        .tranquiliza-conteudo{background:#1a1d16;border-radius:1rem;max-width:95vw;width:420px;max-height:90vh;overflow-y:auto;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,0.7);border:2px solid #22c55e;color:#e8e6dc;text-align:center;animation:fadeInUp 0.5s ease-out forwards;position:relative}
-        .tranquiliza-fechar{position:absolute;top:8px;right:12px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.5rem;cursor:pointer;transition:color 0.2s;z-index:5;line-height:1}
-        .tranquiliza-fechar:hover{color:#fff}
-        @keyframes checkPop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.3)}100%{transform:scale(1);opacity:1}}
-        .check-anim{display:inline-block;width:80px;height:80px;border-radius:50%;background:#22c55e;margin-bottom:1rem;animation:checkPop 0.5s ease-out forwards}
-        .check-anim::after{content:'✓';font-size:3rem;color:#fff;font-weight:900;line-height:80px}
+        /* Header */
+        .top-bar{
+            background:rgba(12,21,53,0.95);padding:0.6rem 0;
+            border-bottom:2px solid rgba(165,255,0,0.12);
+            position:sticky;top:0;z-index:100;backdrop-filter:blur(15px);
+        }
+
+        /* Hero */
+        .hero-section{
+            position:relative;background:var(--azul);min-height:85vh;
+            display:flex;align-items:center;overflow:hidden;
+            background-image:linear-gradient(rgba(12,21,53,0.55),rgba(12,21,53,0.85)),
+            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><radialGradient id="g1" cx="30%25" cy="30%25"><stop offset="0%25" stop-color="%23a5ff00" stop-opacity="0.1"/><stop offset="100%25" stop-color="transparent"/></radialGradient><radialGradient id="g2" cx="70%25" cy="70%25"><stop offset="0%25" stop-color="%231e3060" stop-opacity="0.15"/><stop offset="100%25" stop-color="transparent"/></radialGradient></defs><rect fill="%230c1535" width="1920" height="1080"/><rect fill="url(%23g1)" width="1920" height="1080"/><rect fill="url(%23g2)" width="1920" height="1080"/></svg>');
+            background-size:cover;background-position:center;background-attachment:fixed;
+            padding:2rem 1rem;
+        }
+        .hero-content{
+            max-width:1200px;margin:0 auto;
+            display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;width:100%;
+        }
+        .hero-text{animation:fadeInUp 0.8s ease-out}
+        .hero-text h1{
+            font-size:clamp(2rem,5vw,3.75rem);font-weight:900;line-height:1.15;
+            color:#fff;margin:0.5rem 0 1rem;text-shadow:0 0 80px rgba(165,255,0,0.4);
+        }
+        .hero-text h1 span{color:var(--verde)}
+        .hero-text p{
+            font-size:1rem;font-weight:400;line-height:1.6;
+            color:rgba(255,255,255,0.75);margin-bottom:2rem;max-width:500px;
+        }
+        .hero-visual{display:flex;align-items:center;justify-content:center;position:relative}
+        .hero-visual .glow-circle{
+            width:320px;height:320px;border-radius:50%;
+            background:radial-gradient(circle,rgba(165,255,0,0.12) 0%,rgba(30,48,96,0.06) 50%,transparent 70%);
+            display:flex;align-items:center;justify-content:center;
+            animation:pulseGlow 3s ease-in-out infinite;
+        }
+        .hero-visual .glow-circle .icon-big{font-size:6rem;animation:floatHero 4s ease-in-out infinite}
+        @keyframes pulseGlow{0%,100%{transform:scale(1);opacity:0.7}50%{transform:scale(1.05);opacity:1}}
+        @keyframes floatHero{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        @media(max-width:768px){
+            .hero-content{grid-template-columns:1fr;text-align:center}
+            .hero-text p{margin:0 auto 1.5rem}
+            .hero-text .subtitle-tag{display:inline-block;margin:0 auto;}
+            .hero-visual .glow-circle{width:180px;height:180px}
+            .hero-visual .glow-circle .icon-big{font-size:3rem}
+            .hero-section{min-height:auto;padding:3rem 1rem 4rem;background-attachment:scroll;}
+            .subtitle-tag{font-size:0.7rem;letter-spacing:4px}
+            .hero-text h1{font-size:1.8rem;}
+            .hero-text>div{justify-content:center;}
+        }
+
+        /* Features */
+        .features-section{background:var(--azul);padding:6rem 1rem;position:relative}
+        .feature-card{
+            background:linear-gradient(113deg,var(--azul-medio),rgba(12,21,53,0.9));
+            border:2px solid rgba(165,255,0,0.3);border-radius:10px;
+            padding:3rem 2.5rem;transition:all 0.35s;position:relative;overflow:hidden;
+            display:flex;flex-direction:column;height:100%;
+        }
+        .feature-card::before{
+            content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+            background:radial-gradient(circle,rgba(165,255,0,0.05) 0%,transparent 70%);
+            opacity:0;transition:opacity 0.35s;
+        }
+        .feature-card:hover::before{opacity:1}
+        .feature-card:hover{
+            transform:translateY(-6px);
+            box-shadow:0 15px 50px rgba(165,255,0,0.12);border-color:var(--verde);
+        }
+        .feature-card .icon-wrap{
+            width:48px;height:48px;border-radius:8px;
+            background:rgba(165,255,0,0.1);border:1px solid rgba(165,255,0,0.3);
+            display:flex;align-items:center;justify-content:center;
+            color:var(--verde);font-size:1.25rem;margin-bottom:1.5rem;flex-shrink:0;
+        }
+        .feature-card h4{font-weight:700;font-size:1.05rem;color:#fff;margin-bottom:0.75rem;line-height:1.3}
+        .feature-card p{font-weight:300;font-size:0.9rem;color:rgba(255,255,255,0.65);line-height:1.5;flex:1;}
+        @media(max-width:640px){
+            .features-section{padding:3rem 1rem}
+            .feature-card{padding:1.8rem 1.25rem}
+            .feature-card h4{font-size:0.95rem}
+            .feature-card p{font-size:0.82rem}
+        }
+
+        /* Video */
+        .video-section{
+            background:linear-gradient(208deg,var(--azul-medio),rgba(12,21,53,0.95));
+            padding:6rem 1rem;position:relative;
+        }
+        .video-section.demo-section{background:var(--azul);}
+        .video-card{
+            position:relative;border-radius:12px;overflow:hidden;
+            border:2px solid rgba(165,255,0,0.3);
+            box-shadow:0 0 40px rgba(165,255,0,0.08);transition:transform 0.3s;
+            cursor:pointer;background:rgba(0,0,0,0.5);aspect-ratio:16/10;
+            display:flex;align-items:center;justify-content:center;
+        }
+        .video-card:hover{transform:scale(1.02);box-shadow:0 0 60px rgba(165,255,0,0.18);border-color:var(--verde)}
+        .video-card .play-btn{
+            width:80px;height:80px;border-radius:50%;background:rgba(165,255,0,0.85);
+            display:flex;align-items:center;justify-content:center;
+            font-size:2rem;color:var(--azul);transition:all 0.3s;
+            animation:pulsePlay 2s ease-in-out infinite;
+        }
+        @keyframes pulsePlay{0%,100%{box-shadow:0 0 0 0 rgba(165,255,0,0.4)}50%{box-shadow:0 0 0 25px rgba(165,255,0,0)}}
+        @media(max-width:768px){
+            .video-section{padding:3rem 1rem}
+            .video-section .container-wide{grid-template-columns:1fr!important;text-align:center;}
+            .video-section .subtitle-tag{display:inline-block;}
+            .video-card{aspect-ratio:16/9;}
+            .video-card .play-btn{width:60px;height:60px;font-size:1.5rem;}
+        }
+
+        /* Instalação */
+        .instalacao-section{background:var(--azul);padding:6rem 1rem;position:relative}
+        .instalacao-card{
+            background:linear-gradient(135deg,rgba(22,34,68,0.9),rgba(12,21,53,0.95));
+            border:1px solid rgba(165,255,0,0.2);border-radius:14px;
+            padding:2.5rem;transition:all 0.35s;position:relative;overflow:hidden;
+            display:flex;gap:1.25rem;align-items:flex-start;
+        }
+        .instalacao-card:hover{border-color:var(--verde);box-shadow:0 8px 35px rgba(165,255,0,0.1)}
+        .instalacao-card .step-number{
+            width:40px;height:40px;border-radius:50%;background:var(--verde);
+            color:var(--azul);font-weight:900;font-size:1.1rem;
+            display:flex;align-items:center;justify-content:center;
+            flex-shrink:0;
+        }
+        @media(max-width:640px){
+            .instalacao-section{padding:3rem 1rem}
+            .instalacao-card{padding:1.5rem 1rem;flex-direction:column;gap:0.75rem;}
+            .instalacao-card .step-number{width:32px;height:32px;font-size:0.9rem;}
+        }
+        .alerta-box{
+            background:rgba(165,255,0,0.05);border-left:4px solid var(--verde);
+            border-radius:6px;padding:1rem 1.25rem;margin:1.25rem 0;
+        }
+        .alerta-box-perigo{
+            background:rgba(255,68,68,0.06);border-left:4px solid #ff4444;
+            border-radius:6px;padding:1rem 1.25rem;margin:1.25rem 0;
+        }
+        .path-box{
+            background:rgba(0,0,0,0.4);border:1px solid rgba(165,255,0,0.15);
+            border-radius:8px;padding:0.8rem 1rem;
+            font-family:'Courier New',monospace;font-size:0.78rem;
+            color:var(--verde);word-break:break-all;margin:0.5rem 0;user-select:all;
+        }
+        @media(max-width:640px){.path-box{font-size:0.68rem;padding:0.6rem 0.75rem;}}
+        .plataforma-badge{
+            display:inline-block;padding:0.25rem 0.75rem;border-radius:50px;
+            font-size:0.7rem;font-weight:700;margin-right:0.4rem;margin-bottom:0.3rem;
+        }
+        .badge-steam{background:#1a3a5c;color:#66c0f4;border:1px solid #66c0f4}
+        .badge-ubisoft{background:#2a1a3a;color:#b06cff;border:1px solid #b06cff}
+        .badge-epic{background:#1a1a1a;color:#fff;border:1px solid #888}
+
+        /* Depoimentos */
+        .testimonials-section{background:var(--azul);padding:6rem 1rem}
+        .testimonial-card{
+            background:#fff;border:1px solid rgba(165,255,0,0.25);
+            border-radius:10px;padding:2rem 1.8rem;text-align:center;
+            box-shadow:0 4px 20px rgba(0,0,0,0.15);
+            transition:all 0.3s;display:flex;flex-direction:column;height:100%;
+        }
+        .testimonial-card:hover{
+            box-shadow:0 12px 40px rgba(165,255,0,0.15);transform:translateY(-4px);
+        }
+        .testimonial-card .stars{color:var(--verde);font-size:1rem;letter-spacing:1px;margin-bottom:0.5rem}
+        .testimonial-card .quote{
+            font-style:italic;font-weight:400;font-size:0.82rem;
+            color:#555;line-height:1.5;margin-bottom:0.75rem;flex:1;
+        }
+        .testimonial-card .name{font-weight:700;color:#162244;font-size:0.9rem}
+        @media(max-width:640px){
+            .testimonials-section{padding:3rem 1rem}
+            .testimonial-card{padding:1.5rem 1.2rem;}
+        }
+
+        /* CTA */
+        .cta-section{
+            background:linear-gradient(208deg,var(--azul-medio),rgba(12,21,53,0.95));
+            padding:6rem 1rem;text-align:center;position:relative;
+        }
+        @media(max-width:640px){.cta-section{padding:3rem 1rem;}}
+
+        /* FAQ */
+        .faq-section{background:var(--azul);padding:6rem 1rem;position:relative}
+        @media(max-width:640px){.faq-section{padding:3rem 1rem;}}
+        .faq-item{margin-bottom:4px}
+        .faq-question{
+            background:var(--azul-medio);color:#fff;font-weight:600;
+            padding:1.1rem 1.5rem;width:100%;text-align:left;border:none;
+            cursor:pointer;font-family:'Montserrat',sans-serif;font-size:0.95rem;
+            border-radius:8px;display:flex;justify-content:space-between;
+            align-items:center;transition:all 0.25s;
+        }
+        .faq-question:hover{background:rgba(22,34,68,0.7)}
+        .faq-question.active{color:var(--verde);background:rgba(22,34,68,0.95)}
+        .faq-answer{
+            max-height:0;overflow:hidden;
+            transition:max-height 0.4s ease,padding 0.4s ease;
+            padding:0 1.5rem;color:rgba(255,255,255,0.7);
+            font-size:0.9rem;line-height:1.6;
+            background:rgba(255,255,255,0.02);border-radius:0 0 8px 8px;
+        }
+        .faq-answer.open{max-height:700px;padding:1.2rem 1.5rem}
+        .faq-icon{color:var(--verde);transition:transform 0.3s;font-size:0.9rem}
+        .faq-icon.rotated{transform:rotate(180deg)}
+        @media(max-width:640px){
+            .faq-question{font-size:0.85rem;padding:0.9rem 1rem;}
+            .faq-answer.open{padding:0.9rem 1rem;}
+        }
+
+        /* Footer */
+        .site-footer{
+            background:radial-gradient(circle,rgba(12,21,53,0.98),#000);
+            padding:1.5rem;text-align:center;
+            border-top:1px solid rgba(165,255,0,0.06);
+            padding-bottom:5rem;
+        }
+        .site-footer p{font-size:0.8rem;font-weight:400;color:rgba(255,255,255,0.35);margin:0}
+
+        /* Shapes */
+        .shape-bottom,.shape-top{
+            position:absolute;left:0;width:100%;overflow:hidden;
+            line-height:0;z-index:2;pointer-events:none;
+        }
+        .shape-bottom{bottom:-1px}
+        .shape-top{top:-1px}
+        .shape-bottom svg,.shape-top svg{display:block;width:calc(100% + 1.3px);height:50px}
+        .shape-top-flip svg{transform:rotate(180deg)}
+        @media(max-width:640px){
+            .shape-bottom svg,.shape-top svg{height:30px;}
+        }
+
+        /* Containers */
+        .container-narrow{max-width:700px;margin:0 auto}
+        .container-medium{max-width:900px;margin:0 auto}
+        .container-wide{max-width:1200px;margin:0 auto}
+
+        /* Pacotes - ALTURA IGUAL */
+        .pacote-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:1.5rem;max-width:1200px;margin:0 auto;
+            align-items:stretch;
+        }
+        .pacote-card{
+            background:var(--azul-medio);
+            border:2px solid rgba(165,255,0,0.25);border-radius:10px;
+            padding:2.5rem 2rem;text-align:center;
+            transition:all 0.35s;position:relative;
+            display:flex;flex-direction:column;
+            height:100%;
+        }
+        .pacote-card:hover{
+            transform:translateY(-6px);
+            box-shadow:0 15px 50px rgba(165,255,0,0.15);border-color:var(--verde);
+        }
+        .pacote-card.popular{
+            background:var(--verde);border-color:var(--verde);
+            color:var(--azul);box-shadow:0 0 30px rgba(165,255,0,0.3);
+        }
+        .pacote-card .pkg-icon{font-size:2.2rem;margin-bottom:0.5rem}
+        .pacote-card .pkg-stars{font-size:1.1rem;margin-bottom:0.5rem;letter-spacing:2px}
+        .pacote-card h4{font-weight:800;font-size:1.1rem;margin-bottom:0.75rem}
+        .pacote-card ul{
+            list-style:none;padding:0;text-align:left;
+            font-size:0.82rem;margin-bottom:1.2rem;line-height:2;flex:1;
+        }
+        .pacote-card ul li::before{content:'✓ ';color:var(--verde);font-weight:700}
+        .pacote-card.popular ul li::before{color:var(--azul)}
+        .pacote-card .price-old{text-decoration:line-through;opacity:0.5;font-size:0.85rem}
+        .pacote-card .price-new{font-size:2rem;font-weight:900;margin:0.3rem 0}
+        .badge-off{
+            background:#cc0000;color:#fff;padding:0.2rem 0.7rem;
+            border-radius:50px;font-size:0.7rem;font-weight:700;display:inline-block;
+        }
+        .badge-popular{
+            position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+            background:#FFD700;color:#3a2800;padding:0.3rem 1.2rem;
+            border-radius:50px;font-size:0.7rem;font-weight:800;white-space:nowrap;
+            box-shadow:0 0 20px rgba(255,215,0,0.4);z-index:2;
+        }
+        /* BADGE MELHOR CUSTO-BENEFÍCIO */
+        .badge-best-value{
+            position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+            background:var(--verde);color:var(--azul);padding:0.3rem 1.2rem;
+            border-radius:50px;font-size:0.7rem;font-weight:800;white-space:nowrap;
+            box-shadow:0 0 25px rgba(165,255,0,0.5);z-index:2;
+            animation:pulseBadgeValor 2s ease-in-out infinite;
+        }
+        @keyframes pulseBadgeValor{
+            0%,100%{box-shadow:0 0 15px rgba(165,255,0,0.4)}
+            50%{box-shadow:0 0 35px rgba(165,255,0,0.7)}
+        }
+        .pacote-card .btn-pacote{
+            margin-top:auto;width:100%;padding:0.8rem;
+        }
+        @media(max-width:640px){
+            .pacote-grid{grid-template-columns:1fr;max-width:400px;}
+            .pacote-card{padding:2rem 1.5rem}
+            .badge-popular,.badge-best-value{font-size:0.62rem;padding:0.25rem 0.9rem;top:-10px;}
+        }
+
+        /* Modais */
+        .modal-overlay{
+            position:fixed;inset:0;background:rgba(0,0,0,0.88);
+            backdrop-filter:blur(6px);z-index:9999;
+            display:none;align-items:center;justify-content:center;padding:1rem;
+        }
+        .modal-overlay.active{display:flex}
+        .modal-card{
+            background:var(--azul-medio);border:1px solid rgba(165,255,0,0.3);
+            border-radius:1rem;max-width:460px;width:100%;padding:1.5rem;
+            box-shadow:0 20px 60px rgba(0,0,0,0.5);
+            max-height:90vh;overflow-y:auto;animation:fadeInUp 0.3s ease-out;
+        }
+        .modal-close{float:right;color:#8899AA;font-size:1.5rem;cursor:pointer;background:none;border:none;font-weight:700;line-height:1}
+        .modal-close:hover{color:#ff4444}
+        @media(max-width:480px){
+            .modal-card{padding:1rem;max-height:95vh;}
+            .modal-close{font-size:1.25rem;}
+        }
+
+        /* Toast */
+        .toast{
+            position:fixed;bottom:6rem;left:50%;
+            transform:translateX(-50%) translateY(100px);
+            background:var(--verde);color:var(--azul);
+            padding:0.6rem 1.5rem;border-radius:2rem;
+            font-weight:700;font-size:0.85rem;z-index:99999;
+            opacity:0;transition:all 0.3s ease;
+            pointer-events:none;white-space:nowrap;
+            max-width:90vw;
+        }
+        .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+        @media(max-width:480px){.toast{font-size:0.75rem;padding:0.5rem 1.2rem;bottom:5.5rem;}}
+
+        /* Barra total */
+        .barra-total{
+            position:fixed;bottom:0;left:0;right:0;
+            background:rgba(12,21,53,0.98);color:var(--verde);
+            padding:0.75rem 1rem;display:flex;justify-content:space-between;
+            align-items:center;box-shadow:0 -4px 25px rgba(0,0,0,0.5);
+            z-index:90;transform:translateY(100%);transition:transform 0.5s;
+            border-top:1px solid rgba(165,255,0,0.25);backdrop-filter:blur(10px);
+        }
+        .barra-total.visivel{transform:translateY(0)}
+        @media(max-width:480px){
+            .barra-total{padding:0.6rem 0.8rem;gap:0.5rem;}
+            .barra-total button{font-size:0.75rem!important;padding:0.55rem 1rem!important;}
+        }
+
+        /* Botão topo */
+        .btn-topo{
+            position:fixed;bottom:5rem;right:1.5rem;
+            background:var(--azul-medio);color:var(--verde);
+            width:2.5rem;height:2.5rem;border-radius:50%;
+            display:none;align-items:center;justify-content:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.4);cursor:pointer;
+            z-index:50;border:1px solid rgba(165,255,0,0.3);
+            text-decoration:none;font-size:1rem;
+        }
+        .btn-topo:hover{background:var(--verde);color:var(--azul)}
+        @media(max-width:640px){
+            .btn-topo{bottom:4.5rem;right:1rem;width:2.2rem;height:2.2rem;font-size:0.85rem;}
+        }
+
+        /* Countdown */
+        .countdown-container{
+            display:inline-flex;gap:6px;align-items:center;
+            justify-content:center;flex-wrap:wrap;
+        }
+        .countdown-box{
+            background:rgba(0,0,0,0.5);border:1px solid rgba(165,255,0,0.3);
+            border-radius:8px;padding:6px 10px;text-align:center;min-width:48px;
+        }
+        .countdown-num{display:block;font-size:1.4rem;font-weight:900;color:var(--verde);line-height:1}
+        .countdown-label{
+            display:block;font-size:0.55rem;font-weight:700;
+            color:rgba(255,255,255,0.6);text-transform:uppercase;
+            letter-spacing:1px;margin-top:2px;
+        }
+        .countdown-sep{font-size:1.4rem;font-weight:900;color:var(--verde)}
+        @media(max-width:640px){
+            .countdown-box{min-width:38px;padding:4px 7px}
+            .countdown-num{font-size:1.1rem}
+            .countdown-label{font-size:0.5rem}
+            .countdown-sep{font-size:1.1rem}
+        }
+
+        /* Inputs */
+        .campo-destaque{
+            background:rgba(0,0,0,0.5)!important;color:#E8ECF0!important;
+            border:2px solid rgba(165,255,0,0.3)!important;border-radius:8px;
+            padding:0.7rem 0.9rem;font-size:0.9rem;width:100%;
+            outline:none;transition:0.2s;font-family:'Montserrat',sans-serif;
+        }
+        .campo-destaque:focus{
+            border-color:var(--verde)!important;
+            box-shadow:0 0 15px rgba(165,255,0,0.12)!important;
+        }
+        .campo-destaque::placeholder{color:rgba(232,236,240,0.4)}
+
+        @keyframes pulse-border{
+            0%,100%{box-shadow:0 0 8px rgba(165,255,0,0.3)}
+            50%{box-shadow:0 0 22px rgba(165,255,0,0.5)}
+        }
+        .pulse-border{animation:pulse-border 1.8s ease-in-out infinite}
+
+        /* Redes sociais */
+        .rede-icon{
+            color:var(--verde);opacity:0.7;font-size:1.1rem;
+            margin:0 0.15rem;transition:all 0.3s;text-decoration:none;
+        }
+        .rede-icon:hover{opacity:1;transform:scale(1.15)}
+        @media(max-width:480px){
+            .rede-icon{font-size:0.95rem;margin:0 0.1rem;}
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float{
+            position:fixed;bottom:5.5rem;right:1.5rem;
+            width:56px;height:56px;background:#25D366;color:#fff;
+            border-radius:50%;display:flex;align-items:center;
+            justify-content:center;font-size:1.8rem;
+            box-shadow:0 4px 20px rgba(37,211,102,0.4);
+            z-index:49;cursor:pointer;text-decoration:none;
+            transition:all 0.3s;animation:pulseWpp 2s ease-in-out infinite;
+        }
+        .whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,0.6)}
+        @keyframes pulseWpp{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.4)}50%{box-shadow:0 0 0 15px rgba(37,211,102,0)}}
+        @media(max-width:640px){
+            .whatsapp-float{width:48px;height:48px;font-size:1.5rem;bottom:5rem;right:1rem}
+        }
+
+        .destaque-forte{
+            background:rgba(165,255,0,0.08);border:1px solid rgba(165,255,0,0.2);
+            border-radius:10px;padding:1.5rem;text-align:center;margin:1.5rem 0;
+        }
+        .destaque-forte .icone-grande{font-size:2.5rem;margin-bottom:0.5rem}
+        @media(max-width:480px){.destaque-forte{padding:1rem;}}
+
+        /* Pix card */
+        .pix-destaque{
+            background:rgba(0,0,0,0.3);border:2px solid rgba(165,255,0,0.3);
+            border-radius:14px;padding:1.5rem;margin-bottom:1rem;text-align:center;
+        }
+        .pix-destaque .pix-chave{
+            font-size:1.3rem;font-weight:900;color:var(--verde);
+            user-select:all;word-break:break-all;margin:0.5rem 0;
+        }
+        .pix-destaque .pix-banco{
+            font-size:0.75rem;color:#8899AA;font-weight:600;
+        }
+        .pix-destaque .pix-nome{
+            color:rgba(255,255,255,0.7);font-size:0.85rem;
+        }
+        @media(max-width:480px){
+            .pix-destaque{padding:1rem;}
+            .pix-destaque .pix-chave{font-size:1.1rem;}
+        }
+
+        /* Grids responsivos */
+        .grid-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;align-items:stretch;}
+        .grid-testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;}
+        @media(max-width:480px){
+            .grid-features{grid-template-columns:1fr;}
+            .grid-testimonials{grid-template-columns:1fr 1fr;gap:0.7rem;}
+        }
+        @media(max-width:380px){
+            .grid-testimonials{grid-template-columns:1fr;}
+        }
     </style>
 </head>
-<body class="font-sans">
+<body>
 
-    <!-- ==================== CENA DE GUERRA DE FUNDO ==================== -->
-    <div class="war-bg" aria-hidden="true">
-        <div class="war-grid"></div><div class="war-scan"></div>
-        <div class="war-soldier" style="left:2%;width:52px;animation-delay:0s;"><svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg"><path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/><rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/><rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/><path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/><path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/><path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/><path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/><rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/><rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/><rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/><path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/><path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/><path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/><path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/></svg></div>
-        <div class="war-soldier" style="left:18%;width:44px;animation-delay:0.7s;"><svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg"><path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/><rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/><rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/><path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/><path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/><path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/><path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/><rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/><rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/><rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/><path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/><path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/><path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/><path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/></svg></div>
-        <div class="war-soldier" style="left:38%;width:58px;animation-delay:1.4s;"><svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg"><path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/><rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/><rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/><path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/><path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/><path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/><path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/><rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/><rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/><rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/><path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/><path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/><path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/><path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/></svg></div>
-        <div class="war-soldier" style="left:58%;width:40px;animation-delay:2.1s;"><svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg"><path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/><rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/><rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/><path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/><path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/><path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/><path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/><rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/><rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/><rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/><path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/><path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/><path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/><path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/></svg></div>
-        <div class="war-soldier" style="left:78%;width:55px;animation-delay:0.4s;"><svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg"><path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/><rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/><rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/><path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/><path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/><path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/><path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/><rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/><rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/><rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/><path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/><path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/><path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/><path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/></svg></div>
-        <div class="war-tank"><div class="tank-bounce"><svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg"><path d="M10 60 Q10 80 30 80 L130 80 Q150 80 150 60 L150 52 L10 52 Z" fill="currentColor"/><circle cx="45" cy="66" r="7" fill="#0d0f0a"/><circle cx="80" cy="66" r="7" fill="#0d0f0a"/><circle cx="115" cy="66" r="7" fill="#0d0f0a"/><path d="M25 52 L135 52 L135 40 Q135 32 125 32 L35 32 Q25 32 25 40 Z" fill="currentColor"/><path d="M50 32 L110 32 Q118 32 118 24 Q118 16 108 16 L52 16 Q42 16 42 24 Q42 32 50 32 Z" fill="currentColor"/><path d="M108 20 L148 14 L148 20 L108 26 Z" fill="currentColor"/><rect x="140" y="12" width="10" height="10" rx="2" fill="currentColor"/><circle class="smoke s1" cx="30" cy="44" r="3" fill="currentColor" opacity="0.6"/><circle class="smoke s2" cx="26" cy="40" r="2.5" fill="currentColor" opacity="0.5"/><circle class="smoke s3" cx="34" cy="40" r="2" fill="currentColor" opacity="0.4"/></svg></div></div>
-        <div class="war-heli"><svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><path d="M40 48 L8 50 L8 54 L40 56 Z" fill="currentColor"/><ellipse cx="8" cy="52" rx="6" ry="2" fill="currentColor"/><path d="M30 60 Q28 40 55 38 L95 38 Q125 38 135 55 Q138 62 130 64 L40 64 Q30 64 30 60 Z" fill="currentColor"/><path d="M60 40 Q50 40 46 52 L46 60 L70 60 L70 40 Z" fill="#0d0f0a" opacity="0.5"/><path d="M52 64 L48 76 L56 76 L58 64 Z" fill="currentColor"/><path d="M96 64 L100 76 L108 76 L104 64 Z" fill="currentColor"/><path d="M44 76 L60 76 L100 76 L110 76 L110 78 L44 78 Z" fill="currentColor" opacity="0.5"/><rect x="75" y="26" width="8" height="14" fill="currentColor"/><g class="heli-rotor"><rect x="15" y="30" width="130" height="4" rx="2" fill="currentColor"/><rect x="15" y="34" width="130" height="4" rx="2" fill="currentColor" opacity="0.5"/></g></svg></div>
-        <div class="war-heli heli-2"><svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><path d="M40 48 L8 50 L8 54 L40 56 Z" fill="currentColor"/><ellipse cx="8" cy="52" rx="6" ry="2" fill="currentColor"/><path d="M30 60 Q28 40 55 38 L95 38 Q125 38 135 55 Q138 62 130 64 L40 64 Q30 64 30 60 Z" fill="currentColor"/><path d="M60 40 Q50 40 46 52 L46 60 L70 60 L70 40 Z" fill="#0d0f0a" opacity="0.5"/><path d="M52 64 L48 76 L56 76 L58 64 Z" fill="currentColor"/><path d="M96 64 L100 76 L108 76 L104 64 Z" fill="currentColor"/><path d="M44 76 L60 76 L100 76 L110 76 L110 78 L44 78 Z" fill="currentColor" opacity="0.5"/><rect x="75" y="26" width="8" height="14" fill="currentColor"/><g class="heli-rotor"><rect x="15" y="30" width="130" height="4" rx="2" fill="currentColor"/><rect x="15" y="34" width="130" height="4" rx="2" fill="currentColor" opacity="0.5"/></g></svg></div>
-        <div class="war-dust" style="left:8%;bottom:10px;width:5px;height:5px;animation-duration:6s;animation-delay:0s;"></div>
-        <div class="war-dust" style="left:30%;bottom:14px;width:4px;height:4px;animation-duration:7s;animation-delay:1.2s;"></div>
-        <div class="war-dust" style="left:50%;bottom:8px;width:6px;height:6px;animation-duration:5.5s;animation-delay:2.4s;"></div>
-        <div class="war-dust" style="left:70%;bottom:12px;width:4px;height:4px;animation-duration:6.5s;animation-delay:0.8s;"></div>
-        <div class="war-dust" style="left:90%;bottom:6px;width:5px;height:5px;animation-duration:7.5s;animation-delay:3s;"></div>
-        <div class="war-flash" style="right:10%;bottom:32%;"></div>
-        <div class="war-flash f2" style="right:22%;bottom:48%;"></div>
-        <div class="war-flash f3" style="right:4%;bottom:55%;"></div>
-        <div class="war-vignette"></div>
-    </div>
-
-    <!-- ==================== HEADER ==================== -->
-    <header class="sticky top-0 z-50 shadow-xl" style="background:#0d0f0a;border-bottom:2px solid rgba(158,255,0,0.2);">
-        <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2 sm:py-3">
-            <div class="flex justify-center items-center pb-1.5 sm:pb-2 border-b border-principal/15 relative flex-wrap gap-x-1 sm:gap-x-0">
-                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-topo text-instagram" title="Instagram"><i class="fa fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-topo text-youtube" title="YouTube"><i class="fa fa-youtube-play"></i></a>
-                <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-topo text-facebook" title="Facebook"><i class="fa fa-facebook-square"></i></a>
-                <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-topo text-cults" title="Cults 3D"><i class="fa fa-cube"></i></a>
-                <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-topo text-whatsapp" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
-                <button onclick="abrirCarrinho()" class="icone-rede-topo text-principal ml-2 sm:ml-4 relative" title="Carrinho" style="background:none;border:none;cursor:pointer;">
-                    <i class="fa fa-shopping-cart text-base sm:text-lg"></i>
-                    <span id="badgeCarrinho" class="badge-carrinho hidden">0</span>
+    <!-- ═════════ TOP BAR ═════════ -->
+    <header class="top-bar">
+        <div class="container-wide" style="display:flex;justify-content:space-between;align-items:center;padding:0 1rem;flex-wrap:wrap;gap:0.5rem;">
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.3rem;color:var(--verde);">VCORE</span>
+                <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">GAMES</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.3rem;">
+                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="rede-icon" title="Instagram"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="rede-icon" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+                <a href="https://facebook.com/vcoregames" target="_blank" class="rede-icon" title="Facebook"><i class="fa fa-facebook-square"></i></a>
+                <a href="https://wa.me/5516981097916" target="_blank" class="rede-icon" title="WhatsApp Suporte"><i class="fa fa-whatsapp"></i></a>
+                <button onclick="abrirCarrinho()" style="background:none;border:none;cursor:pointer;position:relative;margin-left:0.5rem;" title="Carrinho" aria-label="Abrir carrinho">
+                    <i class="fa fa-shopping-cart" style="color:var(--verde);font-size:1.2rem;"></i>
+                    <span id="badgeCarrinho" style="position:absolute;top:-8px;right:-8px;background:#cc0000;color:#fff;font-size:0.6rem;font-weight:700;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center;">0</span>
                 </button>
             </div>
-            <div class="text-center my-2 sm:my-3">
-                <h1 class="text-[clamp(1.6rem,5vw,3rem)] logo-font text-principal leading-tight"><span style="display:inline-block;transform:skewX(-5deg);">V</span>CORE</h1>
-                <p class="text-[clamp(0.7rem,2vw,1.2rem)] text-principal/90 font-medium tracking-widest -mt-1">GAMES</p>
-                <p class="text-[10px] sm:text-xs text-principal/60 mt-0.5 sm:mt-1 px-2">Mods e Arquivos Prontos para Mod Ghost</p>
-            </div>
-            <nav class="max-w-xs mx-auto w-full menu-container">
-                <button id="botaoMenu" class="menu-botao" aria-label="Abrir menu">
-                    <span class="text-sm sm:text-base">🔫 Menu Principal</span>
-                    <i class="fa fa-chevron-down menu-icone text-sm" id="iconeMenu"></i>
-                </button>
-                <div id="listaMenu" class="menu-lista">
-                    <a href="#inicio" class="menu-ativo" onclick="mudarMenu(event,'inicio')">🎯 Início</a>
-                    <a href="#sobre-servico" onclick="mudarMenu(event,'sobre-servico')">🔫 Sobre o Serviço</a>
-                    <a href="#como-comprar" onclick="mudarMenu(event,'como-comprar')">💣 Como Comprar</a>
-                    <a href="#pacotes-premium" onclick="irParaPacotes(event)">📦 Pacotes Completos</a>
-                    <a href="#sobre" onclick="mudarMenu(event,'sobre')">ℹ️ Sobre Nós</a>
-                    <a href="#suporte" onclick="mudarMenu(event,'suporte')">💬 Suporte</a>
-                    <a href="#admin" onclick="mudarMenu(event,'admin')">🔒 Admin</a>
-                </div>
-            </nav>
         </div>
     </header>
 
-    <!-- ==================== HERO ==================== -->
-    <section class="relative py-10 sm:py-14 md:py-20 text-center overflow-hidden" style="background:#1a1d16;">
-        <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 320%22><path fill=%22%239EFF00%22 d=%22M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320,192,320,96,320,48,320L0,320Z%22></path></svg>');background-repeat:no-repeat;background-position:bottom;background-size:cover;"></div>
-        <div class="relative z-10 max-w-4xl mx-auto px-3 sm:px-4">
-            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-3 text-shadow text-white">Mods <span style="color:#9EFF00;">Mod Ghost</span></h2>
-            <p class="text-sm sm:text-base md:text-lg mb-0 text-gray-300 max-w-2xl mx-auto px-2">Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:#9EFF00;">tudo pronto, é só baixar e jogar!</strong></p>
+    <!-- ═════════ HERO ═════════ -->
+    <section class="hero-section" id="inicio">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="subtitle-tag">VCORE GAMES</p>
+                <h1>Mods Prontos para<br><span>Mod Ghost</span></h1>
+                <p>Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:var(--verde);">arquivos já prontos, é só baixar, copiar para a pasta raiz e jogar!</strong></p>
+                <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+                    <a href="#pacotes" class="btn-primario">
+                        🎯 Ver Pacotes <i class="fa fa-arrow-right"></i>
+                    </a>
+                    <a href="#instalacao" class="btn-outline">
+                        📖 Como Instalar
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="glow-circle"><span class="icon-big">🎯</span></div>
+            </div>
+        </div>
+        <div class="shape-bottom">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,40 C300,100 600,0 900,80 C1000,105 1100,30 1200,60 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
         </div>
     </section>
 
-    <!-- ==================== MODAL CARRINHO ==================== -->
-    <div id="modalCarrinho" class="modal-carrinho">
-        <div class="carrinho-conteudo">
-            <span class="fechar-modal" onclick="fecharCarrinho()">×</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-center text-principal mb-3 sm:mb-4">🛒 Seu Carrinho</h2>
-            <div id="listaCarrinho" class="space-y-2 mb-4 sm:mb-5">
-                <p class="text-gray-500 text-center text-sm" id="carrinhoVazio">Seu carrinho está vazio.</p>
-            </div>
-            <div class="border-t-2 border-gray-700 pt-3 sm:pt-4 mb-4 sm:mb-5">
-                <div class="flex justify-between items-center font-bold text-lg sm:text-xl text-white">
-                    <span>Total:</span>
-                    <span id="valorTotal">R$ 0,00</span>
+    <!-- ═════════ FEATURES ═════════ -->
+    <section class="features-section" style="position:relative;">
+        <div class="container-wide">
+            <div class="grid-features">
+                <div class="feature-card">
+                    <div class="icon-wrap"><i class="fa fa-download"></i></div>
+                    <h4>⚡ BAIXOU, COPIou, JOGOU</h4>
+                    <p>Nossos mods já vêm <strong>100% prontos</strong>. Ao receber o link, é só baixar os arquivos e copiar <strong>tudo para a pasta raiz do jogo</strong> (onde fica o executável). Nada de programas extras ou configurações complicadas — é copiar e jogar!</p>
                 </div>
-            </div>
-            <!-- CAMPOS DE DADOS DO CLIENTE -->
-            <div class="rounded-xl p-3 sm:p-4 mb-3 sm:mb-4" style="background:rgba(158,255,0,0.05);border:2px solid rgba(158,255,0,0.3);">
-                <p class="text-xs sm:text-sm font-bold text-principal mb-2 sm:mb-3 flex items-center gap-2"><span>📋</span> Seus dados para receber o pacote:</p>
-                <input type="text" id="clienteNome" placeholder="👤 Nome completo *" autocomplete="name" class="w-full border rounded-lg px-3 py-2.5 sm:py-3 mb-2 sm:mb-3 text-sm campo-destaque" />
-                <input type="email" id="clienteEmail" placeholder="📧 Seu melhor e-mail *" autocomplete="email" class="w-full border rounded-lg px-3 py-2.5 sm:py-3 text-sm campo-destaque" />
-                <p class="text-[10px] sm:text-xs text-gray-500 mt-2">⚠️ Use um e-mail que você acessa! O link de download será enviado para este e-mail após a confirmação do pagamento.</p>
-            </div>
-            <p id="carrinhoErro" class="text-red-400 text-xs sm:text-sm hidden text-center mb-2"></p>
-            <button class="btn-venda block text-center" onclick="iniciarFinalizacao()">💳 Finalizar Compra</button>
-        </div>
-    </div>
-
-    <!-- ==================== MODAL PIX ==================== -->
-    <div id="modalPix" class="modal-pix">
-        <div class="pix-conteudo">
-            <span class="fechar-modal" onclick="fecharModalPix()">×</span>
-            <div class="text-center">
-                <div class="mb-3 sm:mb-4">
-                    <span class="text-3xl sm:text-5xl">💳</span>
-                    <h2 class="text-xl sm:text-2xl font-bold text-principal mt-1 sm:mt-2">Pagamento via PIX</h2>
-                    <p class="text-gray-400 text-xs sm:text-sm">Copie a chave PIX, faça a transferência e envie o comprovante</p>
+                <div class="feature-card" style="background:var(--verde);border-color:var(--verde);">
+                    <div class="icon-wrap" style="background:rgba(12,21,53,0.2);border-color:rgba(12,21,53,0.3);"><i class="fa fa-bolt"></i></div>
+                    <h4 style="color:var(--azul);">🔥 INSTALAÇÃO EM 2 MINUTOS</h4>
+                    <p style="color:rgba(12,21,53,0.8);">Arquivos 100% pré-configurados e testados. Em menos de 2 minutos seu jogo estará completamente transformado com visuais táticos e realistas — sem complicação!</p>
                 </div>
-                <div class="rounded-xl py-2 sm:py-3 px-4 sm:px-6 mb-4 sm:mb-5 inline-block" style="background:rgba(158,255,0,0.08);border:1px solid rgba(158,255,0,0.3);">
-                    <p class="text-[10px] sm:text-xs text-gray-400">Valor a pagar</p>
-                    <p id="pixValor" class="text-2xl sm:text-3xl font-bold text-principal">R$ 0,00</p>
+                <div class="feature-card">
+                    <div class="icon-wrap"><i class="fa fa-shield"></i></div>
+                    <h4>🛡️ ASSISTÊNCIA COMPLETA</h4>
+                    <p>Oferecemos <strong>suporte do início ao fim</strong> — desde o download até o momento em que o jogo abrir. Se o arquivo apresentar qualquer problema, você tem garantia total. Fale conosco pelo WhatsApp!</p>
                 </div>
-                <div class="rounded-xl p-3 sm:p-5 mb-4 sm:mb-5" style="background:rgba(0,0,0,0.3);border:2px dashed rgba(158,255,0,0.3);">
-                    <p class="text-[10px] sm:text-xs text-gray-400 mb-2 sm:mb-3 font-bold uppercase tracking-wide">🔑 Chave PIX (telefone)</p>
-                    <p id="pixChave" class="text-xl sm:text-3xl font-bold text-principal tracking-wider select-all mb-1 break-all">16981097916</p>
-                    <p class="text-xs sm:text-sm text-gray-400">Rodrigo Paulino da Silva</p>
-                    <button onclick="copiarChavePix()" class="mt-3 sm:mt-4 font-bold py-2.5 sm:py-3 px-4 sm:px-5 rounded-lg text-xs sm:text-sm transition-colors w-full" style="background:#4B5320;color:#9EFF00;border:1px solid rgba(158,255,0,0.3);">📋 Copiar Chave PIX</button>
-                    <p id="pixCopiado" class="text-green-400 text-xs font-bold mt-2 sm:mt-3 hidden">✅ Chave copiada com sucesso!</p>
-                </div>
-                <div class="rounded-xl p-3 sm:p-4 mb-4 sm:mb-5 text-left text-xs sm:text-sm" style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:#e8e6dc;">
-                    <p class="font-bold text-blue-300 mb-1.5 sm:mb-2">📝 Como pagar:</p>
-                    <ol class="space-y-1 list-decimal list-inside">
-                        <li>Copie a chave PIX acima</li>
-                        <li>Abra o app do seu banco → <strong>PIX</strong> → <strong>Pagar</strong></li>
-                        <li>Cole a chave e confirme o valor</li>
-                        <li>Faça a transferência</li>
-                    </ol>
-                </div>
-                <!-- BOTÃO ENVIAR COMPROVANTE (EMAIL + WHATSAPP) -->
-                <button onclick="enviarComprovante()" class="w-full font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-lg text-sm sm:text-base transition-all pulse-border mb-2" style="background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;border:2px solid #4ade80;">
-                    📩 Enviar Comprovante (Email + WhatsApp)
-                </button>
-                <p class="text-[10px] sm:text-xs text-gray-500 mt-2">Após pagar, clique no botão acima. O comprovante será enviado <strong>ao mesmo tempo</strong> para email e WhatsApp. Você receberá o link de download em até 24h.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- ==================== MODAL SAÍDA ==================== -->
-    <div id="modalSaida" class="modal-saida">
-        <div class="saida-conteudo animate-fade-in-up text-center relative" style="border:2px solid #9EFF00;">
-            <button onclick="fecharModalSaida()" class="absolute top-2 right-3 sm:top-3 sm:right-4 text-white/60 hover:text-white text-xl sm:text-2xl font-bold cursor-pointer z-10" style="background:none;border:none;">×</button>
-            <div class="mb-3 sm:mb-4 pt-2"><span class="text-4xl sm:text-6xl">🎮</span></div>
-            <h2 class="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-principal">Espere! Não saia ainda!</h2>
-            <p class="text-gray-300 text-xs sm:text-sm mb-4 sm:mb-5 px-2">Temos <strong class="text-principal">condições especiais</strong> para você transformar seu Mod Ghost!</p>
-            <div class="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
-                <div class="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl text-left" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-xl sm:text-2xl flex-shrink-0">💎</span><div><p class="font-bold text-xs sm:text-sm text-principal">Pacote General Completo</p><p class="text-[10px] sm:text-xs text-gray-300">Todos os mods por apenas <strong class="text-principal">R$ 120,00</strong> — 40% OFF!</p></div></div>
-                <div class="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl text-left" style="background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.15);"><span class="text-xl sm:text-2xl flex-shrink-0">📦</span><div><p class="font-bold text-xs sm:text-sm text-yellow-400">Pronto para Jogar</p><p class="text-[10px] sm:text-xs text-gray-300">É só baixar e jogar na pasta do jogo — sem complicação!</p></div></div>
-                <div class="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl text-left" style="background:rgba(37,211,102,0.05);border:1px solid rgba(37,211,102,0.15);"><span class="text-xl sm:text-2xl flex-shrink-0">💬</span><div><p class="font-bold text-xs sm:text-sm text-green-400">Suporte via WhatsApp</p><p class="text-[10px] sm:text-xs text-gray-300">Tire todas as suas dúvidas antes de comprar!</p></div></div>
-            </div>
-            <div class="flex flex-col gap-2 sm:gap-3">
-                <a href="https://wa.me/5516981097916?text=Ol%C3%A1%20Rodrigo!%20Quero%20saber%20mais%20sobre%20os%20pacotes%20de%20mods%20para%20Mod%20Ghost.%20Pode%20me%20ajudar%3F" target="_blank" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"><i class="fa fa-whatsapp text-base sm:text-lg"></i> Falar no WhatsApp</a>
-                <button onclick="fecharModalSaida()" class="w-full bg-white/5 hover:bg-white/10 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors border border-white/15">Continuar navegando</button>
-            </div>
+    <!-- ═════════ VIDEO - COMO FUNCIONA ═════════ -->
+    <section class="video-section" style="position:relative;">
+        <div class="shape-top shape-top-flip">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,40 C300,100 600,0 900,80 C1000,105 1100,30 1200,60 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
         </div>
-    </div>
-
-    <!-- 🆕 ADICIONADO: Modal de tranquilização de liberação -->
-    <div id="modalTranquiliza" class="modal-tranquiliza">
-        <div class="tranquiliza-conteudo">
-            <button onclick="fecharModalTranquiliza()" class="tranquiliza-fechar">×</button>
-            <div class="check-anim"></div>
-            <h2 class="text-xl sm:text-2xl font-bold mb-3" style="color:#22c55e;">🎉 Compra Registrada com Sucesso!</h2>
-            <p class="text-gray-300 text-sm leading-relaxed mb-2">Seu comprovante foi enviado <strong class="text-principal">ao mesmo tempo</strong> para o <strong style="color:#3b82f6;">e-mail</strong> e <strong style="color:#25D366;">WhatsApp</strong> do Rodrigo.</p>
-            <p class="text-gray-300 text-sm leading-relaxed mb-3">Agora é só aguardar a liberação. Assim que confirmar o pagamento, o link será enviado ao seu e-mail em até <strong>24 horas</strong>. Geralmente é mais rápido!</p>
-            <div class="rounded-xl p-3 sm:p-4 mb-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.2);">
-                <p class="text-xs font-bold text-principal mb-1">📌 Dica importante:</p>
-                <p class="text-xs text-gray-300">Verifique sua caixa de entrada e spam para garantir que o e-mail não seja perdido. Adicione <strong style="color:#3b82f6;">rodrigoxgames25@gmail.com</strong> aos seus contatos para evitar bloqueios.</p>
+        <div class="container-wide" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;position:relative;z-index:1;">
+            <div class="video-card" onclick="window.open('https://www.youtube.com/watch?v=pN6ntMjvhRw','_blank')" title="Clique para assistir ao tutorial">
+                <div class="play-btn"><i class="fa fa-play" style="margin-left:3px;"></i></div>
             </div>
-            <div class="flex flex-col sm:flex-row gap-2">
-                <a href="https://wa.me/5516981097916" target="_blank" class="flex-1 bg-whatsapp hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors flex items-center justify-center gap-2" style="text-decoration:none;">
-                    <i class="fa fa-whatsapp"></i> Fale comigo no WhatsApp
+            <div>
+                <p class="subtitle-tag">COMO FUNCIONA</p>
+                <h2 style="font-size:clamp(1.5rem,3vw,2.25rem);font-weight:900;line-height:1.2;color:#fff;margin:0.75rem 0;">
+                    Assista ao vídeo e veja<br><span style="color:var(--verde);">como é simples</span>
+                </h2>
+                <p style="color:rgba(255,255,255,0.7);font-size:1rem;line-height:1.6;margin-bottom:1.5rem;">
+                    Nossos pacotes vêm com <strong style="color:var(--verde);">tudo 100% pronto</strong> — você só precisa <strong>baixar os arquivos, copiar para a pasta raiz do jogo</strong> e iniciar um save novo. Sem configurações, sem ferramentas extras. Assista ao tutorial e veja como é fácil!
+                </p>
+                <a href="#instalacao" class="btn-outline">
+                    📖 Ver Guia de Instalação <i class="fa fa-arrow-right"></i>
                 </a>
-                <button onclick="fecharModalTranquiliza()" class="flex-1 font-bold py-3 px-4 rounded-lg text-sm transition-colors" style="background:transparent;color:#22c55e;border:1px solid #22c55e;cursor:pointer;">
-                    Fechar
-                </button>
             </div>
         </div>
-    </div>
+        <div class="shape-bottom">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C400,0 800,100 1200,40 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
+        </div>
+    </section>
 
-    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
-    <main class="py-6 sm:py-8 md:py-10 px-3 sm:px-4 max-w-7xl mx-auto">
-
-        <!-- ===== INÍCIO / PACOTES ===== -->
-        <section id="menu-inicio" class="conteudo-menu">
-            <div id="pacotes-premium"></div>
-            <h3 class="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-center text-white">🏆 Pacotes Completos</h3>
-            <p class="text-center text-gray-400 mb-3 sm:mb-4 text-xs sm:text-sm">Escolha sua patente e equipe-se para a missão</p>
-
-            <div class="max-w-5xl mx-auto mb-4 sm:mb-6 rounded-xl overflow-hidden" style="background:#1a1d16;border:2px solid #9EFF00;">
-                <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 p-3 sm:p-5">
-                    <div class="text-3xl sm:text-5xl flex-shrink-0">🎮</div>
-                    <div class="flex-1 text-center sm:text-left">
-                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 mb-1.5 sm:mb-2"><span class="pronto-badge">✅ PRONTO PARA JOGAR</span><span class="fr-badge">⚡ FR INSTALAÇÃO</span></div>
-                        <p class="font-bold text-sm sm:text-lg text-principal">Os Pacotes já vêm com tudo instalado e configurado!</p>
-                        <p class="text-xs sm:text-sm mt-0.5 sm:mt-1 text-gray-300">Basta baixar e colocar na pasta raiz do jogo (onde está o <strong class="text-principal">GRB.exe</strong>). Sem instalar ferramentas — é só jogar! 🚀</p>
-                    </div>
-                </div>
+    <!-- ═════════ NOVO: DEMONSTRAÇÃO DOS MODS EM VÍDEO ═════════ -->
+    <section class="video-section demo-section" id="demo-mods" style="position:relative;">
+        <div class="shape-top shape-top-flip">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C400,0 800,100 1200,40 L1200,120 L0,120 Z" fill="var(--azul-medio)"/></svg>
+        </div>
+        <div class="container-wide" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;position:relative;z-index:1;">
+            <!-- Invertido: texto à esquerda, vídeo à direita -->
+            <div>
+                <p class="subtitle-tag">DEMONSTRAÇÃO</p>
+                <h2 style="font-size:clamp(1.5rem,3vw,2.25rem);font-weight:900;line-height:1.2;color:#fff;margin:0.75rem 0;">
+                    Veja os Mods<br><span style="color:var(--verde);">em Ação</span>
+                </h2>
+                <p style="color:rgba(255,255,255,0.7);font-size:1rem;line-height:1.6;margin-bottom:1.5rem;">
+                    Confira na prática como ficam os visuais táticos, coletes, armas, camuflagens e muito mais! <strong style="color:var(--verde);">Assista ao showcase completo</strong> e veja a transformação que os mods VCORE trazem para o seu Mod Ghost.
+                </p>
+                <a href="#pacotes" class="btn-primario">
+                    💎 Quero esses Mods <i class="fa fa-arrow-right"></i>
+                </a>
             </div>
-
-            <div class="max-w-5xl mx-auto mb-5 sm:mb-8 rounded-xl overflow-hidden border-2 pulse-save" style="background:linear-gradient(135deg,#ffcc00 0%,#ff9900 50%,#ffcc00 100%);border-color:#ff0000;">
-                <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 p-3 sm:p-5">
-                    <div class="text-3xl sm:text-5xl flex-shrink-0">⚠️</div>
-                    <div class="flex-1 text-center sm:text-left">
-                        <p class="font-extrabold text-base sm:text-xl md:text-2xl mb-0.5 sm:mb-1" style="color:#cc0000;text-shadow:1px 1px 0 rgba(255,255,255,0.5);">🚨 AO INSTALAR OS ARQUIVOS, INICIE UM SAVE NOVO!</p>
-                        <p class="text-xs sm:text-sm font-bold" style="color:#8B0000;">É obrigatório começar um <span style="background:#cc0000;color:#ffcc00;padding:2px 6px;border-radius:4px;">SAVE NOVO</span> após a instalação.</p>
-                    </div>
-                </div>
+            <div class="video-card" onclick="window.open('https://www.youtube.com/@RodrigoVCOREgames','_blank')" title="Clique para ver a demonstração dos mods">
+                <!-- 🔁 TROQUE O LINK ACIMA PELO SEU VÍDEO DE DEMONSTRAÇÃO -->
+                <div class="play-btn"><i class="fa fa-play" style="margin-left:3px;"></i></div>
             </div>
+        </div>
+        <div class="shape-bottom">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,40 C300,100 600,0 900,80 C1000,105 1100,30 1200,60 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
+        </div>
+    </section>
 
-            <div class="max-w-5xl mx-auto mb-5 sm:mb-8 rounded-xl overflow-hidden border-2 promo-glow" style="background:linear-gradient(135deg,#ff1a1a 0%,#cc0000 50%,#ff1a1a 100%);border-color:#ffcc00;">
-                <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 p-3 sm:p-5">
-                    <div class="text-3xl sm:text-5xl flex-shrink-0">🔥</div>
-                    <div class="flex-1 text-center sm:text-left">
-                        <p class="font-extrabold text-base sm:text-xl md:text-2xl mb-1 sm:mb-2 text-white" style="text-shadow:1px 1px 0 rgba(0,0,0,0.5);">PROMOÇÃO RELÂMPAGO! PREÇOS COM ATÉ 40% DE DESCONTO!</p>
-                        <p class="text-xs sm:text-sm font-bold text-yellow-200 mb-2 sm:mb-3">Oferta por tempo limitado — garanta já o seu pacote! ⏰</p>
-                        <div class="countdown-container" id="countdownPromo">
-                            <div class="countdown-box"><span class="countdown-num" id="countDias">00</span><span class="countdown-label">Dias</span></div>
-                            <span class="countdown-separator">:</span>
-                            <div class="countdown-box"><span class="countdown-num" id="countHoras">00</span><span class="countdown-label">Horas</span></div>
-                            <span class="countdown-separator">:</span>
-                            <div class="countdown-box"><span class="countdown-num" id="countMin">00</span><span class="countdown-label">Min</span></div>
-                            <span class="countdown-separator">:</span>
-                            <div class="countdown-box"><span class="countdown-num" id="countSeg">00</span><span class="countdown-label">Seg</span></div>
+    <!-- ═════════ GUIA DE INSTALAÇÃO ═════════ -->
+    <section class="instalacao-section" id="instalacao" style="position:relative;">
+        <div class="container-medium">
+            <p class="subtitle-tag-center">GUIA COMPLETO</p>
+            <h2 style="text-align:center;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--verde);margin:0.5rem 0 2.5rem;">
+                📖 Como Instalar os Mods
+            </h2>
+
+            <div style="display:flex;flex-direction:column;gap:1.5rem;">
+
+                <!-- PASSO 1 -->
+                <div class="instalacao-card">
+                    <div class="step-number">1</div>
+                    <div style="flex:1;">
+                        <h4 style="color:var(--verde);font-weight:800;margin:0 0 0.5rem;">Localize a Pasta Raiz do Jogo</h4>
+                        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.6;margin-bottom:0.8rem;">
+                            A <strong style="color:var(--verde);">pasta raiz</strong> é onde está o executável do jogo. Veja os caminhos padrão:
+                        </p>
+                        <div style="margin-bottom:0.4rem;">
+                            <span class="plataforma-badge badge-steam">STEAM</span>
+                            <div class="path-box">C:\Program Files (x86)\Steam\steamapps\common\Tom Clancy's Ghost Recon Breakpoint</div>
                         </div>
-                        <p class="text-[10px] sm:text-xs text-yellow-200/70 mt-2 sm:mt-3" id="promoExpirada" style="display:none;">⚠️ Promoção encerrada!</p>
+                        <div style="margin-bottom:0.4rem;">
+                            <span class="plataforma-badge badge-ubisoft">UBISOFT CONNECT</span>
+                            <div class="path-box">C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Tom Clancy's Ghost Recon Breakpoint</div>
+                        </div>
+                        <div style="margin-bottom:0.4rem;">
+                            <span class="plataforma-badge badge-epic">EPIC GAMES</span>
+                            <div class="path-box">C:\Program Files\Epic Games\TomClancysGhostReconBreakpoint</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="grid-pacotes">
-                <!-- PACOTE RECRUTA -->
-                <div class="card-mod soldier-bg relative" style="border-color:rgba(75,83,32,0.5);border-top:3px solid #4B5320;background:#1e2218;">
-                    <div class="relative z-10 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#4B5320;color:#9EFF00;">🎖️ RECRUTA</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
-                        <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#9EFF00;">Pacote Recruta</h4>
-                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:#c5ccbc;">Essencial para iniciar sua jornada tática.</p>
-                        <ul class="lista-itens-pacote">
-                            <li>✅ Mods Essenciais VCORE</li>
-                            <li>✅ Fest Feminino</li>
-                            <li>✅ Veículos Modificados</li>
-                            <li>✅ Guia de instalação por e-mail</li>
-                        </ul>
-                        <div class="area-midia"><a href="#" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#4B5320;"></i><span class="font-medium text-xs sm:text-sm" style="color:#4B5320;">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-2 sm:mb-3"><span class="text-xs sm:text-sm line-through text-gray-500">R$ 100,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#9EFF00;">R$ 60,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full bg-red-600 text-white">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Recruta - Mods Essenciais',60.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:linear-gradient(135deg,#4B5320,#2E3B1F);color:#9EFF00;border:1px solid rgba(158,255,0,0.3);">🎖️ Adicionar Pacote Recruta</button>
+                <!-- PASSO 2 -->
+                <div class="instalacao-card">
+                    <div class="step-number">2</div>
+                    <div style="flex:1;">
+                        <h4 style="color:var(--verde);font-weight:800;margin:0 0 0.5rem;">⚠️ FAÇA BACKUP DOS ARQUIVOS ORIGINAIS</h4>
+                        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.6;">
+                            Antes de copiar qualquer mod, <strong style="color:#ff7777;">faça uma cópia de segurança</strong> dos arquivos originais que serão substituídos. Copie os mesmos arquivos que você vai sobrescrever e cole em uma pasta separada.
+                        </p>
+                        <div class="alerta-box-perigo">
+                            <p style="margin:0;font-size:0.85rem;color:#ff7777;font-weight:600;">
+                                🔴 NÃO PULE ESTA ETAPA! Assim você pode restaurar o jogo original a qualquer momento.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <!-- PACOTE SARGENTO -->
-                <div class="card-mod soldier-bg relative" style="border-color:rgba(255,215,0,0.5);border-top:3px solid #FFD700;background:#241f14;">
-                    <div class="absolute -top-1 left-1/2 -translate-x-1/2 z-20"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-lg bg-yellow-400 text-yellow-900">⭐ MAIS POPULAR</span></div>
-                    <div class="relative z-10 flex flex-col flex-1 mt-3">
-                        <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#FFD700;color:#3a2800;">🥇 SARGENTO</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
-                        <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1 text-yellow-400">Pacote Sargento</h4>
-                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:#e0d5a8;">Experiência completa. O preferido da comunidade!</p>
-                        <ul class="lista-itens-pacote">
-                            <li>✅ Tudo do Pacote Recruta</li>
-                            <li>✅ Coletes — Mod de Aparência</li>
-                            <li>✅ Armas e Miras — Precisão Real</li>
-                            <li>✅ Camisa e Calça — Visual Tático</li>
-                            <li>✅ Camuflagem — Skins Completas</li>
-                            <li>✅ Capacetes e Proteções</li>
-                        </ul>
-                        <div class="area-midia"><a href="#" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2 text-yellow-400"></i><span class="font-medium text-xs sm:text-sm text-yellow-400">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-2 sm:mb-3"><span class="text-xs sm:text-sm line-through text-gray-500">R$ 150,00</span><p class="text-2xl sm:text-3xl font-bold text-yellow-400">R$ 90,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full bg-red-600 text-white">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Sargento - Mods Avançados',90.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:linear-gradient(135deg,#FFD700,#FFA000);color:#3a2800;border:1px solid rgba(255,215,0,0.5);">🥇 Adicionar Pacote Sargento</button>
+
+                <!-- PASSO 3 -->
+                <div class="instalacao-card">
+                    <div class="step-number">3</div>
+                    <div style="flex:1;">
+                        <h4 style="color:var(--verde);font-weight:800;margin:0 0 0.5rem;">🧹 Certifique-se de que o Jogo Está 100% LIMPO</h4>
+                        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.6;">
+                            O jogo <strong style="color:var(--verde);">não pode ter nenhum vestígio de mods anteriores</strong> ou pastas de outros pacotes.
+                        </p>
+                        <div class="alerta-box-perigo">
+                            <p style="margin:0;font-size:0.85rem;color:#ff7777;font-weight:600;">
+                                ⚠️ Se você já tentou instalar outros mods: <strong>desinstale o jogo completamente</strong>, limpe todos os vestígios da pasta de instalação e reinstale do zero para garantir 100% de compatibilidade.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <!-- PACOTE GENERAL -->
-                <div class="card-mod soldier-bg relative" style="border-color:rgba(158,255,0,0.6);border-top:3px solid #9EFF00;background:#1a1f14;">
-                    <div class="relative z-10 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-2 sm:mb-3 flex-wrap gap-1"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:linear-gradient(135deg,#7C3AED,#9EFF00);color:#fff;">💎 GENERAL</span><span class="bg-red-600 text-white text-[9px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">MELHOR VALOR</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
-                        <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="background:linear-gradient(135deg,#A78BFA,#9EFF00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Pacote General</h4>
-                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:#D8B4FE;">Arsenal completo. <strong style="color:#9EFF00;">Todos os mods</strong>.</p>
-                        <ul class="lista-itens-pacote">
-                            <li>✅ <strong>TODOS</strong> os mods disponíveis</li>
-                            <li>✅ Coletes, Armas, Miras</li>
-                            <li>✅ Camisa, Calça, Camuflagem</li>
-                            <li>✅ Fest Feminino</li>
-                            <li>✅ Capacetes e Proteções</li>
-                            <li>✅ Veículos, Skin Pack, Kit Tático</li>
-                            <li>✅ Guia de instalação por e-mail</li>
-                        </ul>
-                        <div class="area-midia"><a href="https://www.youtube.com/watch?v=pN6ntMjvhRw&t=564s" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2 text-principal"></i><span class="font-medium text-xs sm:text-sm text-principal">Assistir Vídeo</span></a></div>
-                        <div class="text-center mb-2 sm:mb-3"><span class="text-xs sm:text-sm line-through text-gray-500">R$ 200,00</span><p class="text-2xl sm:text-3xl font-bold text-principal">R$ 120,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full bg-red-600 text-white">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote General - Todos os Mods',120.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:linear-gradient(135deg,#7C3AED,#9EFF00);color:#fff;border:2px solid #9EFF00;">💎 Adicionar Pacote General</button>
+
+                <!-- PASSO 4 -->
+                <div class="instalacao-card">
+                    <div class="step-number">4</div>
+                    <div style="flex:1;">
+                        <h4 style="color:var(--verde);font-weight:800;margin:0 0 0.5rem;">📁 Copie os Arquivos para a Pasta Raiz</h4>
+                        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.6;">
+                            Após baixar, <strong style="color:var(--verde);">copie TODOS os arquivos do download diretamente para a pasta raiz do jogo</strong>. Os arquivos já estão prontos — é literalmente baixar, copiar e colar na raiz.
+                        </p>
+                        <div class="destaque-forte">
+                            <div class="icone-grande">📁</div>
+                            <p style="color:var(--verde);font-weight:800;font-size:1rem;margin:0;">
+                                ⭐ TODOS OS ARQUIVOS DO DOWNLOAD DEVEM SER COLOCADOS NA RAIZ DO JOGO!
+                            </p>
+                            <p style="color:rgba(255,255,255,0.6);font-size:0.8rem;margin:0.3rem 0 0;">
+                                Não crie subpastas — é tudo junto na raiz, onde está o executável!
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- ===== SOBRE O SERVIÇO ===== -->
-        <section id="menu-sobre-servico" class="conteudo-menu hidden">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-white">📋 Sobre o Serviço VCORE GAMES</h2>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #9EFF00;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🎯</span><div><h3 class="text-lg sm:text-xl font-bold text-principal mb-1 sm:mb-2">O que fazemos?</h3><p class="leading-relaxed text-sm sm:text-base text-gray-300">A <strong class="text-principal">VCORE GAMES</strong> oferece curadoria, organização e preparação de mods para Mod Ghost. Tudo <strong class="text-principal">pronto para uso imediato</strong> — sem que você precise configurar nada.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #3b82f6;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">💰</span><div><h3 class="text-lg sm:text-xl font-bold text-blue-300 mb-1 sm:mb-2">Pelo que você está pagando?</h3><p class="text-gray-300 text-sm">Você <strong class="text-blue-300">NÃO está comprando os mods</strong> (gratuitos no Nexus Mods). Você paga pelo nosso trabalho de curadoria, organização, pré-configuração e suporte.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #facc15;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">⚙️</span><div><h3 class="text-lg sm:text-xl font-bold text-yellow-400 mb-1 sm:mb-2">Instalação</h3><ol class="mt-2 space-y-1.5 text-gray-300 text-sm list-decimal list-inside"><li>Baixe o arquivo recebido</li><li>Copie para a <strong class="text-principal">pasta raiz do jogo</strong> (onde está o GRB.exe)</li><li>Abra o jogo 🎮</li><li><strong style="color:#ff4444;">⚠️ Inicie um SAVE NOVO</strong></li></ol></div></div></div>
-                <div class="card-mod" style="border-left:4px solid #22c55e;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🛡️</span><div><h3 class="text-lg sm:text-xl font-bold text-green-400 mb-1 sm:mb-2">Garantia</h3><p class="text-gray-300 text-sm">Todos os pacotes são testados. <strong class="text-principal">Garantimos que os mods funcionam ou devolvemos seu dinheiro!</strong></p></div></div></div>
-            </div>
-        </section>
+                <!-- PASSO 5 -->
+                <div class="instalacao-card">
+                    <div class="step-number">5</div>
+                    <div style="flex:1;">
+                        <h4 style="color:var(--verde);font-weight:800;margin:0 0 0.5rem;">🎮 Inicie um Jogo NOVO</h4>
+                        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.6;">
+                            Depois de copiar todos os arquivos, abra o jogo e <strong style="color:var(--verde);">inicie um save completamente novo</strong>. Isso garante que todos os mods carreguem corretamente.
+                        </p>
+                        <div class="alerta-box">
+                            <p style="margin:0;font-size:0.85rem;color:var(--verde);font-weight:600;">
+                                ✅ Pronto! Seu Mod Ghost está completamente transformado!
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- ===== COMO COMPRAR ===== -->
-        <section id="menu-como-comprar" class="conteudo-menu hidden">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-white">💣 Como Comprar</h2>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #9EFF00;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">1️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-principal mb-1 sm:mb-2">Escolha seu pacote</h3><p class="text-gray-300 text-sm">Navegue pelos pacotes: <span style="color:#9EFF00;">Recruta</span>, <span style="color:#FFD700;">Sargento</span> ou <span style="color:#A78BFA;">General</span>. Adicione ao carrinho.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #3b82f6;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">2️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-blue-300 mb-1 sm:mb-2">Preencha seus dados</h3><p class="text-gray-300 text-sm">No carrinho, informe <strong style="color:#9EFF00;">nome completo</strong> e <strong style="color:#9EFF00;">e-mail</strong> para receber o pacote.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #22c55e;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">3️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-green-400 mb-1 sm:mb-2">Pague via PIX</h3><p class="text-gray-300 text-sm">Copie a chave PIX, pague e clique em <strong style="color:#22c55e;">"Enviar Comprovante"</strong>.</p></div></div></div>
-                <div class="card-mod" style="border-left:4px solid #9EFF00;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">4️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-principal mb-1 sm:mb-2">Receba e jogue! 🎮</h3><p class="text-gray-300 text-sm">Após confirmação, você receberá o link de download e instruções no seu e-mail.</p></div></div></div>
             </div>
-        </section>
 
-        <!-- ===== SOBRE NÓS ===== -->
-        <section id="menu-sobre" class="conteudo-menu hidden">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-white">ℹ️ Sobre a VCORE GAMES</h2>
-                <div class="card-mod mb-4 sm:mb-6 text-center p-6 sm:p-8"><span class="text-4xl sm:text-5xl">🎮</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-2">Quem somos</h3><p class="text-gray-300 text-sm">A <strong class="text-principal">VCORE GAMES</strong> nasceu da paixão por jogos. Fundada por <strong class="text-principal">Rodrigo</strong>, nos especializamos em curadoria de mods para Mod Ghost.</p></div>
-                <div class="card-mod p-6 sm:p-8 text-center"><span class="text-4xl sm:text-5xl">⭐</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-3">Valores</h3><div class="grid grid-cols-2 sm:grid-cols-4 gap-3"><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">🎯</span><p class="text-white font-bold text-xs mt-1">Qualidade</p></div><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">⚡</span><p class="text-white font-bold text-xs mt-1">Agilidade</p></div><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">🤝</span><p class="text-white font-bold text-xs mt-1">Suporte</p></div><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">🔒</span><p class="text-white font-bold text-xs mt-1">Segurança</p></div></div></div>
+            <div class="destaque-forte" style="margin-top:2rem;">
+                <p style="color:#fff;font-weight:700;margin:0;font-size:0.95rem;">
+                    💬 <strong style="color:var(--verde);">Dúvidas?</strong> Nosso suporte está disponível para ajudar em todas as etapas!
+                </p>
+                <a href="https://wa.me/5516981097916" target="_blank" class="btn-primario" style="margin-top:0.8rem;background:#25D366;border-color:#25D366;color:#fff;">
+                    <i class="fa fa-whatsapp"></i> Chamar no WhatsApp
+                </a>
             </div>
-        </section>
-
-        <!-- ===== SUPORTE ===== -->
-        <section id="menu-suporte" class="conteudo-menu hidden">
-            <div class="max-w-xl mx-auto">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-white">💬 Central de Ajuda</h2>
-                <div class="card-mod mb-4 sm:mb-6 text-center p-6 sm:p-8"><span class="text-3xl sm:text-4xl">💬</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-2">WhatsApp</h3><a href="https://wa.me/5516981097916" target="_blank" class="inline-block bg-whatsapp hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg"><i class="fa fa-whatsapp"></i> (16) 98109-7916</a></div>
-                <div class="card-mod mb-4 sm:mb-6 text-center p-6 sm:p-8"><span class="text-3xl sm:text-4xl">📧</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-2">E-mail</h3><p class="text-blue-400 font-bold">rodrigoxgames25@gmail.com</p></div>
-            </div>
-        </section>
-
-        <!-- ===== ADMIN ===== -->
-        <section id="menu-admin" class="conteudo-menu hidden">
-            <div class="max-w-2xl mx-auto">
-                <div id="painelLogin" class="card-mod p-4 sm:p-6 md:p-8"><div class="text-center mb-4 sm:mb-6"><span class="text-3xl sm:text-5xl">🔒</span><h2 class="text-xl sm:text-2xl font-bold mt-2 sm:mt-3 text-principal">Área Administrativa</h2></div><div class="space-y-3 sm:space-y-4"><input type="text" id="adminUser" placeholder="Usuário" class="w-full border rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" /><input type="password" id="adminPass" placeholder="Senha" class="w-full border rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" onkeydown="if(event.key==='Enter')fazerLogin()" /><p id="erroLogin" class="text-red-400 text-xs sm:text-sm hidden">❌ Usuário ou senha incorretos.</p><button onclick="fazerLogin()" class="w-full font-bold py-2.5 sm:py-3 rounded-lg text-sm sm:text-base" style="background:#4B5320;color:#9EFF00;border:1px solid rgba(158,255,0,0.3);">Entrar</button></div></div>
-                <div id="painelAdmin" class="hidden"><div class="flex justify-between items-center mb-4 sm:mb-6"><h2 class="text-xl sm:text-2xl font-bold text-principal">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-xs sm:text-sm text-red-400 hover:text-red-300 font-bold">Sair →</button></div><div class="card-mod mb-4 sm:mb-6"><h3 class="text-base sm:text-lg font-bold mb-3 text-white">📋 Clientes</h3><div id="listaClientes" class="space-y-2 sm:space-y-3"><p class="text-gray-500 text-center text-sm">Nenhum cliente ainda.</p></div></div><button onclick="limparClientes()" class="w-full bg-red-900/50 hover:bg-red-800/50 text-red-400 font-bold py-2 rounded-lg text-xs sm:text-sm border border-red-700">🗑️ Limpar todos</button></div>
-            </div>
-        </section>
-    </main>
-
-    <!-- RODAPÉ -->
-    <footer style="background:#0d0f0a;border-top:2px solid rgba(158,255,0,0.15);" class="py-6 sm:py-8 px-3 sm:px-4 mt-8 sm:mt-12">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-principal/15 flex justify-center"><div class="inline-flex items-center gap-2 sm:gap-3 rounded-full px-4 sm:px-6 py-2 sm:py-3" style="background:rgba(158,255,0,0.04);border:1px solid rgba(158,255,0,0.15);"><span class="text-lg sm:text-2xl">👁️</span><div class="text-left"><p class="text-[10px] sm:text-xs uppercase tracking-wider font-bold text-gray-500">Total de Visitas</p><p id="contadorVisitas" class="text-xl sm:text-2xl font-bold count-glow text-principal">⏳</p></div></div></div>
-            <div class="flex justify-center items-center mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-principal/15"><a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-rodape"><i class="fa fa-instagram"></i></a><a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-rodape"><i class="fa fa-youtube-play"></i></a><a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-rodape"><i class="fa fa-facebook-square"></i></a><a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-rodape"><i class="fa fa-whatsapp"></i></a></div>
-            <p class="text-gray-500 text-xs sm:text-sm">© 2026 VCORE GAMES - Todos os direitos reservados</p>
         </div>
+    </section>
+
+    <!-- ═════════ DEPOIMENTOS ═════════ -->
+    <section class="testimonials-section">
+        <div class="container-wide">
+            <p class="subtitle-tag-center">DEPOIMENTOS</p>
+            <h2 style="text-align:center;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--verde);margin:0.5rem 0 3rem;">
+                O Que Nossos Clientes Dizem
+            </h2>
+
+            <div class="grid-testimonials">
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Os mods são incríveis! Transformou completamente meu jogo. O guia de instalação é muito claro, fiz tudo rapidinho."</p>
+                    <p class="name">Lucas Silva</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Instalação super fácil, suporte nota 10 pelo WhatsApp. Tive uma dúvida e me responderam na hora!"</p>
+                    <p class="name">Gabriel Santos</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Valeu cada centavo! Os visuais ficaram insanos, parecia outro jogo. Já vou pegar o pacote completo!"</p>
+                    <p class="name">Rafael Costa</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Atendimento excepcional e mods de altíssima qualidade. Recomendo de olhos fechados!"</p>
+                    <p class="name">Pablo Marcelino</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Melhor investimento que fiz pro meu jogo. Os coletes e armas ficaram perfeitos!"</p>
+                    <p class="name">Rodrigo Azevedo</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Muito acima do esperado! Instalação rápida e resultado impressionante. VCORE é top!"</p>
+                    <p class="name">Romulo Maced</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Suporte sensacional, me ajudaram com tudo. Os mods deram uma cara nova pro jogo!"</p>
+                    <p class="name">Igor Nazareth</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Já comprei vários pacotes e nunca tive problema. Qualidade e profissionalismo!"</p>
+                    <p class="name">Francisco Osterne</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Tudo muito bem explicado, arquivos organizados. Até quem é leigo consegue instalar!"</p>
+                    <p class="name">Eraldo Márcio</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Rápido, fácil e o resultado é absurdo de bom. VCORE GAMES é referência!"</p>
+                    <p class="name">Alexandre Ramos</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Comprei o pacote General e não me arrependo. Todos os mods funcionaram perfeitamente!"</p>
+                    <p class="name">Mário Eduardo</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Melhor compra que fiz esse ano. Mods excelentes e suporte impecável via WhatsApp!"</p>
+                    <p class="name">Marcos Aurélio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═════════ PACOTES ═════════ -->
+    <section class="cta-section" id="pacotes" style="position:relative;">
+        <div class="shape-top shape-top-flip">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C400,0 800,100 1200,40 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
+        </div>
+
+        <div class="container-medium" style="position:relative;z-index:1;">
+            <p class="subtitle-tag-center">OFERTA ESPECIAL</p>
+            <h2 style="font-size:clamp(2rem,4vw,2.5rem);font-weight:900;color:#fff;margin:0.75rem 0;">
+                Escolha seu <span style="color:var(--verde);">Pacote</span>
+            </h2>
+            <p style="color:rgba(255,255,255,0.7);font-size:1rem;line-height:1.6;margin-bottom:1rem;">
+                Pacotes para todos os níveis — com até <strong style="color:var(--verde);">40% de desconto!</strong>
+            </p>
+
+            <div class="countdown-container" style="margin-bottom:2.5rem;">
+                <div class="countdown-box"><span class="countdown-num" id="countDias">00</span><span class="countdown-label">Dias</span></div>
+                <span class="countdown-sep">:</span>
+                <div class="countdown-box"><span class="countdown-num" id="countHoras">00</span><span class="countdown-label">Horas</span></div>
+                <span class="countdown-sep">:</span>
+                <div class="countdown-box"><span class="countdown-num" id="countMin">00</span><span class="countdown-label">Min</span></div>
+                <span class="countdown-sep">:</span>
+                <div class="countdown-box"><span class="countdown-num" id="countSeg">00</span><span class="countdown-label">Seg</span></div>
+            </div>
+
+            <div class="pacote-grid">
+
+                <!-- RECRUTA ★★★ -->
+                <div class="pacote-card">
+                    <div class="pkg-icon">🎖️</div>
+                    <div class="pkg-stars" style="color:#FFD700;">★★★☆☆</div>
+                    <h4 style="color:#fff;">Pacote Recruta</h4>
+                    <ul>
+                        <li>Mods Essenciais VCORE</li>
+                        <li>Fest Feminino</li>
+                        <li>Veículos Modificados</li>
+                        <li>Guia de instalação por e-mail</li>
+                    </ul>
+                    <div class="price-old">R$ 100,00</div>
+                    <div class="price-new" style="color:var(--verde);">R$ 60,00</div>
+                    <span class="badge-off">40% OFF</span>
+                    <button onclick="adicionarAoCarrinho('Pacote Recruta - Mods Essenciais',60)" class="btn-primario btn-pacote">🎖️ Adicionar</button>
+                </div>
+
+                <!-- SARGENTO ★★★★ POPULAR -->
+                <div class="pacote-card popular" style="position:relative;">
+                    <span class="badge-popular">⭐ MAIS POPULAR</span>
+                    <div class="pkg-icon" style="margin-top:0.5rem;">🥇</div>
+                    <div class="pkg-stars" style="color:#3a2800;">★★★★☆</div>
+                    <h4 style="color:var(--azul);">Pacote Sargento</h4>
+                    <ul>
+                        <li>Tudo do Pacote Recruta</li>
+                        <li>Coletes — Mod de Aparência</li>
+                        <li>Armas e Miras Realistas</li>
+                        <li>Camisa e Calça Tática</li>
+                        <li>Camuflagens e Capacetes</li>
+                    </ul>
+                    <div class="price-old">R$ 150,00</div>
+                    <div class="price-new" style="color:var(--azul);">R$ 90,00</div>
+                    <span class="badge-off">40% OFF</span>
+                    <button onclick="adicionarAoCarrinho('Pacote Sargento - Mods Avançados',90)" class="btn-primario btn-pacote" style="background:var(--azul);color:#fff;border-color:var(--azul);">🥇 Adicionar</button>
+                </div>
+
+                <!-- GENERAL ★★★★★ COM BADGE MELHOR CUSTO-BENEFÍCIO -->
+                <div class="pacote-card" style="position:relative;">
+                    <span class="badge-best-value">💎 MELHOR CUSTO-BENEFÍCIO</span>
+                    <div class="pkg-icon" style="margin-top:0.5rem;">💎</div>
+                    <div class="pkg-stars" style="color:#FFD700;">★★★★★</div>
+                    <h4 class="gradient-text">Pacote General</h4>
+                    <ul>
+                        <li><strong>TODOS</strong> os mods disponíveis</li>
+                        <li>Colete, Armas, Miras</li>
+                        <li>Camisa, Calça, Camuflagem</li>
+                        <li>Capacetes e Proteções</li>
+                        <li>Veículos + Kit Tático</li>
+                    </ul>
+                    <div class="price-old">R$ 200,00</div>
+                    <div class="price-new gradient-text">R$ 120,00</div>
+                    <span class="badge-off">40% OFF</span>
+                    <button onclick="adicionarAoCarrinho('Pacote General - Todos os Mods',120)" class="btn-primario btn-pacote">💎 Adicionar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="shape-bottom">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,40 C300,100 600,0 900,80 C1000,105 1100,30 1200,60 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
+        </div>
+    </section>
+
+    <!-- ═════════ FAQ ═════════ -->
+    <section class="faq-section">
+        <div class="container-narrow">
+            <p class="subtitle-tag-center">DÚVIDAS</p>
+            <h2 style="text-align:center;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--verde);margin:0.5rem 0 2.5rem;">
+                Perguntas Frequentes
+            </h2>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Como funciona a instalação? <span class="faq-icon">▼</span></button>
+                <div class="faq-answer">
+                    Após a compra, você recebe o link para baixar o pacote de mods. Os arquivos <strong>já estão prontos</strong> — basta <strong>copiar todo o conteúdo baixado diretamente para a pasta raiz do jogo</strong> (onde está o executável). Depois é só <strong>iniciar um save novo</strong> e jogar! Recomendamos fortemente fazer backup dos arquivos originais antes de copiar os mods.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Os mods funcionam em todas as plataformas? <span class="faq-icon">▼</span></button>
+                <div class="faq-answer">
+                    Sim! <strong>Steam, Ubisoft Connect e Epic Games</strong>. O processo é idêntico: copiar os arquivos para a pasta raiz do jogo em cada plataforma. Confira os caminhos detalhados na nossa seção de <a href="#instalacao" style="color:var(--verde);">Guia de Instalação</a>.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Quanto tempo leva para liberar o download? <span class="faq-icon">▼</span></button>
+                <div class="faq-answer">
+                    Após a confirmação do pagamento, o link de download é enviado para o seu e-mail em até <strong>24 horas</strong>. Na maioria dos casos, o envio é muito mais rápido!
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Posso pedir reembolso? <span class="faq-icon">▼</span></button>
+                <div class="faq-answer">
+                    <strong>⚠️ Importante:</strong> Uma vez que o link de download foi liberado, <strong style="color:#ff7777;">não é possível solicitar reembolso</strong>, pois o conteúdo digital já foi disponibilizado.<br><br>
+                    <strong>✅ Você não corre risco:</strong> Se o arquivo apresentar <strong>algum problema técnico</strong>, damos <strong>assistência completa</strong> — desde o download até o jogo abrir. Se mesmo com nossa ajuda o problema persistir, aí sim faremos a devolução.<br><br>
+                    <strong style="color:var(--verde);">Resumindo:</strong> Com nossa assistência, você não precisa se preocupar!
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Preciso ter o jogo limpo de outros mods? <span class="faq-icon">▼</span></button>
+                <div class="faq-answer">
+                    <strong>Sim, é essencial!</strong> O jogo precisa estar <strong>100% limpo</strong>, sem vestígios de mods anteriores. Se já tentou instalar outros mods: desinstale o jogo, delete os arquivos residuais da pasta e reinstale do zero. Isso garante que os mods VCORE funcionarão perfeitamente.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Preciso de ferramentas extras? <span class="faq-icon">▼</span></button>
+                <div class="faq-answer">
+                    <strong>Não!</strong> Nossos pacotes já vêm <strong>100% prontos</strong>. É só baixar, copiar os arquivos para a pasta raiz e jogar. Nada de programas adicionais!
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Os arquivos vão todos na pasta raiz? <span class="faq-icon">▼</span></button>
+                <div class="faq-answer">
+                    <strong style="color:var(--verde);">SIM! ⭐</strong> Todos os arquivos do download devem ser copiados <strong>diretamente na pasta raiz do jogo</strong> (onde está o executável). Não crie subpastas, não reorganize — é tudo junto na raiz!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═════════ FOOTER ═════════ -->
+    <footer class="site-footer">
+        <p>© 2026 VCORE GAMES — Todos os direitos reservados</p>
     </footer>
 
-    <a href="#" class="btn-topo hidden" id="btnTopo" title="Voltar ao topo"><i class="fa fa-chevron-up text-sm"></i></a>
+    <!-- ═════ BOTÃO WHATSAPP FLUTUANTE ═════ -->
+    <a href="https://wa.me/5516981097916?text=Ol%C3%A1!%20Preciso%20de%20suporte%20com%20os%20mods%20VCORE." target="_blank" class="whatsapp-float" title="Suporte via WhatsApp" aria-label="WhatsApp Suporte">
+        <i class="fa fa-whatsapp"></i>
+    </a>
 
-    <div id="barraTotal" class="barra-total">
-        <div class="flex items-center gap-2 sm:gap-3 min-w-0"><i class="fa fa-shopping-cart text-base sm:text-xl flex-shrink-0"></i><div class="min-w-0"><p class="text-[10px] sm:text-xs leading-none text-gray-400">Total do carrinho</p><p id="barraTotalValor" class="text-base sm:text-xl font-bold leading-tight truncate text-principal">R$ 0,00</p></div><span id="barraTotalItens" class="text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full flex-shrink-0" style="background:rgba(158,255,0,0.12);color:#9EFF00;">0 item</span></div>
-        <button onclick="abrirCarrinho()" style="background:#9EFF00;color:#0d0f0a;" class="font-bold py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm hover:opacity-90 transition-opacity active:scale-95 transform flex-shrink-0">Ver Carrinho →</button>
+    <!-- ═════ MODAL CARRINHO ═════ -->
+    <div class="modal-overlay" id="modalCarrinho">
+        <div class="modal-card">
+            <button class="modal-close" onclick="fecharCarrinho()">&times;</button>
+            <h2 style="color:var(--verde);text-align:center;font-weight:800;font-size:1.3rem;margin-bottom:1rem;">🛒 Seu Carrinho</h2>
+            <div id="listaCarrinho" style="margin-bottom:1rem;">
+                <p style="color:#8899AA;text-align:center;font-size:0.85rem;" id="carrinhoVazio">Seu carrinho está vazio.</p>
+            </div>
+            <div style="border-top:2px solid rgba(165,255,0,0.15);padding-top:1rem;margin-bottom:1rem;">
+                <div style="display:flex;justify-content:space-between;font-weight:800;font-size:1.2rem;">
+                    <span>Total:</span>
+                    <span id="valorTotal" style="color:var(--verde);">R$ 0,00</span>
+                </div>
+            </div>
+            <div style="background:rgba(165,255,0,0.04);border:2px solid rgba(165,255,0,0.2);border-radius:12px;padding:1rem;margin-bottom:1rem;">
+                <p style="font-size:0.8rem;font-weight:700;color:var(--verde);margin-bottom:0.75rem;">📋 Seus dados:</p>
+                <input type="text" id="clienteNome" placeholder="👤 Nome completo *" class="campo-destaque" style="margin-bottom:0.5rem;">
+                <input type="email" id="clienteEmail" placeholder="📧 Seu melhor e-mail *" class="campo-destaque">
+                <p style="font-size:0.65rem;color:#8899AA;margin-top:0.5rem;">⚠️ O link de download será enviado para este e-mail.</p>
+            </div>
+            <p id="carrinhoErro" style="color:#ff4444;font-size:0.8rem;text-align:center;display:none;margin-bottom:0.5rem;"></p>
+            <button onclick="iniciarFinalizacao()" class="btn-primario" style="width:100%;">💳 Finalizar Compra</button>
+        </div>
     </div>
 
+    <!-- ═════ MODAL PIX ═════ -->
+    <div class="modal-overlay" id="modalPix">
+        <div class="modal-card">
+            <button class="modal-close" onclick="fecharModalPix()">&times;</button>
+            <div style="text-align:center;">
+                <div style="font-size:3rem;">💳</div>
+                <h2 style="color:var(--verde);font-weight:800;margin:0.5rem 0;">Pagamento via PIX</h2>
+                <p style="color:#8899AA;font-size:0.85rem;">Copie a chave PIX e faça a transferência</p>
+                <div style="background:rgba(165,255,0,0.06);border:1px solid rgba(165,255,0,0.2);border-radius:12px;padding:0.75rem 1.5rem;display:inline-block;margin:1rem 0;">
+                    <p style="font-size:0.7rem;color:#8899AA;">Valor a pagar</p>
+                    <p id="pixValor" style="font-size:1.8rem;font-weight:900;color:var(--verde);">R$ 0,00</p>
+                </div>
+
+                <!-- CHAVE PIX -->
+                <div class="pix-destaque">
+                    <p style="font-size:0.75rem;color:#8899AA;font-weight:700;text-transform:uppercase;margin-bottom:0.5rem;">🔑 Chave PIX</p>
+                    <p class="pix-chave">16981097916</p>
+                    <p class="pix-nome">Rodrigo Paulino da Silva</p>
+                    <p class="pix-banco">🏦 InfinitePay</p>
+                    <button onclick="copiarChavePix()" style="margin-top:0.8rem;padding:0.6rem 1.8rem;background:var(--azul-medio);color:var(--verde);border:1px solid rgba(165,255,0,0.3);border-radius:8px;cursor:pointer;font-weight:700;font-size:0.85rem;">📋 Copiar Chave PIX</button>
+                </div>
+
+                <button onclick="enviarComprovante()" class="btn-primario pulse-border" style="width:100%;padding:0.9rem;font-size:0.9rem;background:#25D366;border-color:#25D366;color:#fff;">📩 Enviar Comprovante (Email + WhatsApp)</button>
+                <p style="color:#8899AA;font-size:0.7rem;margin-top:0.5rem;">Link de download enviado em até 24h após confirmação</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═════ BARRA TOTAL ═════ -->
+    <div class="barra-total" id="barraTotal">
+        <div style="display:flex;align-items:center;gap:0.5rem;">
+            <span>🛒</span>
+            <span id="barraTotalValor" style="font-weight:800;font-size:1.1rem;">R$ 0,00</span>
+            <span id="barraTotalItens" style="font-size:0.7rem;background:rgba(165,255,0,0.12);padding:0.2rem 0.5rem;border-radius:50px;">0 item</span>
+        </div>
+        <button onclick="abrirCarrinho()" style="padding:0.7rem 1.5rem;background:var(--verde);color:var(--azul);font-weight:800;border:none;border-radius:10px;cursor:pointer;font-size:0.85rem;">Ver Carrinho →</button>
+    </div>
+
+    <!-- ═════ TOAST ═════ -->
+    <div class="toast" id="toast">📋 Copiado!</div>
+
+    <!-- ═════ BOTÃO TOPO ═════ -->
+    <a href="#" class="btn-topo" id="btnTopo" title="Voltar ao topo" aria-label="Voltar ao topo"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- ═════ SCRIPTS ═════ -->
     <script>
-        // =============================================
-        // 🔐 SISTEMA DE PROTEÇÃO - VCORE GAMES
-        // =============================================
-        var SECRET_KEY = "VCORE_G4M3S_S3CUR1TY_2026";
-        var STORAGE_KEY = 'vcore_encrypted_db_v3';
+        const CHAVE_PIX = '16981097916';
+        const WHATSAPP = '5516981097916';
+        const EMAIL_ADMIN = 'rodrigoxgames25@gmail.com';
+        let carrinho = [];
+        let dadosCliente = { nome: '', email: '' };
 
-        function sanitizar(str) {
-            if (!str) return '';
-            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
-        }
-
-        function hashSimples(str) {
-            var hash = 5381;
-            for (var i = 0; i < str.length; i++) { hash = ((hash << 5) + hash) + str.charCodeAt(i); hash = hash & 0xFFFFFFFF; }
-            return (hash >>> 0).toString(16);
-        }
-
-        function derivarChave() {
-            var nav = ''; try { nav = navigator.userAgent.substring(0, 50); } catch (e) {}
-            var base = SECRET_KEY + '_' + nav + '_' + window.location.hostname;
-            var chave = '';
-            for (var r = 0; r < 100; r++) {
-                var temp = base + r.toString(), h = 0;
-                for (var i = 0; i < temp.length; i++) { h = ((h << 5) - h) + temp.charCodeAt(i); h |= 0; }
-                chave += (h >>> 0).toString(16);
-            }
-            return chave.substring(0, 64);
-        }
-
-        var CHAVE_CRIPTO = derivarChave();
-
-        function criptografarDados(txt) {
-            try {
-                var kb = [], tb = [];
-                for (var i = 0; i < CHAVE_CRIPTO.length; i++) kb.push(CHAVE_CRIPTO.charCodeAt(i) % 256);
-                for (var i = 0; i < txt.length; i++) tb.push(txt.charCodeAt(i));
-                var cr = [];
-                for (var i = 0; i < tb.length; i++) { var x = tb[i] ^ kb[i % kb.length]; x = ((x + (i * 7) % 256) + 256) % 256; cr.push(x); }
-                var bin = ''; for (var i = 0; i < cr.length; i++) bin += String.fromCharCode(cr[i]);
-                return btoa(bin);
-            } catch (e) { return null; }
-        }
-
-        function descriptografarDados(txt) {
-            try {
-                var bin = atob(txt), cr = [];
-                for (var i = 0; i < bin.length; i++) cr.push(bin.charCodeAt(i));
-                var kb = [];
-                for (var i = 0; i < CHAVE_CRIPTO.length; i++) kb.push(CHAVE_CRIPTO.charCodeAt(i) % 256);
-                var tb = [];
-                for (var i = 0; i < cr.length; i++) { var b = ((cr[i] - (i * 7) % 256) + 256) % 256; b = b ^ kb[i % kb.length]; tb.push(b); }
-                var res = ''; for (var i = 0; i < tb.length; i++) res += String.fromCharCode(tb[i]);
-                return res;
-            } catch (e) { return null; }
-        }
-
-        function lerStorageSeguro() {
-            try {
-                var raw = localStorage.getItem(STORAGE_KEY);
-                if (!raw) return [];
-                var d = descriptografarDados(raw);
-                if (!d) { localStorage.removeItem(STORAGE_KEY); return []; }
-                var p = JSON.parse(d);
-                return Array.isArray(p) ? p : [];
-            } catch (e) { localStorage.removeItem(STORAGE_KEY); return []; }
-        }
-
-        function salvarStorageSeguro(dados) {
-            try {
-                var json = JSON.stringify(dados);
-                var cript = criptografarDados(json);
-                if (!cript) return false;
-                localStorage.setItem(STORAGE_KEY, cript);
-                return true;
-            } catch (e) { return false; }
-        }
-
-        var clientesRegistrados = lerStorageSeguro();
-
-        // ============ CONFIGURAÇÕES ============
-        var CHAVE_PIX = "16981097916";
-        var WHATSAPP_NUMERO = "5516981097916";
-        var EMAIL_ADMIN = "rodrigoxgames25@gmail.com";
-        var ADMIN_USER = "admin";
-        var ADMIN_PASS = "vcore2026";
-        var carrinho = [];
-        var adminLogado = false;
-        // Armazena os dados do cliente preenchidos no carrinho
-        var dadosClienteAtual = { nome: '', email: '' };
-
-        // ============ CONTADOR (48H) ============
-        var PROMO_KEY = 'vcore_promo_deadline_v1';
-        function obterDeadline() {
-            var s = localStorage.getItem(PROMO_KEY);
-            if (s) { var d = parseInt(s, 10); if (!isNaN(d) && d > Date.now()) return d; }
-            var nd = Date.now() + (48 * 60 * 60 * 1000);
-            localStorage.setItem(PROMO_KEY, nd.toString());
-            return nd;
-        }
-        var promoDeadline = obterDeadline();
-
-        function atualizarCountdown() {
-            var agora = Date.now(), restante = Math.max(0, promoDeadline - agora);
-            var dias = Math.floor(restante / 86400000), horas = Math.floor((restante % 86400000) / 3600000);
-            var minutos = Math.floor((restante % 3600000) / 60000), segundos = Math.floor((restante % 60000) / 1000);
-            var elD = document.getElementById('countDias'), elH = document.getElementById('countHoras');
-            var elM = document.getElementById('countMin'), elS = document.getElementById('countSeg');
-            if (elD) elD.innerText = String(dias).padStart(2, '0');
-            if (elH) elH.innerText = String(horas).padStart(2, '0');
-            if (elM) elM.innerText = String(minutos).padStart(2, '0');
-            if (elS) elS.innerText = String(segundos).padStart(2, '0');
-            if (restante <= 0) { var elE = document.getElementById('promoExpirada'); if (elE) elE.style.display = 'block'; return; }
-            setTimeout(atualizarCountdown, 1000);
-        }
-        atualizarCountdown();
-
-        // ============ POPUP SAÍDA ============
-        var popupMostrado = sessionStorage.getItem('vcore_popup_saida') === 'true';
-        function mostrarPopupSaida() {
-            if (popupMostrado || carrinho.length > 0) return;
-            popupMostrado = true; sessionStorage.setItem('vcore_popup_saida', 'true');
-            document.getElementById('modalSaida').style.display = 'flex'; document.body.style.overflow = 'hidden';
-        }
-        function fecharModalSaida() { document.getElementById('modalSaida').style.display = 'none'; document.body.style.overflow = 'auto'; }
-        document.addEventListener('mouseout', function(e) { if (!popupMostrado && e.clientY <= 0 && carrinho.length === 0) mostrarPopupSaida(); });
-        document.getElementById('modalSaida').addEventListener('click', function(e) { if (e.target === this) fecharModalSaida(); });
-
-        /* 🆕 ADICIONADO: Fechar modal tranquilização */
-        function fecharModalTranquiliza() { document.getElementById('modalTranquiliza').style.display = 'none'; document.body.style.overflow = 'auto'; }
-        /* 🆕 ADICIONADO: Fechar ao clicar fora */
-        document.getElementById('modalTranquiliza').addEventListener('click', function(e) { if (e.target === this) fecharModalTranquiliza(); });
-
-        // ============ CONTADOR VISITAS ============
+        // Countdown 48h
         (function() {
-            var el = document.getElementById('contadorVisitas');
-            fetch('https://api.counterapi.dev/v1/vcoregames_site/visitas/up')
-                .then(function(r) { return r.json(); })
-                .then(function(d) { if (d && typeof d.count === 'number') { var alvo = d.count, duracao = 1200, inicio = Math.max(0, alvo - 50), st = null; function passo(ts) { if (!st) st = ts; var p = Math.min((ts - st) / duracao, 1); var at = Math.floor(inicio + (alvo - inicio) * (1 - Math.pow(1 - p, 3))); el.innerText = at.toLocaleString('pt-BR'); if (p < 1) requestAnimationFrame(passo); else el.innerText = alvo.toLocaleString('pt-BR'); } requestAnimationFrame(passo); } else el.innerText = '🔥'; })
-                .catch(function() { el.innerHTML = '<span style="font-size:1.2rem;">👥</span>'; });
+            const key = 'vcore_promo_dl_v3';
+            let dl = localStorage.getItem(key);
+            if (!dl || parseInt(dl) < Date.now()) {
+                dl = Date.now() + 48 * 60 * 60 * 1000;
+                localStorage.setItem(key, dl);
+            }
+            dl = parseInt(dl);
+
+            function tick() {
+                const r = Math.max(0, dl - Date.now());
+                document.getElementById('countDias').innerText = String(Math.floor(r / 86400000)).padStart(2, '0');
+                document.getElementById('countHoras').innerText = String(Math.floor((r % 86400000) / 3600000)).padStart(2, '0');
+                document.getElementById('countMin').innerText = String(Math.floor((r % 3600000) / 60000)).padStart(2, '0');
+                document.getElementById('countSeg').innerText = String(Math.floor((r % 60000) / 1000)).padStart(2, '0');
+                if (r > 0) setTimeout(tick, 1000);
+            }
+            tick();
         })();
 
-        // ============ TOASTS ============
-        var nomesCompradores = ['Lucas S.','Gabriel M.','Matheus R.','Felipe A.','Rafael C.','Bruno P.','Thiago L.','Marcos V.','André F.','Pedro H.'];
-        var pacotesNotif = ['Pacote General 💎','Pacote Sargento 🥇','Pacote Recruta 🎖️'];
-        var temposNotif = ['agora mesmo','há 2 min','há 5 min','há 8 min','há 3 min','há 7 min'];
-
-        function criarToastCompra() {
-            var existente = document.querySelector('.toast-compra');
-            if (existente) { existente.classList.add('saindo'); setTimeout(function() { if (existente.parentNode) existente.parentNode.removeChild(existente); }, 400); }
-            var nome = nomesCompradores[Math.floor(Math.random() * nomesCompradores.length)];
-            var pacote = pacotesNotif[Math.floor(Math.random() * pacotesNotif.length)];
-            var tempo = temposNotif[Math.floor(Math.random() * temposNotif.length)];
-            var isM = window.innerWidth < 640;
-            var toast = document.createElement('div'); toast.className = 'toast-compra';
-            toast.style.cssText = 'position:fixed;bottom:' + (isM ? '80px' : '100px') + ';right:' + (isM ? '8px' : '20px') + ';background:#1a1d16;color:#fff;padding:' + (isM ? '10px 14px' : '14px 18px') + ';border-radius:14px;z-index:9999;box-shadow:0 8px 30px rgba(0,0,0,0.5);border:1px solid rgba(158,255,0,0.3);max-width:' + (isM ? '260px' : '300px') + ';font-size:' + (isM ? '0.7rem' : '0.85rem') + ';';
-            toast.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="background:rgba(158,255,0,0.1);border-radius:50%;width:' + (isM ? '32px' : '40px') + ';height:' + (isM ? '32px' : '40px') + ';display:flex;align-items:center;justify-content:center;font-size:' + (isM ? '1rem' : '1.2rem') + ';">🔥</div><div><p style="font-weight:700;font-size:' + (isM ? '0.75rem' : '0.85rem') + ';color:#9EFF00;margin:0;">' + nome + ' comprou</p><p style="font-size:' + (isM ? '0.7rem' : '0.8rem') + ';margin:2px 0;color:#e5e7eb;">' + pacote + '</p><p style="font-size:' + (isM ? '0.65rem' : '0.7rem') + ';margin:0;color:rgba(255,255,255,0.5);">' + tempo + '</p></div></div>';
-            document.body.appendChild(toast);
-            setTimeout(function() { if (toast.parentNode) { toast.classList.add('saindo'); setTimeout(function() { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 400); } }, 5000);
-        }
-        function agendarToast() { setTimeout(function() { criarToastCompra(); agendarToast(); }, Math.floor(Math.random() * 12000) + 8000); }
-        setTimeout(function() { agendarToast(); }, 5000);
-
-        // ============ MENU ============
-        var botaoMenu = document.getElementById('botaoMenu'), listaMenu = document.getElementById('listaMenu'), iconeMenu = document.getElementById('iconeMenu');
-        botaoMenu.addEventListener('click', function(e) { e.stopPropagation(); listaMenu.classList.toggle('aberto'); iconeMenu.classList.toggle('menu-icone-rotacionado'); });
-        document.addEventListener('click', function(e) { if (!botaoMenu.contains(e.target) && !listaMenu.contains(e.target)) { listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('menu-icone-rotacionado'); } });
-
-        function irParaPacotes(event) {
-            document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
-            document.getElementById('menu-inicio').classList.remove('hidden');
-            document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
-            if (event && event.target) event.target.classList.add('menu-ativo');
-            listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('menu-icone-rotacionado');
-            setTimeout(function() { var a = document.getElementById('pacotes-premium'); if (a) a.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+        // FAQ Accordion
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('.faq-icon');
+            const isOpen = answer.classList.contains('open');
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+            document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotated'));
+            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+            if (!isOpen) {
+                answer.classList.add('open');
+                icon.classList.add('rotated');
+                btn.classList.add('active');
+            }
         }
 
-        function mudarMenu(event, idMenu) {
-            document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
-            document.getElementById('menu-' + idMenu).classList.remove('hidden');
-            document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
-            if (event && event.target) event.target.classList.add('menu-ativo');
-            listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('menu-icone-rotacionado');
-            if (idMenu === 'admin') renderizarPainelAdmin();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // ============ CARRINHO ============
+        // Carrinho
         function adicionarAoCarrinho(nome, preco) {
-            var existe = null;
-            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { existe = carrinho[i]; break; } }
-            if (existe) existe.qtd += 1;
-            else carrinho.push({ nome: nome, preco: preco, qtd: 1 });
+            const existe = carrinho.find(i => i.nome === nome);
+            if (existe) existe.qtd++;
+            else carrinho.push({ nome, preco, qtd: 1 });
             atualizarCarrinho();
-            mostrarNotificacao(nome + ' adicionado! 🛒');
-        }
-
-        function alterarQtd(nome, delta) {
-            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho[i].qtd += delta; if (carrinho[i].qtd <= 0) carrinho.splice(i, 1); break; } }
-            atualizarCarrinho();
+            mostrarToast(nome.split(' - ')[0] + ' adicionado! 🛒');
         }
 
         function removerDoCarrinho(nome) {
-            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { carrinho.splice(i, 1); break; } }
+            carrinho = carrinho.filter(i => i.nome !== nome);
+            atualizarCarrinho();
+        }
+
+        function alterarQtd(nome, delta) {
+            const item = carrinho.find(i => i.nome === nome);
+            if (!item) return;
+            item.qtd += delta;
+            if (item.qtd <= 0) carrinho = carrinho.filter(i => i.nome !== nome);
             atualizarCarrinho();
         }
 
         function atualizarCarrinho() {
-            var lista = document.getElementById('listaCarrinho'), totalEl = document.getElementById('valorTotal'), badge = document.getElementById('badgeCarrinho');
-            var barra = document.getElementById('barraTotal'), barraV = document.getElementById('barraTotalValor'), barraI = document.getElementById('barraTotalItens');
-            lista.innerHTML = '';
-            var totalU = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0);
-            var totalV = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
-            var tf = 'R$ ' + totalV.toFixed(2).replace('.', ',');
-            if (carrinho.length > 0) {
-                badge.classList.remove('hidden'); badge.innerText = totalU;
-                carrinho.forEach(function(item) {
-                    var sub = (item.preco * item.qtd).toFixed(2).replace('.', ','), pu = item.preco.toFixed(2).replace('.', ',');
-                    var div = document.createElement('div');
-                    div.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(158,255,0,0.1);gap:6px;flex-wrap:wrap;';
-                    div.innerHTML = '<div style="flex:1;min-width:120px;"><p style="font-weight:600;font-size:0.85rem;color:#e8e6dc;">' + item.nome + '</p><p style="font-size:0.72rem;color:#8B7D6B;">R$ ' + pu + ' cada</p></div><div style="display:flex;align-items:center;gap:4px;"><button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\',-1)" style="width:24px;height:24px;border-radius:50%;background:#4B5320;color:#9EFF00;font-weight:bold;border:1px solid rgba(158,255,0,0.3);cursor:pointer;font-size:0.8rem;">−</button><span style="font-weight:700;min-width:18px;text-align:center;font-size:0.85rem;color:#e8e6dc;">' + item.qtd + '</span><button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\',1)" style="width:24px;height:24px;border-radius:50%;background:#4B5320;color:#9EFF00;font-weight:bold;border:1px solid rgba(158,255,0,0.3);cursor:pointer;font-size:0.8rem;">+</button><span style="font-weight:700;min-width:60px;text-align:right;font-size:0.85rem;color:#e8e6dc;">R$ ' + sub + '</span><button onclick="removerDoCarrinho(\'' + item.nome.replace(/'/g, "\\'") + '\')" style="color:#dc2626;font-weight:700;background:none;border:none;cursor:pointer;font-size:0.9rem;">✕</button></div>';
-                    lista.appendChild(div);
-                });
-                totalEl.innerText = tf; barraV.innerText = tf;
-                barraI.innerText = totalU + (totalU === 1 ? ' item' : ' itens');
-                barra.classList.add('visivel');
+            const lista = document.getElementById('listaCarrinho');
+            const totalEl = document.getElementById('valorTotal');
+            const badge = document.getElementById('badgeCarrinho');
+            const barra = document.getElementById('barraTotal');
+            const barraV = document.getElementById('barraTotalValor');
+            const barraI = document.getElementById('barraTotalItens');
+            const totalItens = carrinho.reduce((s, i) => s + i.qtd, 0);
+            const totalValor = carrinho.reduce((s, i) => s + i.preco * i.qtd, 0);
+            const tf = 'R$ ' + totalValor.toFixed(2).replace('.', ',');
+
+            if (carrinho.length === 0) {
+                lista.innerHTML = '<p style="color:#8899AA;text-align:center;font-size:0.85rem;">Seu carrinho está vazio.</p>';
+                totalEl.innerText = 'R$ 0,00';
+                badge.style.display = 'none';
+                barra.classList.remove('visivel');
+                barraV.innerText = 'R$ 0,00';
+                barraI.innerText = '0 item';
             } else {
-                badge.classList.add('hidden');
-                lista.innerHTML = '<p class="text-gray-500 text-center text-sm" id="carrinhoVazio">Seu carrinho está vazio.</p>';
-                totalEl.innerText = 'R$ 0,00'; barra.classList.remove('visivel');
-                barraV.innerText = 'R$ 0,00'; barraI.innerText = '0 item';
+                badge.style.display = 'flex';
+                badge.innerText = totalItens;
+                lista.innerHTML = carrinho.map(item => {
+                    const sub = (item.preco * item.qtd).toFixed(2).replace('.', ',');
+                    const pu = item.preco.toFixed(2).replace('.', ',');
+                    const nomeEsc = item.nome.replace(/'/g, "\\'");
+                    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.04);gap:0.3rem;flex-wrap:wrap;">
+                <div style="flex:1;min-width:100px;"><strong style="font-size:0.82rem;">${item.nome}</strong><br><span style="font-size:0.7rem;color:#8899AA;">R$ ${pu} cada</span></div>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <button onclick="alterarQtd('${nomeEsc}',-1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">−</button>
+                  <span style="font-weight:700;min-width:18px;text-align:center;">${item.qtd}</span>
+                  <button onclick="alterarQtd('${nomeEsc}',1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">+</button>
+                  <span style="font-weight:700;min-width:55px;text-align:right;font-size:0.82rem;">R$ ${sub}</span>
+                  <button onclick="removerDoCarrinho('${nomeEsc}')" style="color:#ff4444;font-weight:700;background:none;border:none;cursor:pointer;">✕</button>
+                </div>
+              </div>`;
+                }).join('');
+                totalEl.innerText = tf;
+                barraV.innerText = tf;
+                barraI.innerText = totalItens + (totalItens === 1 ? ' item' : ' itens');
+                barra.classList.add('visivel');
             }
         }
 
-        function mostrarNotificacao(msg) {
-            var notif = document.getElementById('notificacaoCarrinho');
-            if (!notif) {
-                notif = document.createElement('div'); notif.id = 'notificacaoCarrinho';
-                notif.style.cssText = 'position:fixed;top:80px;right:16px;background:#1a1d16;color:#9EFF00;font-weight:700;padding:12px 18px;border-radius:10px;z-index:999;font-size:0.85rem;box-shadow:0 4px 20px rgba(0,0,0,0.5);transition:opacity 0.4s;opacity:0;pointer-events:none;max-width:280px;border:1px solid rgba(158,255,0,0.3);';
-                document.body.appendChild(notif);
-            }
-            notif.innerText = msg; notif.style.opacity = '1';
-            clearTimeout(notif._timer);
-            notif._timer = setTimeout(function() { notif.style.opacity = '0'; }, 2500);
-        }
-
-        function abrirCarrinho() { document.getElementById('modalCarrinho').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function fecharCarrinho() { document.getElementById('modalCarrinho').style.display = 'none'; document.body.style.overflow = 'auto'; }
-        document.getElementById('modalCarrinho').addEventListener('click', function(e) { if (e.target === this) fecharCarrinho(); });
-
-        function fecharModalPix() { document.getElementById('modalPix').style.display = 'none'; document.body.style.overflow = 'auto'; }
-        document.getElementById('modalPix').addEventListener('click', function(e) { if (e.target === this) fecharModalPix(); });
-
-        function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
-
-        // ============ FLUXO DE COMPRA ============
         function iniciarFinalizacao() {
-            if (carrinho.length === 0) { mostrarNotificacao('⚠️ Carrinho vazio!'); return; }
-            var nome = document.getElementById('clienteNome').value.trim();
-            var email = document.getElementById('clienteEmail').value.trim();
-            var erroEl = document.getElementById('carrinhoErro');
-            if (!nome) { erroEl.innerText = '⚠️ Preencha seu nome completo!'; erroEl.classList.remove('hidden'); document.getElementById('clienteNome').focus(); return; }
-            if (!email) { erroEl.innerText = '⚠️ Preencha seu e-mail!'; erroEl.classList.remove('hidden'); document.getElementById('clienteEmail').focus(); return; }
-            if (!isValidEmail(email)) { erroEl.innerText = '⚠️ E-mail inválido!'; erroEl.classList.remove('hidden'); document.getElementById('clienteEmail').focus(); return; }
-            erroEl.classList.add('hidden');
-
-            // Salvar dados do cliente
-            dadosClienteAtual = { nome: sanitizar(nome), email: email.toLowerCase() };
-
-            // Salvar no banco
-            clientesRegistrados = lerStorageSeguro();
-            var itens = carrinho.map(function(item) { return item.qtd + 'x ' + sanitizar(item.nome); }).join(', ');
-            var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
-            var agora = new Date();
-            var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-            var novoCliente = {
-                nome: dadosClienteAtual.nome,
-                email: dadosClienteAtual.email,
-                itens: itens,
-                total: total.toFixed(2).replace('.', ','),
-                data: dataStr,
-                status: 'pendente',
-                linkDownload: ''
-            };
-            clientesRegistrados.push(novoCliente);
-            salvarStorageSeguro(clientesRegistrados);
-
-            // Fechar carrinho e abrir PIX
-            fecharCarrinho();
-            var tf = 'R$ ' + total.toFixed(2).replace('.', ',');
-            document.getElementById('pixValor').innerText = tf;
-            document.getElementById('pixCopiado').classList.add('hidden');
-            document.getElementById('modalPix').style.display = 'flex'; document.body.style.overflow = 'hidden';
+            if (carrinho.length === 0) { mostrarToast('⚠️ Carrinho vazio!'); return; }
+            const nome = document.getElementById('clienteNome').value.trim();
+            const email = document.getElementById('clienteEmail').value.trim();
+            const erro = document.getElementById('carrinhoErro');
+            if (!nome) { erro.style.display = 'block';
+                erro.innerText = '⚠️ Preencha seu nome!'; return; }
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { erro.style.display = 'block';
+                erro.innerText = '⚠️ E-mail inválido!'; return; }
+            erro.style.display = 'none';
+            dadosCliente = { nome, email: email.toLowerCase() };
+            const total = carrinho.reduce((s, i) => s + i.preco * i.qtd, 0);
+            document.getElementById('pixValor').innerText = 'R$ ' + total.toFixed(2).replace('.', ',');
+            document.getElementById('modalCarrinho').classList.remove('active');
+            document.getElementById('modalPix').classList.add('active');
         }
 
         function copiarChavePix() {
-            navigator.clipboard.writeText(CHAVE_PIX).then(function() {
-                var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden');
-                setTimeout(function() { msg.classList.add('hidden'); }, 3000);
-            }).catch(function() {
-                var input = document.createElement('input'); input.value = CHAVE_PIX; document.body.appendChild(input);
-                input.select(); document.execCommand('copy'); document.body.removeChild(input);
-                var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden');
-                setTimeout(function() { msg.classList.add('hidden'); }, 3000);
-            });
+            navigator.clipboard.writeText(CHAVE_PIX).then(() => mostrarToast('✅ Chave PIX copiada!'));
         }
 
         function enviarComprovante() {
-            if (!dadosClienteAtual.nome || !dadosClienteAtual.email) {
-                mostrarNotificacao('⚠️ Erro: dados do cliente não encontrados. Refaça a compra.');
-                return;
-            }
+            if (!dadosCliente.nome || !dadosCliente.email) { mostrarToast('⚠️ Dados do cliente não encontrados.'); return; }
+            const itens = carrinho.map(i => i.qtd + 'x ' + i.nome).join(', ');
+            const total = carrinho.reduce((s, i) => s + i.preco * i.qtd, 0);
+            const tf = 'R$ ' + total.toFixed(2).replace('.', ',');
+            const data = new Date().toLocaleString('pt-BR');
 
-            var itens = carrinho.map(function(item) { return item.qtd + 'x ' + sanitizar(item.nome); }).join(', ');
-            var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
-            var tf = 'R$ ' + total.toFixed(2).replace('.', ',');
-            var agora = new Date();
-            var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            const assunto = '🔔 NOVA COMPRA - ' + dadosCliente.nome;
+            const corpo = `NOVA COMPRA VCORE GAMES\n\n👤 ${dadosCliente.nome}\n📧 ${dadosCliente.email}\n📦 ${itens}\n💰 ${tf}\n📅 ${data}\n🔑 PIX: ${CHAVE_PIX}`;
+            window.open('mailto:' + EMAIL_ADMIN + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo), '_blank');
 
-            // Corpo do email para o ADMIN
-            var assuntoAdmin = '🔔 NOVA COMPRA PIX - ' + dadosClienteAtual.nome + ' - ' + itens;
-            var corpoAdmin = '═══════════════════════════════════\n';
-            corpoAdmin += '   🔔 NOVA COMPRA - VCORE GAMES\n';
-            corpoAdmin += '═══════════════════════════════════\n\n';
-            corpoAdmin += '👤 CLIENTE: ' + dadosClienteAtual.nome + '\n';
-            corpoAdmin += '📧 E-MAIL: ' + dadosClienteAtual.email + '\n';
-            corpoAdmin += '📦 PACOTE: ' + itens + '\n';
-            corpoAdmin += '💰 VALOR: ' + tf + '\n';
-            corpoAdmin += '📅 DATA: ' + dataStr + '\n';
-            corpoAdmin += '🔑 PIX: ' + CHAVE_PIX + '\n\n';
-            corpoAdmin += '⏳ STATUS: Aguardando confirmação\n\n';
-            corpoAdmin += '👆 Acesse o painel admin para aprovar e colar o link.\n';
-            corpoAdmin += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
-            corpoAdmin += '   VCORE GAMES - Sistema de Vendas\n';
-            corpoAdmin += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
+            const wpp = `🔔 *NOVA COMPRA*\n👤 ${dadosCliente.nome}\n📧 ${dadosCliente.email}\n📦 ${itens}\n💰 ${tf}`;
+            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(wpp), '_blank');
 
-            // Abre email para o admin
-            window.open('mailto:' + encodeURIComponent(EMAIL_ADMIN) + '?subject=' + encodeURIComponent(assuntoAdmin) + '&body=' + encodeURIComponent(corpoAdmin), '_blank');
-
-            // Abre WhatsApp para o admin
-            var msgWpp = '🔔 *NOVA COMPRA PIX - VCORE GAMES* 🔔\n\n';
-            msgWpp += '👤 *Cliente:* ' + dadosClienteAtual.nome + '\n';
-            msgWpp += '📧 *E-mail:* ' + dadosClienteAtual.email + '\n';
-            msgWpp += '📦 *Pacote:* ' + itens + '\n';
-            msgWpp += '💰 *Valor:* ' + tf + '\n';
-            msgWpp += '📅 *Data:* ' + dataStr + '\n';
-            msgWpp += '⏳ Aguardando confirmação do pagamento.\n\n';
-            msgWpp += '👆 Confira no painel admin e libere o link!';
-            window.open('https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(msgWpp), '_blank');
-
-            // Limpar carrinho e dados
-            carrinho = []; atualizarCarrinho();
-            dadosClienteAtual = { nome: '', email: '' };
+            carrinho = [];
+            dadosCliente = { nome: '', email: '' };
             document.getElementById('clienteNome').value = '';
             document.getElementById('clienteEmail').value = '';
-
-            fecharModalPix();
-
-            /* 🆕 ADICIONADO: Abrir pop-up de tranquilização após 2 segundos */
-            setTimeout(function() {
-                document.getElementById('modalTranquiliza').style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }, 2000);
-
-            mostrarNotificacao('✅ Comprovante enviado para Email e WhatsApp! 📩');
-            criarToastCompra();
+            atualizarCarrinho();
+            document.getElementById('modalPix').classList.remove('active');
+            mostrarToast('✅ Comprovante enviado! 📩');
         }
 
-        // ============ ADMIN ============
-        function fazerLogin() {
-            var user = document.getElementById('adminUser').value.trim(), pass = document.getElementById('adminPass').value.trim();
-            if (user === ADMIN_USER && pass === ADMIN_PASS) { adminLogado = true; document.getElementById('painelLogin').classList.add('hidden'); document.getElementById('painelAdmin').classList.remove('hidden'); renderizarListaClientes(); }
-            else { document.getElementById('erroLogin').classList.remove('hidden'); }
+        function mostrarToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.classList.add('show');
+            clearTimeout(t._t);
+            t._t = setTimeout(() => t.classList.remove('show'), 2500);
         }
 
-        function fazerLogout() { adminLogado = false; document.getElementById('painelLogin').classList.remove('hidden'); document.getElementById('painelAdmin').classList.add('hidden'); document.getElementById('adminUser').value = ''; document.getElementById('adminPass').value = ''; document.getElementById('erroLogin').classList.add('hidden'); }
+        function abrirCarrinho() { document.getElementById('modalCarrinho').classList.add('active'); }
+        function fecharCarrinho() { document.getElementById('modalCarrinho').classList.remove('active'); }
+        function fecharModalPix() { document.getElementById('modalPix').classList.remove('active'); }
 
-        function renderizarPainelAdmin() { if (adminLogado) { document.getElementById('painelLogin').classList.add('hidden'); document.getElementById('painelAdmin').classList.remove('hidden'); renderizarListaClientes(); } }
+        // Fechar modal ao clicar fora
+        document.querySelectorAll('.modal-overlay').forEach(m => {
+            m.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); });
+        });
 
-        function renderizarListaClientes() {
-            clientesRegistrados = lerStorageSeguro();
-            var lista = document.getElementById('listaClientes');
-            if (clientesRegistrados.length === 0) { lista.innerHTML = '<p class="text-gray-500 text-center text-sm">Nenhum cliente registrado.</p>'; return; }
-            lista.innerHTML = '';
-            for (var i = clientesRegistrados.length - 1; i >= 0; i--) {
-                (function(idx) {
-                    var c = clientesRegistrados[idx];
-                    var statusLabel = c.status === 'liberado' ? '✅ LIBERADO' : c.status === 'aprovado' ? '✅ APROVADO' : '⏳ PENDENTE';
-                    var statusCor = c.status === 'liberado' ? '#22c55e' : c.status === 'aprovado' ? '#3b82f6' : '#fbbf24';
-                    var div = document.createElement('div');
-                    div.className = 'p-3 sm:p-4 rounded-xl border-2 ' + ((c.status === 'aprovado' || c.status === 'liberado') ? 'border-green-500/30' : 'border-yellow-500/30');
-                    div.style.background = (c.status === 'aprovado' || c.status === 'liberado') ? 'rgba(34,197,94,0.05)' : 'rgba(234,179,8,0.05)';
-                    var linkVal = c.linkDownload || '';
-                    div.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2 mb-2 sm:mb-3"><div class="flex-1 min-w-0"><p class="font-bold text-white text-sm sm:text-base">👤 ' + sanitizar(c.nome) + ' <span style="background:' + statusCor + ';color:white;padding:2px 10px;border-radius:50px;font-size:0.65rem;font-weight:700;">' + statusLabel + '</span></p><p class="text-blue-400 text-xs sm:text-sm">📧 ' + c.email + '</p><p class="text-gray-500 text-[10px] sm:text-xs">🛍️ ' + sanitizar(c.itens) + ' | 💰 R$ ' + c.total + ' | 📅 ' + c.data + '</p></div></div><div class="flex flex-col sm:flex-row flex-wrap gap-2 items-stretch sm:items-end"><div class="flex-1 min-w-[150px]"><label class="text-[10px] sm:text-xs font-bold text-gray-400 block mb-1">🔗 Link de Download:</label><input type="text" id="linkDl_' + idx + '" value="' + linkVal.replace(/"/g, '&quot;') + '" placeholder="Cole o link do pacote..." class="w-full border rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm" style="border-color:rgba(158,255,0,0.2);" /></div><div class="flex gap-2 flex-wrap"><button onclick="salvarLink(' + idx + ')" class="btn-email-liberar text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg border">💾 Salvar e Liberar</button><button onclick="alternarStatus(' + idx + ')" class="' + (c.status === 'aprovado' ? 'bg-yellow-700 hover:bg-yellow-600 border-yellow-500' : 'bg-green-700 hover:bg-green-600 border-green-500') + ' text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg border">' + (c.status === 'aprovado' ? '⏳ Voltar Pendente' : '✅ Aprovar') + '</button></div></div>';
-                    lista.appendChild(div);
-                })(i);
-            }
-        }
+        // Fechar modal com ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+        });
 
-        function salvarLink(idx) {
-            var input = document.getElementById('linkDl_' + idx);
-            if (!input) return;
-            var link = input.value.trim();
-            if (!link) { mostrarNotificacao('⚠️ Cole o link de download!'); return; }
-            clientesRegistrados = lerStorageSeguro();
-            clientesRegistrados[idx].linkDownload = sanitizar(link);
-            clientesRegistrados[idx].status = 'liberado';
-            salvarStorageSeguro(clientesRegistrados);
-            var c = clientesRegistrados[idx];
-
-            // Abrir email para o cliente com link + instruções
-            var assunto = '🎮 VCORE GAMES - Seu Pacote Foi Liberado!';
-            var corpo = '══════════════════════════════════════\n';
-            corpo += '   🎖️ VCORE GAMES - MOD GHOST 🎖️\n';
-            corpo += '══════════════════════════════════════\n\n';
-            corpo += '👋 Olá, ' + sanitizar(c.nome) + '!\n\n';
-            corpo += '🎉 Seu pacote foi LIBERADO!\n\n';
-            corpo += '📦 PACOTE: ' + sanitizar(c.itens) + '\n';
-            corpo += '💰 VALOR: R$ ' + c.total + '\n\n';
-            corpo += '🔗 LINK DE DOWNLOAD:\n   ' + link + '\n\n';
-            corpo += '📥 INSTRUÇÕES DE INSTALAÇÃO:\n';
-            corpo += '   1. Clique no link e faça o download\n';
-            corpo += '   2. Copie os arquivos para a pasta raiz do jogo (onde está o GRB.exe)\n';
-            corpo += '   3. ⚠️ INICIE UM SAVE NOVO!\n';
-            corpo += '   4. Abra o jogo — Pronto! 🚀\n\n';
-            corpo += '📂 CAMINHOS DA PASTA:\n';
-            corpo += '   STEAM: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ghost Recon Breakpoint\\\n';
-            corpo += '   UBISOFT: C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Ghost Recon Breakpoint\\\n';
-            corpo += '   EPIC: C:\\Program Files\\Epic Games\\GhostReconBreakpoint\\\n\n';
-            corpo += '⚠️ INICIE UM SAVE NOVO após instalar!\n\n';
-            corpo += '💬 Dúvidas? WhatsApp: (16) 98109-7916\n';
-            corpo += '📧 E-mail: ' + EMAIL_ADMIN + '\n\n';
-            corpo += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
-            corpo += '🙏 OBRIGADO PELA CONFIANÇA!\n';
-            corpo += '   — Rodrigo | VCORE GAMES\n';
-            corpo += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
-
-            window.open('mailto:' + encodeURIComponent(c.email) + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo), '_blank');
-            mostrarNotificacao('✅ Link salvo! Email de liberação aberto 📧');
-            renderizarListaClientes();
-        }
-
-        function alternarStatus(idx) {
-            clientesRegistrados = lerStorageSeguro();
-            clientesRegistrados[idx].status = clientesRegistrados[idx].status === 'aprovado' ? 'pendente' : 'aprovado';
-            salvarStorageSeguro(clientesRegistrados);
-            mostrarNotificacao(clientesRegistrados[idx].status === 'aprovado' ? '✅ Aprovado!' : '⏳ Pendente.');
-            renderizarListaClientes();
-        }
-
-        function limparClientes() {
-            if (confirm('⚠️ Tem certeza? Esta ação é irreversível!')) {
-                salvarStorageSeguro([]); clientesRegistrados = [];
-                renderizarListaClientes(); mostrarNotificacao('🗑️ Lista limpa.');
-            }
-        }
-
-        // ============ BOTÃO TOPO ============
-        var btnTopo = document.getElementById('btnTopo');
-        window.addEventListener('scroll', function() { if (window.scrollY > 300) btnTopo.classList.remove('hidden'); else btnTopo.classList.add('hidden'); });
-        btnTopo.addEventListener('click', function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        // Botão voltar ao topo
+        const btnTopo = document.getElementById('btnTopo');
+        window.addEventListener('scroll', function() {
+            btnTopo.style.display = window.scrollY > 400 ? 'flex' : 'none';
+        });
+        btnTopo.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     </script>
 </body>
 </html>
