@@ -4,13 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>VCORE GAMES - Mods Mod Ghost</title>
-
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://fonts.googleapis.com https://fonts.gstatic.com https://api.counterapi.dev; img-src 'self' data: https:; connect-src 'self' https://api.counterapi.dev;" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -29,23 +27,10 @@
                         facebook: "#1877F2",
                         cults: "#F15A24",
                         whatsapp: "#25D366",
-                        camoOlive: "#4B5320",
-                        camoBrown: "#5C4033",
-                        camoGreen: "#2E3B1F",
-                        camoTan: "#8B7D6B",
-                        camoDark: "#1a1f14",
-                        camoBlack: "#0d0f0a",
                     },
                     fontFamily: {
                         sans: ["Inter", "system-ui", "sans-serif"],
                         logo: ["Rajdhani", "Arial Black", "Helvetica Bold", "sans-serif"],
-                    },
-                    screens: {
-                        'xs': '375px',
-                        'sm': '640px',
-                        'md': '768px',
-                        'lg': '1024px',
-                        'xl': '1280px',
                     },
                 },
             },
@@ -54,778 +39,145 @@
     <style>
         *,*::before,*::after{box-sizing:border-box}
         html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
-        body{font-family:'Inter',system-ui,sans-serif;margin:0;padding:0}
-
-        body{
-            background-color: #121610;
-            color: #e8e6dc;
-            min-height: 100vh;
-        }
-
-        body::before{
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(75,83,32,0.08) 0%, transparent 70%),
-                        radial-gradient(ellipse at 80% 100%, rgba(92,64,51,0.05) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        header, main, footer, .modal-carrinho, .modal-pix, .modal-email, .modal-saida,
-        .barra-total, .btn-topo, .toast-compra, #notificacaoCarrinho{
-            position: relative;
-            z-index: 1;
-        }
-
+        body{font-family:'Inter',system-ui,sans-serif;margin:0;padding:0;background-color:#121610;color:#e8e6dc;min-height:100vh}
+        body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%, rgba(75,83,32,0.08) 0%, transparent 70%),radial-gradient(ellipse at 80% 100%, rgba(92,64,51,0.05) 0%, transparent 60%);pointer-events:none;z-index:0}
+        header,main,footer,.modal-carrinho,.modal-pix,.modal-saida,.barra-total,.btn-topo,.toast-compra{position:relative;z-index:1}
         .text-shadow{text-shadow:0 2px 4px rgba(0,0,0,0.5)}
-
-        .card-mod{
-            background: #1a1d16;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 1px 3px rgba(158,255,0,0.05);
-            padding: 0.75rem;
-            border: 1px solid rgba(158,255,0,0.2);
-            transition: all 0.3s;
-            color: #e8e6dc;
-            position: relative;
-            overflow: hidden;
-        }
+        .card-mod{background:#1a1d16;border-radius:0.75rem;box-shadow:0 4px 20px rgba(0,0,0,0.4),0 1px 3px rgba(158,255,0,0.05);padding:0.75rem;border:1px solid rgba(158,255,0,0.2);transition:all 0.3s;color:#e8e6dc;position:relative;overflow:hidden}
         .card-mod:hover{box-shadow:0 10px 35px rgba(0,0,0,0.5),0 0 0 1px rgba(158,255,0,0.3)}
-
-        /* ============ SOLDIER BACKGROUND ============ */
-        .card-mod.soldier-bg::after{
-            content: '';
-            position: absolute;
-            right: 5px;
-            bottom: 0;
-            width: 140px;
-            height: 280px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 380'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%239EFF00' stop-opacity='0.10'/%3E%3Cstop offset='100%25' stop-color='%239EFF00' stop-opacity='0.01'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cellipse cx='100' cy='22' rx='22' ry='16' fill='url(%23g)'/%3E%3Cpath d='M78 22 Q78 6 100 6 Q122 6 122 22' fill='url(%23g)'/%3E%3Cellipse cx='100' cy='38' rx='14' ry='16' fill='url(%23g)'/%3E%3Cpath d='M72 54 L128 54 L136 90 L136 130 L128 135 L126 160 L134 168 L140 210 L60 210 L66 168 L74 160 L72 135 L64 130 L64 90 Z' fill='url(%23g)'/%3E%3Cpath d='M64 58 L50 60 L40 100 L48 140 L58 138 L54 95 L64 80Z' fill='url(%23g)'/%3E%3Cpath d='M136 58 L150 60 L158 100 L152 130 L142 128 L146 95 L136 82Z' fill='url(%23g)'/%3E%3Crect x='148' y='58' width='8' height='140' rx='4' fill='url(%23g)'/%3E%3Crect x='144' y='60' width='16' height='10' rx='2' fill='url(%23g)'/%3E%3Crect x='146' y='190' width='12' height='15' rx='2' fill='url(%23g)'/%3E%3Cpath d='M70 210 L62 340 L88 340 L90 300 L92 340 L108 340 L110 300 L112 340 L138 340 L130 210Z' fill='url(%23g)'/%3E%3Cpath d='M58 340 L50 355 L92 355 L88 340Z' fill='url(%23g)'/%3E%3Cpath d='M108 340 L112 355 L150 355 L142 340Z' fill='url(%23g)'/%3E%3C/svg%3E");
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: bottom right;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.25;
-        }
-        @media (max-width: 640px) {
-            .card-mod.soldier-bg::after{
-                width: 100px;
-                height: 200px;
-                right: 0;
-                opacity: 0.18;
-            }
-        }
-
-        .menu-ativo{
-            border-bottom:2px solid #9EFF00;
-            font-weight:700;
-            color:#9EFF00;
-            background:rgba(158,255,0,0.08);
-            border-top-left-radius:0.5rem;
-            border-top-right-radius:0.5rem
-        }
-
-        .btn-venda{
-            background:linear-gradient(135deg, #2E3B1F 0%, #4B5320 100%);
-            color:#9EFF00;
-            font-weight:700;
-            padding:0.75rem 1rem;
-            border-radius:0.5rem;
-            font-size:0.875rem;
-            box-shadow:0 4px 15px rgba(0,0,0,0.4);
-            transition:all 0.2s;
-            display:block;
-            width:100%;
-            text-align:center;
-            border:1px solid rgba(158,255,0,0.3);
-        }
-        .btn-venda:hover{
-            background:linear-gradient(135deg, #4B5320 0%, #5C4033 100%);
-            box-shadow:0 6px 25px rgba(0,0,0,0.5);
-            transform:scale(1.03)
-        }
+        .card-mod.soldier-bg::after{content:'';position:absolute;right:5px;bottom:0;width:140px;height:280px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 380'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%239EFF00' stop-opacity='0.10'/%3E%3Cstop offset='100%25' stop-color='%239EFF00' stop-opacity='0.01'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cellipse cx='100' cy='22' rx='22' ry='16' fill='url(%23g)'/%3E%3Cpath d='M78 22 Q78 6 100 6 Q122 6 122 22' fill='url(%23g)'/%3E%3Cellipse cx='100' cy='38' rx='14' ry='16' fill='url(%23g)'/%3E%3Cpath d='M72 54 L128 54 L136 90 L136 130 L128 135 L126 160 L134 168 L140 210 L60 210 L66 168 L74 160 L72 135 L64 130 L64 90 Z' fill='url(%23g)'/%3E%3Cpath d='M64 58 L50 60 L40 100 L48 140 L58 138 L54 95 L64 80Z' fill='url(%23g)'/%3E%3Cpath d='M136 58 L150 60 L158 100 L152 130 L142 128 L146 95 L136 82Z' fill='url(%23g)'/%3E%3Crect x='148' y='58' width='8' height='140' rx='4' fill='url(%23g)'/%3E%3Crect x='144' y='60' width='16' height='10' rx='2' fill='url(%23g)'/%3E%3Crect x='146' y='190' width='12' height='15' rx='2' fill='url(%23g)'/%3E%3Cpath d='M70 210 L62 340 L88 340 L90 300 L92 340 L108 340 L110 300 L112 340 L138 340 L130 210Z' fill='url(%23g)'/%3E%3Cpath d='M58 340 L50 355 L92 355 L88 340Z' fill='url(%23g)'/%3E%3Cpath d='M108 340 L112 355 L150 355 L142 340Z' fill='url(%23g)'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;background-position:bottom right;pointer-events:none;z-index:0;opacity:0.25}
+        @media(max-width:640px){.card-mod.soldier-bg::after{width:100px;height:200px;right:0;opacity:0.18}}
+        .menu-ativo{border-bottom:2px solid #9EFF00;font-weight:700;color:#9EFF00;background:rgba(158,255,0,0.08);border-top-left-radius:0.5rem;border-top-right-radius:0.5rem}
+        .btn-venda{background:linear-gradient(135deg,#2E3B1F 0%,#4B5320 100%);color:#9EFF00;font-weight:700;padding:0.75rem 1rem;border-radius:0.5rem;font-size:0.875rem;box-shadow:0 4px 15px rgba(0,0,0,0.4);transition:all 0.2s;display:block;width:100%;text-align:center;border:1px solid rgba(158,255,0,0.3);cursor:pointer}
+        .btn-venda:hover{background:linear-gradient(135deg,#4B5320 0%,#5C4033 100%);box-shadow:0 6px 25px rgba(0,0,0,0.5);transform:scale(1.03)}
         .btn-venda:active{transform:scale(0.96)}
-
         .logo-font{font-family:"Rajdhani","Arial Black","Helvetica Bold",sans-serif;font-weight:700;letter-spacing:0.05em}
-
-        .area-midia{
-            background:rgba(0,0,0,0.5);
-            border-radius:0.5rem;
-            height:8rem;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            margin-bottom:1rem;
-            overflow:hidden;
-            border:1px solid rgba(158,255,0,0.15);
-            position:relative
-        }
-
+        .area-midia{background:rgba(0,0,0,0.5);border-radius:0.5rem;height:8rem;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:1rem;overflow:hidden;border:1px solid rgba(158,255,0,0.15);position:relative}
         .icone-rede-topo{font-size:1rem;margin:0 0.125rem;transition:transform 0.3s;color:#9EFF00;opacity:0.8}
         .icone-rede-topo:hover{transform:scale(1.15);opacity:1}
         .icone-rede-rodape{font-size:1.25rem;margin:0 0.375rem;transition:transform 0.3s;color:#9EFF00;opacity:0.8}
         .icone-rede-rodape:hover{transform:scale(1.15);opacity:1}
-
-        .btn-topo{
-            position:fixed;bottom:1rem;right:1rem;
-            background:#2E3B1F;color:#9EFF00;
-            width:2.5rem;height:2.5rem;border-radius:50%;
-            display:flex;align-items:center;justify-content:center;
-            box-shadow:0 4px 15px rgba(0,0,0,0.5);
-            cursor:pointer;z-index:50;border:1px solid rgba(158,255,0,0.3)
-        }
+        .btn-topo{position:fixed;bottom:1rem;right:1rem;background:#2E3B1F;color:#9EFF00;width:2.5rem;height:2.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(0,0,0,0.5);cursor:pointer;z-index:50;border:1px solid rgba(158,255,0,0.3);text-decoration:none}
         .btn-topo:hover{background:#4B5320}
         .btn-topo.hidden{display:none}
-
         .menu-container{position:relative}
-        .menu-botao{
-            width:100%;
-            background:rgba(46,59,31,0.9);
-            color:#9EFF00;
-            padding:0.625rem 0.75rem;
-            border-radius:0.5rem;
-            font-weight:700;
-            font-size:1rem;
-            display:flex;justify-content:space-between;align-items:center;
-            cursor:pointer;
-            transition:background 0.2s;
-            border:1px solid rgba(158,255,0,0.3);
-            backdrop-filter:blur(6px);
-        }
+        .menu-botao{width:100%;background:rgba(46,59,31,0.9);color:#9EFF00;padding:0.625rem 0.75rem;border-radius:0.5rem;font-weight:700;font-size:1rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background 0.2s;border:1px solid rgba(158,255,0,0.3);backdrop-filter:blur(6px)}
         .menu-botao:hover{background:rgba(75,83,32,0.9)}
-
-        .menu-lista{
-            display:none;
-            position:absolute;left:0;right:0;top:calc(100% + 0.25rem);
-            max-height:50vh;overflow-y:auto;
-            background:rgba(13,15,10,0.98);
-            border-radius:0.75rem;
-            box-shadow:0 10px 40px rgba(0,0,0,0.6);
-            z-index:40;
-            border:1px solid rgba(158,255,0,0.25);
-            backdrop-filter:blur(10px);
-        }
+        .menu-lista{display:none;position:absolute;left:0;right:0;top:calc(100% + 0.25rem);max-height:50vh;overflow-y:auto;background:rgba(13,15,10,0.98);border-radius:0.75rem;box-shadow:0 10px 40px rgba(0,0,0,0.6);z-index:40;border:1px solid rgba(158,255,0,0.25);backdrop-filter:blur(10px)}
         .menu-lista.aberto{display:block}
-        .menu-lista a{
-            display:block;
-            padding:0.625rem 0.75rem;
-            color:#9EFF00;
-            border-bottom:1px solid rgba(158,255,0,0.1);
-            font-size:0.875rem;
-            transition:background 0.2s;
-            text-decoration:none
-        }
+        .menu-lista a{display:block;padding:0.625rem 0.75rem;color:#9EFF00;border-bottom:1px solid rgba(158,255,0,0.1);font-size:0.875rem;transition:background 0.2s;text-decoration:none}
         .menu-lista a:hover{background:rgba(75,83,32,0.5)}
         .menu-lista a:last-child{border-bottom:0}
-
-        .modal-carrinho,.modal-pix{
-            position:fixed;inset:0;
-            background:rgba(0,0,0,0.85);
-            display:none;
-            align-items:center;justify-content:center;
-            z-index:60;padding:0.5rem;
-            backdrop-filter:blur(4px);
-        }
-        .carrinho-conteudo,.pix-conteudo{
-            background:#1a1d16;
-            border-radius:0.75rem;
-            max-width:95vw;max-height:90vh;
-            overflow-y:auto;
-            padding:1rem;
-            box-shadow:0 20px 60px rgba(0,0,0,0.6);
-            border:1px solid rgba(158,255,0,0.25);
-            color:#e8e6dc;
-        }
-
-        .modal-email,.modal-saida{
-            position:fixed;inset:0;
-            display:none;
-            align-items:center;justify-content:center;
-            z-index:75;padding:0.5rem;
-            background:rgba(0,0,0,0.85);
-            backdrop-filter:blur(8px);
-        }
-        .email-conteudo,.saida-conteudo{
-            background:#1a1d16;
-            border-radius:1rem;
-            max-width:95vw;max-height:90vh;
-            overflow-y:auto;
-            padding:1rem;
-            box-shadow:0 20px 60px rgba(0,0,0,0.6);
-            border:1px solid rgba(158,255,0,0.25);
-            color:#e8e6dc;
-        }
-
-        .fechar-modal{
-            float:right;color:#8B7D6B;font-size:1.25rem;font-weight:700;cursor:pointer;transition:color 0.2s
-        }
+        .modal-carrinho,.modal-pix{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:60;padding:0.5rem;backdrop-filter:blur(4px)}
+        .carrinho-conteudo,.pix-conteudo{background:#1a1d16;border-radius:0.75rem;max-width:95vw;max-height:90vh;overflow-y:auto;padding:1rem;box-shadow:0 20px 60px rgba(0,0,0,0.6);border:1px solid rgba(158,255,0,0.25);color:#e8e6dc}
+        .modal-saida{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:75;padding:0.5rem;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px)}
+        .saida-conteudo{background:#1a1d16;border-radius:1rem;max-width:95vw;max-height:90vh;overflow-y:auto;padding:1rem;box-shadow:0 20px 60px rgba(0,0,0,0.6);border:1px solid rgba(158,255,0,0.25);color:#e8e6dc}
+        .fechar-modal{float:right;color:#8B7D6B;font-size:1.25rem;font-weight:700;cursor:pointer;transition:color 0.2s}
         .fechar-modal:hover{color:#dc2626}
-
-        .badge-carrinho{
-            position:absolute;top:-0.5rem;right:-0.5rem;
-            background:#dc2626;color:#fff;
-            font-size:0.625rem;font-weight:700;
-            width:1rem;height:1rem;
-            display:flex;align-items:center;justify-content:center;
-            border-radius:50%
-        }
-
-        .barra-total{
-            position:fixed;bottom:0;left:0;right:0;
-            background:rgba(13,15,10,0.98);
-            color:#9EFF00;
-            padding:0.625rem 0.75rem;
-            display:flex;justify-content:space-between;align-items:center;
-            box-shadow:0 -4px 25px rgba(0,0,0,0.5);
-            z-index:40;
-            transform:translateY(100%);
-            transition:transform 0.5s;
-            gap:0.5rem;
-            border-top:1px solid rgba(158,255,0,0.25);
-            backdrop-filter:blur(10px);
-        }
+        .badge-carrinho{position:absolute;top:-0.5rem;right:-0.5rem;background:#dc2626;color:#fff;font-size:0.625rem;font-weight:700;width:1rem;height:1rem;display:flex;align-items:center;justify-content:center;border-radius:50%}
+        .barra-total{position:fixed;bottom:0;left:0;right:0;background:rgba(13,15,10,0.98);color:#9EFF00;padding:0.625rem 0.75rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 -4px 25px rgba(0,0,0,0.5);z-index:40;transform:translateY(100%);transition:transform 0.5s;gap:0.5rem;border-top:1px solid rgba(158,255,0,0.25);backdrop-filter:blur(10px)}
         .barra-total.visivel{transform:translateY(0)}
-
-        .pronto-badge{
-            display:inline-flex;align-items:center;gap:0.25rem;
-            background:#22c55e;color:#fff;
-            font-size:0.625rem;font-weight:700;
-            padding:0.25rem 0.75rem;border-radius:9999px
-        }
-        .fr-badge{
-            display:inline-flex;align-items:center;gap:0.25rem;
-            background:#3b82f6;color:#fff;
-            font-size:0.625rem;font-weight:700;
-            padding:0.25rem 0.75rem;border-radius:9999px
-        }
-
-        /* ============ CONTADOR DE TEMPO ============ */
-        .countdown-container{
-            display: inline-flex;
-            gap: 6px;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .countdown-box{
-            background: rgba(0,0,0,0.6);
-            border: 1px solid rgba(255,255,255,0.35);
-            border-radius: 8px;
-            padding: 6px 10px;
-            text-align: center;
-            min-width: 48px;
-        }
-        .countdown-num{
-            display: block;
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: #ffcc00;
-            line-height: 1;
-            text-shadow: 0 0 10px rgba(255,204,0,0.5);
-        }
-        .countdown-label{
-            display: block;
-            font-size: 0.55rem;
-            font-weight: 700;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 2px;
-            opacity: 0.9;
-        }
-        .countdown-separator{
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: #ffcc00;
-            text-shadow: 0 0 10px rgba(255,204,0,0.5);
-            animation: blink-sep 1s ease-in-out infinite;
-        }
-        @keyframes blink-sep{
-            0%,100%{opacity:1}
-            50%{opacity:0.3}
-        }
-        @media (max-width: 640px) {
-            .countdown-box{min-width:38px;padding:4px 7px}
-            .countdown-num{font-size:1.1rem}
-            .countdown-label{font-size:0.5rem}
-            .countdown-separator{font-size:1.1rem}
-        }
-
-        /* ============ ANIMAÇÕES ============ */
+        .pronto-badge{display:inline-flex;align-items:center;gap:0.25rem;background:#22c55e;color:#fff;font-size:0.625rem;font-weight:700;padding:0.25rem 0.75rem;border-radius:9999px}
+        .fr-badge{display:inline-flex;align-items:center;gap:0.25rem;background:#3b82f6;color:#fff;font-size:0.625rem;font-weight:700;padding:0.25rem 0.75rem;border-radius:9999px}
+        .countdown-container{display:inline-flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap}
+        .countdown-box{background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.35);border-radius:8px;padding:6px 10px;text-align:center;min-width:48px}
+        .countdown-num{display:block;font-size:1.4rem;font-weight:900;color:#ffcc00;line-height:1;text-shadow:0 0 10px rgba(255,204,0,0.5)}
+        .countdown-label{display:block;font-size:0.55rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-top:2px;opacity:0.9}
+        .countdown-separator{font-size:1.4rem;font-weight:900;color:#ffcc00;text-shadow:0 0 10px rgba(255,204,0,0.5);animation:blink-sep 1s ease-in-out infinite}
+        @keyframes blink-sep{0%,100%{opacity:1}50%{opacity:0.3}}
+        @media(max-width:640px){.countdown-box{min-width:38px;padding:4px 7px}.countdown-num{font-size:1.1rem}.countdown-label{font-size:0.5rem}.countdown-separator{font-size:1.1rem}}
         @keyframes pulse-save{0%,100%{opacity:1}50%{opacity:0.7}}
         .pulse-save{animation:pulse-save 1.5s ease-in-out infinite}
-
-        @keyframes count-glow{
-            0%,100%{text-shadow:0 0 8px rgba(158,255,0,0.4)}
-            50%{text-shadow:0 0 20px rgba(158,255,0,0.8),0 0 40px rgba(158,255,0,0.3)}
-        }
+        @keyframes count-glow{0%,100%{text-shadow:0 0 8px rgba(158,255,0,0.4)}50%{text-shadow:0 0 20px rgba(158,255,0,0.8),0 0 40px rgba(158,255,0,0.3)}}
         .count-glow{animation:count-glow 2s ease-in-out infinite}
-
         @keyframes slideInRight{from{transform:translateX(120%);opacity:0}to{transform:translateX(0);opacity:1}}
         @keyframes slideOutRight{from{transform:translateX(0);opacity:1}to{transform:translateX(120%);opacity:0}}
         .toast-compra{animation:slideInRight 0.5s ease-out forwards}
         .toast-compra.saindo{animation:slideOutRight 0.4s ease-in forwards}
-
         @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
         .animate-fade-in-up{animation:fadeInUp 0.4s ease-out forwards}
-
-        @keyframes pulse-border{
-            0%,100%{box-shadow:0 0 8px rgba(158,255,0,0.3)}
-            50%{box-shadow:0 0 22px rgba(158,255,0,0.6),0 0 40px rgba(158,255,0,0.2)}
-        }
+        @keyframes pulse-border{0%,100%{box-shadow:0 0 8px rgba(158,255,0,0.3)}50%{box-shadow:0 0 22px rgba(158,255,0,0.6),0 0 40px rgba(158,255,0,0.2)}}
         .pulse-border{animation:pulse-border 1.8s ease-in-out infinite}
-
-        @keyframes promo-glow{
-            0%,100%{box-shadow:0 0 15px rgba(255,26,26,0.3),0 0 30px rgba(255,26,26,0.1)}
-            50%{box-shadow:0 0 30px rgba(255,204,0,0.5),0 0 60px rgba(255,26,26,0.3)}
-        }
+        @keyframes promo-glow{0%,100%{box-shadow:0 0 15px rgba(255,26,26,0.3),0 0 30px rgba(255,26,26,0.1)}50%{box-shadow:0 0 30px rgba(255,204,0,0.5),0 0 60px rgba(255,26,26,0.3)}}
         .promo-glow{animation:promo-glow 2s ease-in-out infinite}
-
         .menu-icone{transition:transform 0.3s}
         .menu-icone-rotacionado{transform:rotate(180deg);transition:transform 0.3s}
-
-        /* ============ INPUTS ============ */
-        input, textarea, select{
-            background:rgba(0,0,0,0.5) !important;
-            color:#e8e6dc !important;
-            border-color:rgba(158,255,0,0.25) !important;
-        }
-        input:focus, textarea:focus, select:focus{
-            border-color:#9EFF00 !important;
-            box-shadow:0 0 15px rgba(158,255,0,0.15) !important;
-            outline:none !important;
-        }
-        input::placeholder{color:rgba(232,230,220,0.4) !important}
-
-        /* ============ SCROLLBAR ============ */
+        input,textarea,select{background:rgba(0,0,0,0.5)!important;color:#e8e6dc!important;border-color:rgba(158,255,0,0.25)!important}
+        input:focus,textarea:focus,select:focus{border-color:#9EFF00!important;box-shadow:0 0 15px rgba(158,255,0,0.15)!important;outline:none!important}
+        input::placeholder{color:rgba(232,230,220,0.4)!important}
         ::-webkit-scrollbar{width:6px}
         ::-webkit-scrollbar-track{background:#0d0f0a;border-radius:3px}
         ::-webkit-scrollbar-thumb{background:#4B5320;border-radius:3px}
         ::-webkit-scrollbar-thumb:hover{background:#5C4033}
+        .btn-email-liberar{background:linear-gradient(135deg,#7C3AED 0%,#9EFF00 100%)!important;color:#fff!important;font-weight:800!important;border:2px solid #9EFF00!important;animation:pulse-border 1.8s ease-in-out infinite}
+        .btn-email-liberar:hover{background:linear-gradient(135deg,#9EFF00 0%,#7C3AED 100%)!important;transform:scale(1.05)}
+        .grid-pacotes{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;max-width:1100px;margin:0 auto 2.5rem auto}
+        .grid-pacotes .card-mod{flex:1 1 280px;max-width:360px;min-width:260px;display:flex;flex-direction:column}
+        @media(max-width:640px){.grid-pacotes .card-mod{flex:1 1 100%;max-width:100%}}
+        .lista-itens-pacote{list-style:none;padding:0;margin:0 0 1.25rem 0;display:flex;flex-direction:column;gap:0.375rem;flex:1}
+        .lista-itens-pacote li{font-size:0.8rem;padding:0.35rem 0.6rem;border-radius:0.4rem;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);line-height:1.4;color:#d4d4d4}
+        @media(max-width:640px){.lista-itens-pacote li{font-size:0.75rem;padding:0.3rem 0.5rem}.card-mod{padding:0.625rem}.area-midia{height:8rem}.icone-rede-topo{font-size:0.875rem}.menu-botao{font-size:0.875rem;padding:0.625rem 0.75rem}.menu-lista a{font-size:0.8125rem}.btn-venda{font-size:1rem;padding:0.75rem 1rem}.badge-carrinho{font-size:0.625rem;width:1rem;height:1rem}.barra-total{padding:0.5rem 0.75rem}}
+        @media(min-width:640px){.card-mod{padding:1rem}.area-midia{height:9rem}.icone-rede-topo{font-size:1.125rem}.menu-botao{font-size:1.125rem;padding:0.75rem 1rem}.menu-lista{max-height:60vh}.menu-lista a{padding:0.75rem 1rem;font-size:0.875rem}.carrinho-conteudo,.pix-conteudo,.saida-conteudo{max-width:30rem;padding:1.5rem}.fechar-modal{font-size:1.5rem}.badge-carrinho{font-size:0.75rem;width:1.25rem;height:1.25rem}.barra-total{padding:0.75rem 1.25rem}.btn-venda{font-size:1.125rem;padding:0.75rem 1.5rem}.btn-topo{width:3rem;height:3rem;bottom:1.5rem;right:1.5rem}input,textarea,select{font-size:16px!important}}
 
-        /* ============ BOTÃO EMAIL-LIBERACAO ============ */
-        .btn-email-liberar{
-            background:linear-gradient(135deg, #7C3AED 0%, #9EFF00 100%) !important;
-            color:#fff !important;
-            font-weight:800 !important;
-            border:2px solid #9EFF00 !important;
-            animation: pulse-border 1.8s ease-in-out infinite;
-        }
-        .btn-email-liberar:hover{
-            background:linear-gradient(135deg, #9EFF00 0%, #7C3AED 100%) !important;
-            transform:scale(1.05);
-        }
-
-        /* ============ CARDS DE PACOTES ============ */
-        .grid-pacotes {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.2rem;
-            max-width: 1100px;
-            margin: 0 auto 2.5rem auto;
-        }
-        .grid-pacotes .card-mod {
-            flex: 1 1 280px;
-            max-width: 360px;
-            min-width: 260px;
-            display: flex;
-            flex-direction: column;
-        }
-        @media (max-width: 640px) {
-            .grid-pacotes .card-mod {
-                flex: 1 1 100%;
-                max-width: 100%;
-            }
-        }
-
-        /* ============ LISTA DE ITENS DOS PACOTES ============ */
-        .lista-itens-pacote{
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.25rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.375rem;
-            flex: 1;
-        }
-        .lista-itens-pacote li{
-            font-size: 0.8rem;
-            padding: 0.35rem 0.6rem;
-            border-radius: 0.4rem;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.06);
-            line-height: 1.4;
-            color: #d4d4d4;
-        }
-        @media (max-width: 640px) {
-            .lista-itens-pacote li{font-size:0.75rem;padding:0.3rem 0.5rem}
-        }
-
-        /* ============ RESPONSIVO ============ */
-        @media (max-width:640px){
-            .card-mod{padding:0.625rem}
-            .area-midia{height:8rem}
-            .icone-rede-topo{font-size:0.875rem}
-            .menu-botao{font-size:0.875rem;padding:0.625rem 0.75rem}
-            .menu-lista a{font-size:0.8125rem}
-            .btn-venda{font-size:1rem;padding:0.75rem 1rem}
-            .badge-carrinho{font-size:0.625rem;width:1rem;height:1rem}
-            .barra-total{padding:0.5rem 0.75rem}
-        }
-        @media (min-width:640px){
-            .card-mod{padding:1rem}
-            .area-midia{height:9rem}
-            .icone-rede-topo{font-size:1.125rem}
-            .menu-botao{font-size:1.125rem;padding:0.75rem 1rem}
-            .menu-lista{max-height:60vh}
-            .menu-lista a{padding:0.75rem 1rem;font-size:0.875rem}
-            .carrinho-conteudo,.pix-conteudo,.email-conteudo,.saida-conteudo{max-width:28rem;padding:1.5rem}
-            .fechar-modal{font-size:1.5rem}
-            .badge-carrinho{font-size:0.75rem;width:1.25rem;height:1.25rem}
-            .barra-total{padding:0.75rem 1.25rem}
-            .btn-venda{font-size:1.125rem;padding:0.75rem 1.5rem}
-            .btn-topo{width:3rem;height:3rem;bottom:1.5rem;right:1.5rem}
-            input,textarea,select{font-size:16px !important}
-        }
-
-        /* ============ CENA DE GUERRA DE FUNDO (SVG ANIMADO) ============ */
-        .war-bg{
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .war-bg svg{display:block}
-
-        /* Grade tática deslizante */
-        .war-grid{
-            position:absolute;inset:0;
-            background:
-                repeating-linear-gradient(0deg, rgba(158,255,0,0.035) 0 1px, transparent 1px 46px),
-                repeating-linear-gradient(90deg, rgba(158,255,0,0.035) 0 1px, transparent 1px 46px);
-            animation:war-grid-move 10s linear infinite;
-        }
-        @keyframes war-grid-move{
-            from{background-position:0 0,0 0}
-            to{background-position:0 46px,46px 0}
-        }
-
-        /* Varredura tática vertical */
-        .war-scan{
-            position:absolute;top:0;bottom:0;left:-2%;width:3px;
-            background:linear-gradient(180deg, transparent, rgba(158,255,0,0.18), transparent);
-            box-shadow:0 0 12px rgba(158,255,0,0.15);
-            animation:war-scan-move 11s linear infinite;
-        }
+        .war-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+        .war-grid{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(158,255,0,0.035) 0 1px,transparent 1px 46px),repeating-linear-gradient(90deg,rgba(158,255,0,0.035) 0 1px,transparent 1px 46px);animation:war-grid-move 10s linear infinite}
+        @keyframes war-grid-move{from{background-position:0 0,0 0}to{background-position:0 46px,46px 0}}
+        .war-scan{position:absolute;top:0;bottom:0;left:-2%;width:3px;background:linear-gradient(180deg,transparent,rgba(158,255,0,0.18),transparent);box-shadow:0 0 12px rgba(158,255,0,0.15);animation:war-scan-move 11s linear infinite}
         @keyframes war-scan-move{from{left:-2%}to{left:102%}}
-
-        /* ===== SOLDADOS ===== */
-        .war-soldier{
-            position:absolute;bottom:2px;
-            color:#9EFF00;
-            animation:war-soldier-pulse 5s ease-in-out infinite;
-        }
+        .war-soldier{position:absolute;bottom:2px;color:#9EFF00;animation:war-soldier-pulse 5s ease-in-out infinite}
         .war-soldier svg{width:100%;height:auto}
-        .war-soldier .arm-l,.war-soldier .arm-r,
-        .war-soldier .leg-l,.war-soldier .leg-r{
-            transform-box:fill-box;
-            transform-origin:top center;
-            animation:war-step 0.7s ease-in-out infinite;
-        }
+        .war-soldier .arm-l,.war-soldier .arm-r,.war-soldier .leg-l,.war-soldier .leg-r{transform-box:fill-box;transform-origin:top center;animation:war-step 0.7s ease-in-out infinite}
         .war-soldier .arm-r,.war-soldier .leg-r{animation-name:war-step-r}
         @keyframes war-step{0%,100%{transform:rotate(7deg)}50%{transform:rotate(-7deg)}}
         @keyframes war-step-r{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
-        @keyframes war-soldier-pulse{
-            0%,100%{opacity:0.10;filter:drop-shadow(0 0 2px rgba(158,255,0,0.2))}
-            50%{opacity:0.28;filter:drop-shadow(0 0 8px rgba(158,255,0,0.6))}
-        }
-
-        /* ===== TANQUE ===== */
-        .war-tank{
-            position:absolute;bottom:70px;color:#5C4033;
-            animation:war-tank-patrol 70s ease-in-out infinite;
-        }
+        @keyframes war-soldier-pulse{0%,100%{opacity:0.10;filter:drop-shadow(0 0 2px rgba(158,255,0,0.2))}50%{opacity:0.28;filter:drop-shadow(0 0 8px rgba(158,255,0,0.6))}}
+        .war-tank{position:absolute;bottom:70px;color:#5C4033;animation:war-tank-patrol 70s ease-in-out infinite}
         .war-tank svg{width:180px;height:auto}
         .war-tank .tank-bounce{animation:war-tank-bounce 1.6s ease-in-out infinite}
-        .war-tank .smoke{
-            transform-box:fill-box;transform-origin:center;
-            animation:war-smoke 2.5s ease-out infinite;
-        }
-        .war-tank .smoke.s2{animation-delay:0.8s}
-        .war-tank .smoke.s3{animation-delay:1.6s}
-        @keyframes war-tank-patrol{
-            0%{transform:translateX(-240px)}
-            50%{transform:translateX(calc(100vw + 40px))}
-            100%{transform:translateX(-240px)}
-        }
+        .war-tank .smoke{transform-box:fill-box;transform-origin:center;animation:war-smoke 2.5s ease-out infinite}
+        .war-tank .smoke.s2{animation-delay:0.8s}.war-tank .smoke.s3{animation-delay:1.6s}
+        @keyframes war-tank-patrol{0%{transform:translateX(-240px)}50%{transform:translateX(calc(100vw + 40px))}100%{transform:translateX(-240px)}}
         @keyframes war-tank-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-        @keyframes war-smoke{
-            0%{transform:translate(0,0) scale(1);opacity:0.5}
-            100%{transform:translate(-18px,-28px) scale(1.8);opacity:0}
-        }
-
-        /* ===== HELICÓPTEROS ===== */
-        .war-heli{
-            position:absolute;top:10%;color:#8B7D6B;
-            opacity:0.35;
-            animation:war-heli-fly 40s linear infinite;
-        }
+        @keyframes war-smoke{0%{transform:translate(0,0) scale(1);opacity:0.5}100%{transform:translate(-18px,-28px) scale(1.8);opacity:0}}
+        .war-heli{position:absolute;top:10%;color:#8B7D6B;opacity:0.35;animation:war-heli-fly 40s linear infinite}
         .war-heli svg{width:170px;height:auto}
         .war-heli.heli-2{animation-delay:-20s;top:26%;opacity:0.22}
-        .war-heli .heli-rotor{
-            transform-box:fill-box;transform-origin:center;
-            animation:war-rotor 0.3s linear infinite;
-        }
-        .war-heli .spot{
-            transform-box:fill-box;transform-origin:top center;
-            animation:war-spot 3.2s ease-in-out infinite;
-        }
+        .war-heli .heli-rotor{transform-box:fill-box;transform-origin:center;animation:war-rotor 0.3s linear infinite}
         @keyframes war-rotor{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-        @keyframes war-heli-fly{
-            0%{transform:translateX(-200px) translateY(0)}
-            20%{transform:translateX(30vw) translateY(-14px)}
-            40%{transform:translateX(65vw) translateY(8px)}
-            60%{transform:translateX(calc(100vw + 60px)) translateY(-6px)}
-            100%{transform:translateX(calc(100vw + 60px)) translateY(-6px)}
-        }
-        @keyframes war-spot{0%,100%{opacity:0.1}50%{opacity:0.45}}
+        @keyframes war-heli-fly{0%{transform:translateX(-200px) translateY(0)}20%{transform:translateX(30vw) translateY(-14px)}40%{transform:translateX(65vw) translateY(8px)}60%{transform:translateX(calc(100vw + 60px)) translateY(-6px)}100%{transform:translateX(calc(100vw + 60px)) translateY(-6px)}}
+        .war-dust{position:absolute;border-radius:50%;background:rgba(158,255,0,0.35);animation:war-dust-rise linear infinite}
+        @keyframes war-dust-rise{0%{transform:translateY(0) scale(0.5);opacity:0}15%{opacity:0.5}100%{transform:translateY(-26vh) translateX(20px) scale(1.5);opacity:0}}
+        .war-flash{position:absolute;width:8px;height:8px;border-radius:50%;background:radial-gradient(circle,rgba(255,204,0,0.9),rgba(255,60,0,0.4) 60%,transparent);animation:war-flash-pulse 6s ease-in-out infinite}
+        .war-flash.f2{animation-delay:2s}.war-flash.f3{animation-delay:4s}
+        @keyframes war-flash-pulse{0%,88%,100%{transform:scale(0.6);opacity:0}92%{transform:scale(2.2);opacity:1}96%{transform:scale(1.2);opacity:0.6}}
+        .war-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,transparent 60%,rgba(13,15,10,0.5) 100%)}
+        @media(max-width:640px){.war-tank{display:none}.war-heli{opacity:0.18}.war-heli svg{width:110px}.war-scan{display:none}.war-soldier{animation-name:war-soldier-pulse;animation-duration:6s}}
 
-        /* ===== POEIRA / PARTÍCULAS ===== */
-        .war-dust{
-            position:absolute;border-radius:50%;
-            background:rgba(158,255,0,0.35);
-            animation:war-dust-rise linear infinite;
-        }
-        @keyframes war-dust-rise{
-            0%{transform:translateY(0) scale(0.5);opacity:0}
-            15%{opacity:0.5}
-            100%{transform:translateY(-26vh) translateX(20px) scale(1.5);opacity:0}
-        }
-
-        /* ===== EXPLOSÕES DISTANTES (flash pulsante) ===== */
-        .war-flash{
-            position:absolute;
-            width:8px;height:8px;border-radius:50%;
-            background:radial-gradient(circle, rgba(255,204,0,0.9), rgba(255,60,0,0.4) 60%, transparent);
-            animation:war-flash-pulse 6s ease-in-out infinite;
-        }
-        .war-flash.f2{animation-delay:2s}
-        .war-flash.f3{animation-delay:4s}
-        @keyframes war-flash-pulse{
-            0%,88%,100%{transform:scale(0.6);opacity:0}
-            92%{transform:scale(2.2);opacity:1}
-            96%{transform:scale(1.2);opacity:0.6}
-        }
-
-        /* Vinheta leve para legibilidade */
-        .war-vignette{
-            position:absolute;inset:0;
-            background:radial-gradient(ellipse at 50% 40%, transparent 60%, rgba(13,15,10,0.5) 100%);
-        }
-
-        /* Mobile: reduz para não pesar */
-        @media (max-width:640px){
-            .war-tank{display:none}
-            .war-heli{opacity:0.18}
-            .war-heli svg{width:110px}
-            .war-scan{display:none}
-            .war-soldier{animation-name:war-soldier-pulse;animation-duration:6s}
-        }
+        /* Campos obrigatórios no carrinho */
+        .campo-destaque{border:2px solid #9EFF00!important;box-shadow:0 0 12px rgba(158,255,0,0.2)!important}
     </style>
 </head>
 <body class="font-sans">
 
     <!-- ==================== CENA DE GUERRA DE FUNDO ==================== -->
     <div class="war-bg" aria-hidden="true">
-        <div class="war-grid"></div>
-        <div class="war-scan"></div>
-
-        <!-- Soldados patrulhando -->
-        <div class="war-soldier" style="left:2%;width:52px;animation-delay:0s;">
-            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
-                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
-                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
-                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
-                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
-                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
-                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
-                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
-                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
-                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
-                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
-                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
-                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
-                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
-            </svg>
-        </div>
-        <div class="war-soldier" style="left:12%;width:44px;animation-delay:0.7s;">
-            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
-                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
-                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
-                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
-                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
-                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
-                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
-                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
-                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
-                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
-                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
-                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
-                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
-                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
-            </svg>
-        </div>
-        <div class="war-soldier" style="left:28%;width:58px;animation-delay:1.4s;">
-            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
-                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
-                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
-                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
-                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
-                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
-                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
-                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
-                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
-                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
-                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
-                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
-                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
-                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
-            </svg>
-        </div>
-        <div class="war-soldier" style="left:45%;width:40px;animation-delay:2.1s;">
-            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
-                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
-                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
-                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
-                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
-                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
-                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
-                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
-                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
-                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
-                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
-                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
-                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
-                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
-            </svg>
-        </div>
-        <div class="war-soldier" style="left:62%;width:55px;animation-delay:0.4s;">
-            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
-                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
-                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
-                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
-                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
-                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
-                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
-                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
-                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
-                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
-                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
-                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
-                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
-                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
-            </svg>
-        </div>
-        <div class="war-soldier" style="left:82%;width:47px;animation-delay:1.8s;">
-            <svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/>
-                <rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/>
-                <rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/>
-                <path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/>
-                <path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/>
-                <path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/>
-                <path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/>
-                <rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/>
-                <rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/>
-                <rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/>
-                <path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/>
-                <path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/>
-                <path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/>
-                <path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/>
-            </svg>
-        </div>
-
-        <!-- Tanque patrulhando -->
-        <div class="war-tank">
-            <div class="tank-bounce">
-                <svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 60 Q10 80 30 80 L130 80 Q150 80 150 60 L150 52 L10 52 Z" fill="currentColor"/>
-                    <circle cx="45" cy="66" r="7" fill="#0d0f0a"/>
-                    <circle cx="80" cy="66" r="7" fill="#0d0f0a"/>
-                    <circle cx="115" cy="66" r="7" fill="#0d0f0a"/>
-                    <path d="M25 52 L135 52 L135 40 Q135 32 125 32 L35 32 Q25 32 25 40 Z" fill="currentColor"/>
-                    <path d="M50 32 L110 32 Q118 32 118 24 Q118 16 108 16 L52 16 Q42 16 42 24 Q42 32 50 32 Z" fill="currentColor"/>
-                    <path d="M108 20 L148 14 L148 20 L108 26 Z" fill="currentColor"/>
-                    <rect x="140" y="12" width="10" height="10" rx="2" fill="currentColor"/>
-                    <circle class="smoke s1" cx="30" cy="44" r="3" fill="currentColor" opacity="0.6"/>
-                    <circle class="smoke s2" cx="26" cy="40" r="2.5" fill="currentColor" opacity="0.5"/>
-                    <circle class="smoke s3" cx="34" cy="40" r="2" fill="currentColor" opacity="0.4"/>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Helicóptero 1 -->
-        <div class="war-heli">
-            <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M40 48 L8 50 L8 54 L40 56 Z" fill="currentColor"/>
-                <ellipse cx="8" cy="52" rx="6" ry="2" fill="currentColor"/>
-                <path d="M30 60 Q28 40 55 38 L95 38 Q125 38 135 55 Q138 62 130 64 L40 64 Q30 64 30 60 Z" fill="currentColor"/>
-                <path d="M60 40 Q50 40 46 52 L46 60 L70 60 L70 40 Z" fill="#0d0f0a" opacity="0.5"/>
-                <path d="M52 64 L48 76 L56 76 L58 64 Z" fill="currentColor"/>
-                <path d="M96 64 L100 76 L108 76 L104 64 Z" fill="currentColor"/>
-                <path d="M44 76 L60 76 L100 76 L110 76 L110 78 L44 78 Z" fill="currentColor" opacity="0.5"/>
-                <rect x="75" y="26" width="8" height="14" fill="currentColor"/>
-                <g class="heli-rotor">
-                    <rect x="15" y="30" width="130" height="4" rx="2" fill="currentColor"/>
-                    <rect x="15" y="34" width="130" height="4" rx="2" fill="currentColor" opacity="0.5"/>
-                </g>
-                <path class="spot" d="M75 64 L25 100 L125 100 Z" fill="#9EFF00" opacity="0.15"/>
-            </svg>
-        </div>
-
-        <!-- Helicóptero 2 (delay negativo = já voando) -->
-        <div class="war-heli heli-2">
-            <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M40 48 L8 50 L8 54 L40 56 Z" fill="currentColor"/>
-                <ellipse cx="8" cy="52" rx="6" ry="2" fill="currentColor"/>
-                <path d="M30 60 Q28 40 55 38 L95 38 Q125 38 135 55 Q138 62 130 64 L40 64 Q30 64 30 60 Z" fill="currentColor"/>
-                <path d="M60 40 Q50 40 46 52 L46 60 L70 60 L70 40 Z" fill="#0d0f0a" opacity="0.5"/>
-                <path d="M52 64 L48 76 L56 76 L58 64 Z" fill="currentColor"/>
-                <path d="M96 64 L100 76 L108 76 L104 64 Z" fill="currentColor"/>
-                <path d="M44 76 L60 76 L100 76 L110 76 L110 78 L44 78 Z" fill="currentColor" opacity="0.5"/>
-                <rect x="75" y="26" width="8" height="14" fill="currentColor"/>
-                <g class="heli-rotor">
-                    <rect x="15" y="30" width="130" height="4" rx="2" fill="currentColor"/>
-                    <rect x="15" y="34" width="130" height="4" rx="2" fill="currentColor" opacity="0.5"/>
-                </g>
-                <path class="spot" d="M75 64 L25 100 L125 100 Z" fill="#9EFF00" opacity="0.15"/>
-            </svg>
-        </div>
-
-        <!-- Poeira / partículas -->
+        <div class="war-grid"></div><div class="war-scan"></div>
+        <div class="war-soldier" style="left:2%;width:52px;animation-delay:0s;"><svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg"><path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/><rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/><rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/><path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/><path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/><path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/><path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/><rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/><rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/><rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/><path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/><path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/><path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/><path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/></svg></div>
+        <div class="war-soldier" style="left:18%;width:44px;animation-delay:0.7s;"><svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg"><path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/><rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/><rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/><path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/><path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/><path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/><path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/><rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/><rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/><rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/><path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/><path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/><path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/><path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/></svg></div>
+        <div class="war-soldier" style="left:38%;width:58px;animation-delay:1.4s;"><svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg"><path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/><rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/><rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/><path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/><path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/><path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/><path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/><rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/><rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/><rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/><path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/><path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/><path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/><path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/></svg></div>
+        <div class="war-soldier" style="left:58%;width:40px;animation-delay:2.1s;"><svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg"><path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/><rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/><rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/><path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/><path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/><path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/><path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/><rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/><rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/><rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/><path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/><path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/><path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/><path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/></svg></div>
+        <div class="war-soldier" style="left:78%;width:55px;animation-delay:0.4s;"><svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg"><path d="M14 30 Q14 12 30 12 Q46 12 46 30 L46 33 Q30 26 14 33 Z" fill="currentColor"/><rect x="18" y="28" width="24" height="5" rx="2.5" fill="#0d0f0a" opacity="0.6"/><rect x="8" y="36" width="10" height="34" rx="3" fill="currentColor" opacity="0.6"/><path d="M16 34 L44 34 L46 62 L14 62 Z" fill="currentColor"/><path class="arm-l" d="M16 36 L6 52 L6 58 L16 44 Z" fill="currentColor"/><path class="arm-r" d="M44 36 L54 52 L54 58 L44 44 Z" fill="currentColor"/><path d="M2 50 L52 50 L52 55 L2 55 Z" fill="currentColor"/><rect x="44" y="45" width="6" height="10" rx="1" fill="currentColor"/><rect x="2" y="50" width="14" height="3" rx="1" fill="currentColor" opacity="0.7"/><rect x="14" y="60" width="32" height="4" rx="2" fill="currentColor" opacity="0.7"/><path class="leg-l" d="M17 62 L14 92 L19 92 L22 62 Z" fill="currentColor"/><path class="leg-r" d="M38 62 L41 92 L46 92 L43 62 Z" fill="currentColor"/><path class="boot-l" d="M12 92 L19 92 L19 98 L12 98 Z" fill="currentColor"/><path class="boot-r" d="M41 92 L48 92 L48 98 L41 98 Z" fill="currentColor"/></svg></div>
+        <div class="war-tank"><div class="tank-bounce"><svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg"><path d="M10 60 Q10 80 30 80 L130 80 Q150 80 150 60 L150 52 L10 52 Z" fill="currentColor"/><circle cx="45" cy="66" r="7" fill="#0d0f0a"/><circle cx="80" cy="66" r="7" fill="#0d0f0a"/><circle cx="115" cy="66" r="7" fill="#0d0f0a"/><path d="M25 52 L135 52 L135 40 Q135 32 125 32 L35 32 Q25 32 25 40 Z" fill="currentColor"/><path d="M50 32 L110 32 Q118 32 118 24 Q118 16 108 16 L52 16 Q42 16 42 24 Q42 32 50 32 Z" fill="currentColor"/><path d="M108 20 L148 14 L148 20 L108 26 Z" fill="currentColor"/><rect x="140" y="12" width="10" height="10" rx="2" fill="currentColor"/><circle class="smoke s1" cx="30" cy="44" r="3" fill="currentColor" opacity="0.6"/><circle class="smoke s2" cx="26" cy="40" r="2.5" fill="currentColor" opacity="0.5"/><circle class="smoke s3" cx="34" cy="40" r="2" fill="currentColor" opacity="0.4"/></svg></div></div>
+        <div class="war-heli"><svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><path d="M40 48 L8 50 L8 54 L40 56 Z" fill="currentColor"/><ellipse cx="8" cy="52" rx="6" ry="2" fill="currentColor"/><path d="M30 60 Q28 40 55 38 L95 38 Q125 38 135 55 Q138 62 130 64 L40 64 Q30 64 30 60 Z" fill="currentColor"/><path d="M60 40 Q50 40 46 52 L46 60 L70 60 L70 40 Z" fill="#0d0f0a" opacity="0.5"/><path d="M52 64 L48 76 L56 76 L58 64 Z" fill="currentColor"/><path d="M96 64 L100 76 L108 76 L104 64 Z" fill="currentColor"/><path d="M44 76 L60 76 L100 76 L110 76 L110 78 L44 78 Z" fill="currentColor" opacity="0.5"/><rect x="75" y="26" width="8" height="14" fill="currentColor"/><g class="heli-rotor"><rect x="15" y="30" width="130" height="4" rx="2" fill="currentColor"/><rect x="15" y="34" width="130" height="4" rx="2" fill="currentColor" opacity="0.5"/></g></svg></div>
+        <div class="war-heli heli-2"><svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><path d="M40 48 L8 50 L8 54 L40 56 Z" fill="currentColor"/><ellipse cx="8" cy="52" rx="6" ry="2" fill="currentColor"/><path d="M30 60 Q28 40 55 38 L95 38 Q125 38 135 55 Q138 62 130 64 L40 64 Q30 64 30 60 Z" fill="currentColor"/><path d="M60 40 Q50 40 46 52 L46 60 L70 60 L70 40 Z" fill="#0d0f0a" opacity="0.5"/><path d="M52 64 L48 76 L56 76 L58 64 Z" fill="currentColor"/><path d="M96 64 L100 76 L108 76 L104 64 Z" fill="currentColor"/><path d="M44 76 L60 76 L100 76 L110 76 L110 78 L44 78 Z" fill="currentColor" opacity="0.5"/><rect x="75" y="26" width="8" height="14" fill="currentColor"/><g class="heli-rotor"><rect x="15" y="30" width="130" height="4" rx="2" fill="currentColor"/><rect x="15" y="34" width="130" height="4" rx="2" fill="currentColor" opacity="0.5"/></g></svg></div>
         <div class="war-dust" style="left:8%;bottom:10px;width:5px;height:5px;animation-duration:6s;animation-delay:0s;"></div>
-        <div class="war-dust" style="left:22%;bottom:14px;width:4px;height:4px;animation-duration:7s;animation-delay:1.2s;"></div>
-        <div class="war-dust" style="left:38%;bottom:8px;width:6px;height:6px;animation-duration:5.5s;animation-delay:2.4s;"></div>
-        <div class="war-dust" style="left:55%;bottom:12px;width:4px;height:4px;animation-duration:6.5s;animation-delay:0.8s;"></div>
-        <div class="war-dust" style="left:70%;bottom:6px;width:5px;height:5px;animation-duration:7.5s;animation-delay:3s;"></div>
-        <div class="war-dust" style="left:90%;bottom:16px;width:4px;height:4px;animation-duration:6s;animation-delay:1.8s;"></div>
-
-        <!-- Explosões distantes -->
+        <div class="war-dust" style="left:30%;bottom:14px;width:4px;height:4px;animation-duration:7s;animation-delay:1.2s;"></div>
+        <div class="war-dust" style="left:50%;bottom:8px;width:6px;height:6px;animation-duration:5.5s;animation-delay:2.4s;"></div>
+        <div class="war-dust" style="left:70%;bottom:12px;width:4px;height:4px;animation-duration:6.5s;animation-delay:0.8s;"></div>
+        <div class="war-dust" style="left:90%;bottom:6px;width:5px;height:5px;animation-duration:7.5s;animation-delay:3s;"></div>
         <div class="war-flash" style="right:10%;bottom:32%;"></div>
         <div class="war-flash f2" style="right:22%;bottom:48%;"></div>
         <div class="war-flash f3" style="right:4%;bottom:55%;"></div>
-
-        <!-- Vinheta final -->
         <div class="war-vignette"></div>
     </div>
 
@@ -833,20 +185,18 @@
     <header class="sticky top-0 z-50 shadow-xl" style="background:#0d0f0a;border-bottom:2px solid rgba(158,255,0,0.2);">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2 sm:py-3">
             <div class="flex justify-center items-center pb-1.5 sm:pb-2 border-b border-principal/15 relative flex-wrap gap-x-1 sm:gap-x-0">
-                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-topo text-instagram" title="Instagram" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-topo text-youtube" title="YouTube" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
-                <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-topo text-facebook" title="Facebook" aria-label="Facebook"><i class="fa fa-facebook-square"></i></a>
-                <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-topo text-cults" title="Cults 3D" aria-label="Cults 3D"><i class="fa fa-cube"></i></a>
-                <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-topo text-whatsapp" title="WhatsApp" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
-                <button onclick="abrirCarrinho()" class="icone-rede-topo text-principal ml-2 sm:ml-4 relative" title="Ver Carrinho" aria-label="Carrinho" style="background:none;border:none;cursor:pointer;">
+                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-topo text-instagram" title="Instagram"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-topo text-youtube" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+                <a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-topo text-facebook" title="Facebook"><i class="fa fa-facebook-square"></i></a>
+                <a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-topo text-cults" title="Cults 3D"><i class="fa fa-cube"></i></a>
+                <a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-topo text-whatsapp" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+                <button onclick="abrirCarrinho()" class="icone-rede-topo text-principal ml-2 sm:ml-4 relative" title="Carrinho" style="background:none;border:none;cursor:pointer;">
                     <i class="fa fa-shopping-cart text-base sm:text-lg"></i>
                     <span id="badgeCarrinho" class="badge-carrinho hidden">0</span>
                 </button>
             </div>
             <div class="text-center my-2 sm:my-3">
-                <h1 class="text-[clamp(1.6rem,5vw,3rem)] logo-font text-principal leading-tight">
-                    <span style="display:inline-block;transform:skewX(-5deg);">V</span>CORE
-                </h1>
+                <h1 class="text-[clamp(1.6rem,5vw,3rem)] logo-font text-principal leading-tight"><span style="display:inline-block;transform:skewX(-5deg);">V</span>CORE</h1>
                 <p class="text-[clamp(0.7rem,2vw,1.2rem)] text-principal/90 font-medium tracking-widest -mt-1">GAMES</p>
                 <p class="text-[10px] sm:text-xs text-principal/60 mt-0.5 sm:mt-1 px-2">Mods e Arquivos Prontos para Mod Ghost</p>
             </div>
@@ -856,14 +206,13 @@
                     <i class="fa fa-chevron-down menu-icone text-sm" id="iconeMenu"></i>
                 </button>
                 <div id="listaMenu" class="menu-lista">
-                    <a href="#inicio" class="menu-ativo" onclick="mudarMenu(event, 'inicio')">🎯 Início</a>
-                    <a href="#sobre-servico" onclick="mudarMenu(event, 'sobre-servico')">🔫 Sobre o Serviço</a>
-                    <a href="#como-comprar" onclick="mudarMenu(event, 'como-comprar')">💣 Como Comprar</a>
+                    <a href="#inicio" class="menu-ativo" onclick="mudarMenu(event,'inicio')">🎯 Início</a>
+                    <a href="#sobre-servico" onclick="mudarMenu(event,'sobre-servico')">🔫 Sobre o Serviço</a>
+                    <a href="#como-comprar" onclick="mudarMenu(event,'como-comprar')">💣 Como Comprar</a>
                     <a href="#pacotes-premium" onclick="irParaPacotes(event)">📦 Pacotes Completos</a>
-                    <a href="#area-cliente" onclick="mudarMenu(event, 'area-cliente')">🔐 Área do Cliente</a>
-                    <a href="#sobre" onclick="mudarMenu(event, 'sobre')">ℹ️ Sobre Nós</a>
-                    <a href="#suporte" onclick="mudarMenu(event, 'suporte')">💬 Suporte</a>
-                    <a href="#admin" onclick="mudarMenu(event, 'admin')">🔒 Admin</a>
+                    <a href="#sobre" onclick="mudarMenu(event,'sobre')">ℹ️ Sobre Nós</a>
+                    <a href="#suporte" onclick="mudarMenu(event,'suporte')">💬 Suporte</a>
+                    <a href="#admin" onclick="mudarMenu(event,'admin')">🔒 Admin</a>
                 </div>
             </nav>
         </div>
@@ -871,68 +220,35 @@
 
     <!-- ==================== HERO ==================== -->
     <section class="relative py-10 sm:py-14 md:py-20 text-center overflow-hidden" style="background:#1a1d16;">
-        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 320%22><path fill=%22%239EFF00%22 d=%22M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320,192,320,96,320,48,320L0,320Z%22></path></svg>'); background-repeat: no-repeat; background-position: bottom; background-size: cover;"></div>
+        <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 320%22><path fill=%22%239EFF00%22 d=%22M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320,192,320,96,320,48,320L0,320Z%22></path></svg>');background-repeat:no-repeat;background-position:bottom;background-size:cover;"></div>
         <div class="relative z-10 max-w-4xl mx-auto px-3 sm:px-4">
             <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-3 text-shadow text-white">Mods <span style="color:#9EFF00;">Mod Ghost</span></h2>
             <p class="text-sm sm:text-base md:text-lg mb-0 text-gray-300 max-w-2xl mx-auto px-2">Transforme sua experiência de jogo com mods exclusivos da VCORE GAMES. Visuais táticos, armas realistas e muito mais — <strong style="color:#9EFF00;">tudo pronto, é só baixar e jogar!</strong></p>
         </div>
     </section>
 
-    <!-- ==================== MODAL AVISO E-MAIL ==================== -->
-    <div id="modalAvisoEmail" class="modal-email">
-        <div class="email-conteudo animate-fade-in-up">
-            <div class="text-center mb-4 sm:mb-5">
-                <span class="text-4xl sm:text-6xl">📧</span>
-                <h2 class="text-xl sm:text-2xl font-bold text-principal mt-2 sm:mt-3">⚠️ Atenção com seu E-mail!</h2>
-            </div>
-            <div class="rounded-xl p-3 sm:p-5 mb-4 sm:mb-5" style="background:rgba(158,255,0,0.06);border:1px solid rgba(158,255,0,0.25);">
-                <p class="font-bold text-base sm:text-lg mb-2 sm:mb-3 text-center text-principal">Use um e-mail que você acessa no dia a dia!</p>
-                <ul class="text-xs sm:text-sm space-y-1.5 sm:space-y-2" style="color:#e8e6dc;">
-                    <li class="flex items-start gap-2"><span class="text-yellow-400 text-base sm:text-lg flex-shrink-0">🔑</span><span>Este e-mail será seu <strong class="text-principal">login de acesso</strong> à Área do Cliente</span></li>
-                    <li class="flex items-start gap-2"><span class="text-yellow-400 text-base sm:text-lg flex-shrink-0">📥</span><span>Por ele você receberá o <strong class="text-principal">link de download</strong> do pacote comprado</span></li>
-                    <li class="flex items-start gap-2"><span class="text-yellow-400 text-base sm:text-lg flex-shrink-0">📖</span><span>Também enviaremos o <strong class="text-principal">guia de instalação</strong> completo</span></li>
-                    <li class="flex items-start gap-2"><span class="text-yellow-400 text-base sm:text-lg flex-shrink-0">🔄</span><span>Use o mesmo e-mail para <strong class="text-principal">futuras compras</strong> e atualizações</span></li>
-                </ul>
-            </div>
-            <div class="rounded-xl p-3 sm:p-4 mb-4 sm:mb-5" style="background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.3);">
-                <p class="text-xs sm:text-sm text-red-400 font-bold text-center">🚫 Não use e-mails temporários ou que você não acessa! Você pode perder o acesso ao seu pacote.</p>
-            </div>
-            <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                <button onclick="voltarAvisoEmail()" class="flex-1 bg-gray-700 hover:bg-gray-600 text-gray-200 font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-sm order-2 sm:order-1 border border-gray-600">← Voltar e corrigir</button>
-                <button onclick="confirmarAvisoEmail()" class="flex-1 font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-sm order-1 sm:order-2" style="background:#4B5320;color:#9EFF00;border:1px solid rgba(158,255,0,0.3);">✅ Confirmar e continuar</button>
-            </div>
-        </div>
-    </div>
-
     <!-- ==================== MODAL CARRINHO ==================== -->
     <div id="modalCarrinho" class="modal-carrinho">
         <div class="carrinho-conteudo">
             <span class="fechar-modal" onclick="fecharCarrinho()">×</span>
             <h2 class="text-xl sm:text-2xl font-bold text-center text-principal mb-3 sm:mb-4">🛒 Seu Carrinho</h2>
-            <div class="mb-4 sm:mb-5 p-3 sm:p-5 rounded-xl" style="background:rgba(158,255,0,0.04);border:1px solid rgba(158,255,0,0.2);">
-                <p class="text-xs sm:text-sm font-bold text-principal mb-2 sm:mb-3 flex items-center gap-2"><span>🔐</span> Seus dados de acesso:</p>
-                <p class="text-[11px] sm:text-xs text-gray-400 mb-2 sm:mb-3">Preencha para criar sua conta na Área do Cliente</p>
-                <input type="text" id="clienteNome" placeholder="Seu nome completo" autocomplete="name" class="w-full border rounded-lg px-3 py-2 sm:py-2.5 mb-2 sm:mb-3 text-sm" />
-                <input type="email" id="clienteEmail" placeholder="Seu melhor e-mail (será seu login)" autocomplete="email" class="w-full border rounded-lg px-3 py-2 sm:py-2.5 mb-2 sm:mb-3 text-sm" />
-                <div class="relative">
-                    <input type="password" id="clienteSenha" placeholder="Crie uma senha de acesso" autocomplete="new-password" class="w-full border rounded-lg px-3 py-2 sm:py-2.5 mb-1 text-sm" />
-                    <button type="button" onclick="toggleSenhaCarrinho()" class="absolute right-2 sm:right-3 top-2 sm:top-2.5 text-gray-400 hover:text-gray-300 text-sm" style="background:none;border:none;cursor:pointer;"><i class="fa fa-eye" id="iconeSenhaCarrinho"></i></button>
-                </div>
-                <p class="text-[10px] sm:text-xs text-gray-500 mb-2 sm:mb-3">Mínimo 4 caracteres</p>
-                <div class="rounded-lg p-2 sm:p-3 text-[11px] sm:text-xs" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);color:#86efac;">
-                    <p class="font-bold mb-1">💡 Dica importante:</p>
-                    <p>Use um <strong>e-mail que você acessa sempre</strong>. Ele será seu login na Área do Cliente e por ele você receberá o link de download do pacote após a confirmação do pagamento.</p>
-                </div>
-            </div>
-            <div id="listaCarrinho" class="space-y-2 mb-4 sm:mb-6">
+            <div id="listaCarrinho" class="space-y-2 mb-4 sm:mb-5">
                 <p class="text-gray-500 text-center text-sm" id="carrinhoVazio">Seu carrinho está vazio.</p>
             </div>
-            <div class="border-t-2 border-gray-700 pt-3 sm:pt-4 mb-3 sm:mb-4">
+            <div class="border-t-2 border-gray-700 pt-3 sm:pt-4 mb-4 sm:mb-5">
                 <div class="flex justify-between items-center font-bold text-lg sm:text-xl text-white">
                     <span>Total:</span>
                     <span id="valorTotal">R$ 0,00</span>
                 </div>
             </div>
+            <!-- CAMPOS DE DADOS DO CLIENTE -->
+            <div class="rounded-xl p-3 sm:p-4 mb-3 sm:mb-4" style="background:rgba(158,255,0,0.05);border:2px solid rgba(158,255,0,0.3);">
+                <p class="text-xs sm:text-sm font-bold text-principal mb-2 sm:mb-3 flex items-center gap-2"><span>📋</span> Seus dados para receber o pacote:</p>
+                <input type="text" id="clienteNome" placeholder="👤 Nome completo *" autocomplete="name" class="w-full border rounded-lg px-3 py-2.5 sm:py-3 mb-2 sm:mb-3 text-sm campo-destaque" />
+                <input type="email" id="clienteEmail" placeholder="📧 Seu melhor e-mail *" autocomplete="email" class="w-full border rounded-lg px-3 py-2.5 sm:py-3 text-sm campo-destaque" />
+                <p class="text-[10px] sm:text-xs text-gray-500 mt-2">⚠️ Use um e-mail que você acessa! O link de download será enviado para este e-mail após a confirmação do pagamento.</p>
+            </div>
+            <p id="carrinhoErro" class="text-red-400 text-xs sm:text-sm hidden text-center mb-2"></p>
             <button class="btn-venda block text-center" onclick="iniciarFinalizacao()">💳 Finalizar Compra</button>
         </div>
     </div>
@@ -945,7 +261,7 @@
                 <div class="mb-3 sm:mb-4">
                     <span class="text-3xl sm:text-5xl">💳</span>
                     <h2 class="text-xl sm:text-2xl font-bold text-principal mt-1 sm:mt-2">Pagamento via PIX</h2>
-                    <p class="text-gray-400 text-xs sm:text-sm">Copie a chave PIX abaixo e faça a transferência</p>
+                    <p class="text-gray-400 text-xs sm:text-sm">Copie a chave PIX, faça a transferência e envie o comprovante</p>
                 </div>
                 <div class="rounded-xl py-2 sm:py-3 px-4 sm:px-6 mb-4 sm:mb-5 inline-block" style="background:rgba(158,255,0,0.08);border:1px solid rgba(158,255,0,0.3);">
                     <p class="text-[10px] sm:text-xs text-gray-400">Valor a pagar</p>
@@ -962,35 +278,16 @@
                     <p class="font-bold text-blue-300 mb-1.5 sm:mb-2">📝 Como pagar:</p>
                     <ol class="space-y-1 list-decimal list-inside">
                         <li>Copie a chave PIX acima</li>
-                        <li>Abra o app do seu banco</li>
-                        <li>Vá em <strong>PIX</strong> → <strong>Pagar</strong></li>
+                        <li>Abra o app do seu banco → <strong>PIX</strong> → <strong>Pagar</strong></li>
                         <li>Cole a chave e confirme o valor</li>
                         <li>Faça a transferência</li>
                     </ol>
                 </div>
-                <div class="rounded-xl p-3 sm:p-5 mb-4 sm:mb-5 pulse-border" style="background:#1a1d16;border:2px solid #9EFF00;">
-                    <div class="text-center mb-2 sm:mb-3">
-                        <span class="text-3xl sm:text-4xl">📧</span>
-                        <h3 class="text-lg sm:text-xl font-bold mt-1 sm:mt-2 text-principal">FIQUE ATENTO AO SEU E-MAIL!</h3>
-                    </div>
-                    <p class="text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-gray-300">Após a confirmação do pagamento, você receberá no e-mail cadastrado:</p>
-                    <ul class="text-xs sm:text-sm space-y-1.5 sm:space-y-2 mb-2 sm:mb-3 text-gray-300">
-                        <li class="flex items-start gap-2"><span class="text-principal flex-shrink-0">🔗</span><span><strong class="text-principal">O link de download</strong> do pacote adquirido</span></li>
-                        <li class="flex items-start gap-2"><span class="text-principal flex-shrink-0">📖</span><span><strong class="text-principal">O guia completo de instalação</strong> passo a passo</span></li>
-                        <li class="flex items-start gap-2"><span class="text-principal flex-shrink-0">🔐</span><span><strong class="text-principal">Seus dados de acesso</strong> à Área do Cliente</span></li>
-                    </ul>
-                    <p class="text-xs sm:text-sm text-gray-300">📬 <strong class="text-principal">Verifique sua caixa de entrada</strong> (e também a pasta de spam/lixo eletrônico) nos próximos minutos após o pagamento.</p>
-                    <div class="mt-3 sm:mt-4 p-2 sm:p-3 rounded-lg" style="background:rgba(158,255,0,0.06);border:1px solid rgba(158,255,0,0.25);">
-                        <p class="text-[10px] sm:text-xs font-bold text-center text-principal">⚡ A liberação é automática após a confirmação do pagamento!<br>Você também pode acessar seu pacote pela <strong>🔐 Área do Cliente</strong> com seu e-mail e senha.</p>
-                    </div>
-                </div>
-                <button onclick="enviarComprovanteEmail()" class="w-full bg-red-700 hover:bg-red-600 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2 mb-2 border border-red-500">
-                    <i class="fa fa-envelope text-base sm:text-lg"></i> Enviar Comprovante por E-mail
+                <!-- BOTÃO ENVIAR COMPROVANTE (EMAIL + WHATSAPP) -->
+                <button onclick="enviarComprovante()" class="w-full font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-lg text-sm sm:text-base transition-all pulse-border mb-2" style="background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;border:2px solid #4ade80;">
+                    📩 Enviar Comprovante (Email + WhatsApp)
                 </button>
-                <button onclick="abrirWhatsAppComprovante()" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2">
-                    <i class="fa fa-whatsapp text-base sm:text-lg"></i> Enviar Comprovante via WhatsApp
-                </button>
-                <p class="text-[10px] sm:text-xs text-gray-500 mt-2 sm:mt-3">Após pagar, clique acima para enviar o comprovante.</p>
+                <p class="text-[10px] sm:text-xs text-gray-500 mt-2">Após pagar, clique no botão acima. O comprovante será enviado <strong>ao mesmo tempo</strong> para email e WhatsApp. Você receberá o link de download em até 24h.</p>
             </div>
         </div>
     </div>
@@ -998,7 +295,7 @@
     <!-- ==================== MODAL SAÍDA ==================== -->
     <div id="modalSaida" class="modal-saida">
         <div class="saida-conteudo animate-fade-in-up text-center relative" style="border:2px solid #9EFF00;">
-            <button onclick="fecharModalSaida()" class="absolute top-2 right-3 sm:top-3 sm:right-4 text-white/60 hover:text-white text-xl sm:text-2xl font-bold cursor-pointer z-10" style="background:none;border:none;" aria-label="Fechar">×</button>
+            <button onclick="fecharModalSaida()" class="absolute top-2 right-3 sm:top-3 sm:right-4 text-white/60 hover:text-white text-xl sm:text-2xl font-bold cursor-pointer z-10" style="background:none;border:none;">×</button>
             <div class="mb-3 sm:mb-4 pt-2"><span class="text-4xl sm:text-6xl">🎮</span></div>
             <h2 class="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-principal">Espere! Não saia ainda!</h2>
             <p class="text-gray-300 text-xs sm:text-sm mb-4 sm:mb-5 px-2">Temos <strong class="text-principal">condições especiais</strong> para você transformar seu Mod Ghost!</p>
@@ -1008,8 +305,8 @@
                 <div class="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl text-left" style="background:rgba(37,211,102,0.05);border:1px solid rgba(37,211,102,0.15);"><span class="text-xl sm:text-2xl flex-shrink-0">💬</span><div><p class="font-bold text-xs sm:text-sm text-green-400">Suporte via WhatsApp</p><p class="text-[10px] sm:text-xs text-gray-300">Tire todas as suas dúvidas antes de comprar!</p></div></div>
             </div>
             <div class="flex flex-col gap-2 sm:gap-3">
-                <a href="https://wa.me/5516981097916?text=Ol%C3%A1%20Rodrigo!%20Quero%20saber%20mais%20sobre%20os%20pacotes%20de%20mods%20para%20Mod%20Ghost.%20Pode%20me%20ajudar%3F" target="_blank" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"><i class="fa fa-whatsapp text-base sm:text-lg"></i> Falar no WhatsApp e tirar dúvidas</a>
-                <button onclick="fecharModalSaida()" class="w-full bg-white/5 hover:bg-white/10 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors border border-white/15">Continuar navegando no site</button>
+                <a href="https://wa.me/5516981097916?text=Ol%C3%A1%20Rodrigo!%20Quero%20saber%20mais%20sobre%20os%20pacotes%20de%20mods%20para%20Mod%20Ghost.%20Pode%20me%20ajudar%3F" target="_blank" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"><i class="fa fa-whatsapp text-base sm:text-lg"></i> Falar no WhatsApp</a>
+                <button onclick="fecharModalSaida()" class="w-full bg-white/5 hover:bg-white/10 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors border border-white/15">Continuar navegando</button>
             </div>
         </div>
     </div>
@@ -1023,36 +320,33 @@
             <h3 class="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-center text-white">🏆 Pacotes Completos</h3>
             <p class="text-center text-gray-400 mb-3 sm:mb-4 text-xs sm:text-sm">Escolha sua patente e equipe-se para a missão</p>
 
-            <!-- Banner Pronto para Jogar -->
             <div class="max-w-5xl mx-auto mb-4 sm:mb-6 rounded-xl overflow-hidden" style="background:#1a1d16;border:2px solid #9EFF00;">
                 <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 p-3 sm:p-5">
                     <div class="text-3xl sm:text-5xl flex-shrink-0">🎮</div>
                     <div class="flex-1 text-center sm:text-left">
-                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 mb-1.5 sm:mb-2"><span class="pronto-badge">✅ PRONTO PARA JOGAR</span><span class="fr-badge">⚡ FR INSTALAÇÃO</span><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full bg-yellow-500 text-yellow-900">SEM COMPLICAÇÃO</span></div>
+                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 mb-1.5 sm:mb-2"><span class="pronto-badge">✅ PRONTO PARA JOGAR</span><span class="fr-badge">⚡ FR INSTALAÇÃO</span></div>
                         <p class="font-bold text-sm sm:text-lg text-principal">Os Pacotes já vêm com tudo instalado e configurado!</p>
-                        <p class="text-xs sm:text-sm mt-0.5 sm:mt-1 text-gray-300">Basta baixar e colocar na pasta raiz do jogo (onde está o <strong class="text-principal">GRB.exe</strong>) e abrir o game. Sem instalar ferramentas, sem extrair nada — é só jogar! 🚀</p>
+                        <p class="text-xs sm:text-sm mt-0.5 sm:mt-1 text-gray-300">Basta baixar e colocar na pasta raiz do jogo (onde está o <strong class="text-principal">GRB.exe</strong>). Sem instalar ferramentas — é só jogar! 🚀</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Banner Save Novo -->
-            <div class="max-w-5xl mx-auto mb-5 sm:mb-8 rounded-xl overflow-hidden border-2 pulse-save" style="background:linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%);border-color:#ff0000;">
+            <div class="max-w-5xl mx-auto mb-5 sm:mb-8 rounded-xl overflow-hidden border-2 pulse-save" style="background:linear-gradient(135deg,#ffcc00 0%,#ff9900 50%,#ffcc00 100%);border-color:#ff0000;">
                 <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 p-3 sm:p-5">
                     <div class="text-3xl sm:text-5xl flex-shrink-0">⚠️</div>
                     <div class="flex-1 text-center sm:text-left">
                         <p class="font-extrabold text-base sm:text-xl md:text-2xl mb-0.5 sm:mb-1" style="color:#cc0000;text-shadow:1px 1px 0 rgba(255,255,255,0.5);">🚨 AO INSTALAR OS ARQUIVOS, INICIE UM SAVE NOVO!</p>
-                        <p class="text-xs sm:text-sm font-bold" style="color:#8B0000;">É obrigatório começar um <span style="background:#cc0000;color:#ffcc00;padding:2px 6px;border-radius:4px;">SAVE NOVO</span> após a instalação para evitar bugs e conflitos nos arquivos do jogo.</p>
+                        <p class="text-xs sm:text-sm font-bold" style="color:#8B0000;">É obrigatório começar um <span style="background:#cc0000;color:#ffcc00;padding:2px 6px;border-radius:4px;">SAVE NOVO</span> após a instalação.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Banner Promoção + Contador -->
-            <div class="max-w-5xl mx-auto mb-5 sm:mb-8 rounded-xl overflow-hidden border-2 promo-glow" style="background:linear-gradient(135deg, #ff1a1a 0%, #cc0000 50%, #ff1a1a 100%);border-color:#ffcc00;">
+            <div class="max-w-5xl mx-auto mb-5 sm:mb-8 rounded-xl overflow-hidden border-2 promo-glow" style="background:linear-gradient(135deg,#ff1a1a 0%,#cc0000 50%,#ff1a1a 100%);border-color:#ffcc00;">
                 <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 p-3 sm:p-5">
                     <div class="text-3xl sm:text-5xl flex-shrink-0">🔥</div>
                     <div class="flex-1 text-center sm:text-left">
                         <p class="font-extrabold text-base sm:text-xl md:text-2xl mb-1 sm:mb-2 text-white" style="text-shadow:1px 1px 0 rgba(0,0,0,0.5);">PROMOÇÃO RELÂMPAGO! PREÇOS COM ATÉ 40% DE DESCONTO!</p>
-                        <p class="text-xs sm:text-sm font-bold text-yellow-200 mb-2 sm:mb-3">Oferta por tempo limitado — garanta já o seu pacote com preço promocional! ⏰</p>
+                        <p class="text-xs sm:text-sm font-bold text-yellow-200 mb-2 sm:mb-3">Oferta por tempo limitado — garanta já o seu pacote! ⏰</p>
                         <div class="countdown-container" id="countdownPromo">
                             <div class="countdown-box"><span class="countdown-num" id="countDias">00</span><span class="countdown-label">Dias</span></div>
                             <span class="countdown-separator">:</span>
@@ -1062,82 +356,67 @@
                             <span class="countdown-separator">:</span>
                             <div class="countdown-box"><span class="countdown-num" id="countSeg">00</span><span class="countdown-label">Seg</span></div>
                         </div>
-                        <p class="text-[10px] sm:text-xs text-yellow-200/70 mt-2 sm:mt-3" id="promoExpirada" style="display:none;">⚠️ Promoção encerrada! Os preços voltaram ao normal.</p>
+                        <p class="text-[10px] sm:text-xs text-yellow-200/70 mt-2 sm:mt-3" id="promoExpirada" style="display:none;">⚠️ Promoção encerrada!</p>
                     </div>
                 </div>
             </div>
 
-            <!-- ========== GRID DE PACOTES ========== -->
             <div class="grid-pacotes">
-
-                <!-- ===== PACOTE RECRUTA ===== -->
+                <!-- PACOTE RECRUTA -->
                 <div class="card-mod soldier-bg relative" style="border-color:rgba(75,83,32,0.5);border-top:3px solid #4B5320;background:#1e2218;">
                     <div class="relative z-10 flex flex-col flex-1">
                         <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#4B5320;color:#9EFF00;">🎖️ RECRUTA</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
                         <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="color:#9EFF00;">Pacote Recruta</h4>
-                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:#c5ccbc;">Essencial para iniciar sua jornada tática. Mods básicos e funcionais.</p>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.1);border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1 text-green-400">✅ Pronto para jogar!</p><p style="color:#c5ccbc;">Baixe e coloque na pasta raiz do jogo.</p></div>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.1);border-left:3px solid #ff0000;color:#ff6666;">⚠️ Ao instalar, inicie um <span style="background:#cc0000;color:#ffcc00;padding:1px 4px;border-radius:3px;">SAVE NOVO</span>!</div>
+                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:#c5ccbc;">Essencial para iniciar sua jornada tática.</p>
                         <ul class="lista-itens-pacote">
                             <li>✅ Mods Essenciais VCORE</li>
                             <li>✅ Fest Feminino</li>
                             <li>✅ Veículos Modificados</li>
                             <li>✅ Guia de instalação por e-mail</li>
                         </ul>
-                        <div class="area-midia"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#4B5320;"></i><span class="font-medium text-xs sm:text-sm" style="color:#4B5320;">Assistir Vídeo</span></a></div>
+                        <div class="area-midia"><a href="#" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2" style="color:#4B5320;"></i><span class="font-medium text-xs sm:text-sm" style="color:#4B5320;">Assistir Vídeo</span></a></div>
                         <div class="text-center mb-2 sm:mb-3"><span class="text-xs sm:text-sm line-through text-gray-500">R$ 100,00</span><p class="text-2xl sm:text-3xl font-bold" style="color:#9EFF00;">R$ 60,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full bg-red-600 text-white">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Recruta - Mods Essenciais', 60.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:linear-gradient(135deg, #4B5320, #2E3B1F);color:#9EFF00;border:1px solid rgba(158,255,0,0.3);">🎖️ Adicionar Pacote Recruta</button>
+                        <button onclick="adicionarAoCarrinho('Pacote Recruta - Mods Essenciais',60.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:linear-gradient(135deg,#4B5320,#2E3B1F);color:#9EFF00;border:1px solid rgba(158,255,0,0.3);">🎖️ Adicionar Pacote Recruta</button>
                     </div>
                 </div>
-
-                <!-- ===== PACOTE SARGENTO ===== -->
+                <!-- PACOTE SARGENTO -->
                 <div class="card-mod soldier-bg relative" style="border-color:rgba(255,215,0,0.5);border-top:3px solid #FFD700;background:#241f14;">
                     <div class="absolute -top-1 left-1/2 -translate-x-1/2 z-20"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-lg bg-yellow-400 text-yellow-900">⭐ MAIS POPULAR</span></div>
                     <div class="relative z-10 flex flex-col flex-1 mt-3">
                         <div class="flex justify-between items-start mb-2 sm:mb-3"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:#FFD700;color:#3a2800;">🥇 SARGENTO</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
                         <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1 text-yellow-400">Pacote Sargento</h4>
-                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:#e0d5a8;">Experiência completa de visual e performance. O preferido da comunidade!</p>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.1);border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1 text-green-400">✅ Pronto para jogar!</p><p style="color:#e0d5a8;">Baixe e coloque na pasta raiz do jogo.</p></div>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.1);border-left:3px solid #ff0000;color:#ff6666;">⚠️ Ao instalar, inicie um <span style="background:#cc0000;color:#ffcc00;padding:1px 4px;border-radius:3px;">SAVE NOVO</span>!</div>
+                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:#e0d5a8;">Experiência completa. O preferido da comunidade!</p>
                         <ul class="lista-itens-pacote">
                             <li>✅ Tudo do Pacote Recruta</li>
                             <li>✅ Coletes — Mod de Aparência</li>
                             <li>✅ Armas e Miras — Precisão Real</li>
                             <li>✅ Camisa e Calça — Visual Tático</li>
                             <li>✅ Camuflagem — Skins Completas</li>
-                            <li>✅ Capacetes e Proteções — Visual Elite</li>
-                            <li>✅ Guia de instalação por e-mail</li>
+                            <li>✅ Capacetes e Proteções</li>
                         </ul>
-                        <div class="area-midia"><a href="COLOQUE_SEU_LINK_DO_YOUTUBE_AQUI" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2 text-yellow-400"></i><span class="font-medium text-xs sm:text-sm text-yellow-400">Assistir Vídeo</span></a></div>
+                        <div class="area-midia"><a href="#" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2 text-yellow-400"></i><span class="font-medium text-xs sm:text-sm text-yellow-400">Assistir Vídeo</span></a></div>
                         <div class="text-center mb-2 sm:mb-3"><span class="text-xs sm:text-sm line-through text-gray-500">R$ 150,00</span><p class="text-2xl sm:text-3xl font-bold text-yellow-400">R$ 90,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full bg-red-600 text-white">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote Sargento - Mods Avançados', 90.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:linear-gradient(135deg, #FFD700, #FFA000);color:#3a2800;border:1px solid rgba(255,215,0,0.5);">🥇 Adicionar Pacote Sargento</button>
+                        <button onclick="adicionarAoCarrinho('Pacote Sargento - Mods Avançados',90.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:linear-gradient(135deg,#FFD700,#FFA000);color:#3a2800;border:1px solid rgba(255,215,0,0.5);">🥇 Adicionar Pacote Sargento</button>
                     </div>
                 </div>
-
-                <!-- ===== PACOTE GENERAL ===== -->
+                <!-- PACOTE GENERAL -->
                 <div class="card-mod soldier-bg relative" style="border-color:rgba(158,255,0,0.6);border-top:3px solid #9EFF00;background:#1a1f14;">
                     <div class="relative z-10 flex flex-col flex-1">
-                        <div class="flex justify-between items-start mb-2 sm:mb-3 flex-wrap gap-1"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:linear-gradient(135deg, #7C3AED, #9EFF00);color:#fff;">💎 GENERAL</span><span class="bg-red-600 text-white text-[9px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">MELHOR VALOR</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
-                        <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="background:linear-gradient(135deg, #A78BFA, #9EFF00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Pacote General</h4>
-                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:#D8B4FE;">Arsenal completo. <strong style="color:#9EFF00;">Todos os mods</strong> com o melhor custo-benefício.</p>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs" style="background:rgba(34,197,94,0.1);border-left:3px solid #22c55e;"><p class="font-bold mb-0.5 sm:mb-1 text-green-400">✅ Pronto para jogar!</p><p style="color:#C7FF80;">Baixe e coloque na pasta raiz do jogo.</p></div>
-                        <div class="rounded-lg p-2 sm:p-3 mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold" style="background:rgba(255,0,0,0.1);border-left:3px solid #ff0000;color:#ff6666;">⚠️ Ao instalar, inicie um <span style="background:#cc0000;color:#ffcc00;padding:1px 4px;border-radius:3px;">SAVE NOVO</span>!</div>
+                        <div class="flex justify-between items-start mb-2 sm:mb-3 flex-wrap gap-1"><span class="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full" style="background:linear-gradient(135deg,#7C3AED,#9EFF00);color:#fff;">💎 GENERAL</span><span class="bg-red-600 text-white text-[9px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">MELHOR VALOR</span><span class="fr-badge text-[9px] sm:text-[10px]">⚡ FR</span></div>
+                        <h4 class="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1" style="background:linear-gradient(135deg,#A78BFA,#9EFF00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Pacote General</h4>
+                        <p class="text-xs sm:text-sm mb-2 sm:mb-3" style="color:#D8B4FE;">Arsenal completo. <strong style="color:#9EFF00;">Todos os mods</strong>.</p>
                         <ul class="lista-itens-pacote">
                             <li>✅ <strong>TODOS</strong> os mods disponíveis</li>
-                            <li>✅ Coletes — Mod de Aparência</li>
-                            <li>✅ Armas e Miras — Precisão Real</li>
-                            <li>✅ Camisa e Calça — Visual Tático</li>
-                            <li>✅ Camuflagem — Skins Completas</li>
+                            <li>✅ Coletes, Armas, Miras</li>
+                            <li>✅ Camisa, Calça, Camuflagem</li>
                             <li>✅ Fest Feminino</li>
                             <li>✅ Capacetes e Proteções</li>
-                            <li>✅ Veículos Modificados</li>
-                            <li>✅ Skin Pack Completo</li>
-                            <li>✅ Kit Tático</li>
+                            <li>✅ Veículos, Skin Pack, Kit Tático</li>
                             <li>✅ Guia de instalação por e-mail</li>
                         </ul>
                         <div class="area-midia"><a href="https://www.youtube.com/watch?v=pN6ntMjvhRw&t=564s" target="_blank" class="w-full h-full flex flex-col items-center justify-center"><i class="fa fa-youtube-play text-3xl sm:text-4xl mb-1 sm:mb-2 text-principal"></i><span class="font-medium text-xs sm:text-sm text-principal">Assistir Vídeo</span></a></div>
                         <div class="text-center mb-2 sm:mb-3"><span class="text-xs sm:text-sm line-through text-gray-500">R$ 200,00</span><p class="text-2xl sm:text-3xl font-bold text-principal">R$ 120,00</p><span class="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-full bg-red-600 text-white">40% OFF</span></div>
-                        <button onclick="adicionarAoCarrinho('Pacote General - Todos os Mods', 120.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:linear-gradient(135deg, #7C3AED, #9EFF00);color:#fff;border:2px solid #9EFF00;">💎 Adicionar Pacote General</button>
+                        <button onclick="adicionarAoCarrinho('Pacote General - Todos os Mods',120.00)" class="font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded text-xs sm:text-sm transition-all hover:opacity-90 w-full active:scale-95 transform" style="background:linear-gradient(135deg,#7C3AED,#9EFF00);color:#fff;border:2px solid #9EFF00;">💎 Adicionar Pacote General</button>
                     </div>
                 </div>
             </div>
@@ -1147,30 +426,10 @@
         <section id="menu-sobre-servico" class="conteudo-menu hidden">
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-white">📋 Sobre o Serviço VCORE GAMES</h2>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #9EFF00;">
-                    <div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🎯</span><div><h3 class="text-lg sm:text-xl font-bold text-principal mb-1 sm:mb-2">O que fazemos?</h3><p class="leading-relaxed text-sm sm:text-base text-gray-300">A <strong class="text-principal">VCORE GAMES</strong> oferece um serviço especializado de <strong>curadoria, organização e preparação de mods</strong> para Mod Ghost. Nós vasculhamos os melhores mods disponíveis na comunidade, testamos cada um deles, organizamos em pacotes temáticos e deixamos tudo <strong class="text-principal">pronto para uso imediato</strong> — sem que você precise configurar nada.</p><p class="mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base text-gray-300">Basicamente, você economiza <strong class="text-principal">horas de pesquisa, downloads, testes e configurações</strong>. Nós fazemos todo o trabalho pesado para que você apenas baixe os arquivos e comece a jogar.</p></div></div>
-                </div>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #3b82f6;">
-                    <div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">💰</span><div><h3 class="text-lg sm:text-xl font-bold text-blue-300 mb-1 sm:mb-2">Pelo que você está pagando?</h3><p class="leading-relaxed text-sm sm:text-base text-gray-300">Você <strong class="text-blue-300">NÃO está comprando os mods em si</strong> — eles são gratuitos no Nexus Mods. Você está pagando pelo nosso trabalho de:</p><ul class="mt-2 sm:mt-3 space-y-1.5 sm:space-y-2 text-gray-300 text-sm sm:text-base"><li class="flex items-start gap-2"><span class="text-green-400 font-bold flex-shrink-0">⏱️</span><span><strong>Tempo e curadoria</strong> — selecionamos e testamos os melhores mods</span></li><li class="flex items-start gap-2"><span class="text-green-400 font-bold flex-shrink-0">🔧</span><span><strong>Organização e configuração</strong> — tudo pré-configurado</span></li><li class="flex items-start gap-2"><span class="text-green-400 font-bold flex-shrink-0">📦</span><span><strong>Pré-instalação e empacotamento</strong> — "baixar e jogar"</span></li><li class="flex items-start gap-2"><span class="text-green-400 font-bold flex-shrink-0">📧</span><span><strong>Suporte e guia de instalação</strong> — ajuda personalizada</span></li><li class="flex items-start gap-2"><span class="text-green-400 font-bold flex-shrink-0">🔄</span><span><strong>Atualizações</strong> — novos mods incluídos</span></li></ul></div></div>
-                </div>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #facc15;">
-                    <div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">⚙️</span><div><h3 class="text-lg sm:text-xl font-bold text-yellow-400 mb-1 sm:mb-2">Como funciona a instalação?</h3><ol class="mt-2 space-y-1.5 text-gray-300 text-sm sm:text-base list-decimal list-inside"><li>Faça o download do arquivo recebido</li><li>Copie os arquivos para a <strong class="text-principal">pasta raiz do jogo</strong> (onde está o GRB.exe)</li><li>Abra o jogo — os mods já estarão ativos! 🎮</li><li><strong style="color:#ff4444;">⚠️ Inicie um SAVE NOVO</strong> para evitar bugs</li></ol></div></div>
-                </div>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #9EFF00;">
-                    <div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">📂</span><div><h3 class="text-lg sm:text-xl font-bold text-principal mb-1 sm:mb-2">Onde colocar os arquivos?</h3><p class="leading-relaxed text-sm text-gray-300 mb-3">Copie os arquivos para a <strong class="text-principal">pasta raiz do jogo</strong> onde está o <strong class="text-principal">GRB.exe</strong>. Veja o caminho de cada plataforma:</p>
-                    <div class="space-y-2 text-xs sm:text-sm">
-                        <div class="rounded-lg p-2 sm:p-3" style="background:rgba(27,40,56,0.6);border:1px solid rgba(59,130,246,0.3);"><p class="font-bold text-blue-300 mb-1 flex items-center gap-2"><span class="text-lg">🟦</span> Steam</p><code class="text-gray-300 break-all" style="font-size:0.7rem;background:rgba(0,0,0,0.3);padding:4px 8px;border-radius:4px;display:block;">C:\Program Files (x86)\Steam\steamapps\common\Ghost Recon Breakpoint\</code></div>
-                        <div class="rounded-lg p-2 sm:p-3" style="background:rgba(56,28,0,0.6);border:1px solid rgba(249,115,22,0.3);"><p class="font-bold text-orange-300 mb-1 flex items-center gap-2"><span class="text-lg">🟧</span> Ubisoft Connect</p><code class="text-gray-300 break-all" style="font-size:0.7rem;background:rgba(0,0,0,0.3);padding:4px 8px;border-radius:4px;display:block;">C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Ghost Recon Breakpoint\</code></div>
-                        <div class="rounded-lg p-2 sm:p-3" style="background:rgba(20,20,20,0.6);border:1px solid rgba(168,85,247,0.3);"><p class="font-bold text-purple-300 mb-1 flex items-center gap-2"><span class="text-lg">🟪</span> Epic Games</p><code class="text-gray-300 break-all" style="font-size:0.7rem;background:rgba(0,0,0,0.3);padding:4px 8px;border-radius:4px;display:block;">C:\Program Files\Epic Games\GhostReconBreakpoint\</code></div>
-                    </div>
-                    <p class="text-[10px] text-gray-500 mt-3">💡 Dica: Procure sempre a pasta que contém o arquivo <strong class="text-principal">GRB.exe</strong> — é lá que você deve colocar os mods.</p></div></div>
-                </div>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #22c55e;">
-                    <div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🛡️</span><div><h3 class="text-lg sm:text-xl font-bold text-green-400 mb-1 sm:mb-2">Nossa garantia</h3><p class="leading-relaxed text-sm sm:text-base text-gray-300">Todos os pacotes são <strong class="text-green-400">testados e aprovados</strong> antes do envio. Se tiver qualquer dificuldade, nossa equipe está pronta para ajudar via WhatsApp. <strong class="text-principal">Garantimos que os mods funcionam ou devolvemos seu dinheiro!</strong></p></div></div>
-                </div>
-                <div class="card-mod" style="border-left:4px solid #facc15;">
-                    <div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🏆</span><div><h3 class="text-lg sm:text-xl font-bold text-yellow-400 mb-1 sm:mb-2">Créditos aos Modders</h3><p class="leading-relaxed text-sm sm:text-base text-gray-300">Todos os mods são de autoria de talentosos modders da comunidade, disponibilizados no <a href="https://www.nexusmods.com/" target="_blank" class="text-blue-400 hover:underline font-semibold">Nexus Mods</a>. Nosso trabalho é exclusivamente de <strong>curadoria, organização e suporte</strong>.</p></div></div>
-                </div>
+                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #9EFF00;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🎯</span><div><h3 class="text-lg sm:text-xl font-bold text-principal mb-1 sm:mb-2">O que fazemos?</h3><p class="leading-relaxed text-sm sm:text-base text-gray-300">A <strong class="text-principal">VCORE GAMES</strong> oferece curadoria, organização e preparação de mods para Mod Ghost. Tudo <strong class="text-principal">pronto para uso imediato</strong> — sem que você precise configurar nada.</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #3b82f6;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">💰</span><div><h3 class="text-lg sm:text-xl font-bold text-blue-300 mb-1 sm:mb-2">Pelo que você está pagando?</h3><p class="text-gray-300 text-sm">Você <strong class="text-blue-300">NÃO está comprando os mods</strong> (gratuitos no Nexus Mods). Você paga pelo nosso trabalho de curadoria, organização, pré-configuração e suporte.</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #facc15;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">⚙️</span><div><h3 class="text-lg sm:text-xl font-bold text-yellow-400 mb-1 sm:mb-2">Instalação</h3><ol class="mt-2 space-y-1.5 text-gray-300 text-sm list-decimal list-inside"><li>Baixe o arquivo recebido</li><li>Copie para a <strong class="text-principal">pasta raiz do jogo</strong> (onde está o GRB.exe)</li><li>Abra o jogo 🎮</li><li><strong style="color:#ff4444;">⚠️ Inicie um SAVE NOVO</strong></li></ol></div></div></div>
+                <div class="card-mod" style="border-left:4px solid #22c55e;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">🛡️</span><div><h3 class="text-lg sm:text-xl font-bold text-green-400 mb-1 sm:mb-2">Garantia</h3><p class="text-gray-300 text-sm">Todos os pacotes são testados. <strong class="text-principal">Garantimos que os mods funcionam ou devolvemos seu dinheiro!</strong></p></div></div></div>
             </div>
         </section>
 
@@ -1178,33 +437,10 @@
         <section id="menu-como-comprar" class="conteudo-menu hidden">
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-white">💣 Como Comprar</h2>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #9EFF00;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">1️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-principal mb-1 sm:mb-2">Escolha seu pacote</h3><p class="text-gray-300 text-sm leading-relaxed">Navegue pelos pacotes na <strong class="text-principal">página inicial</strong>: <span style="color:#9EFF00;">Recruta</span>, <span style="color:#FFD700;">Sargento</span> ou <span style="color:#A78BFA;">General</span>. Cada um oferece um conjunto diferente de mods. Clique no botão do pacote desejado para adicionar ao carrinho.</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #3b82f6;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">2️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-blue-300 mb-1 sm:mb-2">Cadastre-se no carrinho</h3><p class="text-gray-300 text-sm leading-relaxed">Preencha <strong style="color:#9EFF00;">nome completo</strong>, <strong style="color:#9EFF00;">e-mail</strong> (este será seu login na Área do Cliente) e <strong style="color:#9EFF00;">crie uma senha</strong> de no mínimo 4 caracteres. Use um e-mail que você acessa regularmente!</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #22c55e;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">3️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-green-400 mb-1 sm:mb-2">Pague via PIX</h3><p class="text-gray-300 text-sm leading-relaxed">Copie a <strong style="color:#9EFF00;">chave PIX</strong> exibida, abra o aplicativo do seu banco, vá em <strong>PIX → Pagar</strong>, cole a chave, confira o valor e faça a transferência. O pagamento é instantâneo!</p></div></div></div>
-                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #facc15;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">4️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-yellow-400 mb-1 sm:mb-2">Envie o comprovante</h3><p class="text-gray-300 text-sm leading-relaxed">Após pagar, clique nos botões para enviar o comprovante via <strong style="color:#25D366;">WhatsApp</strong> ou <strong style="color:#9EFF00;">e-mail</strong>. Isso agiliza a confirmação e liberação do seu pacote!</p></div></div></div>
-                <div class="card-mod" style="border-left:4px solid #9EFF00;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">5️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-principal mb-1 sm:mb-2">Receba e jogue! 🎮</h3><p class="text-gray-300 text-sm leading-relaxed">Após a confirmação do pagamento, você receberá um <strong class="text-principal">e-mail</strong> com o link de download e guia de instalação. É só baixar, colocar na pasta do jogo e começar a jogar!</p></div></div></div>
-                <div class="text-center mt-6"><a href="https://wa.me/5516981097916?text=Ol%C3%A1%20Rodrigo!%20Tenho%20d%C3%BAvidas%20sobre%20os%20pacotes." target="_blank" class="inline-block bg-whatsapp hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"><i class="fa fa-whatsapp"></i> Tirar Dúvidas no WhatsApp</a></div>
-            </div>
-        </section>
-
-        <!-- ===== ÁREA DO CLIENTE ===== -->
-        <section id="menu-area-cliente" class="conteudo-menu hidden">
-            <div class="max-w-2xl mx-auto">
-                <div id="clienteLoginPainel" class="card-mod p-4 sm:p-6 md:p-8">
-                    <div class="text-center mb-4 sm:mb-6"><span class="text-3xl sm:text-5xl">🔐</span><h2 class="text-xl sm:text-2xl font-bold mt-2 sm:mt-3 text-principal">Área do Cliente</h2><p class="text-gray-400 text-xs sm:text-sm mt-0.5 sm:mt-1">Acesse com seu e-mail e senha cadastrados</p></div>
-                    <div class="space-y-3 sm:space-y-4">
-                        <div><label class="block text-xs sm:text-sm font-bold text-gray-300 mb-1">📧 E-mail</label><input type="email" id="clienteLoginEmail" placeholder="Seu e-mail cadastrado" autocomplete="email" class="w-full border rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" /></div>
-                        <div><label class="block text-xs sm:text-sm font-bold text-gray-300 mb-1">🔑 Senha</label><input type="password" id="clienteLoginPass" placeholder="••••••••" autocomplete="current-password" class="w-full border rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" onkeydown="if(event.key==='Enter') fazerLoginCliente()" /></div>
-                        <p id="erroLoginCliente" class="text-red-400 text-xs sm:text-sm hidden text-center"></p>
-                        <button onclick="fazerLoginCliente()" class="w-full font-bold py-2.5 sm:py-3 rounded-lg transition-colors text-base sm:text-lg" style="background:#4B5320;color:#9EFF00;border:1px solid rgba(158,255,0,0.3);">🔓 Acessar Minha Conta</button>
-                    </div>
-                    <div class="mt-4 sm:mt-5 text-center"><p class="text-xs sm:text-sm text-gray-400">Ainda não tem conta? <a href="#inicio" onclick="mudarMenuParaInicio()" class="text-blue-400 hover:underline font-medium">Compre um pacote</a></p><p class="text-xs sm:text-sm text-gray-400 mt-0.5 sm:mt-1">Esqueceu a senha? <a href="https://wa.me/5516981097916" target="_blank" class="text-blue-400 hover:underline font-medium">Fale conosco no WhatsApp</a></p></div>
-                </div>
-                <div id="clientePainel" class="hidden">
-                    <div class="flex justify-between items-center mb-4 sm:mb-6 flex-wrap gap-2"><div><h2 class="text-xl sm:text-2xl font-bold text-principal">🎮 Minha Conta</h2><p class="text-xs sm:text-sm text-gray-400" id="clienteNomeLogado"></p></div><button onclick="fazerLogoutCliente()" class="text-xs sm:text-sm text-red-400 hover:text-red-300 font-bold flex items-center gap-1"><i class="fa fa-sign-out"></i> Sair</button></div>
-                    <div id="clienteComprasContainer"><p class="text-gray-500 text-center text-sm">Carregando...</p></div>
-                    <div class="mt-6 sm:mt-8 card-mod" id="guiaInstalacaoCliente"><h3 class="text-lg sm:text-xl font-bold text-principal mb-3 sm:mb-4 text-center">📖 Guia de Instalação</h3><div class="space-y-2 sm:space-y-3 text-sm"><div class="rounded-xl p-3 sm:p-4" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.2);"><p class="font-bold text-base sm:text-lg mb-1.5 sm:mb-2 text-principal">🚀 É só baixar e jogar!</p><p class="text-xs sm:text-sm mb-1.5 sm:mb-2 text-gray-300">1. Faça o download do arquivo recebido por e-mail</p><p class="text-xs sm:text-sm mb-1.5 sm:mb-2 text-gray-300">2. Copie os arquivos para a <strong class="text-principal">pasta raiz do jogo</strong> (onde está o GRB.exe)</p><p class="text-xs sm:text-sm text-gray-300">3. Abra o jogo — os mods já estarão ativos! 🎮</p></div><div class="rounded-xl p-3 sm:p-4 border-2" style="background:linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ffcc00 100%);border-color:#ff0000;"><p class="font-extrabold text-sm sm:text-base mb-1 sm:mb-2 text-center" style="color:#cc0000;">🚨 INICIE UM SAVE NOVO APÓS INSTALAR!</p></div></div></div>
-                </div>
+                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #9EFF00;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">1️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-principal mb-1 sm:mb-2">Escolha seu pacote</h3><p class="text-gray-300 text-sm">Navegue pelos pacotes: <span style="color:#9EFF00;">Recruta</span>, <span style="color:#FFD700;">Sargento</span> ou <span style="color:#A78BFA;">General</span>. Adicione ao carrinho.</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #3b82f6;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">2️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-blue-300 mb-1 sm:mb-2">Preencha seus dados</h3><p class="text-gray-300 text-sm">No carrinho, informe <strong style="color:#9EFF00;">nome completo</strong> e <strong style="color:#9EFF00;">e-mail</strong> para receber o pacote.</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6" style="border-left:4px solid #22c55e;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">3️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-green-400 mb-1 sm:mb-2">Pague via PIX</h3><p class="text-gray-300 text-sm">Copie a chave PIX, pague e clique em <strong style="color:#22c55e;">"Enviar Comprovante"</strong>.</p></div></div></div>
+                <div class="card-mod" style="border-left:4px solid #9EFF00;"><div class="flex items-start gap-3 sm:gap-4"><span class="text-2xl sm:text-4xl flex-shrink-0">4️⃣</span><div><h3 class="text-lg sm:text-xl font-bold text-principal mb-1 sm:mb-2">Receba e jogue! 🎮</h3><p class="text-gray-300 text-sm">Após confirmação, você receberá o link de download e instruções no seu e-mail.</p></div></div></div>
             </div>
         </section>
 
@@ -1212,9 +448,8 @@
         <section id="menu-sobre" class="conteudo-menu hidden">
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-white">ℹ️ Sobre a VCORE GAMES</h2>
-                <div class="card-mod mb-4 sm:mb-6 text-center p-6 sm:p-8"><span class="text-4xl sm:text-5xl">🎮</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-2">Quem somos</h3><p class="text-gray-300 text-sm sm:text-base leading-relaxed">A <strong class="text-principal">VCORE GAMES</strong> nasceu da paixão por jogos e da vontade de compartilhar experiências incríveis. Fundada por <strong class="text-principal">Rodrigo</strong>, entusiasta de jogos táticos e simuladores, nos especializamos em curadoria de mods para Mod Ghost, oferecendo pacotes prontos que transformam a experiência de jogo.</p></div>
-                <div class="card-mod mb-4 sm:mb-6 text-center p-6 sm:p-8"><span class="text-4xl sm:text-5xl">🎯</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-2">Nossa missão</h3><p class="text-gray-300 text-sm sm:text-base leading-relaxed">Democratizar o acesso a mods de qualidade, eliminando a complexidade técnica. Queremos que qualquer jogador, independentemente do conhecimento técnico, possa desfrutar de uma experiência tática imersiva sem complicação.</p></div>
-                <div class="card-mod p-6 sm:p-8 text-center"><span class="text-4xl sm:text-5xl">⭐</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-3">Nossos valores</h3><div class="grid grid-cols-2 sm:grid-cols-4 gap-3"><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">🎯</span><p class="text-white font-bold text-xs mt-1">Qualidade</p><p class="text-gray-500 text-[10px]">Mods testados</p></div><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">⚡</span><p class="text-white font-bold text-xs mt-1">Agilidade</p><p class="text-gray-500 text-[10px]">Entrega rápida</p></div><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">🤝</span><p class="text-white font-bold text-xs mt-1">Suporte</p><p class="text-gray-500 text-[10px]">Sempre online</p></div><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">🔒</span><p class="text-white font-bold text-xs mt-1">Segurança</p><p class="text-gray-500 text-[10px]">Dados protegidos</p></div></div></div>
+                <div class="card-mod mb-4 sm:mb-6 text-center p-6 sm:p-8"><span class="text-4xl sm:text-5xl">🎮</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-2">Quem somos</h3><p class="text-gray-300 text-sm">A <strong class="text-principal">VCORE GAMES</strong> nasceu da paixão por jogos. Fundada por <strong class="text-principal">Rodrigo</strong>, nos especializamos em curadoria de mods para Mod Ghost.</p></div>
+                <div class="card-mod p-6 sm:p-8 text-center"><span class="text-4xl sm:text-5xl">⭐</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-3">Valores</h3><div class="grid grid-cols-2 sm:grid-cols-4 gap-3"><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">🎯</span><p class="text-white font-bold text-xs mt-1">Qualidade</p></div><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">⚡</span><p class="text-white font-bold text-xs mt-1">Agilidade</p></div><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">🤝</span><p class="text-white font-bold text-xs mt-1">Suporte</p></div><div class="rounded-xl p-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.15);"><span class="text-2xl">🔒</span><p class="text-white font-bold text-xs mt-1">Segurança</p></div></div></div>
             </div>
         </section>
 
@@ -1222,17 +457,16 @@
         <section id="menu-suporte" class="conteudo-menu hidden">
             <div class="max-w-xl mx-auto">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-white">💬 Central de Ajuda</h2>
-                <div class="card-mod mb-4 sm:mb-6 text-center p-6 sm:p-8"><span class="text-3xl sm:text-4xl">💬</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-2">Fale Conosco no WhatsApp</h3><p class="text-gray-400 text-sm mb-4">Atendimento rápido e direto. Tire dúvidas, envie comprovantes ou peça ajuda com a instalação.</p><a href="https://wa.me/5516981097916" target="_blank" class="inline-block bg-whatsapp hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"><i class="fa fa-whatsapp"></i> (16) 98109-7916</a></div>
-                <div class="card-mod mb-4 sm:mb-6 text-center p-6 sm:p-8"><span class="text-3xl sm:text-4xl">📧</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-2">E-mail</h3><p class="text-gray-400 text-sm mb-2">Para dúvidas detalhadas ou envio de comprovantes:</p><p class="text-blue-400 font-bold">rodrigoxgames25@gmail.com</p></div>
-                <div class="card-mod text-center p-6 sm:p-8"><span class="text-3xl sm:text-4xl">📱</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-3">Redes Sociais</h3><div class="flex justify-center gap-6 text-2xl"><a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="hover:scale-110 transition-transform" style="color:#E4405F;"><i class="fa fa-instagram"></i></a><a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="hover:scale-110 transition-transform" style="color:#FF0000;"><i class="fa fa-youtube-play"></i></a><a href="https://facebook.com/vcoregames" target="_blank" class="hover:scale-110 transition-transform" style="color:#1877F2;"><i class="fa fa-facebook-square"></i></a></div></div>
+                <div class="card-mod mb-4 sm:mb-6 text-center p-6 sm:p-8"><span class="text-3xl sm:text-4xl">💬</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-2">WhatsApp</h3><a href="https://wa.me/5516981097916" target="_blank" class="inline-block bg-whatsapp hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg"><i class="fa fa-whatsapp"></i> (16) 98109-7916</a></div>
+                <div class="card-mod mb-4 sm:mb-6 text-center p-6 sm:p-8"><span class="text-3xl sm:text-4xl">📧</span><h3 class="text-lg sm:text-xl font-bold text-principal mt-3 mb-2">E-mail</h3><p class="text-blue-400 font-bold">rodrigoxgames25@gmail.com</p></div>
             </div>
         </section>
 
-        <!-- ===== PAINEL ADMIN ===== -->
+        <!-- ===== ADMIN ===== -->
         <section id="menu-admin" class="conteudo-menu hidden">
             <div class="max-w-2xl mx-auto">
-                <div id="painelLogin" class="card-mod p-4 sm:p-6 md:p-8"><div class="text-center mb-4 sm:mb-6"><span class="text-3xl sm:text-5xl">🔒</span><h2 class="text-xl sm:text-2xl font-bold mt-2 sm:mt-3 text-principal">Área Administrativa</h2></div><div class="space-y-3 sm:space-y-4"><input type="text" id="adminUser" placeholder="Usuário" class="w-full border rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" /><input type="password" id="adminPass" placeholder="Senha" class="w-full border rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" onkeydown="if(event.key==='Enter') fazerLogin()" /><p id="erroLogin" class="text-red-400 text-xs sm:text-sm hidden">❌ Usuário ou senha incorretos.</p><button onclick="fazerLogin()" class="w-full font-bold py-2.5 sm:py-3 rounded-lg text-sm sm:text-base" style="background:#4B5320;color:#9EFF00;border:1px solid rgba(158,255,0,0.3);">Entrar</button></div></div>
-                <div id="painelAdmin" class="hidden"><div class="flex justify-between items-center mb-4 sm:mb-6"><h2 class="text-xl sm:text-2xl font-bold text-principal">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-xs sm:text-sm text-red-400 hover:text-red-300 font-bold">Sair →</button></div><div class="card-mod mb-4 sm:mb-6" style="border-color:rgba(168,85,247,0.4);"><h3 class="text-base sm:text-lg font-bold text-purple-300 mb-3">🔍 Diagnóstico</h3><div id="diagnosticoStorage" class="text-xs sm:text-sm space-y-1"><p class="text-gray-400">Clique no botão abaixo.</p></div><button onclick="executarDiagnostico()" class="mt-3 bg-purple-700 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg text-xs sm:text-sm w-full border border-purple-500">🔬 Executar Diagnóstico</button></div><div class="card-mod mb-4 sm:mb-6"><h3 class="text-base sm:text-lg font-bold mb-3 text-white">📋 Clientes</h3><div id="listaClientes" class="space-y-2 sm:space-y-3"><p class="text-gray-500 text-center text-sm">Nenhum cliente ainda.</p></div></div><button onclick="limparClientes()" class="w-full bg-red-900/50 hover:bg-red-800/50 text-red-400 font-bold py-2 rounded-lg text-xs sm:text-sm border border-red-700">🗑️ Limpar todos</button></div>
+                <div id="painelLogin" class="card-mod p-4 sm:p-6 md:p-8"><div class="text-center mb-4 sm:mb-6"><span class="text-3xl sm:text-5xl">🔒</span><h2 class="text-xl sm:text-2xl font-bold mt-2 sm:mt-3 text-principal">Área Administrativa</h2></div><div class="space-y-3 sm:space-y-4"><input type="text" id="adminUser" placeholder="Usuário" class="w-full border rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" /><input type="password" id="adminPass" placeholder="Senha" class="w-full border rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm" onkeydown="if(event.key==='Enter')fazerLogin()" /><p id="erroLogin" class="text-red-400 text-xs sm:text-sm hidden">❌ Usuário ou senha incorretos.</p><button onclick="fazerLogin()" class="w-full font-bold py-2.5 sm:py-3 rounded-lg text-sm sm:text-base" style="background:#4B5320;color:#9EFF00;border:1px solid rgba(158,255,0,0.3);">Entrar</button></div></div>
+                <div id="painelAdmin" class="hidden"><div class="flex justify-between items-center mb-4 sm:mb-6"><h2 class="text-xl sm:text-2xl font-bold text-principal">🛠️ Painel Admin</h2><button onclick="fazerLogout()" class="text-xs sm:text-sm text-red-400 hover:text-red-300 font-bold">Sair →</button></div><div class="card-mod mb-4 sm:mb-6"><h3 class="text-base sm:text-lg font-bold mb-3 text-white">📋 Clientes</h3><div id="listaClientes" class="space-y-2 sm:space-y-3"><p class="text-gray-500 text-center text-sm">Nenhum cliente ainda.</p></div></div><button onclick="limparClientes()" class="w-full bg-red-900/50 hover:bg-red-800/50 text-red-400 font-bold py-2 rounded-lg text-xs sm:text-sm border border-red-700">🗑️ Limpar todos</button></div>
             </div>
         </section>
     </main>
@@ -1240,10 +474,9 @@
     <!-- RODAPÉ -->
     <footer style="background:#0d0f0a;border-top:2px solid rgba(158,255,0,0.15);" class="py-6 sm:py-8 px-3 sm:px-4 mt-8 sm:mt-12">
         <div class="max-w-7xl mx-auto text-center">
-            <div class="mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-principal/15 flex justify-center"><div class="inline-flex items-center gap-2 sm:gap-3 rounded-full px-4 sm:px-6 py-2 sm:py-3" style="background:rgba(158,255,0,0.04);border:1px solid rgba(158,255,0,0.15);"><span class="text-lg sm:text-2xl">👁️</span><div class="text-left"><p class="text-[10px] sm:text-xs uppercase tracking-wider font-bold text-gray-500">Total de Visitas</p><p id="contadorVisitas" class="text-xl sm:text-2xl font-bold count-glow text-principal">⏳</p></div><span class="text-base sm:text-lg">🌍</span></div></div>
-            <div class="flex justify-center items-center mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-principal/15"><a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-rodape" aria-label="Instagram"><i class="fa fa-instagram"></i></a><a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-rodape" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a><a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-rodape" aria-label="Facebook"><i class="fa fa-facebook-square"></i></a><a href="https://cults3d.com/pt/modelo-3d/jogo/suporte-mesa-cambio-h-shift-g29" target="_blank" class="icone-rede-rodape" aria-label="Cults 3D"><i class="fa fa-cube"></i></a><a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-rodape" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a></div>
+            <div class="mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-principal/15 flex justify-center"><div class="inline-flex items-center gap-2 sm:gap-3 rounded-full px-4 sm:px-6 py-2 sm:py-3" style="background:rgba(158,255,0,0.04);border:1px solid rgba(158,255,0,0.15);"><span class="text-lg sm:text-2xl">👁️</span><div class="text-left"><p class="text-[10px] sm:text-xs uppercase tracking-wider font-bold text-gray-500">Total de Visitas</p><p id="contadorVisitas" class="text-xl sm:text-2xl font-bold count-glow text-principal">⏳</p></div></div></div>
+            <div class="flex justify-center items-center mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-principal/15"><a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="icone-rede-rodape"><i class="fa fa-instagram"></i></a><a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="icone-rede-rodape"><i class="fa fa-youtube-play"></i></a><a href="https://facebook.com/vcoregames" target="_blank" class="icone-rede-rodape"><i class="fa fa-facebook-square"></i></a><a href="https://wa.me/5516981097916" target="_blank" class="icone-rede-rodape"><i class="fa fa-whatsapp"></i></a></div>
             <p class="text-gray-500 text-xs sm:text-sm">© 2026 VCORE GAMES - Todos os direitos reservados</p>
-            <p class="text-gray-600 text-[10px] sm:text-xs mt-0.5 sm:mt-1">Os mods são de autoria dos modders do Nexus Mods. Este site oferece serviço de curadoria e organização.</p>
         </div>
     </footer>
 
@@ -1256,28 +489,14 @@
 
     <script>
         // =============================================
-        // 🔐 SISTEMA DE PROTEÇÃO DE DADOS - VCORE GAMES
+        // 🔐 SISTEMA DE PROTEÇÃO - VCORE GAMES
         // =============================================
-        var SECRET_KEY = "VCORE_G4M3S_S3CUR1TY_2026_M1L1T4RY_GR4D3";
+        var SECRET_KEY = "VCORE_G4M3S_S3CUR1TY_2026";
         var STORAGE_KEY = 'vcore_encrypted_db_v3';
-        var MAX_LOGIN_ATTEMPTS = 5;
-        var LOGIN_BLOCK_TIME = 15 * 60 * 1000;
-        var loginAttempts = {};
 
         function sanitizar(str) {
             if (!str) return '';
-            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/\//g, '&#x2F;');
-        }
-
-        function gerarSalt(tamanho) {
-            tamanho = tamanho || 16;
-            var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
-            var salt = '';
-            var array = new Uint32Array(tamanho);
-            if (window.crypto && window.crypto.getRandomValues) { window.crypto.getRandomValues(array); }
-            else { for (var i = 0; i < tamanho; i++) array[i] = Math.floor(Math.random() * 4294967296); }
-            for (var i = 0; i < tamanho; i++) salt += chars[array[i] % chars.length];
-            return salt;
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
         }
 
         function hashSimples(str) {
@@ -1287,13 +506,11 @@
         }
 
         function derivarChave() {
-            var navegadorId = '';
-            try { navegadorId = navigator.userAgent.substring(0, 50); } catch (e) {}
-            var base = SECRET_KEY + '_' + navegadorId + '_' + window.location.hostname;
+            var nav = ''; try { nav = navigator.userAgent.substring(0, 50); } catch (e) {}
+            var base = SECRET_KEY + '_' + nav + '_' + window.location.hostname;
             var chave = '';
-            for (var round = 0; round < 100; round++) {
-                var temp = base + round.toString();
-                var h = 0;
+            for (var r = 0; r < 100; r++) {
+                var temp = base + r.toString(), h = 0;
                 for (var i = 0; i < temp.length; i++) { h = ((h << 5) - h) + temp.charCodeAt(i); h |= 0; }
                 chave += (h >>> 0).toString(16);
             }
@@ -1302,188 +519,133 @@
 
         var CHAVE_CRIPTO = derivarChave();
 
-        function criptografarDados(textoPlano) {
+        function criptografarDados(txt) {
             try {
-                var chaveBytes = [];
-                for (var i = 0; i < CHAVE_CRIPTO.length; i++) chaveBytes.push(CHAVE_CRIPTO.charCodeAt(i) % 256);
-                var textoBytes = [];
-                for (var i = 0; i < textoPlano.length; i++) textoBytes.push(textoPlano.charCodeAt(i));
-                var criptografado = [];
-                for (var i = 0; i < textoBytes.length; i++) {
-                    var xorByte = textoBytes[i] ^ chaveBytes[i % chaveBytes.length];
-                    xorByte = ((xorByte + (i * 7) % 256) + 256) % 256;
-                    criptografado.push(xorByte);
-                }
-                var binario = '';
-                for (var i = 0; i < criptografado.length; i++) binario += String.fromCharCode(criptografado[i]);
-                return btoa(binario);
+                var kb = [], tb = [];
+                for (var i = 0; i < CHAVE_CRIPTO.length; i++) kb.push(CHAVE_CRIPTO.charCodeAt(i) % 256);
+                for (var i = 0; i < txt.length; i++) tb.push(txt.charCodeAt(i));
+                var cr = [];
+                for (var i = 0; i < tb.length; i++) { var x = tb[i] ^ kb[i % kb.length]; x = ((x + (i * 7) % 256) + 256) % 256; cr.push(x); }
+                var bin = ''; for (var i = 0; i < cr.length; i++) bin += String.fromCharCode(cr[i]);
+                return btoa(bin);
             } catch (e) { return null; }
         }
 
-        function descriptografarDados(textoCriptografado) {
+        function descriptografarDados(txt) {
             try {
-                var binario = atob(textoCriptografado);
-                var criptografado = [];
-                for (var i = 0; i < binario.length; i++) criptografado.push(binario.charCodeAt(i));
-                var chaveBytes = [];
-                for (var i = 0; i < CHAVE_CRIPTO.length; i++) chaveBytes.push(CHAVE_CRIPTO.charCodeAt(i) % 256);
-                var textoBytes = [];
-                for (var i = 0; i < criptografado.length; i++) {
-                    var byte = ((criptografado[i] - (i * 7) % 256) + 256) % 256;
-                    byte = byte ^ chaveBytes[i % chaveBytes.length];
-                    textoBytes.push(byte);
-                }
-                var resultado = '';
-                for (var i = 0; i < textoBytes.length; i++) resultado += String.fromCharCode(textoBytes[i]);
-                return resultado;
+                var bin = atob(txt), cr = [];
+                for (var i = 0; i < bin.length; i++) cr.push(bin.charCodeAt(i));
+                var kb = [];
+                for (var i = 0; i < CHAVE_CRIPTO.length; i++) kb.push(CHAVE_CRIPTO.charCodeAt(i) % 256);
+                var tb = [];
+                for (var i = 0; i < cr.length; i++) { var b = ((cr[i] - (i * 7) % 256) + 256) % 256; b = b ^ kb[i % kb.length]; tb.push(b); }
+                var res = ''; for (var i = 0; i < tb.length; i++) res += String.fromCharCode(tb[i]);
+                return res;
             } catch (e) { return null; }
-        }
-
-        function hashSenha(senha, salt) {
-            var dados = salt + ':' + senha + ':' + SECRET_KEY.substring(0, 16);
-            var hash = hashSimples(dados);
-            for (var i = 0; i < 50; i++) hash = hashSimples(hash + salt + i);
-            return salt + ':' + hash;
-        }
-
-        function verificarSenha(senha, hashArmazenado) {
-            var partes = hashArmazenado.split(':');
-            if (partes.length < 2) return false;
-            return hashSenha(senha, partes[0]) === hashArmazenado;
         }
 
         function lerStorageSeguro() {
             try {
                 var raw = localStorage.getItem(STORAGE_KEY);
                 if (!raw) return [];
-                var dadosDescriptografados = descriptografarDados(raw);
-                if (!dadosDescriptografados) { localStorage.removeItem(STORAGE_KEY); return []; }
-                var dados = JSON.parse(dadosDescriptografados);
-                return Array.isArray(dados) ? dados : [];
+                var d = descriptografarDados(raw);
+                if (!d) { localStorage.removeItem(STORAGE_KEY); return []; }
+                var p = JSON.parse(d);
+                return Array.isArray(p) ? p : [];
             } catch (e) { localStorage.removeItem(STORAGE_KEY); return []; }
         }
 
         function salvarStorageSeguro(dados) {
             try {
                 var json = JSON.stringify(dados);
-                var criptografado = criptografarDados(json);
-                if (!criptografado) return false;
-                localStorage.setItem(STORAGE_KEY, criptografado);
-                return localStorage.getItem(STORAGE_KEY) === criptografado;
+                var cript = criptografarDados(json);
+                if (!cript) return false;
+                localStorage.setItem(STORAGE_KEY, cript);
+                return true;
             } catch (e) { return false; }
         }
 
         var clientesRegistrados = lerStorageSeguro();
-        setInterval(function() { var dados = lerStorageSeguro(); if (dados.length !== clientesRegistrados.length) clientesRegistrados = dados; }, 30000);
 
         // ============ CONFIGURAÇÕES ============
         var CHAVE_PIX = "16981097916";
         var WHATSAPP_NUMERO = "5516981097916";
-        var EMAIL_COMPROVANTE = "rodrigoxgames25@gmail.com";
+        var EMAIL_ADMIN = "rodrigoxgames25@gmail.com";
         var ADMIN_USER = "admin";
         var ADMIN_PASS = "vcore2026";
         var carrinho = [];
         var adminLogado = false;
-        var clienteLogado = null;
-        var dadosPendentes = null;
+        // Armazena os dados do cliente preenchidos no carrinho
+        var dadosClienteAtual = { nome: '', email: '' };
 
-        // ============ CONTADOR DE TEMPO (48H) ============
-        var PROMO_STORAGE_KEY = 'vcore_promo_deadline_v1';
-        function obterDeadlinePromo() {
-            var salvo = localStorage.getItem(PROMO_STORAGE_KEY);
-            if (salvo) { var deadline = parseInt(salvo, 10); if (!isNaN(deadline) && deadline > Date.now()) return deadline; }
-            var novoDeadline = Date.now() + (48 * 60 * 60 * 1000);
-            localStorage.setItem(PROMO_STORAGE_KEY, novoDeadline.toString());
-            return novoDeadline;
+        // ============ CONTADOR (48H) ============
+        var PROMO_KEY = 'vcore_promo_deadline_v1';
+        function obterDeadline() {
+            var s = localStorage.getItem(PROMO_KEY);
+            if (s) { var d = parseInt(s, 10); if (!isNaN(d) && d > Date.now()) return d; }
+            var nd = Date.now() + (48 * 60 * 60 * 1000);
+            localStorage.setItem(PROMO_KEY, nd.toString());
+            return nd;
         }
-        var promoDeadline = obterDeadlinePromo();
+        var promoDeadline = obterDeadline();
 
         function atualizarCountdown() {
-            var agora = Date.now();
-            var restante = Math.max(0, promoDeadline - agora);
-            var dias = Math.floor(restante / 86400000);
-            var horas = Math.floor((restante % 86400000) / 3600000);
-            var minutos = Math.floor((restante % 3600000) / 60000);
-            var segundos = Math.floor((restante % 60000) / 1000);
-
-            var elDias = document.getElementById('countDias');
-            var elHoras = document.getElementById('countHoras');
-            var elMin = document.getElementById('countMin');
-            var elSeg = document.getElementById('countSeg');
-            var elExpirada = document.getElementById('promoExpirada');
-            var elCountdown = document.getElementById('countdownPromo');
-
-            if (elDias) elDias.innerText = String(dias).padStart(2, '0');
-            if (elHoras) elHoras.innerText = String(horas).padStart(2, '0');
-            if (elMin) elMin.innerText = String(minutos).padStart(2, '0');
-            if (elSeg) elSeg.innerText = String(segundos).padStart(2, '0');
-
-            if (restante <= 0) {
-                if (elExpirada) elExpirada.style.display = 'block';
-                if (elCountdown) elCountdown.style.opacity = '0.5';
-                return;
-            }
+            var agora = Date.now(), restante = Math.max(0, promoDeadline - agora);
+            var dias = Math.floor(restante / 86400000), horas = Math.floor((restante % 86400000) / 3600000);
+            var minutos = Math.floor((restante % 3600000) / 60000), segundos = Math.floor((restante % 60000) / 1000);
+            var elD = document.getElementById('countDias'), elH = document.getElementById('countHoras');
+            var elM = document.getElementById('countMin'), elS = document.getElementById('countSeg');
+            if (elD) elD.innerText = String(dias).padStart(2, '0');
+            if (elH) elH.innerText = String(horas).padStart(2, '0');
+            if (elM) elM.innerText = String(minutos).padStart(2, '0');
+            if (elS) elS.innerText = String(segundos).padStart(2, '0');
+            if (restante <= 0) { var elE = document.getElementById('promoExpirada'); if (elE) elE.style.display = 'block'; return; }
             setTimeout(atualizarCountdown, 1000);
         }
         atualizarCountdown();
 
-        // ============ POP-UP DE SAÍDA ============
-        var popupSaidaMostrado = sessionStorage.getItem('vcore_popup_saida') === 'true';
+        // ============ POPUP SAÍDA ============
+        var popupMostrado = sessionStorage.getItem('vcore_popup_saida') === 'true';
         function mostrarPopupSaida() {
-            if (popupSaidaMostrado || carrinho.length > 0) return;
-            popupSaidaMostrado = true;
-            sessionStorage.setItem('vcore_popup_saida', 'true');
-            document.getElementById('modalSaida').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+            if (popupMostrado || carrinho.length > 0) return;
+            popupMostrado = true; sessionStorage.setItem('vcore_popup_saida', 'true');
+            document.getElementById('modalSaida').style.display = 'flex'; document.body.style.overflow = 'hidden';
         }
-        function fecharModalSaida() {
-            document.getElementById('modalSaida').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        document.addEventListener('mouseout', function(e) { if (!popupSaidaMostrado && e.clientY <= 0 && carrinho.length === 0) mostrarPopupSaida(); });
+        function fecharModalSaida() { document.getElementById('modalSaida').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        document.addEventListener('mouseout', function(e) { if (!popupMostrado && e.clientY <= 0 && carrinho.length === 0) mostrarPopupSaida(); });
         document.getElementById('modalSaida').addEventListener('click', function(e) { if (e.target === this) fecharModalSaida(); });
 
-        // ============ CONTADOR DE VISITAS ============
-        function animarContador(el, alvo) {
-            var duracao = 1200, inicio = Math.max(0, alvo - 50), startTime = null;
-            function passo(timestamp) {
-                if (!startTime) startTime = timestamp;
-                var progresso = Math.min((timestamp - startTime) / duracao, 1);
-                var atual = Math.floor(inicio + (alvo - inicio) * (1 - Math.pow(1 - progresso, 3)));
-                el.innerText = atual.toLocaleString('pt-BR');
-                if (progresso < 1) requestAnimationFrame(passo);
-                else el.innerText = alvo.toLocaleString('pt-BR');
-            }
-            requestAnimationFrame(passo);
-        }
+        // ============ CONTADOR VISITAS ============
         (function() {
             var el = document.getElementById('contadorVisitas');
             fetch('https://api.counterapi.dev/v1/vcoregames_site/visitas/up')
                 .then(function(r) { return r.json(); })
-                .then(function(d) { if (d && typeof d.count === 'number') animarContador(el, d.count); else el.innerText = '🔥'; })
+                .then(function(d) { if (d && typeof d.count === 'number') { var alvo = d.count, duracao = 1200, inicio = Math.max(0, alvo - 50), st = null; function passo(ts) { if (!st) st = ts; var p = Math.min((ts - st) / duracao, 1); var at = Math.floor(inicio + (alvo - inicio) * (1 - Math.pow(1 - p, 3))); el.innerText = at.toLocaleString('pt-BR'); if (p < 1) requestAnimationFrame(passo); else el.innerText = alvo.toLocaleString('pt-BR'); } requestAnimationFrame(passo); } else el.innerText = '🔥'; })
                 .catch(function() { el.innerHTML = '<span style="font-size:1.2rem;">👥</span>'; });
         })();
 
-        // ============ NOTIFICAÇÕES DE COMPRAS ============
-        var nomesCompradores = ['Lucas S.','Gabriel M.','Matheus R.','Felipe A.','Rafael C.','Bruno P.','Thiago L.','Marcos V.','André F.','Pedro H.','João G.','Carlos E.','Vinicius D.','Leonardo B.','Guilherme T.','Diego N.','Ricardo S.','Eduardo M.','Caio R.','Igor P.'];
-        var pacotesNotificacao = ['Pacote General 💎','Pacote Sargento 🥇','Pacote Recruta 🎖️','Pacote Sargento 🥇','Pacote General 💎','Pacote General 💎','Pacote Sargento 🥇'];
-        var temposNotificacao = ['agora mesmo','há 2 min','há 5 min','há 8 min','há 12 min','há 3 min','há 7 min','há 1 min','há 10 min','há 4 min'];
-        function nomeAleatorio() { return nomesCompradores[Math.floor(Math.random() * nomesCompradores.length)]; }
+        // ============ TOASTS ============
+        var nomesCompradores = ['Lucas S.','Gabriel M.','Matheus R.','Felipe A.','Rafael C.','Bruno P.','Thiago L.','Marcos V.','André F.','Pedro H.'];
+        var pacotesNotif = ['Pacote General 💎','Pacote Sargento 🥇','Pacote Recruta 🎖️'];
+        var temposNotif = ['agora mesmo','há 2 min','há 5 min','há 8 min','há 3 min','há 7 min'];
+
         function criarToastCompra() {
             var existente = document.querySelector('.toast-compra');
             if (existente) { existente.classList.add('saindo'); setTimeout(function() { if (existente.parentNode) existente.parentNode.removeChild(existente); }, 400); }
-            var nome = nomeAleatorio(), pacote = pacotesNotificacao[Math.floor(Math.random() * pacotesNotificacao.length)], tempo = temposNotificacao[Math.floor(Math.random() * temposNotificacao.length)], isMobile = window.innerWidth < 640;
-            var toast = document.createElement('div');
-            toast.className = 'toast-compra';
-            toast.style.cssText = 'position:fixed;bottom:' + (isMobile ? '80px' : '100px') + ';right:' + (isMobile ? '8px' : '20px') + ';background:#1a1d16;color:#fff;padding:' + (isMobile ? '10px 14px' : '14px 18px') + ';border-radius:14px;z-index:9999;box-shadow:0 8px 30px rgba(0,0,0,0.5);border:1px solid rgba(158,255,0,0.3);max-width:' + (isMobile ? '260px' : '300px') + ';cursor:default;font-family:Inter,system-ui,sans-serif;font-size:' + (isMobile ? '0.7rem' : '0.85rem') + ';';
-            toast.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="background:rgba(158,255,0,0.1);border-radius:50%;width:' + (isMobile ? '32px' : '40px') + ';height:' + (isMobile ? '32px' : '40px') + ';display:flex;align-items:center;justify-content:center;font-size:' + (isMobile ? '1rem' : '1.2rem') + ';flex-shrink:0;">🔥</div><div style="min-width:0;"><p style="font-weight:700;font-size:' + (isMobile ? '0.75rem' : '0.85rem') + ';color:#9EFF00;margin:0;">' + nome + ' comprou</p><p style="font-size:' + (isMobile ? '0.7rem' : '0.8rem') + ';margin:2px 0;color:#e5e7eb;">' + pacote + '</p><p style="font-size:' + (isMobile ? '0.65rem' : '0.7rem') + ';margin:0;color:rgba(255,255,255,0.5);">' + tempo + '</p></div></div>';
+            var nome = nomesCompradores[Math.floor(Math.random() * nomesCompradores.length)];
+            var pacote = pacotesNotif[Math.floor(Math.random() * pacotesNotif.length)];
+            var tempo = temposNotif[Math.floor(Math.random() * temposNotif.length)];
+            var isM = window.innerWidth < 640;
+            var toast = document.createElement('div'); toast.className = 'toast-compra';
+            toast.style.cssText = 'position:fixed;bottom:' + (isM ? '80px' : '100px') + ';right:' + (isM ? '8px' : '20px') + ';background:#1a1d16;color:#fff;padding:' + (isM ? '10px 14px' : '14px 18px') + ';border-radius:14px;z-index:9999;box-shadow:0 8px 30px rgba(0,0,0,0.5);border:1px solid rgba(158,255,0,0.3);max-width:' + (isM ? '260px' : '300px') + ';font-size:' + (isM ? '0.7rem' : '0.85rem') + ';';
+            toast.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="background:rgba(158,255,0,0.1);border-radius:50%;width:' + (isM ? '32px' : '40px') + ';height:' + (isM ? '32px' : '40px') + ';display:flex;align-items:center;justify-content:center;font-size:' + (isM ? '1rem' : '1.2rem') + ';">🔥</div><div><p style="font-weight:700;font-size:' + (isM ? '0.75rem' : '0.85rem') + ';color:#9EFF00;margin:0;">' + nome + ' comprou</p><p style="font-size:' + (isM ? '0.7rem' : '0.8rem') + ';margin:2px 0;color:#e5e7eb;">' + pacote + '</p><p style="font-size:' + (isM ? '0.65rem' : '0.7rem') + ';margin:0;color:rgba(255,255,255,0.5);">' + tempo + '</p></div></div>';
             document.body.appendChild(toast);
             setTimeout(function() { if (toast.parentNode) { toast.classList.add('saindo'); setTimeout(function() { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 400); } }, 5000);
         }
-        function agendarProximaNotificacao() { setTimeout(function() { criarToastCompra(); agendarProximaNotificacao(); }, Math.floor(Math.random() * 12000) + 8000); }
-        setTimeout(function() { agendarProximaNotificacao(); }, 5000);
+        function agendarToast() { setTimeout(function() { criarToastCompra(); agendarToast(); }, Math.floor(Math.random() * 12000) + 8000); }
+        setTimeout(function() { agendarToast(); }, 5000);
 
-        // ============ MENU DROPDOWN ============
+        // ============ MENU ============
         var botaoMenu = document.getElementById('botaoMenu'), listaMenu = document.getElementById('listaMenu'), iconeMenu = document.getElementById('iconeMenu');
         botaoMenu.addEventListener('click', function(e) { e.stopPropagation(); listaMenu.classList.toggle('aberto'); iconeMenu.classList.toggle('menu-icone-rotacionado'); });
         document.addEventListener('click', function(e) { if (!botaoMenu.contains(e.target) && !listaMenu.contains(e.target)) { listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('menu-icone-rotacionado'); } });
@@ -1504,24 +666,14 @@
             if (event && event.target) event.target.classList.add('menu-ativo');
             listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('menu-icone-rotacionado');
             if (idMenu === 'admin') renderizarPainelAdmin();
-            if (idMenu === 'area-cliente') renderizarAreaCliente();
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function mudarMenuParaInicio() {
-            document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
-            document.getElementById('menu-inicio').classList.remove('hidden');
-            document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
-            var linkInicio = document.querySelector('#listaMenu a[href="#inicio"]');
-            if (linkInicio) linkInicio.classList.add('menu-ativo');
-            setTimeout(function() { var a = document.getElementById('pacotes-premium'); if (a) a.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
         }
 
         // ============ CARRINHO ============
         function adicionarAoCarrinho(nome, preco) {
-            var existente = null;
-            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { existente = carrinho[i]; break; } }
-            if (existente) existente.qtd += 1;
+            var existe = null;
+            for (var i = 0; i < carrinho.length; i++) { if (carrinho[i].nome === nome) { existe = carrinho[i]; break; } }
+            if (existe) existe.qtd += 1;
             else carrinho.push({ nome: nome, preco: preco, qtd: 1 });
             atualizarCarrinho();
             mostrarNotificacao(nome + ' adicionado! 🛒');
@@ -1539,29 +691,28 @@
 
         function atualizarCarrinho() {
             var lista = document.getElementById('listaCarrinho'), totalEl = document.getElementById('valorTotal'), badge = document.getElementById('badgeCarrinho');
-            var barra = document.getElementById('barraTotal'), barraTotalValor = document.getElementById('barraTotalValor'), barraTotalItens = document.getElementById('barraTotalItens');
+            var barra = document.getElementById('barraTotal'), barraV = document.getElementById('barraTotalValor'), barraI = document.getElementById('barraTotalItens');
             lista.innerHTML = '';
-            var totalUnidades = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0);
-            var totalValor = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
-            var totalFormatado = 'R$ ' + totalValor.toFixed(2).replace('.', ',');
-
+            var totalU = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0);
+            var totalV = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
+            var tf = 'R$ ' + totalV.toFixed(2).replace('.', ',');
             if (carrinho.length > 0) {
-                badge.classList.remove('hidden'); badge.innerText = totalUnidades;
+                badge.classList.remove('hidden'); badge.innerText = totalU;
                 carrinho.forEach(function(item) {
-                    var subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ','), precoUnit = item.preco.toFixed(2).replace('.', ',');
+                    var sub = (item.preco * item.qtd).toFixed(2).replace('.', ','), pu = item.preco.toFixed(2).replace('.', ',');
                     var div = document.createElement('div');
                     div.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(158,255,0,0.1);gap:6px;flex-wrap:wrap;';
-                    div.innerHTML = '<div style="flex:1;min-width:120px;"><p style="font-weight:600;font-size:0.85rem;color:#e8e6dc;">' + item.nome + '</p><p style="font-size:0.72rem;color:#8B7D6B;">R$ ' + precoUnit + ' cada</p></div><div style="display:flex;align-items:center;gap:4px;flex-shrink:0;"><button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\', -1)" style="width:24px;height:24px;border-radius:50%;background:#4B5320;color:#9EFF00;font-weight:bold;border:1px solid rgba(158,255,0,0.3);cursor:pointer;font-size:0.8rem;">−</button><span style="font-weight:700;min-width:18px;text-align:center;font-size:0.85rem;color:#e8e6dc;">' + item.qtd + '</span><button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\', 1)" style="width:24px;height:24px;border-radius:50%;background:#4B5320;color:#9EFF00;font-weight:bold;border:1px solid rgba(158,255,0,0.3);cursor:pointer;font-size:0.8rem;">+</button><span style="font-weight:700;min-width:60px;text-align:right;font-size:0.85rem;color:#e8e6dc;">R$ ' + subtotal + '</span><button onclick="removerDoCarrinho(\'' + item.nome.replace(/'/g, "\\'") + '\')" style="color:#dc2626;font-weight:700;background:none;border:none;cursor:pointer;font-size:0.9rem;">✕</button></div>';
+                    div.innerHTML = '<div style="flex:1;min-width:120px;"><p style="font-weight:600;font-size:0.85rem;color:#e8e6dc;">' + item.nome + '</p><p style="font-size:0.72rem;color:#8B7D6B;">R$ ' + pu + ' cada</p></div><div style="display:flex;align-items:center;gap:4px;"><button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\',-1)" style="width:24px;height:24px;border-radius:50%;background:#4B5320;color:#9EFF00;font-weight:bold;border:1px solid rgba(158,255,0,0.3);cursor:pointer;font-size:0.8rem;">−</button><span style="font-weight:700;min-width:18px;text-align:center;font-size:0.85rem;color:#e8e6dc;">' + item.qtd + '</span><button onclick="alterarQtd(\'' + item.nome.replace(/'/g, "\\'") + '\',1)" style="width:24px;height:24px;border-radius:50%;background:#4B5320;color:#9EFF00;font-weight:bold;border:1px solid rgba(158,255,0,0.3);cursor:pointer;font-size:0.8rem;">+</button><span style="font-weight:700;min-width:60px;text-align:right;font-size:0.85rem;color:#e8e6dc;">R$ ' + sub + '</span><button onclick="removerDoCarrinho(\'' + item.nome.replace(/'/g, "\\'") + '\')" style="color:#dc2626;font-weight:700;background:none;border:none;cursor:pointer;font-size:0.9rem;">✕</button></div>';
                     lista.appendChild(div);
                 });
-                totalEl.innerText = totalFormatado; barraTotalValor.innerText = totalFormatado;
-                barraTotalItens.innerText = totalUnidades + (totalUnidades === 1 ? ' item' : ' itens');
+                totalEl.innerText = tf; barraV.innerText = tf;
+                barraI.innerText = totalU + (totalU === 1 ? ' item' : ' itens');
                 barra.classList.add('visivel');
             } else {
                 badge.classList.add('hidden');
                 lista.innerHTML = '<p class="text-gray-500 text-center text-sm" id="carrinhoVazio">Seu carrinho está vazio.</p>';
                 totalEl.innerText = 'R$ 0,00'; barra.classList.remove('visivel');
-                barraTotalValor.innerText = 'R$ 0,00'; barraTotalItens.innerText = '0 item';
+                barraV.innerText = 'R$ 0,00'; barraI.innerText = '0 item';
             }
         }
 
@@ -1573,7 +724,6 @@
                 document.body.appendChild(notif);
             }
             notif.innerText = msg; notif.style.opacity = '1';
-            if (window.innerWidth < 640) { notif.style.right = '8px'; notif.style.maxWidth = '240px'; notif.style.fontSize = '0.75rem'; notif.style.padding = '10px 14px'; }
             clearTimeout(notif._timer);
             notif._timer = setTimeout(function() { notif.style.opacity = '0'; }, 2500);
         }
@@ -1582,172 +732,127 @@
         function fecharCarrinho() { document.getElementById('modalCarrinho').style.display = 'none'; document.body.style.overflow = 'auto'; }
         document.getElementById('modalCarrinho').addEventListener('click', function(e) { if (e.target === this) fecharCarrinho(); });
 
-        function fecharModalPix() { document.getElementById('modalPix').style.display = 'none'; document.body.style.overflow = 'auto'; mostrarNotificacao('📧 Não esqueça: o link do pacote será enviado para o seu e-mail!'); }
+        function fecharModalPix() { document.getElementById('modalPix').style.display = 'none'; document.body.style.overflow = 'auto'; }
         document.getElementById('modalPix').addEventListener('click', function(e) { if (e.target === this) fecharModalPix(); });
-        document.getElementById('modalAvisoEmail').addEventListener('click', function(e) { if (e.target === this) voltarAvisoEmail(); });
-
-        function toggleSenhaCarrinho() {
-            var input = document.getElementById('clienteSenha'), icone = document.getElementById('iconeSenhaCarrinho');
-            if (input.type === 'password') { input.type = 'text'; icone.classList.remove('fa-eye'); icone.classList.add('fa-eye-slash'); }
-            else { input.type = 'password'; icone.classList.remove('fa-eye-slash'); icone.classList.add('fa-eye'); }
-        }
 
         function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
 
-        // ============ FLUXO DE FINALIZAÇÃO ============
+        // ============ FLUXO DE COMPRA ============
         function iniciarFinalizacao() {
-            if (carrinho.length === 0) { mostrarNotificacao('⚠️ Seu carrinho está vazio!'); return; }
-            var nome = sanitizar(document.getElementById('clienteNome').value.trim());
+            if (carrinho.length === 0) { mostrarNotificacao('⚠️ Carrinho vazio!'); return; }
+            var nome = document.getElementById('clienteNome').value.trim();
             var email = document.getElementById('clienteEmail').value.trim();
-            var senha = document.getElementById('clienteSenha').value.trim();
-            if (!nome) { mostrarNotificacao('⚠️ Preencha seu nome!'); document.getElementById('clienteNome').focus(); return; }
-            if (!email) { mostrarNotificacao('⚠️ Preencha seu e-mail!'); document.getElementById('clienteEmail').focus(); return; }
-            if (!isValidEmail(email)) { mostrarNotificacao('⚠️ E-mail inválido!'); document.getElementById('clienteEmail').focus(); return; }
-            if (!senha || senha.length < 4) { mostrarNotificacao('⚠️ Crie uma senha com pelo menos 4 caracteres!'); document.getElementById('clienteSenha').focus(); return; }
-            dadosPendentes = { nome: nome, email: email.toLowerCase(), senha: senha };
-            document.getElementById('modalAvisoEmail').style.display = 'flex'; document.body.style.overflow = 'hidden';
-        }
+            var erroEl = document.getElementById('carrinhoErro');
+            if (!nome) { erroEl.innerText = '⚠️ Preencha seu nome completo!'; erroEl.classList.remove('hidden'); document.getElementById('clienteNome').focus(); return; }
+            if (!email) { erroEl.innerText = '⚠️ Preencha seu e-mail!'; erroEl.classList.remove('hidden'); document.getElementById('clienteEmail').focus(); return; }
+            if (!isValidEmail(email)) { erroEl.innerText = '⚠️ E-mail inválido!'; erroEl.classList.remove('hidden'); document.getElementById('clienteEmail').focus(); return; }
+            erroEl.classList.add('hidden');
 
-        function voltarAvisoEmail() { document.getElementById('modalAvisoEmail').style.display = 'none'; document.body.style.overflow = 'auto'; dadosPendentes = null; }
+            // Salvar dados do cliente
+            dadosClienteAtual = { nome: sanitizar(nome), email: email.toLowerCase() };
 
-        function confirmarAvisoEmail() {
-            document.getElementById('modalAvisoEmail').style.display = 'none'; document.body.style.overflow = 'hidden';
-            if (!dadosPendentes) { mostrarNotificacao('⚠️ Erro: dados não encontrados.'); return; }
-            finalizarCompra(dadosPendentes);
-            dadosPendentes = null;
-        }
-
-        function finalizarCompra(dados) {
+            // Salvar no banco
             clientesRegistrados = lerStorageSeguro();
             var itens = carrinho.map(function(item) { return item.qtd + 'x ' + sanitizar(item.nome); }).join(', ');
             var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
             var agora = new Date();
             var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-            var salt = gerarSalt(16);
-            var senhaHash = hashSenha(dados.senha, salt);
-            var novoCliente = { nome: dados.nome, email: dados.email, senhaHash: senhaHash, itens: itens, total: total.toFixed(2).replace('.', ','), data: dataStr, status: 'pendente', linkDownload: '' };
+            var novoCliente = {
+                nome: dadosClienteAtual.nome,
+                email: dadosClienteAtual.email,
+                itens: itens,
+                total: total.toFixed(2).replace('.', ','),
+                data: dataStr,
+                status: 'pendente',
+                linkDownload: ''
+            };
             clientesRegistrados.push(novoCliente);
-            var salvou = salvarStorageSeguro(clientesRegistrados);
-            if (!salvou) { mostrarNotificacao('⚠️ Erro ao salvar. Tente novamente.'); return; }
-            mostrarNotificacao('✅ Conta criada com segurança!');
+            salvarStorageSeguro(clientesRegistrados);
+
+            // Fechar carrinho e abrir PIX
             fecharCarrinho();
-            carrinho = []; atualizarCarrinho();
-            document.getElementById('clienteNome').value = ''; document.getElementById('clienteEmail').value = ''; document.getElementById('clienteSenha').value = '';
-            var totalFormatado = 'R$ ' + total.toFixed(2).replace('.', ',');
-            document.getElementById('pixValor').innerText = totalFormatado;
+            var tf = 'R$ ' + total.toFixed(2).replace('.', ',');
+            document.getElementById('pixValor').innerText = tf;
             document.getElementById('pixCopiado').classList.add('hidden');
             document.getElementById('modalPix').style.display = 'flex'; document.body.style.overflow = 'hidden';
-            criarToastCompra();
         }
 
         function copiarChavePix() {
-            navigator.clipboard.writeText(CHAVE_PIX).then(function() { var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden'); setTimeout(function() { msg.classList.add('hidden'); }, 3000); })
-            .catch(function() { var input = document.createElement('input'); input.value = CHAVE_PIX; document.body.appendChild(input); input.select(); document.execCommand('copy'); document.body.removeChild(input); var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden'); setTimeout(function() { msg.classList.add('hidden'); }, 3000); });
+            navigator.clipboard.writeText(CHAVE_PIX).then(function() {
+                var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden');
+                setTimeout(function() { msg.classList.add('hidden'); }, 3000);
+            }).catch(function() {
+                var input = document.createElement('input'); input.value = CHAVE_PIX; document.body.appendChild(input);
+                input.select(); document.execCommand('copy'); document.body.removeChild(input);
+                var msg = document.getElementById('pixCopiado'); msg.classList.remove('hidden');
+                setTimeout(function() { msg.classList.add('hidden'); }, 3000);
+            });
         }
 
-        function abrirWhatsAppComprovante() { window.open('https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent('Olá Rodrigo! Acabei de fazer o pagamento via PIX. Segue o comprovante em anexo.'), '_blank'); }
-
-        function enviarComprovanteEmail() {
-            var clientesAtuais = lerStorageSeguro();
-            var ultimoCliente = clientesAtuais.length > 0 ? clientesAtuais[clientesAtuais.length - 1] : null;
-            var totalFormatado = ultimoCliente ? ultimoCliente.total : '0,00';
-            var nomeCliente = ultimoCliente ? sanitizar(ultimoCliente.nome) : 'Cliente';
-            window.open('mailto:' + encodeURIComponent(EMAIL_COMPROVANTE) + '?subject=' + encodeURIComponent('Comprovante de Pagamento - VCORE GAMES') + '&body=' + encodeURIComponent('Olá Rodrigo!\r\n\r\nSegue o comprovante de pagamento:\r\n\r\nCliente: ' + nomeCliente + '\r\nValor: R$ ' + totalFormatado + '\r\nChave PIX: ' + CHAVE_PIX + '\r\n\r\nAtenciosamente,\r\n' + nomeCliente), '_blank');
-            mostrarNotificacao('📧 Redirecionando para seu app de e-mail...');
-        }
-
-        // ============ ÁREA DO CLIENTE ============
-        function renderizarAreaCliente() {
-            if (clienteLogado) { document.getElementById('clienteLoginPainel').classList.add('hidden'); document.getElementById('clientePainel').classList.remove('hidden'); renderizarPainelCliente(); }
-            else { document.getElementById('clienteLoginPainel').classList.remove('hidden'); document.getElementById('clientePainel').classList.add('hidden'); document.getElementById('clienteLoginEmail').value = ''; document.getElementById('clienteLoginPass').value = ''; document.getElementById('erroLoginCliente').classList.add('hidden'); }
-        }
-
-        function fazerLoginCliente() {
-            var email = document.getElementById('clienteLoginEmail').value.trim().toLowerCase();
-            var senha = document.getElementById('clienteLoginPass').value.trim();
-            if (!email) { document.getElementById('erroLoginCliente').innerText = '❌ Digite seu e-mail.'; document.getElementById('erroLoginCliente').classList.remove('hidden'); return; }
-            if (!senha) { document.getElementById('erroLoginCliente').innerText = '❌ Digite sua senha.'; document.getElementById('erroLoginCliente').classList.remove('hidden'); return; }
-            var agora = Date.now();
-            if (loginAttempts[email] && loginAttempts[email].bloqueadoAte && agora < loginAttempts[email].bloqueadoAte) { var min = Math.ceil((loginAttempts[email].bloqueadoAte - agora) / 60000); document.getElementById('erroLoginCliente').innerText = '🔒 Muitas tentativas! Aguarde ' + min + ' minuto(s).'; document.getElementById('erroLoginCliente').classList.remove('hidden'); return; }
-            if (!loginAttempts[email]) loginAttempts[email] = { tentativas: 0, bloqueadoAte: null };
-            clientesRegistrados = lerStorageSeguro();
-            var encontrado = null;
-            for (var i = 0; i < clientesRegistrados.length; i++) { if (clientesRegistrados[i].email === email && verificarSenha(senha, clientesRegistrados[i].senhaHash)) { encontrado = clientesRegistrados[i]; break; } }
-            if (encontrado) {
-                loginAttempts[email] = { tentativas: 0, bloqueadoAte: null }; clienteLogado = encontrado;
-                document.getElementById('erroLoginCliente').classList.add('hidden'); document.getElementById('clienteLoginPainel').classList.add('hidden'); document.getElementById('clientePainel').classList.remove('hidden');
-                renderizarPainelCliente();
-            } else {
-                loginAttempts[email].tentativas++;
-                if (loginAttempts[email].tentativas >= MAX_LOGIN_ATTEMPTS) { loginAttempts[email].bloqueadoAte = agora + LOGIN_BLOCK_TIME; document.getElementById('erroLoginCliente').innerText = '🔒 Bloqueado por 15 minutos.'; }
-                else { document.getElementById('erroLoginCliente').innerText = '❌ E-mail ou senha incorretos. Tentativas restantes: ' + (MAX_LOGIN_ATTEMPTS - loginAttempts[email].tentativas); }
-                document.getElementById('erroLoginCliente').classList.remove('hidden');
+        function enviarComprovante() {
+            if (!dadosClienteAtual.nome || !dadosClienteAtual.email) {
+                mostrarNotificacao('⚠️ Erro: dados do cliente não encontrados. Refaça a compra.');
+                return;
             }
+
+            var itens = carrinho.map(function(item) { return item.qtd + 'x ' + sanitizar(item.nome); }).join(', ');
+            var total = carrinho.reduce(function(s, i) { return s + (i.preco * i.qtd); }, 0);
+            var tf = 'R$ ' + total.toFixed(2).replace('.', ',');
+            var agora = new Date();
+            var dataStr = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+            // Corpo do email para o ADMIN
+            var assuntoAdmin = '🔔 NOVA COMPRA PIX - ' + dadosClienteAtual.nome + ' - ' + itens;
+            var corpoAdmin = '═══════════════════════════════════\n';
+            corpoAdmin += '   🔔 NOVA COMPRA - VCORE GAMES\n';
+            corpoAdmin += '═══════════════════════════════════\n\n';
+            corpoAdmin += '👤 CLIENTE: ' + dadosClienteAtual.nome + '\n';
+            corpoAdmin += '📧 E-MAIL: ' + dadosClienteAtual.email + '\n';
+            corpoAdmin += '📦 PACOTE: ' + itens + '\n';
+            corpoAdmin += '💰 VALOR: ' + tf + '\n';
+            corpoAdmin += '📅 DATA: ' + dataStr + '\n';
+            corpoAdmin += '🔑 PIX: ' + CHAVE_PIX + '\n\n';
+            corpoAdmin += '⏳ STATUS: Aguardando confirmação\n\n';
+            corpoAdmin += '👆 Acesse o painel admin para aprovar e colar o link.\n';
+            corpoAdmin += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+            corpoAdmin += '   VCORE GAMES - Sistema de Vendas\n';
+            corpoAdmin += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
+
+            // Abre email para o admin
+            window.open('mailto:' + encodeURIComponent(EMAIL_ADMIN) + '?subject=' + encodeURIComponent(assuntoAdmin) + '&body=' + encodeURIComponent(corpoAdmin), '_blank');
+
+            // Abre WhatsApp para o admin
+            var msgWpp = '🔔 *NOVA COMPRA PIX - VCORE GAMES* 🔔\n\n';
+            msgWpp += '👤 *Cliente:* ' + dadosClienteAtual.nome + '\n';
+            msgWpp += '📧 *E-mail:* ' + dadosClienteAtual.email + '\n';
+            msgWpp += '📦 *Pacote:* ' + itens + '\n';
+            msgWpp += '💰 *Valor:* ' + tf + '\n';
+            msgWpp += '📅 *Data:* ' + dataStr + '\n';
+            msgWpp += '⏳ Aguardando confirmação do pagamento.\n\n';
+            msgWpp += '👆 Confira no painel admin e libere o link!';
+            window.open('https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(msgWpp), '_blank');
+
+            // Limpar carrinho e dados
+            carrinho = []; atualizarCarrinho();
+            dadosClienteAtual = { nome: '', email: '' };
+            document.getElementById('clienteNome').value = '';
+            document.getElementById('clienteEmail').value = '';
+
+            fecharModalPix();
+            mostrarNotificacao('✅ Comprovante enviado para Email e WhatsApp! 📩');
+            criarToastCompra();
         }
 
-        function fazerLogoutCliente() {
-            clienteLogado = null;
-            document.getElementById('clienteLoginPainel').classList.remove('hidden'); document.getElementById('clientePainel').classList.add('hidden');
-            document.getElementById('clienteLoginEmail').value = ''; document.getElementById('clienteLoginPass').value = ''; document.getElementById('erroLoginCliente').classList.add('hidden');
-        }
-
-        function renderizarPainelCliente() {
-            if (!clienteLogado) return;
-            document.getElementById('clienteNomeLogado').innerText = '👤 ' + sanitizar(clienteLogado.nome) + ' | 📧 ' + clienteLogado.email;
-            clientesRegistrados = lerStorageSeguro();
-            for (var i = 0; i < clientesRegistrados.length; i++) { if (clientesRegistrados[i].email === clienteLogado.email) { clienteLogado = clientesRegistrados[i]; break; } }
-            var container = document.getElementById('clienteComprasContainer');
-            var comprasDoCliente = [];
-            for (var j = 0; j < clientesRegistrados.length; j++) { if (clientesRegistrados[j].email === clienteLogado.email) comprasDoCliente.push(clientesRegistrados[j]); }
-            if (comprasDoCliente.length === 0) { container.innerHTML = '<div class="card-mod text-center"><p class="text-gray-400 text-sm">Nenhuma compra encontrada.</p></div>'; return; }
-            container.innerHTML = '';
-            for (var k = 0; k < comprasDoCliente.length; k++) {
-                var compra = comprasDoCliente[k];
-                var card = document.createElement('div'); card.className = 'card-mod mb-3 sm:mb-4';
-                var statusHTML = compra.status === 'liberado' ? '<span class="inline-flex items-center gap-1 bg-green-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">✅ Liberado</span>' : compra.status === 'aprovado' ? '<span class="inline-flex items-center gap-1 bg-blue-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">✅ Aprovado</span>' : '<span class="inline-flex items-center gap-1 bg-yellow-600 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">⏳ Pendente</span>';
-                var downloadHTML = compra.status === 'liberado' && compra.linkDownload ? '<div class="mt-3 sm:mt-4 p-3 sm:p-4 rounded-xl" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.2);"><p class="font-bold text-principal mb-1 sm:mb-2 text-sm">📥 Link de Download:</p><a href="' + compra.linkDownload + '" target="_blank" class="inline-block font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg text-xs sm:text-sm transition-colors break-all" style="background:#4B5320;color:#9EFF00;border:1px solid rgba(158,255,0,0.3);"><i class="fa fa-download"></i> Baixar Pacote</a></div>' : compra.status === 'aprovado' && !compra.linkDownload ? '<div class="mt-3 sm:mt-4 p-3 sm:p-4 rounded-xl" style="background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.2);"><p class="font-bold text-yellow-400 mb-1 text-sm">📦 Seu pacote foi aprovado!</p><p class="text-xs sm:text-sm text-gray-400">O link será disponibilizado em breve. Verifique o e-mail: <strong>' + compra.email + '</strong></p></div>' : '<div class="mt-3 sm:mt-4 p-3 sm:p-4 rounded-xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);"><p class="text-xs sm:text-sm text-gray-400">💡 Assim que o pagamento for confirmado, aparecerá aqui.</p></div>';
-                card.innerHTML = '<div class="flex justify-between items-start mb-2 sm:mb-3 flex-wrap gap-2"><div class="min-w-0"><h4 class="text-base sm:text-lg font-bold text-white truncate">🛍️ ' + sanitizar(compra.itens) + '</h4><p class="text-xs sm:text-sm text-gray-400">📅 ' + compra.data + ' | 💰 R$ ' + compra.total + '</p></div>' + statusHTML + '</div>' + downloadHTML;
-                container.appendChild(card);
-            }
-        }
-
-        // ============ PAINEL ADMIN ============
+        // ============ ADMIN ============
         function fazerLogin() {
             var user = document.getElementById('adminUser').value.trim(), pass = document.getElementById('adminPass').value.trim();
             if (user === ADMIN_USER && pass === ADMIN_PASS) { adminLogado = true; document.getElementById('painelLogin').classList.add('hidden'); document.getElementById('painelAdmin').classList.remove('hidden'); renderizarListaClientes(); }
             else { document.getElementById('erroLogin').classList.remove('hidden'); }
         }
+
         function fazerLogout() { adminLogado = false; document.getElementById('painelLogin').classList.remove('hidden'); document.getElementById('painelAdmin').classList.add('hidden'); document.getElementById('adminUser').value = ''; document.getElementById('adminPass').value = ''; document.getElementById('erroLogin').classList.add('hidden'); }
+
         function renderizarPainelAdmin() { if (adminLogado) { document.getElementById('painelLogin').classList.add('hidden'); document.getElementById('painelAdmin').classList.remove('hidden'); renderizarListaClientes(); } }
-
-        function executarDiagnostico() {
-            var container = document.getElementById('diagnosticoStorage'); var html = '';
-            try { var testKey = '_vcore_test_' + Date.now(); localStorage.setItem(testKey, 'test'); localStorage.removeItem(testKey); html += '<p style="color:#4ade80;">✅ localStorage OK</p>'; } catch (e) { html += '<p style="color:#dc2626;">❌ localStorage indisponível</p>'; }
-            var dados = lerStorageSeguro();
-            html += '<p style="color:#93c5fd;">📦 Clientes: <strong>' + dados.length + '</strong></p>';
-            html += '<p style="color:#fbbf24;">🔐 Criptografia: <strong>ATIVA</strong></p>';
-            html += '<p style="color:#a78bfa;">🛡️ Anti-força bruta: <strong>ATIVA</strong></p>';
-            html += '<p style="color:#f472b6;">🧹 Anti-XSS: <strong>ATIVA</strong></p>';
-            if (dados.length > 0) { html += '<div class="mt-2 p-2 rounded border text-[11px] max-h-32 overflow-y-auto" style="background:rgba(0,0,0,0.3);border-color:rgba(158,255,0,0.2);">'; for (var i = 0; i < dados.length; i++) { html += '<p style="border-bottom:1px solid rgba(255,255,255,0.05);padding:2px 0;"><strong>#' + (i + 1) + '</strong> ' + sanitizar(dados[i].nome) + ' | 📧 ' + dados[i].email + ' | ' + dados[i].status + '</p>'; } html += '</div>'; }
-            var usado = JSON.stringify(localStorage).length;
-            html += '<p style="color:#9ca3af;margin-top:4px;">💾 Espaço: <strong>' + (usado / 1024).toFixed(1) + ' KB</strong> de ~5 MB</p>';
-            container.innerHTML = html;
-        }
-
-        function verComoCliente(idx) {
-            clientesRegistrados = lerStorageSeguro();
-            if (idx >= 0 && idx < clientesRegistrados.length) {
-                clienteLogado = clientesRegistrados[idx];
-                document.querySelectorAll('.conteudo-menu').forEach(function(s) { s.classList.add('hidden'); });
-                document.getElementById('menu-area-cliente').classList.remove('hidden');
-                document.querySelectorAll('#listaMenu a').forEach(function(l) { l.classList.remove('menu-ativo'); });
-                var linkCliente = document.querySelector('#listaMenu a[href="#area-cliente"]'); if (linkCliente) linkCliente.classList.add('menu-ativo');
-                listaMenu.classList.remove('aberto'); iconeMenu.classList.remove('menu-icone-rotacionado');
-                document.getElementById('clienteLoginPainel').classList.add('hidden'); document.getElementById('clientePainel').classList.remove('hidden');
-                renderizarPainelCliente(); window.scrollTo({ top: 0, behavior: 'smooth' });
-                mostrarNotificacao('🔍 Visualizando: ' + sanitizar(clienteLogado.nome));
-            }
-        }
 
         function renderizarListaClientes() {
             clientesRegistrados = lerStorageSeguro();
@@ -1762,16 +867,15 @@
                     var div = document.createElement('div');
                     div.className = 'p-3 sm:p-4 rounded-xl border-2 ' + ((c.status === 'aprovado' || c.status === 'liberado') ? 'border-green-500/30' : 'border-yellow-500/30');
                     div.style.background = (c.status === 'aprovado' || c.status === 'liberado') ? 'rgba(34,197,94,0.05)' : 'rgba(234,179,8,0.05)';
-                    var linkInputValue = c.linkDownload || '';
-                    var senhaInfo = c.senhaHash ? '<span style="font-size:10px;color:#8B7D6B;">(hash: ' + c.senhaHash.substring(0, 16) + '...)</span>' : '<span style="color:#dc2626;font-size:10px;">⚠️ sem hash</span>';
-                    div.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2 mb-2 sm:mb-3"><div class="flex-1 min-w-0"><p class="font-bold text-white text-sm sm:text-base">👤 ' + sanitizar(c.nome) + ' <span style="background:' + statusCor + ';color:white;padding:2px 10px;border-radius:50px;font-size:0.65rem;font-weight:700;">' + statusLabel + '</span></p><p class="text-blue-400 text-xs sm:text-sm">📧 ' + c.email + ' | 🔐 ' + senhaInfo + '</p><p class="text-gray-500 text-[10px] sm:text-xs">🛍️ ' + sanitizar(c.itens) + ' | 💰 R$ ' + c.total + ' | 📅 ' + c.data + '</p></div></div><div class="flex flex-col sm:flex-row flex-wrap gap-2 items-stretch sm:items-end"><div class="flex-1 min-w-[150px]"><label class="text-[10px] sm:text-xs font-bold text-gray-400 block mb-1">🔗 Link:</label><input type="text" id="linkDownload_' + idx + '" value="' + linkInputValue.replace(/"/g, '&quot;') + '" placeholder="Link do pacote..." class="w-full border rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm" style="border-color:rgba(158,255,0,0.2);" /></div><div class="flex gap-2 flex-wrap"><button onclick="verComoCliente(' + idx + ')" class="bg-purple-700 hover:bg-purple-600 text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg border border-purple-500">👁️ Ver</button><button onclick="salvarLinkDownload(' + idx + ')" class="btn-email-liberar text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg border">💾 Salvar</button><button onclick="alternarStatusCliente(' + idx + ')" class="' + (c.status === 'aprovado' ? 'bg-yellow-700 hover:bg-yellow-600 border-yellow-500' : 'bg-green-700 hover:bg-green-600 border-green-500') + ' text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg border">' + (c.status === 'aprovado' ? '⏳ Pendente' : '✅ Aprovar') + '</button></div></div>';
+                    var linkVal = c.linkDownload || '';
+                    div.innerHTML = '<div class="flex justify-between items-start flex-wrap gap-2 mb-2 sm:mb-3"><div class="flex-1 min-w-0"><p class="font-bold text-white text-sm sm:text-base">👤 ' + sanitizar(c.nome) + ' <span style="background:' + statusCor + ';color:white;padding:2px 10px;border-radius:50px;font-size:0.65rem;font-weight:700;">' + statusLabel + '</span></p><p class="text-blue-400 text-xs sm:text-sm">📧 ' + c.email + '</p><p class="text-gray-500 text-[10px] sm:text-xs">🛍️ ' + sanitizar(c.itens) + ' | 💰 R$ ' + c.total + ' | 📅 ' + c.data + '</p></div></div><div class="flex flex-col sm:flex-row flex-wrap gap-2 items-stretch sm:items-end"><div class="flex-1 min-w-[150px]"><label class="text-[10px] sm:text-xs font-bold text-gray-400 block mb-1">🔗 Link de Download:</label><input type="text" id="linkDl_' + idx + '" value="' + linkVal.replace(/"/g, '&quot;') + '" placeholder="Cole o link do pacote..." class="w-full border rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm" style="border-color:rgba(158,255,0,0.2);" /></div><div class="flex gap-2 flex-wrap"><button onclick="salvarLink(' + idx + ')" class="btn-email-liberar text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg border">💾 Salvar e Liberar</button><button onclick="alternarStatus(' + idx + ')" class="' + (c.status === 'aprovado' ? 'bg-yellow-700 hover:bg-yellow-600 border-yellow-500' : 'bg-green-700 hover:bg-green-600 border-green-500') + ' text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg border">' + (c.status === 'aprovado' ? '⏳ Voltar Pendente' : '✅ Aprovar') + '</button></div></div>';
                     lista.appendChild(div);
                 })(i);
             }
         }
 
-        function salvarLinkDownload(idx) {
-            var input = document.getElementById('linkDownload_' + idx);
+        function salvarLink(idx) {
+            var input = document.getElementById('linkDl_' + idx);
             if (!input) return;
             var link = input.value.trim();
             if (!link) { mostrarNotificacao('⚠️ Cole o link de download!'); return; }
@@ -1779,15 +883,41 @@
             clientesRegistrados[idx].linkDownload = sanitizar(link);
             clientesRegistrados[idx].status = 'liberado';
             salvarStorageSeguro(clientesRegistrados);
-            var cliente = clientesRegistrados[idx];
-            var assunto = '🎮 VCORE GAMES - Seu Pacote Foi Liberado! - ' + sanitizar(cliente.itens);
-            var corpo = '══════════════════════════════════════════\n   🎖️  VCORE GAMES - MOD GHOST  🎖️\n══════════════════════════════════════════\n\n👋 Olá, ' + sanitizar(cliente.nome) + '!\n\n🎉 Seu pacote foi LIBERADO com sucesso!\n\n📦 PACOTE: ' + sanitizar(cliente.itens) + '\n\n💲 VALOR: R$ ' + cliente.total + '\n\n🔗 LINK DE DOWNLOAD:\n   ' + link + '\n\n📥 INSTRUÇÕES:\n   1. Clique no link e faça o download\n   2. Copie os arquivos para a pasta raiz do jogo (onde está o GRB.exe)\n   3. ⚠️ INICIE UM SAVE NOVO!\n   4. Abra o jogo — Pronto! 🚀\n\n📂 CAMINHOS:\n   STEAM: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ghost Recon Breakpoint\\\n   UBISOFT: C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Ghost Recon Breakpoint\\\n   EPIC: C:\\Program Files\\Epic Games\\GhostReconBreakpoint\\\n\n⚠️ INICIE UM SAVE NOVO após instalar!\n\n🔐 ÁREA DO CLIENTE:\n   Login: ' + cliente.email + '\n   Use a senha que você cadastrou\n\n💬 WhatsApp: (16) 98109-7916\n📧 E-mail: ' + EMAIL_COMPROVANTE + '\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🙏 OBRIGADO PELA CONFIANÇA!\n   — Rodrigo | VCORE GAMES\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
-            window.open('mailto:' + encodeURIComponent(cliente.email) + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo), '_blank');
-            mostrarNotificacao('✅ Link salvo e e-mail de liberação aberto! 📧');
+            var c = clientesRegistrados[idx];
+
+            // Abrir email para o cliente com link + instruções
+            var assunto = '🎮 VCORE GAMES - Seu Pacote Foi Liberado!';
+            var corpo = '══════════════════════════════════════\n';
+            corpo += '   🎖️ VCORE GAMES - MOD GHOST 🎖️\n';
+            corpo += '══════════════════════════════════════\n\n';
+            corpo += '👋 Olá, ' + sanitizar(c.nome) + '!\n\n';
+            corpo += '🎉 Seu pacote foi LIBERADO!\n\n';
+            corpo += '📦 PACOTE: ' + sanitizar(c.itens) + '\n';
+            corpo += '💰 VALOR: R$ ' + c.total + '\n\n';
+            corpo += '🔗 LINK DE DOWNLOAD:\n   ' + link + '\n\n';
+            corpo += '📥 INSTRUÇÕES DE INSTALAÇÃO:\n';
+            corpo += '   1. Clique no link e faça o download\n';
+            corpo += '   2. Copie os arquivos para a pasta raiz do jogo (onde está o GRB.exe)\n';
+            corpo += '   3. ⚠️ INICIE UM SAVE NOVO!\n';
+            corpo += '   4. Abra o jogo — Pronto! 🚀\n\n';
+            corpo += '📂 CAMINHOS DA PASTA:\n';
+            corpo += '   STEAM: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ghost Recon Breakpoint\\\n';
+            corpo += '   UBISOFT: C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Ghost Recon Breakpoint\\\n';
+            corpo += '   EPIC: C:\\Program Files\\Epic Games\\GhostReconBreakpoint\\\n\n';
+            corpo += '⚠️ INICIE UM SAVE NOVO após instalar!\n\n';
+            corpo += '💬 Dúvidas? WhatsApp: (16) 98109-7916\n';
+            corpo += '📧 E-mail: ' + EMAIL_ADMIN + '\n\n';
+            corpo += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+            corpo += '🙏 OBRIGADO PELA CONFIANÇA!\n';
+            corpo += '   — Rodrigo | VCORE GAMES\n';
+            corpo += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
+
+            window.open('mailto:' + encodeURIComponent(c.email) + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo), '_blank');
+            mostrarNotificacao('✅ Link salvo! Email de liberação aberto 📧');
             renderizarListaClientes();
         }
 
-        function alternarStatusCliente(idx) {
+        function alternarStatus(idx) {
             clientesRegistrados = lerStorageSeguro();
             clientesRegistrados[idx].status = clientesRegistrados[idx].status === 'aprovado' ? 'pendente' : 'aprovado';
             salvarStorageSeguro(clientesRegistrados);
