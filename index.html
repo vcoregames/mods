@@ -155,6 +155,15 @@
 
         /* Campos obrigatórios no carrinho */
         .campo-destaque{border:2px solid #9EFF00!important;box-shadow:0 0 12px rgba(158,255,0,0.2)!important}
+
+        /* 🆕 ADICIONADO: Modal de tranquilização (pop-up pós-compra) */
+        .modal-tranquiliza{position:fixed;inset:0;background:rgba(0,0,0,0.88);display:none;align-items:center;justify-content:center;z-index:80;padding:0.5rem;backdrop-filter:blur(6px)}
+        .tranquiliza-conteudo{background:#1a1d16;border-radius:1rem;max-width:95vw;width:420px;max-height:90vh;overflow-y:auto;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,0.7);border:2px solid #22c55e;color:#e8e6dc;text-align:center;animation:fadeInUp 0.5s ease-out forwards;position:relative}
+        .tranquiliza-fechar{position:absolute;top:8px;right:12px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.5rem;cursor:pointer;transition:color 0.2s;z-index:5;line-height:1}
+        .tranquiliza-fechar:hover{color:#fff}
+        @keyframes checkPop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.3)}100%{transform:scale(1);opacity:1}}
+        .check-anim{display:inline-block;width:80px;height:80px;border-radius:50%;background:#22c55e;margin-bottom:1rem;animation:checkPop 0.5s ease-out forwards}
+        .check-anim::after{content:'✓';font-size:3rem;color:#fff;font-weight:900;line-height:80px}
     </style>
 </head>
 <body class="font-sans">
@@ -307,6 +316,29 @@
             <div class="flex flex-col gap-2 sm:gap-3">
                 <a href="https://wa.me/5516981097916?text=Ol%C3%A1%20Rodrigo!%20Quero%20saber%20mais%20sobre%20os%20pacotes%20de%20mods%20para%20Mod%20Ghost.%20Pode%20me%20ajudar%3F" target="_blank" class="w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"><i class="fa fa-whatsapp text-base sm:text-lg"></i> Falar no WhatsApp</a>
                 <button onclick="fecharModalSaida()" class="w-full bg-white/5 hover:bg-white/10 text-white font-bold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-colors border border-white/15">Continuar navegando</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🆕 ADICIONADO: Modal de tranquilização de liberação -->
+    <div id="modalTranquiliza" class="modal-tranquiliza">
+        <div class="tranquiliza-conteudo">
+            <button onclick="fecharModalTranquiliza()" class="tranquiliza-fechar">×</button>
+            <div class="check-anim"></div>
+            <h2 class="text-xl sm:text-2xl font-bold mb-3" style="color:#22c55e;">🎉 Compra Registrada com Sucesso!</h2>
+            <p class="text-gray-300 text-sm leading-relaxed mb-2">Seu comprovante foi enviado <strong class="text-principal">ao mesmo tempo</strong> para o <strong style="color:#3b82f6;">e-mail</strong> e <strong style="color:#25D366;">WhatsApp</strong> do Rodrigo.</p>
+            <p class="text-gray-300 text-sm leading-relaxed mb-3">Agora é só aguardar a liberação. Assim que confirmar o pagamento, o link será enviado ao seu e-mail em até <strong>24 horas</strong>. Geralmente é mais rápido!</p>
+            <div class="rounded-xl p-3 sm:p-4 mb-3" style="background:rgba(158,255,0,0.05);border:1px solid rgba(158,255,0,0.2);">
+                <p class="text-xs font-bold text-principal mb-1">📌 Dica importante:</p>
+                <p class="text-xs text-gray-300">Verifique sua caixa de entrada e spam para garantir que o e-mail não seja perdido. Adicione <strong style="color:#3b82f6;">rodrigoxgames25@gmail.com</strong> aos seus contatos para evitar bloqueios.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-2">
+                <a href="https://wa.me/5516981097916" target="_blank" class="flex-1 bg-whatsapp hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors flex items-center justify-center gap-2" style="text-decoration:none;">
+                    <i class="fa fa-whatsapp"></i> Fale comigo no WhatsApp
+                </a>
+                <button onclick="fecharModalTranquiliza()" class="flex-1 font-bold py-3 px-4 rounded-lg text-sm transition-colors" style="background:transparent;color:#22c55e;border:1px solid #22c55e;cursor:pointer;">
+                    Fechar
+                </button>
             </div>
         </div>
     </div>
@@ -615,6 +647,11 @@
         document.addEventListener('mouseout', function(e) { if (!popupMostrado && e.clientY <= 0 && carrinho.length === 0) mostrarPopupSaida(); });
         document.getElementById('modalSaida').addEventListener('click', function(e) { if (e.target === this) fecharModalSaida(); });
 
+        /* 🆕 ADICIONADO: Fechar modal tranquilização */
+        function fecharModalTranquiliza() { document.getElementById('modalTranquiliza').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        /* 🆕 ADICIONADO: Fechar ao clicar fora */
+        document.getElementById('modalTranquiliza').addEventListener('click', function(e) { if (e.target === this) fecharModalTranquiliza(); });
+
         // ============ CONTADOR VISITAS ============
         (function() {
             var el = document.getElementById('contadorVisitas');
@@ -839,6 +876,13 @@
             document.getElementById('clienteEmail').value = '';
 
             fecharModalPix();
+
+            /* 🆕 ADICIONADO: Abrir pop-up de tranquilização após 2 segundos */
+            setTimeout(function() {
+                document.getElementById('modalTranquiliza').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }, 2000);
+
             mostrarNotificacao('✅ Comprovante enviado para Email e WhatsApp! 📩');
             criarToastCompra();
         }
