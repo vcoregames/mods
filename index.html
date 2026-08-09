@@ -40,6 +40,8 @@
             --azul-claro: #1e3060;
             --branco: #E8ECF0;
             --cinza: #8899AA;
+            --alerta: #ff4444;
+            --alerta-laranja: #ff6b35;
         }
 
         *,*::before,*::after{box-sizing:border-box}
@@ -109,7 +111,7 @@
             position:sticky;top:0;z-index:100;backdrop-filter:blur(15px);
         }
 
-        /* 🆕 Botão de Notificação (Sino) */
+        /* Botão de Notificação (Sino) */
         .btn-notificacao{
             background:none;border:none;cursor:pointer;position:relative;
             margin-left:0.3rem;margin-right:0.3rem;
@@ -137,7 +139,7 @@
             50%{box-shadow:0 0 0 8px rgba(255,68,68,0)}
         }
 
-        /* 🆕 Dropdown de Notificações */
+        /* Dropdown de Notificações */
         .notif-dropdown{
             position:absolute;top:calc(100% + 8px);right:0;
             background:var(--azul-medio);
@@ -344,6 +346,106 @@
         .badge-ubisoft{background:#2a1a3a;color:#b06cff;border:1px solid #b06cff}
         .badge-epic{background:#1a1a1a;color:#fff;border:1px solid #888}
 
+        /* ═══════════ 🆕 ALERTA PULSANTE - ATENÇÃO ARQUIVOS ═══════════ */
+        .alerta-mestre{
+            background:linear-gradient(135deg,rgba(180,20,20,0.22),rgba(100,10,10,0.18));
+            border:3px solid rgba(255,68,68,0.55);
+            border-radius:14px;
+            padding:1.8rem 2rem;
+            margin-bottom:2rem;
+            text-align:center;
+            position:relative;
+            overflow:hidden;
+            animation:pulseAlertaMestre 2.2s ease-in-out infinite;
+        }
+        @keyframes pulseAlertaMestre{
+            0%,100%{
+                border-color:rgba(255,68,68,0.55);
+                box-shadow:0 0 18px rgba(255,68,68,0.25), inset 0 0 18px rgba(255,68,68,0.05);
+                transform:scale(1);
+            }
+            50%{
+                border-color:rgba(255,100,50,0.9);
+                box-shadow:0 0 38px rgba(255,68,68,0.5), inset 0 0 30px rgba(255,68,68,0.12);
+                transform:scale(1.015);
+            }
+        }
+        .alerta-mestre::before{
+            content:'';
+            position:absolute;
+            top:0;left:0;right:0;height:4px;
+            background:linear-gradient(90deg,transparent,#ff4444,#ff6b35,#ff4444,transparent);
+            animation:barraAlerta 1.8s ease-in-out infinite;
+        }
+        @keyframes barraAlerta{
+            0%,100%{opacity:0.6}
+            50%{opacity:1}
+        }
+        .alerta-mestre .alerta-icon-wrap{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            width:56px;height:56px;
+            border-radius:50%;
+            background:rgba(255,68,68,0.18);
+            border:2px solid rgba(255,68,68,0.4);
+            margin-bottom:0.8rem;
+            animation:pulseIconAlerta 1.5s ease-in-out infinite;
+        }
+        @keyframes pulseIconAlerta{
+            0%,100%{box-shadow:0 0 0 0 rgba(255,68,68,0.4)}
+            50%{box-shadow:0 0 0 18px rgba(255,68,68,0)}
+        }
+        .alerta-mestre .alerta-icon{
+            font-size:1.8rem;
+            animation:shakeAlerta 3s ease-in-out infinite;
+        }
+        @keyframes shakeAlerta{
+            0%,90%,100%{transform:rotate(0)}
+            92%{transform:rotate(-8deg)}
+            94%{transform:rotate(8deg)}
+            96%{transform:rotate(-5deg)}
+            98%{transform:rotate(5deg)}
+        }
+        .alerta-mestre h4{
+            color:#ff6b6b;
+            font-weight:900;
+            font-size:1.15rem;
+            margin:0 0 0.6rem;
+            text-transform:uppercase;
+            letter-spacing:1.5px;
+            animation:brilhoTextoAlerta 2s ease-in-out infinite;
+        }
+        @keyframes brilhoTextoAlerta{
+            0%,100%{text-shadow:0 0 8px rgba(255,100,100,0.3)}
+            50%{text-shadow:0 0 22px rgba(255,80,60,0.7),0 0 40px rgba(255,80,60,0.3)}
+        }
+        .alerta-mestre p{
+            color:rgba(255,255,255,0.82);
+            font-size:0.88rem;
+            line-height:1.7;
+            max-width:600px;
+            margin:0 auto;
+            font-weight:500;
+        }
+        .alerta-mestre p strong.destaque-vermelho{
+            color:#ff6b6b;
+            font-weight:800;
+        }
+        .alerta-mestre p .sublinhado-alerta{
+            text-decoration:underline;
+            text-decoration-color:rgba(255,100,100,0.5);
+            text-underline-offset:3px;
+            text-decoration-thickness:2px;
+        }
+        @media(max-width:640px){
+            .alerta-mestre{padding:1.3rem 1rem;}
+            .alerta-mestre h4{font-size:0.95rem;letter-spacing:1px;}
+            .alerta-mestre p{font-size:0.78rem;line-height:1.55;}
+            .alerta-mestre .alerta-icon-wrap{width:44px;height:44px;}
+            .alerta-mestre .alerta-icon{font-size:1.4rem;}
+        }
+
         /* Depoimentos */
         .testimonials-section{background:var(--azul);padding:6rem 1rem}
         .testimonial-card{
@@ -401,7 +503,7 @@
             .faq-answer.open{padding:0.9rem 1rem;}
         }
 
-        /* 🆕 Footer Aprimorado */
+        /* Footer Aprimorado */
         .site-footer{
             background:radial-gradient(circle,rgba(12,21,53,0.98),#000);
             border-top:1px solid rgba(165,255,0,0.08);
@@ -447,7 +549,7 @@
             .footer-container{grid-template-columns:1fr;text-align:center;}
         }
 
-        /* 🆕 Modal Política de Privacidade */
+        /* Modal Política de Privacidade */
         .modal-politica .modal-card{
             max-width:650px;text-align:left;line-height:1.7;
             font-size:0.82rem;color:rgba(255,255,255,0.75);
@@ -710,6 +812,203 @@
         @media(max-width:380px){
             .grid-testimonials{grid-template-columns:1fr;}
         }
+
+        /* ═══════════ SEÇÃO AGRADECIMENTO NEXUS MODS ═══════════ */
+        .nexus-thanks-section{
+            background:linear-gradient(180deg,var(--azul),rgba(12,21,53,0.95));
+            padding:5rem 1rem;position:relative;text-align:center;
+            border-top:1px solid rgba(165,255,0,0.06);
+            border-bottom:1px solid rgba(165,255,0,0.06);
+        }
+        .nexus-card{
+            background:linear-gradient(135deg,rgba(22,34,68,0.95),rgba(12,21,53,0.98));
+            border:2px solid rgba(165,255,0,0.25);border-radius:16px;
+            padding:3rem 2rem;max-width:750px;margin:0 auto;
+            transition:all 0.4s;position:relative;overflow:hidden;
+            box-shadow:0 0 40px rgba(165,255,0,0.05);
+        }
+        .nexus-card::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:3px;
+            background:linear-gradient(90deg,transparent,var(--verde),#5ec8ff,var(--verde),transparent);
+            opacity:0.7;
+        }
+        .nexus-card:hover{
+            border-color:var(--verde);
+            box-shadow:0 12px 50px rgba(165,255,0,0.12);
+            transform:translateY(-4px);
+        }
+        .nexus-card .nexus-icon{
+            font-size:3rem;margin-bottom:1rem;display:block;
+            animation:floatHero 4s ease-in-out infinite;
+        }
+        .nexus-card h3{
+            font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;
+            color:#fff;margin-bottom:0.8rem;
+        }
+        .nexus-card h3 span{color:var(--verde)}
+        .nexus-card p{
+            color:rgba(255,255,255,0.65);font-size:0.9rem;line-height:1.7;
+            max-width:600px;margin:0 auto 1.5rem;
+        }
+        .nexus-link{
+            display:inline-flex;align-items:center;gap:0.6rem;
+            background:rgba(165,255,0,0.08);color:var(--verde);
+            font-weight:700;padding:0.8rem 1.8rem;border-radius:50px;
+            text-decoration:none;font-size:0.9rem;
+            border:1px solid rgba(165,255,0,0.3);
+            transition:all 0.3s;
+        }
+        .nexus-link:hover{
+            background:var(--verde);color:var(--azul);
+            box-shadow:0 0 30px rgba(165,255,0,0.35);
+            transform:translateY(-2px);
+        }
+        .nexus-badges{
+            display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;
+            margin-top:1.2rem;
+        }
+        .nexus-badge{
+            background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+            padding:0.35rem 0.9rem;border-radius:50px;
+            font-size:0.7rem;color:rgba(255,255,255,0.5);
+            font-weight:600;letter-spacing:0.5px;
+        }
+        @media(max-width:640px){
+            .nexus-thanks-section{padding:3rem 1rem;}
+            .nexus-card{padding:2rem 1.2rem;}
+            .nexus-card .nexus-icon{font-size:2.2rem;}
+            .nexus-card h3{font-size:1.1rem;}
+            .nexus-card p{font-size:0.8rem;}
+            .nexus-link{padding:0.65rem 1.3rem;font-size:0.8rem;}
+        }
+
+        /* ═══════════ SEÇÃO CAPTURA DE LEADS ═══════════ */
+        .leads-section{
+            background:linear-gradient(180deg,rgba(12,21,53,0.95),var(--azul));
+            padding:5rem 1rem;position:relative;
+            border-top:1px solid rgba(165,255,0,0.06);
+        }
+        .leads-card{
+            background:linear-gradient(135deg,rgba(22,34,68,0.95),rgba(12,21,53,0.98));
+            border:2px solid rgba(165,255,0,0.25);border-radius:16px;
+            padding:3rem 2rem;max-width:650px;margin:0 auto;
+            transition:all 0.4s;position:relative;overflow:hidden;
+            box-shadow:0 0 40px rgba(165,255,0,0.05);
+        }
+        .leads-card::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:3px;
+            background:linear-gradient(90deg,transparent,var(--verde),#5ec8ff,var(--verde),transparent);
+            opacity:0.7;
+        }
+        .leads-card:hover{
+            border-color:var(--verde);
+            box-shadow:0 12px 50px rgba(165,255,0,0.12);
+            transform:translateY(-4px);
+        }
+        .leads-card .leads-icon{
+            font-size:2.8rem;margin-bottom:0.8rem;display:block;
+            animation:floatHero 4s ease-in-out infinite;
+        }
+        .leads-card h3{
+            font-size:clamp(1.2rem,2.5vw,1.5rem);font-weight:800;
+            color:#fff;margin-bottom:0.4rem;text-align:center;
+        }
+        .leads-card h3 span{color:var(--verde)}
+        .leads-card .leads-sub{
+            color:rgba(255,255,255,0.55);font-size:0.82rem;
+            text-align:center;margin-bottom:1.8rem;line-height:1.5;
+        }
+        .leads-form{display:flex;flex-direction:column;gap:0.8rem;}
+        .leads-form .campo-destaque{
+            background:rgba(0,0,0,0.5)!important;color:#E8ECF0!important;
+            border:2px solid rgba(165,255,0,0.3)!important;border-radius:8px;
+            padding:0.75rem 1rem;font-size:0.88rem;width:100%;
+            outline:none;transition:0.25s;font-family:'Montserrat',sans-serif;
+            resize:vertical;
+        }
+        .leads-form .campo-destaque:focus{
+            border-color:var(--verde)!important;
+            box-shadow:0 0 18px rgba(165,255,0,0.12)!important;
+        }
+        .leads-form .campo-destaque::placeholder{color:rgba(232,236,240,0.35);}
+        .leads-form textarea.campo-destaque{min-height:90px;}
+        .leads-erro{color:#ff4444;font-size:0.75rem;text-align:center;display:none;margin-top:-0.3rem;}
+        .leads-sucesso{color:var(--verde);font-size:0.85rem;text-align:center;display:none;font-weight:700;margin-top:0.5rem;}
+        @media(max-width:640px){
+            .leads-section{padding:3rem 1rem;}
+            .leads-card{padding:2rem 1.2rem;}
+            .leads-card .leads-icon{font-size:2.2rem;}
+            .leads-card h3{font-size:1.1rem;}
+            .leads-card .leads-sub{font-size:0.75rem;}
+            .leads-form .campo-destaque{font-size:0.8rem;padding:0.65rem 0.85rem;}
+        }
+
+        /* ═══════════ MODAL EXIT INTENT REFORMULADO ═══════════ */
+        .modal-exit .modal-card{
+            max-width:520px;text-align:center;padding:2rem 1.8rem;
+            border:2px solid rgba(165,255,0,0.35);
+            animation:scaleIn 0.35s ease-out;
+        }
+        @keyframes scaleIn{
+            from{transform:scale(0.85);opacity:0}
+            to{transform:scale(1);opacity:1}
+        }
+        .modal-exit .exit-icon{
+            font-size:3.5rem;margin-bottom:0.3rem;
+            animation:floatHero 2.5s ease-in-out infinite;
+        }
+        .modal-exit h2{
+            font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:0.3rem;line-height:1.3;
+        }
+        .modal-exit h2 span{color:var(--verde)}
+        .modal-exit .exit-sub{
+            color:rgba(255,255,255,0.6);font-size:0.82rem;margin-bottom:1rem;line-height:1.5;
+        }
+        .modal-exit .exit-alerta{
+            background:rgba(255,68,68,0.08);border:2px dashed rgba(255,68,68,0.3);
+            border-radius:12px;padding:1.2rem 1rem;margin-bottom:1rem;
+        }
+        .modal-exit .exit-alerta .alerta-titulo{
+            font-weight:900;color:#ff6666;font-size:1rem;margin-bottom:0.3rem;
+        }
+        .modal-exit .exit-alerta .alerta-desc{
+            color:rgba(255,255,255,0.65);font-size:0.78rem;line-height:1.5;
+        }
+        .modal-exit .exit-countdown-wrap{
+            background:rgba(0,0,0,0.4);border:1px solid rgba(165,255,0,0.2);
+            border-radius:10px;padding:0.8rem 0.5rem;margin-bottom:1rem;
+        }
+        .modal-exit .exit-countdown-wrap .countdown-label-exit{
+            font-size:0.65rem;color:rgba(255,255,255,0.5);
+            text-transform:uppercase;letter-spacing:2px;margin-bottom:0.4rem;
+        }
+        .modal-exit .countdown-box{
+            background:rgba(0,0,0,0.6);border:1px solid rgba(255,68,68,0.3);
+            border-radius:6px;padding:5px 8px;text-align:center;min-width:42px;
+        }
+        .modal-exit .countdown-num{
+            display:block;font-size:1.2rem;font-weight:900;color:#ff6666;line-height:1;
+        }
+        .modal-exit .countdown-label{
+            display:block;font-size:0.5rem;font-weight:700;
+            color:rgba(255,255,255,0.4);text-transform:uppercase;
+            letter-spacing:1px;margin-top:2px;
+        }
+        .modal-exit .countdown-sep{font-size:1.2rem;font-weight:900;color:#ff6666}
+        .modal-exit .btn-fechar-exit{
+            margin-top:0.5rem;background:transparent;color:rgba(255,255,255,0.35);
+            border:none;cursor:pointer;font-size:0.75rem;text-decoration:underline;
+            font-family:'Montserrat',sans-serif;transition:color 0.25s;
+        }
+        .modal-exit .btn-fechar-exit:hover{color:#fff;}
+        @media(max-width:480px){
+            .modal-exit .modal-card{padding:1.5rem 1rem;}
+            .modal-exit h2{font-size:1.2rem;}
+            .modal-exit .exit-icon{font-size:2.5rem;}
+            .modal-exit .countdown-box{min-width:34px;padding:4px 6px;}
+            .modal-exit .countdown-num{font-size:1rem;}
+            .modal-exit .countdown-sep{font-size:1rem;}
+        }
     </style>
 </head>
 <body>
@@ -727,13 +1026,13 @@
                 <a href="https://facebook.com/vcoregames" target="_blank" class="rede-icon" title="Facebook"><i class="fa fa-facebook-square"></i></a>
                 <a href="https://wa.me/5516981097916" target="_blank" class="rede-icon" title="WhatsApp Suporte"><i class="fa fa-whatsapp"></i></a>
 
-                <!-- 🆕 BOTÃO DE NOTIFICAÇÕES (SINO) -->
+                <!-- BOTÃO DE NOTIFICAÇÕES (SINO) -->
                 <button class="btn-notificacao" onclick="toggleNotificacoes(event)" title="Notificações" aria-label="Notificações">
                     <i class="fa fa-bell" id="sinoIcon"></i>
                     <span class="badge-notificacao" id="badgeNotificacao">0</span>
                 </button>
 
-                <!-- 🆕 DROPDOWN DE NOTIFICAÇÕES -->
+                <!-- DROPDOWN DE NOTIFICAÇÕES -->
                 <div class="notif-dropdown" id="notifDropdown">
                     <div class="notif-header">
                         <h4>🔔 Notificações</h4>
@@ -856,9 +1155,25 @@
     <section class="instalacao-section" id="instalacao" style="position:relative;">
         <div class="container-medium">
             <p class="subtitle-tag-center">GUIA COMPLETO</p>
-            <h2 style="text-align:center;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--verde);margin:0.5rem 0 2.5rem;">
+            <h2 style="text-align:center;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--verde);margin:0.5rem 0 1.5rem;">
                 📖 Como Instalar os Mods
             </h2>
+
+            <!-- ═══════════ 🆕 ALERTA DE ATENÇÃO - ARQUIVOS NÃO PODEM SER DESCOMPACTADOS ═══════════ -->
+            <div class="alerta-mestre">
+                <div class="alerta-icon-wrap">
+                    <span class="alerta-icon">⚠️</span>
+                </div>
+                <h4>🚨 ATENÇÃO! LEIA ANTES DE CONTINUAR</h4>
+                <p>
+                    Os arquivos adquiridos <strong class="destaque-vermelho">NÃO PODEM SER DESCOMPACTADOS, EXTRAÍDOS OU ALTERADOS</strong> de forma alguma!
+                    Eles <strong class="destaque-vermelho">já vêm 100% configurados</strong> para os mods que estão dentro do pacote.
+                    <br><br>
+                    ⛔ <span class="sublinhado-alerta">Não é possível utilizar estes arquivos para instalar outros mods</span> — pois é necessária a <strong class="destaque-vermelho">pasta mestre original</strong>. Sem ela, <strong class="destaque-vermelho">não há possibilidade de instalação</strong> de outros conteúdos.
+                    <br><br>
+                    ❌ <strong class="destaque-vermelho">A VCORE GAMES NÃO SE RESPONSABILIZA</strong> por arquivos corrompidos ou danificados por tentativa de modificação, extração, descompactação ou uso indevido. Os arquivos são entregues prontos para uso — <strong class="destaque-vermelho">copie diretamente para a pasta raiz e jogue</strong>, sem qualquer alteração!
+                </p>
+            </div>
 
             <div style="display:flex;flex-direction:column;gap:1.5rem;">
 
@@ -1176,7 +1491,67 @@
         </div>
     </section>
 
-    <!-- ═══════════ 🆕 FOOTER COMPLETO ═══════════ -->
+    <!-- ═══════════ SEÇÃO AGRADECIMENTO NEXUS MODS ═══════════ -->
+    <section class="nexus-thanks-section" id="nexus-thanks">
+        <div class="container-narrow">
+            <p class="subtitle-tag-center">COMUNIDADE</p>
+            <h2 style="text-align:center;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;color:#fff;margin:0.5rem 0 2rem;line-height:1.3;">
+                Nosso Agradecimento<br>à Comunidade <span style="color:var(--verde);">Modding</span>
+            </h2>
+
+            <div class="nexus-card">
+                <span class="nexus-icon">🏛️</span>
+                <h3>Agradecemos ao <span>Nexus Mods</span></h3>
+                <p>
+                    Queremos expressar nossa sincera gratidão a todos os <strong style="color:#fff;">moderadores, administradores e colaboradores</strong> do <strong style="color:var(--verde);">Nexus Mods</strong>.
+                    O trabalho incansável de vocês em manter a plataforma organizada, segura e acessível é o que permite que a comunidade de modding cresça e prospere.
+                    Sem a dedicação de cada um de vocês, o universo dos mods não seria o mesmo.
+                </p>
+                <a href="https://www.nexusmods.com/" target="_blank" rel="noopener noreferrer" class="nexus-link">
+                    🌐 Visitar Nexus Mods <i class="fa fa-external-link"></i>
+                </a>
+                <div class="nexus-badges">
+                    <span class="nexus-badge">🏆 Moderação</span>
+                    <span class="nexus-badge">🛡️ Segurança</span>
+                    <span class="nexus-badge">📚 Organização</span>
+                    <span class="nexus-badge">🤝 Comunidade</span>
+                    <span class="nexus-badge">💚 Suporte</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ SEÇÃO CAPTURA DE LEADS ═══════════ -->
+    <section class="leads-section" id="sugestoes">
+        <div class="container-narrow">
+            <p class="subtitle-tag-center">SUGESTÕES</p>
+            <h2 style="text-align:center;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;color:#fff;margin:0.5rem 0 2rem;line-height:1.3;">
+                Qual Mod Você<br><span style="color:var(--verde);">Gostaria de Ver?</span>
+            </h2>
+
+            <div class="leads-card">
+                <span class="leads-icon">💡</span>
+                <h3>Envie sua <span>Sugestão</span></h3>
+                <p class="leads-sub">
+                    Quer um mod específico ou precisa de ajuda com a instalação?<br>
+                    Preencha o formulário abaixo e nossa equipe entrará em contato!
+                </p>
+                <form class="leads-form" id="leadsForm" onsubmit="enviarLead(event)">
+                    <input type="text" id="leadNome" placeholder="👤 Seu nome completo *" class="campo-destaque" required>
+                    <input type="email" id="leadEmail" placeholder="📧 Seu melhor e-mail *" class="campo-destaque" required>
+                    <input type="tel" id="leadWhatsapp" placeholder="📱 WhatsApp (com DDD) *" class="campo-destaque" required>
+                    <textarea id="leadMensagem" placeholder="💬 Conte pra gente: qual mod você gostaria de ver no nosso site? Ou precisa de ajuda com a instalação de algum mod? *" class="campo-destaque" required></textarea>
+                    <p class="leads-erro" id="leadsErro"></p>
+                    <button type="submit" class="btn-primario" style="width:100%;">
+                        🚀 Enviar Sugestão <i class="fa fa-paper-plane"></i>
+                    </button>
+                    <p class="leads-sucesso" id="leadsSucesso">✅ Sugestão enviada com sucesso! Entraremos em contato em breve.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FOOTER COMPLETO ═══════════ -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-col">
@@ -1243,7 +1618,9 @@
                 </div>
             </div>
             <div style="background:rgba(165,255,0,0.04);border:2px solid rgba(165,255,0,0.2);border-radius:12px;padding:1rem;margin-bottom:1rem;">
-                <p style="font-size:0.8rem;font-weight:700;color:var(--verde);margin-bottom:0.75rem;">📋 Seus dados:</p>
+                <p style="font-size:0.8rem;font-weight:700;color:var(--verde);margin-bottom:0.75rem;">
+                    📋 Seus dados <span style="font-size:0.6rem;color:#8899AA;">(🔒 criptografados)</span>:
+                </p>
                 <input type="text" id="clienteNome" placeholder="👤 Nome completo *" class="campo-destaque" style="margin-bottom:0.5rem;">
                 <input type="email" id="clienteEmail" placeholder="📧 Seu melhor e-mail *" class="campo-destaque">
                 <p style="font-size:0.65rem;color:#8899AA;margin-top:0.5rem;">⚠️ O link de download será enviado para este e-mail.</p>
@@ -1280,7 +1657,7 @@
         </div>
     </div>
 
-    <!-- ═══════════ 🆕 MODAL POLÍTICA DE PRIVACIDADE ═══════════ -->
+    <!-- ═══════════ MODAL POLÍTICA DE PRIVACIDADE ═══════════ -->
     <div class="modal-overlay modal-politica" id="modalPolitica">
         <div class="modal-card">
             <button class="modal-close" onclick="fecharPoliticaPrivacidade()">&times;</button>
@@ -1312,7 +1689,7 @@
             <p>A VCORE GAMES <strong>não vende, aluga ou compartilha</strong> seus dados pessoais com terceiros para fins de marketing. Seus dados são acessados apenas por nossa equipe interna para fins de suporte e entrega do produto.</p>
 
             <h3>5. Armazenamento e Segurança</h3>
-            <p>Seus dados são armazenados em ambiente seguro com acesso restrito. Utilizamos medidas técnicas de proteção como criptografia e controle de acesso. Os comprovantes PIX são armazenados apenas para registro fiscal obrigatório.</p>
+            <p>Seus dados são armazenados em ambiente seguro com acesso restrito. Utilizamos medidas técnicas de proteção como <strong>criptografia AES-GCM</strong> e controle de acesso. Os comprovantes PIX são armazenados apenas para registro fiscal obrigatório.</p>
 
             <h3>6. Seus Direitos (LGPD)</h3>
             <p>De acordo com a Lei Geral de Proteção de Dados (Lei 13.709/2018), você tem direito a:</p>
@@ -1334,6 +1711,40 @@
             <div style="text-align:center;margin-top:1.5rem;">
                 <button onclick="fecharPoliticaPrivacidade()" class="btn-primario" style="font-size:0.85rem;">Entendi e Aceito</button>
             </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ MODAL EXIT INTENT (POP-UP DE SAÍDA) ═══════════ -->
+    <div class="modal-overlay modal-exit" id="modalExit">
+        <div class="modal-card">
+            <button class="modal-close" onclick="fecharModalExit()">&times;</button>
+            <div class="exit-icon">⏳</div>
+            <h2>⚠️ Não saia <span>agora!</span></h2>
+            <p class="exit-sub">
+                A chance de garantir seus mods com <strong style="color:var(--verde);">40% de desconto</strong> é agora!
+            </p>
+            <div class="exit-alerta">
+                <p class="alerta-titulo">🔥 QUALQUER PACK ESTÁ COM 40% OFF!</p>
+                <p class="alerta-desc">
+                    Recruta, Sargento ou General — <strong style="color:#fff;">todos os pacotes</strong> estão com desconto máximo. Mas essa oferta não vai durar para sempre...
+                </p>
+            </div>
+            <div class="exit-countdown-wrap">
+                <p class="countdown-label-exit">⏱️ ESSE DESCONTO ACABA EM:</p>
+                <div class="countdown-container" style="margin-top:0.3rem;">
+                    <div class="countdown-box"><span class="countdown-num" id="exitCountDias">00</span><span class="countdown-label">Dias</span></div>
+                    <span class="countdown-sep">:</span>
+                    <div class="countdown-box"><span class="countdown-num" id="exitCountHoras">00</span><span class="countdown-label">Horas</span></div>
+                    <span class="countdown-sep">:</span>
+                    <div class="countdown-box"><span class="countdown-num" id="exitCountMin">00</span><span class="countdown-label">Min</span></div>
+                    <span class="countdown-sep">:</span>
+                    <div class="countdown-box"><span class="countdown-num" id="exitCountSeg">00</span><span class="countdown-label">Seg</span></div>
+                </div>
+            </div>
+            <a href="#pacotes" onclick="fecharModalExit()" class="btn-primario" style="width:100%;margin-bottom:0.5rem;">
+                🎯 Aproveitar 40% OFF Agora <i class="fa fa-arrow-right"></i>
+            </a>
+            <button onclick="fecharModalExit()" class="btn-fechar-exit">Não, obrigado — quero sair</button>
         </div>
     </div>
 
@@ -1361,7 +1772,196 @@
         let carrinho = [];
         let dadosCliente = { nome: '', email: '' };
 
-        // ═══════════ 🆕 SISTEMA DE NOTIFICAÇÕES ═══════════
+        // ═══════════ SISTEMA DE CRIPTOGRAFIA AES-GCM ═══════════
+        const CRYPTO_CONFIG = {
+            secretKey: 'vcore-games-2026-seguranca-cliente-dados',
+            salt: 'vcore-salt-mod-ghost'
+        };
+
+        async function derivarChave(senha, salt) {
+            const encoder = new TextEncoder();
+            const keyMaterial = await crypto.subtle.importKey(
+                'raw',
+                encoder.encode(senha),
+                'PBKDF2',
+                false,
+                ['deriveBits', 'deriveKey']
+            );
+            const derivedKey = await crypto.subtle.deriveKey(
+                {
+                    name: 'PBKDF2',
+                    salt: encoder.encode(salt),
+                    iterations: 200000,
+                    hash: 'SHA-256'
+                },
+                keyMaterial,
+                { name: 'AES-GCM', length: 256 },
+                false,
+                ['encrypt', 'decrypt']
+            );
+            return { derivedKey, encoder };
+        }
+
+        function arrayBufferToBase64(buffer) {
+            const bytes = new Uint8Array(buffer);
+            let binary = '';
+            bytes.forEach(b => binary += String.fromCharCode(b));
+            return btoa(binary);
+        }
+
+        function base64ToArrayBuffer(base64) {
+            const binary = atob(base64);
+            const bytes = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) {
+                bytes[i] = binary.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        async function criptografarDado(textoPlano) {
+            try {
+                if (!textoPlano || textoPlano.trim() === '') return '';
+                const { derivedKey, encoder } = await derivarChave(CRYPTO_CONFIG.secretKey, CRYPTO_CONFIG.salt);
+                const iv = crypto.getRandomValues(new Uint8Array(12));
+                const dadosCodificados = encoder.encode(textoPlano);
+                const ciphertext = await crypto.subtle.encrypt(
+                    { name: 'AES-GCM', iv: iv },
+                    derivedKey,
+                    dadosCodificados
+                );
+                const pacote = {
+                    iv: arrayBufferToBase64(iv.buffer),
+                    ciphertext: arrayBufferToBase64(ciphertext)
+                };
+                return btoa(JSON.stringify(pacote));
+            } catch (err) {
+                console.error('Erro ao criptografar:', err);
+                return '';
+            }
+        }
+
+        async function descriptografarDado(dadoCriptografado) {
+            try {
+                if (!dadoCriptografado || dadoCriptografado.trim() === '') return '';
+                const pacote = JSON.parse(atob(dadoCriptografado));
+                const { derivedKey, encoder } = await derivarChave(CRYPTO_CONFIG.secretKey, CRYPTO_CONFIG.salt);
+                const iv = new Uint8Array(base64ToArrayBuffer(pacote.iv));
+                const ciphertext = base64ToArrayBuffer(pacote.ciphertext);
+                const plaintextBuffer = await crypto.subtle.decrypt(
+                    { name: 'AES-GCM', iv: iv },
+                    derivedKey,
+                    ciphertext
+                );
+                return new TextDecoder().decode(plaintextBuffer);
+            } catch (err) {
+                console.error('Erro ao descriptografar:', err);
+                return '';
+            }
+        }
+
+        async function salvarDadosClienteCriptografados(nome, email) {
+            const nomeCripto = await criptografarDado(nome);
+            const emailCripto = await criptografarDado(email);
+            localStorage.setItem('vcore_cliente_nome_enc', nomeCripto);
+            localStorage.setItem('vcore_cliente_email_enc', emailCripto);
+        }
+
+        async function carregarDadosClienteDescriptografados() {
+            const nomeCripto = localStorage.getItem('vcore_cliente_nome_enc');
+            const emailCripto = localStorage.getItem('vcore_cliente_email_enc');
+            if (nomeCripto && emailCripto) {
+                const nome = await descriptografarDado(nomeCripto);
+                const email = await descriptografarDado(emailCripto);
+                if (nome && email) {
+                    document.getElementById('clienteNome').value = nome;
+                    document.getElementById('clienteEmail').value = email;
+                    dadosCliente = { nome, email };
+                }
+            }
+        }
+
+        // ═══════════ CAPTURA DE LEADS ═══════════
+        function enviarLead(event) {
+            event.preventDefault();
+            const nome = document.getElementById('leadNome').value.trim();
+            const email = document.getElementById('leadEmail').value.trim();
+            const whatsapp = document.getElementById('leadWhatsapp').value.trim();
+            const mensagem = document.getElementById('leadMensagem').value.trim();
+            const erro = document.getElementById('leadsErro');
+            const sucesso = document.getElementById('leadsSucesso');
+
+            erro.style.display = 'none';
+            sucesso.style.display = 'none';
+
+            if (!nome) { erro.style.display = 'block'; erro.innerText = '⚠️ Preencha seu nome!'; return; }
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { erro.style.display = 'block'; erro.innerText = '⚠️ E-mail inválido!'; return; }
+            if (!whatsapp || whatsapp.replace(/\D/g, '').length < 10) { erro.style.display = 'block'; erro.innerText = '⚠️ WhatsApp inválido! Informe com DDD.'; return; }
+            if (!mensagem || mensagem.length < 5) { erro.style.display = 'block'; erro.innerText = '⚠️ Escreva sua sugestão ou dúvida!'; return; }
+
+            const data = new Date().toLocaleString('pt-BR');
+            const assunto = '💡 NOVA SUGESTÃO DE MOD - ' + nome;
+            const corpo = 'NOVA SUGESTÃO VCORE GAMES\n\n👤 Nome: ' + nome + '\n📧 Email: ' + email + '\n📱 WhatsApp: ' + whatsapp + '\n💬 Mensagem: ' + mensagem + '\n📅 Data: ' + data;
+
+            window.open('mailto:' + EMAIL_ADMIN + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo), '_blank');
+
+            const wpp = '💡 *NOVA SUGESTÃO DE MOD*\n👤 ' + nome + '\n📧 ' + email + '\n📱 ' + whatsapp + '\n💬 ' + mensagem;
+            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(wpp), '_blank');
+
+            document.getElementById('leadsForm').reset();
+            sucesso.style.display = 'block';
+            mostrarToast('✅ Sugestão enviada com sucesso! 🚀');
+
+            setTimeout(function() {
+                sucesso.style.display = 'none';
+            }, 6000);
+        }
+
+        // ═══════════ EXIT INTENT - POPUP DE SAÍDA ═══════════
+        let exitModalJaMostrado = false;
+        let exitTimer = null;
+
+        function mostrarModalExit() {
+            if (exitModalJaMostrado) return;
+            exitModalJaMostrado = true;
+            document.getElementById('modalExit').classList.add('active');
+        }
+
+        function fecharModalExit() {
+            document.getElementById('modalExit').classList.remove('active');
+        }
+
+        document.addEventListener('mouseout', function(e) {
+            if (exitModalJaMostrado) return;
+            if (e.clientY <= 0 && e.relatedTarget === null) {
+                exitTimer = setTimeout(mostrarModalExit, 400);
+            }
+        });
+
+        document.addEventListener('mouseover', function(e) {
+            if (exitTimer && e.clientY > 10) {
+                clearTimeout(exitTimer);
+                exitTimer = null;
+            }
+        });
+
+        let lastScrollY = window.scrollY;
+        let scrollExitCount = 0;
+        window.addEventListener('scroll', function() {
+            const currentScrollY = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (docHeight <= 0) return;
+
+            const scrollPercent = (currentScrollY / docHeight) * 100;
+            if (scrollPercent > 60 && currentScrollY < lastScrollY && scrollExitCount < 1 && !exitModalJaMostrado) {
+                scrollExitCount++;
+                setTimeout(function() {
+                    if (!exitModalJaMostrado) mostrarModalExit();
+                }, 1500);
+            }
+            lastScrollY = currentScrollY;
+        });
+
+        // ═══════════ SISTEMA DE NOTIFICAÇÕES ═══════════
         const NOTIFICACOES = [
             { id: 1, titulo: '🔥 Promoção Relâmpago!', texto: '40% OFF em todos os pacotes por tempo limitado!', icone: '💰', lida: false, data: '2026-08-09' },
             { id: 2, titulo: '🆕 Novo Pacote General', texto: 'Já disponível com todos os mods + Kit Tático.', icone: '💎', lida: false, data: '2026-08-08' },
@@ -1373,8 +1973,8 @@
             const storage = localStorage.getItem('vcore_notificacoes');
             if (storage) {
                 const saved = JSON.parse(storage);
-                NOTIFICACOES.forEach(n => {
-                    const found = saved.find(s => s.id === n.id);
+                NOTIFICACOES.forEach(function(n) {
+                    const found = saved.find(function(s) { return s.id === n.id; });
                     if (found) n.lida = found.lida;
                 });
             }
@@ -1387,7 +1987,7 @@
         }
 
         function atualizarBadgeNotificacoes() {
-            const naoLidas = NOTIFICACOES.filter(n => !n.lida).length;
+            const naoLidas = NOTIFICACOES.filter(function(n) { return !n.lida; }).length;
             const badge = document.getElementById('badgeNotificacao');
             if (naoLidas > 0) {
                 badge.style.display = 'flex';
@@ -1410,36 +2010,36 @@
                 if (NOTIFICACOES.length === 0) {
                     body.innerHTML = '<div class="notif-empty">🔔 Nenhuma notificação no momento.</div>';
                 } else {
-                    body.innerHTML = NOTIFICACOES.map(n => `
-                        <div class="notif-item" onclick="marcarComoLida(${n.id})" style="${n.lida ? 'opacity:0.5;' : ''}">
-                            <div class="notif-icone">${n.icone}</div>
-                            <div class="notif-conteudo">
-                                <strong>${n.titulo}</strong>
-                                <span>${n.texto} · ${formatarData(n.data)}</span>
-                            </div>
-                            ${!n.lida ? '<div class="notif-dot"></div>' : ''}
-                        </div>
-                    `).join('');
+                    body.innerHTML = NOTIFICACOES.map(function(n) {
+                        const estilo = n.lida ? 'opacity:0.5;' : '';
+                        const dot = !n.lida ? '<div class="notif-dot"></div>' : '';
+                        return '<div class="notif-item" onclick="marcarComoLida(' + n.id + ')" style="' + estilo + '">' +
+                            '<div class="notif-icone">' + n.icone + '</div>' +
+                            '<div class="notif-conteudo">' +
+                            '<strong>' + n.titulo + '</strong>' +
+                            '<span>' + n.texto + ' · ' + formatarData(n.data) + '</span>' +
+                            '</div>' + dot + '</div>';
+                    }).join('');
                 }
                 dropdown.classList.add('ativo');
                 sino.classList.add('tocando');
-                setTimeout(() => sino.classList.remove('tocando'), 500);
+                setTimeout(function() { sino.classList.remove('tocando'); }, 500);
             }
         }
 
         function marcarComoLida(id) {
-            const notif = NOTIFICACOES.find(n => n.id === id);
+            const notif = NOTIFICACOES.find(function(n) { return n.id === id; });
             if (notif) {
                 notif.lida = true;
                 salvarNotificacoes();
                 atualizarBadgeNotificacoes();
-                toggleNotificacoes({ stopPropagation: () => {} });
-                setTimeout(() => toggleNotificacoes({ stopPropagation: () => {} }), 50);
+                toggleNotificacoes({ stopPropagation: function() {} });
+                setTimeout(function() { toggleNotificacoes({ stopPropagation: function() {} }); }, 50);
             }
         }
 
         function marcarTodasLidas() {
-            NOTIFICACOES.forEach(n => n.lida = true);
+            NOTIFICACOES.forEach(function(n) { n.lida = true; });
             salvarNotificacoes();
             atualizarBadgeNotificacoes();
             document.getElementById('notifDropdown').classList.remove('ativo');
@@ -1458,7 +2058,7 @@
             }
         });
 
-        // ═══════════ 🆕 POLÍTICA DE PRIVACIDADE ═══════════
+        // ═══════════ POLÍTICA DE PRIVACIDADE ═══════════
         function abrirPoliticaPrivacidade() {
             document.getElementById('modalPolitica').classList.add('active');
         }
@@ -1467,7 +2067,7 @@
             document.getElementById('modalPolitica').classList.remove('active');
         }
 
-        // Countdown 48h
+        // Countdown 48h (principal + exit intent sincronizados)
         (function() {
             const key = 'vcore_promo_dl_v3';
             let dl = localStorage.getItem(key);
@@ -1479,10 +2079,29 @@
 
             function tick() {
                 const r = Math.max(0, dl - Date.now());
-                document.getElementById('countDias').innerText = String(Math.floor(r / 86400000)).padStart(2, '0');
-                document.getElementById('countHoras').innerText = String(Math.floor((r % 86400000) / 3600000)).padStart(2, '0');
-                document.getElementById('countMin').innerText = String(Math.floor((r % 3600000) / 60000)).padStart(2, '0');
-                document.getElementById('countSeg').innerText = String(Math.floor((r % 60000) / 1000)).padStart(2, '0');
+                const dias = String(Math.floor(r / 86400000)).padStart(2, '0');
+                const horas = String(Math.floor((r % 86400000) / 3600000)).padStart(2, '0');
+                const min = String(Math.floor((r % 3600000) / 60000)).padStart(2, '0');
+                const seg = String(Math.floor((r % 60000) / 1000)).padStart(2, '0');
+
+                const countDias = document.getElementById('countDias');
+                const countHoras = document.getElementById('countHoras');
+                const countMin = document.getElementById('countMin');
+                const countSeg = document.getElementById('countSeg');
+                if (countDias) countDias.innerText = dias;
+                if (countHoras) countHoras.innerText = horas;
+                if (countMin) countMin.innerText = min;
+                if (countSeg) countSeg.innerText = seg;
+
+                const exitDias = document.getElementById('exitCountDias');
+                const exitHoras = document.getElementById('exitCountHoras');
+                const exitMin = document.getElementById('exitCountMin');
+                const exitSeg = document.getElementById('exitCountSeg');
+                if (exitDias) exitDias.innerText = dias;
+                if (exitHoras) exitHoras.innerText = horas;
+                if (exitMin) exitMin.innerText = min;
+                if (exitSeg) exitSeg.innerText = seg;
+
                 if (r > 0) setTimeout(tick, 1000);
             }
             tick();
@@ -1493,9 +2112,9 @@
             const answer = btn.nextElementSibling;
             const icon = btn.querySelector('.faq-icon');
             const isOpen = answer.classList.contains('open');
-            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-            document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotated'));
-            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+            document.querySelectorAll('.faq-answer').forEach(function(a) { a.classList.remove('open'); });
+            document.querySelectorAll('.faq-icon').forEach(function(i) { i.classList.remove('rotated'); });
+            document.querySelectorAll('.faq-question').forEach(function(q) { q.classList.remove('active'); });
             if (!isOpen) {
                 answer.classList.add('open');
                 icon.classList.add('rotated');
@@ -1505,23 +2124,23 @@
 
         // Carrinho
         function adicionarAoCarrinho(nome, preco) {
-            const existe = carrinho.find(i => i.nome === nome);
+            const existe = carrinho.find(function(i) { return i.nome === nome; });
             if (existe) existe.qtd++;
-            else carrinho.push({ nome, preco, qtd: 1 });
+            else carrinho.push({ nome: nome, preco: preco, qtd: 1 });
             atualizarCarrinho();
             mostrarToast(nome.split(' - ')[0] + ' adicionado! 🛒');
         }
 
         function removerDoCarrinho(nome) {
-            carrinho = carrinho.filter(i => i.nome !== nome);
+            carrinho = carrinho.filter(function(i) { return i.nome !== nome; });
             atualizarCarrinho();
         }
 
         function alterarQtd(nome, delta) {
-            const item = carrinho.find(i => i.nome === nome);
+            const item = carrinho.find(function(i) { return i.nome === nome; });
             if (!item) return;
             item.qtd += delta;
-            if (item.qtd <= 0) carrinho = carrinho.filter(i => i.nome !== nome);
+            if (item.qtd <= 0) carrinho = carrinho.filter(function(i) { return i.nome !== nome; });
             atualizarCarrinho();
         }
 
@@ -1532,8 +2151,8 @@
             const barra = document.getElementById('barraTotal');
             const barraV = document.getElementById('barraTotalValor');
             const barraI = document.getElementById('barraTotalItens');
-            const totalItens = carrinho.reduce((s, i) => s + i.qtd, 0);
-            const totalValor = carrinho.reduce((s, i) => s + i.preco * i.qtd, 0);
+            const totalItens = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0);
+            const totalValor = carrinho.reduce(function(s, i) { return s + i.preco * i.qtd; }, 0);
             const tf = 'R$ ' + totalValor.toFixed(2).replace('.', ',');
 
             if (carrinho.length === 0) {
@@ -1546,20 +2165,19 @@
             } else {
                 badge.style.display = 'flex';
                 badge.innerText = totalItens;
-                lista.innerHTML = carrinho.map(item => {
+                lista.innerHTML = carrinho.map(function(item) {
                     const sub = (item.preco * item.qtd).toFixed(2).replace('.', ',');
                     const pu = item.preco.toFixed(2).replace('.', ',');
                     const nomeEsc = item.nome.replace(/'/g, "\\'");
-                    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.04);gap:0.3rem;flex-wrap:wrap;">
-                <div style="flex:1;min-width:100px;"><strong style="font-size:0.82rem;">${item.nome}</strong><br><span style="font-size:0.7rem;color:#8899AA;">R$ ${pu} cada</span></div>
-                <div style="display:flex;align-items:center;gap:4px;">
-                  <button onclick="alterarQtd('${nomeEsc}',-1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">−</button>
-                  <span style="font-weight:700;min-width:18px;text-align:center;">${item.qtd}</span>
-                  <button onclick="alterarQtd('${nomeEsc}',1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">+</button>
-                  <span style="font-weight:700;min-width:55px;text-align:right;font-size:0.82rem;">R$ ${sub}</span>
-                  <button onclick="removerDoCarrinho('${nomeEsc}')" style="color:#ff4444;font-weight:700;background:none;border:none;cursor:pointer;">✕</button>
-                </div>
-              </div>`;
+                    return '<div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.04);gap:0.3rem;flex-wrap:wrap;">' +
+                        '<div style="flex:1;min-width:100px;"><strong style="font-size:0.82rem;">' + item.nome + '</strong><br><span style="font-size:0.7rem;color:#8899AA;">R$ ' + pu + ' cada</span></div>' +
+                        '<div style="display:flex;align-items:center;gap:4px;">' +
+                        '<button onclick="alterarQtd(\'' + nomeEsc + '\',-1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">−</button>' +
+                        '<span style="font-weight:700;min-width:18px;text-align:center;">' + item.qtd + '</span>' +
+                        '<button onclick="alterarQtd(\'' + nomeEsc + '\',1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">+</button>' +
+                        '<span style="font-weight:700;min-width:55px;text-align:right;font-size:0.82rem;">R$ ' + sub + '</span>' +
+                        '<button onclick="removerDoCarrinho(\'' + nomeEsc + '\')" style="color:#ff4444;font-weight:700;background:none;border:none;cursor:pointer;">✕</button>' +
+                        '</div></div>';
                 }).join('');
                 totalEl.innerText = tf;
                 barraV.innerText = tf;
@@ -1573,40 +2191,42 @@
             const nome = document.getElementById('clienteNome').value.trim();
             const email = document.getElementById('clienteEmail').value.trim();
             const erro = document.getElementById('carrinhoErro');
-            if (!nome) { erro.style.display = 'block';
-                erro.innerText = '⚠️ Preencha seu nome!'; return; }
-            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { erro.style.display = 'block';
-                erro.innerText = '⚠️ E-mail inválido!'; return; }
+            if (!nome) { erro.style.display = 'block'; erro.innerText = '⚠️ Preencha seu nome!'; return; }
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { erro.style.display = 'block'; erro.innerText = '⚠️ E-mail inválido!'; return; }
             erro.style.display = 'none';
-            dadosCliente = { nome, email: email.toLowerCase() };
-            const total = carrinho.reduce((s, i) => s + i.preco * i.qtd, 0);
+            dadosCliente = { nome: nome, email: email.toLowerCase() };
+            const total = carrinho.reduce(function(s, i) { return s + i.preco * i.qtd; }, 0);
             document.getElementById('pixValor').innerText = 'R$ ' + total.toFixed(2).replace('.', ',');
             document.getElementById('modalCarrinho').classList.remove('active');
             document.getElementById('modalPix').classList.add('active');
+
+            salvarDadosClienteCriptografados(nome, email.toLowerCase());
         }
 
         function copiarChavePix() {
-            navigator.clipboard.writeText(CHAVE_PIX).then(() => mostrarToast('✅ Chave PIX copiada!'));
+            navigator.clipboard.writeText(CHAVE_PIX).then(function() { mostrarToast('✅ Chave PIX copiada!'); });
         }
 
         function enviarComprovante() {
             if (!dadosCliente.nome || !dadosCliente.email) { mostrarToast('⚠️ Dados do cliente não encontrados.'); return; }
-            const itens = carrinho.map(i => i.qtd + 'x ' + i.nome).join(', ');
-            const total = carrinho.reduce((s, i) => s + i.preco * i.qtd, 0);
+            const itens = carrinho.map(function(i) { return i.qtd + 'x ' + i.nome; }).join(', ');
+            const total = carrinho.reduce(function(s, i) { return s + i.preco * i.qtd; }, 0);
             const tf = 'R$ ' + total.toFixed(2).replace('.', ',');
             const data = new Date().toLocaleString('pt-BR');
 
             const assunto = '🔔 NOVA COMPRA - ' + dadosCliente.nome;
-            const corpo = `NOVA COMPRA VCORE GAMES\n\n👤 ${dadosCliente.nome}\n📧 ${dadosCliente.email}\n📦 ${itens}\n💰 ${tf}\n📅 ${data}\n🔑 PIX: ${CHAVE_PIX}`;
+            const corpo = 'NOVA COMPRA VCORE GAMES\n\n👤 ' + dadosCliente.nome + '\n📧 ' + dadosCliente.email + '\n📦 ' + itens + '\n💰 ' + tf + '\n📅 ' + data + '\n🔑 PIX: ' + CHAVE_PIX;
             window.open('mailto:' + EMAIL_ADMIN + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo), '_blank');
 
-            const wpp = `🔔 *NOVA COMPRA*\n👤 ${dadosCliente.nome}\n📧 ${dadosCliente.email}\n📦 ${itens}\n💰 ${tf}`;
+            const wpp = '🔔 *NOVA COMPRA*\n👤 ' + dadosCliente.nome + '\n📧 ' + dadosCliente.email + '\n📦 ' + itens + '\n💰 ' + tf;
             window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(wpp), '_blank');
 
             carrinho = [];
             dadosCliente = { nome: '', email: '' };
             document.getElementById('clienteNome').value = '';
             document.getElementById('clienteEmail').value = '';
+            localStorage.removeItem('vcore_cliente_nome_enc');
+            localStorage.removeItem('vcore_cliente_email_enc');
             atualizarCarrinho();
             document.getElementById('modalPix').classList.remove('active');
             mostrarToast('✅ Comprovante enviado! 📩');
@@ -1617,7 +2237,7 @@
             t.innerText = msg;
             t.classList.add('show');
             clearTimeout(t._t);
-            t._t = setTimeout(() => t.classList.remove('show'), 2500);
+            t._t = setTimeout(function() { t.classList.remove('show'); }, 2500);
         }
 
         function abrirCarrinho() { document.getElementById('modalCarrinho').classList.add('active'); }
@@ -1625,13 +2245,13 @@
         function fecharModalPix() { document.getElementById('modalPix').classList.remove('active'); }
 
         // Fechar modal ao clicar fora
-        document.querySelectorAll('.modal-overlay').forEach(m => {
+        document.querySelectorAll('.modal-overlay').forEach(function(m) {
             m.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); });
         });
 
         // Fechar modal com ESC
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+            if (e.key === 'Escape') document.querySelectorAll('.modal-overlay').forEach(function(m) { m.classList.remove('active'); });
         });
 
         // Botão voltar ao topo
@@ -1646,6 +2266,7 @@
 
         // ═════ INICIALIZAÇÃO ═════
         carregarNotificacoes();
+        carregarDadosClienteDescriptografados();
     </script>
 </body>
 </html>
