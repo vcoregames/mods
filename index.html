@@ -74,7 +74,19 @@
             text-transform:uppercase;letter-spacing:7.5px;text-align:center;
         }
 
-        /* Botões */
+        /* ═══════════ CANVAS DE FUNDO ANIMADO ═══════════ */
+        #battlefieldCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.65;
+        }
+
+        /* ═══════════ BOTÕES ═══════════ */
         .btn-primario{
             display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
             background:var(--verde);color:var(--azul);
@@ -195,37 +207,54 @@
             .notif-dropdown{min-width:260px;right:-60px;}
         }
 
-        /* Hero */
+        /* ═══════════ HERO COM CANVAS ═══════════ */
         .hero-section{
-            position:relative;background:var(--azul);min-height:85vh;
-            display:flex;align-items:center;overflow:hidden;
-            background-image:linear-gradient(rgba(12,21,53,0.55),rgba(12,21,53,0.85)),
-            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><radialGradient id="g1" cx="30%25" cy="30%25"><stop offset="0%25" stop-color="%23a5ff00" stop-opacity="0.1"/><stop offset="100%25" stop-color="transparent"/></radialGradient><radialGradient id="g2" cx="70%25" cy="70%25"><stop offset="0%25" stop-color="%231e3060" stop-opacity="0.15"/><stop offset="100%25" stop-color="transparent"/></radialGradient></defs><rect fill="%230c1535" width="1920" height="1080"/><rect fill="url(%23g1)" width="1920" height="1080"/><rect fill="url(%23g2)" width="1920" height="1080"/></svg>');
-            background-size:cover;background-position:center;background-attachment:fixed;
+            position:relative;
+            background: var(--azul);
+            min-height:85vh;
+            display:flex;
+            align-items:center;
+            overflow:hidden;
             padding:2rem 1rem;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(12,21,53,0.35) 0%,
+                rgba(12,21,53,0.55) 40%,
+                rgba(12,21,53,0.85) 100%
+            );
+            z-index: 1;
+            pointer-events: none;
         }
         .hero-content{
             max-width:1200px;margin:0 auto;
             display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;width:100%;
+            position:relative;z-index:2;
         }
         .hero-text{animation:fadeInUp 0.8s ease-out}
         .hero-text h1{
             font-size:clamp(2rem,5vw,3.75rem);font-weight:900;line-height:1.15;
-            color:#fff;margin:0.5rem 0 1rem;text-shadow:0 0 80px rgba(165,255,0,0.4);
+            color:#fff;margin:0.5rem 0 1rem;
+            text-shadow:0 0 80px rgba(165,255,0,0.4), 0 2px 10px rgba(0,0,0,0.6);
         }
         .hero-text h1 span{color:var(--verde)}
         .hero-text p{
             font-size:1rem;font-weight:400;line-height:1.6;
-            color:rgba(255,255,255,0.75);margin-bottom:2rem;max-width:500px;
+            color:rgba(255,255,255,0.8);margin-bottom:2rem;max-width:500px;
+            text-shadow:0 1px 4px rgba(0,0,0,0.5);
         }
         .hero-visual{display:flex;align-items:center;justify-content:center;position:relative}
         .hero-visual .glow-circle{
             width:320px;height:320px;border-radius:50%;
-            background:radial-gradient(circle,rgba(165,255,0,0.12) 0%,rgba(30,48,96,0.06) 50%,transparent 70%);
+            background:radial-gradient(circle,rgba(165,255,0,0.15) 0%,rgba(30,48,96,0.1) 50%,transparent 70%);
             display:flex;align-items:center;justify-content:center;
             animation:pulseGlow 3s ease-in-out infinite;
         }
-        .hero-visual .glow-circle .icon-big{font-size:6rem;animation:floatHero 4s ease-in-out infinite}
+        .hero-visual .glow-circle .icon-big{font-size:6rem;animation:floatHero 4s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(165,255,0,0.4));}
         @keyframes pulseGlow{0%,100%{transform:scale(1);opacity:0.7}50%{transform:scale(1.05);opacity:1}}
         @keyframes floatHero{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
         @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
@@ -235,7 +264,7 @@
             .hero-text .subtitle-tag{display:inline-block;margin:0 auto;}
             .hero-visual .glow-circle{width:180px;height:180px}
             .hero-visual .glow-circle .icon-big{font-size:3rem}
-            .hero-section{min-height:auto;padding:3rem 1rem 4rem;background-attachment:scroll;}
+            .hero-section{min-height:auto;padding:3rem 1rem 4rem;}
             .subtitle-tag{font-size:0.7rem;letter-spacing:4px}
             .hero-text h1{font-size:1.8rem;}
             .hero-text>div{justify-content:center;}
@@ -346,7 +375,7 @@
         .badge-ubisoft{background:#2a1a3a;color:#b06cff;border:1px solid #b06cff}
         .badge-epic{background:#1a1a1a;color:#fff;border:1px solid #888}
 
-        /* ═══════════ 🆕 ALERTA PULSANTE - ATENÇÃO ARQUIVOS ═══════════ */
+        /* ═══════════ ALERTA PULSANTE ═══════════ */
         .alerta-mestre{
             background:linear-gradient(135deg,rgba(180,20,20,0.22),rgba(100,10,10,0.18));
             border:3px solid rgba(255,68,68,0.55);
@@ -503,7 +532,7 @@
             .faq-answer.open{padding:0.9rem 1rem;}
         }
 
-        /* Footer Aprimorado */
+        /* Footer */
         .site-footer{
             background:radial-gradient(circle,rgba(12,21,53,0.98),#000);
             border-top:1px solid rgba(165,255,0,0.08);
@@ -579,7 +608,7 @@
         .container-medium{max-width:900px;margin:0 auto}
         .container-wide{max-width:1200px;margin:0 auto}
 
-        /* Pacotes - ALTURA IGUAL */
+        /* Pacotes */
         .pacote-grid{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -692,8 +721,7 @@
             .barra-total button{font-size:0.75rem!important;padding:0.55rem 1rem!important;}
         }
 
-        /* ═══════════ BOTÃO VOLTAR AO TOPO - REPOSICIONADO ═══════════ */
-        /* Agora posicionado BEM ACIMA do botão do WhatsApp para não sobrepor */
+        /* Botão Voltar ao Topo */
         .btn-topo{
             position:fixed;bottom:9rem;right:1.5rem;
             background:var(--azul-medio);color:var(--verde);
@@ -814,7 +842,7 @@
             .grid-testimonials{grid-template-columns:1fr;}
         }
 
-        /* ═══════════ SEÇÃO AGRADECIMENTO NEXUS MODS ═══════════ */
+        /* Nexus */
         .nexus-thanks-section{
             background:linear-gradient(180deg,var(--azul),rgba(12,21,53,0.95));
             padding:5rem 1rem;position:relative;text-align:center;
@@ -838,19 +866,10 @@
             box-shadow:0 12px 50px rgba(165,255,0,0.12);
             transform:translateY(-4px);
         }
-        .nexus-card .nexus-icon{
-            font-size:3rem;margin-bottom:1rem;display:block;
-            animation:floatHero 4s ease-in-out infinite;
-        }
-        .nexus-card h3{
-            font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;
-            color:#fff;margin-bottom:0.8rem;
-        }
+        .nexus-card .nexus-icon{font-size:3rem;margin-bottom:1rem;display:block;animation:floatHero 4s ease-in-out infinite;}
+        .nexus-card h3{font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:#fff;margin-bottom:0.8rem;}
         .nexus-card h3 span{color:var(--verde)}
-        .nexus-card p{
-            color:rgba(255,255,255,0.65);font-size:0.9rem;line-height:1.7;
-            max-width:600px;margin:0 auto 1.5rem;
-        }
+        .nexus-card p{color:rgba(255,255,255,0.65);font-size:0.9rem;line-height:1.7;max-width:600px;margin:0 auto 1.5rem;}
         .nexus-link{
             display:inline-flex;align-items:center;gap:0.6rem;
             background:rgba(165,255,0,0.08);color:var(--verde);
@@ -859,21 +878,9 @@
             border:1px solid rgba(165,255,0,0.3);
             transition:all 0.3s;
         }
-        .nexus-link:hover{
-            background:var(--verde);color:var(--azul);
-            box-shadow:0 0 30px rgba(165,255,0,0.35);
-            transform:translateY(-2px);
-        }
-        .nexus-badges{
-            display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;
-            margin-top:1.2rem;
-        }
-        .nexus-badge{
-            background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
-            padding:0.35rem 0.9rem;border-radius:50px;
-            font-size:0.7rem;color:rgba(255,255,255,0.5);
-            font-weight:600;letter-spacing:0.5px;
-        }
+        .nexus-link:hover{background:var(--verde);color:var(--azul);box-shadow:0 0 30px rgba(165,255,0,0.35);transform:translateY(-2px);}
+        .nexus-badges{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-top:1.2rem;}
+        .nexus-badge{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);padding:0.35rem 0.9rem;border-radius:50px;font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:0.5px;}
         @media(max-width:640px){
             .nexus-thanks-section{padding:3rem 1rem;}
             .nexus-card{padding:2rem 1.2rem;}
@@ -883,7 +890,7 @@
             .nexus-link{padding:0.65rem 1.3rem;font-size:0.8rem;}
         }
 
-        /* ═══════════ SEÇÃO CAPTURA DE LEADS ═══════════ */
+        /* Leads */
         .leads-section{
             background:linear-gradient(180deg,rgba(12,21,53,0.95),var(--azul));
             padding:5rem 1rem;position:relative;
@@ -901,37 +908,13 @@
             background:linear-gradient(90deg,transparent,var(--verde),#5ec8ff,var(--verde),transparent);
             opacity:0.7;
         }
-        .leads-card:hover{
-            border-color:var(--verde);
-            box-shadow:0 12px 50px rgba(165,255,0,0.12);
-            transform:translateY(-4px);
-        }
-        .leads-card .leads-icon{
-            font-size:2.8rem;margin-bottom:0.8rem;display:block;
-            animation:floatHero 4s ease-in-out infinite;
-        }
-        .leads-card h3{
-            font-size:clamp(1.2rem,2.5vw,1.5rem);font-weight:800;
-            color:#fff;margin-bottom:0.4rem;text-align:center;
-        }
+        .leads-card:hover{border-color:var(--verde);box-shadow:0 12px 50px rgba(165,255,0,0.12);transform:translateY(-4px);}
+        .leads-card .leads-icon{font-size:2.8rem;margin-bottom:0.8rem;display:block;animation:floatHero 4s ease-in-out infinite;}
+        .leads-card h3{font-size:clamp(1.2rem,2.5vw,1.5rem);font-weight:800;color:#fff;margin-bottom:0.4rem;text-align:center;}
         .leads-card h3 span{color:var(--verde)}
-        .leads-card .leads-sub{
-            color:rgba(255,255,255,0.55);font-size:0.82rem;
-            text-align:center;margin-bottom:1.8rem;line-height:1.5;
-        }
+        .leads-card .leads-sub{color:rgba(255,255,255,0.55);font-size:0.82rem;text-align:center;margin-bottom:1.8rem;line-height:1.5;}
         .leads-form{display:flex;flex-direction:column;gap:0.8rem;}
-        .leads-form .campo-destaque{
-            background:rgba(0,0,0,0.5)!important;color:#E8ECF0!important;
-            border:2px solid rgba(165,255,0,0.3)!important;border-radius:8px;
-            padding:0.75rem 1rem;font-size:0.88rem;width:100%;
-            outline:none;transition:0.25s;font-family:'Montserrat',sans-serif;
-            resize:vertical;
-        }
-        .leads-form .campo-destaque:focus{
-            border-color:var(--verde)!important;
-            box-shadow:0 0 18px rgba(165,255,0,0.12)!important;
-        }
-        .leads-form .campo-destaque::placeholder{color:rgba(232,236,240,0.35);}
+        .leads-form .campo-destaque{resize:vertical;}
         .leads-form textarea.campo-destaque{min-height:90px;}
         .leads-erro{color:#ff4444;font-size:0.75rem;text-align:center;display:none;margin-top:-0.3rem;}
         .leads-sucesso{color:var(--verde);font-size:0.85rem;text-align:center;display:none;font-weight:700;margin-top:0.5rem;}
@@ -944,37 +927,23 @@
             .leads-form .campo-destaque{font-size:0.8rem;padding:0.65rem 0.85rem;}
         }
 
-        /* ═══════════ MODAL EXIT INTENT ═══════════ */
+        /* Modal Exit */
         .modal-exit .modal-card{
             max-width:520px;text-align:center;padding:2rem 1.8rem;
             border:2px solid rgba(165,255,0,0.35);
             animation:scaleIn 0.35s ease-out;
         }
-        @keyframes scaleIn{
-            from{transform:scale(0.85);opacity:0}
-            to{transform:scale(1);opacity:1}
-        }
-        .modal-exit .exit-icon{
-            font-size:3.5rem;margin-bottom:0.3rem;
-            animation:floatHero 2.5s ease-in-out infinite;
-        }
-        .modal-exit h2{
-            font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:0.3rem;line-height:1.3;
-        }
+        @keyframes scaleIn{from{transform:scale(0.85);opacity:0}to{transform:scale(1);opacity:1}}
+        .modal-exit .exit-icon{font-size:3.5rem;margin-bottom:0.3rem;animation:floatHero 2.5s ease-in-out infinite;}
+        .modal-exit h2{font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:0.3rem;line-height:1.3;}
         .modal-exit h2 span{color:var(--verde)}
-        .modal-exit .exit-sub{
-            color:rgba(255,255,255,0.6);font-size:0.82rem;margin-bottom:1rem;line-height:1.5;
-        }
+        .modal-exit .exit-sub{color:rgba(255,255,255,0.6);font-size:0.82rem;margin-bottom:1rem;line-height:1.5;}
         .modal-exit .exit-alerta{
             background:rgba(255,68,68,0.08);border:2px dashed rgba(255,68,68,0.3);
             border-radius:12px;padding:1.2rem 1rem;margin-bottom:1rem;
         }
-        .modal-exit .exit-alerta .alerta-titulo{
-            font-weight:900;color:#ff6666;font-size:1rem;margin-bottom:0.3rem;
-        }
-        .modal-exit .exit-alerta .alerta-desc{
-            color:rgba(255,255,255,0.65);font-size:0.78rem;line-height:1.5;
-        }
+        .modal-exit .exit-alerta .alerta-titulo{font-weight:900;color:#ff6666;font-size:1rem;margin-bottom:0.3rem;}
+        .modal-exit .exit-alerta .alerta-desc{color:rgba(255,255,255,0.65);font-size:0.78rem;line-height:1.5;}
         .modal-exit .exit-countdown-wrap{
             background:rgba(0,0,0,0.4);border:1px solid rgba(165,255,0,0.2);
             border-radius:10px;padding:0.8rem 0.5rem;margin-bottom:1rem;
@@ -983,18 +952,9 @@
             font-size:0.65rem;color:rgba(255,255,255,0.5);
             text-transform:uppercase;letter-spacing:2px;margin-bottom:0.4rem;
         }
-        .modal-exit .countdown-box{
-            background:rgba(0,0,0,0.6);border:1px solid rgba(255,68,68,0.3);
-            border-radius:6px;padding:5px 8px;text-align:center;min-width:42px;
-        }
-        .modal-exit .countdown-num{
-            display:block;font-size:1.2rem;font-weight:900;color:#ff6666;line-height:1;
-        }
-        .modal-exit .countdown-label{
-            display:block;font-size:0.5rem;font-weight:700;
-            color:rgba(255,255,255,0.4);text-transform:uppercase;
-            letter-spacing:1px;margin-top:2px;
-        }
+        .modal-exit .countdown-box{background:rgba(0,0,0,0.6);border:1px solid rgba(255,68,68,0.3);border-radius:6px;padding:5px 8px;text-align:center;min-width:42px;}
+        .modal-exit .countdown-num{display:block;font-size:1.2rem;font-weight:900;color:#ff6666;line-height:1;}
+        .modal-exit .countdown-label{display:block;font-size:0.5rem;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
         .modal-exit .countdown-sep{font-size:1.2rem;font-weight:900;color:#ff6666}
         .modal-exit .btn-fechar-exit{
             margin-top:0.5rem;background:transparent;color:rgba(255,255,255,0.35);
@@ -1048,8 +1008,11 @@
         </div>
     </header>
 
-    <!-- ═════════ HERO ═════════ -->
+    <!-- ═════════ HERO COM CANVAS DE FUNDO ANIMADO ═════════ -->
     <section class="hero-section" id="inicio">
+        <!-- CANVAS DO CAMPO DE BATALHA -->
+        <canvas id="battlefieldCanvas"></canvas>
+
         <div class="hero-content">
             <div class="hero-text">
                 <p class="subtitle-tag">VCORE GAMES</p>
@@ -1096,7 +1059,7 @@
         </div>
     </section>
 
-    <!-- ═════════ VIDEO - COMO FUNCIONA ═════════ -->
+    <!-- ═════════ VIDEO ═════════ -->
     <section class="video-section" style="position:relative;">
         <div class="shape-top shape-top-flip">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,40 C300,100 600,0 900,80 C1000,105 1100,30 1200,60 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
@@ -1123,7 +1086,7 @@
         </div>
     </section>
 
-    <!-- ═════════ DEMONSTRAÇÃO DOS MODS ═════════ -->
+    <!-- ═════════ DEMONSTRAÇÃO ═════════ -->
     <section class="video-section demo-section" id="demo-mods" style="position:relative;">
         <div class="shape-top shape-top-flip">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C400,0 800,100 1200,40 L1200,120 L0,120 Z" fill="var(--azul-medio)"/></svg>
@@ -1150,7 +1113,7 @@
         </div>
     </section>
 
-    <!-- ═════════ GUIA DE INSTALAÇÃO ═════════ -->
+    <!-- ═════════ INSTALAÇÃO ═════════ -->
     <section class="instalacao-section" id="instalacao" style="position:relative;">
         <div class="container-medium">
             <p class="subtitle-tag-center">GUIA COMPLETO</p>
@@ -1158,7 +1121,6 @@
                 📖 Como Instalar os Mods
             </h2>
 
-            <!-- ═══════ ALERTA PULSANTE ═══════ -->
             <div class="alerta-mestre">
                 <div class="alerta-icon-wrap">
                     <span class="alerta-icon">⚠️</span>
@@ -1282,69 +1244,19 @@
             <h2 style="text-align:center;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--verde);margin:0.5rem 0 3rem;">
                 O Que Nossos Clientes Dizem
             </h2>
-
             <div class="grid-testimonials">
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Os mods são incríveis! Transformou completamente meu jogo. O guia de instalação é muito claro, fiz tudo rapidinho."</p>
-                    <p class="name">Lucas Silva</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Instalação super fácil, suporte nota 10 pelo WhatsApp. Tive uma dúvida e me responderam na hora!"</p>
-                    <p class="name">Gabriel Santos</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Valeu cada centavo! Os visuais ficaram insanos, parecia outro jogo. Já vou pegar o pacote completo!"</p>
-                    <p class="name">Rafael Costa</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Atendimento excepcional e mods de altíssima qualidade. Recomendo de olhos fechados!"</p>
-                    <p class="name">Pablo Marcelino</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Melhor investimento que fiz pro meu jogo. Os coletes e armas ficaram perfeitos!"</p>
-                    <p class="name">Rodrigo Azevedo</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Muito acima do esperado! Instalação rápida e resultado impressionante. VCORE é top!"</p>
-                    <p class="name">Romulo Maced</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Suporte sensacional, me ajudaram com tudo. Os mods deram uma cara nova pro jogo!"</p>
-                    <p class="name">Igor Nazareth</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Já comprei vários pacotes e nunca tive problema. Qualidade e profissionalismo!"</p>
-                    <p class="name">Francisco Osterne</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Tudo muito bem explicado, arquivos organizados. Até quem é leigo consegue instalar!"</p>
-                    <p class="name">Eraldo Márcio</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Rápido, fácil e o resultado é absurdo de bom. VCORE GAMES é referência!"</p>
-                    <p class="name">Alexandre Ramos</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Comprei o pacote General e não me arrependo. Todos os mods funcionaram perfeitamente!"</p>
-                    <p class="name">Mário Eduardo</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Melhor compra que fiz esse ano. Mods excelentes e suporte impecável via WhatsApp!"</p>
-                    <p class="name">Marcos Aurélio</p>
-                </div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Os mods são incríveis! Transformou completamente meu jogo. O guia de instalação é muito claro, fiz tudo rapidinho."</p><p class="name">Lucas Silva</p></div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Instalação super fácil, suporte nota 10 pelo WhatsApp. Tive uma dúvida e me responderam na hora!"</p><p class="name">Gabriel Santos</p></div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Valeu cada centavo! Os visuais ficaram insanos, parecia outro jogo. Já vou pegar o pacote completo!"</p><p class="name">Rafael Costa</p></div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Atendimento excepcional e mods de altíssima qualidade. Recomendo de olhos fechados!"</p><p class="name">Pablo Marcelino</p></div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Melhor investimento que fiz pro meu jogo. Os coletes e armas ficaram perfeitos!"</p><p class="name">Rodrigo Azevedo</p></div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Muito acima do esperado! Instalação rápida e resultado impressionante. VCORE é top!"</p><p class="name">Romulo Maced</p></div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Suporte sensacional, me ajudaram com tudo. Os mods deram uma cara nova pro jogo!"</p><p class="name">Igor Nazareth</p></div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Já comprei vários pacotes e nunca tive problema. Qualidade e profissionalismo!"</p><p class="name">Francisco Osterne</p></div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Tudo muito bem explicado, arquivos organizados. Até quem é leigo consegue instalar!"</p><p class="name">Eraldo Márcio</p></div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Rápido, fácil e o resultado é absurdo de bom. VCORE GAMES é referência!"</p><p class="name">Alexandre Ramos</p></div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Comprei o pacote General e não me arrependo. Todos os mods funcionaram perfeitamente!"</p><p class="name">Mário Eduardo</p></div>
+                <div class="testimonial-card"><div class="stars">★★★★★</div><p class="quote">"Melhor compra que fiz esse ano. Mods excelentes e suporte impecável via WhatsApp!"</p><p class="name">Marcos Aurélio</p></div>
             </div>
         </div>
     </section>
@@ -1354,7 +1266,6 @@
         <div class="shape-top shape-top-flip">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C400,0 800,100 1200,40 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
         </div>
-
         <div class="container-medium" style="position:relative;z-index:1;">
             <p class="subtitle-tag-center">OFERTA ESPECIAL</p>
             <h2 style="font-size:clamp(2rem,4vw,2.5rem);font-weight:900;color:#fff;margin:0.75rem 0;">
@@ -1363,7 +1274,6 @@
             <p style="color:rgba(255,255,255,0.7);font-size:1rem;line-height:1.6;margin-bottom:1rem;">
                 Pacotes para todos os níveis — com até <strong style="color:var(--verde);">40% de desconto!</strong>
             </p>
-
             <div class="countdown-container" style="margin-bottom:2.5rem;">
                 <div class="countdown-box"><span class="countdown-num" id="countDias">00</span><span class="countdown-label">Dias</span></div>
                 <span class="countdown-sep">:</span>
@@ -1373,63 +1283,29 @@
                 <span class="countdown-sep">:</span>
                 <div class="countdown-box"><span class="countdown-num" id="countSeg">00</span><span class="countdown-label">Seg</span></div>
             </div>
-
             <div class="pacote-grid">
-
                 <div class="pacote-card">
-                    <div class="pkg-icon">🎖️</div>
-                    <div class="pkg-stars" style="color:#FFD700;">★★★☆☆</div>
-                    <h4 style="color:#fff;">Pacote Recruta</h4>
-                    <ul>
-                        <li>Mods Essenciais VCORE</li>
-                        <li>Fest Feminino</li>
-                        <li>Veículos Modificados</li>
-                        <li>Guia de instalação por e-mail</li>
-                    </ul>
-                    <div class="price-old">R$ 100,00</div>
-                    <div class="price-new" style="color:var(--verde);">R$ 60,00</div>
-                    <span class="badge-off">40% OFF</span>
+                    <div class="pkg-icon">🎖️</div><div class="pkg-stars" style="color:#FFD700;">★★★☆☆</div><h4 style="color:#fff;">Pacote Recruta</h4>
+                    <ul><li>Mods Essenciais VCORE</li><li>Fest Feminino</li><li>Veículos Modificados</li><li>Guia de instalação por e-mail</li></ul>
+                    <div class="price-old">R$ 100,00</div><div class="price-new" style="color:var(--verde);">R$ 60,00</div><span class="badge-off">40% OFF</span>
                     <button onclick="adicionarAoCarrinho('Pacote Recruta - Mods Essenciais',60)" class="btn-primario btn-pacote">🎖️ Adicionar</button>
                 </div>
-
                 <div class="pacote-card popular" style="position:relative;">
                     <span class="badge-popular">⭐ MAIS POPULAR</span>
-                    <div class="pkg-icon" style="margin-top:0.5rem;">🥇</div>
-                    <div class="pkg-stars" style="color:#3a2800;">★★★★☆</div>
-                    <h4 style="color:var(--azul);">Pacote Sargento</h4>
-                    <ul>
-                        <li>Tudo do Pacote Recruta</li>
-                        <li>Coletes — Mod de Aparência</li>
-                        <li>Armas e Miras Realistas</li>
-                        <li>Camisa e Calça Tática</li>
-                        <li>Camuflagens e Capacetes</li>
-                    </ul>
-                    <div class="price-old">R$ 150,00</div>
-                    <div class="price-new" style="color:var(--azul);">R$ 90,00</div>
-                    <span class="badge-off">40% OFF</span>
+                    <div class="pkg-icon" style="margin-top:0.5rem;">🥇</div><div class="pkg-stars" style="color:#3a2800;">★★★★☆</div><h4 style="color:var(--azul);">Pacote Sargento</h4>
+                    <ul><li>Tudo do Pacote Recruta</li><li>Coletes — Mod de Aparência</li><li>Armas e Miras Realistas</li><li>Camisa e Calça Tática</li><li>Camuflagens e Capacetes</li></ul>
+                    <div class="price-old">R$ 150,00</div><div class="price-new" style="color:var(--azul);">R$ 90,00</div><span class="badge-off">40% OFF</span>
                     <button onclick="adicionarAoCarrinho('Pacote Sargento - Mods Avançados',90)" class="btn-primario btn-pacote" style="background:var(--azul);color:#fff;border-color:var(--azul);">🥇 Adicionar</button>
                 </div>
-
                 <div class="pacote-card" style="position:relative;">
                     <span class="badge-best-value">💎 MELHOR CUSTO-BENEFÍCIO</span>
-                    <div class="pkg-icon" style="margin-top:0.5rem;">💎</div>
-                    <div class="pkg-stars" style="color:#FFD700;">★★★★★</div>
-                    <h4 class="gradient-text">Pacote General</h4>
-                    <ul>
-                        <li><strong>TODOS</strong> os mods disponíveis</li>
-                        <li>Colete, Armas, Miras</li>
-                        <li>Camisa, Calça, Camuflagem</li>
-                        <li>Capacetes e Proteções</li>
-                        <li>Veículos + Kit Tático</li>
-                    </ul>
-                    <div class="price-old">R$ 200,00</div>
-                    <div class="price-new gradient-text">R$ 120,00</div>
-                    <span class="badge-off">40% OFF</span>
+                    <div class="pkg-icon" style="margin-top:0.5rem;">💎</div><div class="pkg-stars" style="color:#FFD700;">★★★★★</div><h4 class="gradient-text">Pacote General</h4>
+                    <ul><li><strong>TODOS</strong> os mods disponíveis</li><li>Colete, Armas, Miras</li><li>Camisa, Calça, Camuflagem</li><li>Capacetes e Proteções</li><li>Veículos + Kit Tático</li></ul>
+                    <div class="price-old">R$ 200,00</div><div class="price-new gradient-text">R$ 120,00</div><span class="badge-off">40% OFF</span>
                     <button onclick="adicionarAoCarrinho('Pacote General - Todos os Mods',120)" class="btn-primario btn-pacote">💎 Adicionar</button>
                 </div>
             </div>
         </div>
-
         <div class="shape-bottom">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,40 C300,100 600,0 900,80 C1000,105 1100,30 1200,60 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
         </div>
@@ -1439,187 +1315,79 @@
     <section class="faq-section">
         <div class="container-narrow">
             <p class="subtitle-tag-center">DÚVIDAS</p>
-            <h2 style="text-align:center;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--verde);margin:0.5rem 0 2.5rem;">
-                Perguntas Frequentes
-            </h2>
-
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">Como funciona a instalação? <span class="faq-icon">▼</span></button>
-                <div class="faq-answer">
-                    Após a compra, você recebe o link para baixar o pacote de mods. Os arquivos <strong>já estão prontos</strong> — basta <strong>copiar todo o conteúdo baixado diretamente para a pasta raiz do jogo</strong> (onde está o executável). Depois é só <strong>iniciar um save novo</strong> e jogar! Recomendamos fortemente fazer backup dos arquivos originais antes de copiar os mods.
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">Os mods funcionam em todas as plataformas? <span class="faq-icon">▼</span></button>
-                <div class="faq-answer">
-                    Sim! <strong>Steam, Ubisoft Connect e Epic Games</strong>. O processo é idêntico: copiar os arquivos para a pasta raiz do jogo em cada plataforma. Confira os caminhos detalhados na nossa seção de <a href="#instalacao" style="color:var(--verde);">Guia de Instalação</a>.
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">Quanto tempo leva para liberar o download? <span class="faq-icon">▼</span></button>
-                <div class="faq-answer">
-                    Após a confirmação do pagamento, o link de download é enviado para o seu e-mail em até <strong>24 horas</strong>. Na maioria dos casos, o envio é muito mais rápido!
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">Posso pedir reembolso? <span class="faq-icon">▼</span></button>
-                <div class="faq-answer">
-                    <strong>⚠️ Importante:</strong> Uma vez que o link de download foi liberado, <strong style="color:#ff7777;">não é possível solicitar reembolso</strong>, pois o conteúdo digital já foi disponibilizado.<br><br>
-                    <strong>✅ Você não corre risco:</strong> Se o arquivo apresentar <strong>algum problema técnico</strong>, damos <strong>assistência completa</strong> — desde o download até o jogo abrir. Se mesmo com nossa ajuda o problema persistir, aí sim faremos a devolução.<br><br>
-                    <strong style="color:var(--verde);">Resumindo:</strong> Com nossa assistência, você não precisa se preocupar!
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">Preciso ter o jogo limpo de outros mods? <span class="faq-icon">▼</span></button>
-                <div class="faq-answer">
-                    <strong>Sim, é essencial!</strong> O jogo precisa estar <strong>100% limpo</strong>, sem vestígios de mods anteriores. Se já tentou instalar outros mods: desinstale o jogo, delete os arquivos residuais da pasta e reinstale do zero. Isso garante que os mods VCORE funcionarão perfeitamente.
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">Preciso de ferramentas extras? <span class="faq-icon">▼</span></button>
-                <div class="faq-answer">
-                    <strong>Não!</strong> Nossos pacotes já vêm <strong>100% prontos</strong>. É só baixar, copiar os arquivos para a pasta raiz e jogar. Nada de programas adicionais!
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">Os arquivos vão todos na pasta raiz? <span class="faq-icon">▼</span></button>
-                <div class="faq-answer">
-                    <strong style="color:var(--verde);">SIM! ⭐</strong> Todos os arquivos do download devem ser copiados <strong>diretamente na pasta raiz do jogo</strong> (onde está o executável). Não crie subpastas, não reorganize — é tudo junto na raiz!
-                </div>
-            </div>
+            <h2 style="text-align:center;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--verde);margin:0.5rem 0 2.5rem;">Perguntas Frequentes</h2>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Como funciona a instalação? <span class="faq-icon">▼</span></button><div class="faq-answer">Após a compra, você recebe o link para baixar o pacote de mods. Os arquivos <strong>já estão prontos</strong> — basta <strong>copiar todo o conteúdo baixado diretamente para a pasta raiz do jogo</strong> (onde está o executável). Depois é só <strong>iniciar um save novo</strong> e jogar! Recomendamos fortemente fazer backup dos arquivos originais antes de copiar os mods.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Os mods funcionam em todas as plataformas? <span class="faq-icon">▼</span></button><div class="faq-answer">Sim! <strong>Steam, Ubisoft Connect e Epic Games</strong>. O processo é idêntico: copiar os arquivos para a pasta raiz do jogo em cada plataforma. Confira os caminhos detalhados na nossa seção de <a href="#instalacao" style="color:var(--verde);">Guia de Instalação</a>.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Quanto tempo leva para liberar o download? <span class="faq-icon">▼</span></button><div class="faq-answer">Após a confirmação do pagamento, o link de download é enviado para o seu e-mail em até <strong>24 horas</strong>. Na maioria dos casos, o envio é muito mais rápido!</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Posso pedir reembolso? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong>⚠️ Importante:</strong> Uma vez que o link de download foi liberado, <strong style="color:#ff7777;">não é possível solicitar reembolso</strong>, pois o conteúdo digital já foi disponibilizado.<br><br><strong>✅ Você não corre risco:</strong> Se o arquivo apresentar <strong>algum problema técnico</strong>, damos <strong>assistência completa</strong> — desde o download até o jogo abrir. Se mesmo com nossa ajuda o problema persistir, aí sim faremos a devolução.<br><br><strong style="color:var(--verde);">Resumindo:</strong> Com nossa assistência, você não precisa se preocupar!</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Preciso ter o jogo limpo de outros mods? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong>Sim, é essencial!</strong> O jogo precisa estar <strong>100% limpo</strong>, sem vestígios de mods anteriores. Se já tentou instalar outros mods: desinstale o jogo, delete os arquivos residuais da pasta e reinstale do zero. Isso garante que os mods VCORE funcionarão perfeitamente.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Preciso de ferramentas extras? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong>Não!</strong> Nossos pacotes já vêm <strong>100% prontos</strong>. É só baixar, copiar os arquivos para a pasta raiz e jogar. Nada de programas adicionais!</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Os arquivos vão todos na pasta raiz? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong style="color:var(--verde);">SIM! ⭐</strong> Todos os arquivos do download devem ser copiados <strong>diretamente na pasta raiz do jogo</strong> (onde está o executável). Não crie subpastas, não reorganize — é tudo junto na raiz!</div></div>
         </div>
     </section>
 
-    <!-- ═══════════ AGRADECIMENTO NEXUS MODS ═══════════ -->
+    <!-- ═════ NEXUS ═════ -->
     <section class="nexus-thanks-section" id="nexus-thanks">
         <div class="container-narrow">
             <p class="subtitle-tag-center">COMUNIDADE</p>
-            <h2 style="text-align:center;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;color:#fff;margin:0.5rem 0 2rem;line-height:1.3;">
-                Nosso Agradecimento<br>à Comunidade <span style="color:var(--verde);">Modding</span>
-            </h2>
-
+            <h2 style="text-align:center;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;color:#fff;margin:0.5rem 0 2rem;line-height:1.3;">Nosso Agradecimento<br>à Comunidade <span style="color:var(--verde);">Modding</span></h2>
             <div class="nexus-card">
                 <span class="nexus-icon">🏛️</span>
                 <h3>Agradecemos ao <span>Nexus Mods</span></h3>
-                <p>
-                    Queremos expressar nossa sincera gratidão a todos os <strong style="color:#fff;">moderadores, administradores e colaboradores</strong> do <strong style="color:var(--verde);">Nexus Mods</strong>.
-                    O trabalho incansável de vocês em manter a plataforma organizada, segura e acessível é o que permite que a comunidade de modding cresça e prospere.
-                    Sem a dedicação de cada um de vocês, o universo dos mods não seria o mesmo.
-                </p>
-                <a href="https://www.nexusmods.com/" target="_blank" rel="noopener noreferrer" class="nexus-link">
-                    🌐 Visitar Nexus Mods <i class="fa fa-external-link"></i>
-                </a>
-                <div class="nexus-badges">
-                    <span class="nexus-badge">🏆 Moderação</span>
-                    <span class="nexus-badge">🛡️ Segurança</span>
-                    <span class="nexus-badge">📚 Organização</span>
-                    <span class="nexus-badge">🤝 Comunidade</span>
-                    <span class="nexus-badge">💚 Suporte</span>
-                </div>
+                <p>Queremos expressar nossa sincera gratidão a todos os <strong style="color:#fff;">moderadores, administradores e colaboradores</strong> do <strong style="color:var(--verde);">Nexus Mods</strong>. O trabalho incansável de vocês em manter a plataforma organizada, segura e acessível é o que permite que a comunidade de modding cresça e prospere. Sem a dedicação de cada um de vocês, o universo dos mods não seria o mesmo.</p>
+                <a href="https://www.nexusmods.com/" target="_blank" rel="noopener noreferrer" class="nexus-link">🌐 Visitar Nexus Mods <i class="fa fa-external-link"></i></a>
+                <div class="nexus-badges"><span class="nexus-badge">🏆 Moderação</span><span class="nexus-badge">🛡️ Segurança</span><span class="nexus-badge">📚 Organização</span><span class="nexus-badge">🤝 Comunidade</span><span class="nexus-badge">💚 Suporte</span></div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════ CAPTURA DE LEADS ═══════════ -->
+    <!-- ═════ LEADS ═════ -->
     <section class="leads-section" id="sugestoes">
         <div class="container-narrow">
             <p class="subtitle-tag-center">SUGESTÕES</p>
-            <h2 style="text-align:center;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;color:#fff;margin:0.5rem 0 2rem;line-height:1.3;">
-                Qual Mod Você<br><span style="color:var(--verde);">Gostaria de Ver?</span>
-            </h2>
-
+            <h2 style="text-align:center;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;color:#fff;margin:0.5rem 0 2rem;line-height:1.3;">Qual Mod Você<br><span style="color:var(--verde);">Gostaria de Ver?</span></h2>
             <div class="leads-card">
                 <span class="leads-icon">💡</span>
                 <h3>Envie sua <span>Sugestão</span></h3>
-                <p class="leads-sub">
-                    Quer um mod específico ou precisa de ajuda com a instalação?<br>
-                    Preencha o formulário abaixo e nossa equipe entrará em contato!
-                </p>
+                <p class="leads-sub">Quer um mod específico ou precisa de ajuda com a instalação?<br>Preencha o formulário abaixo e nossa equipe entrará em contato!</p>
                 <form class="leads-form" id="leadsForm" onsubmit="enviarLead(event)">
                     <input type="text" id="leadNome" placeholder="👤 Seu nome completo *" class="campo-destaque" required>
                     <input type="email" id="leadEmail" placeholder="📧 Seu melhor e-mail *" class="campo-destaque" required>
                     <input type="tel" id="leadWhatsapp" placeholder="📱 WhatsApp (com DDD) *" class="campo-destaque" required>
                     <textarea id="leadMensagem" placeholder="💬 Conte pra gente: qual mod você gostaria de ver no nosso site? Ou precisa de ajuda com a instalação de algum mod? *" class="campo-destaque" required></textarea>
                     <p class="leads-erro" id="leadsErro"></p>
-                    <button type="submit" class="btn-primario" style="width:100%;">
-                        🚀 Enviar Sugestão <i class="fa fa-paper-plane"></i>
-                    </button>
+                    <button type="submit" class="btn-primario" style="width:100%;">🚀 Enviar Sugestão <i class="fa fa-paper-plane"></i></button>
                     <p class="leads-sucesso" id="leadsSucesso">✅ Sugestão enviada com sucesso! Entraremos em contato em breve.</p>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════ FOOTER ═══════════ -->
+    <!-- ═════ FOOTER ═════ -->
     <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-col">
-                <h4>VCORE GAMES</h4>
-                <p>
-                    Mods exclusivos para Mod Ghost. Transformamos sua experiência de jogo com visuais táticos, armas realistas e suporte de qualidade.
-                </p>
-            </div>
-            <div class="footer-col">
-                <h4>Links Rápidos</h4>
-                <ul>
-                    <li><a href="#inicio">🏠 Início</a></li>
-                    <li><a href="#pacotes">📦 Pacotes</a></li>
-                    <li><a href="#instalacao">📖 Como Instalar</a></li>
-                    <li><a href="#demo-mods">🎬 Demonstração</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Suporte</h4>
-                <ul>
-                    <li><a href="https://wa.me/5516981097916" target="_blank">📱 WhatsApp</a></li>
-                    <li><a href="mailto:rodrigoxgames25@gmail.com">📧 E-mail</a></li>
-                    <li><a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank">▶ YouTube</a></li>
-                    <li><a href="https://instagram.com/rodrigovecoregaming" target="_blank">📷 Instagram</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#" onclick="abrirPoliticaPrivacidade();return false;">🔒 Política de Privacidade</a></li>
-                    <li><a href="#" onclick="abrirPoliticaPrivacidade();return false;">📜 Termos de Uso</a></li>
-                </ul>
-            </div>
+            <div class="footer-col"><h4>VCORE GAMES</h4><p>Mods exclusivos para Mod Ghost. Transformamos sua experiência de jogo com visuais táticos, armas realistas e suporte de qualidade.</p></div>
+            <div class="footer-col"><h4>Links Rápidos</h4><ul><li><a href="#inicio">🏠 Início</a></li><li><a href="#pacotes">📦 Pacotes</a></li><li><a href="#instalacao">📖 Como Instalar</a></li><li><a href="#demo-mods">🎬 Demonstração</a></li></ul></div>
+            <div class="footer-col"><h4>Suporte</h4><ul><li><a href="https://wa.me/5516981097916" target="_blank">📱 WhatsApp</a></li><li><a href="mailto:rodrigoxgames25@gmail.com">📧 E-mail</a></li><li><a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank">▶ YouTube</a></li><li><a href="https://instagram.com/rodrigovecoregaming" target="_blank">📷 Instagram</a></li></ul></div>
+            <div class="footer-col"><h4>Legal</h4><ul><li><a href="#" onclick="abrirPoliticaPrivacidade();return false;">🔒 Política de Privacidade</a></li><li><a href="#" onclick="abrirPoliticaPrivacidade();return false;">📜 Termos de Uso</a></li></ul></div>
         </div>
-
         <div class="footer-bottom">
-            <span>© 2026 <strong style="color:var(--verde);">VCORE GAMES</strong></span>
-            <span class="separador">|</span>
-            <span>Todos os direitos reservados</span>
-            <span class="separador">|</span>
-            <a href="#" onclick="abrirPoliticaPrivacidade();return false;">Política de Privacidade</a>
-            <span class="separador">|</span>
-            <a href="#" onclick="abrirPoliticaPrivacidade();return false;">Termos de Uso</a>
+            <span>© 2026 <strong style="color:var(--verde);">VCORE GAMES</strong></span><span class="separador">|</span><span>Todos os direitos reservados</span><span class="separador">|</span><a href="#" onclick="abrirPoliticaPrivacidade();return false;">Política de Privacidade</a><span class="separador">|</span><a href="#" onclick="abrirPoliticaPrivacidade();return false;">Termos de Uso</a>
         </div>
     </footer>
 
-    <!-- ═════ BOTÃO WHATSAPP FLUTUANTE ═════ -->
-    <a href="https://wa.me/5516981097916?text=Ol%C3%A1!%20Preciso%20de%20suporte%20com%20os%20mods%20VCORE." target="_blank" class="whatsapp-float" title="Suporte via WhatsApp" aria-label="WhatsApp Suporte">
-        <i class="fa fa-whatsapp"></i>
-    </a>
+    <!-- ═════ BOTÃO WHATSAPP ═════ -->
+    <a href="https://wa.me/5516981097916?text=Ol%C3%A1!%20Preciso%20de%20suporte%20com%20os%20mods%20VCORE." target="_blank" class="whatsapp-float" title="Suporte via WhatsApp" aria-label="WhatsApp Suporte"><i class="fa fa-whatsapp"></i></a>
 
     <!-- ═════ MODAL CARRINHO ═════ -->
     <div class="modal-overlay" id="modalCarrinho">
         <div class="modal-card">
             <button class="modal-close" onclick="fecharCarrinho()">&times;</button>
             <h2 style="color:var(--verde);text-align:center;font-weight:800;font-size:1.3rem;margin-bottom:1rem;">🛒 Seu Carrinho</h2>
-            <div id="listaCarrinho" style="margin-bottom:1rem;">
-                <p style="color:#8899AA;text-align:center;font-size:0.85rem;" id="carrinhoVazio">Seu carrinho está vazio.</p>
-            </div>
-            <div style="border-top:2px solid rgba(165,255,0,0.15);padding-top:1rem;margin-bottom:1rem;">
-                <div style="display:flex;justify-content:space-between;font-weight:800;font-size:1.2rem;">
-                    <span>Total:</span>
-                    <span id="valorTotal" style="color:var(--verde);">R$ 0,00</span>
-                </div>
-            </div>
+            <div id="listaCarrinho" style="margin-bottom:1rem;"><p style="color:#8899AA;text-align:center;font-size:0.85rem;" id="carrinhoVazio">Seu carrinho está vazio.</p></div>
+            <div style="border-top:2px solid rgba(165,255,0,0.15);padding-top:1rem;margin-bottom:1rem;"><div style="display:flex;justify-content:space-between;font-weight:800;font-size:1.2rem;"><span>Total:</span><span id="valorTotal" style="color:var(--verde);">R$ 0,00</span></div></div>
             <div style="background:rgba(165,255,0,0.04);border:2px solid rgba(165,255,0,0.2);border-radius:12px;padding:1rem;margin-bottom:1rem;">
-                <p style="font-size:0.8rem;font-weight:700;color:var(--verde);margin-bottom:0.75rem;">
-                    📋 Seus dados <span style="font-size:0.6rem;color:#8899AA;">(🔒 criptografados)</span>:
-                </p>
+                <p style="font-size:0.8rem;font-weight:700;color:var(--verde);margin-bottom:0.75rem;">📋 Seus dados <span style="font-size:0.6rem;color:#8899AA;">(🔒 criptografados)</span>:</p>
                 <input type="text" id="clienteNome" placeholder="👤 Nome completo *" class="campo-destaque" style="margin-bottom:0.5rem;">
                 <input type="email" id="clienteEmail" placeholder="📧 Seu melhor e-mail *" class="campo-destaque">
                 <p style="font-size:0.65rem;color:#8899AA;margin-top:0.5rem;">⚠️ O link de download será enviado para este e-mail.</p>
@@ -1637,11 +1405,7 @@
                 <div style="font-size:3rem;">💳</div>
                 <h2 style="color:var(--verde);font-weight:800;margin:0.5rem 0;">Pagamento via PIX</h2>
                 <p style="color:#8899AA;font-size:0.85rem;">Copie a chave PIX e faça a transferência</p>
-                <div style="background:rgba(165,255,0,0.06);border:1px solid rgba(165,255,0,0.2);border-radius:12px;padding:0.75rem 1.5rem;display:inline-block;margin:1rem 0;">
-                    <p style="font-size:0.7rem;color:#8899AA;">Valor a pagar</p>
-                    <p id="pixValor" style="font-size:1.8rem;font-weight:900;color:var(--verde);">R$ 0,00</p>
-                </div>
-
+                <div style="background:rgba(165,255,0,0.06);border:1px solid rgba(165,255,0,0.2);border-radius:12px;padding:0.75rem 1.5rem;display:inline-block;margin:1rem 0;"><p style="font-size:0.7rem;color:#8899AA;">Valor a pagar</p><p id="pixValor" style="font-size:1.8rem;font-weight:900;color:var(--verde);">R$ 0,00</p></div>
                 <div class="pix-destaque">
                     <p style="font-size:0.75rem;color:#8899AA;font-weight:700;text-transform:uppercase;margin-bottom:0.5rem;">🔑 Chave PIX</p>
                     <p class="pix-chave">16981097916</p>
@@ -1649,111 +1413,54 @@
                     <p class="pix-banco">🏦 InfinitePay</p>
                     <button onclick="copiarChavePix()" style="margin-top:0.8rem;padding:0.6rem 1.8rem;background:var(--azul-medio);color:var(--verde);border:1px solid rgba(165,255,0,0.3);border-radius:8px;cursor:pointer;font-weight:700;font-size:0.85rem;">📋 Copiar Chave PIX</button>
                 </div>
-
                 <button onclick="enviarComprovante()" class="btn-primario pulse-border" style="width:100%;padding:0.9rem;font-size:0.9rem;background:#25D366;border-color:#25D366;color:#fff;">📩 Enviar Comprovante (Email + WhatsApp)</button>
                 <p style="color:#8899AA;font-size:0.7rem;margin-top:0.5rem;">Link de download enviado em até 24h após confirmação</p>
             </div>
         </div>
     </div>
 
-    <!-- ═════ MODAL POLÍTICA DE PRIVACIDADE ═════ -->
+    <!-- ═════ MODAL POLÍTICA ═════ -->
     <div class="modal-overlay modal-politica" id="modalPolitica">
         <div class="modal-card">
             <button class="modal-close" onclick="fecharPoliticaPrivacidade()">&times;</button>
             <h2 style="color:var(--verde);font-weight:800;font-size:1.3rem;text-align:center;margin-bottom:1rem;">🔒 Política de Privacidade</h2>
             <p style="color:var(--cinza);font-size:0.75rem;text-align:center;margin-bottom:1rem;">Última atualização: Agosto de 2026</p>
-
-            <h3>1. Introdução</h3>
-            <p>A <strong>VCORE GAMES</strong> está comprometida com a proteção da sua privacidade. Esta política explica como coletamos, usamos e protegemos suas informações pessoais ao utilizar nossos serviços de venda de mods para jogos.</p>
-
-            <h3>2. Dados que Coletamos</h3>
-            <p>Para processar sua compra e entregar os mods, coletamos os seguintes dados:</p>
-            <ul style="padding-left:1.2rem;line-height:1.8;">
-                <li><strong>Nome completo</strong> — para identificação do comprador</li>
-                <li><strong>E-mail</strong> — para envio do link de download e comunicação</li>
-                <li><strong>Comprovante PIX</strong> — para confirmação do pagamento</li>
-                <li><strong>Dados da compra</strong> — pacote adquirido, valor e data</li>
-            </ul>
-
-            <h3>3. Como Usamos Seus Dados</h3>
-            <p>Seus dados são utilizados <strong>exclusivamente</strong> para:</p>
-            <ul style="padding-left:1.2rem;line-height:1.8;">
-                <li>Processar e confirmar seu pagamento</li>
-                <li>Enviar o link de download do pacote adquirido</li>
-                <li>Prestar suporte técnico via WhatsApp ou e-mail</li>
-                <li>Cumprir obrigações legais e fiscais</li>
-            </ul>
-
-            <h3>4. Compartilhamento de Dados</h3>
-            <p>A VCORE GAMES <strong>não vende, aluga ou compartilha</strong> seus dados pessoais com terceiros para fins de marketing. Seus dados são acessados apenas por nossa equipe interna para fins de suporte e entrega do produto.</p>
-
-            <h3>5. Armazenamento e Segurança</h3>
-            <p>Seus dados são armazenados em ambiente seguro com acesso restrito. Utilizamos medidas técnicas de proteção como <strong>criptografia AES-GCM</strong> e controle de acesso. Os comprovantes PIX são armazenados apenas para registro fiscal obrigatório.</p>
-
-            <h3>6. Seus Direitos (LGPD)</h3>
-            <p>De acordo com a Lei Geral de Proteção de Dados (Lei 13.709/2018), você tem direito a:</p>
-            <ul style="padding-left:1.2rem;line-height:1.8;">
-                <li>Acessar seus dados armazenados</li>
-                <li>Solicitar correção de dados incompletos ou desatualizados</li>
-                <li>Solicitar a exclusão dos seus dados</li>
-                <li>Revogar o consentimento a qualquer momento</li>
-            </ul>
-
-            <h3>7. Contato</h3>
-            <p>Para qualquer dúvida sobre esta política ou para exercer seus direitos, entre em contato:</p>
-            <ul style="padding-left:1.2rem;line-height:1.8;">
-                <li><strong>E-mail:</strong> rodrigoxgames25@gmail.com</li>
-                <li><strong>WhatsApp:</strong> (16) 98109-7916</li>
-                <li><strong>Responsável:</strong> Rodrigo Paulino da Silva</li>
-            </ul>
-
-            <div style="text-align:center;margin-top:1.5rem;">
-                <button onclick="fecharPoliticaPrivacidade()" class="btn-primario" style="font-size:0.85rem;">Entendi e Aceito</button>
-            </div>
+            <h3>1. Introdução</h3><p>A <strong>VCORE GAMES</strong> está comprometida com a proteção da sua privacidade. Esta política explica como coletamos, usamos e protegemos suas informações pessoais ao utilizar nossos serviços de venda de mods para jogos.</p>
+            <h3>2. Dados que Coletamos</h3><p>Para processar sua compra e entregar os mods, coletamos os seguintes dados:</p><ul style="padding-left:1.2rem;line-height:1.8;"><li><strong>Nome completo</strong> — para identificação do comprador</li><li><strong>E-mail</strong> — para envio do link de download e comunicação</li><li><strong>Comprovante PIX</strong> — para confirmação do pagamento</li><li><strong>Dados da compra</strong> — pacote adquirido, valor e data</li></ul>
+            <h3>3. Como Usamos Seus Dados</h3><p>Seus dados são utilizados <strong>exclusivamente</strong> para:</p><ul style="padding-left:1.2rem;line-height:1.8;"><li>Processar e confirmar seu pagamento</li><li>Enviar o link de download do pacote adquirido</li><li>Prestar suporte técnico via WhatsApp ou e-mail</li><li>Cumprir obrigações legais e fiscais</li></ul>
+            <h3>4. Compartilhamento de Dados</h3><p>A VCORE GAMES <strong>não vende, aluga ou compartilha</strong> seus dados pessoais com terceiros para fins de marketing. Seus dados são acessados apenas por nossa equipe interna para fins de suporte e entrega do produto.</p>
+            <h3>5. Armazenamento e Segurança</h3><p>Seus dados são armazenados em ambiente seguro com acesso restrito. Utilizamos medidas técnicas de proteção como <strong>criptografia AES-GCM</strong> e controle de acesso. Os comprovantes PIX são armazenados apenas para registro fiscal obrigatório.</p>
+            <h3>6. Seus Direitos (LGPD)</h3><p>De acordo com a Lei Geral de Proteção de Dados (Lei 13.709/2018), você tem direito a:</p><ul style="padding-left:1.2rem;line-height:1.8;"><li>Acessar seus dados armazenados</li><li>Solicitar correção de dados incompletos ou desatualizados</li><li>Solicitar a exclusão dos seus dados</li><li>Revogar o consentimento a qualquer momento</li></ul>
+            <h3>7. Contato</h3><p>Para qualquer dúvida sobre esta política ou para exercer seus direitos, entre em contato:</p><ul style="padding-left:1.2rem;line-height:1.8;"><li><strong>E-mail:</strong> rodrigoxgames25@gmail.com</li><li><strong>WhatsApp:</strong> (16) 98109-7916</li><li><strong>Responsável:</strong> Rodrigo Paulino da Silva</li></ul>
+            <div style="text-align:center;margin-top:1.5rem;"><button onclick="fecharPoliticaPrivacidade()" class="btn-primario" style="font-size:0.85rem;">Entendi e Aceito</button></div>
         </div>
     </div>
 
-    <!-- ═════ MODAL EXIT INTENT ═════ -->
+    <!-- ═════ MODAL EXIT ═════ -->
     <div class="modal-overlay modal-exit" id="modalExit">
         <div class="modal-card">
             <button class="modal-close" onclick="fecharModalExit()">&times;</button>
             <div class="exit-icon">⏳</div>
             <h2>⚠️ Não saia <span>agora!</span></h2>
-            <p class="exit-sub">
-                A chance de garantir seus mods com <strong style="color:var(--verde);">40% de desconto</strong> é agora!
-            </p>
-            <div class="exit-alerta">
-                <p class="alerta-titulo">🔥 QUALQUER PACK ESTÁ COM 40% OFF!</p>
-                <p class="alerta-desc">
-                    Recruta, Sargento ou General — <strong style="color:#fff;">todos os pacotes</strong> estão com desconto máximo. Mas essa oferta não vai durar para sempre...
-                </p>
-            </div>
+            <p class="exit-sub">A chance de garantir seus mods com <strong style="color:var(--verde);">40% de desconto</strong> é agora!</p>
+            <div class="exit-alerta"><p class="alerta-titulo">🔥 QUALQUER PACK ESTÁ COM 40% OFF!</p><p class="alerta-desc">Recruta, Sargento ou General — <strong style="color:#fff;">todos os pacotes</strong> estão com desconto máximo. Mas essa oferta não vai durar para sempre...</p></div>
             <div class="exit-countdown-wrap">
                 <p class="countdown-label-exit">⏱️ ESSE DESCONTO ACABA EM:</p>
                 <div class="countdown-container" style="margin-top:0.3rem;">
-                    <div class="countdown-box"><span class="countdown-num" id="exitCountDias">00</span><span class="countdown-label">Dias</span></div>
-                    <span class="countdown-sep">:</span>
-                    <div class="countdown-box"><span class="countdown-num" id="exitCountHoras">00</span><span class="countdown-label">Horas</span></div>
-                    <span class="countdown-sep">:</span>
-                    <div class="countdown-box"><span class="countdown-num" id="exitCountMin">00</span><span class="countdown-label">Min</span></div>
-                    <span class="countdown-sep">:</span>
+                    <div class="countdown-box"><span class="countdown-num" id="exitCountDias">00</span><span class="countdown-label">Dias</span></div><span class="countdown-sep">:</span>
+                    <div class="countdown-box"><span class="countdown-num" id="exitCountHoras">00</span><span class="countdown-label">Horas</span></div><span class="countdown-sep">:</span>
+                    <div class="countdown-box"><span class="countdown-num" id="exitCountMin">00</span><span class="countdown-label">Min</span></div><span class="countdown-sep">:</span>
                     <div class="countdown-box"><span class="countdown-num" id="exitCountSeg">00</span><span class="countdown-label">Seg</span></div>
                 </div>
             </div>
-            <a href="#pacotes" onclick="fecharModalExit()" class="btn-primario" style="width:100%;margin-bottom:0.5rem;">
-                🎯 Aproveitar 40% OFF Agora <i class="fa fa-arrow-right"></i>
-            </a>
+            <a href="#pacotes" onclick="fecharModalExit()" class="btn-primario" style="width:100%;margin-bottom:0.5rem;">🎯 Aproveitar 40% OFF Agora <i class="fa fa-arrow-right"></i></a>
             <button onclick="fecharModalExit()" class="btn-fechar-exit">Não, obrigado — quero sair</button>
         </div>
     </div>
 
     <!-- ═════ BARRA TOTAL ═════ -->
     <div class="barra-total" id="barraTotal">
-        <div style="display:flex;align-items:center;gap:0.5rem;">
-            <span>🛒</span>
-            <span id="barraTotalValor" style="font-weight:800;font-size:1.1rem;">R$ 0,00</span>
-            <span id="barraTotalItens" style="font-size:0.7rem;background:rgba(165,255,0,0.12);padding:0.2rem 0.5rem;border-radius:50px;">0 item</span>
-        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem;"><span>🛒</span><span id="barraTotalValor" style="font-weight:800;font-size:1.1rem;">R$ 0,00</span><span id="barraTotalItens" style="font-size:0.7rem;background:rgba(165,255,0,0.12);padding:0.2rem 0.5rem;border-radius:50px;">0 item</span></div>
         <button onclick="abrirCarrinho()" style="padding:0.7rem 1.5rem;background:var(--verde);color:var(--azul);font-weight:800;border:none;border-radius:10px;cursor:pointer;font-size:0.85rem;">Ver Carrinho →</button>
     </div>
 
@@ -1763,8 +1470,641 @@
     <!-- ═════ BOTÃO TOPO ═════ -->
     <a href="#" class="btn-topo" id="btnTopo" title="Voltar ao topo" aria-label="Voltar ao topo"><i class="fa fa-chevron-up"></i></a>
 
-    <!-- ═════ SCRIPTS ═════ -->
+    <!-- ═══════════ SCRIPTS ═══════════ -->
     <script>
+        /* ============================================
+           CANVAS - FUNDO ANIMADO CAMPO DE BATALHA
+           ============================================ */
+        (function() {
+            var canvas = document.getElementById('battlefieldCanvas');
+            var ctx = canvas.getContext('2d');
+            var W, H;
+            var particles = [];
+            var tracers = [];
+            var explosions = [];
+            var helicopters = [];
+            var soldiers = [];
+            var smokeParticles = [];
+            var frameCount = 0;
+
+            function resize() {
+                var hero = document.querySelector('.hero-section');
+                W = hero.offsetWidth;
+                H = hero.offsetHeight;
+                canvas.width = W;
+                canvas.height = H;
+            }
+
+            // ═══ PARTÍCULAS DE POEIRA/SUJEIRA ═══
+            function createDustParticle() {
+                return {
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3 - 0.2,
+                    size: Math.random() * 2 + 0.5,
+                    life: 1,
+                    decay: Math.random() * 0.003 + 0.001,
+                    color: 'rgba(180,160,120,ALPHA)'
+                };
+            }
+
+            // ═══ TRAÇANTES (TIROS) ═══
+            function createTracer(fromX, fromY, toX, toY) {
+                var dx = toX - fromX;
+                var dy = toY - fromY;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                return {
+                    x: fromX,
+                    y: fromY,
+                    vx: (dx / dist) * 18,
+                    vy: (dy / dist) * 18,
+                    life: 1,
+                    decay: 0.04,
+                    length: Math.random() * 15 + 8,
+                    trail: [],
+                    color: Math.random() < 0.5 ? '#ffaa00' : '#ffdd44'
+                };
+            }
+
+            // ═══ EXPLOSÕES (GRANADAS) ═══
+            function createExplosion(x, y) {
+                var parts = [];
+                var count = Math.floor(Math.random() * 20 + 25);
+                for (var i = 0; i < count; i++) {
+                    var angle = Math.random() * Math.PI * 2;
+                    var speed = Math.random() * 6 + 2;
+                    parts.push({
+                        x: x,
+                        y: y,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed - Math.random() * 4,
+                        life: 1,
+                        decay: Math.random() * 0.03 + 0.015,
+                        size: Math.random() * 5 + 2,
+                        color: Math.random() < 0.6 ?
+                            'rgba(255,140,20,ALPHA)' :
+                            (Math.random() < 0.5 ? 'rgba(255,200,50,ALPHA)' : 'rgba(255,60,10,ALPHA)')
+                    });
+                }
+                // Flash inicial
+                parts.push({
+                    x: x, y: y,
+                    vx: 0, vy: 0,
+                    life: 1,
+                    decay: 0.08,
+                    size: Math.random() * 40 + 30,
+                    color: 'rgba(255,255,200,ALPHA)',
+                    flash: true
+                });
+                return { x: x, y: y, parts: parts, life: 1, decay: 0.008 };
+            }
+
+            // ═══ FUMAÇA ═══
+            function createSmoke(x, y) {
+                return {
+                    x: x + (Math.random() - 0.5) * 20,
+                    y: y + (Math.random() - 0.5) * 10,
+                    vx: (Math.random() - 0.5) * 0.6,
+                    vy: -(Math.random() * 1.2 + 0.5),
+                    life: 1,
+                    decay: Math.random() * 0.006 + 0.003,
+                    size: Math.random() * 25 + 15,
+                    color: 'rgba(120,110,90,ALPHA)'
+                };
+            }
+
+            // ═══ HELICÓPTEROS ═══
+            function createHelicopter(side) {
+                var y = Math.random() * H * 0.4 + H * 0.08;
+                var x = side === 'left' ? -80 : W + 80;
+                var dir = side === 'left' ? 1 : -1;
+                return {
+                    x: x,
+                    y: y,
+                    targetY: y,
+                    vx: dir * (Math.random() * 1.2 + 0.6),
+                    direction: dir,
+                    rotorAngle: 0,
+                    rotorSpeed: Math.random() * 0.3 + 0.3,
+                    bodyBob: Math.random() * Math.PI * 2,
+                    size: Math.random() * 25 + 30,
+                    alive: true
+                };
+            }
+
+            // ═══ SOLDADOS (SILHUETAS) ═══
+            function createSoldier() {
+                var side = Math.random() < 0.5 ? 'left' : 'right';
+                var x = side === 'left' ? Math.random() * 200 + 30 : W - Math.random() * 200 - 30;
+                var y = H * 0.55 + Math.random() * H * 0.35;
+                return {
+                    x: x,
+                    y: y,
+                    baseY: y,
+                    side: side,
+                    phase: Math.random() * Math.PI * 2,
+                    shooting: false,
+                    shootTimer: Math.random() * 120 + 60,
+                    shootCooldown: 0,
+                    muzzleFlash: 0,
+                    alive: true,
+                    aimAngle: side === 'left' ? (Math.random() * 0.2 - 0.1) : (Math.PI + (Math.random() * 0.2 - 0.1))
+                };
+            }
+
+            // ═══ INICIALIZAR ═══
+            function init() {
+                resize();
+                particles = [];
+                for (var i = 0; i < 40; i++) particles.push(createDustParticle());
+                tracers = [];
+                explosions = [];
+                smokeParticles = [];
+
+                // Helicópteros
+                helicopters = [];
+                helicopters.push(createHelicopter('left'));
+                helicopters.push(createHelicopter('right'));
+
+                // Soldados
+                soldiers = [];
+                for (var j = 0; j < 8; j++) soldiers.push(createSoldier());
+            }
+
+            // ═══ DESENHAR HELICÓPTERO ═══
+            function drawHelicopter(h) {
+                ctx.save();
+                ctx.translate(h.x, h.y);
+
+                var s = h.size;
+
+                // Sombra
+                ctx.fillStyle = 'rgba(0,0,0,0.3)';
+                ctx.beginPath();
+                ctx.ellipse(0, s * 0.6, s * 0.7, s * 0.15, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Corpo
+                ctx.fillStyle = '#2a3040';
+                ctx.beginPath();
+                ctx.moveTo(-s * 0.15, s * 0.25);
+                ctx.lineTo(-s * 0.45, -s * 0.05);
+                ctx.lineTo(-s * 0.3, -s * 0.3);
+                ctx.lineTo(s * 0.3, -s * 0.3);
+                ctx.lineTo(s * 0.45, -s * 0.05);
+                ctx.lineTo(s * 0.15, s * 0.25);
+                ctx.closePath();
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(180,200,220,0.4)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // Cauda
+                ctx.fillStyle = '#353d50';
+                ctx.beginPath();
+                ctx.moveTo(s * 0.25, -s * 0.15);
+                ctx.lineTo(s * 0.7, -s * 0.2);
+                ctx.lineTo(s * 0.7, s * 0.05);
+                ctx.lineTo(s * 0.15, s * 0.1);
+                ctx.closePath();
+                ctx.fill();
+
+                // Rotor principal (girando)
+                h.rotorAngle += h.rotorSpeed;
+                ctx.save();
+                ctx.translate(0, -s * 0.35);
+                ctx.rotate(h.rotorAngle);
+                ctx.fillStyle = 'rgba(200,210,220,0.5)';
+                ctx.fillRect(-s * 0.85, -2, s * 1.7, 4);
+                ctx.fillStyle = 'rgba(200,210,220,0.5)';
+                ctx.fillRect(-2, -s * 0.85, 4, s * 1.7);
+                ctx.restore();
+
+                // Rotor de cauda
+                ctx.save();
+                ctx.translate(s * 0.68, -s * 0.25);
+                ctx.rotate(h.rotorAngle * 2.5);
+                ctx.fillStyle = 'rgba(180,190,200,0.4)';
+                ctx.fillRect(-s * 0.2, -1.5, s * 0.4, 3);
+                ctx.restore();
+
+                // Cabine
+                ctx.fillStyle = 'rgba(100,180,220,0.3)';
+                ctx.beginPath();
+                ctx.ellipse(-s * 0.08, -s * 0.1, s * 0.18, s * 0.12, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(150,210,240,0.5)';
+                ctx.stroke();
+
+                // Luzes piscando
+                var blink = Math.sin(frameCount * 0.15) > 0;
+                if (blink) {
+                    ctx.fillStyle = '#ff3333';
+                    ctx.beginPath();
+                    ctx.arc(s * 0.6, -s * 0.1, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.fillStyle = '#33ff33';
+                    ctx.beginPath();
+                    ctx.arc(-s * 0.3, s * 0.2, 2.5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.restore();
+            }
+
+            // ═══ DESENHAR SOLDADO (SILHUETA) ═══
+            function drawSoldier(s) {
+                ctx.save();
+                ctx.translate(s.x, s.y);
+
+                var scale = 0.55;
+                var recoil = s.muzzleFlash > 0 ? Math.sin(s.muzzleFlash * Math.PI) * 4 : 0;
+
+                // Sombra no chão
+                ctx.fillStyle = 'rgba(0,0,0,0.25)';
+                ctx.beginPath();
+                ctx.ellipse(0, 28 * scale, 14 * scale, 4 * scale, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Cor (silhueta escura com leve tom militar)
+                var bodyColor = s.side === 'left' ?
+                    'rgba(30,40,30,0.85)' :
+                    'rgba(30,35,30,0.85)';
+
+                // Pernas
+                ctx.fillStyle = bodyColor;
+                ctx.fillRect(-6 * scale, 10 * scale, 5 * scale, 18 * scale);
+                ctx.fillRect(2 * scale, 10 * scale, 5 * scale, 18 * scale);
+
+                // Corpo/tronco
+                ctx.fillStyle = bodyColor;
+                ctx.fillRect(-8 * scale, -12 * scale + recoil * 0.5, 16 * scale, 22 * scale);
+
+                // Colete tático
+                ctx.fillStyle = 'rgba(40,45,35,0.8)';
+                ctx.fillRect(-7 * scale, -8 * scale + recoil * 0.5, 14 * scale, 12 * scale);
+
+                // Braços
+                ctx.fillStyle = bodyColor;
+                // Braço de apoio (esquerdo)
+                ctx.save();
+                ctx.translate(-8 * scale, -10 * scale + recoil * 0.5);
+                ctx.rotate(-0.6);
+                ctx.fillRect(-2 * scale, 0, 5 * scale, 14 * scale);
+                ctx.restore();
+
+                // Braço de gatilho (direito)
+                ctx.save();
+                ctx.translate(8 * scale, -10 * scale + recoil * 0.5);
+                ctx.rotate(0.4 - recoil * 0.03);
+                ctx.fillRect(-2 * scale, 0, 5 * scale, 14 * scale);
+                ctx.restore();
+
+                // Cabeça
+                ctx.fillStyle = 'rgba(25,30,20,0.85)';
+                ctx.beginPath();
+                ctx.arc(0, -19 * scale + recoil * 0.5, 7 * scale, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Capacete
+                ctx.fillStyle = 'rgba(35,40,30,0.9)';
+                ctx.beginPath();
+                ctx.arc(0, -20 * scale + recoil * 0.5, 8 * scale, Math.PI, 0);
+                ctx.fill();
+
+                // Arma
+                ctx.save();
+                ctx.translate(8 * scale, -6 * scale + recoil * 0.5);
+                ctx.rotate(0.15 - recoil * 0.02);
+                ctx.fillStyle = 'rgba(20,20,20,0.9)';
+                ctx.fillRect(0, -2 * scale, 18 * scale, 4 * scale);
+                // Coronha
+                ctx.fillRect(-4 * scale, -3 * scale, 6 * scale, 6 * scale);
+
+                // Flash do disparo
+                if (s.muzzleFlash > 0) {
+                    var flashAlpha = s.muzzleFlash;
+                    ctx.fillStyle = 'rgba(255,200,40,' + flashAlpha + ')';
+                    ctx.beginPath();
+                    ctx.arc(18 * scale, 0, 7 * scale * flashAlpha + 3, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.fillStyle = 'rgba(255,255,200,' + flashAlpha * 0.7 + ')';
+                    ctx.beginPath();
+                    ctx.arc(18 * scale, 0, 3 * scale * flashAlpha + 1, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.restore();
+
+                ctx.restore();
+            }
+
+            // ═══ LOOP PRINCIPAL ═══
+            function update() {
+                frameCount++;
+                ctx.clearRect(0, 0, W, H);
+
+                // Fundo base com gradiente
+                var bgGrad = ctx.createLinearGradient(0, 0, 0, H);
+                bgGrad.addColorStop(0, 'rgba(8,18,40,0.3)');
+                bgGrad.addColorStop(0.35, 'rgba(12,22,45,0.2)');
+                bgGrad.addColorStop(0.7, 'rgba(8,15,30,0.5)');
+                bgGrad.addColorStop(1, 'rgba(5,10,20,0.7)');
+                ctx.fillStyle = bgGrad;
+                ctx.fillRect(0, 0, W, H);
+
+                // Linha do horizonte (montanhas)
+                ctx.fillStyle = 'rgba(15,25,35,0.5)';
+                ctx.beginPath();
+                ctx.moveTo(0, H);
+                for (var x = 0; x <= W; x += 30) {
+                    ctx.lineTo(x, H * 0.52 + Math.sin(x * 0.004) * 40 + Math.sin(x * 0.012) * 25);
+                }
+                ctx.lineTo(W, H);
+                ctx.closePath();
+                ctx.fill();
+
+                // ═══ PARTÍCULAS DE POEIRA ═══
+                particles.forEach(function(p) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.life -= p.decay;
+                    if (p.life <= 0 || p.x < -10 || p.x > W + 10 || p.y < -10 || p.y > H + 10) {
+                        Object.assign(p, createDustParticle());
+                        p.life = 1;
+                    }
+                    ctx.fillStyle = p.color.replace('ALPHA', (p.life * 0.4).toString());
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // ═══ FUMAÇA ═══
+                for (var i = smokeParticles.length - 1; i >= 0; i--) {
+                    var sm = smokeParticles[i];
+                    sm.x += sm.vx;
+                    sm.y += sm.vy;
+                    sm.life -= sm.decay;
+                    sm.size += 0.2;
+                    if (sm.life <= 0) { smokeParticles.splice(i, 1); continue; }
+                    ctx.fillStyle = sm.color.replace('ALPHA', (sm.life * 0.35).toString());
+                    ctx.beginPath();
+                    ctx.arc(sm.x, sm.y, sm.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // ═══ TRAÇANTES ═══
+                for (var i = tracers.length - 1; i >= 0; i--) {
+                    var t = tracers[i];
+                    t.x += t.vx;
+                    t.y += t.vy;
+                    t.life -= t.decay;
+                    t.trail.push({ x: t.x, y: t.y, life: t.life });
+
+                    // Limitar trail
+                    if (t.trail.length > 8) t.trail.shift();
+
+                    if (t.life <= 0 || t.x < -50 || t.x > W + 50 || t.y < -50 || t.y > H + 50) {
+                        tracers.splice(i, 1);
+                        continue;
+                    }
+
+                    // Desenhar trail
+                    for (var j = 1; j < t.trail.length; j++) {
+                        var alpha = (j / t.trail.length) * t.life;
+                        ctx.strokeStyle = t.color.replace(')', ',ALPHA)').replace('rgb', 'rgba').replace('ALPHA', (alpha * 0.8).toString());
+                        if (t.color.startsWith('#')) {
+                            ctx.strokeStyle = 'rgba(255,180,40,' + (alpha * 0.7) + ')';
+                        }
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        ctx.moveTo(t.trail[j - 1].x, t.trail[j - 1].y);
+                        ctx.lineTo(t.trail[j].x, t.trail[j].y);
+                        ctx.stroke();
+                    }
+
+                    // Ponto brilhante na ponta
+                    ctx.fillStyle = 'rgba(255,255,200,' + t.life + ')';
+                    ctx.beginPath();
+                    ctx.arc(t.x, t.y, 2.5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // ═══ EXPLOSÕES ═══
+                for (var i = explosions.length - 1; i >= 0; i--) {
+                    var ex = explosions[i];
+                    ex.life -= ex.decay;
+                    if (ex.life <= 0) { explosions.splice(i, 1); continue; }
+
+                    // Brilho central
+                    var glowAlpha = ex.life * 0.6;
+                    var glowGrad = ctx.createRadialGradient(ex.x, ex.y, 0, ex.x, ex.y, 50 * ex.life);
+                    glowGrad.addColorStop(0, 'rgba(255,200,60,' + glowAlpha + ')');
+                    glowGrad.addColorStop(0.3, 'rgba(255,120,20,' + glowAlpha * 0.6 + ')');
+                    glowGrad.addColorStop(1, 'rgba(255,40,5,0)');
+                    ctx.fillStyle = glowGrad;
+                    ctx.beginPath();
+                    ctx.arc(ex.x, ex.y, 50 * ex.life, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Partículas da explosão
+                    ex.parts.forEach(function(p) {
+                        if (p.flash) {
+                            p.life -= p.decay;
+                            if (p.life <= 0) return;
+                            ctx.fillStyle = p.color.replace('ALPHA', (p.life * 0.5).toString());
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+                            ctx.fill();
+                        } else {
+                            p.x += p.vx;
+                            p.y += p.vy;
+                            p.vx *= 0.98;
+                            p.vy *= 0.98;
+                            p.vy += 0.05;
+                            p.life -= p.decay;
+                            if (p.life <= 0) return;
+                            ctx.fillStyle = p.color.replace('ALPHA', p.life.toString());
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                    });
+
+                    // Fumaça da explosão
+                    if (Math.random() < 0.7) {
+                        smokeParticles.push(createSmoke(ex.x, ex.y));
+                    }
+                }
+
+                // ═══ HELICÓPTEROS ═══
+                for (var i = helicopters.length - 1; i >= 0; i--) {
+                    var h = helicopters[i];
+                    h.x += h.vx;
+                    h.bodyBob += 0.03;
+                    h.y = h.targetY + Math.sin(h.bodyBob) * 5;
+
+                    // Mudar altura alvo ocasionalmente
+                    if (Math.random() < 0.005) {
+                        h.targetY = Math.random() * H * 0.35 + H * 0.08;
+                    }
+
+                    // Remover se sair da tela
+                    if ((h.direction === 1 && h.x > W + 100) || (h.direction === -1 && h.x < -100)) {
+                        helicopters.splice(i, 1);
+                        // Criar novo depois de um tempo
+                        setTimeout(function() {
+                            helicopters.push(createHelicopter(Math.random() < 0.5 ? 'left' : 'right'));
+                        }, Math.random() * 3000 + 2000);
+                        continue;
+                    }
+
+                    drawHelicopter(h);
+
+                    // Helicóptero pode "atirar" (lançar foguetes)
+                    if (Math.random() < 0.008 && h.x > 50 && h.x < W - 50) {
+                        var rocketTargetX = h.x + (Math.random() - 0.5) * 300;
+                        var rocketTargetY = H * 0.65 + Math.random() * H * 0.3;
+                        tracers.push(createTracer(h.x, h.y + 10, rocketTargetX, rocketTargetY));
+                        // Rastro de fumaça do foguete
+                        for (var s = 0; s < 3; s++) {
+                            smokeParticles.push({
+                                x: h.x,
+                                y: h.y + 10,
+                                vx: -h.vx * 0.3 + (Math.random() - 0.5) * 0.5,
+                                vy: Math.random() * 0.3 + 0.8,
+                                life: 1,
+                                decay: 0.02,
+                                size: 8,
+                                color: 'rgba(180,170,150,ALPHA)'
+                            });
+                        }
+                    }
+                }
+
+                // ═══ SOLDADOS ═══
+                soldiers.forEach(function(s, idx) {
+                    s.phase += 0.015;
+                    // Movimento sutil
+                    s.y = s.baseY + Math.sin(s.phase) * 3;
+
+                    // Cooldown de tiro
+                    if (s.shootCooldown > 0) s.shootCooldown--;
+                    if (s.muzzleFlash > 0) s.muzzleFlash -= 0.06;
+
+                    // Decidir atirar
+                    if (s.shootCooldown <= 0 && Math.random() < 0.015) {
+                        s.shootCooldown = Math.floor(Math.random() * 40 + 30);
+                        s.muzzleFlash = 1;
+
+                        // Criar traçante
+                        var fromX = s.x + (s.side === 'left' ? 25 : -25);
+                        var fromY = s.y - 15;
+                        var toX = fromX + (s.side === 'left' ? 200 : -200) + (Math.random() - 0.5) * 100;
+                        var toY = fromY + (Math.random() - 0.5) * 40;
+                        tracers.push(createTracer(fromX, fromY, toX, toY));
+
+                        // Pequeno flash no chão (impacto simulado)
+                        if (Math.random() < 0.3) {
+                            var impactX = toX + (Math.random() - 0.5) * 40;
+                            var impactY = H * 0.55 + Math.random() * H * 0.4;
+                            // Pequenas faíscas
+                            for (var sp = 0; sp < 5; sp++) {
+                                particles.push({
+                                    x: impactX,
+                                    y: impactY,
+                                    vx: (Math.random() - 0.5) * 2,
+                                    vy: -(Math.random() * 2 + 1),
+                                    size: Math.random() * 2 + 1,
+                                    life: 1,
+                                    decay: 0.04,
+                                    color: 'rgba(255,200,80,ALPHA)'
+                                });
+                            }
+                        }
+
+                        // Ocasionalmente: granada!
+                        if (Math.random() < 0.15) {
+                            var grenadeX = s.x + (s.side === 'left' ? 80 : -80);
+                            var grenadeY = s.y - 25;
+                            // Simular trajetória da granada
+                            tracers.push({
+                                x: s.x,
+                                y: s.y - 15,
+                                vx: (s.side === 'left' ? 5 : -5),
+                                vy: -8,
+                                life: 1,
+                                decay: 0.02,
+                                length: 6,
+                                trail: [],
+                                color: '#88cc44',
+                                isGrenade: true,
+                                grenadeX: grenadeX,
+                                grenadeY: grenadeY,
+                                grenadeVY: -8,
+                                grenadeExploded: false
+                            });
+
+                            // Marcar o último traçante como granada
+                            var lastTracer = tracers[tracers.length - 1];
+                            if (lastTracer && lastTracer.isGrenade) {
+                                // Já configurado
+                            }
+                        }
+                    }
+
+                    drawSoldier(s);
+                });
+
+                // ═══ LANÇAR GRANADAS OCASIONAIS (eventos aleatórios) ═══
+                if (Math.random() < 0.003) {
+                    var gx = Math.random() * W * 0.6 + W * 0.2;
+                    var gy = H * 0.55 + Math.random() * H * 0.35;
+                    explosions.push(createExplosion(gx, gy));
+                    // Tremor de câmera via canvas (sutil)
+                }
+
+                // ═══ VERIFICAR GRANADAS NOS TRAÇANTES ═══
+                for (var i = tracers.length - 1; i >= 0; i--) {
+                    var tr = tracers[i];
+                    if (tr.isGrenade && !tr.grenadeExploded) {
+                        tr.grenadeVY += 0.25; // gravidade
+                        tr.grenadeY += tr.grenadeVY;
+                        tr.grenadeX += tr.vx * 0.5;
+                        // Verificar se atingiu o chão
+                        if (tr.grenadeY >= H * 0.6 + Math.random() * 0.3 * H || tr.life <= 0.1) {
+                            explosions.push(createExplosion(tr.grenadeX, tr.grenadeY));
+                            tr.grenadeExploded = true;
+                            tracers.splice(i, 1);
+                        }
+                    }
+                }
+
+                // ═══ REPOR PARTÍCULAS ═══
+                while (particles.length < 40) particles.push(createDustParticle());
+
+                // ═══ REPOR HELICÓPTEROS ═══
+                if (helicopters.length < 2 && Math.random() < 0.01) {
+                    helicopters.push(createHelicopter(Math.random() < 0.5 ? 'left' : 'right'));
+                }
+
+                requestAnimationFrame(update);
+            }
+
+            // ═══ RESIZE ═══
+            window.addEventListener('resize', function() {
+                resize();
+            });
+
+            // ═══ INICIAR ═══
+            init();
+            update();
+        })();
+
+        /* ============================================
+           DEMAIS SCRIPTS DO SITE
+           ============================================ */
         const CHAVE_PIX = '16981097916';
         const WHATSAPP = '5516981097916';
         const EMAIL_ADMIN = 'rodrigoxgames25@gmail.com';
@@ -1778,25 +2118,13 @@
 
         async function derivarChave(senha, salt) {
             var encoder = new TextEncoder();
-            var keyMaterial = await crypto.subtle.importKey(
-                'raw',
-                encoder.encode(senha),
-                'PBKDF2',
-                false,
-                ['deriveBits', 'deriveKey']
-            );
-            var derivedKey = await crypto.subtle.deriveKey(
-                {
-                    name: 'PBKDF2',
-                    salt: encoder.encode(salt),
-                    iterations: 200000,
-                    hash: 'SHA-256'
-                },
-                keyMaterial,
-                { name: 'AES-GCM', length: 256 },
-                false,
-                ['encrypt', 'decrypt']
-            );
+            var keyMaterial = await crypto.subtle.importKey('raw', encoder.encode(senha), 'PBKDF2', false, ['deriveBits', 'deriveKey']);
+            var derivedKey = await crypto.subtle.deriveKey({
+                name: 'PBKDF2',
+                salt: encoder.encode(salt),
+                iterations: 200000,
+                hash: 'SHA-256'
+            }, keyMaterial, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
             return { derivedKey: derivedKey, encoder: encoder };
         }
 
@@ -1810,9 +2138,7 @@
         function base64ToArrayBuffer(base64) {
             var binary = atob(base64);
             var bytes = new Uint8Array(binary.length);
-            for (var i = 0; i < binary.length; i++) {
-                bytes[i] = binary.charCodeAt(i);
-            }
+            for (var i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
             return bytes.buffer;
         }
 
@@ -1820,24 +2146,12 @@
             try {
                 if (!textoPlano || textoPlano.trim() === '') return '';
                 var result = await derivarChave(CRYPTO_CONFIG.secretKey, CRYPTO_CONFIG.salt);
-                var derivedKey = result.derivedKey;
-                var encoder = result.encoder;
                 var iv = crypto.getRandomValues(new Uint8Array(12));
-                var dadosCodificados = encoder.encode(textoPlano);
-                var ciphertext = await crypto.subtle.encrypt(
-                    { name: 'AES-GCM', iv: iv },
-                    derivedKey,
-                    dadosCodificados
-                );
-                var pacote = {
-                    iv: arrayBufferToBase64(iv.buffer),
-                    ciphertext: arrayBufferToBase64(ciphertext)
-                };
+                var dadosCodificados = result.encoder.encode(textoPlano);
+                var ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, result.derivedKey, dadosCodificados);
+                var pacote = { iv: arrayBufferToBase64(iv.buffer), ciphertext: arrayBufferToBase64(ciphertext) };
                 return btoa(JSON.stringify(pacote));
-            } catch (err) {
-                console.error('Erro ao criptografar:', err);
-                return '';
-            }
+            } catch (err) { return ''; }
         }
 
         async function descriptografarDado(dadoCriptografado) {
@@ -1845,40 +2159,25 @@
                 if (!dadoCriptografado || dadoCriptografado.trim() === '') return '';
                 var pacote = JSON.parse(atob(dadoCriptografado));
                 var result = await derivarChave(CRYPTO_CONFIG.secretKey, CRYPTO_CONFIG.salt);
-                var derivedKey = result.derivedKey;
-                var encoder = result.encoder;
                 var iv = new Uint8Array(base64ToArrayBuffer(pacote.iv));
                 var ciphertext = base64ToArrayBuffer(pacote.ciphertext);
-                var plaintextBuffer = await crypto.subtle.decrypt(
-                    { name: 'AES-GCM', iv: iv },
-                    derivedKey,
-                    ciphertext
-                );
+                var plaintextBuffer = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv }, result.derivedKey, ciphertext);
                 return new TextDecoder().decode(plaintextBuffer);
-            } catch (err) {
-                console.error('Erro ao descriptografar:', err);
-                return '';
-            }
+            } catch (err) { return ''; }
         }
 
         async function salvarDadosClienteCriptografados(nome, email) {
-            var nomeCripto = await criptografarDado(nome);
-            var emailCripto = await criptografarDado(email);
-            localStorage.setItem('vcore_cliente_nome_enc', nomeCripto);
-            localStorage.setItem('vcore_cliente_email_enc', emailCripto);
+            localStorage.setItem('vcore_cliente_nome_enc', await criptografarDado(nome));
+            localStorage.setItem('vcore_cliente_email_enc', await criptografarDado(email));
         }
 
         async function carregarDadosClienteDescriptografados() {
-            var nomeCripto = localStorage.getItem('vcore_cliente_nome_enc');
-            var emailCripto = localStorage.getItem('vcore_cliente_email_enc');
-            if (nomeCripto && emailCripto) {
-                var nome = await descriptografarDado(nomeCripto);
-                var email = await descriptografarDado(emailCripto);
-                if (nome && email) {
-                    document.getElementById('clienteNome').value = nome;
-                    document.getElementById('clienteEmail').value = email;
-                    dadosCliente = { nome: nome, email: email };
-                }
+            var nome = await descriptografarDado(localStorage.getItem('vcore_cliente_nome_enc'));
+            var email = await descriptografarDado(localStorage.getItem('vcore_cliente_email_enc'));
+            if (nome && email) {
+                document.getElementById('clienteNome').value = nome;
+                document.getElementById('clienteEmail').value = email;
+                dadosCliente = { nome: nome, email: email };
             }
         }
 
@@ -1890,297 +2189,146 @@
             var mensagem = document.getElementById('leadMensagem').value.trim();
             var erro = document.getElementById('leadsErro');
             var sucesso = document.getElementById('leadsSucesso');
-
-            erro.style.display = 'none';
-            sucesso.style.display = 'none';
-
+            erro.style.display = 'none'; sucesso.style.display = 'none';
             if (!nome) { erro.style.display = 'block'; erro.innerText = '⚠️ Preencha seu nome!'; return; }
             if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { erro.style.display = 'block'; erro.innerText = '⚠️ E-mail inválido!'; return; }
-            if (!whatsapp || whatsapp.replace(/\D/g, '').length < 10) { erro.style.display = 'block'; erro.innerText = '⚠️ WhatsApp inválido! Informe com DDD.'; return; }
-            if (!mensagem || mensagem.length < 5) { erro.style.display = 'block'; erro.innerText = '⚠️ Escreva sua sugestão ou dúvida!'; return; }
-
+            if (!whatsapp || whatsapp.replace(/\D/g, '').length < 10) { erro.style.display = 'block'; erro.innerText = '⚠️ WhatsApp inválido!'; return; }
+            if (!mensagem || mensagem.length < 5) { erro.style.display = 'block'; erro.innerText = '⚠️ Escreva sua sugestão!'; return; }
             var data = new Date().toLocaleString('pt-BR');
-            var assunto = '💡 NOVA SUGESTÃO DE MOD - ' + nome;
-            var corpo = 'NOVA SUGESTÃO VCORE GAMES\n\n👤 Nome: ' + nome + '\n📧 Email: ' + email + '\n📱 WhatsApp: ' + whatsapp + '\n💬 Mensagem: ' + mensagem + '\n📅 Data: ' + data;
-
-            window.open('mailto:' + EMAIL_ADMIN + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo), '_blank');
-
-            var wpp = '💡 *NOVA SUGESTÃO DE MOD*\n👤 ' + nome + '\n📧 ' + email + '\n📱 ' + whatsapp + '\n💬 ' + mensagem;
-            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(wpp), '_blank');
-
+            window.open('mailto:' + EMAIL_ADMIN + '?subject=' + encodeURIComponent('NOVA SUGESTÃO - ' + nome) + '&body=' + encodeURIComponent('👤 ' + nome + '\n📧 ' + email + '\n📱 ' + whatsapp + '\n💬 ' + mensagem + '\n📅 ' + data), '_blank');
+            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('💡 *NOVA SUGESTÃO*\n👤 ' + nome + '\n📧 ' + email + '\n📱 ' + whatsapp + '\n💬 ' + mensagem), '_blank');
             document.getElementById('leadsForm').reset();
             sucesso.style.display = 'block';
-            mostrarToast('✅ Sugestão enviada com sucesso! 🚀');
-
-            setTimeout(function() {
-                sucesso.style.display = 'none';
-            }, 6000);
+            mostrarToast('✅ Sugestão enviada! 🚀');
+            setTimeout(function() { sucesso.style.display = 'none'; }, 6000);
         }
 
         var exitModalJaMostrado = false;
         var exitTimer = null;
-
-        function mostrarModalExit() {
-            if (exitModalJaMostrado) return;
-            exitModalJaMostrado = true;
-            document.getElementById('modalExit').classList.add('active');
-        }
-
-        function fecharModalExit() {
-            document.getElementById('modalExit').classList.remove('active');
-        }
-
-        document.addEventListener('mouseout', function(e) {
-            if (exitModalJaMostrado) return;
-            if (e.clientY <= 0 && e.relatedTarget === null) {
-                exitTimer = setTimeout(mostrarModalExit, 400);
-            }
-        });
-
-        document.addEventListener('mouseover', function(e) {
-            if (exitTimer && e.clientY > 10) {
-                clearTimeout(exitTimer);
-                exitTimer = null;
-            }
-        });
-
-        var lastScrollY = window.scrollY;
-        var scrollExitCount = 0;
+        function mostrarModalExit() { if (!exitModalJaMostrado) { exitModalJaMostrado = true; document.getElementById('modalExit').classList.add('active'); } }
+        function fecharModalExit() { document.getElementById('modalExit').classList.remove('active'); }
+        document.addEventListener('mouseout', function(e) { if (!exitModalJaMostrado && e.clientY <= 0 && e.relatedTarget === null) exitTimer = setTimeout(mostrarModalExit, 400); });
+        document.addEventListener('mouseover', function(e) { if (exitTimer && e.clientY > 10) { clearTimeout(exitTimer); exitTimer = null; } });
+        var lastScrollY = window.scrollY, scrollExitCount = 0;
         window.addEventListener('scroll', function() {
-            var currentScrollY = window.scrollY;
-            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            if (docHeight <= 0) return;
-
-            var scrollPercent = (currentScrollY / docHeight) * 100;
-            if (scrollPercent > 60 && currentScrollY < lastScrollY && scrollExitCount < 1 && !exitModalJaMostrado) {
-                scrollExitCount++;
-                setTimeout(function() {
-                    if (!exitModalJaMostrado) mostrarModalExit();
-                }, 1500);
-            }
-            lastScrollY = currentScrollY;
+            var dy = window.scrollY, maxH = document.documentElement.scrollHeight - window.innerHeight;
+            if (maxH <= 0) return;
+            if ((dy / maxH) * 100 > 60 && dy < lastScrollY && scrollExitCount < 1 && !exitModalJaMostrado) { scrollExitCount++; setTimeout(function() { if (!exitModalJaMostrado) mostrarModalExit(); }, 1500); }
+            lastScrollY = dy;
         });
 
         var NOTIFICACOES = [
-            { id: 1, titulo: '🔥 Promoção Relâmpago!', texto: '40% OFF em todos os pacotes por tempo limitado!', icone: '💰', lida: false, data: '2026-08-09' },
-            { id: 2, titulo: '🆕 Novo Pacote General', texto: 'Já disponível com todos os mods + Kit Tático.', icone: '💎', lida: false, data: '2026-08-08' },
-            { id: 3, titulo: '📖 Tutorial Atualizado', texto: 'Guia de instalação revisado com novos caminhos.', icone: '📖', lida: false, data: '2026-08-07' },
-            { id: 4, titulo: '✅ Suporte 24h', texto: 'Nosso time está online para ajudar na instalação.', icone: '💬', lida: true, data: '2026-08-06' },
+            { id: 1, titulo: '🔥 Promoção Relâmpago!', texto: '40% OFF em todos os pacotes!', icone: '💰', lida: false, data: '2026-08-09' },
+            { id: 2, titulo: '🆕 Novo Pacote General', texto: 'Já disponível com Kit Tático.', icone: '💎', lida: false, data: '2026-08-08' },
+            { id: 3, titulo: '📖 Tutorial Atualizado', texto: 'Guia revisado com novos caminhos.', icone: '📖', lida: false, data: '2026-08-07' },
+            { id: 4, titulo: '✅ Suporte 24h', texto: 'Time online para ajudar!', icone: '💬', lida: true, data: '2026-08-06' },
         ];
 
         function carregarNotificacoes() {
-            var storage = localStorage.getItem('vcore_notificacoes');
-            if (storage) {
-                var saved = JSON.parse(storage);
-                NOTIFICACOES.forEach(function(n) {
-                    var found = saved.find(function(s) { return s.id === n.id; });
-                    if (found) n.lida = found.lida;
-                });
-            }
-            salvarNotificacoes();
-            atualizarBadgeNotificacoes();
+            var s = localStorage.getItem('vcore_notificacoes');
+            if (s) { var saved = JSON.parse(s); NOTIFICACOES.forEach(function(n) { var f = saved.find(function(x) { return x.id === n.id; }); if (f) n.lida = f.lida; }); }
+            salvarNotificacoes(); atualizarBadgeNotificacoes();
         }
-
-        function salvarNotificacoes() {
-            localStorage.setItem('vcore_notificacoes', JSON.stringify(NOTIFICACOES));
-        }
-
+        function salvarNotificacoes() { localStorage.setItem('vcore_notificacoes', JSON.stringify(NOTIFICACOES)); }
         function atualizarBadgeNotificacoes() {
-            var naoLidas = NOTIFICACOES.filter(function(n) { return !n.lida; }).length;
-            var badge = document.getElementById('badgeNotificacao');
-            if (naoLidas > 0) {
-                badge.style.display = 'flex';
-                badge.innerText = naoLidas;
-            } else {
-                badge.style.display = 'none';
-            }
+            var n = NOTIFICACOES.filter(function(x) { return !x.lida; }).length;
+            var b = document.getElementById('badgeNotificacao');
+            b.style.display = n > 0 ? 'flex' : 'none';
+            if (n > 0) b.innerText = n;
         }
-
-        function toggleNotificacoes(event) {
-            event.stopPropagation();
-            var dropdown = document.getElementById('notifDropdown');
-            var sino = document.getElementById('sinoIcon');
-            var isAtivo = dropdown.classList.contains('ativo');
-
-            if (isAtivo) {
-                dropdown.classList.remove('ativo');
-            } else {
-                var body = document.getElementById('notifBody');
-                if (NOTIFICACOES.length === 0) {
-                    body.innerHTML = '<div class="notif-empty">🔔 Nenhuma notificação no momento.</div>';
-                } else {
-                    body.innerHTML = NOTIFICACOES.map(function(n) {
-                        var estilo = n.lida ? 'opacity:0.5;' : '';
-                        var dot = !n.lida ? '<div class="notif-dot"></div>' : '';
-                        return '<div class="notif-item" onclick="marcarComoLida(' + n.id + ')" style="' + estilo + '">' +
-                            '<div class="notif-icone">' + n.icone + '</div>' +
-                            '<div class="notif-conteudo">' +
-                            '<strong>' + n.titulo + '</strong>' +
-                            '<span>' + n.texto + ' · ' + formatarData(n.data) + '</span>' +
-                            '</div>' + dot + '</div>';
-                    }).join('');
-                }
-                dropdown.classList.add('ativo');
-                sino.classList.add('tocando');
-                setTimeout(function() { sino.classList.remove('tocando'); }, 500);
-            }
+        function toggleNotificacoes(e) {
+            e.stopPropagation();
+            var d = document.getElementById('notifDropdown'), s = document.getElementById('sinoIcon');
+            if (d.classList.contains('ativo')) { d.classList.remove('ativo'); return; }
+            var b = document.getElementById('notifBody');
+            b.innerHTML = NOTIFICACOES.length === 0 ? '<div class="notif-empty">🔔 Nenhuma notificação.</div>' :
+                NOTIFICACOES.map(function(n) {
+                    return '<div class="notif-item" onclick="marcarComoLida(' + n.id + ')" style="' + (n.lida ? 'opacity:0.5' : '') + '">' +
+                        '<div class="notif-icone">' + n.icone + '</div><div class="notif-conteudo"><strong>' + n.titulo + '</strong><span>' + n.texto + ' · ' + n.data.split('-').reverse().join('/') + '</span></div>' +
+                        (n.lida ? '' : '<div class="notif-dot"></div>') + '</div>';
+                }).join('');
+            d.classList.add('ativo'); s.classList.add('tocando');
+            setTimeout(function() { s.classList.remove('tocando'); }, 500);
         }
-
         function marcarComoLida(id) {
-            var notif = NOTIFICACOES.find(function(n) { return n.id === id; });
-            if (notif) {
-                notif.lida = true;
-                salvarNotificacoes();
-                atualizarBadgeNotificacoes();
-                toggleNotificacoes({ stopPropagation: function() {} });
-                setTimeout(function() { toggleNotificacoes({ stopPropagation: function() {} }); }, 50);
-            }
-        }
-
-        function marcarTodasLidas() {
-            NOTIFICACOES.forEach(function(n) { n.lida = true; });
-            salvarNotificacoes();
-            atualizarBadgeNotificacoes();
+            var n = NOTIFICACOES.find(function(x) { return x.id === id; });
+            if (n) { n.lida = true; salvarNotificacoes(); atualizarBadgeNotificacoes(); }
             document.getElementById('notifDropdown').classList.remove('ativo');
         }
+        function marcarTodasLidas() { NOTIFICACOES.forEach(function(n) { n.lida = true; }); salvarNotificacoes(); atualizarBadgeNotificacoes(); document.getElementById('notifDropdown').classList.remove('ativo'); }
+        document.addEventListener('click', function(e) { var d = document.getElementById('notifDropdown'), b = document.querySelector('.btn-notificacao'); if (d.classList.contains('ativo') && !d.contains(e.target) && !b.contains(e.target)) d.classList.remove('ativo'); });
 
-        function formatarData(dataStr) {
-            var partes = dataStr.split('-');
-            return partes[2] + '/' + partes[1] + '/' + partes[0];
-        }
-
-        document.addEventListener('click', function(e) {
-            var dropdown = document.getElementById('notifDropdown');
-            var btn = document.querySelector('.btn-notificacao');
-            if (dropdown.classList.contains('ativo') && !dropdown.contains(e.target) && !btn.contains(e.target)) {
-                dropdown.classList.remove('ativo');
-            }
-        });
-
-        function abrirPoliticaPrivacidade() {
-            document.getElementById('modalPolitica').classList.add('active');
-        }
-
-        function fecharPoliticaPrivacidade() {
-            document.getElementById('modalPolitica').classList.remove('active');
-        }
+        function abrirPoliticaPrivacidade() { document.getElementById('modalPolitica').classList.add('active'); }
+        function fecharPoliticaPrivacidade() { document.getElementById('modalPolitica').classList.remove('active'); }
 
         (function() {
-            var key = 'vcore_promo_dl_v3';
-            var dl = localStorage.getItem(key);
-            if (!dl || parseInt(dl) < Date.now()) {
-                dl = Date.now() + 48 * 60 * 60 * 1000;
-                localStorage.setItem(key, dl);
-            }
+            var key = 'vcore_promo_dl_v3', dl = localStorage.getItem(key);
+            if (!dl || parseInt(dl) < Date.now()) { dl = Date.now() + 48 * 60 * 60 * 1000; localStorage.setItem(key, dl); }
             dl = parseInt(dl);
-
             function tick() {
                 var r = Math.max(0, dl - Date.now());
-                var dias = String(Math.floor(r / 86400000)).padStart(2, '0');
-                var horas = String(Math.floor((r % 86400000) / 3600000)).padStart(2, '0');
-                var min = String(Math.floor((r % 3600000) / 60000)).padStart(2, '0');
-                var seg = String(Math.floor((r % 60000) / 1000)).padStart(2, '0');
-
-                var countDias = document.getElementById('countDias');
-                var countHoras = document.getElementById('countHoras');
-                var countMin = document.getElementById('countMin');
-                var countSeg = document.getElementById('countSeg');
-                if (countDias) countDias.innerText = dias;
-                if (countHoras) countHoras.innerText = horas;
-                if (countMin) countMin.innerText = min;
-                if (countSeg) countSeg.innerText = seg;
-
-                var exitDias = document.getElementById('exitCountDias');
-                var exitHoras = document.getElementById('exitCountHoras');
-                var exitMin = document.getElementById('exitCountMin');
-                var exitSeg = document.getElementById('exitCountSeg');
-                if (exitDias) exitDias.innerText = dias;
-                if (exitHoras) exitHoras.innerText = horas;
-                if (exitMin) exitMin.innerText = min;
-                if (exitSeg) exitSeg.innerText = seg;
-
+                var ds = String(Math.floor(r / 86400000)).padStart(2, '0');
+                var hs = String(Math.floor((r % 86400000) / 3600000)).padStart(2, '0');
+                var ms = String(Math.floor((r % 3600000) / 60000)).padStart(2, '0');
+                var ss = String(Math.floor((r % 60000) / 1000)).padStart(2, '0');
+                ['countDias','countHoras','countMin','countSeg'].forEach(function(id, i) { var el = document.getElementById(id); if (el) el.innerText = [ds,hs,ms,ss][i]; });
+                ['exitCountDias','exitCountHoras','exitCountMin','exitCountSeg'].forEach(function(id, i) { var el = document.getElementById(id); if (el) el.innerText = [ds,hs,ms,ss][i]; });
                 if (r > 0) setTimeout(tick, 1000);
             }
             tick();
         })();
 
         function toggleFaq(btn) {
-            var answer = btn.nextElementSibling;
-            var icon = btn.querySelector('.faq-icon');
+            var answer = btn.nextElementSibling, icon = btn.querySelector('.faq-icon');
             var isOpen = answer.classList.contains('open');
             document.querySelectorAll('.faq-answer').forEach(function(a) { a.classList.remove('open'); });
             document.querySelectorAll('.faq-icon').forEach(function(i) { i.classList.remove('rotated'); });
             document.querySelectorAll('.faq-question').forEach(function(q) { q.classList.remove('active'); });
-            if (!isOpen) {
-                answer.classList.add('open');
-                icon.classList.add('rotated');
-                btn.classList.add('active');
-            }
+            if (!isOpen) { answer.classList.add('open'); icon.classList.add('rotated'); btn.classList.add('active'); }
         }
 
         function adicionarAoCarrinho(nome, preco) {
             var existe = carrinho.find(function(i) { return i.nome === nome; });
-            if (existe) existe.qtd++;
-            else carrinho.push({ nome: nome, preco: preco, qtd: 1 });
-            atualizarCarrinho();
-            mostrarToast(nome.split(' - ')[0] + ' adicionado! 🛒');
+            if (existe) existe.qtd++; else carrinho.push({ nome: nome, preco: preco, qtd: 1 });
+            atualizarCarrinho(); mostrarToast(nome.split(' - ')[0] + ' adicionado! 🛒');
         }
-
-        function removerDoCarrinho(nome) {
-            carrinho = carrinho.filter(function(i) { return i.nome !== nome; });
-            atualizarCarrinho();
-        }
-
+        function removerDoCarrinho(nome) { carrinho = carrinho.filter(function(i) { return i.nome !== nome; }); atualizarCarrinho(); }
         function alterarQtd(nome, delta) {
             var item = carrinho.find(function(i) { return i.nome === nome; });
-            if (!item) return;
-            item.qtd += delta;
+            if (!item) return; item.qtd += delta;
             if (item.qtd <= 0) carrinho = carrinho.filter(function(i) { return i.nome !== nome; });
             atualizarCarrinho();
         }
-
         function atualizarCarrinho() {
-            var lista = document.getElementById('listaCarrinho');
-            var totalEl = document.getElementById('valorTotal');
-            var badge = document.getElementById('badgeCarrinho');
-            var barra = document.getElementById('barraTotal');
-            var barraV = document.getElementById('barraTotalValor');
-            var barraI = document.getElementById('barraTotalItens');
+            var lista = document.getElementById('listaCarrinho'), totalEl = document.getElementById('valorTotal');
+            var badge = document.getElementById('badgeCarrinho'), barra = document.getElementById('barraTotal');
+            var barraV = document.getElementById('barraTotalValor'), barraI = document.getElementById('barraTotalItens');
             var totalItens = carrinho.reduce(function(s, i) { return s + i.qtd; }, 0);
             var totalValor = carrinho.reduce(function(s, i) { return s + i.preco * i.qtd; }, 0);
             var tf = 'R$ ' + totalValor.toFixed(2).replace('.', ',');
-
             if (carrinho.length === 0) {
                 lista.innerHTML = '<p style="color:#8899AA;text-align:center;font-size:0.85rem;">Seu carrinho está vazio.</p>';
-                totalEl.innerText = 'R$ 0,00';
-                badge.style.display = 'none';
-                barra.classList.remove('visivel');
-                barraV.innerText = 'R$ 0,00';
-                barraI.innerText = '0 item';
+                totalEl.innerText = 'R$ 0,00'; badge.style.display = 'none'; barra.classList.remove('visivel');
+                barraV.innerText = 'R$ 0,00'; barraI.innerText = '0 item';
             } else {
-                badge.style.display = 'flex';
-                badge.innerText = totalItens;
+                badge.style.display = 'flex'; badge.innerText = totalItens;
                 lista.innerHTML = carrinho.map(function(item) {
                     var sub = (item.preco * item.qtd).toFixed(2).replace('.', ',');
-                    var pu = item.preco.toFixed(2).replace('.', ',');
                     var nomeEsc = item.nome.replace(/'/g, "\\'");
                     return '<div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.04);gap:0.3rem;flex-wrap:wrap;">' +
-                        '<div style="flex:1;min-width:100px;"><strong style="font-size:0.82rem;">' + item.nome + '</strong><br><span style="font-size:0.7rem;color:#8899AA;">R$ ' + pu + ' cada</span></div>' +
+                        '<div style="flex:1;min-width:100px;"><strong style="font-size:0.82rem;">' + item.nome + '</strong><br><span style="font-size:0.7rem;color:#8899AA;">R$ ' + item.preco.toFixed(2).replace('.', ',') + ' cada</span></div>' +
                         '<div style="display:flex;align-items:center;gap:4px;">' +
                         '<button onclick="alterarQtd(\'' + nomeEsc + '\',-1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">−</button>' +
                         '<span style="font-weight:700;min-width:18px;text-align:center;">' + item.qtd + '</span>' +
                         '<button onclick="alterarQtd(\'' + nomeEsc + '\',1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">+</button>' +
                         '<span style="font-weight:700;min-width:55px;text-align:right;font-size:0.82rem;">R$ ' + sub + '</span>' +
-                        '<button onclick="removerDoCarrinho(\'' + nomeEsc + '\')" style="color:#ff4444;font-weight:700;background:none;border:none;cursor:pointer;">✕</button>' +
-                        '</div></div>';
+                        '<button onclick="removerDoCarrinho(\'' + nomeEsc + '\')" style="color:#ff4444;font-weight:700;background:none;border:none;cursor:pointer;">✕</button></div></div>';
                 }).join('');
-                totalEl.innerText = tf;
-                barraV.innerText = tf;
+                totalEl.innerText = tf; barraV.innerText = tf;
                 barraI.innerText = totalItens + (totalItens === 1 ? ' item' : ' itens');
                 barra.classList.add('visivel');
             }
         }
-
         function iniciarFinalizacao() {
             if (carrinho.length === 0) { mostrarToast('⚠️ Carrinho vazio!'); return; }
             var nome = document.getElementById('clienteNome').value.trim();
@@ -2194,67 +2342,33 @@
             document.getElementById('pixValor').innerText = 'R$ ' + total.toFixed(2).replace('.', ',');
             document.getElementById('modalCarrinho').classList.remove('active');
             document.getElementById('modalPix').classList.add('active');
-
             salvarDadosClienteCriptografados(nome, email.toLowerCase());
         }
-
-        function copiarChavePix() {
-            navigator.clipboard.writeText(CHAVE_PIX).then(function() { mostrarToast('✅ Chave PIX copiada!'); });
-        }
-
+        function copiarChavePix() { navigator.clipboard.writeText(CHAVE_PIX).then(function() { mostrarToast('✅ Chave PIX copiada!'); }); }
         function enviarComprovante() {
-            if (!dadosCliente.nome || !dadosCliente.email) { mostrarToast('⚠️ Dados do cliente não encontrados.'); return; }
+            if (!dadosCliente.nome || !dadosCliente.email) { mostrarToast('⚠️ Dados não encontrados.'); return; }
             var itens = carrinho.map(function(i) { return i.qtd + 'x ' + i.nome; }).join(', ');
             var total = carrinho.reduce(function(s, i) { return s + i.preco * i.qtd; }, 0);
             var tf = 'R$ ' + total.toFixed(2).replace('.', ',');
             var data = new Date().toLocaleString('pt-BR');
-
-            var assunto = '🔔 NOVA COMPRA - ' + dadosCliente.nome;
-            var corpo = 'NOVA COMPRA VCORE GAMES\n\n👤 ' + dadosCliente.nome + '\n📧 ' + dadosCliente.email + '\n📦 ' + itens + '\n💰 ' + tf + '\n📅 ' + data + '\n🔑 PIX: ' + CHAVE_PIX;
-            window.open('mailto:' + EMAIL_ADMIN + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo), '_blank');
-
-            var wpp = '🔔 *NOVA COMPRA*\n👤 ' + dadosCliente.nome + '\n📧 ' + dadosCliente.email + '\n📦 ' + itens + '\n💰 ' + tf;
-            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(wpp), '_blank');
-
-            carrinho = [];
-            dadosCliente = { nome: '', email: '' };
-            document.getElementById('clienteNome').value = '';
-            document.getElementById('clienteEmail').value = '';
-            localStorage.removeItem('vcore_cliente_nome_enc');
-            localStorage.removeItem('vcore_cliente_email_enc');
-            atualizarCarrinho();
-            document.getElementById('modalPix').classList.remove('active');
+            window.open('mailto:' + EMAIL_ADMIN + '?subject=' + encodeURIComponent('NOVA COMPRA - ' + dadosCliente.nome) + '&body=' + encodeURIComponent('👤 ' + dadosCliente.nome + '\n📧 ' + dadosCliente.email + '\n📦 ' + itens + '\n💰 ' + tf + '\n📅 ' + data + '\n🔑 PIX: ' + CHAVE_PIX), '_blank');
+            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('🔔 *NOVA COMPRA*\n👤 ' + dadosCliente.nome + '\n📧 ' + dadosCliente.email + '\n📦 ' + itens + '\n💰 ' + tf), '_blank');
+            carrinho = []; dadosCliente = { nome: '', email: '' };
+            document.getElementById('clienteNome').value = ''; document.getElementById('clienteEmail').value = '';
+            localStorage.removeItem('vcore_cliente_nome_enc'); localStorage.removeItem('vcore_cliente_email_enc');
+            atualizarCarrinho(); document.getElementById('modalPix').classList.remove('active');
             mostrarToast('✅ Comprovante enviado! 📩');
         }
-
-        function mostrarToast(msg) {
-            var t = document.getElementById('toast');
-            t.innerText = msg;
-            t.classList.add('show');
-            clearTimeout(t._t);
-            t._t = setTimeout(function() { t.classList.remove('show'); }, 2500);
-        }
-
+        function mostrarToast(msg) { var t = document.getElementById('toast'); t.innerText = msg; t.classList.add('show'); clearTimeout(t._t); t._t = setTimeout(function() { t.classList.remove('show'); }, 2500); }
         function abrirCarrinho() { document.getElementById('modalCarrinho').classList.add('active'); }
         function fecharCarrinho() { document.getElementById('modalCarrinho').classList.remove('active'); }
         function fecharModalPix() { document.getElementById('modalPix').classList.remove('active'); }
-
-        document.querySelectorAll('.modal-overlay').forEach(function(m) {
-            m.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); });
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') document.querySelectorAll('.modal-overlay').forEach(function(m) { m.classList.remove('active'); });
-        });
+        document.querySelectorAll('.modal-overlay').forEach(function(m) { m.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); }); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') document.querySelectorAll('.modal-overlay').forEach(function(m) { m.classList.remove('active'); }); });
 
         var btnTopo = document.getElementById('btnTopo');
-        window.addEventListener('scroll', function() {
-            btnTopo.style.display = window.scrollY > 400 ? 'flex' : 'none';
-        });
-        btnTopo.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        window.addEventListener('scroll', function() { btnTopo.style.display = window.scrollY > 400 ? 'flex' : 'none'; });
+        btnTopo.addEventListener('click', function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
         carregarNotificacoes();
         carregarDadosClienteDescriptografados();
