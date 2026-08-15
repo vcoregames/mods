@@ -3,33 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="referrer" content="no-referrer" />
     <title>VCORE GAMES - Mods Mod Ghost</title>
 
-    <script src="https://cdn.tailwindcss.com">
-    </script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        verde: "#a5ff00",
-                        verdeEscuro: "#8ae000",
-                        azul: "#0c1535",
-                        azulMedio: "#162244",
-                        azulClaro: "#1e3060",
-                        whatsapp: "#25D366",
-                    },
-                    fontFamily: {
-                        sans: ["Montserrat", "system-ui", "sans-serif"],
-                        logo: ["Rajdhani", "Arial Black", "Helvetica Bold", "sans-serif"],
-                    },
-                },
-            },
-        };
-    </script>
 
     <style>
         :root {
@@ -938,12 +916,12 @@
                 <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">GAMES</span>
             </div>
             <div style="display:flex;align-items:center;gap:0.3rem;position:relative;">
-                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" class="rede-icon" title="Instagram"><i class="fa fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" class="rede-icon" title="YouTube"><i class="fa fa-youtube-play"></i></a>
-                <a href="https://facebook.com/vcoregames" target="_blank" class="rede-icon" title="Facebook"><i class="fa fa-facebook-square"></i></a>
-                <a href="https://wa.me/5516981097916" target="_blank" class="rede-icon" title="WhatsApp Suporte"><i class="fa fa-whatsapp"></i></a>
+                <a href="https://instagram.com/rodrigovecoregaming" target="_blank" rel="noopener noreferrer" class="rede-icon" title="Instagram"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" rel="noopener noreferrer" class="rede-icon" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+                <a href="https://facebook.com/vcoregames" target="_blank" rel="noopener noreferrer" class="rede-icon" title="Facebook"><i class="fa fa-facebook-square"></i></a>
+                <a href="https://wa.me/5516981097916" target="_blank" rel="noopener noreferrer" class="rede-icon" title="WhatsApp Suporte"><i class="fa fa-whatsapp"></i></a>
 
-                <button class="btn-notificacao" onclick="toggleNotificacoes(event)" title="Notificações" aria-label="Notificações">
+                <button type="button" class="btn-notificacao" onclick="toggleNotificacoes(event)" title="Notificações" aria-label="Notificações">
                     <i class="fa fa-bell" id="sinoIcon"></i>
                     <span class="badge-notificacao" id="badgeNotificacao">0</span>
                 </button>
@@ -951,12 +929,12 @@
                 <div class="notif-dropdown" id="notifDropdown">
                     <div class="notif-header">
                         <h4>🔔 Notificações</h4>
-                        <button onclick="marcarTodasLidas()">✓ Marcar todas lidas</button>
+                        <button type="button" onclick="marcarTodasLidas()">✓ Marcar todas lidas</button>
                     </div>
                     <div class="notif-body" id="notifBody"></div>
                 </div>
 
-                <button onclick="abrirCarrinho()" style="background:none;border:none;cursor:pointer;position:relative;margin-left:0.2rem;" title="Carrinho" aria-label="Abrir carrinho">
+                <button type="button" onclick="abrirCarrinho()" style="background:none;border:none;cursor:pointer;position:relative;margin-left:0.2rem;" title="Carrinho" aria-label="Abrir carrinho">
                     <i class="fa fa-shopping-cart" style="color:var(--verde);font-size:1.2rem;"></i>
                     <span id="badgeCarrinho" style="position:absolute;top:-8px;right:-8px;background:#cc0000;color:#fff;font-size:0.6rem;font-weight:700;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center;">0</span>
                 </button>
@@ -966,7 +944,6 @@
 
     <!-- ═════════ HERO COM CANVAS DE FUNDO ANIMADO ═════════ -->
     <section class="hero-section" id="inicio">
-        <!-- CANVAS DO CAMPO DE BATALHA -->
         <canvas id="battlefieldCanvas"></canvas>
 
         <div class="hero-content">
@@ -1021,7 +998,7 @@
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,40 C300,100 600,0 900,80 C1000,105 1100,30 1200,60 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
         </div>
         <div class="container-wide" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;position:relative;z-index:1;">
-            <div class="video-card" onclick="window.open('https://www.youtube.com/watch?v=pN6ntMjvhRw','_blank')" title="Clique para assistir ao tutorial">
+            <div class="video-card" onclick="window.open('https://www.youtube.com/watch?v=pN6ntMjvhRw','_blank','noopener,noreferrer')" title="Clique para assistir ao tutorial">
                 <div class="play-btn"><i class="fa fa-play" style="margin-left:3px;"></i></div>
             </div>
             <div>
@@ -1060,7 +1037,7 @@
                     💎 Quero esses Mods <i class="fa fa-arrow-right"></i>
                 </a>
             </div>
-            <div class="video-card" onclick="window.open('https://www.youtube.com/@RodrigoVCOREgames','_blank')" title="Clique para ver a demonstração dos mods">
+            <div class="video-card" onclick="window.open('https://www.youtube.com/@RodrigoVCOREgames','_blank','noopener,noreferrer')" title="Clique para ver a demonstração dos mods">
                 <div class="play-btn"><i class="fa fa-play" style="margin-left:3px;"></i></div>
             </div>
         </div>
@@ -1186,7 +1163,7 @@
                 <p style="color:#fff;font-weight:700;margin:0;font-size:0.95rem;">
                     💬 <strong style="color:var(--verde);">Dúvidas?</strong> Nosso suporte está disponível para ajudar em todas as etapas!
                 </p>
-                <a href="https://wa.me/5516981097916" target="_blank" class="btn-primario" style="margin-top:0.8rem;background:#25D366;border-color:#25D366;color:#fff;">
+                <a href="https://wa.me/5516981097916" target="_blank" rel="noopener noreferrer" class="btn-primario" style="margin-top:0.8rem;background:#25D366;border-color:#25D366;color:#fff;">
                     <i class="fa fa-whatsapp"></i> Chamar no WhatsApp
                 </a>
             </div>
@@ -1244,21 +1221,21 @@
                     <div class="pkg-icon">🎖️</div><div class="pkg-stars" style="color:#FFD700;">★★★☆☆</div><h4 style="color:#fff;">Pacote Recruta</h4>
                     <ul><li>Mods Essenciais VCORE</li><li>Fest Feminino</li><li>Veículos Modificados</li><li>Guia de instalação por e-mail</li></ul>
                     <div class="price-old">R$ 100,00</div><div class="price-new" style="color:var(--verde);">R$ 60,00</div><span class="badge-off">40% OFF</span>
-                    <button onclick="adicionarAoCarrinho('Pacote Recruta - Mods Essenciais',60)" class="btn-primario btn-pacote">🎖️ Adicionar</button>
+                    <button type="button" onclick="adicionarAoCarrinho('Pacote Recruta - Mods Essenciais',60)" class="btn-primario btn-pacote">🎖️ Adicionar</button>
                 </div>
                 <div class="pacote-card popular" style="position:relative;">
                     <span class="badge-popular">⭐ MAIS POPULAR</span>
                     <div class="pkg-icon" style="margin-top:0.5rem;">🥇</div><div class="pkg-stars" style="color:#3a2800;">★★★★☆</div><h4 style="color:var(--azul);">Pacote Sargento</h4>
                     <ul><li>Tudo do Pacote Recruta</li><li>Coletes — Mod de Aparência</li><li>Armas e Miras Realistas</li><li>Camisa e Calça Tática</li><li>Camuflagens e Capacetes</li></ul>
                     <div class="price-old">R$ 150,00</div><div class="price-new" style="color:var(--azul);">R$ 90,00</div><span class="badge-off">40% OFF</span>
-                    <button onclick="adicionarAoCarrinho('Pacote Sargento - Mods Avançados',90)" class="btn-primario btn-pacote" style="background:var(--azul);color:#fff;border-color:var(--azul);">🥇 Adicionar</button>
+                    <button type="button" onclick="adicionarAoCarrinho('Pacote Sargento - Mods Avançados',90)" class="btn-primario btn-pacote" style="background:var(--azul);color:#fff;border-color:var(--azul);">🥇 Adicionar</button>
                 </div>
                 <div class="pacote-card" style="position:relative;">
                     <span class="badge-best-value">💎 MELHOR CUSTO-BENEFÍCIO</span>
                     <div class="pkg-icon" style="margin-top:0.5rem;">💎</div><div class="pkg-stars" style="color:#FFD700;">★★★★★</div><h4 class="gradient-text">Pacote General</h4>
                     <ul><li><strong>TODOS</strong> os mods disponíveis</li><li>Colete, Armas, Miras</li><li>Camisa, Calça, Camuflagem</li><li>Capacetes e Proteções</li><li>Veículos + Kit Tático</li></ul>
                     <div class="price-old">R$ 200,00</div><div class="price-new gradient-text">R$ 120,00</div><span class="badge-off">40% OFF</span>
-                    <button onclick="adicionarAoCarrinho('Pacote General - Todos os Mods',120)" class="btn-primario btn-pacote">💎 Adicionar</button>
+                    <button type="button" onclick="adicionarAoCarrinho('Pacote General - Todos os Mods',120)" class="btn-primario btn-pacote">💎 Adicionar</button>
                 </div>
             </div>
         </div>
@@ -1272,13 +1249,13 @@
         <div class="container-narrow">
             <p class="subtitle-tag-center">DÚVIDAS</p>
             <h2 style="text-align:center;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--verde);margin:0.5rem 0 2.5rem;">Perguntas Frequentes</h2>
-            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Como funciona a instalação? <span class="faq-icon">▼</span></button><div class="faq-answer">Após a compra, você recebe o link para baixar o pacote de mods. Os arquivos <strong>já estão prontos</strong> — basta <strong>copiar todo o conteúdo baixado diretamente para a pasta raiz do jogo</strong> (onde está o executável). Depois é só <strong>iniciar um save novo</strong> e jogar! Recomendamos fortemente fazer backup dos arquivos originais antes de copiar os mods.</div></div>
-            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Os mods funcionam em todas as plataformas? <span class="faq-icon">▼</span></button><div class="faq-answer">Sim! <strong>Steam, Ubisoft Connect e Epic Games</strong>. O processo é idêntico: copiar os arquivos para a pasta raiz do jogo em cada plataforma. Confira os caminhos detalhados na nossa seção de <a href="#instalacao" style="color:var(--verde);">Guia de Instalação</a>.</div></div>
-            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Quanto tempo leva para liberar o download? <span class="faq-icon">▼</span></button><div class="faq-answer">Após a confirmação do pagamento, o link de download é enviado para o seu e-mail em até <strong>24 horas</strong>. Na maioria dos casos, o envio é muito mais rápido!</div></div>
-            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Posso pedir reembolso? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong>⚠️ Importante:</strong> Uma vez que o link de download foi liberado, <strong style="color:#ff7777;">não é possível solicitar reembolso</strong>, pois o conteúdo digital já foi disponibilizado.<br><br><strong>✅ Você não corre risco:</strong> Se o arquivo apresentar <strong>algum problema técnico</strong>, damos <strong>assistência completa</strong> — desde o download até o jogo abrir. Se mesmo com nossa ajuda o problema persistir, aí sim faremos a devolução.<br><br><strong style="color:var(--verde);">Resumindo:</strong> Com nossa assistência, você não precisa se preocupar!</div></div>
-            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Preciso ter o jogo limpo de outros mods? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong>Sim, é essencial!</strong> O jogo precisa estar <strong>100% limpo</strong>, sem vestígios de mods anteriores. Se já tentou instalar outros mods: desinstale o jogo, delete os arquivos residuais da pasta e reinstale do zero. Isso garante que os mods VCORE funcionarão perfeitamente.</div></div>
-            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Preciso de ferramentas extras? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong>Não!</strong> Nossos pacotes já vêm <strong>100% prontos</strong>. É só baixar, copiar os arquivos para a pasta raiz e jogar. Nada de programas adicionais!</div></div>
-            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Os arquivos vão todos na pasta raiz? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong style="color:var(--verde);">SIM! ⭐</strong> Todos os arquivos do download devem ser copiados <strong>diretamente na pasta raiz do jogo</strong> (onde está o executável). Não crie subpastas, não reorganize — é tudo junto na raiz!</div></div>
+            <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)">Como funciona a instalação? <span class="faq-icon">▼</span></button><div class="faq-answer">Após a compra, você recebe o link para baixar o pacote de mods. Os arquivos <strong>já estão prontos</strong> — basta <strong>copiar todo o conteúdo baixado diretamente para a pasta raiz do jogo</strong> (onde está o executável). Depois é só <strong>iniciar um save novo</strong> e jogar! Recomendamos fortemente fazer backup dos arquivos originais antes de copiar os mods.</div></div>
+            <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)">Os mods funcionam em todas as plataformas? <span class="faq-icon">▼</span></button><div class="faq-answer">Sim! <strong>Steam, Ubisoft Connect e Epic Games</strong>. O processo é idêntico: copiar os arquivos para a pasta raiz do jogo em cada plataforma. Confira os caminhos detalhados na nossa seção de <a href="#instalacao" style="color:var(--verde);">Guia de Instalação</a>.</div></div>
+            <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)">Quanto tempo leva para liberar o download? <span class="faq-icon">▼</span></button><div class="faq-answer">Após a confirmação do pagamento, o link de download é enviado para o seu e-mail em até <strong>24 horas</strong>. Na maioria dos casos, o envio é muito mais rápido!</div></div>
+            <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)">Posso pedir reembolso? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong>⚠️ Importante:</strong> Uma vez que o link de download foi liberado, <strong style="color:#ff7777;">não é possível solicitar reembolso</strong>, pois o conteúdo digital já foi disponibilizado.<br><br><strong>✅ Você não corre risco:</strong> Se o arquivo apresentar <strong>algum problema técnico</strong>, damos <strong>assistência completa</strong> — desde o download até o jogo abrir. Se mesmo com nossa ajuda o problema persistir, aí sim faremos a devolução.<br><br><strong style="color:var(--verde);">Resumindo:</strong> Com nossa assistência, você não precisa se preocupar!</div></div>
+            <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)">Preciso ter o jogo limpo de outros mods? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong>Sim, é essencial!</strong> O jogo precisa estar <strong>100% limpo</strong>, sem vestígios de mods anteriores. Se já tentou instalar outros mods: desinstale o jogo, delete os arquivos residuais da pasta e reinstale do zero. Isso garante que os mods VCORE funcionarão perfeitamente.</div></div>
+            <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)">Preciso de ferramentas extras? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong>Não!</strong> Nossos pacotes já vêm <strong>100% prontos</strong>. É só baixar, copiar os arquivos para a pasta raiz e jogar. Nada de programas adicionais!</div></div>
+            <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)">Os arquivos vão todos na pasta raiz? <span class="faq-icon">▼</span></button><div class="faq-answer"><strong style="color:var(--verde);">SIM! ⭐</strong> Todos os arquivos do download devem ser copiados <strong>diretamente na pasta raiz do jogo</strong> (onde está o executável). Não crie subpastas, não reorganize — é tudo junto na raiz!</div></div>
         </div>
     </section>
 
@@ -1324,7 +1301,7 @@
         <div class="footer-container">
             <div class="footer-col"><h4>VCORE GAMES</h4><p>Mods exclusivos para Mod Ghost. Transformamos sua experiência de jogo com visuais táticos, armas realistas e suporte de qualidade.</p></div>
             <div class="footer-col"><h4>Links Rápidos</h4><ul><li><a href="#inicio">🏠 Início</a></li><li><a href="#pacotes">📦 Pacotes</a></li><li><a href="#instalacao">📖 Como Instalar</a></li><li><a href="#demo-mods">🎬 Demonstração</a></li></ul></div>
-            <div class="footer-col"><h4>Suporte</h4><ul><li><a href="https://wa.me/5516981097916" target="_blank">📱 WhatsApp</a></li><li><a href="mailto:rodrigoxgames25@gmail.com">📧 E-mail</a></li><li><a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank">▶ YouTube</a></li><li><a href="https://instagram.com/rodrigovecoregaming" target="_blank">📷 Instagram</a></li></ul></div>
+            <div class="footer-col"><h4>Suporte</h4><ul><li><a href="https://wa.me/5516981097916" target="_blank" rel="noopener noreferrer">📱 WhatsApp</a></li><li><a href="mailto:rodrigoxgames25@gmail.com">📧 E-mail</a></li><li><a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank" rel="noopener noreferrer">▶ YouTube</a></li><li><a href="https://instagram.com/rodrigovecoregaming" target="_blank" rel="noopener noreferrer">📷 Instagram</a></li></ul></div>
             <div class="footer-col"><h4>Legal</h4><ul><li><a href="#" onclick="abrirPoliticaPrivacidade();return false;">🔒 Política de Privacidade</a></li><li><a href="#" onclick="abrirPoliticaPrivacidade();return false;">📜 Termos de Uso</a></li></ul></div>
         </div>
         <div class="footer-bottom">
@@ -1333,14 +1310,14 @@
     </footer>
 
     <!-- ═════ BOTÃO WHATSAPP ═════ -->
-    <a href="https://wa.me/5516981097916?text=Ol%C3%A1!%20Preciso%20de%20suporte%20com%20os%20mods%20VCORE." target="_blank" class="whatsapp-float" title="Suporte via WhatsApp" aria-label="WhatsApp Suporte"><i class="fa fa-whatsapp"></i></a>
+    <a href="https://wa.me/5516981097916?text=Ol%C3%A1!%20Preciso%20de%20suporte%20com%20os%20mods%20VCORE." target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Suporte via WhatsApp" aria-label="WhatsApp Suporte"><i class="fa fa-whatsapp"></i></a>
 
     <!-- ═════ MODAL CARRINHO ═════ -->
     <div class="modal-overlay" id="modalCarrinho">
         <div class="modal-card">
-            <button class="modal-close" onclick="fecharCarrinho()">&times;</button>
+            <button type="button" class="modal-close" onclick="fecharCarrinho()">&times;</button>
             <h2 style="color:var(--verde);text-align:center;font-weight:800;font-size:1.3rem;margin-bottom:1rem;">🛒 Seu Carrinho</h2>
-            <div id="listaCarrinho" style="margin-bottom:1rem;"><p style="color:#8899AA;text-align:center;font-size:0.85rem;" id="carrinhoVazio">Seu carrinho está vazio.</p></div>
+            <div id="listaCarrinho" style="margin-bottom:1rem;"><p style="color:#8899AA;text-align:center;font-size:0.85rem;">Seu carrinho está vazio.</p></div>
             <div style="border-top:2px solid rgba(165,255,0,0.15);padding-top:1rem;margin-bottom:1rem;"><div style="display:flex;justify-content:space-between;font-weight:800;font-size:1.2rem;"><span>Total:</span><span id="valorTotal" style="color:var(--verde);">R$ 0,00</span></div></div>
             <div style="background:rgba(165,255,0,0.04);border:2px solid rgba(165,255,0,0.2);border-radius:12px;padding:1rem;margin-bottom:1rem;">
                 <p style="font-size:0.8rem;font-weight:700;color:var(--verde);margin-bottom:0.75rem;">📋 Seus dados <span style="font-size:0.6rem;color:#8899AA;">(🔒 criptografados)</span>:</p>
@@ -1349,14 +1326,14 @@
                 <p style="font-size:0.65rem;color:#8899AA;margin-top:0.5rem;">⚠️ O link de download será enviado para este e-mail.</p>
             </div>
             <p id="carrinhoErro" style="color:#ff4444;font-size:0.8rem;text-align:center;display:none;margin-bottom:0.5rem;"></p>
-            <button onclick="iniciarFinalizacao()" class="btn-primario" style="width:100%;">💳 Finalizar Compra</button>
+            <button type="button" onclick="iniciarFinalizacao()" class="btn-primario" style="width:100%;">💳 Finalizar Compra</button>
         </div>
     </div>
 
     <!-- ═════ MODAL PIX ═════ -->
     <div class="modal-overlay" id="modalPix">
         <div class="modal-card">
-            <button class="modal-close" onclick="fecharModalPix()">&times;</button>
+            <button type="button" class="modal-close" onclick="fecharModalPix()">&times;</button>
             <div style="text-align:center;">
                 <div style="font-size:3rem;">💳</div>
                 <h2 style="color:var(--verde);font-weight:800;margin:0.5rem 0;">Pagamento via PIX</h2>
@@ -1367,9 +1344,9 @@
                     <p class="pix-chave">16997238990</p>
                     <p class="pix-nome">Rodrigo Paulino da Silva</p>
                     <p class="pix-banco">🏦 SumUp</p>
-                    <button onclick="copiarChavePix()" style="margin-top:0.8rem;padding:0.6rem 1.8rem;background:var(--azul-medio);color:var(--verde);border:1px solid rgba(165,255,0,0.3);border-radius:8px;cursor:pointer;font-weight:700;font-size:0.85rem;">📋 Copiar Chave PIX</button>
+                    <button type="button" onclick="copiarChavePix()" style="margin-top:0.8rem;padding:0.6rem 1.8rem;background:var(--azul-medio);color:var(--verde);border:1px solid rgba(165,255,0,0.3);border-radius:8px;cursor:pointer;font-weight:700;font-size:0.85rem;">📋 Copiar Chave PIX</button>
                 </div>
-                <button onclick="enviarComprovante()" class="btn-primario pulse-border" style="width:100%;padding:0.9rem;font-size:0.9rem;background:#25D366;border-color:#25D366;color:#fff;">📩 Enviar Comprovante (Email + WhatsApp)</button>
+                <button type="button" onclick="enviarComprovante()" class="btn-primario pulse-border" style="width:100%;padding:0.9rem;font-size:0.9rem;background:#25D366;border-color:#25D366;color:#fff;">📩 Enviar Comprovante (Email + WhatsApp)</button>
                 <p style="color:#8899AA;font-size:0.7rem;margin-top:0.5rem;">Link de download enviado em até 24h após confirmação</p>
             </div>
         </div>
@@ -1378,7 +1355,7 @@
     <!-- ═════ MODAL POLÍTICA ═════ -->
     <div class="modal-overlay modal-politica" id="modalPolitica">
         <div class="modal-card">
-            <button class="modal-close" onclick="fecharPoliticaPrivacidade()">&times;</button>
+            <button type="button" class="modal-close" onclick="fecharPoliticaPrivacidade()">&times;</button>
             <h2 style="color:var(--verde);font-weight:800;font-size:1.3rem;text-align:center;margin-bottom:1rem;">🔒 Política de Privacidade</h2>
             <p style="color:var(--cinza);font-size:0.75rem;text-align:center;margin-bottom:1rem;">Última atualização: Agosto de 2026</p>
             <h3>1. Introdução</h3><p>A <strong>VCORE GAMES</strong> está comprometida com a proteção da sua privacidade. Esta política explica como coletamos, usamos e protegemos suas informações pessoais ao utilizar nossos serviços de venda de mods para jogos.</p>
@@ -1388,14 +1365,14 @@
             <h3>5. Armazenamento e Segurança</h3><p>Seus dados são armazenados em ambiente seguro com acesso restrito. Utilizamos medidas técnicas de proteção como <strong>criptografia AES-GCM</strong> e controle de acesso. Os comprovantes PIX são armazenados apenas para registro fiscal obrigatório.</p>
             <h3>6. Seus Direitos (LGPD)</h3><p>De acordo com a Lei Geral de Proteção de Dados (Lei 13.709/2018), você tem direito a:</p><ul style="padding-left:1.2rem;line-height:1.8;"><li>Acessar seus dados armazenados</li><li>Solicitar correção de dados incompletos ou desatualizados</li><li>Solicitar a exclusão dos seus dados</li><li>Revogar o consentimento a qualquer momento</li></ul>
             <h3>7. Contato</h3><p>Para qualquer dúvida sobre esta política ou para exercer seus direitos, entre em contato:</p><ul style="padding-left:1.2rem;line-height:1.8;"><li><strong>E-mail:</strong> rodrigoxgames25@gmail.com</li><li><strong>WhatsApp:</strong> (16) 98109-7916</li><li><strong>Responsável:</strong> Rodrigo Paulino da Silva</li></ul>
-            <div style="text-align:center;margin-top:1.5rem;"><button onclick="fecharPoliticaPrivacidade()" class="btn-primario" style="font-size:0.85rem;">Entendi e Aceito</button></div>
+            <div style="text-align:center;margin-top:1.5rem;"><button type="button" onclick="fecharPoliticaPrivacidade()" class="btn-primario" style="font-size:0.85rem;">Entendi e Aceito</button></div>
         </div>
     </div>
 
     <!-- ═════ BARRA TOTAL ═════ -->
     <div class="barra-total" id="barraTotal">
         <div style="display:flex;align-items:center;gap:0.5rem;"><span>🛒</span><span id="barraTotalValor" style="font-weight:800;font-size:1.1rem;">R$ 0,00</span><span id="barraTotalItens" style="font-size:0.7rem;background:rgba(165,255,0,0.12);padding:0.2rem 0.5rem;border-radius:50px;">0 item</span></div>
-        <button onclick="abrirCarrinho()" style="padding:0.7rem 1.5rem;background:var(--verde);color:var(--azul);font-weight:800;border:none;border-radius:10px;cursor:pointer;font-size:0.85rem;">Ver Carrinho →</button>
+        <button type="button" onclick="abrirCarrinho()" style="padding:0.7rem 1.5rem;background:var(--verde);color:var(--azul);font-weight:800;border:none;border-radius:10px;cursor:pointer;font-size:0.85rem;">Ver Carrinho →</button>
     </div>
 
     <!-- ═════ TOAST ═════ -->
@@ -1412,6 +1389,7 @@
         (function() {
             var canvas = document.getElementById('battlefieldCanvas');
             var ctx = canvas.getContext('2d');
+            var DPR = window.devicePixelRatio || 1;
             var W, H;
             var particles = [];
             var tracers = [];
@@ -1425,8 +1403,9 @@
                 var hero = document.querySelector('.hero-section');
                 W = hero.offsetWidth;
                 H = hero.offsetHeight;
-                canvas.width = W;
-                canvas.height = H;
+                canvas.width = Math.floor(W * DPR);
+                canvas.height = Math.floor(H * DPR);
+                ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
             }
 
             // ═══ PARTÍCULAS DE POEIRA/SUJEIRA ═══
@@ -1447,7 +1426,7 @@
             function createTracer(fromX, fromY, toX, toY) {
                 var dx = toX - fromX;
                 var dy = toY - fromY;
-                var dist = Math.sqrt(dx * dx + dy * dy);
+                var dist = Math.sqrt(dx * dx + dy * dy) || 1;
                 return {
                     x: fromX,
                     y: fromY,
@@ -1455,9 +1434,8 @@
                     vy: (dy / dist) * 18,
                     life: 1,
                     decay: 0.04,
-                    length: Math.random() * 15 + 8,
                     trail: [],
-                    color: Math.random() < 0.5 ? '#ffaa00' : '#ffdd44'
+                    color: Math.random() < 0.5 ? '255,170,0' : '255,221,68'
                 };
             }
 
@@ -1556,12 +1534,10 @@
                 explosions = [];
                 smokeParticles = [];
 
-                // Helicópteros
                 helicopters = [];
                 helicopters.push(createHelicopter('left'));
                 helicopters.push(createHelicopter('right'));
 
-                // Soldados
                 soldiers = [];
                 for (var j = 0; j < 8; j++) soldiers.push(createSoldier());
             }
@@ -1796,7 +1772,6 @@
                     t.life -= t.decay;
                     t.trail.push({ x: t.x, y: t.y, life: t.life });
 
-                    // Limitar trail
                     if (t.trail.length > 8) t.trail.shift();
 
                     if (t.life <= 0 || t.x < -50 || t.x > W + 50 || t.y < -50 || t.y > H + 50) {
@@ -1804,13 +1779,10 @@
                         continue;
                     }
 
-                    // Desenhar trail
+                    // Desenhar rastro
                     for (var j = 1; j < t.trail.length; j++) {
                         var alpha = (j / t.trail.length) * t.life;
-                        ctx.strokeStyle = t.color.replace(')', ',ALPHA)').replace('rgb', 'rgba').replace('ALPHA', (alpha * 0.8).toString());
-                        if (t.color.startsWith('#')) {
-                            ctx.strokeStyle = 'rgba(255,180,40,' + (alpha * 0.7) + ')';
-                        }
+                        ctx.strokeStyle = 'rgba(' + t.color + ',' + (alpha * 0.7).toFixed(3) + ')';
                         ctx.lineWidth = 2;
                         ctx.beginPath();
                         ctx.moveTo(t.trail[j - 1].x, t.trail[j - 1].y);
@@ -1819,7 +1791,7 @@
                     }
 
                     // Ponto brilhante na ponta
-                    ctx.fillStyle = 'rgba(255,255,200,' + t.life + ')';
+                    ctx.fillStyle = 'rgba(255,255,200,' + t.life.toFixed(3) + ')';
                     ctx.beginPath();
                     ctx.arc(t.x, t.y, 2.5, 0, Math.PI * 2);
                     ctx.fill();
@@ -1888,9 +1860,11 @@
                     if ((h.direction === 1 && h.x > W + 100) || (h.direction === -1 && h.x < -100)) {
                         helicopters.splice(i, 1);
                         // Criar novo depois de um tempo
-                        setTimeout(function() {
-                            helicopters.push(createHelicopter(Math.random() < 0.5 ? 'left' : 'right'));
-                        }, Math.random() * 3000 + 2000);
+                        (function(side) {
+                            setTimeout(function() {
+                                helicopters.push(createHelicopter(side));
+                            }, Math.random() * 3000 + 2000);
+                        })(Math.random() < 0.5 ? 'left' : 'right');
                         continue;
                     }
 
@@ -1918,12 +1892,10 @@
                 }
 
                 // ═══ SOLDADOS ═══
-                soldiers.forEach(function(s, idx) {
+                soldiers.forEach(function(s) {
                     s.phase += 0.015;
-                    // Movimento sutil
                     s.y = s.baseY + Math.sin(s.phase) * 3;
 
-                    // Cooldown de tiro
                     if (s.shootCooldown > 0) s.shootCooldown--;
                     if (s.muzzleFlash > 0) s.muzzleFlash -= 0.06;
 
@@ -1932,18 +1904,16 @@
                         s.shootCooldown = Math.floor(Math.random() * 40 + 30);
                         s.muzzleFlash = 1;
 
-                        // Criar traçante
                         var fromX = s.x + (s.side === 'left' ? 25 : -25);
                         var fromY = s.y - 15;
                         var toX = fromX + (s.side === 'left' ? 200 : -200) + (Math.random() - 0.5) * 100;
                         var toY = fromY + (Math.random() - 0.5) * 40;
                         tracers.push(createTracer(fromX, fromY, toX, toY));
 
-                        // Pequeno flash no chão (impacto simulado)
+                        // Pequenas faíscas de impacto
                         if (Math.random() < 0.3) {
                             var impactX = toX + (Math.random() - 0.5) * 40;
                             var impactY = H * 0.55 + Math.random() * H * 0.4;
-                            // Pequenas faíscas
                             for (var sp = 0; sp < 5; sp++) {
                                 particles.push({
                                     x: impactX,
@@ -1957,62 +1927,16 @@
                                 });
                             }
                         }
-
-                        // Ocasionalmente: granada!
-                        if (Math.random() < 0.15) {
-                            var grenadeX = s.x + (s.side === 'left' ? 80 : -80);
-                            var grenadeY = s.y - 25;
-                            // Simular trajetória da granada
-                            tracers.push({
-                                x: s.x,
-                                y: s.y - 15,
-                                vx: (s.side === 'left' ? 5 : -5),
-                                vy: -8,
-                                life: 1,
-                                decay: 0.02,
-                                length: 6,
-                                trail: [],
-                                color: '#88cc44',
-                                isGrenade: true,
-                                grenadeX: grenadeX,
-                                grenadeY: grenadeY,
-                                grenadeVY: -8,
-                                grenadeExploded: false
-                            });
-
-                            // Marcar o último traçante como granada
-                            var lastTracer = tracers[tracers.length - 1];
-                            if (lastTracer && lastTracer.isGrenade) {
-                                // Já configurado
-                            }
-                        }
                     }
 
                     drawSoldier(s);
                 });
 
-                // ═══ LANÇAR GRANADAS OCASIONAIS (eventos aleatórios) ═══
+                // ═══ EXPLOSÕES ALEATÓRIAS (eventos) ═══
                 if (Math.random() < 0.003) {
                     var gx = Math.random() * W * 0.6 + W * 0.2;
                     var gy = H * 0.55 + Math.random() * H * 0.35;
                     explosions.push(createExplosion(gx, gy));
-                    // Tremor de câmera via canvas (sutil)
-                }
-
-                // ═══ VERIFICAR GRANADAS NOS TRAÇANTES ═══
-                for (var i = tracers.length - 1; i >= 0; i--) {
-                    var tr = tracers[i];
-                    if (tr.isGrenade && !tr.grenadeExploded) {
-                        tr.grenadeVY += 0.25; // gravidade
-                        tr.grenadeY += tr.grenadeVY;
-                        tr.grenadeX += tr.vx * 0.5;
-                        // Verificar se atingiu o chão
-                        if (tr.grenadeY >= H * 0.6 + Math.random() * 0.3 * H || tr.life <= 0.1) {
-                            explosions.push(createExplosion(tr.grenadeX, tr.grenadeY));
-                            tr.grenadeExploded = true;
-                            tracers.splice(i, 1);
-                        }
-                    }
                 }
 
                 // ═══ REPOR PARTÍCULAS ═══
@@ -2027,8 +1951,10 @@
             }
 
             // ═══ RESIZE ═══
+            var resizeTimer = null;
             window.addEventListener('resize', function() {
-                resize();
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(resize, 100);
             });
 
             // ═══ INICIAR ═══
@@ -2045,6 +1971,10 @@
         let carrinho = [];
         let dadosCliente = { nome: '', email: '' };
 
+        /* NOTA: a criptografia abaixo usa chave fixa embutida no código,
+           portanto funciona apenas como ofuscação (não é segurança real,
+           pois qualquer pessoa pode ler a chave). Para proteção efetiva
+           dos dados seria necessário um backend/servidor. */
         const CRYPTO_CONFIG = {
             secretKey: 'vcore-games-2026-seguranca-cliente-dados',
             salt: 'vcore-salt-mod-ghost'
@@ -2052,7 +1982,7 @@
 
         async function derivarChave(senha, salt) {
             var encoder = new TextEncoder();
-            var keyMaterial = await crypto.subtle.importKey('raw', encoder.encode(senha), 'PBKDF2', false, ['deriveBits', 'deriveKey']);
+            var keyMaterial = await crypto.subtle.importKey('raw', encoder.encode(senha), 'PBKDF2', false, ['deriveKey']);
             var derivedKey = await crypto.subtle.deriveKey({
                 name: 'PBKDF2',
                 salt: encoder.encode(salt),
@@ -2115,6 +2045,19 @@
             }
         }
 
+        function escaparHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function abrirUrlExterna(url) {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
         function enviarLead(event) {
             event.preventDefault();
             var nome = document.getElementById('leadNome').value.trim();
@@ -2129,8 +2072,10 @@
             if (!whatsapp || whatsapp.replace(/\D/g, '').length < 10) { erro.style.display = 'block'; erro.innerText = '⚠️ WhatsApp inválido!'; return; }
             if (!mensagem || mensagem.length < 5) { erro.style.display = 'block'; erro.innerText = '⚠️ Escreva sua sugestão!'; return; }
             var data = new Date().toLocaleString('pt-BR');
-            window.open('mailto:' + EMAIL_ADMIN + '?subject=' + encodeURIComponent('NOVA SUGESTÃO - ' + nome) + '&body=' + encodeURIComponent('👤 ' + nome + '\n📧 ' + email + '\n📱 ' + whatsapp + '\n💬 ' + mensagem + '\n📅 ' + data), '_blank');
-            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('💡 *NOVA SUGESTÃO*\n👤 ' + nome + '\n📧 ' + email + '\n📱 ' + whatsapp + '\n💬 ' + mensagem), '_blank');
+            var corpoEmail = '👤 ' + nome + '\n📧 ' + email + '\n📱 ' + whatsapp + '\n💬 ' + mensagem + '\n📅 ' + data;
+            var corpoWhats = '💡 *NOVA SUGESTÃO*\n👤 ' + nome + '\n📧 ' + email + '\n📱 ' + whatsapp + '\n💬 ' + mensagem;
+            abrirUrlExterna('mailto:' + EMAIL_ADMIN + '?subject=' + encodeURIComponent('NOVA SUGESTÃO - ' + nome) + '&body=' + encodeURIComponent(corpoEmail));
+            abrirUrlExterna('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(corpoWhats));
             document.getElementById('leadsForm').reset();
             sucesso.style.display = 'block';
             mostrarToast('✅ Sugestão enviada! 🚀');
@@ -2154,7 +2099,7 @@
             var n = NOTIFICACOES.filter(function(x) { return !x.lida; }).length;
             var b = document.getElementById('badgeNotificacao');
             b.style.display = n > 0 ? 'flex' : 'none';
-            if (n > 0) b.innerText = n;
+            if (n > 0) b.innerText = String(n);
         }
         function toggleNotificacoes(e) {
             e.stopPropagation();
@@ -2178,12 +2123,15 @@
         function marcarTodasLidas() { NOTIFICACOES.forEach(function(n) { n.lida = true; }); salvarNotificacoes(); atualizarBadgeNotificacoes(); document.getElementById('notifDropdown').classList.remove('ativo'); }
         document.addEventListener('click', function(e) { var d = document.getElementById('notifDropdown'), b = document.querySelector('.btn-notificacao'); if (d.classList.contains('ativo') && !d.contains(e.target) && !b.contains(e.target)) d.classList.remove('ativo'); });
 
-        function abrirPoliticaPrivacidade() { document.getElementById('modalPolitica').classList.add('active'); }
-        function fecharPoliticaPrivacidade() { document.getElementById('modalPolitica').classList.remove('active'); }
+        function atualizarOverflow() {
+            document.body.style.overflow = document.querySelector('.modal-overlay.active') ? 'hidden' : '';
+        }
+        function abrirPoliticaPrivacidade() { document.getElementById('modalPolitica').classList.add('active'); atualizarOverflow(); }
+        function fecharPoliticaPrivacidade() { document.getElementById('modalPolitica').classList.remove('active'); atualizarOverflow(); }
 
         (function() {
             var key = 'vcore_promo_dl_v3', dl = localStorage.getItem(key);
-            if (!dl || parseInt(dl) < Date.now()) { dl = Date.now() + 48 * 60 * 60 * 1000; localStorage.setItem(key, dl); }
+            if (!dl || parseInt(dl) < Date.now()) { dl = Date.now() + 48 * 60 * 60 * 1000; localStorage.setItem(key, String(dl)); }
             dl = parseInt(dl);
             function tick() {
                 var r = Math.max(0, dl - Date.now());
@@ -2211,11 +2159,12 @@
             if (existe) existe.qtd++; else carrinho.push({ nome: nome, preco: preco, qtd: 1 });
             atualizarCarrinho(); mostrarToast(nome.split(' - ')[0] + ' adicionado! 🛒');
         }
-        function removerDoCarrinho(nome) { carrinho = carrinho.filter(function(i) { return i.nome !== nome; }); atualizarCarrinho(); }
-        function alterarQtd(nome, delta) {
-            var item = carrinho.find(function(i) { return i.nome === nome; });
-            if (!item) return; item.qtd += delta;
-            if (item.qtd <= 0) carrinho = carrinho.filter(function(i) { return i.nome !== nome; });
+        function removerDoCarrinho(idx) { carrinho.splice(idx, 1); atualizarCarrinho(); }
+        function alterarQtd(idx, delta) {
+            var item = carrinho[idx];
+            if (!item) return;
+            item.qtd += delta;
+            if (item.qtd <= 0) carrinho.splice(idx, 1);
             atualizarCarrinho();
         }
         function atualizarCarrinho() {
@@ -2230,18 +2179,19 @@
                 totalEl.innerText = 'R$ 0,00'; badge.style.display = 'none'; barra.classList.remove('visivel');
                 barraV.innerText = 'R$ 0,00'; barraI.innerText = '0 item';
             } else {
-                badge.style.display = 'flex'; badge.innerText = totalItens;
-                lista.innerHTML = carrinho.map(function(item) {
+                badge.style.display = 'flex'; badge.innerText = String(totalItens);
+                lista.innerHTML = carrinho.map(function(item, idx) {
                     var sub = (item.preco * item.qtd).toFixed(2).replace('.', ',');
-                    var nomeEsc = item.nome.replace(/'/g, "\\'");
+                    var precoCada = item.preco.toFixed(2).replace('.', ',');
+                    var nomeSeguro = escaparHtml(item.nome);
                     return '<div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.04);gap:0.3rem;flex-wrap:wrap;">' +
-                        '<div style="flex:1;min-width:100px;"><strong style="font-size:0.82rem;">' + item.nome + '</strong><br><span style="font-size:0.7rem;color:#8899AA;">R$ ' + item.preco.toFixed(2).replace('.', ',') + ' cada</span></div>' +
+                        '<div style="flex:1;min-width:100px;"><strong style="font-size:0.82rem;">' + nomeSeguro + '</strong><br><span style="font-size:0.7rem;color:#8899AA;">R$ ' + precoCada + ' cada</span></div>' +
                         '<div style="display:flex;align-items:center;gap:4px;">' +
-                        '<button onclick="alterarQtd(\'' + nomeEsc + '\',-1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">−</button>' +
+                        '<button type="button" onclick="alterarQtd(' + idx + ',-1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">−</button>' +
                         '<span style="font-weight:700;min-width:18px;text-align:center;">' + item.qtd + '</span>' +
-                        '<button onclick="alterarQtd(\'' + nomeEsc + '\',1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">+</button>' +
+                        '<button type="button" onclick="alterarQtd(' + idx + ',1)" style="width:24px;height:24px;border-radius:50%;background:var(--azul-medio);color:var(--verde);font-weight:700;border:none;cursor:pointer;">+</button>' +
                         '<span style="font-weight:700;min-width:55px;text-align:right;font-size:0.82rem;">R$ ' + sub + '</span>' +
-                        '<button onclick="removerDoCarrinho(\'' + nomeEsc + '\')" style="color:#ff4444;font-weight:700;background:none;border:none;cursor:pointer;">✕</button></div></div>';
+                        '<button type="button" onclick="removerDoCarrinho(' + idx + ')" style="color:#ff4444;font-weight:700;background:none;border:none;cursor:pointer;">✕</button></div></div>';
                 }).join('');
                 totalEl.innerText = tf; barraV.innerText = tf;
                 barraI.innerText = totalItens + (totalItens === 1 ? ' item' : ' itens');
@@ -2261,29 +2211,51 @@
             document.getElementById('pixValor').innerText = 'R$ ' + total.toFixed(2).replace('.', ',');
             document.getElementById('modalCarrinho').classList.remove('active');
             document.getElementById('modalPix').classList.add('active');
+            atualizarOverflow();
             salvarDadosClienteCriptografados(nome, email.toLowerCase());
         }
-        function copiarChavePix() { navigator.clipboard.writeText(CHAVE_PIX).then(function() { mostrarToast('✅ Chave PIX copiada!'); }); }
+        function copiarChavePix() {
+            function fallback() {
+                var ta = document.createElement('textarea');
+                ta.value = CHAVE_PIX;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                try { document.execCommand('copy'); mostrarToast('✅ Chave PIX copiada!'); }
+                catch (e) { mostrarToast('⚠️ Copie manualmente a chave'); }
+                document.body.removeChild(ta);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(CHAVE_PIX).then(function() { mostrarToast('✅ Chave PIX copiada!'); }).catch(fallback);
+            } else {
+                fallback();
+            }
+        }
         function enviarComprovante() {
             if (!dadosCliente.nome || !dadosCliente.email) { mostrarToast('⚠️ Dados não encontrados.'); return; }
             var itens = carrinho.map(function(i) { return i.qtd + 'x ' + i.nome; }).join(', ');
             var total = carrinho.reduce(function(s, i) { return s + i.preco * i.qtd; }, 0);
             var tf = 'R$ ' + total.toFixed(2).replace('.', ',');
             var data = new Date().toLocaleString('pt-BR');
-            window.open('mailto:' + EMAIL_ADMIN + '?subject=' + encodeURIComponent('NOVA COMPRA - ' + dadosCliente.nome) + '&body=' + encodeURIComponent('👤 ' + dadosCliente.nome + '\n📧 ' + dadosCliente.email + '\n📦 ' + itens + '\n💰 ' + tf + '\n📅 ' + data + '\n🔑 PIX: ' + CHAVE_PIX), '_blank');
-            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('🔔 *NOVA COMPRA*\n👤 ' + dadosCliente.nome + '\n📧 ' + dadosCliente.email + '\n📦 ' + itens + '\n💰 ' + tf), '_blank');
+            var corpoEmail = '👤 ' + dadosCliente.nome + '\n📧 ' + dadosCliente.email + '\n📦 ' + itens + '\n💰 ' + tf + '\n📅 ' + data + '\n🔑 PIX: ' + CHAVE_PIX;
+            var corpoWhats = '🔔 *NOVA COMPRA*\n👤 ' + dadosCliente.nome + '\n📧 ' + dadosCliente.email + '\n📦 ' + itens + '\n💰 ' + tf;
+            abrirUrlExterna('mailto:' + EMAIL_ADMIN + '?subject=' + encodeURIComponent('NOVA COMPRA - ' + dadosCliente.nome) + '&body=' + encodeURIComponent(corpoEmail));
+            abrirUrlExterna('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(corpoWhats));
             carrinho = []; dadosCliente = { nome: '', email: '' };
             document.getElementById('clienteNome').value = ''; document.getElementById('clienteEmail').value = '';
             localStorage.removeItem('vcore_cliente_nome_enc'); localStorage.removeItem('vcore_cliente_email_enc');
             atualizarCarrinho(); document.getElementById('modalPix').classList.remove('active');
+            atualizarOverflow();
             mostrarToast('✅ Comprovante enviado! 📩');
         }
         function mostrarToast(msg) { var t = document.getElementById('toast'); t.innerText = msg; t.classList.add('show'); clearTimeout(t._t); t._t = setTimeout(function() { t.classList.remove('show'); }, 2500); }
-        function abrirCarrinho() { document.getElementById('modalCarrinho').classList.add('active'); }
-        function fecharCarrinho() { document.getElementById('modalCarrinho').classList.remove('active'); }
-        function fecharModalPix() { document.getElementById('modalPix').classList.remove('active'); }
-        document.querySelectorAll('.modal-overlay').forEach(function(m) { m.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); }); });
-        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') document.querySelectorAll('.modal-overlay').forEach(function(m) { m.classList.remove('active'); }); });
+        function abrirCarrinho() { document.getElementById('modalCarrinho').classList.add('active'); atualizarOverflow(); }
+        function fecharCarrinho() { document.getElementById('modalCarrinho').classList.remove('active'); atualizarOverflow(); }
+        function fecharModalPix() { document.getElementById('modalPix').classList.remove('active'); atualizarOverflow(); }
+        document.querySelectorAll('.modal-overlay').forEach(function(m) { m.addEventListener('click', function(e) { if (e.target === this) { this.classList.remove('active'); atualizarOverflow(); } }); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { document.querySelectorAll('.modal-overlay').forEach(function(m) { m.classList.remove('active'); }); atualizarOverflow(); } });
 
         var btnTopo = document.getElementById('btnTopo');
         window.addEventListener('scroll', function() { btnTopo.style.display = window.scrollY > 400 ? 'flex' : 'none'; });
