@@ -617,7 +617,11 @@
             font-size:0.82rem;margin-bottom:1.2rem;line-height:2;flex:1;
         }
         .pacote-card ul li::before{content:'✓ ';color:var(--verde);font-weight:700}
+        .pacote-card ul li.destaque{color:var(--verde);font-weight:700;}
+        .pacote-card ul li.destaque::before{content:'★ ';}
         .pacote-card.popular ul li::before{color:var(--azul)}
+        .pacote-card.popular ul li.destaque{color:var(--azul);}
+        .pacote-card.popular ul li.destaque::before{color:var(--azul);}
         .pacote-card .price-old{text-decoration:line-through;opacity:0.5;font-size:0.85rem}
         .pacote-card .price-new{font-size:2rem;font-weight:900;margin:0.3rem 0}
         .badge-off{
@@ -629,6 +633,17 @@
             background:#FFD700;color:#3a2800;padding:0.3rem 1.2rem;
             border-radius:50px;font-size:0.7rem;font-weight:800;white-space:nowrap;
             box-shadow:0 0 20px rgba(255,215,0,0.4);z-index:2;
+        }
+        .badge-crazy{
+            position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+            background:#cc0000;color:#fff;padding:0.3rem 1.2rem;
+            border-radius:50px;font-size:0.7rem;font-weight:800;white-space:nowrap;
+            box-shadow:0 0 20px rgba(255,68,68,0.5);z-index:2;
+            animation:pulseBadgeCrazy 2s ease-in-out infinite;
+        }
+        @keyframes pulseBadgeCrazy{
+            0%,100%{box-shadow:0 0 12px rgba(255,68,68,0.5)}
+            50%{box-shadow:0 0 32px rgba(255,68,68,0.9)}
         }
         .badge-best-value{
             position:absolute;top:-12px;left:50%;transform:translateX(-50%);
@@ -647,7 +662,7 @@
         @media(max-width:640px){
             .pacote-grid{grid-template-columns:1fr;max-width:400px;}
             .pacote-card{padding:2rem 1.5rem}
-            .badge-popular,.badge-best-value{font-size:0.62rem;padding:0.25rem 0.9rem;top:-10px;}
+            .badge-popular,.badge-best-value,.badge-crazy{font-size:0.62rem;padding:0.25rem 0.9rem;top:-10px;}
         }
 
         /* Modais */
@@ -1200,12 +1215,12 @@
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C400,0 800,100 1200,40 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
         </div>
         <div class="container-medium" style="position:relative;z-index:1;">
-            <p class="subtitle-tag-center">OFERTA ESPECIAL</p>
+            <p class="subtitle-tag-center">🔥 PROMOÇÃO LOUCA</p>
             <h2 style="font-size:clamp(2rem,4vw,2.5rem);font-weight:900;color:#fff;margin:0.75rem 0;">
                 Escolha seu <span style="color:var(--verde);">Pacote</span>
             </h2>
             <p style="color:rgba(255,255,255,0.7);font-size:1rem;line-height:1.6;margin-bottom:1rem;">
-                Pacotes para todos os níveis — com até <strong style="color:var(--verde);">40% de desconto!</strong>
+                Até <strong style="color:var(--verde);">50% de desconto</strong> em todos os pacotes! Aproveite enquanto dura essa oferta imperdível.
             </p>
             <div class="countdown-container" style="margin-bottom:2.5rem;">
                 <div class="countdown-box"><span class="countdown-num" id="countDias">00</span><span class="countdown-label">Dias</span></div>
@@ -1217,26 +1232,84 @@
                 <div class="countdown-box"><span class="countdown-num" id="countSeg">00</span><span class="countdown-label">Seg</span></div>
             </div>
             <div class="pacote-grid">
-                <div class="pacote-card">
-                    <div class="pkg-icon">🎖️</div><div class="pkg-stars" style="color:#FFD700;">★★★☆☆</div><h4 style="color:#fff;">Pacote Recruta</h4>
-                    <ul><li>Mods Essenciais VCORE</li><li>Fest Feminino</li><li>Veículos Modificados</li><li>Guia de instalação por e-mail</li></ul>
-                    <div class="price-old">R$ 100,00</div><div class="price-new" style="color:var(--verde);">R$ 60,00</div><span class="badge-off">40% OFF</span>
-                    <button type="button" onclick="adicionarAoCarrinho('Pacote Recruta - Mods Essenciais',60)" class="btn-primario btn-pacote">🎖️ Adicionar</button>
+
+                <!-- PACOTE OPERADOR -->
+                <div class="pacote-card" style="position:relative;">
+                    <span class="badge-crazy">🔥 PROMOÇÃO LOUCA</span>
+                    <div class="pkg-icon" style="margin-top:0.6rem;">⚡</div>
+                    <div class="pkg-stars" style="color:#FFD700;">★★★★★</div>
+                    <h4 style="color:#fff;">Pacote Operador</h4>
+                    <ul>
+                        <li>Tudo desbloqueado e já vem instalado</li>
+                        <li>Buildtables individuais</li>
+                        <li>Patch anterior a 20/09 (.forge)</li>
+                        <li>09 Capacetes</li>
+                        <li>Ferro Concepts (Correa Bison Belt + 4 cintos)</li>
+                        <li>OVNs modificados</li>
+                        <li>14 Coletes</li>
+                        <li>Vestimentas: calças, blusas, mochilas, luvas</li>
+                        <li>Armas, miras e calçados</li>
+                        <li>Câmera distante e laser mais espesso</li>
+                        <li class="destaque">🛠️ Assistência para criar a Pasta Mestre e continuar instalando outros mods</li>
+                    </ul>
+                    <div class="price-old">R$ 100,00</div>
+                    <div class="price-new" style="color:var(--verde);">R$ 50,00</div>
+                    <span class="badge-off">50% OFF</span>
+                    <button type="button" onclick="adicionarAoCarrinho('Pacote Operador - Tudo Desbloqueado',50)" class="btn-primario btn-pacote">⚡ Adicionar</button>
                 </div>
-                <div class="pacote-card popular" style="position:relative;">
-                    <span class="badge-popular">⭐ MAIS POPULAR</span>
-                    <div class="pkg-icon" style="margin-top:0.5rem;">🥇</div><div class="pkg-stars" style="color:#3a2800;">★★★★☆</div><h4 style="color:var(--azul);">Pacote Sargento</h4>
-                    <ul><li>Tudo do Pacote Recruta</li><li>Coletes — Mod de Aparência</li><li>Armas e Miras Realistas</li><li>Camisa e Calça Tática</li><li>Camuflagens e Capacetes</li></ul>
-                    <div class="price-old">R$ 150,00</div><div class="price-new" style="color:var(--azul);">R$ 90,00</div><span class="badge-off">40% OFF</span>
-                    <button type="button" onclick="adicionarAoCarrinho('Pacote Sargento - Mods Avançados',90)" class="btn-primario btn-pacote" style="background:var(--azul);color:#fff;border-color:var(--azul);">🥇 Adicionar</button>
+
+                <!-- PACOTE SARGENTO -->
+                <div class="pacote-card" style="position:relative;">
+                    <div class="pkg-icon">🥇</div>
+                    <div class="pkg-stars" style="color:#FFD700;">★★★★★</div>
+                    <h4 style="color:#fff;">Pacote Sargento</h4>
+                    <ul>
+                        <li class="destaque">Tudo do Pacote Operador e muito mais</li>
+                        <li>Tudo desbloqueado e já vem instalado</li>
+                        <li>Buildtables individuais</li>
+                        <li>Patch anterior a 20/09 (.forge)</li>
+                        <li>09 Capacetes</li>
+                        <li>Ferro Concepts (Correa Bison Belt + 4 cintos)</li>
+                        <li>OVNs modificados</li>
+                        <li>14 Coletes</li>
+                        <li>Vestimentas: calças, blusas, mochilas, luvas</li>
+                        <li>Armas, miras e calçados</li>
+                        <li>Câmera distante e laser mais espesso</li>
+                        <li class="destaque">+ Conteúdo exclusivo extra</li>
+                    </ul>
+                    <div class="price-old">R$ 150,00</div>
+                    <div class="price-new" style="color:var(--verde);">R$ 70,00</div>
+                    <span class="badge-off">50% OFF</span>
+                    <button type="button" onclick="adicionarAoCarrinho('Pacote Sargento - Mods Avançados',70)" class="btn-primario btn-pacote">🥇 Adicionar</button>
                 </div>
+
+                <!-- PACOTE GENERAL -->
                 <div class="pacote-card" style="position:relative;">
                     <span class="badge-best-value">💎 MELHOR CUSTO-BENEFÍCIO</span>
-                    <div class="pkg-icon" style="margin-top:0.5rem;">💎</div><div class="pkg-stars" style="color:#FFD700;">★★★★★</div><h4 class="gradient-text">Pacote General</h4>
-                    <ul><li><strong>TODOS</strong> os mods disponíveis</li><li>Colete, Armas, Miras</li><li>Camisa, Calça, Camuflagem</li><li>Capacetes e Proteções</li><li>Veículos + Kit Tático</li></ul>
-                    <div class="price-old">R$ 200,00</div><div class="price-new gradient-text">R$ 120,00</div><span class="badge-off">40% OFF</span>
-                    <button type="button" onclick="adicionarAoCarrinho('Pacote General - Todos os Mods',120)" class="btn-primario btn-pacote">💎 Adicionar</button>
+                    <div class="pkg-icon" style="margin-top:0.6rem;">💎</div>
+                    <div class="pkg-stars" style="color:#FFD700;">★★★★★</div>
+                    <h4 class="gradient-text">Pacote General</h4>
+                    <ul>
+                        <li class="destaque">Tudo dos Pacotes Operador e Sargento, e muito mais ainda</li>
+                        <li class="destaque">Pacote completo com todos os mods já testados e 100% pronto para jogar</li>
+                        <li>Tudo desbloqueado e já vem instalado</li>
+                        <li>Buildtables individuais</li>
+                        <li>Patch anterior a 20/09 (.forge)</li>
+                        <li>09 Capacetes</li>
+                        <li>Ferro Concepts (Correa Bison Belt + 4 cintos)</li>
+                        <li>OVNs modificados</li>
+                        <li>14 Coletes</li>
+                        <li>Vestimentas: calças, blusas, mochilas, luvas</li>
+                        <li>Armas, miras e calçados</li>
+                        <li>Câmera distante e laser mais espesso</li>
+                        <li class="destaque">+ Conteúdo exclusivo extra</li>
+                    </ul>
+                    <div class="price-old">R$ 200,00</div>
+                    <div class="price-new gradient-text">R$ 100,00</div>
+                    <span class="badge-off">50% OFF</span>
+                    <button type="button" onclick="adicionarAoCarrinho('Pacote General - Pack Completo',100)" class="btn-primario btn-pacote" style="background:linear-gradient(90deg,var(--verde),#FFD700);color:var(--azul);">💎 Adicionar</button>
                 </div>
+
             </div>
         </div>
         <div class="shape-bottom">
@@ -1408,7 +1481,6 @@
                 ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
             }
 
-            // ═══ PARTÍCULAS DE POEIRA/SUJEIRA ═══
             function createDustParticle() {
                 return {
                     x: Math.random() * W,
@@ -1422,7 +1494,6 @@
                 };
             }
 
-            // ═══ TRAÇANTES (TIROS) ═══
             function createTracer(fromX, fromY, toX, toY) {
                 var dx = toX - fromX;
                 var dy = toY - fromY;
@@ -1439,7 +1510,6 @@
                 };
             }
 
-            // ═══ EXPLOSÕES (GRANADAS) ═══
             function createExplosion(x, y) {
                 var parts = [];
                 var count = Math.floor(Math.random() * 20 + 25);
@@ -1459,7 +1529,6 @@
                             (Math.random() < 0.5 ? 'rgba(255,200,50,ALPHA)' : 'rgba(255,60,10,ALPHA)')
                     });
                 }
-                // Flash inicial
                 parts.push({
                     x: x, y: y,
                     vx: 0, vy: 0,
@@ -1472,7 +1541,6 @@
                 return { x: x, y: y, parts: parts, life: 1, decay: 0.008 };
             }
 
-            // ═══ FUMAÇA ═══
             function createSmoke(x, y) {
                 return {
                     x: x + (Math.random() - 0.5) * 20,
@@ -1486,7 +1554,6 @@
                 };
             }
 
-            // ═══ HELICÓPTEROS ═══
             function createHelicopter(side) {
                 var y = Math.random() * H * 0.4 + H * 0.08;
                 var x = side === 'left' ? -80 : W + 80;
@@ -1505,7 +1572,6 @@
                 };
             }
 
-            // ═══ SOLDADOS (SILHUETAS) ═══
             function createSoldier() {
                 var side = Math.random() < 0.5 ? 'left' : 'right';
                 var x = side === 'left' ? Math.random() * 200 + 30 : W - Math.random() * 200 - 30;
@@ -1525,7 +1591,6 @@
                 };
             }
 
-            // ═══ INICIALIZAR ═══
             function init() {
                 resize();
                 particles = [];
@@ -1542,20 +1607,17 @@
                 for (var j = 0; j < 8; j++) soldiers.push(createSoldier());
             }
 
-            // ═══ DESENHAR HELICÓPTERO ═══
             function drawHelicopter(h) {
                 ctx.save();
                 ctx.translate(h.x, h.y);
 
                 var s = h.size;
 
-                // Sombra
                 ctx.fillStyle = 'rgba(0,0,0,0.3)';
                 ctx.beginPath();
                 ctx.ellipse(0, s * 0.6, s * 0.7, s * 0.15, 0, 0, Math.PI * 2);
                 ctx.fill();
 
-                // Corpo
                 ctx.fillStyle = '#2a3040';
                 ctx.beginPath();
                 ctx.moveTo(-s * 0.15, s * 0.25);
@@ -1570,7 +1632,6 @@
                 ctx.lineWidth = 1;
                 ctx.stroke();
 
-                // Cauda
                 ctx.fillStyle = '#353d50';
                 ctx.beginPath();
                 ctx.moveTo(s * 0.25, -s * 0.15);
@@ -1580,7 +1641,6 @@
                 ctx.closePath();
                 ctx.fill();
 
-                // Rotor principal (girando)
                 h.rotorAngle += h.rotorSpeed;
                 ctx.save();
                 ctx.translate(0, -s * 0.35);
@@ -1591,7 +1651,6 @@
                 ctx.fillRect(-2, -s * 0.85, 4, s * 1.7);
                 ctx.restore();
 
-                // Rotor de cauda
                 ctx.save();
                 ctx.translate(s * 0.68, -s * 0.25);
                 ctx.rotate(h.rotorAngle * 2.5);
@@ -1599,7 +1658,6 @@
                 ctx.fillRect(-s * 0.2, -1.5, s * 0.4, 3);
                 ctx.restore();
 
-                // Cabine
                 ctx.fillStyle = 'rgba(100,180,220,0.3)';
                 ctx.beginPath();
                 ctx.ellipse(-s * 0.08, -s * 0.1, s * 0.18, s * 0.12, 0, 0, Math.PI * 2);
@@ -1607,7 +1665,6 @@
                 ctx.strokeStyle = 'rgba(150,210,240,0.5)';
                 ctx.stroke();
 
-                // Luzes piscando
                 var blink = Math.sin(frameCount * 0.15) > 0;
                 if (blink) {
                     ctx.fillStyle = '#ff3333';
@@ -1623,7 +1680,6 @@
                 ctx.restore();
             }
 
-            // ═══ DESENHAR SOLDADO (SILHUETA) ═══
             function drawSoldier(s) {
                 ctx.save();
                 ctx.translate(s.x, s.y);
@@ -1631,68 +1687,55 @@
                 var scale = 0.55;
                 var recoil = s.muzzleFlash > 0 ? Math.sin(s.muzzleFlash * Math.PI) * 4 : 0;
 
-                // Sombra no chão
                 ctx.fillStyle = 'rgba(0,0,0,0.25)';
                 ctx.beginPath();
                 ctx.ellipse(0, 28 * scale, 14 * scale, 4 * scale, 0, 0, Math.PI * 2);
                 ctx.fill();
 
-                // Cor (silhueta escura com leve tom militar)
                 var bodyColor = s.side === 'left' ?
                     'rgba(30,40,30,0.85)' :
                     'rgba(30,35,30,0.85)';
 
-                // Pernas
                 ctx.fillStyle = bodyColor;
                 ctx.fillRect(-6 * scale, 10 * scale, 5 * scale, 18 * scale);
                 ctx.fillRect(2 * scale, 10 * scale, 5 * scale, 18 * scale);
 
-                // Corpo/tronco
                 ctx.fillStyle = bodyColor;
                 ctx.fillRect(-8 * scale, -12 * scale + recoil * 0.5, 16 * scale, 22 * scale);
 
-                // Colete tático
                 ctx.fillStyle = 'rgba(40,45,35,0.8)';
                 ctx.fillRect(-7 * scale, -8 * scale + recoil * 0.5, 14 * scale, 12 * scale);
 
-                // Braços
                 ctx.fillStyle = bodyColor;
-                // Braço de apoio (esquerdo)
                 ctx.save();
                 ctx.translate(-8 * scale, -10 * scale + recoil * 0.5);
                 ctx.rotate(-0.6);
                 ctx.fillRect(-2 * scale, 0, 5 * scale, 14 * scale);
                 ctx.restore();
 
-                // Braço de gatilho (direito)
                 ctx.save();
                 ctx.translate(8 * scale, -10 * scale + recoil * 0.5);
                 ctx.rotate(0.4 - recoil * 0.03);
                 ctx.fillRect(-2 * scale, 0, 5 * scale, 14 * scale);
                 ctx.restore();
 
-                // Cabeça
                 ctx.fillStyle = 'rgba(25,30,20,0.85)';
                 ctx.beginPath();
                 ctx.arc(0, -19 * scale + recoil * 0.5, 7 * scale, 0, Math.PI * 2);
                 ctx.fill();
 
-                // Capacete
                 ctx.fillStyle = 'rgba(35,40,30,0.9)';
                 ctx.beginPath();
                 ctx.arc(0, -20 * scale + recoil * 0.5, 8 * scale, Math.PI, 0);
                 ctx.fill();
 
-                // Arma
                 ctx.save();
                 ctx.translate(8 * scale, -6 * scale + recoil * 0.5);
                 ctx.rotate(0.15 - recoil * 0.02);
                 ctx.fillStyle = 'rgba(20,20,20,0.9)';
                 ctx.fillRect(0, -2 * scale, 18 * scale, 4 * scale);
-                // Coronha
                 ctx.fillRect(-4 * scale, -3 * scale, 6 * scale, 6 * scale);
 
-                // Flash do disparo
                 if (s.muzzleFlash > 0) {
                     var flashAlpha = s.muzzleFlash;
                     ctx.fillStyle = 'rgba(255,200,40,' + flashAlpha + ')';
@@ -1710,12 +1753,10 @@
                 ctx.restore();
             }
 
-            // ═══ LOOP PRINCIPAL ═══
             function update() {
                 frameCount++;
                 ctx.clearRect(0, 0, W, H);
 
-                // Fundo base com gradiente
                 var bgGrad = ctx.createLinearGradient(0, 0, 0, H);
                 bgGrad.addColorStop(0, 'rgba(8,18,40,0.3)');
                 bgGrad.addColorStop(0.35, 'rgba(12,22,45,0.2)');
@@ -1724,7 +1765,6 @@
                 ctx.fillStyle = bgGrad;
                 ctx.fillRect(0, 0, W, H);
 
-                // Linha do horizonte (montanhas)
                 ctx.fillStyle = 'rgba(15,25,35,0.5)';
                 ctx.beginPath();
                 ctx.moveTo(0, H);
@@ -1735,7 +1775,6 @@
                 ctx.closePath();
                 ctx.fill();
 
-                // ═══ PARTÍCULAS DE POEIRA ═══
                 particles.forEach(function(p) {
                     p.x += p.vx;
                     p.y += p.vy;
@@ -1750,7 +1789,6 @@
                     ctx.fill();
                 });
 
-                // ═══ FUMAÇA ═══
                 for (var i = smokeParticles.length - 1; i >= 0; i--) {
                     var sm = smokeParticles[i];
                     sm.x += sm.vx;
@@ -1764,7 +1802,6 @@
                     ctx.fill();
                 }
 
-                // ═══ TRAÇANTES ═══
                 for (var i = tracers.length - 1; i >= 0; i--) {
                     var t = tracers[i];
                     t.x += t.vx;
@@ -1779,7 +1816,6 @@
                         continue;
                     }
 
-                    // Desenhar rastro
                     for (var j = 1; j < t.trail.length; j++) {
                         var alpha = (j / t.trail.length) * t.life;
                         ctx.strokeStyle = 'rgba(' + t.color + ',' + (alpha * 0.7).toFixed(3) + ')';
@@ -1790,20 +1826,17 @@
                         ctx.stroke();
                     }
 
-                    // Ponto brilhante na ponta
                     ctx.fillStyle = 'rgba(255,255,200,' + t.life.toFixed(3) + ')';
                     ctx.beginPath();
                     ctx.arc(t.x, t.y, 2.5, 0, Math.PI * 2);
                     ctx.fill();
                 }
 
-                // ═══ EXPLOSÕES ═══
                 for (var i = explosions.length - 1; i >= 0; i--) {
                     var ex = explosions[i];
                     ex.life -= ex.decay;
                     if (ex.life <= 0) { explosions.splice(i, 1); continue; }
 
-                    // Brilho central
                     var glowAlpha = ex.life * 0.6;
                     var glowGrad = ctx.createRadialGradient(ex.x, ex.y, 0, ex.x, ex.y, 50 * ex.life);
                     glowGrad.addColorStop(0, 'rgba(255,200,60,' + glowAlpha + ')');
@@ -1814,7 +1847,6 @@
                     ctx.arc(ex.x, ex.y, 50 * ex.life, 0, Math.PI * 2);
                     ctx.fill();
 
-                    // Partículas da explosão
                     ex.parts.forEach(function(p) {
                         if (p.flash) {
                             p.life -= p.decay;
@@ -1838,28 +1870,23 @@
                         }
                     });
 
-                    // Fumaça da explosão
                     if (Math.random() < 0.7) {
                         smokeParticles.push(createSmoke(ex.x, ex.y));
                     }
                 }
 
-                // ═══ HELICÓPTEROS ═══
                 for (var i = helicopters.length - 1; i >= 0; i--) {
                     var h = helicopters[i];
                     h.x += h.vx;
                     h.bodyBob += 0.03;
                     h.y = h.targetY + Math.sin(h.bodyBob) * 5;
 
-                    // Mudar altura alvo ocasionalmente
                     if (Math.random() < 0.005) {
                         h.targetY = Math.random() * H * 0.35 + H * 0.08;
                     }
 
-                    // Remover se sair da tela
                     if ((h.direction === 1 && h.x > W + 100) || (h.direction === -1 && h.x < -100)) {
                         helicopters.splice(i, 1);
-                        // Criar novo depois de um tempo
                         (function(side) {
                             setTimeout(function() {
                                 helicopters.push(createHelicopter(side));
@@ -1870,12 +1897,10 @@
 
                     drawHelicopter(h);
 
-                    // Helicóptero pode "atirar" (lançar foguetes)
                     if (Math.random() < 0.008 && h.x > 50 && h.x < W - 50) {
                         var rocketTargetX = h.x + (Math.random() - 0.5) * 300;
                         var rocketTargetY = H * 0.65 + Math.random() * H * 0.3;
                         tracers.push(createTracer(h.x, h.y + 10, rocketTargetX, rocketTargetY));
-                        // Rastro de fumaça do foguete
                         for (var s = 0; s < 3; s++) {
                             smokeParticles.push({
                                 x: h.x,
@@ -1891,7 +1916,6 @@
                     }
                 }
 
-                // ═══ SOLDADOS ═══
                 soldiers.forEach(function(s) {
                     s.phase += 0.015;
                     s.y = s.baseY + Math.sin(s.phase) * 3;
@@ -1899,7 +1923,6 @@
                     if (s.shootCooldown > 0) s.shootCooldown--;
                     if (s.muzzleFlash > 0) s.muzzleFlash -= 0.06;
 
-                    // Decidir atirar
                     if (s.shootCooldown <= 0 && Math.random() < 0.015) {
                         s.shootCooldown = Math.floor(Math.random() * 40 + 30);
                         s.muzzleFlash = 1;
@@ -1910,7 +1933,6 @@
                         var toY = fromY + (Math.random() - 0.5) * 40;
                         tracers.push(createTracer(fromX, fromY, toX, toY));
 
-                        // Pequenas faíscas de impacto
                         if (Math.random() < 0.3) {
                             var impactX = toX + (Math.random() - 0.5) * 40;
                             var impactY = H * 0.55 + Math.random() * H * 0.4;
@@ -1932,17 +1954,14 @@
                     drawSoldier(s);
                 });
 
-                // ═══ EXPLOSÕES ALEATÓRIAS (eventos) ═══
                 if (Math.random() < 0.003) {
                     var gx = Math.random() * W * 0.6 + W * 0.2;
                     var gy = H * 0.55 + Math.random() * H * 0.35;
                     explosions.push(createExplosion(gx, gy));
                 }
 
-                // ═══ REPOR PARTÍCULAS ═══
                 while (particles.length < 40) particles.push(createDustParticle());
 
-                // ═══ REPOR HELICÓPTEROS ═══
                 if (helicopters.length < 2 && Math.random() < 0.01) {
                     helicopters.push(createHelicopter(Math.random() < 0.5 ? 'left' : 'right'));
                 }
@@ -1950,14 +1969,12 @@
                 requestAnimationFrame(update);
             }
 
-            // ═══ RESIZE ═══
             var resizeTimer = null;
             window.addEventListener('resize', function() {
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(resize, 100);
             });
 
-            // ═══ INICIAR ═══
             init();
             update();
         })();
@@ -1969,12 +1986,9 @@
         const WHATSAPP = '5516981097916';
         const EMAIL_ADMIN = 'rodrigoxgames25@gmail.com';
         let carrinho = [];
+        try { carrinho = JSON.parse(localStorage.getItem('carrinho_vcore') || '[]') || []; } catch (e) { carrinho = []; }
         let dadosCliente = { nome: '', email: '' };
 
-        /* NOTA: a criptografia abaixo usa chave fixa embutida no código,
-           portanto funciona apenas como ofuscação (não é segurança real,
-           pois qualquer pessoa pode ler a chave). Para proteção efetiva
-           dos dados seria necessário um backend/servidor. */
         const CRYPTO_CONFIG = {
             secretKey: 'vcore-games-2026-seguranca-cliente-dados',
             salt: 'vcore-salt-mod-ghost'
@@ -2083,7 +2097,7 @@
         }
 
         var NOTIFICACOES = [
-            { id: 1, titulo: '🔥 Promoção Relâmpago!', texto: '40% OFF em todos os pacotes!', icone: '💰', lida: false, data: '2026-08-09' },
+            { id: 1, titulo: '🔥 Promoção Relâmpago!', texto: '50% OFF em todos os pacotes!', icone: '💰', lida: false, data: '2026-08-09' },
             { id: 2, titulo: '🆕 Novo Pacote General', texto: 'Já disponível com Kit Tático.', icone: '💎', lida: false, data: '2026-08-08' },
             { id: 3, titulo: '📖 Tutorial Atualizado', texto: 'Guia revisado com novos caminhos.', icone: '📖', lida: false, data: '2026-08-07' },
             { id: 4, titulo: '✅ Suporte 24h', texto: 'Time online para ajudar!', icone: '💬', lida: true, data: '2026-08-06' },
@@ -2168,6 +2182,7 @@
             atualizarCarrinho();
         }
         function atualizarCarrinho() {
+            localStorage.setItem('carrinho_vcore', JSON.stringify(carrinho));
             var lista = document.getElementById('listaCarrinho'), totalEl = document.getElementById('valorTotal');
             var badge = document.getElementById('badgeCarrinho'), barra = document.getElementById('barraTotal');
             var barraV = document.getElementById('barraTotalValor'), barraI = document.getElementById('barraTotalItens');
@@ -2246,6 +2261,7 @@
             carrinho = []; dadosCliente = { nome: '', email: '' };
             document.getElementById('clienteNome').value = ''; document.getElementById('clienteEmail').value = '';
             localStorage.removeItem('vcore_cliente_nome_enc'); localStorage.removeItem('vcore_cliente_email_enc');
+            localStorage.removeItem('carrinho_vcore');
             atualizarCarrinho(); document.getElementById('modalPix').classList.remove('active');
             atualizarOverflow();
             mostrarToast('✅ Comprovante enviado! 📩');
@@ -2263,6 +2279,7 @@
 
         carregarNotificacoes();
         carregarDadosClienteDescriptografados();
+        atualizarCarrinho();
     </script>
 </body>
 </html>
