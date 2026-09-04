@@ -1223,12 +1223,13 @@
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C400,0 800,100 1200,40 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
         </div>
         <div class="container-medium" style="position:relative;z-index:1;">
-            <p class="subtitle-tag-center">OFERTA ESPECIAL</p>
+            <p class="subtitle-tag-center">PROMOÇÃO DE FIM DE SEMANA</p>
             <h2 style="font-size:clamp(2rem,4vw,2.5rem);font-weight:900;color:#fff;margin:0.75rem 0;">
                 Escolha seu <span style="color:var(--verde);">Pacote</span>
             </h2>
             <p style="color:rgba(255,255,255,0.7);font-size:1rem;line-height:1.6;margin-bottom:1rem;">
-                Pacotes para todos os níveis — com até <strong style="color:var(--verde);">40% de desconto!</strong>
+                Pacotes para todos os níveis — com até <strong style="color:var(--verde);">70% de desconto!</strong><br>
+                ⏰ Promoção válida até <strong style="color:var(--verde);">14/09/2026</strong>
             </p>
             <div class="countdown-container" style="margin-bottom:2.5rem;">
                 <div class="countdown-box"><span class="countdown-num" id="countDias">00</span><span class="countdown-label">Dias</span></div>
@@ -1243,22 +1244,22 @@
                 <div class="pacote-card">
                     <div class="pkg-icon">🎖️</div><div class="pkg-stars" style="color:#FFD700;">★★★☆☆</div><h4 style="color:#fff;">Pacote Recruta</h4>
                     <ul><li>Mods Essenciais VCORE</li><li>Fest Feminino</li><li>Veículos Modificados</li><li>Guia de instalação por e-mail</li></ul>
-                    <div class="price-old">R$ 100,00</div><div class="price-new" style="color:var(--verde);">R$ 60,00</div><span class="badge-off">40% OFF</span>
-                    <button onclick="adicionarAoCarrinho('Pacote Recruta - Mods Essenciais',60)" class="btn-primario btn-pacote">🎖️ Adicionar</button>
+                    <div class="price-old">R$ 100,00</div><div class="price-new" style="color:var(--verde);">R$ 30,00</div><span class="badge-off">70% OFF</span>
+                    <button onclick="adicionarAoCarrinho('Pacote Recruta - Mods Essenciais',30)" class="btn-primario btn-pacote">🎖️ Adicionar</button>
                 </div>
                 <div class="pacote-card popular" style="position:relative;">
                     <span class="badge-popular">⭐ MAIS POPULAR</span>
                     <div class="pkg-icon" style="margin-top:0.5rem;">🥇</div><div class="pkg-stars" style="color:#3a2800;">★★★★☆</div><h4 style="color:var(--azul);">Pacote Sargento</h4>
                     <ul><li>Tudo do Pacote Recruta</li><li>Coletes — Mod de Aparência</li><li>Armas e Miras Realistas</li><li>Camisa e Calça Tática</li><li>Camuflagens e Capacetes</li></ul>
-                    <div class="price-old">R$ 150,00</div><div class="price-new" style="color:var(--azul);">R$ 90,00</div><span class="badge-off">40% OFF</span>
-                    <button onclick="adicionarAoCarrinho('Pacote Sargento - Mods Avançados',90)" class="btn-primario btn-pacote" style="background:var(--azul);color:#fff;border-color:var(--azul);">🥇 Adicionar</button>
+                    <div class="price-old">R$ 150,00</div><div class="price-new" style="color:var(--azul);">R$ 60,00</div><span class="badge-off">60% OFF</span>
+                    <button onclick="adicionarAoCarrinho('Pacote Sargento - Mods Avançados',60)" class="btn-primario btn-pacote" style="background:var(--azul);color:#fff;border-color:var(--azul);">🥇 Adicionar</button>
                 </div>
                 <div class="pacote-card" style="position:relative;">
                     <span class="badge-best-value">💎 MELHOR CUSTO-BENEFÍCIO</span>
                     <div class="pkg-icon" style="margin-top:0.5rem;">💎</div><div class="pkg-stars" style="color:#FFD700;">★★★★★</div><h4 class="gradient-text">Pacote General</h4>
                     <ul><li><strong>TODOS</strong> os mods disponíveis</li><li>Colete, Armas, Miras</li><li>Camisa, Calça, Camuflagem</li><li>Capacetes e Proteções</li><li>Veículos + Kit Tático</li></ul>
-                    <div class="price-old">R$ 200,00</div><div class="price-new gradient-text">R$ 120,00</div><span class="badge-off">40% OFF</span>
-                    <button onclick="adicionarAoCarrinho('Pacote General - Todos os Mods',120)" class="btn-primario btn-pacote">💎 Adicionar</button>
+                    <div class="price-old">R$ 200,00</div><div class="price-new gradient-text">R$ 80,00</div><span class="badge-off">60% OFF</span>
+                    <button onclick="adicionarAoCarrinho('Pacote General - Todos os Mods',80)" class="btn-primario btn-pacote">💎 Adicionar</button>
                 </div>
             </div>
         </div>
@@ -1979,12 +1980,6 @@
                                 grenadeVY: -8,
                                 grenadeExploded: false
                             });
-
-                            // Marcar o último traçante como granada
-                            var lastTracer = tracers[tracers.length - 1];
-                            if (lastTracer && lastTracer.isGrenade) {
-                                // Já configurado
-                            }
                         }
                     }
 
@@ -1996,7 +1991,6 @@
                     var gx = Math.random() * W * 0.6 + W * 0.2;
                     var gy = H * 0.55 + Math.random() * H * 0.35;
                     explosions.push(createExplosion(gx, gy));
-                    // Tremor de câmera via canvas (sutil)
                 }
 
                 // ═══ VERIFICAR GRANADAS NOS TRAÇANTES ═══
@@ -2138,10 +2132,10 @@
         }
 
         var NOTIFICACOES = [
-            { id: 1, titulo: '🔥 Promoção Relâmpago!', texto: '40% OFF em todos os pacotes!', icone: '💰', lida: false, data: '2026-08-09' },
-            { id: 2, titulo: '🆕 Novo Pacote General', texto: 'Já disponível com Kit Tático.', icone: '💎', lida: false, data: '2026-08-08' },
-            { id: 3, titulo: '📖 Tutorial Atualizado', texto: 'Guia revisado com novos caminhos.', icone: '📖', lida: false, data: '2026-08-07' },
-            { id: 4, titulo: '✅ Suporte 24h', texto: 'Time online para ajudar!', icone: '💬', lida: true, data: '2026-08-06' },
+            { id: 1, titulo: '🔥 Promoção de Fim de Semana!', texto: 'Pacotes a partir de R$ 30 até 14/09!', icone: '💰', lida: false, data: '2026-09-04' },
+            { id: 2, titulo: '🆕 Novo Pacote General', texto: 'Já disponível com Kit Tático.', icone: '💎', lida: false, data: '2026-09-04' },
+            { id: 3, titulo: '📖 Tutorial Atualizado', texto: 'Guia revisado com novos caminhos.', icone: '📖', lida: false, data: '2026-09-04' },
+            { id: 4, titulo: '✅ Suporte 24h', texto: 'Time online para ajudar!', icone: '💬', lida: true, data: '2026-09-04' },
         ];
 
         function carregarNotificacoes() {
@@ -2182,17 +2176,15 @@
         function fecharPoliticaPrivacidade() { document.getElementById('modalPolitica').classList.remove('active'); }
 
         (function() {
-            var key = 'vcore_promo_dl_v3', dl = localStorage.getItem(key);
-            if (!dl || parseInt(dl) < Date.now()) { dl = Date.now() + 48 * 60 * 60 * 1000; localStorage.setItem(key, dl); }
-            dl = parseInt(dl);
+            var deadline = new Date('2026-09-14T23:59:59-03:00').getTime();
             function tick() {
-                var r = Math.max(0, dl - Date.now());
+                var r = Math.max(0, deadline - Date.now());
                 var ds = String(Math.floor(r / 86400000)).padStart(2, '0');
                 var hs = String(Math.floor((r % 86400000) / 3600000)).padStart(2, '0');
                 var ms = String(Math.floor((r % 3600000) / 60000)).padStart(2, '0');
                 var ss = String(Math.floor((r % 60000) / 1000)).padStart(2, '0');
                 ['countDias','countHoras','countMin','countSeg'].forEach(function(id, i) { var el = document.getElementById(id); if (el) el.innerText = [ds,hs,ms,ss][i]; });
-                if (r > 0) setTimeout(tick, 1000);
+                setTimeout(tick, 1000);
             }
             tick();
         })();
