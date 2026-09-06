@@ -663,13 +663,24 @@
             0%,100%{box-shadow:0 0 15px rgba(165,255,0,0.4)}
             50%{box-shadow:0 0 35px rgba(165,255,0,0.7)}
         }
+        .badge-hardcore{
+            position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+            background:#ff4444;color:#fff;padding:0.3rem 1.2rem;
+            border-radius:50px;font-size:0.7rem;font-weight:800;white-space:nowrap;
+            box-shadow:0 0 25px rgba(255,68,68,0.55);z-index:2;
+            animation:pulseBadgeHardcore 2s ease-in-out infinite;
+        }
+        @keyframes pulseBadgeHardcore{
+            0%,100%{box-shadow:0 0 15px rgba(255,68,68,0.4)}
+            50%{box-shadow:0 0 35px rgba(255,68,68,0.7)}
+        }
         .pacote-card .btn-pacote{
             margin-top:auto;width:100%;padding:0.8rem;
         }
         @media(max-width:640px){
             .pacote-grid{grid-template-columns:1fr;max-width:400px;}
             .pacote-card{padding:2rem 1.5rem}
-            .badge-popular,.badge-best-value{font-size:0.62rem;padding:0.25rem 0.9rem;top:-10px;}
+            .badge-popular,.badge-best-value,.badge-hardcore{font-size:0.62rem;padding:0.25rem 0.9rem;top:-10px;}
         }
 
         /* Modais */
@@ -1261,6 +1272,14 @@
                     <div class="price-old">R$ 200,00</div><div class="price-new gradient-text">R$ 80,00</div><span class="badge-off">60% OFF</span>
                     <button onclick="adicionarAoCarrinho('Pacote General - Todos os Mods',80)" class="btn-primario btn-pacote">💎 Adicionar</button>
                 </div>
+                <div class="pacote-card" style="position:relative;">
+                    <span class="badge-hardcore">🔥 EXCLUSIVO HARDCORE</span>
+                    <div class="pkg-icon" style="margin-top:0.5rem;">🛡️</div><div class="pkg-stars" style="color:#FFD700;">★★★★★</div><h4 style="color:#ff6b6b;">Pacote Hard Core</h4>
+                    <p style="font-size:0.68rem;color:#8899AA;margin:0 0 0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;">+ Spartan Mod Embutido Completo</p>
+                    <ul><li><strong>Tudo</strong> do Pacote General</li><li>Spartan Mod Embutido Completo</li><li>Mods Hard Core Exclusivos</li><li>Visuais Militares Premium</li><li>Camuflagens + Capacetes Elite</li><li>Kit Tático Hard Core</li></ul>
+                    <div class="price-old">R$ 300,00</div><div class="price-new" style="color:#ff6b6b;">R$ 150,00</div><span class="badge-off">50% OFF</span>
+                    <button onclick="adicionarAoCarrinho('Pacote Hard Core + Spartan Mod Embutido Completo',150)" class="btn-primario btn-pacote">🛡️ Adicionar</button>
+                </div>
             </div>
         </div>
         <div class="shape-bottom">
@@ -1365,9 +1384,9 @@
                 <div style="background:rgba(165,255,0,0.06);border:1px solid rgba(165,255,0,0.2);border-radius:12px;padding:0.75rem 1.5rem;display:inline-block;margin:1rem 0;"><p style="font-size:0.7rem;color:#8899AA;">Valor a pagar</p><p id="pixValor" style="font-size:1.8rem;font-weight:900;color:var(--verde);">R$ 0,00</p></div>
                 <div class="pix-destaque">
                     <p style="font-size:0.75rem;color:#8899AA;font-weight:700;text-transform:uppercase;margin-bottom:0.5rem;">🔑 Chave PIX</p>
-                    <p class="pix-chave">16997238990</p>
+                    <p class="pix-chave" id="pixChave">•••••••••••</p>
                     <p class="pix-nome">Rodrigo Paulino da Silva</p>
-                    <p class="pix-banco">🏦 SumUp</p>
+                    <p class="pix-banco">🏦 InfinitePay</p>
                     <button onclick="copiarChavePix()" style="margin-top:0.8rem;padding:0.6rem 1.8rem;background:var(--azul-medio);color:var(--verde);border:1px solid rgba(165,255,0,0.3);border-radius:8px;cursor:pointer;font-weight:700;font-size:0.85rem;">📋 Copiar Chave PIX</button>
                 </div>
                 <button onclick="enviarComprovante()" class="btn-primario pulse-border" style="width:100%;padding:0.9rem;font-size:0.9rem;background:#25D366;border-color:#25D366;color:#fff;">📩 Enviar Comprovante (Email + WhatsApp)</button>
@@ -1430,7 +1449,6 @@
                 canvas.height = H;
             }
 
-            // ═══ PARTÍCULAS DE POEIRA/SUJEIRA ═══
             function createDustParticle() {
                 return {
                     x: Math.random() * W,
@@ -1444,7 +1462,6 @@
                 };
             }
 
-            // ═══ TRAÇANTES (TIROS) ═══
             function createTracer(fromX, fromY, toX, toY) {
                 var dx = toX - fromX;
                 var dy = toY - fromY;
@@ -1462,7 +1479,6 @@
                 };
             }
 
-            // ═══ EXPLOSÕES (GRANADAS) ═══
             function createExplosion(x, y) {
                 var parts = [];
                 var count = Math.floor(Math.random() * 20 + 25);
@@ -1482,7 +1498,6 @@
                             (Math.random() < 0.5 ? 'rgba(255,200,50,ALPHA)' : 'rgba(255,60,10,ALPHA)')
                     });
                 }
-                // Flash inicial
                 parts.push({
                     x: x, y: y,
                     vx: 0, vy: 0,
@@ -1495,7 +1510,6 @@
                 return { x: x, y: y, parts: parts, life: 1, decay: 0.008 };
             }
 
-            // ═══ FUMAÇA ═══
             function createSmoke(x, y) {
                 return {
                     x: x + (Math.random() - 0.5) * 20,
@@ -1509,7 +1523,6 @@
                 };
             }
 
-            // ═══ HELICÓPTEROS ═══
             function createHelicopter(side) {
                 var y = Math.random() * H * 0.4 + H * 0.08;
                 var x = side === 'left' ? -80 : W + 80;
@@ -1528,7 +1541,6 @@
                 };
             }
 
-            // ═══ SOLDADOS (SILHUETAS) ═══
             function createSoldier() {
                 var side = Math.random() < 0.5 ? 'left' : 'right';
                 var x = side === 'left' ? Math.random() * 200 + 30 : W - Math.random() * 200 - 30;
@@ -1548,7 +1560,6 @@
                 };
             }
 
-            // ═══ INICIALIZAR ═══
             function init() {
                 resize();
                 particles = [];
@@ -1557,30 +1568,25 @@
                 explosions = [];
                 smokeParticles = [];
 
-                // Helicópteros
                 helicopters = [];
                 helicopters.push(createHelicopter('left'));
                 helicopters.push(createHelicopter('right'));
 
-                // Soldados
                 soldiers = [];
                 for (var j = 0; j < 8; j++) soldiers.push(createSoldier());
             }
 
-            // ═══ DESENHAR HELICÓPTERO ═══
             function drawHelicopter(h) {
                 ctx.save();
                 ctx.translate(h.x, h.y);
 
                 var s = h.size;
 
-                // Sombra
                 ctx.fillStyle = 'rgba(0,0,0,0.3)';
                 ctx.beginPath();
                 ctx.ellipse(0, s * 0.6, s * 0.7, s * 0.15, 0, 0, Math.PI * 2);
                 ctx.fill();
 
-                // Corpo
                 ctx.fillStyle = '#2a3040';
                 ctx.beginPath();
                 ctx.moveTo(-s * 0.15, s * 0.25);
@@ -1595,7 +1601,6 @@
                 ctx.lineWidth = 1;
                 ctx.stroke();
 
-                // Cauda
                 ctx.fillStyle = '#353d50';
                 ctx.beginPath();
                 ctx.moveTo(s * 0.25, -s * 0.15);
@@ -1605,7 +1610,6 @@
                 ctx.closePath();
                 ctx.fill();
 
-                // Rotor principal (girando)
                 h.rotorAngle += h.rotorSpeed;
                 ctx.save();
                 ctx.translate(0, -s * 0.35);
@@ -1616,7 +1620,6 @@
                 ctx.fillRect(-2, -s * 0.85, 4, s * 1.7);
                 ctx.restore();
 
-                // Rotor de cauda
                 ctx.save();
                 ctx.translate(s * 0.68, -s * 0.25);
                 ctx.rotate(h.rotorAngle * 2.5);
@@ -1624,7 +1627,6 @@
                 ctx.fillRect(-s * 0.2, -1.5, s * 0.4, 3);
                 ctx.restore();
 
-                // Cabine
                 ctx.fillStyle = 'rgba(100,180,220,0.3)';
                 ctx.beginPath();
                 ctx.ellipse(-s * 0.08, -s * 0.1, s * 0.18, s * 0.12, 0, 0, Math.PI * 2);
@@ -1632,7 +1634,6 @@
                 ctx.strokeStyle = 'rgba(150,210,240,0.5)';
                 ctx.stroke();
 
-                // Luzes piscando
                 var blink = Math.sin(frameCount * 0.15) > 0;
                 if (blink) {
                     ctx.fillStyle = '#ff3333';
@@ -1648,7 +1649,6 @@
                 ctx.restore();
             }
 
-            // ═══ DESENHAR SOLDADO (SILHUETA) ═══
             function drawSoldier(s) {
                 ctx.save();
                 ctx.translate(s.x, s.y);
@@ -1656,68 +1656,55 @@
                 var scale = 0.55;
                 var recoil = s.muzzleFlash > 0 ? Math.sin(s.muzzleFlash * Math.PI) * 4 : 0;
 
-                // Sombra no chão
                 ctx.fillStyle = 'rgba(0,0,0,0.25)';
                 ctx.beginPath();
                 ctx.ellipse(0, 28 * scale, 14 * scale, 4 * scale, 0, 0, Math.PI * 2);
                 ctx.fill();
 
-                // Cor (silhueta escura com leve tom militar)
                 var bodyColor = s.side === 'left' ?
                     'rgba(30,40,30,0.85)' :
                     'rgba(30,35,30,0.85)';
 
-                // Pernas
                 ctx.fillStyle = bodyColor;
                 ctx.fillRect(-6 * scale, 10 * scale, 5 * scale, 18 * scale);
                 ctx.fillRect(2 * scale, 10 * scale, 5 * scale, 18 * scale);
 
-                // Corpo/tronco
                 ctx.fillStyle = bodyColor;
                 ctx.fillRect(-8 * scale, -12 * scale + recoil * 0.5, 16 * scale, 22 * scale);
 
-                // Colete tático
                 ctx.fillStyle = 'rgba(40,45,35,0.8)';
                 ctx.fillRect(-7 * scale, -8 * scale + recoil * 0.5, 14 * scale, 12 * scale);
 
-                // Braços
                 ctx.fillStyle = bodyColor;
-                // Braço de apoio (esquerdo)
                 ctx.save();
                 ctx.translate(-8 * scale, -10 * scale + recoil * 0.5);
                 ctx.rotate(-0.6);
                 ctx.fillRect(-2 * scale, 0, 5 * scale, 14 * scale);
                 ctx.restore();
 
-                // Braço de gatilho (direito)
                 ctx.save();
                 ctx.translate(8 * scale, -10 * scale + recoil * 0.5);
                 ctx.rotate(0.4 - recoil * 0.03);
                 ctx.fillRect(-2 * scale, 0, 5 * scale, 14 * scale);
                 ctx.restore();
 
-                // Cabeça
                 ctx.fillStyle = 'rgba(25,30,20,0.85)';
                 ctx.beginPath();
                 ctx.arc(0, -19 * scale + recoil * 0.5, 7 * scale, 0, Math.PI * 2);
                 ctx.fill();
 
-                // Capacete
                 ctx.fillStyle = 'rgba(35,40,30,0.9)';
                 ctx.beginPath();
                 ctx.arc(0, -20 * scale + recoil * 0.5, 8 * scale, Math.PI, 0);
                 ctx.fill();
 
-                // Arma
                 ctx.save();
                 ctx.translate(8 * scale, -6 * scale + recoil * 0.5);
                 ctx.rotate(0.15 - recoil * 0.02);
                 ctx.fillStyle = 'rgba(20,20,20,0.9)';
                 ctx.fillRect(0, -2 * scale, 18 * scale, 4 * scale);
-                // Coronha
                 ctx.fillRect(-4 * scale, -3 * scale, 6 * scale, 6 * scale);
 
-                // Flash do disparo
                 if (s.muzzleFlash > 0) {
                     var flashAlpha = s.muzzleFlash;
                     ctx.fillStyle = 'rgba(255,200,40,' + flashAlpha + ')';
@@ -1735,12 +1722,10 @@
                 ctx.restore();
             }
 
-            // ═══ LOOP PRINCIPAL ═══
             function update() {
                 frameCount++;
                 ctx.clearRect(0, 0, W, H);
 
-                // Fundo base com gradiente
                 var bgGrad = ctx.createLinearGradient(0, 0, 0, H);
                 bgGrad.addColorStop(0, 'rgba(8,18,40,0.3)');
                 bgGrad.addColorStop(0.35, 'rgba(12,22,45,0.2)');
@@ -1749,7 +1734,6 @@
                 ctx.fillStyle = bgGrad;
                 ctx.fillRect(0, 0, W, H);
 
-                // Linha do horizonte (montanhas)
                 ctx.fillStyle = 'rgba(15,25,35,0.5)';
                 ctx.beginPath();
                 ctx.moveTo(0, H);
@@ -1760,7 +1744,6 @@
                 ctx.closePath();
                 ctx.fill();
 
-                // ═══ PARTÍCULAS DE POEIRA ═══
                 particles.forEach(function(p) {
                     p.x += p.vx;
                     p.y += p.vy;
@@ -1775,7 +1758,6 @@
                     ctx.fill();
                 });
 
-                // ═══ FUMAÇA ═══
                 for (var i = smokeParticles.length - 1; i >= 0; i--) {
                     var sm = smokeParticles[i];
                     sm.x += sm.vx;
@@ -1789,7 +1771,6 @@
                     ctx.fill();
                 }
 
-                // ═══ TRAÇANTES ═══
                 for (var i = tracers.length - 1; i >= 0; i--) {
                     var t = tracers[i];
                     t.x += t.vx;
@@ -1797,7 +1778,6 @@
                     t.life -= t.decay;
                     t.trail.push({ x: t.x, y: t.y, life: t.life });
 
-                    // Limitar trail
                     if (t.trail.length > 8) t.trail.shift();
 
                     if (t.life <= 0 || t.x < -50 || t.x > W + 50 || t.y < -50 || t.y > H + 50) {
@@ -1805,13 +1785,9 @@
                         continue;
                     }
 
-                    // Desenhar trail
                     for (var j = 1; j < t.trail.length; j++) {
                         var alpha = (j / t.trail.length) * t.life;
-                        ctx.strokeStyle = t.color.replace(')', ',ALPHA)').replace('rgb', 'rgba').replace('ALPHA', (alpha * 0.8).toString());
-                        if (t.color.startsWith('#')) {
-                            ctx.strokeStyle = 'rgba(255,180,40,' + (alpha * 0.7) + ')';
-                        }
+                        ctx.strokeStyle = 'rgba(255,180,40,' + (alpha * 0.7) + ')';
                         ctx.lineWidth = 2;
                         ctx.beginPath();
                         ctx.moveTo(t.trail[j - 1].x, t.trail[j - 1].y);
@@ -1819,20 +1795,17 @@
                         ctx.stroke();
                     }
 
-                    // Ponto brilhante na ponta
                     ctx.fillStyle = 'rgba(255,255,200,' + t.life + ')';
                     ctx.beginPath();
                     ctx.arc(t.x, t.y, 2.5, 0, Math.PI * 2);
                     ctx.fill();
                 }
 
-                // ═══ EXPLOSÕES ═══
                 for (var i = explosions.length - 1; i >= 0; i--) {
                     var ex = explosions[i];
                     ex.life -= ex.decay;
                     if (ex.life <= 0) { explosions.splice(i, 1); continue; }
 
-                    // Brilho central
                     var glowAlpha = ex.life * 0.6;
                     var glowGrad = ctx.createRadialGradient(ex.x, ex.y, 0, ex.x, ex.y, 50 * ex.life);
                     glowGrad.addColorStop(0, 'rgba(255,200,60,' + glowAlpha + ')');
@@ -1843,7 +1816,6 @@
                     ctx.arc(ex.x, ex.y, 50 * ex.life, 0, Math.PI * 2);
                     ctx.fill();
 
-                    // Partículas da explosão
                     ex.parts.forEach(function(p) {
                         if (p.flash) {
                             p.life -= p.decay;
@@ -1867,28 +1839,23 @@
                         }
                     });
 
-                    // Fumaça da explosão
                     if (Math.random() < 0.7) {
                         smokeParticles.push(createSmoke(ex.x, ex.y));
                     }
                 }
 
-                // ═══ HELICÓPTEROS ═══
                 for (var i = helicopters.length - 1; i >= 0; i--) {
                     var h = helicopters[i];
                     h.x += h.vx;
                     h.bodyBob += 0.03;
                     h.y = h.targetY + Math.sin(h.bodyBob) * 5;
 
-                    // Mudar altura alvo ocasionalmente
                     if (Math.random() < 0.005) {
                         h.targetY = Math.random() * H * 0.35 + H * 0.08;
                     }
 
-                    // Remover se sair da tela
                     if ((h.direction === 1 && h.x > W + 100) || (h.direction === -1 && h.x < -100)) {
                         helicopters.splice(i, 1);
-                        // Criar novo depois de um tempo
                         setTimeout(function() {
                             helicopters.push(createHelicopter(Math.random() < 0.5 ? 'left' : 'right'));
                         }, Math.random() * 3000 + 2000);
@@ -1897,12 +1864,10 @@
 
                     drawHelicopter(h);
 
-                    // Helicóptero pode "atirar" (lançar foguetes)
                     if (Math.random() < 0.008 && h.x > 50 && h.x < W - 50) {
                         var rocketTargetX = h.x + (Math.random() - 0.5) * 300;
                         var rocketTargetY = H * 0.65 + Math.random() * H * 0.3;
                         tracers.push(createTracer(h.x, h.y + 10, rocketTargetX, rocketTargetY));
-                        // Rastro de fumaça do foguete
                         for (var s = 0; s < 3; s++) {
                             smokeParticles.push({
                                 x: h.x,
@@ -1918,33 +1883,26 @@
                     }
                 }
 
-                // ═══ SOLDADOS ═══
                 soldiers.forEach(function(s, idx) {
                     s.phase += 0.015;
-                    // Movimento sutil
                     s.y = s.baseY + Math.sin(s.phase) * 3;
 
-                    // Cooldown de tiro
                     if (s.shootCooldown > 0) s.shootCooldown--;
                     if (s.muzzleFlash > 0) s.muzzleFlash -= 0.06;
 
-                    // Decidir atirar
                     if (s.shootCooldown <= 0 && Math.random() < 0.015) {
                         s.shootCooldown = Math.floor(Math.random() * 40 + 30);
                         s.muzzleFlash = 1;
 
-                        // Criar traçante
                         var fromX = s.x + (s.side === 'left' ? 25 : -25);
                         var fromY = s.y - 15;
                         var toX = fromX + (s.side === 'left' ? 200 : -200) + (Math.random() - 0.5) * 100;
                         var toY = fromY + (Math.random() - 0.5) * 40;
                         tracers.push(createTracer(fromX, fromY, toX, toY));
 
-                        // Pequeno flash no chão (impacto simulado)
                         if (Math.random() < 0.3) {
                             var impactX = toX + (Math.random() - 0.5) * 40;
                             var impactY = H * 0.55 + Math.random() * H * 0.4;
-                            // Pequenas faíscas
                             for (var sp = 0; sp < 5; sp++) {
                                 particles.push({
                                     x: impactX,
@@ -1959,11 +1917,9 @@
                             }
                         }
 
-                        // Ocasionalmente: granada!
                         if (Math.random() < 0.15) {
                             var grenadeX = s.x + (s.side === 'left' ? 80 : -80);
                             var grenadeY = s.y - 25;
-                            // Simular trajetória da granada
                             tracers.push({
                                 x: s.x,
                                 y: s.y - 15,
@@ -1986,21 +1942,18 @@
                     drawSoldier(s);
                 });
 
-                // ═══ LANÇAR GRANADAS OCASIONAIS (eventos aleatórios) ═══
                 if (Math.random() < 0.003) {
                     var gx = Math.random() * W * 0.6 + W * 0.2;
                     var gy = H * 0.55 + Math.random() * H * 0.35;
                     explosions.push(createExplosion(gx, gy));
                 }
 
-                // ═══ VERIFICAR GRANADAS NOS TRAÇANTES ═══
                 for (var i = tracers.length - 1; i >= 0; i--) {
                     var tr = tracers[i];
                     if (tr.isGrenade && !tr.grenadeExploded) {
-                        tr.grenadeVY += 0.25; // gravidade
+                        tr.grenadeVY += 0.25;
                         tr.grenadeY += tr.grenadeVY;
                         tr.grenadeX += tr.vx * 0.5;
-                        // Verificar se atingiu o chão
                         if (tr.grenadeY >= H * 0.6 + Math.random() * 0.3 * H || tr.life <= 0.1) {
                             explosions.push(createExplosion(tr.grenadeX, tr.grenadeY));
                             tr.grenadeExploded = true;
@@ -2009,10 +1962,8 @@
                     }
                 }
 
-                // ═══ REPOR PARTÍCULAS ═══
                 while (particles.length < 40) particles.push(createDustParticle());
 
-                // ═══ REPOR HELICÓPTEROS ═══
                 if (helicopters.length < 2 && Math.random() < 0.01) {
                     helicopters.push(createHelicopter(Math.random() < 0.5 ? 'left' : 'right'));
                 }
@@ -2020,12 +1971,10 @@
                 requestAnimationFrame(update);
             }
 
-            // ═══ RESIZE ═══
             window.addEventListener('resize', function() {
                 resize();
             });
 
-            // ═══ INICIAR ═══
             init();
             update();
         })();
@@ -2033,7 +1982,21 @@
         /* ============================================
            DEMAIS SCRIPTS DO SITE
            ============================================ */
-        const CHAVE_PIX = '16997238990';
+
+        /* 🔐 CHAVE PIX CRIPTOGRAFADA (XOR com chave VCORE)
+           A chave NÃO fica em texto puro no código-fonte.
+           Ela é decodificada somente em tempo de execução. */
+        var CHAVE_PIX_ENC = [103,117,118,106,116,102,122,120,107,116,96];
+        var CHAVE_PIX_KEY = 'VCORE';
+        function decodificarChavePix() {
+            var r = '';
+            for (var i = 0; i < CHAVE_PIX_ENC.length; i++) {
+                r += String.fromCharCode(CHAVE_PIX_ENC[i] ^ CHAVE_PIX_KEY.charCodeAt(i % CHAVE_PIX_KEY.length));
+            }
+            return r;
+        }
+        let CHAVE_PIX = decodificarChavePix();
+
         const WHATSAPP = '5516981097916';
         const EMAIL_ADMIN = 'rodrigoxgames25@gmail.com';
         let carrinho = [];
@@ -2136,6 +2099,7 @@
             { id: 2, titulo: '🆕 Novo Pacote General', texto: 'Já disponível com Kit Tático.', icone: '💎', lida: false, data: '2026-09-04' },
             { id: 3, titulo: '📖 Tutorial Atualizado', texto: 'Guia revisado com novos caminhos.', icone: '📖', lida: false, data: '2026-09-04' },
             { id: 4, titulo: '✅ Suporte 24h', texto: 'Time online para ajudar!', icone: '💬', lida: true, data: '2026-09-04' },
+            { id: 5, titulo: '🆕 Novo Pacote Hard Core', texto: '+ Spartan Mod Embutido Completo!', icone: '🛡️', lida: false, data: '2026-09-06' },
         ];
 
         function carregarNotificacoes() {
@@ -2281,8 +2245,36 @@
         window.addEventListener('scroll', function() { btnTopo.style.display = window.scrollY > 400 ? 'flex' : 'none'; });
         btnTopo.addEventListener('click', function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
+        /* ═══════════ CARREGAR CHAVE PIX NA TELA ═══════════ */
+        function carregarChavePixNaTela() {
+            var el = document.getElementById('pixChave');
+            if (el) el.textContent = CHAVE_PIX;
+        }
+
+        /* ═══════════ PROTEÇÃO DO SITE ═══════════ */
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            mostrarToast('🔒 Conteúdo protegido!');
+        });
+        document.addEventListener('keydown', function(e) {
+            var bloqueado =
+                e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].indexOf(e.key.toUpperCase()) !== -1) ||
+                (e.ctrlKey && ['U', 'S', 'P'].indexOf(e.key.toUpperCase()) !== -1);
+            if (bloqueado) {
+                e.preventDefault();
+                mostrarToast('🔒 Ação bloqueada!');
+                return false;
+            }
+        });
+        console.log('%c⚠️ ATENÇÃO!', 'color:#ff4444;font-size:22px;font-weight:bold;');
+        console.log('%cEsta é uma área protegida da VCORE GAMES.', 'color:#a5ff00;font-size:14px;');
+        console.log('%cQualquer tentativa de acesso não autorizado é registrada.', 'color:#ff6b6b;font-size:14px;');
+
+        /* ═══════════ INICIALIZAÇÃO ═══════════ */
         carregarNotificacoes();
         carregarDadosClienteDescriptografados();
+        carregarChavePixNaTela();
     </script>
 </body>
 </html>
