@@ -116,6 +116,23 @@
             .btn-primario,.btn-outline{padding:0.75rem 1.25rem;font-size:0.8rem;white-space:normal;}
         }
 
+        /* ═══════════ BOTÃO HARD CORE ═══════════ */
+        .btn-hardcore{
+            display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
+            background:transparent;color:#ff6b6b;
+            font-weight:700;padding:0.9rem 2rem;border-radius:10px;
+            font-size:0.95rem;text-decoration:none;text-align:center;
+            cursor:pointer;border:2px solid #ff6b6b;
+            transition:all 0.3s;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;
+        }
+        .btn-hardcore:hover{
+            background:#ff4444;color:#fff;
+            box-shadow:0 0 30px rgba(255,68,68,0.5);transform:translateY(-2px);
+        }
+        @media(max-width:480px){
+            .btn-hardcore{padding:0.75rem 1.25rem;font-size:0.8rem;white-space:normal;}
+        }
+
         /* Header */
         .top-bar{
             background:rgba(12,21,53,0.95);padding:0.6rem 0;
@@ -683,6 +700,82 @@
             .badge-popular,.badge-best-value,.badge-hardcore{font-size:0.62rem;padding:0.25rem 0.9rem;top:-10px;}
         }
 
+        /* ═══════════ PACOTE HARD CORE — EM CONSTRUÇÃO ═══════════ */
+        .hardcore-section{
+            background:linear-gradient(180deg,var(--azul) 0%,rgba(18,12,28,0.98) 100%);
+            padding:6rem 1rem;position:relative;overflow:hidden;
+        }
+        .hardcore-section::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:3px;
+            background:linear-gradient(90deg,transparent,#ff4444,#ff6b35,#ff4444,transparent);
+            opacity:0.8;
+        }
+        .hardcore-card{
+            background:linear-gradient(135deg,rgba(30,14,22,0.9),rgba(12,21,53,0.97));
+            border:2px solid rgba(255,68,68,0.35);border-radius:20px;
+            padding:3.5rem 2rem;max-width:820px;margin:0 auto;text-align:center;
+            position:relative;overflow:hidden;
+            box-shadow:0 0 60px rgba(255,68,68,0.08);
+        }
+        .hardcore-card::before{
+            content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;
+            background:radial-gradient(circle,rgba(255,68,68,0.06) 0%,transparent 60%);
+            animation:girarHardcore 18s linear infinite;
+            pointer-events:none;
+        }
+        @keyframes girarHardcore{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+        .hardcore-badge{
+            display:inline-block;background:rgba(255,68,68,0.15);
+            border:1px solid rgba(255,68,68,0.5);color:#ff6b6b;
+            padding:0.5rem 1.5rem;border-radius:50px;
+            font-size:0.75rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+            margin-bottom:1.5rem;animation:pulseAlertaMestre 2.2s ease-in-out infinite;
+        }
+        .hardcore-icon{font-size:4rem;display:block;margin-bottom:1rem;animation:floatHero 4s ease-in-out infinite;filter:drop-shadow(0 0 25px rgba(255,68,68,0.5));}
+        .hardcore-card h2{
+            font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;margin:0.5rem 0;
+            text-shadow:0 0 40px rgba(255,68,68,0.4);position:relative;z-index:2;
+        }
+        .hardcore-card h2 span{color:#ff6b6b}
+        .hardcore-status{
+            color:#ff6b6b;font-weight:800;font-size:0.95rem;letter-spacing:2px;
+            text-transform:uppercase;margin:0.75rem 0 1.5rem;
+            animation:brilhoTextoAlerta 2s ease-in-out infinite;position:relative;z-index:2;
+        }
+        .hardcore-texto{
+            text-align:left;color:rgba(255,255,255,0.72);
+            font-size:0.92rem;line-height:1.85;max-width:680px;margin:0 auto 2rem;
+            position:relative;z-index:2;
+        }
+        .hardcore-texto strong{color:#fff}
+        .hardcore-texto .destaque-hardcore{color:#ff6b6b;font-weight:800}
+        .hardcore-divisor{
+            width:80px;height:3px;background:linear-gradient(90deg,transparent,#ff4444,transparent);
+            margin:1.5rem auto;position:relative;z-index:2;
+        }
+        .hardcore-features{
+            display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+            gap:0.8rem;max-width:680px;margin:0 auto 2rem;text-align:left;
+            position:relative;z-index:2;
+        }
+        .hardcore-feature{
+            background:rgba(255,255,255,0.03);border:1px solid rgba(255,68,68,0.2);
+            border-radius:10px;padding:0.9rem 1rem;font-size:0.78rem;color:rgba(255,255,255,0.75);
+            display:flex;align-items:flex-start;gap:0.5rem;transition:all 0.3s;
+        }
+        .hardcore-feature:hover{border-color:rgba(255,68,68,0.5);background:rgba(255,68,68,0.05);transform:translateY(-2px);}
+        .hardcore-feature .hf-icon{flex-shrink:0;font-size:1rem;margin-top:1px;}
+        @media(max-width:640px){
+            .hardcore-section{padding:3rem 1rem;}
+            .hardcore-card{padding:2.2rem 1.2rem;border-radius:16px;}
+            .hardcore-icon{font-size:2.8rem;}
+            .hardcore-card h2{font-size:1.5rem;}
+            .hardcore-status{font-size:0.75rem;letter-spacing:1px;}
+            .hardcore-texto{font-size:0.82rem;line-height:1.7;}
+            .hardcore-features{grid-template-columns:1fr;}
+            .hardcore-feature{font-size:0.72rem;}
+        }
+
         /* Modais */
         .modal-overlay{
             position:fixed;inset:0;background:rgba(0,0,0,0.88);
@@ -992,6 +1085,9 @@
                     <a href="#instalacao" class="btn-outline">
                         📖 Como Instalar
                     </a>
+                    <a href="#hardcore" class="btn-hardcore">
+                        🛡️ Hard Core — Em Breve
+                    </a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -1277,13 +1373,56 @@
                     <div class="pkg-icon" style="margin-top:0.5rem;">🛡️</div><div class="pkg-stars" style="color:#FFD700;">★★★★★</div><h4 style="color:#ff6b6b;">Pacote Hard Core</h4>
                     <p style="font-size:0.68rem;color:#8899AA;margin:0 0 0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;">+ Spartan Mod Embutido Completo</p>
                     <ul><li><strong>Tudo</strong> do Pacote General</li><li>Spartan Mod Embutido Completo</li><li>Mods Hard Core Exclusivos</li><li>Visuais Militares Premium</li><li>Camuflagens + Capacetes Elite</li><li>Kit Tático Hard Core</li></ul>
-                    <div class="price-old">R$ 300,00</div><div class="price-new" style="color:#ff6b6b;">R$ 150,00</div><span class="badge-off">50% OFF</span>
-                    <button onclick="adicionarAoCarrinho('Pacote Hard Core + Spartan Mod Embutido Completo',150)" class="btn-primario btn-pacote">🛡️ Adicionar</button>
+                    <div style="margin:0.3rem 0 1rem;">
+                        <span style="display:inline-block;background:rgba(255,68,68,0.12);border:1px solid rgba(255,68,68,0.45);color:#ff6b6b;padding:0.5rem 1.2rem;border-radius:50px;font-size:0.75rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;">🚧 Em Construção</span>
+                        <p style="font-size:0.72rem;color:#8899AA;margin:0.6rem 0 0;font-weight:600;">Em breve será lançado!</p>
+                    </div>
+                    <a href="#hardcore" class="btn-primario btn-pacote" style="background:#ff4444;border-color:#ff4444;color:#fff;">🚧 Em Breve — Saiba Mais</a>
                 </div>
             </div>
         </div>
         <div class="shape-bottom">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,40 C300,100 600,0 900,80 C1000,105 1100,30 1200,60 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
+        </div>
+    </section>
+
+    <!-- ═════ PACOTE HARD CORE — EM CONSTRUÇÃO ═════ -->
+    <section class="hardcore-section" id="hardcore" style="position:relative;">
+        <div class="container-medium" style="position:relative;z-index:2;">
+            <div class="hardcore-card">
+                <span class="hardcore-badge">🚧 EM CONSTRUÇÃO</span>
+                <span class="hardcore-icon">🛡️</span>
+                <p class="subtitle-tag-center">EXCLUSIVO VCORE GAMES</p>
+                <h2>Pacote <span>Hard Core</span></h2>
+                <p class="hardcore-status">⚡ Em breve será lançado ⚡</p>
+
+                <div class="hardcore-divisor"></div>
+
+                <div class="hardcore-texto">
+                    <p>O <strong class="destaque-hardcore">Pacote Hard Core</strong> é a experiência definitiva que a <strong>VCORE GAMES</strong> está preparando para os verdadeiros operadores do Mod Ghost. Desenvolvido para quem não aceita menos do que o máximo, este pacote eleva o realismo e a imersão tática a um nível jamais visto.</p>
+                    <p>Diferente de tudo o que já foi lançado, o Hard Core não é apenas uma coleção de mods — é um <strong class="destaque-hardcore">sistema completo de transformação</strong>. Ele incorpora, de forma nativa e totalmente integrada, o <strong>Spartan Mod Embutido Completo</strong>, eliminando qualquer necessidade de configuração adicional. Tudo já vem pronto, alinhado e testado para funcionar em perfeita harmonia.</p>
+                    <p>Entre os destaques, estão os <strong class="destaque-hardcore">Mods Hard Core Exclusivos</strong>, criados especialmente para este pacote: visuais militares premium, camuflagens e capacetes de elite, coletes táticos de alta precisão, armas e miras realistas com acabamento cinematográfico, além de um <strong>Kit Tático Hard Core</strong> completo que transforma cada missão em uma experiência de combate autêntica.</p>
+                    <p>Cada detalhe foi cuidadosamente projetado para oferecer <strong>imersão, desempenho e qualidade</strong> — sem comprometer a estabilidade do jogo. Por isso, estamos dedicando o tempo necessário para garantir que o Pacote Hard Core seja lançado com o padrão de excelência que a comunidade VCORE merece.</p>
+                    <p><strong class="destaque-hardcore">Fique atento:</strong> em breve este pacote estará disponível com condições especiais de lançamento. Prepare-se para elevar o seu Mod Ghost ao próximo nível!</p>
+                </div>
+
+                <div class="hardcore-features">
+                    <div class="hardcore-feature"><span class="hf-icon">✅</span> Tudo do Pacote General incluído</div>
+                    <div class="hardcore-feature"><span class="hf-icon">🛡️</span> Spartan Mod Embutido Completo</div>
+                    <div class="hardcore-feature"><span class="hf-icon">🔥</span> Mods Hard Core Exclusivos</div>
+                    <div class="hardcore-feature"><span class="hf-icon">🎖️</span> Visuais Militares Premium</div>
+                    <div class="hardcore-feature"><span class="hf-icon">🪖</span> Camuflagens + Capacetes Elite</div>
+                    <div class="hardcore-feature"><span class="hf-icon">🎯</span> Kit Tático Hard Core</div>
+                </div>
+
+                <div style="display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;position:relative;z-index:2;">
+                    <a href="#inicio" class="btn-primario">🏠 Voltar ao Início</a>
+                    <a href="https://wa.me/5516981097916?text=Ol%C3%A1!%20Quero%20ser%20avisado%20sobre%20o%20lan%C3%A7amento%20do%20Pacote%20Hard%20Core!" target="_blank" class="btn-hardcore"><i class="fa fa-bell"></i> Me Avise no Lançamento</a>
+                </div>
+            </div>
+        </div>
+        <div class="shape-bottom">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C400,0 800,100 1200,40 L1200,120 L0,120 Z" fill="#0c1535"/></svg>
         </div>
     </section>
 
@@ -1343,7 +1482,7 @@
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-col"><h4>VCORE GAMES</h4><p>Mods exclusivos para Mod Ghost. Transformamos sua experiência de jogo com visuais táticos, armas realistas e suporte de qualidade.</p></div>
-            <div class="footer-col"><h4>Links Rápidos</h4><ul><li><a href="#inicio">🏠 Início</a></li><li><a href="#pacotes">📦 Pacotes</a></li><li><a href="#instalacao">📖 Como Instalar</a></li><li><a href="#demo-mods">🎬 Demonstração</a></li></ul></div>
+            <div class="footer-col"><h4>Links Rápidos</h4><ul><li><a href="#inicio">🏠 Início</a></li><li><a href="#pacotes">📦 Pacotes</a></li><li><a href="#hardcore">🛡️ Hard Core — Em Breve</a></li><li><a href="#instalacao">📖 Como Instalar</a></li><li><a href="#demo-mods">🎬 Demonstração</a></li></ul></div>
             <div class="footer-col"><h4>Suporte</h4><ul><li><a href="https://wa.me/5516981097916" target="_blank">📱 WhatsApp</a></li><li><a href="mailto:rodrigoxgames25@gmail.com">📧 E-mail</a></li><li><a href="https://www.youtube.com/@RodrigoVCOREgames" target="_blank">▶ YouTube</a></li><li><a href="https://instagram.com/rodrigovecoregaming" target="_blank">📷 Instagram</a></li></ul></div>
             <div class="footer-col"><h4>Legal</h4><ul><li><a href="#" onclick="abrirPoliticaPrivacidade();return false;">🔒 Política de Privacidade</a></li><li><a href="#" onclick="abrirPoliticaPrivacidade();return false;">📜 Termos de Uso</a></li></ul></div>
         </div>
@@ -1883,7 +2022,7 @@
                     }
                 }
 
-                soldiers.forEach(function(s, idx) {
+                soldiers.forEach(function(s) {
                     s.phase += 0.015;
                     s.y = s.baseY + Math.sin(s.phase) * 3;
 
